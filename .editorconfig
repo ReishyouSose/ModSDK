@@ -1,4 +1,0 @@
-﻿[*.cs]
-
-# NetCode: Unhandled Exception
-dotnet_diagnostic.NetCode.severity = none
