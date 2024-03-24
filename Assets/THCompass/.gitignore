@@ -361,3 +361,14 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# 忽略所有文件和文件夹
+/*
+
+# 但不忽略Assets文件夹，以便于能够包含其子文件夹THCompass
+!/Assets/
+
+# 忽略Assets文件夹下的所有内容
+/Assets/*
+# 但不忽略THCompass文件夹及其内容
+!/Assets/THCompass/
