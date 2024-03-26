@@ -1,20 +1,11 @@
-﻿using Assets.THCompass.DropRules.DropConditions;
+﻿using Assets.THCompass.DataStruct;
+using Assets.THCompass.DropManager.Condition;
 using Assets.THCompass.Helper;
 using System.Collections.Generic;
 using Random = Unity.Mathematics.Random;
 
-namespace Assets.THCompass.DropRules
+namespace Assets.THCompass.DropManager.Rule
 {
-    public struct DropInfo
-    {
-        public ObjectID itemID;
-        public int stack;
-        public DropInfo(ObjectID itemID, int stack)
-        {
-            this.itemID = itemID;
-            this.stack = stack;
-        }
-    }
     public abstract class DropRule
     {
         public int minDrop = 1;
@@ -24,35 +15,49 @@ namespace Assets.THCompass.DropRules
         private readonly List<DropRule> SuccessChain = new();
         private readonly List<DropRule> FailureChain = new();
         public void SetDropChance(float x, int y) => DropChance = x / y;
-        public void WithCondition(params DropCondition[] condition) => conditions.AddRange(condition);
+        public void SetDropChance(float x) => DropChance = x;
+        public DropRule WithCondition(params DropCondition[] condition)
+        {
+            conditions.AddRange(condition);
+            return this;
+        }
+
         public void OnSuccess(params DropRule[] drs) => SuccessChain.AddRange(drs);
         public void OnFailure(params DropRule[] drs) => FailureChain.AddRange(drs);
         public int GetDropCount(Random rng) => rng.NextInt(minDrop, maxDrop + 1);
-        protected abstract IEnumerable<DropInfo> DropSelf(Random rng);
-        public List<DropInfo> Drop(Random rng)
+        protected abstract IEnumerable<DropInfo> DropSelf(DropSource source);
+        public List<DropInfo> Drop(DropSource source)
         {
             List<DropInfo> result = new();
-            Drop(result, rng);
+            Drop(result, source);
             return result;
         }
 
-        private void Drop(List<DropInfo> result, Random rng)
+        private void Drop(List<DropInfo> result, DropSource source)
         {
-            if ( rng.NextBool(DropChance))
+            if (IsMet(source) && source.Rng.NextBool(DropChance * (source.Ten ? 1.25f : 1)))
             {
-                result.AddRange(DropSelf(rng));
+                result.AddRange(DropSelf(source));
                 foreach (DropRule dr in SuccessChain)
                 {
-                    dr.Drop(result, rng);
+                    dr.Drop(result, source);
                 }
             }
             else
             {
                 foreach (DropRule dr in FailureChain)
                 {
-                    dr.Drop(result, rng);
+                    dr.Drop(result, source);
                 }
             }
+        }
+        public bool IsMet(DropSource source)
+        {
+            foreach (DropCondition cd in conditions)
+            {
+                if (!cd.IsMet(source)) return false;
+            }
+            return true;
         }
     }
 }

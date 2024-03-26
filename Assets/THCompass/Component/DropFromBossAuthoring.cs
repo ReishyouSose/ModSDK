@@ -1,8 +1,7 @@
-﻿using PugConversion;
+﻿using Assets.THCompass.DataStruct;
+using PugConversion;
 using Unity.Entities;
 using UnityEngine;
-using static Assets.THCompass.Compasses.CompassData;
-using static Assets.THCompass.Compasses.CompassLootTable;
 
 namespace Assets.THCompass.Component
 {

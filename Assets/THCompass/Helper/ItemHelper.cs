@@ -162,29 +162,5 @@ namespace Assets.THCompass.Helper
         }
         public static ObjectInfo GetObjectInfo(this Entity entity, World world) => EntityUtility.GetObjectInfo(entity, world);
         public static ObjectDataCD NewItem(ObjectID id, int amount) => new() { amount = amount, objectID = id };
-        public static NativeList<ObjectDataCD> SplitItems(Dictionary<ObjectID, int> result)
-        {
-            NativeList<ObjectDataCD> items = new(Allocator.Temp);
-            foreach (var (type, stack) in result)
-            {
-                int amount = stack;
-                while (amount > 999)
-                {
-                    items.Add(NewItem(type, 999));
-                    amount -= 999;
-                }
-                if (CompassLootSystem.canStack.Contains(type))
-                {
-                    /* ObjectInfo info = PugDatabase.GetObjectInfo(type);*/
-                    while (amount > 1)
-                    {
-                        items.Add(NewItem(type, 1));
-                        amount--;
-                    }
-                }
-                items.Add(NewItem(type, amount));
-            };
-            return items;
-        }
     }
 }

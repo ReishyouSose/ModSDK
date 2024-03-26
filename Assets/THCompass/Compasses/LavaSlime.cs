@@ -1,0 +1,35 @@
+﻿using Assets.THCompass.DataStruct;
+using Assets.THCompass.DropManager.Rule;
+using Assets.THCompass.Helper;
+using HarmonyLib;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Assets.THCompass.Compasses
+{
+    public class LavaSlime : Compass
+    {
+        public override BossID BossID => BossID.LavaSlime;
+
+        public override AreaType Area => AreaType.Desert;
+
+        public override bool BelongsToSlime => true;
+        public override void RegisterUniqueDrop(List<DropRule> common, List<DropRule> grand)
+        {
+            ObjectID[] unique = new ObjectID[]
+            {
+                ObjectID.BindingString,
+                ObjectID.GodsentHelm,
+                ObjectID.GodsentBreastArmor,
+                ObjectID.GodsentPantsArmor,
+                ObjectID.FrozenFlame,
+                ObjectID.WhiteWhistle,
+            };
+            common.AddRange(Drop.CommonMany(1, 1, 0.01f, unique));
+            common.Add(Drop.Common(ObjectID.CrystalMeteorShard, 1, 8, 0.01f));
+            IEnumerable<DropRule> gr = Drop.CommonMany(1, 1, 1, unique);
+            gr.AddItem(Drop.Common(ObjectID.CrystalMeteorShard, 1, 8));
+            grand.Add(new OneOf(gr.ToArray()));
+        }
+    }
+}

@@ -1,10 +1,9 @@
 ﻿using Assets.THCompass.Component;
+using Assets.THCompass.DataStruct;
 using Assets.THCompass.Helper;
 using HarmonyLib;
 using PlayerState;
 using Unity.Mathematics;
-using static Assets.THCompass.Compasses.CompassData;
-using static Assets.THCompass.Compasses.CompassLootTable;
 using static Assets.THCompass.THCompassMain;
 
 namespace Assets.THCompass.Patch

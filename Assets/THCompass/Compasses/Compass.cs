@@ -1,18 +1,15 @@
-﻿using System;
+﻿using Assets.THCompass.DataStruct;
+using Assets.THCompass.DropManager.Rule;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Assets.THCompass.Compasses.CompassData;
 
 namespace Assets.THCompass.Compasses
 {
     public abstract class Compass
     {
         public abstract BossID BossID { get; }
-        public abstract void RegisterLoot()
-        {
-
-        }
+        public abstract AreaType Area { get; }
+        public abstract bool BelongsToSlime { get; }
+        public virtual ObjectID BossSummoner { get; } = ObjectID.None;
+        public virtual void RegisterUniqueDrop(List<DropRule> common, List<DropRule> grand) { }
     }
 }

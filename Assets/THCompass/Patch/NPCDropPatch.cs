@@ -1,10 +1,9 @@
-﻿using Assets.THCompass.Helper;
+﻿using Assets.THCompass.DataStruct;
+using Assets.THCompass.Helper;
 using HarmonyLib;
 using System;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
-using static Assets.THCompass.Compasses.CompassData;
-//using static Assets.THCompass.System.GlobalDropSystem;
 using static DropLootSystem;
 
 namespace Assets.THCompass.Patch
@@ -69,12 +68,25 @@ namespace Assets.THCompass.Patch
                 compass = ItemHelper.GetItemID("Compass_Bird");
                 return true;
             }
-            else if (bossCps.TryGetValue(chest, out BossID boss))
+            BossID bossID = chest switch
             {
-                compass = ItemHelper.GetItemID("Compass_" + boss);
-                return true;
-            }
-            return false;
+                ObjectID.GlurchChest => BossID.Slime,
+                ObjectID.HivemotherHalloweenChest => BossID.Hive,
+                ObjectID.HivemotherChest => BossID.Hive,
+                ObjectID.GhormChest => BossID.Devourer,
+                ObjectID.InventoryAncientChest => BossID.Shaman,
+                ObjectID.IvyChest => BossID.PoisonSlime,
+                ObjectID.EasterChest => BossID.Bird,
+                ObjectID.MorphaChest => BossID.SlipperySlime,
+                ObjectID.OctopusBossChest => BossID.Octopus,
+                ObjectID.LavaSlimeBossChest => BossID.LavaSlime,
+                ObjectID.BossChest => BossID.Scarab,
+                ObjectID.AtlantianWormChest => BossID.Atlantis,
+                _ => BossID.None
+            };
+            if (bossID == BossID.None) return false;
+            compass = ItemHelper.GetItemID("Compass_" + bossID);
+            return true;
         }
         private static int GetRngAmount(int playerCount, Unity.Mathematics.Random rng)
         {
