@@ -15,12 +15,6 @@ namespace Assets.THCompass.System
 {
     public static class CompassLootSystem
     {
-        public static HashSet<ObjectID> canStack;
-        public static void Load()
-        {
-            canStack = new();
-
-        }
         public static void Add(this List<THLootInfo> list, ObjectID itemType, int min = 1, int max = 1, float dropChance = 1f)
         {
             list.Add(new(itemType, min, max, dropChance));
@@ -75,12 +69,12 @@ namespace Assets.THCompass.System
                     amount -= 999;
                 }
 
-                if (!canStack.Contains(type))
+                if (!canstack.Contains(type))
                 {
                     ObjectInfo info = PugDatabase.GetObjectInfo(type);
-                    if (info != null && info.isStackable) canStack.Add(type);
+                    if (info != null && info.isStackable) canstack.Add(type);
                 }
-                while (!canStack.Contains(type) && amount > 1)
+                while (!canstack.Contains(type) && amount > 1)
                 {
                     items.Add(NewItem(type, 1));
                     amount--;

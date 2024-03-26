@@ -1,18 +1,30 @@
 ﻿using System;
-using Random = Unity.Mathematics.Random;
 
 namespace Assets.THCompass.Helper
 {
     public static class RandomHelper
     {
-        /// <returns>(1/x)%</returns>
-        public static bool NextBool(this Random rng, int x) => rng.NextBool(1, x);
-        /// <returns>(x/y)%</returns>
-        public static bool NextBool(this Random rng, int x, int y) => rng.NextInt(y) < x;
-        public static bool NextBool(this Random rng, float x) => rng.NextFloat() < x;
-        public static bool NextBool(this Random rng, double x) => rng.NextDouble() < x;
+        public static Random Rng => new((int)PugRandom.GetSeed());
+        public static bool GetRngBool(this float x)
+        {
+            if (x <= 0) return false;
+            if (x >= 1) return true;
+            int y = 1;
+            while (x != (int)x)
+            {
+                x *= 10;
+                y *= 10;
+            }
+            return Rng.Next(0, y) < x;
+        }
+        /// <summary>
+        /// 左闭右闭
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static int GetRngInt(int min, int max) => Rng.Next(min, max + 1);
 
-        /// <summary>线性递减</summary>
         private static int LinearDecrease(Random rng, int min, int max)
         {
             int diff = max - min;
@@ -23,6 +35,10 @@ namespace Assets.THCompass.Helper
         /// <summary>
         /// 正态分布
         /// </summary>
+        /// <param name="random"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static int NormalDistribution(Random random, int min, int max)
         {
             double u1 = 1.0 - random.NextDouble();

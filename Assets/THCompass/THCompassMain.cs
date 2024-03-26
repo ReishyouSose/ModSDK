@@ -3,6 +3,8 @@ using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using PugMod;
 using UnityEngine;
+using CoreLib;
+using CoreLib.Util.Extensions;
 
 namespace Assets.THCompass
 {
@@ -41,6 +43,7 @@ namespace Assets.THCompass
         public void Init()
         {
             API.Client.OnWorldCreated += ClientWorldInit;
+            this.GetModInfo();
         }
 
         public void ModObjectLoaded(Object obj)

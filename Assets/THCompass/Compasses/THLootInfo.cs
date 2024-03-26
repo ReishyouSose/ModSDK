@@ -57,6 +57,7 @@ namespace Assets.THCompass.Compasses
             }
         }
         public readonly Dictionary<LootType, List<THLootInfo>> GetLootTable() => pool;
+        public static HashSet<ObjectID> canstack = new();
         public struct THLootInfo
         {
             public ObjectID itemType;
