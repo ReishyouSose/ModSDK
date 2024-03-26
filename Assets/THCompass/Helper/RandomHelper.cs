@@ -1,19 +1,20 @@
 ﻿using System;
-using Random = Unity.Mathematics.Random;
+using Random =  Unity.Mathematics.Random;
 
 namespace Assets.THCompass.Helper
 {
     public static class RandomHelper
     {
+        public static Random GetRng() => PugRandom.GetRng();
         /// <returns>(1/x)%</returns>
         public static bool NextBool(this Random rng, int x) => rng.NextBool(1, x);
         /// <returns>(x/y)%</returns>
         public static bool NextBool(this Random rng, int x, int y) => rng.NextInt(y) < x;
-        public static bool NextBool(this Random rng, float x) => rng.NextFloat() < x;
+        public static bool NextBool(this Random rng, float x) => rng.NextDouble() < x;
         public static bool NextBool(this Random rng, double x) => rng.NextDouble() < x;
 
         /// <summary>线性递减</summary>
-        private static int LinearDecrease(Random rng, int min, int max)
+        public static int LinearDecrease(Random rng, int min, int max)
         {
             int diff = max - min;
             double x = rng.NextDouble(); //产生一个0-1之间的随机数

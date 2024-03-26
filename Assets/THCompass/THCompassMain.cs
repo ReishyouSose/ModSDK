@@ -1,4 +1,6 @@
 ﻿using Assets.THCompass.Compasses;
+using Assets.THCompass.DataStruct;
+using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using PugMod;
 using UnityEngine;

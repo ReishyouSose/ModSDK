@@ -1,9 +1,11 @@
 ﻿using Assets.THCompass.Compasses;
 using Assets.THCompass.DataStruct;
+using Assets.THCompass.Helper;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.NetCode;
+using Random = System.Random;
 
 namespace Assets.THCompass.System
 {
@@ -102,8 +104,7 @@ namespace Assets.THCompass.System
             var cobl = GetBufferLookup<ContainedObjectsBuffer>(true);
             Entities.ForEach((Entity rpcEntity, in CompassLootRPC rpc, in ReceiveRpcCommandRequest req) =>
             {
-                var rng = PugRandom.GetRng();
-                using NativeList<ObjectDataCD> items = CompassLoader.GetLoots(rpc, rng);
+                using NativeList<ObjectDataCD> items = CompassLoader.GetLoots(rpc);
                 int dir = rpc.dir;
                 float3 offset = new();
                 ObjectID chestID = rpc.ChestID;

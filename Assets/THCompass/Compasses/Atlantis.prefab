@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 244469479, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyExistsInSeason: 0
   sellValue: -1
   buyValueMultiplier: 1
   icon: {fileID: 21300000, guid: bf0045941e965224eab142022adb9afe, type: 3}

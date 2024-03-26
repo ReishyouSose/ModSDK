@@ -4,6 +4,7 @@ using HarmonyLib;
 using System;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
+using UnityEngine;
 using static DropLootSystem;
 
 namespace Assets.THCompass.Patch
@@ -54,7 +55,7 @@ namespace Assets.THCompass.Patch
                 if (MatchCompass(lootChest.chestObjectData.objectID, bird, out ObjectID compass))
                 {
                     containedObjectsBuffer[index] = new()
-                    { objectData = ItemHelper.NewItem(compass, GetRngAmount(playerCount - 1, rng)) };
+                    { objectData = ItemHelper.NewItem(compass, GetRngAmount(playerCount, rng)) };
                     lootChest.containedObjectsBuffer = containedObjectsBuffer;
                 }
             }
@@ -90,16 +91,18 @@ namespace Assets.THCompass.Patch
         }
         private static int GetRngAmount(int playerCount, Unity.Mathematics.Random rng)
         {
-            float bonus = Math.Min((playerCount - 1) * 0.13f, 0.99f);
+            return 999;
             int amount = 0;
-            for (int i = 1; i <= 10; i++)
+            for (int j = 0; j < playerCount; j++)
             {
-                if (rng.NextDouble() < 1.0 / (i - bonus))
+                for (int i = 1; i <= 10; i++)
                 {
-                    amount++;
+                    if (rng.NextDouble() < 1.0 / i)
+                    {
+                        amount++;
+                    }
                 }
             }
-            amount += playerCount - 1;
             return amount;
         }
         /*private static  void InitLoot(List<LootInfo> lootInfos, int minUniqueDrops, int maxUniqueDrops, List<LootInfo> guaranteedLootInfos)

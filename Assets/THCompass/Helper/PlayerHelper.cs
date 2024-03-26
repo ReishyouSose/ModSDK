@@ -14,6 +14,7 @@ namespace Assets.THCompass.Helper
             player.playerInventoryHandler.Consume(index, amount, false);
             player.SetEquipmentSlotToNonUsableIfEmptySlot(slot);
         }
+
         public static Entity GetPlayerEntity(this Entity sender)
         {
             EntityManager entityManager = API.Server.World.EntityManager;
