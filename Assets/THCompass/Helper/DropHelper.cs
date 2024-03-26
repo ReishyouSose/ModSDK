@@ -35,7 +35,7 @@ namespace Assets.THCompass.Helper
             dr.SetDropChance(x);
             return dr;
         }
-        public static OneOf OneOf(int min, int max, float x, int y, params ObjectID[] ids) => OneOf(min, max, x, y, ids);
+        public static OneOf OneOf(int min, int max, float x, int y, params ObjectID[] ids) => OneOf(min, max, x / y, ids);
         public static OneOf OneOf(int min, int max, int x, params ObjectID[] ids) => OneOf(min, max, 1, x, ids);
         public static OneOf OneOf(params ObjectID[] ids) => OneOf(1, 1, 1, ids);
         public static SelectMany SelectMany(int selectMin, int selectMax, int min, int max, float x, params ObjectID[] ids)

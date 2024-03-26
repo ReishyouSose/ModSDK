@@ -6,7 +6,6 @@ using Assets.THCompass.System;
 using System;
 using System.Collections.Generic;
 using Unity.Collections;
-using Random = Unity.Mathematics.Random;
 
 namespace Assets.THCompass.Compasses
 {
@@ -54,10 +53,8 @@ namespace Assets.THCompass.Compasses
                 List<DropRule> common = new(), grand = new();
                 cps.RegisterUniqueDrop(common, grand);
                 MatchBoss cd = new(cps.BossID);
-                common.WithCondition(cd, notTen);
-                grand.WithCondition(cd, ten);
-                commonLoot[LootType.Uniqueness].AddRange(common);
-                commonLoot[LootType.Uniqueness].AddRange(grand);
+                commonLoot[LootType.Uniqueness].AddRange(common.WithCondition(cd, notTen));
+                commonLoot[LootType.Uniqueness].AddRange(grand.WithCondition(cd, ten));
             }
         }
         private static void AddNormal(List<DropRule> loot)
@@ -114,7 +111,7 @@ namespace Assets.THCompass.Compasses
                 Drop.Common(ObjectID.CrystalMeteorShardOffhand), godsent)
                 .WithCondition(new MatchArea(AreaType.Desert)));
         }
-        private static bool RollGrand(LootType lootType, Random rng, int bonus)
+        private static bool RollGrand(LootType lootType, Unity.Mathematics.Random rng, int bonus)
         {
             return rng.NextBool((lootType switch
             {
@@ -129,7 +126,7 @@ namespace Assets.THCompass.Compasses
                 _ => 0
             }) * bonus);
         }
-        public static NativeList<ObjectDataCD> GetLoots(CompassLootRPC rpc, Random rng)
+        public static NativeList<ObjectDataCD> GetLoots(CompassLootRPC rpc)
         {
             int time = 1, bonus = 1;
             if (rpc.ten)
@@ -138,23 +135,33 @@ namespace Assets.THCompass.Compasses
                 bonus = 2;
             }
             List<DropInfo> result = new();
-            DropSource source = new(CompassByID[rpc.bossID], rpc.ten, rng);
             foreach (LootType lt in Enum.GetValues(typeof(LootType)))
             {
                 for (int i = 0; i < time; i++)
                 {
-                    List<DropRule> rules = RollGrand(lt, rng, bonus) ? grandLoot[lt] : commonLoot[lt];
+                    DropSource source = new(CompassByID[rpc.bossID], rpc.ten, i);
+                    List<DropRule> rules = RollGrand(lt, PugRandom.GetRng(), bonus) ? grandLoot[lt] : commonLoot[lt];
                     foreach (DropRule rule in rules)
                     {
                         result.AddRange(rule.Drop(source));
                     }
                 }
             }
-            NativeList<ObjectDataCD> items = new(Allocator.Temp);
+            Dictionary<ObjectID, int> combine = new();
             foreach (DropInfo info in result)
             {
-                ObjectID type = info.itemID;
-                int amount = info.stack;
+                ObjectID id = info.itemID;
+                int stack = info.stack;
+                if (combine.ContainsKey(id))
+                {
+                    combine[id] += stack;
+                }
+                else combine[id] = stack;
+            }
+            NativeList<ObjectDataCD> items = new(Allocator.Temp);
+            foreach (var (type, stack) in combine)
+            {
+                int amount = stack;
                 while (amount > 999)
                 {
                     items.Add(ItemHelper.NewItem(type, 999));
