@@ -127,7 +127,7 @@ namespace Assets.THCompass.System
                 ecb.DestroyEntity(rpcEntity);
             })
                 .WithoutBurst()
-                .Run();
+                .Schedule();
 
             base.OnUpdate();
         }
