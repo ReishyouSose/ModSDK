@@ -10,10 +10,9 @@ namespace Assets.THCompass.Compasses
     public class Scarab : Compass
     {
         public override BossID BossID => BossID.Scarab;
-
         public override AreaType Area => AreaType.Desert;
-
         public override bool BelongsToSlime => false;
+        public override ObjectID BossSummoner => ObjectID.Thumper;
         public override void RegisterUniqueDrop(List<DropRule> loot)
         {
             ObjectID[] unique = new ObjectID[]

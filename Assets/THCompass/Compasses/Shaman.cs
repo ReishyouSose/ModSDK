@@ -10,7 +10,7 @@ namespace Assets.THCompass.Compasses
         public override BossID BossID => BossID.Shaman;
 
         public override AreaType Area => AreaType.Stone;
-
+        public override ObjectID BossSummoner => ObjectID.ShamanBossSummoningItem;
         public override bool BelongsToSlime => false;
         public override void RegisterUniqueDrop(List<DropRule> loot)
         {

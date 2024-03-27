@@ -12,6 +12,7 @@ namespace Assets.THCompass.Compasses
         public override AreaType Area => AreaType.Dirt;
 
         public override bool BelongsToSlime => false;
+        public override ObjectID BossSummoner => ObjectID.HiveBossSummoningItem;
         public override void RegisterUniqueDrop(List<DropRule> loot)
         {
             ObjectID[] dirt = new ObjectID[3]

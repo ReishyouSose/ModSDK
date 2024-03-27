@@ -98,6 +98,10 @@ namespace Assets.THCompass.Patch
                         amount++;
                     }
                 }
+                if (PugRandom.GetRng().NextInt(1000) == 0)
+                {
+                    amount += 99;
+                }
             }
             return amount;
         }

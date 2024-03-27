@@ -5,7 +5,6 @@ using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Collections;
 
 namespace Assets.THCompass.Compasses
@@ -47,6 +46,16 @@ namespace Assets.THCompass.Compasses
             AddSummon(commonLoot[LootType.Summon], grandLoot[LootType.Summon]);
             AddReinforcement(commonLoot[LootType.Reinforcement], grandLoot[LootType.Reinforcement]);
             AddLegend(grandLoot[LootType.Uniqueness]);
+            foreach (Compass cps in CompassByID.Values)
+            {
+                ObjectID summoner = cps.BossSummoner;
+                if (summoner > ObjectID.None)
+                {
+                    MatchBoss boss = new(cps.BossID);
+                    commonLoot[LootType.Summon].Add(Drop.Common(summoner, 1, 1, 0.05f).WithCondition(boss));
+                    grandLoot[LootType.Summon].Add(Drop.Common(summoner).WithCondition(boss));
+                }
+            }
         }
         private static void AddNormal(List<DropRule> loot)
         {
@@ -73,10 +82,24 @@ namespace Assets.THCompass.Compasses
         }
         private static void AddSummon(List<DropRule> common, List<DropRule> grand)
         {
-            DropCondition slime = new BlongsToSlime();
+            DropCondition slime = Drop.BelongsToSlime;
             common.Add(Drop.Common(ObjectID.SlimeBossSummoningItem, 1, 1, 5, 100).WithCondition(slime));
             grand.Add(Drop.Common(ObjectID.SlimeBossSummoningItem, 1, 3, 1).WithCondition(slime));
             grand.Add(Drop.Common(ObjectID.KingSlimeSummoningItem, 1, 3, 1).WithCondition(slime));
+        }
+        private static void AddaAreaChest(List<DropRule> common, List<DropRule> grand)
+        {
+            void Add(MatchArea area, ObjectID lockedChest)
+            {
+                common.Add(Drop.Common(lockedChest, 1, 1, 0.1f).WithCondition(area));
+                grand.Add(Drop.Common(lockedChest, 3, 7).WithCondition(area));
+            }
+            Add(Drop.BelongsToDirt, ObjectID.LockedCopperChest);
+            Add(Drop.BelongsToStone, ObjectID.LockedIronChest);
+            Add(Drop.BelongsToNature, ObjectID.LockedScarletChest);
+            Add(Drop.BelongsToSea, ObjectID.LockedOctarineChest);
+            Add(Drop.BelongsToDesert, ObjectID.LockedGalaxiteChest);
+            Add(Drop.BelongsToShimmer, ObjectID.LockedSolariteChest);
         }
         private static void AddReinforcement(List<DropRule> common, List<DropRule> grand)
         {
@@ -91,14 +114,13 @@ namespace Assets.THCompass.Compasses
         }
         private static void AddLegend(List<DropRule> grand)
         {
-            grand.Add(Drop.Common(ObjectID.LegendarySword).WithCondition(new MatchArea(AreaType.Nature)));
-            grand.Add(Drop.Common(ObjectID.LegendaryBow)
-                .WithCondition(new MatchArea(AreaType.Sea), new MatchBoss(BossID.Atlantis).ReverseCondition()));
+            grand.Add(Drop.Common(ObjectID.LegendarySword).WithCondition(Drop.BelongsToNature));
+            grand.Add(Drop.Common(ObjectID.LegendaryBow).WithCondition(Drop.BelongsToSea));
             SelectMany godsent = Drop.SelectMany(3, 3, 1, 1, 1, ObjectID.GodsentHelm,
                 ObjectID.GodsentBreastArmor, ObjectID.GodsentPantsArmor);
             grand.Add(new OneOf(Drop.Common(ObjectID.LegendaryMiningPick), Drop.Common(ObjectID.OracleDeck),
                 Drop.Common(ObjectID.CrystalMeteorShardOffhand), godsent)
-                .WithCondition(new MatchArea(AreaType.Desert)));
+                .WithCondition(Drop.BelongsToDesert));
         }
         private static bool RollGrand(LootType lootType, Unity.Mathematics.Random rng, int bonus)
         {
@@ -109,7 +131,7 @@ namespace Assets.THCompass.Compasses
                 LootType.Animal => 0.005f,
                 LootType.HealthFood => 0,
                 LootType.Summon => 0.01f,
-                LootType.Area => 0f,
+                LootType.Area => 0.01f,
                 LootType.Reinforcement => 0.001f,
                 LootType.Uniqueness => 0.0005f,
                 _ => 0
@@ -173,7 +195,7 @@ namespace Assets.THCompass.Compasses
                 if (!canStack.Contains(type))
                 {
                     ObjectInfo objInfo = PugDatabase.GetObjectInfo(type);
-                    if (objInfo != null && objInfo.isStackable) canStack.Add(type);
+                    if (objInfo?.isStackable == true) canStack.Add(type);
                 }
                 while (!canStack.Contains(type) && amount > 1)
                 {

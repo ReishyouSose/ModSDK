@@ -8,9 +8,9 @@ namespace Assets.THCompass.Compasses
     public class Atlantis : Compass
     {
         public override BossID BossID => BossID.Atlantis;
-        public override AreaType Area => AreaType.Sea;
-
+        public override AreaType Area => AreaType.Shimmer;
         public override bool BelongsToSlime => false;
+        public override ObjectID BossSummoner => ObjectID.BaitOnAPole;
         public override void RegisterUniqueDrop(List<DropRule> loot)
         {
             ObjectID[] unique = new ObjectID[]

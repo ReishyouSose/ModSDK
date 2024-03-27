@@ -13,5 +13,6 @@ namespace Assets.THCompass.DataStruct
         Nature,
         Sea,
         Desert,
+        Shimmer,
     }
 }

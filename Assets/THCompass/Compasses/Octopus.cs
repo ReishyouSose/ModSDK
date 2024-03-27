@@ -9,8 +9,8 @@ namespace Assets.THCompass.Compasses
     {
         public override BossID BossID => BossID.Octopus;
         public override AreaType Area => AreaType.Sea;
-
         public override bool BelongsToSlime => false;
+        public override ObjectID BossSummoner => ObjectID.BaitOctopusBoss;
         public override void RegisterUniqueDrop(List<DropRule> loot)
         {
             ObjectID[] unique = new ObjectID[]

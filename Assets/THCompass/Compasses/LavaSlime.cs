@@ -10,9 +10,7 @@ namespace Assets.THCompass.Compasses
     public class LavaSlime : Compass
     {
         public override BossID BossID => BossID.LavaSlime;
-
         public override AreaType Area => AreaType.Desert;
-
         public override bool BelongsToSlime => true;
         public override void RegisterUniqueDrop(List<DropRule> loot)
         {

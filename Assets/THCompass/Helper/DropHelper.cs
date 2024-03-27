@@ -1,4 +1,5 @@
-﻿using Assets.THCompass.DropManager.Condition;
+﻿using Assets.THCompass.DataStruct;
+using Assets.THCompass.DropManager.Condition;
 using Assets.THCompass.DropManager.Rule;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,15 @@ namespace Assets.THCompass.Helper
 {
     public static class Drop
     {
+        public static IsTenTimes IsTenTime = new();
+        public static IsTenTimes NotTenTime = new IsTenTimes().ReverseCondition() as IsTenTimes;
+        public static MatchArea BelongsToDirt = new(AreaType.Dirt);
+        public static MatchArea BelongsToStone = new(AreaType.Stone);
+        public static MatchArea BelongsToNature = new(AreaType.Nature);
+        public static MatchArea BelongsToSea = new(AreaType.Sea);
+        public static MatchArea BelongsToDesert = new(AreaType.Desert);
+        public static MatchArea BelongsToShimmer = new(AreaType.Shimmer);
+        public static BlongsToSlime BelongsToSlime = new();
         public static Common Common(ObjectID itemID, int min, int max, float x)
         {
             Common dr = new(itemID)
@@ -68,7 +78,5 @@ namespace Assets.THCompass.Helper
             loots.AddRange(CommonMany(1, 1, 0.01f, ids).WithCondition(NotTenTime));
             loots.Add(OneOf(ids).WithCondition(IsTenTime));
         }
-        public static IsTenTimes IsTenTime = new();
-        public static IsTenTimes NotTenTime = new IsTenTimes().ReverseCondition() as IsTenTimes;
     }
 }
