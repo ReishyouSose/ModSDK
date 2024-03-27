@@ -1,10 +1,8 @@
 ﻿using Assets.THCompass.DataStruct;
 using Assets.THCompass.Helper;
 using HarmonyLib;
-using System;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
-using UnityEngine;
 using static DropLootSystem;
 
 namespace Assets.THCompass.Patch
@@ -31,7 +29,6 @@ namespace Assets.THCompass.Patch
         [HarmonyPatch(typeof(DropLootSystem), "DropLootSystem_8A6AD24_LambdaJob_3_Execute")]
         private static bool DropLootSystem_3(DropLootSystem __instance, EntityCommandBuffer ecb, BlobAssetReference<PugDatabase.PugDatabaseBank> databaseLocal, int playerCount, uint lootSeed, UnsafeList<LootChest> lootChests)
         {
-            var rng = PugRandom.GetRng();
             for (int i = 0; i < lootChests.Length; i++)
             {
                 LootChest lootChest = lootChests[i];
@@ -55,7 +52,7 @@ namespace Assets.THCompass.Patch
                 if (MatchCompass(lootChest.chestObjectData.objectID, bird, out ObjectID compass))
                 {
                     containedObjectsBuffer[index] = new()
-                    { objectData = ItemHelper.NewItem(compass, GetRngAmount(playerCount, rng)) };
+                    { objectData = ItemHelper.NewItem(compass, GetRngAmount(playerCount)) };
                     lootChest.containedObjectsBuffer = containedObjectsBuffer;
                 }
             }
@@ -89,15 +86,14 @@ namespace Assets.THCompass.Patch
             compass = ItemHelper.GetItemID("Compass_" + bossID);
             return true;
         }
-        private static int GetRngAmount(int playerCount, Unity.Mathematics.Random rng)
+        private static int GetRngAmount(int playerCount)
         {
-            return 999;
             int amount = 0;
             for (int j = 0; j < playerCount; j++)
             {
                 for (int i = 1; i <= 10; i++)
                 {
-                    if (rng.NextDouble() < 1.0 / i)
+                    if (PugRandom.GetRng().NextInt(i) == 0)
                     {
                         amount++;
                     }

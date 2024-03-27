@@ -28,5 +28,6 @@ namespace Assets.THCompass.DropManager.Rule
                 yield return info;
             }
         }
+        public override string ToString() => $"OneOf {rules.Count()}";
     }
 }

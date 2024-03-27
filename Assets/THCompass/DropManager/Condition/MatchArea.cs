@@ -9,5 +9,6 @@ namespace Assets.THCompass.DropManager.Condition
         public readonly AreaType[] Area;
         public MatchArea(params AreaType[] area) => Area = area;
         protected override bool CheckMet(DropSource source) => Area.Contains(source.Compass.Area);
+        public override string ToString() => IsReverse + Area.First();
     }
 }

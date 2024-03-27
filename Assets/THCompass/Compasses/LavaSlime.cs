@@ -14,7 +14,7 @@ namespace Assets.THCompass.Compasses
         public override AreaType Area => AreaType.Desert;
 
         public override bool BelongsToSlime => true;
-        public override void RegisterUniqueDrop(List<DropRule> common, List<DropRule> grand)
+        public override void RegisterUniqueDrop(List<DropRule> loot)
         {
             ObjectID[] unique = new ObjectID[]
             {
@@ -25,11 +25,11 @@ namespace Assets.THCompass.Compasses
                 ObjectID.FrozenFlame,
                 ObjectID.WhiteWhistle,
             };
-            common.AddRange(Drop.CommonMany(1, 1, 0.01f, unique));
-            common.Add(Drop.Common(ObjectID.CrystalMeteorShard, 1, 8, 0.01f));
+            loot.AddRange(Drop.CommonMany(1, 1, 0.01f, unique).WithCondition(Drop.NotTenTime));
+            loot.Add(Drop.Common(ObjectID.CrystalMeteorShard, 1, 8, 0.01f).WithCondition(Drop.NotTenTime));
             IEnumerable<DropRule> gr = Drop.CommonMany(1, 1, 1, unique);
             gr.AddItem(Drop.Common(ObjectID.CrystalMeteorShard, 1, 8));
-            grand.Add(new OneOf(gr.ToArray()));
+            loot.Add(new OneOf(gr.ToArray()).WithCondition(Drop.IsTenTime));
         }
     }
 }

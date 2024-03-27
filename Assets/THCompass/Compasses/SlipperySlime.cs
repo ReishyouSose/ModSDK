@@ -12,7 +12,7 @@ namespace Assets.THCompass.Compasses
         public override AreaType Area => AreaType.Sea;
 
         public override bool BelongsToSlime => true;
-        public override void RegisterUniqueDrop(List<DropRule> common, List<DropRule> grand)
+        public override void RegisterUniqueDrop(List<DropRule> loot)
         {
             ObjectID[] unique = new ObjectID[]
             {
@@ -26,8 +26,7 @@ namespace Assets.THCompass.Compasses
                  ObjectID.TurtleShell,
                  ObjectID.TowerShellNecklace,
             };
-            common.AddRange(Drop.CommonMany(1, 1, 0.01f, unique));
-            grand.Add(Drop.OneOf(1, 1, 1, unique));
+            loot.AddUniqueRange(unique);
         }
     }
 }

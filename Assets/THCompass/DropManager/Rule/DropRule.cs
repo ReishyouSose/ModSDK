@@ -35,19 +35,22 @@ namespace Assets.THCompass.DropManager.Rule
 
         private void Drop(List<DropInfo> result, DropSource source)
         {
-            if (IsMet(source) && source.Rng.NextBool(DropChance * (source.Ten ? 1.25f : 1)))
+            if (IsMet(source))
             {
-                result.AddRange(DropSelf(source));
-                foreach (DropRule dr in SuccessChain)
+                if (source.Rng.NextBool(DropChance * (source.Ten ? 1.25f : 1)))
                 {
-                    dr.Drop(result, source);
+                    result.AddRange(DropSelf(source));
+                    foreach (DropRule dr in SuccessChain)
+                    {
+                        dr.Drop(result, source);
+                    }
                 }
-            }
-            else
-            {
-                foreach (DropRule dr in FailureChain)
+                else
                 {
-                    dr.Drop(result, source);
+                    foreach (DropRule dr in FailureChain)
+                    {
+                        dr.Drop(result, source);
+                    }
                 }
             }
         }

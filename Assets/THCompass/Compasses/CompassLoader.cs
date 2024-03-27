@@ -5,6 +5,7 @@ using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Collections;
 
 namespace Assets.THCompass.Compasses
@@ -45,17 +46,7 @@ namespace Assets.THCompass.Compasses
             AddHealthFood(commonLoot[LootType.HealthFood]);
             AddSummon(commonLoot[LootType.Summon], grandLoot[LootType.Summon]);
             AddReinforcement(commonLoot[LootType.Reinforcement], grandLoot[LootType.Reinforcement]);
-            AddUnique(commonLoot[LootType.Uniqueness], grandLoot[LootType.Uniqueness]);
-            DropCondition ten = new IsTenTimes();
-            DropCondition notTen = new IsTenTimes().ReverseCondition();
-            foreach (Compass cps in CompassByID.Values)
-            {
-                List<DropRule> common = new(), grand = new();
-                cps.RegisterUniqueDrop(common, grand);
-                MatchBoss cd = new(cps.BossID);
-                commonLoot[LootType.Uniqueness].AddRange(common.WithCondition(cd, notTen));
-                commonLoot[LootType.Uniqueness].AddRange(grand.WithCondition(cd, ten));
-            }
+            AddLegend(grandLoot[LootType.Uniqueness]);
         }
         private static void AddNormal(List<DropRule> loot)
         {
@@ -98,10 +89,8 @@ namespace Assets.THCompass.Compasses
             Add(ObjectID.SeaGemstone, new MatchBoss(BossID.Octopus));
             Add(ObjectID.DesertGemstone, new MatchBoss(BossID.Scarab));
         }
-        private static void AddUnique(List<DropRule> common, List<DropRule> grand)
+        private static void AddLegend(List<DropRule> grand)
         {
-            common.AddRange(Drop.CommonMany(1, 1, 0.01f, ObjectID.ParsecPalsDolls, ObjectID.ColossCicada,
-                ObjectID.AmmoniteNecklace).WithCondition(new MatchArea(AreaType.Dirt)));
             grand.Add(Drop.Common(ObjectID.LegendarySword).WithCondition(new MatchArea(AreaType.Nature)));
             grand.Add(Drop.Common(ObjectID.LegendaryBow)
                 .WithCondition(new MatchArea(AreaType.Sea), new MatchBoss(BossID.Atlantis).ReverseCondition()));
@@ -135,15 +124,29 @@ namespace Assets.THCompass.Compasses
                 bonus = 2;
             }
             List<DropInfo> result = new();
+            Compass cps = CompassByID[rpc.bossID];
             foreach (LootType lt in Enum.GetValues(typeof(LootType)))
             {
                 for (int i = 0; i < time; i++)
                 {
-                    DropSource source = new(CompassByID[rpc.bossID], rpc.ten, i);
-                    List<DropRule> rules = RollGrand(lt, PugRandom.GetRng(), bonus) ? grandLoot[lt] : commonLoot[lt];
-                    foreach (DropRule rule in rules)
+                    DropSource source = new(cps, rpc.ten, i);
+                    foreach (DropRule dr in commonLoot[lt])
                     {
-                        result.AddRange(rule.Drop(source));
+                        result.AddRange(dr.Drop(source));
+                    }
+                    if (RollGrand(lt, PugRandom.GetRng(), bonus))
+                    {
+                        foreach (DropRule dr in grandLoot[lt])
+                        {
+                            result.AddRange(dr.Drop(source));
+                        }
+                    }
+                    if (lt == LootType.Uniqueness)
+                    {
+                        foreach (DropRule dr in cps.loots)
+                        {
+                            result.AddRange(dr.Drop(source));
+                        }
                     }
                 }
             }

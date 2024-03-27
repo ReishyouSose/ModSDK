@@ -10,6 +10,12 @@ namespace Assets.THCompass.Compasses
         public abstract AreaType Area { get; }
         public abstract bool BelongsToSlime { get; }
         public virtual ObjectID BossSummoner { get; } = ObjectID.None;
-        public virtual void RegisterUniqueDrop(List<DropRule> common, List<DropRule> grand) { }
+        public virtual void RegisterUniqueDrop(List<DropRule> loot) { }
+        public readonly List<DropRule> loots;
+        public Compass()
+        {
+            loots = new();
+            RegisterUniqueDrop(loots);
+        }
     }
 }

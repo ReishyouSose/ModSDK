@@ -1,6 +1,7 @@
 ﻿using Assets.THCompass.DropManager.Condition;
 using Assets.THCompass.DropManager.Rule;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Assets.THCompass.Helper
 {
@@ -40,7 +41,7 @@ namespace Assets.THCompass.Helper
         public static OneOf OneOf(params ObjectID[] ids) => OneOf(1, 1, 1, ids);
         public static SelectMany SelectMany(int selectMin, int selectMax, int min, int max, float x, params ObjectID[] ids)
         {
-            SelectMany dr = new(ids)
+            SelectMany dr = new(CommonMany(1,1,1,ids).ToArray())
             {
                 minDrop = min,
                 maxDrop = max,
@@ -62,5 +63,12 @@ namespace Assets.THCompass.Helper
             }
             return origin;
         }
+        public static void AddUniqueRange(this List<DropRule> loots, params ObjectID[] ids)
+        {
+            loots.AddRange(CommonMany(1, 1, 0.01f, ids).WithCondition(NotTenTime));
+            loots.Add(OneOf(ids).WithCondition(IsTenTime));
+        }
+        public static IsTenTimes IsTenTime = new();
+        public static IsTenTimes NotTenTime = new IsTenTimes().ReverseCondition() as IsTenTimes;
     }
 }

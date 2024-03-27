@@ -14,5 +14,6 @@ namespace Assets.THCompass.DropManager.Condition
         }
 
         public bool IsMet(DropSource source) => Reverse ^ CheckMet(source);
+        protected string IsReverse => $"Reverser: {Reverse} ";
     }
 }

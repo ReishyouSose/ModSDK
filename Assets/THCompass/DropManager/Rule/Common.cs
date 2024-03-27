@@ -11,5 +11,6 @@ namespace Assets.THCompass.DropManager.Rule
         {
             yield return new(itemID, GetDropCount(source.Rng));
         }
+        public override string ToString() => "CommonDrop" + itemID;
     }
 }

@@ -12,10 +12,9 @@ namespace Assets.THCompass.Compasses
         public override AreaType Area => AreaType.Stone;
 
         public override bool BelongsToSlime => false;
-        public override void RegisterUniqueDrop(List<DropRule> common, List<DropRule> grand)
+        public override void RegisterUniqueDrop(List<DropRule> loot)
         {
-            common.Add(Drop.Common(ObjectID.LegendarySwordGemstone, 1, 1, 0.01f));
-            grand.Add(Drop.Common(ObjectID.LegendarySwordGemstone));
+            loot.AddUniqueRange(ObjectID.LegendarySwordGemstone);
         }
     }
 }
