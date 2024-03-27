@@ -16,15 +16,14 @@ namespace Assets.THCompass.Compasses
         {
             ObjectID[] unique = new ObjectID[]
             {
-                ObjectID.ConchShellNecklace,
-                ObjectID.SpineRing,
-                ObjectID.OceanHeartNecklace,
-                ObjectID.TurtleShell,
-                ObjectID.TowerShellNecklace,
+                ObjectID.CavelingDoll,
+                ObjectID.LegendarySwordGemstone,
+                ObjectID.LegendarySwordBlade,
+                ObjectID.CavelingMothersRing,
+                ObjectID.AncientGuardianNecklace,
+                ObjectID.OldSporeMask,
+                ObjectID.MoldCicadaWithoutSickle,
                 ObjectID.CrystalCicada,
-                ObjectID.AgarthaReport,
-                ObjectID.CrystalTent,
-                ObjectID.LegendarySwordGemstone
             };
             loot.AddUniqueRange(unique);
         }
