@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: THCompass
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 2fea2b6675114b20890e3570c1ca047b
+    name: THCompass
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Localization/Localization.csv
+    - path: Scripts/THCompassMain.cs
+    - path: Scripts/System/SpawnRoomSystem.cs
+    - path: Scripts/System/CompassLootSystem.cs
+    - path: Scripts/Patchs/SpawnItemOnUsePatch.cs
+    - path: Scripts/Patchs/CastingPatch.cs
+    - path: Scripts/Helper/RandomHelper.cs
+    - path: Scripts/Helper/MiscHelper.cs
+    - path: Scripts/Helper/ItemHelper.cs
+    - path: Scripts/Helper/DropHelper.cs
+    - path: Scripts/DropManager/Rule/SelectMany.cs
+    - path: Scripts/DropManager/Rule/OneOf.cs
+    - path: Scripts/DropManager/Rule/DropRule.cs
+    - path: Scripts/DropManager/Rule/Common.cs
+    - path: Scripts/DropManager/Condition/MatchBoss.cs
+    - path: Scripts/DropManager/Condition/MatchArea.cs
+    - path: Scripts/DropManager/Condition/IsTenTimes.cs
+    - path: Scripts/DropManager/Condition/DropCondition.cs
+    - path: Scripts/DropManager/Condition/BlongsToSlime.cs
+    - path: Scripts/DataStruct/LootType.cs
+    - path: Scripts/DataStruct/DropSource.cs
+    - path: Scripts/DataStruct/DropInfo.cs
+    - path: Scripts/DataStruct/BossID.cs
+    - path: Scripts/DataStruct/AreaType.cs
+    - path: Scripts/Component/RoomSpawnerCDAuthoring.cs
+    - path: Scripts/Component/DropFromBossAuthoring.cs
+    - path: Scripts/Compasses/WallSlime.cs
+    - path: Scripts/Compasses/SlipperySlime.cs
+    - path: Scripts/Compasses/Slime.cs
+    - path: Scripts/Compasses/Shaman.cs
+    - path: Scripts/Compasses/Scarab.cs
+    - path: Scripts/Compasses/PoisonSlime.cs
+    - path: Scripts/Compasses/Octopus.cs
+    - path: Scripts/Compasses/NonDedicateDrop.cs
+    - path: Scripts/Compasses/LavaSlime.cs
+    - path: Scripts/Compasses/HydraSea.cs
+    - path: Scripts/Compasses/HydraNature.cs
+    - path: Scripts/Compasses/HydraDesert.cs
+    - path: Scripts/Compasses/Hive.cs
+    - path: Scripts/Compasses/Devourer.cs
+    - path: Scripts/Compasses/CoreCommander.cs
+    - path: Scripts/Compasses/CompassLoader.cs
+    - path: Scripts/Compasses/Compass.cs
+    - path: Scripts/Compasses/Bird.cs
+    - path: Scripts/Compasses/Atlantis.cs
+    - path: Scripts/Generated/Assets.THCompass.System_CompassLootRPCCommandSerializer.cs
+    - path: Bundles/THCompass_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: CoreLib.Entity
+      required: 0
+    - modName: CoreLib.Localization
+      required: 0
+    - modName: CoreLib.Drops
+      required: 1
+  modPath: Assets\THCompass
