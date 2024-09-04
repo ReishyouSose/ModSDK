@@ -27,7 +27,8 @@ namespace Assets.THCompass.Compasses
                 ObjectID.CrystalMeteorShardOffhand,
                 ObjectID.AgarthaReport,
                 ObjectID.CrystalTent,
-                ObjectID.CrystalMeteorShard
+                ObjectID.CrystalMeteorShard,
+                ObjectID.AlienChest,
             };
         }
 

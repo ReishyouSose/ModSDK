@@ -7,12 +7,13 @@ namespace Assets.THCompass.Compasses
     public static class NonDedicateDrop
     {
         public const float Common = 0.4f;
-        public const float Egg = 0.2f;
+        public const float Egg = 0.3f;
         public const float Animal = 0.15f;
-        public const float Health = 0.1f;
-        public const float Biome = 0.09f;
-        public const float Boss = 0.04f;
-        public const float Boulder = 0.01f;
+        public const float Health = 0.04f;
+        public const float Biome = 0.04f;
+        public const float Boss = 0.03f;
+        public const float Boulder = 0.02f;
+        public const float Portal = 0.01f;
         public const float Unique = 0.01f;
         public static LootTableID AddNewDrop(this LootTableID lt, ObjectID id, int min, int max,
             float weight, bool mustDrop = false)
@@ -49,11 +50,11 @@ namespace Assets.THCompass.Compasses
         public static LootTableID AddHealthFood(this LootTableID lt)
         {
             List<ObjectID> result = new();
-            if (CheckBoss(lt, BossID.Bird, BossID.HydraNature))
+            if (CheckBoss(lt, BossID.PoisonSlime, BossID.Bird, BossID.HydraNature))
             {
                 result.Add(ObjectID.FruitBasket);
             }
-            if (CheckBoss(lt, BossID.Scarab, BossID.HydraDesert))
+            if (CheckBoss(lt, BossID.LavaSlime, BossID.Scarab, BossID.HydraDesert))
             {
                 result.Add(ObjectID.LiquidMetal);
             }
@@ -122,9 +123,14 @@ namespace Assets.THCompass.Compasses
             lt.AddNewDropRange(1, 1, Boulder, false, boulder.ToArray());
             return lt;
         }
+        public static LootTableID AddPortal(this LootTableID lt)
+        {
+            lt.AddNewDrop(ObjectID.WayPoint, 1, 1, Portal, false);
+            return lt;
+        }
         public static LootTableID AddNonDedicateDrop(this LootTableID lt)
         {
-            lt.AddCommon().AddPetEggs().AddAnimals().AddHealthFood().AddBoulder();
+            lt.AddCommon().AddPetEggs().AddAnimals().AddHealthFood().AddBoulder().AddPortal();
             return lt;
         }
         public static bool CheckBoss(this LootTableID lt, params BossID[] bossIDs)

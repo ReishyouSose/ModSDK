@@ -24,6 +24,7 @@ namespace Assets.THCompass.Compasses
                 ObjectID.CrystalCicada,
                 ObjectID.AgarthaReport,
                 ObjectID.CrystalTent,
+                ObjectID.AlienChest,
             };
         }
 

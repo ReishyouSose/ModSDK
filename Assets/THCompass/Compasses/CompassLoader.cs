@@ -15,6 +15,7 @@ namespace Assets.THCompass.Compasses
         public static Dictionary<BossID, Compass> CompassByID;
         internal static Dictionary<BossID, LootTableID> CompassLootByID;
         internal static Dictionary<LootTableID, BossID> BossLootByID;
+        internal static Dictionary<ObjectID, BossID> BossIDByObjID;
         private static Dictionary<LootType, List<DropRule>> commonLoot;
         private static Dictionary<LootType, List<DropRule>> grandLoot;
         private static HashSet<ObjectID> canStack;
@@ -23,6 +24,25 @@ namespace Assets.THCompass.Compasses
             commonLoot = new();
             grandLoot = new();
             canStack = new();
+            BossIDByObjID = new()
+            {
+                {ObjectID.SlimeBoss, BossID.Slime},
+                {ObjectID.LarvaHiveBoss, BossID.Hive},
+                {ObjectID.BossLarva, BossID.Devourer},
+                {ObjectID.ShamanBoss,BossID.Shaman},
+                {ObjectID.PoisonSlimeBoss,BossID.PoisonSlime},
+                {ObjectID.BirdBoss, BossID.Bird },
+                {ObjectID.SlipperySlimeBoss, BossID.SlipperySlime},
+                {ObjectID.OctopusBoss,BossID.Octopus },
+                {ObjectID.LavaSlimeBoss,BossID.LavaSlime},
+                {ObjectID.ScarabBoss, BossID.Scarab },
+                {ObjectID.SnakeBossSegment, BossID.Atlantis },
+                {ObjectID.HydraBossNature, BossID.HydraNature},
+                {ObjectID.HydraBossSea, BossID.HydraSea},
+                {ObjectID.HydraBossDesert, BossID.HydraDesert},
+                {ObjectID.WallBoss, BossID.WallSlime},
+                {ObjectID.CoreBoss, BossID.CoreCommander },
+            };
             CompassByID = new()
             {
                 { BossID.Slime, new Slime() },
@@ -133,7 +153,7 @@ namespace Assets.THCompass.Compasses
         {
             static void Add(LootTableID lt, BossID id)
             {
-                DropTableInfo info = new("THCompass:Compass_" + id, 1, 3, 0.1f, true);
+                DropTableInfo info = new("THCompass:Compass_" + id, 1, 3, 0.1f, false);
                 DropTablesModule.AddNewDrop(lt, info);
             }
             Add(LootTableID.SlimeBoss, BossID.Slime);

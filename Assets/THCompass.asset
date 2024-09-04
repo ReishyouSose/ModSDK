@@ -72,9 +72,11 @@ MonoBehaviour:
     - modName: CoreLib
       required: 1
     - modName: CoreLib.Entity
-      required: 0
+      required: 1
     - modName: CoreLib.Localization
-      required: 0
+      required: 1
     - modName: CoreLib.Drops
+      required: 1
+    - modName: CoreLib.Resources
       required: 1
   modPath: Assets\THCompass

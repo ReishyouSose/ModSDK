@@ -1,9 +1,13 @@
 ﻿using Assets.THCompass.Compasses;
+using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using CoreLib;
 using CoreLib.Drops;
+using CoreLib.Submodules.ModEntity;
+using CoreLib.Util.Extensions;
 using PugMod;
 using System.Text;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.THCompass
@@ -36,12 +40,40 @@ namespace Assets.THCompass
         }
         public void EarlyInit()
         {
+            CoreLibMod.LoadModules(typeof(EntityModule));
             CoreLibMod.LoadModules(typeof(DropTablesModule));
             CompassLoader.Load();
+            API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             /*CoreLibMod.LoadModules(typeof(LocalizationModule));
             ResourcesModule.RegisterBundles(this.GetModInfo());
             CoreLibMod.LoadModules(typeof(EntityModule));*/
         }
+
+        private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
+        {
+            ObjectID id = authoringData.GetEntityObjectID();
+            if (CompassLoader.BossIDByObjID.TryGetValue(id, out var boss))
+            {
+                ObjectID cps = ItemHelper.GetItemID("Compass_" + boss);
+                DynamicBuffer<DropsLootBuffer> drBuffer;
+                if (entityManager.HasBuffer<DropsLootBuffer>(entity))
+                {
+                    drBuffer = entityManager.GetBuffer<DropsLootBuffer>(entity);
+                }
+                else
+                    drBuffer = entityManager.AddBuffer<DropsLootBuffer>(entity);
+                drBuffer.Add(new DropsLootBuffer()
+                {
+                    lootDrop = new()
+                    {
+                        lootDropID = cps,
+                        amount = 1
+                    }
+                });
+                Debug.Log(id + "Add guaranteed compass " + boss);
+            }
+        }
+
         public void Init()
         {
             API.Client.OnWorldCreated += ClientWorldInit;
@@ -52,7 +84,6 @@ namespace Assets.THCompass
                 {
                     loot.minUniqueDrops++;
                     loot.maxUniqueDrops++;
-                    loot.dontAllowDuplicates = true;
                     LootInfo cps = null;
                     float sumWeight = 0;
                     foreach (var info in loot.lootInfos)
@@ -68,16 +99,12 @@ namespace Assets.THCompass
                     {
                         if (info == cps)
                         {
-                            info.weight = sumWeight * 0.1f;
+                            info.weight = sumWeight * 0.07f;
                             StringBuilder log = new StringBuilder(ltID.ToString())
                                 .Append(" SumWeight: ").Append(sumWeight)
                                 .Append(" Compass: ").Append(info.objectID)
                                 .Append(' ').Append(info.weight);
                             Debug.Log(log);
-                        }
-                        else
-                        {
-                            info.weight *= 0.9f;
                         }
                     }
                 }

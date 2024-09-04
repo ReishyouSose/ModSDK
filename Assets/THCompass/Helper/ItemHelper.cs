@@ -25,53 +25,6 @@ namespace Assets.THCompass.Helper
         {
             DropItem(itemType, stack, p.WorldPosition);
         }
-        /*public static List<LootTable> GetLootTable(ObjectID itemID)
-        {
-            List<LootTable> list = new();
-            foreach (BiomeLootTables biomeLootTables in GlobalDropSystem.biomeLootTables)
-            {
-                foreach (LootTable item in biomeLootTables.lootTables)
-                {
-                    foreach (LootInfo info in item.lootInfos)
-                    {
-                        if (info.objectID == itemID)
-                        {
-                            Debug.Log(item.id);
-                        }
-                    }
-                    list.Add(item);
-                }
-            }
-            return list;
-        }
-        public static List<LootInfo> GetLootInfo(params LootTableID[] lootTableID)
-        {
-            HashSet<LootTableID> lt = lootTableID.ToHashSet();
-            foreach (BiomeLootTables biomeLootTables in GlobalDropSystem.biomeLootTables)
-            {
-                foreach (LootTable item in biomeLootTables.lootTables)
-                {
-                    if (lt.Contains(item.id))
-                    {
-                        foreach (LootInfo info in item.lootInfos
-                            LootTableID.LargeAncientDestructible
-                            LootTableID.LargeCityDestructible)
-                        {
-                            Debug.Log((info.objectID, info.amount.min, info.amount.max));
-                        }
-                        return item.lootInfos;
-                    }
-                }
-            }
-            Debug.Log("Not Found");
-            return null;
-        }*/
-        /*public static ObjectID GetChestTypeWithPos(int2 pos, NativeArray<BiomeRanges> biomeRanges, TileAccessor tileAccessor)
-        {
-            Biome biome = BiomeRanges.GetBiomeAtPosition(pos, biomeRanges);
-            return BiomeAndTilesetToChest(biome, (Tileset)(tileAccessor.GetTop(pos).tileset));
-
-        }*/
         /// <summary>
         /// <see cref="BiomeRanges.GetBiomeAtPosition(int2, NativeArray{BiomeRanges})"/>
         /// </summary>
