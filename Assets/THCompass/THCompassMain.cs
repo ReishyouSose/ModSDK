@@ -1,12 +1,8 @@
 ﻿using Assets.THCompass.Compasses;
-using Assets.THCompass.DataStruct;
-using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using CoreLib;
 using CoreLib.Drops;
 using PugMod;
-using System;
-using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -112,7 +108,7 @@ namespace Assets.THCompass
                 //Debug.Log(select.objectID);
                 //compassLootSystem.CompassLoot(BossID.Slime, false, Manager.main.player.WorldPosition.RountToFloat3(), 0);
             }
-            if (Input.GetKeyDown(KeyCode.K))
+            /*if (Input.GetKeyDown(KeyCode.K))
             {
                 var lt = Manager.mod.LootTable[(int)LootTableID.SlimeBoss];
                 Debug.Log(string.Join("\n", lt.lootInfos.Select(x => (x.objectID, x.weight))));
@@ -131,7 +127,7 @@ namespace Assets.THCompass
                     }
                 }
                 ItemHelper.DropItem(ObjectID.SlimeBossSummoningItem, 100);
-            }
+            }*/
         }
 
         public void ModObjectLoaded(UnityEngine.Object obj)
