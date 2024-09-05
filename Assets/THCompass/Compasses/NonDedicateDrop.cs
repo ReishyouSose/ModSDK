@@ -11,8 +11,8 @@ namespace Assets.THCompass.Compasses
         public const float Animal = 0.15f;
         public const float Health = 0.04f;
         public const float Biome = 0.04f;
-        public const float Boss = 0.03f;
-        public const float Boulder = 0.02f;
+        public const float Boss = 0.04f;
+        public const float Boulder = 0.01f;
         public const float Portal = 0.01f;
         public const float Unique = 0.01f;
         public static LootTableID AddNewDrop(this LootTableID lt, ObjectID id, int min, int max,
@@ -64,11 +64,7 @@ namespace Assets.THCompass.Compasses
         public static LootTableID AddBoulder(this LootTableID lt)
         {
             List<ObjectID> boulder = new();
-            if (lt.CheckBoss(BossID.Slime))
-            {
-                boulder.Add(ObjectID.CopperOreBoulder);
-            }
-            else if (lt.CheckBoss(BossID.Hive))
+            if (lt.CheckBoss(BossID.Slime, BossID.Hive))
             {
                 boulder.Add(ObjectID.CopperOreBoulder);
                 boulder.Add(ObjectID.TinOreBoulder);

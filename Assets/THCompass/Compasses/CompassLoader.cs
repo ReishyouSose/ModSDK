@@ -138,11 +138,11 @@ namespace Assets.THCompass.Compasses
                 }
                 if (cps.BossSummoner > ObjectID.None)
                 {
-                    lt.AddNewDrop(cps.BossSummoner, 1, 3, NonDedicateDrop.Boss, false);
+                    lt.AddNewDrop(cps.BossSummoner, 1, 1, NonDedicateDrop.Boss, false);
                 }
                 else if (cps.BelongsToSlime)
                 {
-                    lt.AddNewDropRange(1, 1, NonDedicateDrop.Boss, false, ObjectID.SlimeBossSummoningItem, ObjectID.KingSlimeSummoningItem);
+                    lt.AddNewDrop(ObjectID.SlimeBossSummoningItem, 1, 1, NonDedicateDrop.Boss, false);
                 }
                 var uniques = cps.GetUniques();
                 NonDedicateDrop.AddNewDropRange(lt, 1, 1, NonDedicateDrop.Unique, false, uniques);
