@@ -8,7 +8,7 @@
         "com.unity.editorcoroutines": "1.0.0",
         "ck.modding.markdig": "0.33.0"
       },
-      "hash": "2f5a77df9a930faff0b17c4a3b7c359e4986527a"
+      "hash": "c8e422a3c549c6cf63b53fb24b291dea86ab50bc"
     },
     "ck.modding.markdig": {
       "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main",

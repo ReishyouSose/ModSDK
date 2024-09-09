@@ -7,6 +7,7 @@ using CoreLib.Drops;
 using System;
 using System.Collections.Generic;
 using Unity.Collections;
+using UnityEngine;
 
 namespace Assets.THCompass.Compasses
 {
@@ -83,7 +84,7 @@ namespace Assets.THCompass.Compasses
             };
 
             RegisterLoot();
-            AddCompassLoot();
+            //AddCompassLoot();
             /*foreach (LootType lt in Enum.GetValues(typeof(LootType)))
             {
                 commonLoot[lt] = new();
@@ -112,9 +113,15 @@ namespace Assets.THCompass.Compasses
         {
             CompassLootByID = new();
             const string PreName = "THCompass:Loot_";
+            var config = THCompassMain.config;
+            int min = config.MinRoll, max = config.MaxRoll;
+            if (min > max)
+                min = max;
+            Debug.Log("minRoll: " + min);
+            Debug.Log("maxRoll: " + max);
             foreach (var cps in CompassByID.Values)
             {
-                LootTableID lt = DropTablesModule.AddLootTable(PreName + cps.BossID, 7, 7);
+                LootTableID lt = DropTablesModule.AddLootTable(PreName + cps.BossID, min, max, false);
                 CompassLootByID[cps.BossID] = lt;
             }
             foreach (var cps in CompassByID.Values)
@@ -151,6 +158,7 @@ namespace Assets.THCompass.Compasses
 
         private static void AddCompassLoot()
         {
+            return;
             static void Add(LootTableID lt, BossID id)
             {
                 DropTableInfo info = new("THCompass:Compass_" + id, 1, 3, 0.1f, false);

@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
-  m_Name: AllPetSkills
+  m_Name: SledgeEnhance
   m_EditorClassIdentifier: 
   metadata:
-    guid: 794df1cb23c6456dbd786a7a8b82d508
-    name: AllPetSkills
+    guid: b010b33a56344c06847d4e6f4721993f
+    name: SledgeEnhance
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
-    files: []
-    dependencies: []
-  modPath: Assets\AllPetSkills
+    files:
+    - path: Scripts/SledgePatch.cs
+    - path: Scripts/SledgeEnhance.cs
+    - path: Bundles/SledgeEnhance_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+  modPath: Assets\SledgeEnhance

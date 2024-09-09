@@ -26,7 +26,8 @@ MonoBehaviour:
     - path: Scripts/System/SpawnRoomSystem.cs
     - path: Scripts/System/CompassLootSystem.cs
     - path: Scripts/Patchs/SpawnItemOnUsePatch.cs
-    - path: Scripts/Patchs/CastingPatch.cs
+    - path: Scripts/Patchs/ModifyLootConvertPatch.cs
+    - path: Scripts/ModConfig.cs
     - path: Scripts/Helper/RandomHelper.cs
     - path: Scripts/Helper/MiscHelper.cs
     - path: Scripts/Helper/ItemHelper.cs
@@ -66,7 +67,6 @@ MonoBehaviour:
     - path: Scripts/Compasses/Compass.cs
     - path: Scripts/Compasses/Bird.cs
     - path: Scripts/Compasses/Atlantis.cs
-    - path: Scripts/Generated/Assets.THCompass.System_CompassLootRPCCommandSerializer.cs
     - path: Bundles/THCompass_Windows.assetbundle
     dependencies:
     - modName: CoreLib

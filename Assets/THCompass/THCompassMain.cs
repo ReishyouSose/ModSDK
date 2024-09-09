@@ -6,7 +6,6 @@ using CoreLib.Drops;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.Util.Extensions;
 using PugMod;
-using System.Text;
 using Unity.Entities;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ namespace Assets.THCompass
 {
     public class THCompassMain : IMod
     {
+        internal static ModConfig config;
         /*internal static ClientSpawnRoomSystem roomSpawnSystem;
         internal static ClientSpawnBossSystem spawnBossSystem;
         private static CustomScenesDataTable sceneData;
@@ -42,7 +42,9 @@ namespace Assets.THCompass
         {
             CoreLibMod.LoadModules(typeof(EntityModule));
             CoreLibMod.LoadModules(typeof(DropTablesModule));
+            config = new();
             CompassLoader.Load();
+            Debug.Log("grt: " + config.Guaranteed);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             /*CoreLibMod.LoadModules(typeof(LocalizationModule));
             ResourcesModule.RegisterBundles(this.GetModInfo());
@@ -67,7 +69,7 @@ namespace Assets.THCompass
                     lootDrop = new()
                     {
                         lootDropID = cps,
-                        amount = 1
+                        amount = config.Guaranteed,
                     }
                 });
                 Debug.Log(id + "Add guaranteed compass " + boss);
@@ -77,43 +79,6 @@ namespace Assets.THCompass
         public void Init()
         {
             API.Client.OnWorldCreated += ClientWorldInit;
-            foreach (var loot in Manager.mod.LootTable)
-            {
-                LootTableID ltID = loot.id;
-                if (ltID.ToString().Contains("Boss") || ltID == LootTableID.CoreCommander)
-                {
-                    loot.minUniqueDrops++;
-                    loot.maxUniqueDrops++;
-                    LootInfo cps = null;
-                    float sumWeight = 0;
-                    foreach (var info in loot.lootInfos)
-                    {
-                        if (info.objectID.ToString() != ((int)info.objectID).ToString())
-                        {
-                            sumWeight += info.weight;
-                        }
-                        else
-                            cps ??= info;
-                    }
-                    foreach (var info in loot.lootInfos)
-                    {
-                        if (info == cps)
-                        {
-                            info.weight = sumWeight * 0.07f;
-                            StringBuilder log = new StringBuilder(ltID.ToString())
-                                .Append(" SumWeight: ").Append(sumWeight)
-                                .Append(" Compass: ").Append(info.objectID)
-                                .Append(' ').Append(info.weight);
-                            Debug.Log(log);
-                        }
-                    }
-                }
-                if (CompassLoader.CompassLootByID.ContainsValue(ltID))
-                {
-                    loot.dontAllowDuplicates = true;
-                    Debug.Log("Dont allow " + ltID + " duplicates");
-                }
-            }
         }
 
         public void Shutdown()

@@ -10,16 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
-  m_Name: AllPetSkills
+  m_Name: ImproveEquipment
   m_EditorClassIdentifier: 
   metadata:
-    guid: 794df1cb23c6456dbd786a7a8b82d508
-    name: AllPetSkills
+    guid: c0a6f62b6b884d4fb0ad1a81b0fc08bd
+    name: ImproveEquipment
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
-    files: []
-    dependencies: []
-  modPath: Assets\AllPetSkills
+    files:
+    - path: Scripts/Patchs/SledgePatch.cs
+    - path: Scripts/Patchs/RayPatch.cs
+    - path: Scripts/ModConfig.cs
+    - path: Scripts/ImproveEquipmentMod.cs
+    - path: Bundles/ImproveEquipment_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+  modPath: Assets\ImproveEquipment
