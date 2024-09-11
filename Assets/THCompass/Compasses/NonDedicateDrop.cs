@@ -22,9 +22,8 @@ namespace Assets.THCompass.Compasses
             return lt;
         }
         public static void AddNewDropRange(this LootTableID lt, int min, int max,
-            float sumWeight, bool mustDrop = false, params ObjectID[] ids)
+            float weight, bool mustDrop = false, params ObjectID[] ids)
         {
-            float weight = sumWeight / ids.Length;
             foreach (var id in ids)
             {
                 lt.AddNewDrop(id, min, max, weight, mustDrop);

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: InstantWayPointCharge
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 5cc6773f91494853bf93d38c11a7f94e
+    name: InstantWayPointCharge
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Scripts/InstantWayPointChargeMod.cs
+    - path: Scripts/InstantChargeSys.cs
+    - path: Scripts/Generated/InstantChargeSys__System_19223016760.g.cs
+    - path: Bundles/InstantWayPointCharge_Windows.assetbundle
+    dependencies: []
+  modPath: Assets\InstantWayPointCharge

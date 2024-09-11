@@ -28,6 +28,6 @@ public class ModConfig
     {
         const string section = "Ray";
         Ray_Enable = config.Bind(section, "Enable", true, EnableSection);
-        Ray_Recoil = config.Bind(section, "Recoil", 1f, "射线类武器的速度倍数。\r\n0~1表示减速。\r\n1表示无效果（无后坐力）。\r\n超过1表示使用时加速。\r\n速度过高会导致闪电链和武器纹理的位置偏移较大。\r\n此项不会小于或等于0，也不会大于2。\nMove speed ​​multiplier for ray-type weapons.\r\n0~1 means slowdown.\r\n1 means no effect (no recoil).\r\nover 1 means speed up when used.\r\nToo high a speed will cause the lightning chain and weapon texture to have a higher position offset.\r\nThis item will not be less than or equal to 0 nor greater than 2.");
+        Ray_Recoil = config.Bind(section, "Recoil", 1f, "射线类武器的使用时移动速度倍数。\r\n0~1表示减速。\r\n1表示无效果（无后坐力）。\r\n超过1表示使用时加速。\r\n速度过高会导致闪电链和武器纹理的位置偏移较大。\r\n此项不会小于或等于0，也不会大于2。\nMove speed ​​multiplier when using for ray-type weapons.\r\n0~1 means slowdown.\r\n1 means no effect (no recoil).\r\nover 1 means speed up when used.\r\nToo high a speed will cause the lightning chain and weapon texture to have a higher position offset.\r\nThis item will not be less than or equal to 0 nor greater than 2.");
     }
 }
