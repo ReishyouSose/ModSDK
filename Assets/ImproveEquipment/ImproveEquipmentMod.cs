@@ -4,60 +4,65 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ImproveEquipmentMod : IMod
+namespace Assets.ImproveEquipment
 {
-    internal static ModConfig config;
-    public void EarlyInit()
+    public class ImproveEquipmentMod : IMod
     {
-        config = new();
-        API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
-    }
-
-    private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
-    {
-        /*if (ComponentCheck(authoringData, out var cps, ObjectID.LaserDrillTool, ObjectID.LightningGun))
+        internal static ModConfig config;
+        public void EarlyInit()
         {
-            foreach (var cp in cps)
+            config = new();
+            //API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
+        }
+
+        private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
+        {
+            ObjectID id = authoringData.GetEntityObjectID();
+            if (ComponentCheck(authoringData, out var cps, ObjectID.AzeosSoulOrb))
             {
-                if (cp is WeaponAuthoring weapon)
+                foreach (var cp in cps)
                 {
-                    Debug.Log(weapon.);
+                    Debug.Log(cp);
+                    /*if(cp is ObjectAuthoring weapon)
+                    {
+                        Debug.Log(weapon.objectType);
+                    }*/
                 }
             }
-        }*/
-    }
-
-    public void Init()
-    {
-    }
-
-    public void ModObjectLoaded(Object obj)
-    {
-    }
-
-    public void Shutdown()
-    {
-    }
-
-    public void Update()
-    {
-    }
-    private static bool ComponentCheck(GameObject authoringData, out List<Component> cps, params ObjectID[] ids)
-    {
-        ObjectID id = authoringData.GetEntityObjectID();
-        cps = new();
-        if (ids.Contains(id))
-        {
-            Debug.Log(id);
-            int count = authoringData.GetComponentCount();
-            for (int i = 0; i < count; i++)
-            {
-                var cp = authoringData.GetComponentAtIndex(i);
-                cps.Add(cp);
-                Debug.Log(cp);
-            }
-            return true;
         }
-        return false;
+
+        public void Init()
+        {
+        }
+
+        public void ModObjectLoaded(Object obj)
+        {
+        }
+
+        public void Shutdown()
+        {
+        }
+
+        public void Update()
+        {
+        }
+        private static bool ComponentCheck(GameObject authoringData, out List<Component> cps, params ObjectID[] ids)
+        {
+            ObjectID id = authoringData.GetEntityObjectID();
+            cps = new();
+            if (ids.Contains(id))
+            {
+                Debug.Log(id);
+                int count = authoringData.GetComponentCount();
+                for (int i = 0; i < count; i++)
+                {
+                    var cp = authoringData.GetComponentAtIndex(i);
+                    cps.Add(cp);
+                    Debug.Log(cp);
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }

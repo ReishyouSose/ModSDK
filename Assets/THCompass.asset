@@ -67,6 +67,7 @@ MonoBehaviour:
     - path: Scripts/Compasses/Compass.cs
     - path: Scripts/Compasses/Bird.cs
     - path: Scripts/Compasses/Atlantis.cs
+    - path: Scripts/Generated/Assets.THCompass.System_CompassLootRPCCommandSerializer.cs
     - path: Bundles/THCompass_Windows.assetbundle
     dependencies:
     - modName: CoreLib

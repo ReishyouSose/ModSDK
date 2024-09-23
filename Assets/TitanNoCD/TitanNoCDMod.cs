@@ -1,12 +1,14 @@
 using PugMod;
 using UnityEngine;
 
-namespace Assets.AllSkills
+namespace Assets.TitanNoCD
 {
-    public class AllSkills : IMod
+    public class TitanNoCDMod : IMod
     {
+        internal static ModConfig Config { get; private set; }
         public void EarlyInit()
         {
+            Config = new();
         }
 
         public void Init()

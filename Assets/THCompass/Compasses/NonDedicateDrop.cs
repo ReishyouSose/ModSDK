@@ -6,15 +6,15 @@ namespace Assets.THCompass.Compasses
 {
     public static class NonDedicateDrop
     {
-        public const float Common = 0.4f;
-        public const float Egg = 0.3f;
-        public const float Animal = 0.15f;
-        public const float Health = 0.04f;
-        public const float Biome = 0.04f;
-        public const float Boss = 0.04f;
-        public const float Boulder = 0.01f;
-        public const float Portal = 0.01f;
-        public const float Unique = 0.01f;
+        public const float Common = 20f;
+        public const float Egg = 10f;
+        public const float Animal = 10f;
+        public const float Health = 5f;
+        public const float Biome = 5f;
+        public const float Boss = 5f;
+        public const float Boulder = 1f;
+        public const float Portal = 1f;
+        public const float Unique = 1f;
         public static LootTableID AddNewDrop(this LootTableID lt, ObjectID id, int min, int max,
             float weight, bool mustDrop = false)
         {

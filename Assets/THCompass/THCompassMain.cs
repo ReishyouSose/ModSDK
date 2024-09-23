@@ -1,4 +1,5 @@
 ﻿using Assets.THCompass.Compasses;
+using Assets.THCompass.DataStruct;
 using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using CoreLib;
@@ -6,6 +7,7 @@ using CoreLib.Drops;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.Util.Extensions;
 using PugMod;
+using System;
 using Unity.Entities;
 using UnityEngine;
 
@@ -29,6 +31,7 @@ namespace Assets.THCompass
             }
         }*/
         internal static ClientCompassLootSystem compassLootSystem;
+        private  bool Testing => true;
 
         private void ClientWorldInit()
         {
@@ -51,8 +54,10 @@ namespace Assets.THCompass
             CoreLibMod.LoadModules(typeof(EntityModule));*/
         }
 
-        private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
+        private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
+            int grt = config.Guaranteed;
+            if (grt <= 0) return;
             ObjectID id = authoringData.GetEntityObjectID();
             if (CompassLoader.BossIDByObjID.TryGetValue(id, out var boss))
             {
@@ -89,7 +94,7 @@ namespace Assets.THCompass
         {
             //if (Input.GetKeyDown(KeyCode.T))
             {
-                //ObjectDataCD select = Manager.main.player.GetEquippedSlot().objectData;
+                // ObjectDataCD select = Manager.main.player.GetEquippedSlot().objectData;
                 //ItemHelper.DropItem(ItemHelper.GetItemID("Compass_Slime"), 100);
                 //ObjectDataCD select = Manager.main.player.GetEquippedSlot().objectData;
                 /*if (select.TryGetComponent<SpawnsItemsOnUseCD>(out var dropCD))
@@ -104,22 +109,29 @@ namespace Assets.THCompass
             {
                 var lt = Manager.mod.LootTable[(int)LootTableID.SlimeBoss];
                 Debug.Log(string.Join("\n", lt.lootInfos.Select(x => (x.objectID, x.weight))));
-            }
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.G))
+            }*/
+            if (!Testing) return;
+            if (Input.GetKey(KeyCode.LeftControl))
             {
-                foreach (BossID id in Enum.GetValues(typeof(BossID)))
+                if (Input.GetKeyDown(KeyCode.T))
                 {
-                    ItemHelper.DropItem(ItemHelper.GetItemID("Compass_" + id), 100);
-                }
-                foreach (Compasses.Compass cps in CompassLoader.CompassByID.Values)
-                {
-                    if (cps.BossSummoner > ObjectID.None)
+                    foreach (BossID id in Enum.GetValues(typeof(BossID)))
                     {
-                        ItemHelper.DropItem(cps.BossSummoner, 100);
+                        ItemHelper.DropItem(ItemHelper.GetItemID("Compass_" + id), 100);
                     }
                 }
-                ItemHelper.DropItem(ObjectID.SlimeBossSummoningItem, 100);
-            }*/
+                else if (Input.GetKey(KeyCode.B))
+                {
+                    foreach (Compasses.Compass cps in CompassLoader.CompassByID.Values)
+                    {
+                        if (cps.BossSummoner > ObjectID.None)
+                        {
+                            ItemHelper.DropItem(cps.BossSummoner, 100);
+                        }
+                    }
+                    ItemHelper.DropItem(ObjectID.SlimeBossSummoningItem, 100);
+                }
+            }
         }
 
         public void ModObjectLoaded(UnityEngine.Object obj)

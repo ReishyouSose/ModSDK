@@ -14,7 +14,7 @@ namespace Assets.ImproveEquipment.Patchs
             if (!Config.Ray_Enable.Value)
                 return;
             ObjectID id = authoring.GetEntityObjectID();
-            float mult = Config.Ray_Recoil.Value;
+            float mult = Config.Ray_MoveSpeed.Value;
             if (mult <= 0f)
             {
                 mult = 1f;

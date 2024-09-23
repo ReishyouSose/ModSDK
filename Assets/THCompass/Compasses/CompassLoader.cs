@@ -115,6 +115,10 @@ namespace Assets.THCompass.Compasses
             const string PreName = "THCompass:Loot_";
             var config = THCompassMain.config;
             int min = config.MinRoll, max = config.MaxRoll;
+            if (min <= 0)
+                min = 1;
+            if (max <= 0)
+                max = 1;
             if (min > max)
                 min = max;
             Debug.Log("minRoll: " + min);
@@ -145,11 +149,11 @@ namespace Assets.THCompass.Compasses
                 }
                 if (cps.BossSummoner > ObjectID.None)
                 {
-                    lt.AddNewDrop(cps.BossSummoner, 1, 1, NonDedicateDrop.Boss, false);
+                    lt.AddNewDrop(cps.BossSummoner, 1, 2, NonDedicateDrop.Boss, false);
                 }
                 else if (cps.BelongsToSlime)
                 {
-                    lt.AddNewDrop(ObjectID.SlimeBossSummoningItem, 1, 1, NonDedicateDrop.Boss, false);
+                    lt.AddNewDrop(ObjectID.SlimeBossSummoningItem, 1, 2, NonDedicateDrop.Boss, false);
                 }
                 var uniques = cps.GetUniques();
                 NonDedicateDrop.AddNewDropRange(lt, 1, 1, NonDedicateDrop.Unique, false, uniques);

@@ -14,13 +14,13 @@ namespace Assets.THCompass
         {
             ConfigFile config = new("THCompass/config.cfg", true);
             string section = "FromBoss";
-            minDrop = config.Bind(section, nameof(minDrop), 1, "单卷最小掉落量。\nMin drop amount per roll.");
-            maxDrop = config.Bind(section, nameof(maxDrop), 3, "单卷最大掉落量。\nMax drop amount per roll.");
+            minDrop = config.Bind(section, nameof(minDrop), 1, "单卷最小掉落量。\nMin drop amount per roll.\n(1 <= minDrop <= maxDrop)");
+            maxDrop = config.Bind(section, nameof(maxDrop), 3, "单卷最大掉落量。\n小于1时将不掉落罗盘\nMax drop amount per roll.\nWill not drop when less than 1.");
 
             section = "FromCompass";
-            minRoll = config.Bind(section, nameof(minRoll), 7, "最小掉落卷数。\nMin drop rolls");
-            maxRoll = config.Bind(section, nameof(maxRoll), 7, "最大掉落卷数。\nMax drop rolls");
-            guaranteed = config.Bind(section, nameof(guaranteed), 1, "保底掉落量。\nGuaranteed drop amount");
+            minRoll = config.Bind(section, nameof(minRoll), 7, "最小掉落卷数。\nMin drop rolls.\n(1 <= minRoll <= maxRoll)");
+            maxRoll = config.Bind(section, nameof(maxRoll), 7, "最大掉落卷数。\nMax drop rolls.\n(1 <= maxRoll)");
+            guaranteed = config.Bind(section, nameof(guaranteed), 1, "保底掉落量。\n小于1时不掉落保底\nGuaranteed drop amount.\nWill not drop when less than 1.");
         }
     }
 }

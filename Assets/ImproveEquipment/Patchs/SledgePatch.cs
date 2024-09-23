@@ -3,7 +3,7 @@ using HarmonyLib;
 using System;
 using UnityEngine;
 
-namespace Assets.SledgeHammerEnhance
+namespace Assets.ImproveEquipment.Patchs
 {
     [HarmonyPatch]
     public static class SledgePatch
@@ -13,7 +13,7 @@ namespace Assets.SledgeHammerEnhance
         [HarmonyPrefix]
         private static void WeaponPatch(WeaponAuthoring authoring)
         {
-            if (!Config.Sledge_Enable.Value)
+            if (Config.Sledge_Enable.Value == false)
                 return;
             if (authoring.gameObject.GetEntityObjectID().ToString().EndsWith("Sledge"))
             {
@@ -27,7 +27,7 @@ namespace Assets.SledgeHammerEnhance
         [HarmonyPrefix]
         private static void CDPatch(CooldownAuthoring authoring)
         {
-            if (!Config.Sledge_Enable.Value)
+            if (Config.Sledge_Enable.Value == false)
                 return;
             if (authoring.gameObject.GetEntityObjectID().ToString().EndsWith("Sledge"))
             {

@@ -16,6 +16,12 @@ namespace Assets.THCompass.Patchs
             var lootList = Manager.mod.LootTable;
             var config = THCompassMain.config;
             int min = config.MinDrop, max = config.MaxDrop;
+            if (min <= 0)
+                min = 1;
+            if (max <= 0)
+                return;
+            if (min > max)
+                min = max;
             Debug.Log("min: " + min);
             Debug.Log("max: " + max);
             foreach (LootTable loot in lootList)
