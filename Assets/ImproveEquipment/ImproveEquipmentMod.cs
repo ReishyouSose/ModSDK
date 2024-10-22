@@ -1,7 +1,6 @@
 using CoreLib.Util.Extensions;
 using PugMod;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.ImproveEquipment
@@ -18,15 +17,15 @@ namespace Assets.ImproveEquipment
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
         {
             ObjectID id = authoringData.GetEntityObjectID();
-            if (ComponentCheck(authoringData, out var cps, ObjectID.AzeosSoulOrb))
+            if (ComponentCheck(authoringData, out var cps))
             {
                 foreach (var cp in cps)
                 {
-                    Debug.Log(cp);
-                    /*if(cp is ObjectAuthoring weapon)
+                    //Debug.Log(cp);
+                    if (cp is EntityMonoBehaviourData authoring && authoring.objectInfo.objectType == ObjectType.PlayerType)
                     {
-                        Debug.Log(weapon.objectType);
-                    }*/
+                        Debug.Log(id);
+                    }
                 }
             }
         }
@@ -45,20 +44,24 @@ namespace Assets.ImproveEquipment
 
         public void Update()
         {
+            // if (Input.GetKey(KeyCode.K))
+            {
+                //CompanionEntityBuffer
+            }
         }
         private static bool ComponentCheck(GameObject authoringData, out List<Component> cps, params ObjectID[] ids)
         {
             ObjectID id = authoringData.GetEntityObjectID();
             cps = new();
-            if (ids.Contains(id))
+            //if (ids.Contains(id))
             {
-                Debug.Log(id);
+                //Debug.Log(id);
                 int count = authoringData.GetComponentCount();
                 for (int i = 0; i < count; i++)
                 {
                     var cp = authoringData.GetComponentAtIndex(i);
                     cps.Add(cp);
-                    Debug.Log(cp);
+                    //Debug.Log(cp);
                 }
                 return true;
             }

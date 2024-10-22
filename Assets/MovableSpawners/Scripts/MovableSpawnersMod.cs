@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using CoreLib.Util.Extensions;
-using MovableSpawners.Patches;
+﻿using CoreLib.Util.Extensions;
 using PugMod;
-using Unity.Burst;
 using Unity.Entities;
 using UnityEngine;
 using Logger = CoreLib.Util.Logger;
@@ -13,7 +10,7 @@ namespace MovableSpawners
     {
         internal static Logger Log = new Logger(NAME);
         internal const string Textures = "Assets/Mods/MovableSpawners/Textures/";
-        
+
         public const string VERSION = "1.0.6";
         public const string NAME = "Movable Spawners";
         private static LoadedMod modInfo;
@@ -37,7 +34,7 @@ namespace MovableSpawners
             }
 
             API.Authoring.OnObjectTypeAdded += EditSpawners;
-            
+
             modInfo.TryLoadBurstAssembly();
 
             Log.LogInfo($"Mod loaded successfully");
@@ -47,17 +44,18 @@ namespace MovableSpawners
         {
             var entityData = authoringdata.GetComponent<EntityMonoBehaviourData>();
             if (entityData == null ||
-                entityData.objectInfo.objectID != ObjectID.SummonArea) return;
-            
+                entityData.objectInfo.objectID != ObjectID.SummonArea)
+                return;
+
             Log.LogInfo($"Editing {entityData.objectInfo.objectID}, {entityData.objectInfo.variation}");
-            
+
             entityData.objectInfo.objectType = ObjectType.PlaceablePrefab;
             entityData.objectInfo.rarity = Rarity.Legendary;
             entityData.objectInfo.isStackable = false;
             entityData.objectInfo.prefabTileSize = new Vector2Int(3, 3);
             entityData.objectInfo.prefabCornerOffset = new Vector2Int(-1, -1);
             entityData.objectInfo.centerIsAtEntityPosition = true;
-            
+
             entityData.objectInfo.smallIcon = AssetBundle.LoadAsset<Sprite>(Textures + "icon-small.png");
             entityData.objectInfo.icon = AssetBundle.LoadAsset<Sprite>(Textures + "icon-big.png");
 
@@ -71,8 +69,9 @@ namespace MovableSpawners
                 entitymanager.RemoveComponent<AlwaysDropVariationZeroCD>(entity);
             }
 
-            entitymanager.AddComponentData(entity, new DamageReductionCD(){
-                 maxDamagePerHit = 1
+            entitymanager.AddComponentData(entity, new DamageReductionCD()
+            {
+                maxDamagePerHit = 1
             });
 
             entitymanager.AddComponentData(entity, new HealthRegenerationCD()
@@ -85,9 +84,9 @@ namespace MovableSpawners
             {
                 entitymanager.RemoveComponent<AllowHealthRegenerationInCombatCD>(entity);
             }
-            
+
             entitymanager.AddComponent<IsInCombatCD>(entity);
-            entitymanager.AddComponent<AnimationCD>(entity);
+            entitymanager.AddComponent<AnimationTriggeredCD>(entity);
             entitymanager.AddComponent<StateInfoCD>(entity);
             entitymanager.AddComponent<IdleStateCD>(entity);
             entitymanager.AddComponent<StunnedStateCD>(entity);

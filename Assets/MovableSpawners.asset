@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: MovableSpawners
   m_EditorClassIdentifier: 
   metadata:
-    guid: 257f346cbe1b4983b7f203dfa772d902
+    guid: f49a44a0b43b401895985ce37bdde892
     name: MovableSpawners
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
-    requiredOn: 3
+    requiredOn: 0
     files: []
-    dependencies:
-    - modName: CoreLib
-      required: 1
-  modPath: Assets\Mods\MovableSpawners
+    dependencies: []
+  modPath: Assets\MovableSpawners

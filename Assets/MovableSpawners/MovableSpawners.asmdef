@@ -79,7 +79,8 @@
         "Sentry.Unity.iOS.dll",
         "Sentry.Unity.Native.dll",
         "ZipSaveFolder.dll",
-        "0Harmony.dll"
+        "0Harmony.dll",
+        "Pug.ECS.Extensions.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [],
