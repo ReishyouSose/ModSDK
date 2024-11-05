@@ -255,7 +255,7 @@ MonoBehaviour:
       isInheritedByProjectiles: 0
       icon: {fileID: 0}
       useSameDescAsId: 0
-      isUnique: 0
+      isUnique: 1
       skipShowingSignInfrontOfValue: 0
       showDecimal: 0
       skipShowingStatText: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
       isAdditiveWithSelf: 0
       isPermanent: 0
       isNegative: 0
-      isInheritedByProjectiles: 0
+      isInheritedByProjectiles: 1
       icon: {fileID: 0}
       useSameDescAsId: 0
       isUnique: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
       isAdditiveWithSelf: 0
       isPermanent: 0
       isNegative: 0
-      isInheritedByProjectiles: 0
+      isInheritedByProjectiles: 1
       icon: {fileID: 0}
       useSameDescAsId: 0
       isUnique: 0

@@ -13,7 +13,7 @@ namespace Assets.ImproveEquipment
         private const string EnableSection = "是否启用这个部分？\nEenable this sction?";
         public ModConfig()
         {
-            ConfigFile config = new("ImproveEquipment/config.cfg", true);
+            ConfigFile config = new("ImproveEquipment/Config.cfg", true);
             SledgeBind(config);
             RayBind(config);
         }

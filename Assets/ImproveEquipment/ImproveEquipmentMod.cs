@@ -7,10 +7,10 @@ namespace Assets.ImproveEquipment
 {
     public class ImproveEquipmentMod : IMod
     {
-        internal static ModConfig config;
+        private static ModConfig config;
+        internal static ModConfig Config => config ??= new();
         public void EarlyInit()
         {
-            config = new();
             //API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
         }
 

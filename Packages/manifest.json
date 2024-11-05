@@ -7,8 +7,8 @@
     "com.unity.ide.rider": "3.0.27",
     "com.unity.ide.visualstudio": "2.0.22",
     "com.unity.ide.vscode": "1.2.5",
-    "com.unity.netcode": "1.0.15",
-    "com.unity.physics": "1.0.14",
+    "com.unity.netcode": "1.2.4",
+    "com.unity.physics": "1.2.4",
     "com.unity.postprocessing": "3.4.0",
     "com.unity.render-pipelines.universal": "14.0.10",
     "com.unity.test-framework": "1.1.33",
@@ -25,8 +25,8 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.uielements": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
-    "ck.modding.corelib": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/CoreLibPackage#main",
-    "ck.modding.sdk-extensions": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/SDKExtensions#main",
-    "ck.modding.markdig": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main"
+    "ck.modding.corelib": "git@github.com:CoreKeeperMods/CoreLib.git?path=/Assets/CoreLibPackage#main",
+    "ck.modding.sdk-extensions": "git@github.com:CoreKeeperMods/CoreLib.git?path=/Assets/SDKExtensions#main",
+    "ck.modding.markdig": "git@github.com:CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main"
   }
 }

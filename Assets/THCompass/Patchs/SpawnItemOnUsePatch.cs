@@ -1,7 +1,6 @@
 ﻿using Assets.THCompass.Component;
 using CoreLib.Drops;
 using HarmonyLib;
-using UnityEngine;
 
 namespace Assets.THCompass.Patchs
 {
@@ -9,17 +8,14 @@ namespace Assets.THCompass.Patchs
     public static class SpawnItemOnUsePatch
     {
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(DropsLootOnUseConverter), nameof(DropsLootOnUseConverter.Convert))]
-        private static bool Convert(DropsLootOnUseConverter __instance, DropsLootOnUseAuthoring authoring)
+        [HarmonyPatch(typeof(DropLootConverter), nameof(DropLootConverter.Convert))]
+        private static void Convert(DropLootAuthoring authoring)
         {
-            if (authoring.gameObject.TryGetComponent<DropFromBossAuthoring>(out var bossCD))
+            if (authoring.TryGetComponent<DropFromBossAuthoring>(out var bossCD))
             {
-                authoring.lootTableToSpawn = DropTablesModule.GetLootTableID("THCompass:Loot_"
+                authoring.onUseLootDrops.lootTableID = DropTablesModule.GetLootTableID("THCompass:Loot_"
                     + bossCD.bossID.ToString().Replace(" ", string.Empty));
-                authoring.spawnEffects = EffectID.None;
-                Debug.Log("Compass Convert Loot " + bossCD.bossID);
             }
-            return true;
         }
     }
 }

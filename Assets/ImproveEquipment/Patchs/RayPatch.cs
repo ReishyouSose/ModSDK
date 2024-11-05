@@ -6,7 +6,7 @@ namespace Assets.ImproveEquipment.Patchs
     [HarmonyPatch]
     public static class RayPatch
     {
-        private static ModConfig Config => ImproveEquipmentMod.config;
+        private static ModConfig Config => ImproveEquipmentMod.Config;
         [HarmonyPatch(typeof(WeaponConverter), nameof(WeaponConverter.Convert))]
         [HarmonyPrefix]
         private static void WeaponModifier(WeaponAuthoring authoring)

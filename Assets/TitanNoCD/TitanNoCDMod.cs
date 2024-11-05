@@ -5,10 +5,10 @@ namespace Assets.TitanNoCD
 {
     public class TitanNoCDMod : IMod
     {
-        internal static ModConfig Config { get; private set; }
+        private static ModConfig config;
+        internal static ModConfig Config => config ??= new();
         public void EarlyInit()
         {
-            Config = new();
         }
 
         public void Init()

@@ -76,4 +76,16 @@ crashlytics-build.properties
 
 # Jetbrains
 .idea/
-/Assets/Examples
+
+# 排除所有文件
+/*
+
+# 保留 Assets 文件夹
+!/Assets/
+
+# 排除特定文件夹
+/Assets/Examples/
+/Assets/ModSDK/
+/Assets/Plugins/
+/Assets/Resources/
+/Assets/Unity/

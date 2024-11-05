@@ -14,7 +14,7 @@ namespace Assets.THCompass.Patchs
         private static void AddCustomLootTables()
         {
             var lootList = Manager.mod.LootTable;
-            var config = THCompassMain.config;
+            var config = THCompassMain.Config;
             int min = config.MinDrop, max = config.MaxDrop;
             if (min <= 0)
                 min = 1;

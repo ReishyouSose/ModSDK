@@ -113,7 +113,7 @@ namespace Assets.THCompass.Compasses
         {
             CompassLootByID = new();
             const string PreName = "THCompass:Loot_";
-            var config = THCompassMain.config;
+            var config = THCompassMain.Config;
             int min = config.MinRoll, max = config.MaxRoll;
             if (min <= 0)
                 min = 1;

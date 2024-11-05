@@ -16,7 +16,9 @@ namespace Assets.TitanNoCD
             string idName = id.ToString();
             if (idName.EndsWith("SoulOrb"))
             {
-                authoring.duration = Math.Clamp(Config.SoulOrbDuration.Value, 5, 300);
+                ref float time = ref authoring.lifetime.pc;
+                //原数值300
+                time = Math.Clamp(Config.SoulOrbDuration.Value, 5, time);
             }
         }
 

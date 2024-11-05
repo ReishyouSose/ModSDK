@@ -8,7 +8,7 @@ namespace Assets.ImproveEquipment.Patchs
     [HarmonyPatch]
     public static class SledgePatch
     {
-        private static ModConfig Config => ImproveEquipmentMod.config;
+        private static ModConfig Config => ImproveEquipmentMod.Config;
         [HarmonyPatch(typeof(WeaponConverter), nameof(WeaponConverter.Convert))]
         [HarmonyPrefix]
         private static void WeaponPatch(WeaponAuthoring authoring)

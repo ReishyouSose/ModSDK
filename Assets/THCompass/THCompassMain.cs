@@ -15,7 +15,8 @@ namespace Assets.THCompass
 {
     public class THCompassMain : IMod
     {
-        internal static ModConfig config;
+        private static ModConfig config;
+        internal static ModConfig Config => config ??= new();
         /*internal static ClientSpawnRoomSystem roomSpawnSystem;
         internal static ClientSpawnBossSystem spawnBossSystem;
         private static CustomScenesDataTable sceneData;
@@ -45,9 +46,8 @@ namespace Assets.THCompass
         {
             CoreLibMod.LoadModules(typeof(EntityModule));
             CoreLibMod.LoadModules(typeof(DropTablesModule));
-            config = new();
             CompassLoader.Load();
-            Debug.Log("grt: " + config.Guaranteed);
+            Debug.Log("grt: " + Config.Guaranteed);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             /*CoreLibMod.LoadModules(typeof(LocalizationModule));
             ResourcesModule.RegisterBundles(this.GetModInfo());
@@ -56,7 +56,7 @@ namespace Assets.THCompass
 
         private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            int grt = config.Guaranteed;
+            int grt = Config.Guaranteed;
             if (grt <= 0) return;
             ObjectID id = authoringData.GetEntityObjectID();
             if (CompassLoader.BossIDByObjID.TryGetValue(id, out var boss))
@@ -74,7 +74,7 @@ namespace Assets.THCompass
                     lootDrop = new()
                     {
                         lootDropID = cps,
-                        amount = config.Guaranteed,
+                        amount = Config.Guaranteed,
                     }
                 });
                 Debug.Log(id + "Add guaranteed compass " + boss);

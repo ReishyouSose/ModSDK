@@ -1,31 +1,31 @@
 {
   "dependencies": {
     "ck.modding.corelib": {
-      "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/CoreLibPackage#main",
+      "version": "git@github.com:CoreKeeperMods/CoreLib.git?path=/Assets/CoreLibPackage#main",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0",
         "ck.modding.markdig": "0.33.0"
       },
-      "hash": "99702440f1fd0e4e89307273ef384f9ce09a76fc"
+      "hash": "3cbbebeb8c20e8ae372ff4cd49a948a745102816"
     },
     "ck.modding.markdig": {
-      "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main",
+      "version": "git@github.com:CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "2f5a77df9a930faff0b17c4a3b7c359e4986527a"
+      "hash": "3cbbebeb8c20e8ae372ff4cd49a948a745102816"
     },
     "ck.modding.sdk-extensions": {
-      "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/SDKExtensions#main",
+      "version": "git@github.com:CoreKeeperMods/CoreLib.git?path=/Assets/SDKExtensions#main",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0",
         "ck.modding.markdig": "0.33.0"
       },
-      "hash": "2f5a77df9a930faff0b17c4a3b7c359e4986527a"
+      "hash": "3cbbebeb8c20e8ae372ff4cd49a948a745102816"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -58,7 +58,7 @@
     },
     "com.unity.burst": {
       "version": "1.8.13",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -67,8 +67,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-      "version": "2.4.1",
-      "depth": 2,
+      "version": "2.4.3",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.8.13",
@@ -86,28 +86,27 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.entities": {
-      "version": "1.2.1",
-      "depth": 1,
-      "source": "registry",
+      "version": "file:com.unity.entities",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
         "com.unity.burst": "1.8.13",
-        "com.unity.collections": "2.4.1",
-        "com.unity.mathematics": "1.3.1",
-        "com.unity.modules.audio": "1.0.0",
         "com.unity.serialization": "3.1.1",
-        "com.unity.profiling.core": "1.0.2",
-        "com.unity.nuget.mono-cecil": "1.11.4",
+        "com.unity.collections": "2.4.3",
+        "com.unity.mathematics": "1.3.1",
         "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.unityanalytics": "1.0.0",
         "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.test-framework.performance": "3.0.3",
+        "com.unity.nuget.mono-cecil": "1.11.4",
         "com.unity.scriptablebuildpipeline": "1.20.2",
-        "com.unity.test-framework.performance": "3.0.3"
-      },
-      "url": "https://packages.unity.com"
+        "com.unity.profiling.core": "1.0.2"
+      }
     },
     "com.unity.ext.nunit": {
       "version": "2.0.3",
-      "depth": 4,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -139,7 +138,7 @@
     },
     "com.unity.mathematics": {
       "version": "1.3.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -150,27 +149,28 @@
       "source": "embedded",
       "dependencies": {
         "com.unity.transport": "2.1.0",
-        "com.unity.entities": "1.2.1",
+        "com.unity.entities": "1.2.4",
         "com.unity.modules.animation": "1.0.0"
       }
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.physics": {
-      "version": "1.0.14",
+      "version": "1.2.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.burst": "1.8.7",
-        "com.unity.entities": "1.0.14",
-        "com.unity.collections": "2.1.4",
-        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.8.13",
+        "com.unity.entities": "1.2.4",
+        "com.unity.collections": "2.4.3",
+        "com.unity.mathematics": "1.3.1",
         "com.unity.modules.imgui": "1.0.0",
+        "com.unity.test-framework": "1.4.3",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -186,7 +186,7 @@
     },
     "com.unity.profiling.core": {
       "version": "1.0.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -238,7 +238,7 @@
     },
     "com.unity.serialization": {
       "version": "3.1.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.7.2",
@@ -273,7 +273,7 @@
     },
     "com.unity.test-framework": {
       "version": "1.4.3",
-      "depth": 3,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "2.0.3",
@@ -284,7 +284,7 @@
     },
     "com.unity.test-framework.performance": {
       "version": "3.0.3",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.31",
@@ -409,7 +409,7 @@
     },
     "com.unity.modules.unityanalytics": {
       "version": "1.0.0",
-      "depth": 2,
+      "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.unitywebrequest": "1.0.0",

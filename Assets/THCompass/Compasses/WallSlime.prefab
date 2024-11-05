@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7357001575309365324}
   - component: {fileID: 887453582297750967}
   - component: {fileID: 4839123035840562004}
-  - component: {fileID: -685239877247198785}
+  - component: {fileID: 8872983892129781014}
   m_Layer: 0
   m_Name: WallSlime
   m_TagString: Untagged
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossID: 15
---- !u!114 &-685239877247198785
+--- !u!114 &8872983892129781014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,9 +117,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1604737176836023834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 815801185, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: -135843945, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootDrops: []
-  lootTableToSpawn: 0
-  spawnEffects: 0
+  hasLootTable: 0
+  lootTableID: 0
+  hasCustomLoot: 0
+  customLoot:
+    chance: 1
+    Values: []
+  hasSeasonalLoot: 0
+  seasonalLootDrops:
+    lootDrops: []
+  hasLootDropsOnUse: 1
+  onUseLootDrops:
+    lootTableID: 0
+    spawnEffects: 49
+    lootDrops: []
+  hasLootDropsOnTakingDamage: 0
+  lootDropsWhenDamaged:
+    healthPercentageDamageToDeal: 0
+    minHealthPercentageToDropLoot: 0
+    damageToDealToDropLoot: 0
+    minHealthToDropLoot: 0
+    dropsLoot: 0
+    instantiateEntity: 0
+    minSpawnOffset:
+      x: 0
+      y: 0
+    maxSpawnOffset:
+      x: 0
+      y: 0
+    maxLimitToDropInNearbyArea: 0

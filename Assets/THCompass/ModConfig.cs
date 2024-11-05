@@ -12,7 +12,7 @@ namespace Assets.THCompass
         public int Guaranteed => guaranteed.Value;
         public ModConfig()
         {
-            ConfigFile config = new("THCompass/config.cfg", true);
+            ConfigFile config = new("THCompass/Config.cfg", true);
             string section = "FromBoss";
             minDrop = config.Bind(section, nameof(minDrop), 1, "单卷最小掉落量。\nMin drop amount per roll.\n(1 <= minDrop <= maxDrop)");
             maxDrop = config.Bind(section, nameof(maxDrop), 3, "单卷最大掉落量。\n小于1时将不掉落罗盘\nMax drop amount per roll.\nWill not drop when less than 1.");
