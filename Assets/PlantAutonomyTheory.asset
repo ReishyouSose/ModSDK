@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: PlantAutonomyTheory
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: aea0842b65ca4cf7b4f39b13444fafd3
+    name: PlantAutonomyTheory
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Scripts/PlantHelper.cs
+    - path: Scripts/PlantAutonomyTheoryMod.cs
+    - path: Scripts/ModConfig.cs
+    - path: Scripts/GoldenLevelSystem.cs
+    - path: Scripts/AutonomySystem.cs
+    - path: Bundles/PlantAutonomyTheory_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+  modPath: Assets\PlantAutonomyTheory
