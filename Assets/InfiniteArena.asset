@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: InfiniteArena
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 1edd932d16a5466d95c85681099c0540
+    name: InfiniteArena
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Localization/Localization.csv
+    - path: Scripts/Systems/ArenaReactiveServer.cs
+    - path: Scripts/Systems/ArenaReactiveClient.cs
+    - path: Scripts/Systems/ArenaPrepareSystem.cs
+    - path: Scripts/Other/MiscHelper.cs
+    - path: Scripts/Other/ArenaRecord.cs
+    - path: Scripts/Other/ArenaData.cs
+    - path: Scripts/ModConfig.cs
+    - path: Scripts/InfinieArenaMod.cs
+    - path: Scripts/Components/ArenaReactiveCD.cs
+    - path: Scripts/Generated/ArenaPrepareSystem__System_19123984050.g.cs
+    - path: Scripts/Generated/ArenaReactiveClient__System_3734386310.g.cs
+    - path: Scripts/Generated/ArenaReactiveServer__System_14202190030.g.cs
+    - path: Scripts/Generated/Assets.InfiniteArena.Components_ArenaReactiveCDSerializer.cs
+    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
+    - path: Bundles/InfiniteArena_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+  modPath: Assets\InfiniteArena

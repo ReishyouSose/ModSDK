@@ -79,8 +79,12 @@ namespace Assets.PlantAutonomyTheory
                 {
                     if (grow.grownTime < 0)
                     {
-                        EntityUtility.CreateEntity(ecb, local.Position, objData.objectID - 1, 1,
-                            dataBaseLocal, (PugRandom.GetRng().NextInt(100) < chance) ? 1 : 0);
+                        bool gold = false;
+                        if (objData.objectID != ObjectID.GrubKapokPlant)
+                        {
+                            gold = PugRandom.GetRng().NextInt(100) < chance;
+                        }
+                        EntityUtility.CreateEntity(ecb, local.Position, objData.objectID - 1, 1, dataBaseLocal, gold ? 1 : 0);
                         ecb.DestroyEntity(entity);
                     }
                     else if (tileAccessor.ArableWet(local))
