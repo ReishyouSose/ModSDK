@@ -1,5 +1,0 @@
-Key	Type	Desc	English	German	French (France)	Portuguese (Brazil)	Italian (Italy)	Japanese	Korean	Russian	Spanish	Ukrainian	Chinese (Simplified)	Chinese (Traditional)	Thai
-InfiniteArena/MapCheck	Text	[new]	Styel {0}	Styel {0}	Styel {0}	Styel {0}	Styel {0}	Styel {0}	Styel {0}	Styel {0}	Styel {0}	Styel {0}	样式 {0}	樣式 {0}	Styel {0}
-InfiniteArena/SelectStyle	Text	[new]	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	Change to style {0}	切换到样式 {0}	切換到樣式 {0}	Change to styel {0}
-InfiniteArena/WaitCharge	Text	[new]	Charging {0}	Charging {0}	Charging {0}	Charging {0}	Charging {0}	Charging {0}	Charging {0}	Charging {0}	Charging {0}	Charging {0}	充能中 {0}	充能中 {0}	Charging {0}
-InfiniteArena/CheckCompleted	Text	[new]	Check Completed	Check Completed	Check Completed	Check Completed	Check Completed	Check Completed	Check Completed	Check Completed	Check Completed	Check Completed	检测完成	檢測完成	Check Completed

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: GeneralConfigMenu
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: c187efeff03e4cbeb6f9280b33cb97f6
+    name: GeneralConfigMenu
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Localization/Localization.csv
+    - path: Scripts/UIByLimoka/ToggleButton.cs
+    - path: Scripts/UIByLimoka/RadioButtonUIElement.cs
+    - path: Scripts/UIByLimoka/RadioButtonsGroup.cs
+    - path: Scripts/UIByLimoka/IntInputField.cs
+    - path: Scripts/UIByLimoka/FuelIconUI.cs
+    - path: Scripts/UIByLimoka/DescriptionInventorySlotUI.cs
+    - path: Scripts/UIByLimoka/BetterInputField.cs
+    - path: Scripts/RUIFramework/RUIManager.cs
+    - path: Scripts/RUIFramework/RUIElement.cs
+    - path: Scripts/RUIFramework/RUIButton.cs
+    - path: Scripts/RUIFramework/RMouseEventType.cs
+    - path: Scripts/RUIFramework/RKeyCD.cs
+    - path: Scripts/RUIFramework/Extend/RUIPageSwitcher.cs
+    - path: Scripts/RUIFramework/Extend/RUIButtonGroup.cs
+    - path: Scripts/MonoBehaivours/UIRangeTip.cs
+    - path: Scripts/MonoBehaivours/UIConfigEntry.cs
+    - path: Scripts/MonoBehaivours/UIConfigChanger.cs
+    - path: Scripts/MonoBehaivours/UIConfigChangeableTip.cs
+    - path: Scripts/MonoBehaivours/ModConfigMenu.cs
+    - path: Scripts/MonoBehaivours/ConfigChangerPage.cs
+    - path: Scripts/ModConfig.cs
+    - path: Scripts/MiscHelper.cs
+    - path: Scripts/Main.cs
+    - path: Scripts/ConfigSync/ConfigSyncSystem.cs
+    - path: Scripts/ConfigSync/ConfigChangeRPC.cs
+    - path: Scripts/Generated/ConfigSyncSystem__System_18521754110.g.cs
+    - path: Scripts/Generated/ConfigSyncSystem__System_18521754111.g.cs
+    - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_ConfigChangeRPCCommandSerializer.cs
+    - path: Bundles/GeneralConfigMenu_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: CoreLib.RewiredExtension
+      required: 1
+    - modName: CoreLib.UserInterface
+      required: 1
+  modPath: Assets\GeneralConfigMenu
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets:
+  - path: Assets/GeneralConfigMenu/32x32_map_border.png
+    hash: AA2E8397B8C5C39DE2F2B467641F0A36E8E8CC262FE592B393F381E0E443C429
+  - path: Assets/GeneralConfigMenu/creative_ui.png
+    hash: F9D43AA112C373CEC6F1F9A0939588D6174803D819BE049D4AD928281EDD792F
+  - path: Assets/GeneralConfigMenu/cursor_placement.png
+    hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
+  - path: Assets/GeneralConfigMenu/Localization/Localization.csv
+    hash: 4FE79ADEAB5B45ED5A89FAE9DE94BA3839DDB7EE8A7F858E04BC3FA67D31A8ED
+  - path: Assets/GeneralConfigMenu/ModConfigUI.prefab
+    hash: 1C0A8E3123386A6332B39947DF7567FCB1190CFD39F08D5A3CD20C35985DA2C0
+  lastBuildLinux: 1

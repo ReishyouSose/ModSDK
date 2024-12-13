@@ -21,5 +21,9 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 0
     files: []
-    dependencies: []
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: CoreLib.RewiredExtension
+      required: 1
   modPath: Assets\MyTest

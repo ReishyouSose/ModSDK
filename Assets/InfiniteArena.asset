@@ -21,21 +21,11 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Localization/Localization.csv
-    - path: Scripts/Systems/ArenaReactiveServer.cs
-    - path: Scripts/Systems/ArenaReactiveClient.cs
-    - path: Scripts/Systems/ArenaPrepareSystem.cs
-    - path: Scripts/Other/MiscHelper.cs
-    - path: Scripts/Other/ArenaRecord.cs
-    - path: Scripts/Other/ArenaData.cs
     - path: Scripts/ModConfig.cs
     - path: Scripts/InfinieArenaMod.cs
-    - path: Scripts/Components/ArenaReactiveCD.cs
-    - path: Scripts/Generated/ArenaPrepareSystem__System_19123984050.g.cs
-    - path: Scripts/Generated/ArenaReactiveClient__System_3734386310.g.cs
-    - path: Scripts/Generated/ArenaReactiveServer__System_14202190030.g.cs
-    - path: Scripts/Generated/Assets.InfiniteArena.Components_ArenaReactiveCDSerializer.cs
-    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
+    - path: Scripts/ArenaRespawnSystem.cs
+    - path: Scripts/ArenaRecordCD.cs
+    - path: Scripts/Generated/ArenaRespawnSystem__System_6832540250.g.cs
     - path: Bundles/InfiniteArena_Windows.assetbundle
     dependencies:
     - modName: CoreLib

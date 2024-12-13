@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83df2ae64ce1e94f9c006b9d326bf02, type: 3}
   m_Name: InfiniteArena_modio
   m_EditorClassIdentifier: 
-  modId: 0
+  modId: 4483836
   modSettings: {fileID: 11400000, guid: 6191828b93a6c2c4791f702d5cb646e3, type: 2}
   logo: {fileID: 0}
-  summary: 
+  summary: "\u652F\u4ED8\u4E0A\u53E4\u94B1\u5E01\u91CD\u65B0\u6FC0\u6D3B\u7ADE\u6280\u573A
+    Pay Ancient Coins to reactivate the Arena"

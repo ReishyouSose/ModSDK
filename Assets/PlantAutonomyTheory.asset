@@ -23,11 +23,14 @@ MonoBehaviour:
     files:
     - path: Scripts/PlantHelper.cs
     - path: Scripts/PlantAutonomyTheoryMod.cs
+    - path: Scripts/Objects/GardeningAltar.cs
     - path: Scripts/ModConfig.cs
     - path: Scripts/GoldenLevelSystem.cs
     - path: Scripts/AutonomySystem.cs
     - path: Bundles/PlantAutonomyTheory_Windows.assetbundle
     dependencies:
     - modName: CoreLib
+      required: 1
+    - modName: CoreLib.Entity
       required: 1
   modPath: Assets\PlantAutonomyTheory
