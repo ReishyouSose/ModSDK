@@ -3,7 +3,7 @@ using I2.Loc;
 using System.Linq;
 using System.Text;
 
-namespace Assets.GeneralConfigMenu
+namespace Assets.GeneralConfigMenu.Scripts
 {
     public static class MiscHelper
     {

@@ -81,3 +81,9 @@ MonoBehaviour:
     - modName: CoreLib.Resources
       required: 1
   modPath: Assets\THCompass
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 0
+  assets: []
+  lastBuildLinux: 0

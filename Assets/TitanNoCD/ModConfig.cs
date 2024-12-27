@@ -1,4 +1,5 @@
 ﻿using CoreLib.Data.Configuration;
+using System.Text;
 
 namespace Assets.TitanNoCD
 {
@@ -10,8 +11,25 @@ namespace Assets.TitanNoCD
         public ModConfig()
         {
             ConfigFile file = new("TitanNoCD/config.cfg", true);
-            SoulOrbDuration = file.Bind("General", nameof(SoulOrbDuration), 15f, "泰坦灵魂球的持续时间。\r\n原版为300s。\r\n默认为15s。\nThe duration of the Titan Soul Orb.\r\nOriginal version was 300 seconds.\r\nDefault is 15 seconds.\n(5 <= duration <= 300)");
-            DetectionInterval = file.Bind("General", nameof(DetectionInterval), 15f, "泰坦生成的检测间隔。\r\n原版为每60s检测一次。\r\n默认为15s。\n注意，即使设置为0也会有大约10s的间隔。\nThe detection interval of Titan spawn.\r\nThe original version detects once every 60 seconds.\r\nThe default is 15 seconds.\nNote that even if it is set to 0, there will still be an interval of about 10 seconds.\n(0 <= interval <= 60)");
+            var server = ConfigAccessLevel.Server;
+            StringBuilder builder = new();
+            builder.Append("泰坦灵魂球的持续时间").AppendLine()
+                .Append("原版为300s").AppendLine()
+                .Append("The duration of the Titan Soul Orb").AppendLine()
+                .Append("Original version was 300 seconds");
+            SoulOrbDuration = file.Bind("General", nameof(SoulOrbDuration), 15f,
+                new ConfigDescription(builder.ToString(), new AcceptableValueRange<float>(5, 300)), new ConfigScope(server));
+
+            builder = new();
+            builder.Append("泰坦生成的检测间隔").AppendLine()
+                .Append("原版为每60s检测一次").AppendLine()
+                .Append("注意，即使设置为0也会有大约10s的间隔").AppendLine()
+                .Append("The detection interval of Titan spawn").AppendLine()
+                .Append("The original version detects once every 60 seconds").AppendLine()
+                .Append("Note that even if set to 0, there will still be an interval of about 10 seconds");
+            DetectionInterval = file.Bind("General", nameof(DetectionInterval), 15f,
+                new ConfigDescription(builder.ToString(), new AcceptableValueRange<float>(0, 60)), 
+                new ConfigScope(server));
         }
     }
 }

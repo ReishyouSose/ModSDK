@@ -1,5 +1,4 @@
 ﻿using CoreLib.Data.Configuration;
-using Unity.Mathematics;
 
 namespace Assets.AutoSalvage
 {
@@ -7,15 +6,20 @@ namespace Assets.AutoSalvage
     {
         private readonly ConfigEntry<int> checkCount;
         private readonly ConfigEntry<float> salvageTime;
-        public int CheckCount { get; private set; }
-        public int SalvageTime { get; private set; }
+        public int CheckCount => checkCount.Value;
+        public int SalvageTime => (int)(salvageTime.Value * 20);
         public ModConfig()
         {
             ConfigFile file = new("AutoSalvage/config.cfg", true);
-            checkCount = file.Bind("General", nameof(checkCount), 6, "检测数量，拆解台内物品数量大于等于检测数量时开始进行自动拆解倒计时\nDetection quantity, when the number of items in the salvage station is greater than or equal to the detection quantity, the automatic salvage countdown begins\n(1 <= value <= 6)");
-            salvageTime = file.Bind("General", nameof(salvageTime), 3f, "自动拆解计时（单位：秒）\nAutomatic salvage countdown (in second)");
-            CheckCount = math.clamp(checkCount.Value, 1, 6);
-            SalvageTime = (int)(salvageTime.Value * 20);
+            checkCount = file.Bind("General", nameof(checkCount), 6,
+                new ConfigDescription("检测数量，拆解台内物品数量大于等于检测数量时开始进行自动拆解倒计时" +
+                "\nDetection quantity," +
+                " when the number of items in the salvage station is greater than or equal to the detection quantity," +
+                " the automatic salvage countdown begins.",
+                new AcceptableValueList<int>(1, 2, 3, 4, 5, 6)), new(ConfigAccessLevel.Server));
+            salvageTime = file.Bind("General", nameof(salvageTime), 3f,
+               new ConfigDescription("自动拆解倒计时（单位：秒）\nAutomatic salvage countdown (in second)",
+               new AcceptableValueRange<float>(0, 600)), new(ConfigAccessLevel.Server));
         }
     }
 }

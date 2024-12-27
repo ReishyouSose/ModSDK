@@ -9,7 +9,7 @@ namespace Assets.PlantAutonomyTheory
         private readonly ConfigEntry<bool> autoMode;
         private readonly ConfigEntry<int> harvestCycel;
         private readonly ConfigEntry<int> regrowthTimer;
-        public bool AutoMode { get; private set; }
+        public bool AutoMode => autoMode.Value;
         public int HarvestCycel { get; private set; }
         public int HarvestCycel_Golden { get; private set; }
         public int RegrowthTimer { get; private set; }
@@ -19,7 +19,6 @@ namespace Assets.PlantAutonomyTheory
             autoMode = file.Bind("General", nameof(autoMode), false, AutoModeDesc());
             harvestCycel = file.Bind("General", nameof(harvestCycel), 600, "收获周期（单位：秒）\n金色植物需要两倍的时间\nThe harvest cycel (in second)\nGolden plants take twice as long\n60 <= value");
             regrowthTimer = file.Bind("General", nameof(regrowthTimer), 200, "重新生长计时（单位：秒）\nThe regrowth timer (in second)\n0 <= value <= 600");
-            AutoMode = autoMode.Value;
             HarvestCycel = math.max(harvestCycel.Value, 60);
             HarvestCycel_Golden = HarvestCycel * 2;
             RegrowthTimer = math.clamp(regrowthTimer.Value, 0, 600);

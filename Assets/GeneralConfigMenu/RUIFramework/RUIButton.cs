@@ -1,7 +1,7 @@
 ﻿using Assets.GeneralConfigMenu.RUIFramework.Extend;
+using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.GeneralConfigMenu.RUIFramework
 {
@@ -14,12 +14,15 @@ namespace Assets.GeneralConfigMenu.RUIFramework
 
         public bool ToggleAtFirst;
         public bool AutoChangeVisual;
-        public Toggle.ToggleEvent OnValueChanged;
         public bool IsToggle { get; private set; }
 
         [HideInInspector]
         public RUIButtonGroup ButtonGroup;
-        private void Start()
+
+        [HideInInspector]
+        public Action<RUIButton> OnValueChange;
+
+        public virtual void Start()
         {
             IsToggle = ToggleAtFirst;
             OnSprite.gameObject.SetActive(IsToggle);
@@ -32,12 +35,16 @@ namespace Assets.GeneralConfigMenu.RUIFramework
             AddEvent(RMouseEventType.MouseEnter, _ => SetHoverSR(true));
             AddEvent(RMouseEventType.MouseLeave, _ => SetHoverSR(false));
         }
-        public void SetState(bool state)
+        public void SetState(bool state, bool doEvt = true, bool ignoreCheck = false)
         {
+            if (!ignoreCheck && AllowEvent?.Invoke() == false)
+                return;
             IsToggle = state;
-            OnValueChanged?.Invoke(IsToggle);
             OnSprite.gameObject.SetActive(IsToggle);
             OffSprite.gameObject.SetActive(!IsToggle);
+            if (!doEvt)
+                return;
+            OnValueChange?.Invoke(this);
         }
         private void OnLeftDown(GameObject go)
         {
@@ -47,12 +54,12 @@ namespace Assets.GeneralConfigMenu.RUIFramework
                 int max = ButtonGroup.MaxSelected;
                 if (max == 1)
                 {
-                    OnValueChanged?.Invoke(IsToggle = !IsToggle);
+                    SetState(true);
                     foreach (var button in buttons)
                     {
                         if (button != this)
                         {
-                            button.SetState(false);
+                            button.SetState(false, false);
                         }
                     }
 
@@ -62,13 +69,13 @@ namespace Assets.GeneralConfigMenu.RUIFramework
                     int selected = buttons.Count(x => x.IsToggle);
                     if (selected < max)
                     {
-                        OnValueChanged?.Invoke(IsToggle = !IsToggle);
+                        SetState(true);
                     }
                 }
             }
             else
             {
-                IsToggle = !IsToggle;
+                SetState(!IsToggle);
             }
             if (AutoChangeVisual)
             {

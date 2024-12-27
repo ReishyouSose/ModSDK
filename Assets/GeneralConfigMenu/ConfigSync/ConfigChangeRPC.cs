@@ -1,30 +1,26 @@
-﻿using Assets.GeneralConfigMenu.MonoBehaivours;
-using CoreLib.Data.Configuration;
+﻿using Assets.GeneralConfigMenu.Scripts;
 using Unity.Collections;
+using Unity.Entities;
 using Unity.NetCode;
 
 namespace Assets.GeneralConfigMenu.ConfigSync
 {
-    public struct ConfigChangeRPC : IRpcCommand
+    public struct ConfigDataRPC : IRpcCommand
     {
-        public FixedString32Bytes mod;
-        public FixedString32Bytes file;
-        public FixedString32Bytes section;
-        public FixedString32Bytes key;
-        public FixedString32Bytes value;
+        public FixedString128Bytes data;
         public int playerIndex;
-        public ConfigChangeRPC(string mod, string file, ConfigDefinition def, string value)
+        public ConfigDataRPC(string data, int? index = null)
         {
-            playerIndex = Manager.main.player.playerIndex;
-            this.mod = mod;
-            this.file = file;
-            section = def.Section;
-            key = def.Key;
-            this.value = value;
+            playerIndex = index ?? Manager.main.player.playerIndex;
+            this.data = data;
         }
         public void TryChangeConfig()
         {
-            ModConfigMenu.Ins.TryRecieveSync(playerIndex, mod.Value, file.Value, section.Value, key.Value, value.Value);
+            ConfigManager.Instance.TryReceiveSync(playerIndex, data.Value);
         }
+    }
+
+    public struct JoinRequest : IRpcCommand
+    {
     }
 }

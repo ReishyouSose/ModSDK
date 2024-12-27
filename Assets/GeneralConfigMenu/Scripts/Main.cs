@@ -4,21 +4,29 @@ using CoreLib.RewiredExtension;
 using CoreLib.UserInterface;
 using PugMod;
 using Rewired;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.GeneralConfigMenu
+namespace Assets.GeneralConfigMenu.Scripts
 {
     public class Main : IMod
     {
         private Player RewiredPlayer;
         private const string OpenMenu = "GCM:OpenMenu";
-        private static ModConfig config;
+        internal const string HorizenScroll = "GCM:HorizenScroll";
+        internal static ModConfig config;
         internal static ConfigSyncClient ConfigSync { get; private set; }
         public void EarlyInit()
         {
             CoreLibMod.LoadModules(typeof(RewiredExtensionModule));
             RewiredExtensionModule.rewiredStart += () => RewiredPlayer = ReInput.players.GetPlayer(0);
-            RewiredExtensionModule.AddKeybind(OpenMenu, "Open Mod Config Menu", KeyboardKeyCode.K, ModifierKey.Control);
+            var local = new Dictionary<string, string>()
+            {
+                { "en", "Open Mod Config Menu" },
+                { "zh-CN", "打开模组配置菜单" }
+            };
+            RewiredExtensionModule.AddKeybind(OpenMenu, local, KeyboardKeyCode.K, ModifierKey.Control);
+            RewiredExtensionModule.AddKeybind(HorizenScroll, "GCM:Horizen Scroll(Useless now)", KeyboardKeyCode.LeftShift);
             CoreLibMod.LoadModule(typeof(UserInterfaceModule));
             config = new();
             API.Client.OnWorldCreated += Client_OnWorldCreated;
@@ -50,7 +58,7 @@ namespace Assets.GeneralConfigMenu
         {
             if (RewiredPlayer.GetButtonDown(OpenMenu))
             {
-                UserInterfaceModule.OpenModUI("GeneralConfigMenu:Menu");
+                UserInterfaceModule.OpenModUI("GeneralConfigMenu:Screen");
             }
         }
     }

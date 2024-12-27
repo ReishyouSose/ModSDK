@@ -27,6 +27,9 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
         public CharacterMarkBlinker characterMarkBlinker;
 
+        [HideInInspector]
+        public Func<bool> AllowInput;
+
         private int currentCharIndex;
 
         public bool WasAutoActivated
@@ -243,10 +246,13 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
         public override void OnLeftClicked(bool mod1, bool mod2)
         {
+            if (AllowInput?.Invoke() == false)
+                return;
             Manager.input.SetActiveInputField(this);
             Manager.input.DisableInput();
             characterMarkBlinker.EnableAndResetBlink();
             inputIsActive = true;
+            currentCharIndex = pugText.displayedTextString.Length;
         }
 
         public void ResetText()
