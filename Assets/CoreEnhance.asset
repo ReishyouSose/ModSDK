@@ -19,13 +19,46 @@ MonoBehaviour:
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
-    requiredOn: 0
-    files: []
-    dependencies: []
+    requiredOn: 3
+    files:
+    - path: Localization/Localization.csv
+    - path: Scripts/Scripts/UI/AutoFisherUI.cs
+    - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
+    - path: Scripts/Scripts/ModConfig.cs
+    - path: Scripts/Scripts/Main.cs
+    - path: Scripts/Scripts/Items/AutoFisherAuthoring.cs
+    - path: Bundles/CoreEnhance_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: CoreLib.Entity
+      required: 1
+    - modName: CoreLib.Localization
+      required: 1
+    - modName: CoreLib.Resources
+      required: 1
+    - modName: CoreLib.UserInterface
+      required: 1
   modPath: Assets\CoreEnhance
   forceReimport: 1
   buildBundles: 1
   cacheBundles: 0
   buildLinux: 0
-  assets: []
+  assets:
+  - path: Assets/CoreEnhance/Items/Autofisher.png
+    hash: 8C1A11FE176D828EAB2EB58AF0EE6465D3C791D6CD0AEEF6707F65A8C53350FD
+  - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
+    hash: 545FBEB0641CC9EA59FE9479FE6516CD38F0110AA381CBDF632454C1BF9BBDA9
+  - path: Assets/CoreEnhance/Localization/Localization.csv
+    hash: 7ECD57F0594D7DA012D7E7C1781ABA5BD5E7A4D6B2F86F381C14A1601A0D9FD6
+  - path: Assets/CoreEnhance/SpriteAssetManifest.asset
+    hash: FCF0C8BB69754C4E5D414D68E3A69532D041C904841247E7D65D2AE6F8DC3D0A
+  - path: Assets/CoreEnhance/TIles/AutoFisherShadow.asset
+    hash: CBE96931DC2D34617C5DA7DF9672A516273A191772803BA828D8DBDCA5066356
+  - path: Assets/CoreEnhance/TIles/AutoFisherSprite.asset
+    hash: B326434A65DF1E560265C394A16AD2AF57D090BB5D601FD72606136A4FFF871B
+  - path: Assets/CoreEnhance/TIles/AutoFisherTIle.prefab
+    hash: 79BDF737FA9FEF6B6A7A5E4A88B277190A01F88F15FD2D4FEB9521FA83BEEF3A
+  - path: Assets/CoreEnhance/UI/AutoFisherUI.prefab
+    hash: E98B7BDAD04C012715106AF88B214856EEEDC79FEE6567D8F682FB12EEA261A8
   lastBuildLinux: 0

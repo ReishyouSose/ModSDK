@@ -19,9 +19,7 @@
         "CoreLib",
         "CoreLib.Entity",
         "CoreLib.Localization",
-        "CoreLib.ModderTools",
         "CoreLib.Resources",
-        "CoreLib.RewiredExtension",
         "CoreLib.UserInterface"
     ],
     "includePlatforms": [],

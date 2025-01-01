@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: SpriteAssetManifest
   m_EditorClassIdentifier: 
   spriteAssets:
-  - {fileID: 11400000, guid: b05d94f23f54e82429431780ad02a96e, type: 2}
-  - {fileID: 11400000, guid: 18ee6ee5463d288409e5abde9e80fc0e, type: 2}
+  - {fileID: 11400000, guid: 9e08a00ac1364704d9939c92096b4f08, type: 2}
+  - {fileID: 11400000, guid: 6c1cd577209e5a640b250cfc751ae121, type: 2}
+  - {fileID: 11400000, guid: f6eaf54e9fd01e748b74f65c193f47dd, type: 2}
+  - {fileID: 11400000, guid: 9e5aa8becaff59e40b5758e408e72387, type: 2}
+  - {fileID: 11400000, guid: d6d36324533a3a14092a17ce22ea322a, type: 2}
   gradientMaps: []
   transformAnimations: []
