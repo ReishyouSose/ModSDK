@@ -24,9 +24,13 @@ MonoBehaviour:
     - path: Localization/Localization.csv
     - path: Scripts/Scripts/UI/AutoFisherUI.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
-    - path: Scripts/Scripts/ModConfig.cs
+    - path: Scripts/Scripts/Systems/InfinitySystem.cs
     - path: Scripts/Scripts/Main.cs
     - path: Scripts/Scripts/Items/AutoFisherAuthoring.cs
+    - path: Scripts/Scripts/Configs/ModConfig.cs
+    - path: Scripts/Scripts/Configs/ConfigData.cs
+    - path: Scripts/Scripts/Configs/ConfigCategory.cs
+    - path: Scripts/Generated/InfinitySystem__System_8289042020.g.cs
     - path: Bundles/CoreEnhance_Windows.assetbundle
     dependencies:
     - modName: CoreLib
@@ -60,5 +64,5 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/TIles/AutoFisherTIle.prefab
     hash: 79BDF737FA9FEF6B6A7A5E4A88B277190A01F88F15FD2D4FEB9521FA83BEEF3A
   - path: Assets/CoreEnhance/UI/AutoFisherUI.prefab
-    hash: E98B7BDAD04C012715106AF88B214856EEEDC79FEE6567D8F682FB12EEA261A8
+    hash: 70FB8E446B4EC4AD9AFEE9B66CCCF29540AC54A5F7D11F0CC0703C49BEE56535
   lastBuildLinux: 0

@@ -32,7 +32,7 @@ namespace Assets.THCompass
             }
         }*/
         internal static ClientCompassLootSystem compassLootSystem;
-        private  bool Testing => true;
+        private  bool Testing => false;
 
         private void ClientWorldInit()
         {

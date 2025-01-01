@@ -1,13 +1,14 @@
 ﻿using CoreLib.Data.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Assets.CoreEnhance.Scripts.Configs
 {
     public class ModConfig
     {
+        private static ModConfig Ins;
         private readonly Dictionary<(int, int), ConfigData> configs;
+        internal static void Load() => Ins = new();
         public ModConfig()
         {
             configs = new();
@@ -32,6 +33,12 @@ namespace Assets.CoreEnhance.Scripts.Configs
             }
             SetValue();
         }
+
+        private void SetValue()
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -39,12 +46,30 @@ namespace Assets.CoreEnhance.Scripts.Configs
         /// <param name="category"></param>
         /// <param name="ec">具体条目</param>
         /// <param name="entry"></param>
-        /// <returns></returns>
-        public bool TryGetEntry<T>(EnhanceCategory category, object ec, out ConfigData entry)
-            => configs.TryGetValue(((int)category, (int)ec), out entry);
-        private void SetValue()
+        /// <returns>查询失败或条目未启用均返回false</returns>
+        public static bool TryGetEnable(EnhanceCategory category, object ec)
         {
+            if (!Ins.configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
+                return false;
+            return entry.Enable;
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="category"></param>
+        /// <param name="ec">具体条目</param>
+        /// <param name="value"></param>
+        /// <returns>查询失败或条目未启用均返回false</returns>
+        public static bool TryGetValue<T>(EnhanceCategory category, object ec, out ConfigEntry<T> value)
+        {
+            value = null;
+            if (!Ins.configs.TryGetValue(((int)category, (int)ec), out var entry))
+                return false;
+            if (!entry.Enable)
+                return false;
+            return entry.TryGetValue(out value);
         }
     }
 }

@@ -75,19 +75,19 @@ namespace Assets.GeneralConfigMenu.Scripts
             StringBuilder builder = new();
             builder.Append(ConfigEntry.ConfigFile.ConfigFilePath.Replace(".cfg", "/"))
                 .Append(ConfigEntry.Definition.Section).Append('/').Append(key);
-            key = builder.ToString();
-            if (LocalizationManager.TryGetTranslation(key, out _))
+            var keyLocal = builder.ToString();
+            if (LocalizationManager.TryGetTranslation(keyLocal, out _))
             {
                 Label.Text.localize = true;
-                Label.Text.Render(key);
+                Label.Text.Render(keyLocal);
             }
             else
                 Label.Text.Render(key);
             builder.Append('/').Append("Description");
-            key = builder.ToString();
-            if (LocalizationManager.TryGetTranslation(key, out _))
+            keyLocal = builder.ToString();
+            if (LocalizationManager.TryGetTranslation(keyLocal, out _))
             {
-                Label.HoverText.Add(key);
+                Label.HoverText.Add(keyLocal);
             }
             else
             {
