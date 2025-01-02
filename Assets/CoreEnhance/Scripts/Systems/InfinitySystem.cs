@@ -62,6 +62,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
             base.OnUpdate();
         }
     }
+
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class InfinityServer : PugSimulationSystemBase

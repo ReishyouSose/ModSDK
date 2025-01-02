@@ -56,9 +56,9 @@ namespace Assets.CoreEnhance.Scripts.Configs
                 return false;
             return entry.Enable;
         }
-        private static bool TryAddValue<T>(ConfigFile file, EnhanceCategory category, object ec, T defaultV, AcceptableValueBase accept = null)
+        private bool TryAddValue<T>(ConfigFile file, EnhanceCategory category, object ec, T defaultV, AcceptableValueBase accept = null)
         {
-            if (Ins.configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
+            if (configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
             {
                 ConfigDefinition def = entry.Switch.Definition;
                 entry.SetValue(file.Bind(new(def.Section, def.Key + "Value"), defaultV, new(string.Empty, accept), new()));

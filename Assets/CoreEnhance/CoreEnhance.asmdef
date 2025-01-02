@@ -137,7 +137,8 @@
         "WorldGen.Runtime.dll",
         "WorldPatcher.dll",
         "XblPCSandbox.dll",
-        "ZipSaveFolder.dll"
+        "ZipSaveFolder.dll",
+        "0Harmony.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [],

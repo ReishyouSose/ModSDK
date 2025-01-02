@@ -18,11 +18,12 @@ namespace Assets.CoreEnhance.Scripts.Configs
         Durability,//耐久 done
         Boulder,//大矿 done
         Arena,//竞技场 done
+        Minion,//召唤物时长
     }
     public enum EC_Accelerate//加速
     {
         Merchant,//商人刷新 done
-        Titan,//泰坦冷却
+        Titan,//泰坦冷却 done
     }
     public enum EC_Industry//工业的加速
     {

@@ -1,8 +1,9 @@
-﻿using Assets.CoreEnhance.Scripts.Configs;
+﻿using Assets.CoreEnhance.Scripts.Component;
+using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Patchs;
 using CoreLib.Data.Configuration;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems
 {
@@ -18,8 +19,9 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         protected override void OnUpdate()
         {
+            var ecb = CreateCommandBuffer();
             Accelerate_Merchant();
-            Accelerate_SoulOrb();
+            Accelerate_SoulOrb(ecb);
             base.OnUpdate();
         }
         private void Accelerate_Merchant()
@@ -47,11 +49,12 @@ namespace Assets.CoreEnhance.Scripts.Systems
                 })
                     .WithName("Accelerate_Merchant_Immediate")
                     .WithAll<StateInfoCD>()
+                    .WithBurst()
                     .Schedule();
             }
             else
             {
-                int time = math.max(60, timeLimit);
+                int time = math.max(180, timeLimit);
                 Entities.ForEach((ref ObjectDataCD objectData) =>
                 {
                     if (objectData.amount > time)
@@ -62,27 +65,30 @@ namespace Assets.CoreEnhance.Scripts.Systems
                     .WithName("Accelerate_Merchant_Reduce")
                     .WithAll<MerchantCD>()
                     .WithAll<StateInfoCD>()
+                    .WithBurst()
                     .Schedule();
             }
         }
-        private void Accelerate_SoulOrb()
+        private void Accelerate_SoulOrb(EntityCommandBuffer ecb)
         {
             if (!ModConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Titan, out ConfigEntry<int> value))
                 return;
             int maxTime = value.Value;
             var current = GetServerTick();
             uint tickRate = simulationTickRateForPlatform;
-            Entities.ForEach((ref DestroyTimerCD destroy) =>
+            Entities.ForEach((Entity e, ref DestroyTimerCD destroy) =>
             {
                 ref var timer = ref destroy.timer;
                 if (timer.GetRemainingSeconds(current, tickRate) > maxTime)
                 {
                     timer.SetTargetTicks(maxTime, tickRate);
-                    Debug.Log("Set tick");
+                    ecb.AddComponent<SoulOrbCutCD>(e);
+                    BossCheckPatch.ShouldCheckImmdiately = true;
                 }
             })
                 .WithName("Accelerate_SoulOrb")
                 .WithAll<SoulOrbCD>()
+                .WithNone<SoulOrbCutCD>()
                 .WithBurst()
                 .Run();
         }
