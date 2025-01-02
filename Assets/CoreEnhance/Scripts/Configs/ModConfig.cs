@@ -1,6 +1,7 @@
 ﻿using CoreLib.Data.Configuration;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Configs
 {
@@ -12,8 +13,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
         public ModConfig()
         {
             configs = new();
-            ConfigFile file = new("CoreEnhance/config.cfg", true);
-            ConfigScope scope = new();
+            ConfigFile file = new("CoreEnhance/Switch.cfg", true);
             foreach (var category in Enum.GetValues(typeof(EnhanceCategory)))
             {
                 int categoryIndex = (int)category;
@@ -23,20 +23,23 @@ namespace Assets.CoreEnhance.Scripts.Configs
                     0 => typeof(EC_Infinity),
                     1 => typeof(EC_Accelerate),
                     2 => typeof(EC_Industry),
+                    3 => typeof(EC_Automation),
                     _ => null
                 }))
                 {
                     int keyIndex = (int)key;
                     ConfigDefinition def = new(section, key.ToString());
-                    configs.Add((categoryIndex, keyIndex), new(file.Bind(def, true, null, scope)));
+                    configs.Add((categoryIndex, keyIndex), new(file.Bind(def, true, null, new())));
                 }
             }
-            SetValue();
+            AddValue(new("CoreEnhance/Value.cfg", true));
         }
 
-        private void SetValue()
+        private void AddValue(ConfigFile file)
         {
-
+            TryAddValue(file, EnhanceCategory.Infinity, EC_Infinity.Arena, 100, new AcceptableValueRange<int>(100, 9999));
+            TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Merchant, 0, new AcceptableValueRange<int>(0, 2100));
+            TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Titan, 5, new AcceptableValueRange<int>(5, 300));
         }
 
         /// <summary>
@@ -52,6 +55,17 @@ namespace Assets.CoreEnhance.Scripts.Configs
             if (!Ins.configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
                 return false;
             return entry.Enable;
+        }
+        private static bool TryAddValue<T>(ConfigFile file, EnhanceCategory category, object ec, T defaultV, AcceptableValueBase accept = null)
+        {
+            if (Ins.configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
+            {
+                ConfigDefinition def = entry.Switch.Definition;
+                entry.SetValue(file.Bind(new(def.Section, def.Key + "Value"), defaultV, new(string.Empty, accept), new()));
+                return true;
+            }
+            Debug.Log($"Can't find {category} {ec} config");
+            return false;
         }
 
         /// <summary>

@@ -4,22 +4,22 @@ namespace Assets.CoreEnhance.Scripts.Configs
 {
     public class ConfigData
     {
-        private readonly ConfigEntry<bool> _switch;
-        private ConfigEntryBase _value;
+        public ConfigEntry<bool> Switch { get; private set; }
+        public ConfigEntryBase Value { get; private set; }
         public ConfigData(ConfigEntry<bool> @switch)
         {
-            _switch = @switch;
+            Switch = @switch;
         }
-        public bool Enable => _switch.Value;
-        public void SetValue(ConfigEntryBase value) => _value = value;
+        public bool Enable => Switch.Value;
+        public void SetValue(ConfigEntryBase value) => Value = value;
         public bool TryGetValue<T>(out ConfigEntry<T> value)
         {
             value = null;
-            if (_value == null)
+            if (Value == null)
                 return false;
-            if (typeof(T) != _value.SettingType)
+            if (typeof(T) != Value.SettingType)
                 return false;
-            value = _value as ConfigEntry<T>;
+            value = Value as ConfigEntry<T>;
             return true;
         }
     }
