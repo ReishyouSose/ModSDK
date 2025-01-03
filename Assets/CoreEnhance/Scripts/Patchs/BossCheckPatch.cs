@@ -15,7 +15,7 @@ namespace Assets.CoreEnhance.Scripts.Patchs
             if (!ShouldCheckImmdiately)
                 return;
             ShouldCheckImmdiately = false;
-            ___systemTimer = 10;
+            ___systemTimer = 7;
         }
     }
 }

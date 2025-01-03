@@ -1,9 +1,12 @@
 using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Systems.Misc;
 using CoreLib;
+using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
 using CoreLib.Util.Extensions;
 using PugMod;
+using Rewired;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts
@@ -13,7 +16,8 @@ namespace Assets.CoreEnhance.Scripts
         public void EarlyInit()
         {
             ModConfig.Load();
-            CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule));
+            CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
+            RewiredExtensionModule.AddKeybind(ModKeyBind.QuickStack, "Quick Stack", KeyboardKeyCode.I, ModifierKey.Control);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
         }
 
@@ -53,6 +57,14 @@ namespace Assets.CoreEnhance.Scripts
 
         public void Update()
         {
+            var p = Manager.main.player;
+            if (p == null)
+                return;
+            Player rewiredPlayer = p.inputModule.rewiredPlayer;
+            if (rewiredPlayer.GetButtonDown(ModKeyBind.QuickStack))
+            {
+                QuickStackClient.SendRequest();
+            }
         }
     }
 }

@@ -18,9 +18,8 @@
         "PugMod.SDK",
         "CoreLib",
         "CoreLib.Entity",
-        "CoreLib.Localization",
-        "CoreLib.Resources",
-        "CoreLib.UserInterface"
+        "CoreLib.UserInterface",
+        "CoreLib.RewiredExtension"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

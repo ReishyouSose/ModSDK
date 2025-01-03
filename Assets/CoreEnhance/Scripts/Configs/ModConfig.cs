@@ -22,8 +22,8 @@ namespace Assets.CoreEnhance.Scripts.Configs
                 {
                     0 => typeof(EC_Infinity),
                     1 => typeof(EC_Accelerate),
-                    2 => typeof(EC_Industry),
-                    3 => typeof(EC_Automation),
+                    2 => typeof(EC_Automation),
+                    3 => typeof(EC_Misc),
                     _ => null
                 }))
                 {
