@@ -2,6 +2,7 @@
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Patchs;
 using CoreLib.Data.Configuration;
+using PlayerState;
 using Unity.Entities;
 using Unity.Mathematics;
 
@@ -20,8 +21,11 @@ namespace Assets.CoreEnhance.Scripts.Systems
         protected override void OnUpdate()
         {
             var ecb = CreateCommandBuffer();
+            var tickRate = simulationTickRateForPlatform;
             Accelerate_Merchant();
-            Accelerate_SoulOrb(ecb);
+            Accelerate_SoulOrb(ecb,tickRate);
+            Accelerate_Crafting();
+            Accelerate_Casting(tickRate);
             base.OnUpdate();
         }
         private void Accelerate_Merchant()
@@ -69,13 +73,12 @@ namespace Assets.CoreEnhance.Scripts.Systems
                     .Schedule();
             }
         }
-        private void Accelerate_SoulOrb(EntityCommandBuffer ecb)
+        private void Accelerate_SoulOrb(EntityCommandBuffer ecb,uint tickRate)
         {
             if (!ModConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Titan, out ConfigEntry<int> value))
                 return;
             int maxTime = value.Value;
             var current = GetServerTick();
-            uint tickRate = simulationTickRateForPlatform;
             Entities.ForEach((Entity e, ref DestroyTimerCD destroy) =>
             {
                 ref var timer = ref destroy.timer;
@@ -90,7 +93,34 @@ namespace Assets.CoreEnhance.Scripts.Systems
                 .WithAll<SoulOrbCD>()
                 .WithNone<SoulOrbCutCD>()
                 .WithBurst()
-                .Run();
+                .Schedule();
+        }
+
+        private void Accelerate_Crafting()
+        {
+            if (!ModConfig.TryGetEnable(EnhanceCategory.Accelerate, EC_Accelerate.Crafting))
+                return;
+            Entities.ForEach((ref CraftingCD crafting) =>
+            {
+                if (crafting.disable != 0)
+                    return;
+                crafting.timeLeftToCraft = 0;
+            })
+                .WithName("Accelerate_Crafting")
+                .WithBurst()
+                .Schedule();
+        }
+        private void Accelerate_Casting(uint tickRate)
+        {
+            if (!ModConfig.TryGetEnable(EnhanceCategory.Accelerate, EC_Accelerate.Casting))
+                return;
+            Entities.ForEach((ref CastingStateCD casting) =>
+            {
+                casting.castTimer.SetTargetTicks(0, tickRate);
+            })
+                .WithName("Accelerate_Casting")
+                .WithBurst()
+                .Schedule();
         }
     }
 }

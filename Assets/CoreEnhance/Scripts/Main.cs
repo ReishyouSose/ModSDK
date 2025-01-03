@@ -19,8 +19,7 @@ namespace Assets.CoreEnhance.Scripts
 
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
         {
-            return;
-            if (authoringData.GetEntityObjectID() == ObjectID.CopperOreBoulder)
+            if (authoringData.GetEntityObjectID() == ObjectID.BatMinion)
             {
                 int count = authoringData.GetComponentCount();
                 for (int i = 0; i < count; i++)

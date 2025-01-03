@@ -40,6 +40,8 @@ namespace Assets.CoreEnhance.Scripts.Configs
             TryAddValue(file, EnhanceCategory.Infinity, EC_Infinity.Arena, 100, new AcceptableValueRange<int>(100, 9999));
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Merchant, 0, new AcceptableValueRange<int>(0, 2100));
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Titan, 5, new AcceptableValueRange<int>(5, 300));
+            TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 6, new AcceptableValueList<int>(1, 2, 3, 4, 5, 6), "Amount");
+            TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 5, new AcceptableValueRange<int>(0, 60), "Timer");
         }
 
         /// <summary>
@@ -56,12 +58,14 @@ namespace Assets.CoreEnhance.Scripts.Configs
                 return false;
             return entry.Enable;
         }
-        private bool TryAddValue<T>(ConfigFile file, EnhanceCategory category, object ec, T defaultV, AcceptableValueBase accept = null)
+        private bool TryAddValue<T>(ConfigFile file, EnhanceCategory category, object ec,
+            T defaultV, AcceptableValueBase accept = null, string key = "")
         {
             if (configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
             {
                 ConfigDefinition def = entry.Switch.Definition;
-                entry.SetValue(file.Bind(new(def.Section, def.Key + "Value"), defaultV, new(string.Empty, accept), new()));
+                entry.SetValue(key, file.Bind(new(def.Section, def.Key + (key == string.Empty ? "Value" : key)),
+                    defaultV, new(string.Empty, accept), new()));
                 return true;
             }
             Debug.Log($"Can't find {category} {ec} config");
@@ -76,14 +80,21 @@ namespace Assets.CoreEnhance.Scripts.Configs
         /// <param name="ec">具体条目</param>
         /// <param name="value"></param>
         /// <returns>查询失败或条目未启用均返回false</returns>
-        public static bool TryGetValue<T>(EnhanceCategory category, object ec, out ConfigEntry<T> value)
+        public static bool TryGetValue<T>(EnhanceCategory category, object ec, out ConfigEntry<T> value, string key = "")
         {
             value = null;
             if (!Ins.configs.TryGetValue(((int)category, (int)ec), out var entry))
                 return false;
             if (!entry.Enable)
                 return false;
-            return entry.TryGetValue(out value);
+            return entry.TryGetValue(key, out value);
+        }
+        public static bool TryGetValues(EnhanceCategory category, object ec, out Dictionary<string, ConfigEntryBase> values)
+        {
+            values = null;
+            if (Ins.configs.TryGetValue(((int)category, (int)ec), out var entry))
+                values = entry.Values;
+            return values != null;
         }
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.CoreEnhance.Scripts.Configs
+﻿namespace Assets.CoreEnhance.Scripts.Configs
 {
     public enum EnhanceCategory
     {
@@ -13,7 +7,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
         Industry,
         Automation,
     }
-    public enum EC_Infinity//无限 done
+    public enum EC_Infinity//无限
     {
         Durability,//耐久 done
         Boulder,//大矿 done
@@ -24,6 +18,8 @@ namespace Assets.CoreEnhance.Scripts.Configs
     {
         Merchant,//商人刷新 done
         Titan,//泰坦冷却 done
+        Crafting,//所有等待型制作 done
+        Casting,//读条物品 
     }
     public enum EC_Industry//工业的加速
     {
@@ -32,9 +28,9 @@ namespace Assets.CoreEnhance.Scripts.Configs
         Sawmill,//锯木
         Incubator,//孵化
     }
-    public enum EC_Automation//自动化
+    public enum EC_Automation//自动化 
     {
-        Salvage,//拆解
+        Salvage,//拆解 done
     }
 
 }

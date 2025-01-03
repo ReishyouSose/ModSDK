@@ -67,12 +67,13 @@ namespace Assets.CoreEnhance.Scripts.Systems
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class InfinityServer : PugSimulationSystemBase
     {
-        private const int ResetTimer = 60;
+        private const int ResetTimer = 1200;
         private int timer;
         protected override void OnUpdate()
         {
             var ecb = CreateCommandBuffer();
             Infinity_Arena(ecb);
+            Infinity_Minion();
             if (--timer > 0)
                 return;
             timer = ResetTimer;
@@ -212,6 +213,19 @@ namespace Assets.CoreEnhance.Scripts.Systems
             })
                 .WithName("Infinity_Arena_Rebuild")
                 .WithNone<EventTerminalCD>()
+                .Schedule();
+        }
+        private void Infinity_Minion()
+        {
+            if (!ModConfig.TryGetEnable(EnhanceCategory.Infinity, EC_Infinity.Minion))
+                return;
+            Entities.ForEach((ref MinionCD minion) =>
+            {
+                if (minion.hasStartedLifeSpanTimer)
+                    minion.lifespanTimer = minion.lifespan;
+            })
+                .WithName("Infinity_Minion")
+                .WithBurst()
                 .Schedule();
         }
         private static void GetArenaScene(int index, out FixedString32Bytes name, out float radius, out int2 offset)
