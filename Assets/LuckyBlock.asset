@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: LuckyBlock
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 040e34f0bf5d4df9ad30db0cc6fe196b
+    name: LuckyBlock
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Scripts/Main.cs
+    - path: Scripts/LuckyBlockSystem.cs
+    - path: Scripts/LuckyBlockEM.cs
+    - path: Scripts/Generated/LuckyBlockSystem__System_1781404630.g.cs
+    - path: Scripts/Generated/LuckyBlockSystem__System_1781404631.g.cs
+    - path: Scripts/Generated/Assets.LuckyBlock_LuckyBlockRpcCommandSerializer.cs
+    - path: Bundles/LuckyBlock_Windows.assetbundle
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: CoreLib.Entity
+      required: 1
+  modPath: Assets\LuckyBlock
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 0
+  assets:
+  - path: Assets/LuckyBlock/LuckyBlockItem.prefab
+    hash: 7FEB917072A355907B52719C24B806A76E1FB7B282EF1A44AB792BE6ADE5C52B
+  - path: Assets/LuckyBlock/LuckyBlockShadow.asset
+    hash: DED7134A34027944A30BFAA242F8AC25189C22943ABF643855CE4473A6C2E7B6
+  - path: Assets/LuckyBlock/LuckyBlockSprite.asset
+    hash: D4D2F75FE3424EBC3232AFA1306948C9AF9CDCD61C99A6AEE7A5E39F9974BF3F
+  - path: Assets/LuckyBlock/LuckyBlockTex.png
+    hash: E72908B049BECD5DEB2E28FD2045EF268A9B162391DFEC6596E1A779B8AA7620
+  - path: Assets/LuckyBlock/LuckyBlockTile.prefab
+    hash: 833CAFB0478B309AFFB14424029E883B940D3AEBA8847FD66DEBCE4EA4DA5EBE
+  - path: Assets/LuckyBlock/SpriteAssetManifest.asset
+    hash: 44D41695B03D6BC3595C78CABD4CC8DA9C9321546AF7E8935AC7708EEFA7031B
+  lastBuildLinux: 0
