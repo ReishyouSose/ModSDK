@@ -2,7 +2,7 @@
 
 namespace Assets.CoreEnhance.Scripts.Component
 {
-    public struct SoulOrbCutCD : IComponentData
+    public struct ProcessedTagCD : IComponentData
     {
     }
 }

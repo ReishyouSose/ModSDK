@@ -25,6 +25,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/UI/AutoFisherUI.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
     - path: Scripts/Scripts/Systems/Misc/QuickStackSystem.cs
+    - path: Scripts/Scripts/Systems/Misc/DeathNoDropSyetem.cs
     - path: Scripts/Scripts/Systems/InfinitySystem.cs
     - path: Scripts/Scripts/Systems/AutomationSystem.cs
     - path: Scripts/Scripts/Systems/AccelerateSystem.cs
@@ -35,10 +36,11 @@ MonoBehaviour:
     - path: Scripts/Scripts/Configs/ModConfig.cs
     - path: Scripts/Scripts/Configs/ConfigData.cs
     - path: Scripts/Scripts/Configs/ConfigCategory.cs
-    - path: Scripts/Scripts/Component/SoulOrbCutCD.cs
+    - path: Scripts/Scripts/Component/ProcessedTagCD.cs
     - path: Scripts/Scripts/Component/ArenaRecordCD.cs
     - path: Scripts/Generated/AccelerateSystem__System_18637105950.g.cs
     - path: Scripts/Generated/AutomationSystem__System_1672359590.g.cs
+    - path: Scripts/Generated/DeathNoDropSyetem__System_6712492330.g.cs
     - path: Scripts/Generated/InfinitySystem__System_8289042020.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822040.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822041.g.cs

@@ -23,7 +23,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             var local = new Dictionary<string, string>()
             {
                 { "en", "Open Mod Config Menu" },
-                { "zh-CN", "打开模组配置菜单" }
+                { "zh-CN", "鎵撳紑妯＄粍閰嶇疆鑿滃崟" }
             };
             RewiredExtensionModule.AddKeybind(OpenMenu, local, KeyboardKeyCode.K, ModifierKey.Control);
             RewiredExtensionModule.AddKeybind(HorizenScroll, "GCM:Horizen Scroll(Useless now)", KeyboardKeyCode.LeftShift);

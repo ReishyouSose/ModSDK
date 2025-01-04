@@ -1,4 +1,6 @@
-﻿using Inventory;
+﻿using Assets.CoreEnhance.Scripts.Configs;
+using CoreLib.Data.Configuration;
+using Inventory;
 using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
@@ -48,6 +50,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var player = Manager.main.player;
             if (player == null)
                 return false;
+            if (!ModConfig.TryGetEnable(EnhanceCategory.Misc, EC_Misc.QuickStack))
+                return false;
             Ins.queue.Enqueue(new(player.playerIndex));
             return true;
         }
@@ -80,6 +84,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
+            if (!ModConfig.TryGetValue(EnhanceCategory.Misc, EC_Misc.QuickStack, out ConfigEntry<int> value))
+                return;
             var ecb = CreateCommandBuffer();
             var localQueue = queue;
             shard.Update(ref CheckedStateRef, ecb, SystemAPI.GetSingleton<NetworkTime>());
@@ -88,7 +94,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 localQueue.Enqueue(rpc);
                 ecb.DestroyEntity(e);
             })
-                .WithName("ReceiveQuickStack")
+                .WithName("Misc_QuickStack")
                 .WithAll<ReceiveRpcCommandRequest>()
                 .WithBurst()
                 .Schedule();
@@ -102,12 +108,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 posLookup.TryGetComponent(player, out var playerPos);
                 entities.Dispose();
                 entities = containerQuery.ToEntityArray(Allocator.Temp);
-
+                int range = value.Value;
                 foreach (var container in entities)
                 {
                     posLookup.TryGetComponent(container, out var pos);
                     float dis = Mathf.Sqrt(Vector2.Distance(playerPos.Position.xz, pos.Position.xz));
-                    if (dis > 10)
+                    if (dis > range)
                         continue;
                     InventoryUtility.QuickStack(shard, player, container);
                 }

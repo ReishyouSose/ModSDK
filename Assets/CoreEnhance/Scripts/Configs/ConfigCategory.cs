@@ -20,6 +20,7 @@
         Titan,//泰坦冷却 done
         Crafting,//所有等待型制作 done
         Casting,//读条物品 done
+        Portal,//传送点 done
     }
     public enum EC_Automation//自动化 
     {
@@ -29,7 +30,6 @@
     public enum EC_Misc//杂项
     {
         QuickStack,//快速堆叠到附近箱子 done
-        DeathNoDrop,
-        Teleport,
+        DeathNoDrop,//死亡不掉落 done
     }
 }

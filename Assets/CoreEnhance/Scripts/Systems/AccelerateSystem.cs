@@ -23,9 +23,10 @@ namespace Assets.CoreEnhance.Scripts.Systems
             var ecb = CreateCommandBuffer();
             var tickRate = simulationTickRateForPlatform;
             Accelerate_Merchant();
-            Accelerate_SoulOrb(ecb,tickRate);
+            Accelerate_SoulOrb(ecb, tickRate);
             Accelerate_Crafting();
             Accelerate_Casting(tickRate);
+            Accelerate_Portal(ecb);
             base.OnUpdate();
         }
         private void Accelerate_Merchant()
@@ -73,7 +74,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
                     .Schedule();
             }
         }
-        private void Accelerate_SoulOrb(EntityCommandBuffer ecb,uint tickRate)
+        private void Accelerate_SoulOrb(EntityCommandBuffer ecb, uint tickRate)
         {
             if (!ModConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Titan, out ConfigEntry<int> value))
                 return;
@@ -85,13 +86,13 @@ namespace Assets.CoreEnhance.Scripts.Systems
                 if (timer.GetRemainingSeconds(current, tickRate) > maxTime)
                 {
                     timer.SetTargetTicks(maxTime, tickRate);
-                    ecb.AddComponent<SoulOrbCutCD>(e);
+                    ecb.AddComponent<ProcessedTagCD>(e);
                     BossCheckPatch.ShouldCheckImmdiately = true;
                 }
             })
                 .WithName("Accelerate_SoulOrb")
                 .WithAll<SoulOrbCD>()
-                .WithNone<SoulOrbCutCD>()
+                .WithNone<ProcessedTagCD>()
                 .WithBurst()
                 .Schedule();
         }
@@ -119,6 +120,26 @@ namespace Assets.CoreEnhance.Scripts.Systems
                 casting.castTimer.SetTargetTicks(0, tickRate);
             })
                 .WithName("Accelerate_Casting")
+                .WithBurst()
+                .Schedule();
+        }
+        private void Accelerate_Portal(EntityCommandBuffer ecb)
+        {
+            var wayPointLookup = SystemAPI.GetComponentLookup<WayPointCD>();
+            var distanceLookup = SystemAPI.GetComponentLookup<DistanceToPlayerCD>();
+            Entities.ForEach((Entity e, ref ObjectDataCD objectDataCd) =>
+            {
+                if (wayPointLookup.TryGetComponent(e, out var wayPoint) && distanceLookup.TryGetComponent(e, out var dis))
+                {
+                    float minDis = dis.minDistanceSq;
+                    if (!(minDis > 0) || !(minDis <= wayPoint.distanceToActivateSQ))
+                        return;
+                }
+                ecb.AddComponent<ProcessedTagCD>(e);
+            })
+                .WithName("PortalCharge")
+                .WithAll<PortalCD>()
+                .WithNone<ProcessedTagCD>()
                 .WithBurst()
                 .Schedule();
         }
