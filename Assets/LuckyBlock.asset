@@ -24,6 +24,7 @@ MonoBehaviour:
     - path: Scripts/Main.cs
     - path: Scripts/LuckyBlockSystem.cs
     - path: Scripts/LuckyBlockEM.cs
+    - path: Scripts/LuckyBlockAuthoring.cs
     - path: Scripts/Generated/LuckyBlockSystem__System_1781404630.g.cs
     - path: Scripts/Generated/LuckyBlockSystem__System_1781404631.g.cs
     - path: Scripts/Generated/Assets.LuckyBlock_LuckyBlockRpcCommandSerializer.cs
@@ -40,7 +41,7 @@ MonoBehaviour:
   buildLinux: 0
   assets:
   - path: Assets/LuckyBlock/LuckyBlockItem.prefab
-    hash: 7FEB917072A355907B52719C24B806A76E1FB7B282EF1A44AB792BE6ADE5C52B
+    hash: 0F0B4CC8C6DF2B422CC5E03E801B88735CE580ED4CC7F9C7E6D6ACF8FDB32F95
   - path: Assets/LuckyBlock/LuckyBlockShadow.asset
     hash: DED7134A34027944A30BFAA242F8AC25189C22943ABF643855CE4473A6C2E7B6
   - path: Assets/LuckyBlock/LuckyBlockSprite.asset

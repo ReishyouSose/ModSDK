@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 4401662367938983526}
   - component: {fileID: 3991227550509896867}
   - component: {fileID: 72843547506821830}
+  - component: {fileID: -436006062684490263}
+  - component: {fileID: 3110848730432656732}
   m_Layer: 0
   m_Name: LuckyBlockItem
   m_TagString: Untagged
@@ -331,10 +333,10 @@ MonoBehaviour:
   dontCalculateHealthFromLevel: 0
   overrideStartHealth: 0
   normalizedOverrideStartHealth: 1
-  startHealth: 2
-  maxHealth: 2
+  startHealth: 1
+  maxHealth: 1
   maxHealthMultiplier: 1
-  hasHealthRegeneration: 1
+  hasHealthRegeneration: 0
   healInCombatAsWell: 0
   healDirectlyWhenLeavingCombat: 0
   healthPercentagePerFifthSecond: 100
@@ -488,3 +490,27 @@ MonoBehaviour:
     acceptsObjectIds: 32000000330000003400000035000000360000003700000038000000
   itemsInInventory: []
   addLootFromTable: 0
+--- !u!114 &-436006062684490263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 973679317, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3110848730432656732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ba082bb8d03514498b96604a2213e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
