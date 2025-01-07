@@ -154,8 +154,9 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 938194858606819515}
-        m_TargetAssemblyTypeName: Chest, Pug.Other
-        m_MethodName: OnFree
+        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.AutoFisherEM,
+          CoreEnhance
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

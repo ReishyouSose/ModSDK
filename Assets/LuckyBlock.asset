@@ -21,13 +21,17 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
+    - path: Localization/Localization.csv
+    - path: Scripts/ModConfig.cs
     - path: Scripts/Main.cs
     - path: Scripts/LuckyBlockSystem.cs
     - path: Scripts/LuckyBlockEM.cs
     - path: Scripts/LuckyBlockAuthoring.cs
+    - path: Scripts/ChallengePatch.cs
     - path: Scripts/Generated/LuckyBlockSystem__System_1781404630.g.cs
     - path: Scripts/Generated/LuckyBlockSystem__System_1781404631.g.cs
-    - path: Scripts/Generated/Assets.LuckyBlock_LuckyBlockRpcCommandSerializer.cs
+    - path: Scripts/Generated/LuckyBlockSystem__System_1781404632.g.cs
+    - path: Scripts/Generated/Assets.LuckyBlock_TriggerLBCDCommandSerializer.cs
     - path: Bundles/LuckyBlock_Windows.assetbundle
     dependencies:
     - modName: CoreLib
@@ -40,10 +44,14 @@ MonoBehaviour:
   cacheBundles: 0
   buildLinux: 0
   assets:
+  - path: Assets/LuckyBlock/Localization/Localization.csv
+    hash: B7A2E65F3A28B35BB750AE86A08298EFAA6D2E3FE482C345620069657B31D062
   - path: Assets/LuckyBlock/LuckyBlockItem.prefab
-    hash: 0F0B4CC8C6DF2B422CC5E03E801B88735CE580ED4CC7F9C7E6D6ACF8FDB32F95
+    hash: 5A25BA173F1459D32EFF93FD6D4D484A5837B3B65DF592D6BB7392DF062D409C
   - path: Assets/LuckyBlock/LuckyBlockShadow.asset
     hash: DED7134A34027944A30BFAA242F8AC25189C22943ABF643855CE4473A6C2E7B6
+  - path: Assets/LuckyBlock/LuckyBlockSmall.png
+    hash: 1C04D1C8E15B8101B31E1A1CA4F1A8B05C17FC8F623B194D32EEC76F3D6B801E
   - path: Assets/LuckyBlock/LuckyBlockSprite.asset
     hash: D4D2F75FE3424EBC3232AFA1306948C9AF9CDCD61C99A6AEE7A5E39F9974BF3F
   - path: Assets/LuckyBlock/LuckyBlockTex.png

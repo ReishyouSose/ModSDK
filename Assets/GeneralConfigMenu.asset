@@ -49,6 +49,7 @@ MonoBehaviour:
     - path: Scripts/RUIFramework/Extend/RUIPageSwitcher.cs
     - path: Scripts/RUIFramework/Extend/RUIExpand.cs
     - path: Scripts/RUIFramework/Extend/RUIButtonGroup.cs
+    - path: Scripts/Patches/BetterTextInputDefense.cs
     - path: Scripts/ConfigSync/ConfigSyncSystem.cs
     - path: Scripts/ConfigSync/ConfigChangeRPC.cs
     - path: Scripts/Generated/ConfigSyncSystem__System_18521754110.g.cs
@@ -77,7 +78,7 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/cursor_placement.png
     hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
   - path: Assets/GeneralConfigMenu/Localization/Localization.csv
-    hash: E9668127D96723D37005ED12CD6067A026E36C71274072013AB9A974FE07304A
+    hash: E073D000684ECB0A38230B13A5B103A7B979E4D531FE0BFB4B757687D0DCD510
   - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
     hash: 6B26090869505729FEE7571169C8FE144CBF326AC0002544AECD7936B857C164
   lastBuildLinux: 1

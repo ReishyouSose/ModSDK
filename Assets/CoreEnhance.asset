@@ -26,8 +26,11 @@ MonoBehaviour:
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
     - path: Scripts/Scripts/Systems/Misc/QuickStackSystem.cs
     - path: Scripts/Scripts/Systems/Misc/DeathNoDropSyetem.cs
-    - path: Scripts/Scripts/Systems/InfinitySystem.cs
-    - path: Scripts/Scripts/Systems/AutomationSystem.cs
+    - path: Scripts/Scripts/Systems/Misc/AutoFisherSystem.cs
+    - path: Scripts/Scripts/Systems/Infinity/Durability.cs
+    - path: Scripts/Scripts/Systems/Infinity/Common.cs
+    - path: Scripts/Scripts/Systems/Infinity/Arena.cs
+    - path: Scripts/Scripts/Systems/Automation/AutomationSystem.cs
     - path: Scripts/Scripts/Systems/AccelerateSystem.cs
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
     - path: Scripts/Scripts/Main.cs
@@ -36,14 +39,18 @@ MonoBehaviour:
     - path: Scripts/Scripts/Configs/ModConfig.cs
     - path: Scripts/Scripts/Configs/ConfigData.cs
     - path: Scripts/Scripts/Configs/ConfigCategory.cs
-    - path: Scripts/Scripts/Component/ProcessedTagCD.cs
-    - path: Scripts/Scripts/Component/ArenaRecordCD.cs
+    - path: Scripts/Scripts/Components/ProcessedTagCD.cs
     - path: Scripts/Generated/AccelerateSystem__System_18637105950.g.cs
-    - path: Scripts/Generated/AutomationSystem__System_1672359590.g.cs
+    - path: Scripts/Generated/Arena__System_1664514490.g.cs
+    - path: Scripts/Generated/AutoFisherSystem__System_2481893110.g.cs
+    - path: Scripts/Generated/AutoFisherSystem__System_2481893111.g.cs
+    - path: Scripts/Generated/AutomationSystem__System_20440786790.g.cs
+    - path: Scripts/Generated/Common__System_18746596250.g.cs
     - path: Scripts/Generated/DeathNoDropSyetem__System_6712492330.g.cs
-    - path: Scripts/Generated/InfinitySystem__System_8289042020.g.cs
+    - path: Scripts/Generated/Durability__System_6784147770.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822040.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822041.g.cs
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_AutoFisherExpRpcCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_QuickStackRpcCommandSerializer.cs
     - path: Bundles/CoreEnhance_Windows.assetbundle
     dependencies:
@@ -64,17 +71,17 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/Autofisher.png
     hash: 8C1A11FE176D828EAB2EB58AF0EE6465D3C791D6CD0AEEF6707F65A8C53350FD
   - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
-    hash: 545FBEB0641CC9EA59FE9479FE6516CD38F0110AA381CBDF632454C1BF9BBDA9
+    hash: 6A0E63C074819092807A731E07579290C89F0CD505F92FE6B7936A4BD7CA1C53
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 7ECD57F0594D7DA012D7E7C1781ABA5BD5E7A4D6B2F86F381C14A1601A0D9FD6
+    hash: 62CDD25EEAEA0ED2178B4DB5C6A81F17A3C6E88564F3C124F64EA1CF5368AB9C
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
     hash: FCF0C8BB69754C4E5D414D68E3A69532D041C904841247E7D65D2AE6F8DC3D0A
-  - path: Assets/CoreEnhance/TIles/AutoFisherShadow.asset
+  - path: Assets/CoreEnhance/Tiles/AutoFisherShadow.asset
     hash: CBE96931DC2D34617C5DA7DF9672A516273A191772803BA828D8DBDCA5066356
-  - path: Assets/CoreEnhance/TIles/AutoFisherSprite.asset
+  - path: Assets/CoreEnhance/Tiles/AutoFisherSprite.asset
     hash: B326434A65DF1E560265C394A16AD2AF57D090BB5D601FD72606136A4FFF871B
-  - path: Assets/CoreEnhance/TIles/AutoFisherTIle.prefab
-    hash: 79BDF737FA9FEF6B6A7A5E4A88B277190A01F88F15FD2D4FEB9521FA83BEEF3A
+  - path: Assets/CoreEnhance/Tiles/AutoFisherTIle.prefab
+    hash: 523EDA6AD1A24E7B9D93F60C296E548B815FF3B4AB819000A7D161E9722884F7
   - path: Assets/CoreEnhance/UI/AutoFisherUI.prefab
-    hash: 70FB8E446B4EC4AD9AFEE9B66CCCF29540AC54A5F7D11F0CC0703C49BEE56535
+    hash: 4F12BAD8B4C661D21F92CDDAD3270B206697D38A1D1DD383EAFE5C5E1E4FA8BB
   lastBuildLinux: 0

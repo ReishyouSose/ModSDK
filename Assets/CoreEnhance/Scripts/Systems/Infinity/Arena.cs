@@ -1,103 +1,29 @@
-﻿using Assets.CoreEnhance.Scripts.Component;
+﻿using System;
+using Unity.Entities;
 using Assets.CoreEnhance.Scripts.Configs;
 using CoreLib.Data.Configuration;
-using System;
-using Unity.Collections;
-using Unity.Entities;
-using Unity.Mathematics;
-using Unity.Physics;
 using Unity.Transforms;
+using Unity.Collections;
+using Unity.Physics;
+using Unity.Mathematics;
 
-namespace Assets.CoreEnhance.Scripts.Systems
+namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
-    [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
-    public partial class InfinityClient : PugSimulationSystemBase
+    public struct ArenaRecordCD : IComponentData
     {
-        private bool added;
-        protected override void OnUpdate()
-        {
-            var player = Manager.main.player;
-            if (player == null)
-            {
-                added = false;
-                return;
-            }
-            if (ModConfig.TryGetEnable(EnhanceCategory.Infinity, EC_Infinity.Durability))
-            {
-                if (added)
-                    return;
-                added = true;
-                ConditionData cd = new()
-                {
-                    conditionID = ConditionID.EquipmentDurabilityLastsLonger,
-                    value = 100
-                };
-                player.playerCommandSystem.SetSkillTalentCondition(player.entity, cd);
-                cd.conditionID = ConditionID.ToolDurabilityLastsLonger;
-                player.playerCommandSystem.SetSkillTalentCondition(player.entity, cd);
-            }
-            else
-            {
-                if (!added)
-                    return;
-                added = false;
-                var tree = Manager.saves.GetSkillTalentTreesPoints(SkillID.Crafting);
-                int count = tree.Count;
-
-                ConditionData cd = new()
-                {
-                    conditionID = ConditionID.ToolDurabilityLastsLonger,
-                    value = count > 2 ? tree[1] : 0
-                };
-                player.playerCommandSystem.SetSkillTalentCondition(player.entity, cd);
-
-                cd = new()
-                {
-                    conditionID = ConditionID.EquipmentDurabilityLastsLonger,
-                    value = count > 3 ? tree[2] : 0
-                };
-                player.playerCommandSystem.SetSkillTalentCondition(player.entity, cd);
-            }
-            base.OnUpdate();
-        }
+        public float time;
+        public bool chest;
     }
 
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class InfinityServer : PugSimulationSystemBase
+    public partial class Arena : PugSimulationSystemBase
     {
-        private const int ResetTimer = 1200;
-        private int timer;
         protected override void OnUpdate()
-        {
-            var ecb = CreateCommandBuffer();
-            Infinity_Arena(ecb);
-            Infinity_Minion();
-            if (--timer > 0)
-                return;
-            timer = ResetTimer;
-            Infinity_Boulder();
-            base.OnUpdate();
-        }
-        private void Infinity_Boulder()
-        {
-            if (!ModConfig.TryGetEnable(EnhanceCategory.Infinity, EC_Infinity.Boulder))
-                return;
-            Entities.ForEach((ref HealthCD heal, in ObjectDataCD objdata) =>
-            {
-                heal.health = heal.maxHealth;
-            })
-                .WithName("Infinity_Boulder")
-                .WithAll<RequiresDrillCD>()
-                .WithAll<DontDropSelfCD>()
-                .WithBurst()
-                .Schedule();
-        }
-        private void Infinity_Arena(EntityCommandBuffer ecb)
         {
             if (!ModConfig.TryGetValue(EnhanceCategory.Infinity, EC_Infinity.Arena, out ConfigEntry<int> value))
                 return;
+            var ecb = CreateCommandBuffer();
             Entities.ForEach((Entity entity) =>
             {
                 ecb.AddComponent(entity, new ArenaRecordCD());
@@ -214,19 +140,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
                 .WithName("Infinity_Arena_Rebuild")
                 .WithNone<EventTerminalCD>()
                 .Schedule();
-        }
-        private void Infinity_Minion()
-        {
-            if (!ModConfig.TryGetEnable(EnhanceCategory.Infinity, EC_Infinity.Minion))
-                return;
-            Entities.ForEach((ref MinionCD minion) =>
-            {
-                if (minion.hasStartedLifeSpanTimer)
-                    minion.lifespanTimer = minion.lifespan;
-            })
-                .WithName("Infinity_Minion")
-                .WithBurst()
-                .Schedule();
+            base.OnUpdate();
         }
         private static void GetArenaScene(int index, out FixedString32Bytes name, out float radius, out int2 offset)
         {

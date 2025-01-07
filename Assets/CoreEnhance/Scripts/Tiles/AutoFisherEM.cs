@@ -1,5 +1,7 @@
 ﻿using Assets.CoreEnhance.Scripts.UI;
 using CoreLib.UserInterface;
+using Unity.Entities;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Tiles
 {
@@ -10,14 +12,12 @@ namespace Assets.CoreEnhance.Scripts.Tiles
         public override void Use()
         {
             base.Use();
-            return;
             AutoFisherUI.Ins.SetAutoFisher(this);
             UserInterfaceModule.OpenModUI(UI);
         }
-        public override void OnFree()
+        public new void Close()
         {
-            base.OnFree();
-            return;
+            OnPlayerLeftChest();
             AutoFisherUI.Ins.HideUI();
         }
     }

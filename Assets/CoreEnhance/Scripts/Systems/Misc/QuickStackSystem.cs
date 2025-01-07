@@ -50,7 +50,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var player = Manager.main.player;
             if (player == null)
                 return false;
-            if (!ModConfig.TryGetEnable(EnhanceCategory.Misc, EC_Misc.QuickStack))
+            if (!ModConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.QuickStack))
                 return false;
             Ins.queue.Enqueue(new(player.playerIndex));
             return true;

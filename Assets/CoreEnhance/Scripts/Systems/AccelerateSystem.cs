@@ -1,4 +1,4 @@
-﻿using Assets.CoreEnhance.Scripts.Component;
+﻿using Assets.CoreEnhance.Scripts.Sturcts;
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Patchs;
 using CoreLib.Data.Configuration;
@@ -12,16 +12,15 @@ namespace Assets.CoreEnhance.Scripts.Systems
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class AccelerateSystem : PugSimulationSystemBase
     {
-        private uint simulationTickRateForPlatform;
+        private uint tickRate;
         protected override void OnCreate()
         {
-            simulationTickRateForPlatform = (uint)NetworkingManager.GetSimulationTickRateForPlatform();
+            tickRate = (uint)NetworkingManager.GetSimulationTickRateForPlatform();
             base.OnCreate();
         }
         protected override void OnUpdate()
         {
             var ecb = CreateCommandBuffer();
-            var tickRate = simulationTickRateForPlatform;
             Accelerate_Merchant();
             Accelerate_SoulOrb(ecb, tickRate);
             Accelerate_Crafting();
@@ -99,7 +98,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
 
         private void Accelerate_Crafting()
         {
-            if (!ModConfig.TryGetEnable(EnhanceCategory.Accelerate, EC_Accelerate.Crafting))
+            if (!ModConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Crafting))
                 return;
             Entities.ForEach((ref CraftingCD crafting) =>
             {
@@ -113,7 +112,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Casting(uint tickRate)
         {
-            if (!ModConfig.TryGetEnable(EnhanceCategory.Accelerate, EC_Accelerate.Casting))
+            if (!ModConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Casting))
                 return;
             Entities.ForEach((ref CastingStateCD casting) =>
             {

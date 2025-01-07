@@ -53,7 +53,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
         /// <param name="ec">具体条目</param>
         /// <param name="entry"></param>
         /// <returns>查询失败或条目未启用均返回false</returns>
-        public static bool TryGetEnable(EnhanceCategory category, object ec)
+        public static bool IsEnable(EnhanceCategory category, object ec)
         {
             if (!Ins.configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
                 return false;

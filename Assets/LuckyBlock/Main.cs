@@ -10,6 +10,7 @@ namespace Assets.LuckyBlock
         public void EarlyInit()
         {
             CoreLibMod.LoadModules(typeof(EntityModule));
+            ModConfig.Load();
         }
 
         public void Init()

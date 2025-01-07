@@ -23,7 +23,7 @@ namespace Assets.CoreEnhance.Scripts
 
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
         {
-            if (authoringData.GetEntityObjectID() == ObjectID.BatMinion)
+            if (authoringData.GetEntityObjectID() == ObjectID.MorphaChest)
             {
                 int count = authoringData.GetComponentCount();
                 for (int i = 0; i < count; i++)

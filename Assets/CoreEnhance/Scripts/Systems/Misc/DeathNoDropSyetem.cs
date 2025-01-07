@@ -1,4 +1,4 @@
-﻿using Assets.CoreEnhance.Scripts.Component;
+﻿using Assets.CoreEnhance.Scripts.Sturcts;
 using Assets.CoreEnhance.Scripts.Configs;
 using Unity.Entities;
 using Unity.NetCode;
@@ -20,7 +20,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         private void Misc_DeathNoDrop(EntityCommandBuffer ecb)
         {
-            if (!ModConfig.TryGetEnable(EnhanceCategory.Misc, EC_Misc.DeathNoDrop))
+            if (!ModConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.DeathNoDrop))
                 return;
             var lookup = SystemAPI.GetComponentLookup<InitialMoveInventoryFromCD>();
             Entities.ForEach((Entity e) =>

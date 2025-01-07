@@ -1,41 +1,56 @@
-﻿using Assets.CoreEnhance.Scripts.Tiles;
+﻿using Assets.CoreEnhance.Scripts.Systems.Misc;
+using Assets.CoreEnhance.Scripts.Tiles;
 using CoreLib.UserInterface;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.UI
 {
-    public class AutoFisherUI : InventoryUI, IModUI
+    public class AutoFisherUI : MonoBehaviour, IModUI
     {
-        public static AutoFisherUI Ins { get; private set; }
         public GameObject Root => gameObject;
 
         public bool showWithPlayerInventory => true;
 
         public bool shouldPlayerCraftingShow => false;
-        public AutoFisherEM AutoFisherIns { get; private set; }
-        public override int MAX_COLUMNS => 1;
-        public override int MAX_ROWS => 3;
-        protected override void Awake()
+        public static AutoFisherUI Ins { get; private set; }
+
+        public PugText Exp;
+        private EntityManager manager;
+        private Entity AutoFisher;
+        private void Awake()
         {
             Ins = this;
-            base.Awake();
+            HideUI();
         }
-        public void SetAutoFisher(AutoFisherEM autoFisher) => AutoFisherIns = autoFisher;
 
         public void HideUI()
         {
             Root.SetActive(false);
-            SetAutoFisher(null);
+            AutoFisher = Entity.Null;
         }
 
         public void ShowUI()
         {
-            if (AutoFisherIns == null)
+            if (AutoFisher == Entity.Null)
             {
-                Debug.Log("Not set auto fisher ins");
+                Debug.Log("Not set auto fisher entity");
                 return;
             }
             Root.SetActive(true);
+        }
+        public void SetAutoFisher(AutoFisherEM em)
+        {
+            AutoFisher = em.entity;
+            manager = em.world.EntityManager;
+        }
+        private void Update()
+        {
+            Exp.Render(manager.GetComponentData<ObjectDataCD>(AutoFisher).amount.ToString());
+        }
+        public void ReceiveExp()
+        {
+            AutoFisherClient.ReceiveExp(AutoFisher, Manager.main.player.entity);
         }
     }
 }
