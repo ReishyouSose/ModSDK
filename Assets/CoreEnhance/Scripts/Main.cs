@@ -7,6 +7,7 @@ using CoreLib.UserInterface;
 using CoreLib.Util.Extensions;
 using PugMod;
 using Rewired;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts
@@ -21,9 +22,21 @@ namespace Assets.CoreEnhance.Scripts
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
         }
 
-        private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
+        private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            if (authoringData.GetEntityObjectID() == ObjectID.MorphaChest)
+            if (entityManager.HasBuffer<InventorySlotRequirementBuffer>(entity))
+            {
+                if (authoringData.GetEntityObjectID() != API.Authoring.GetObjectID("CoreEnhance:AutoFisher"))
+                    return;
+                var id = API.Authoring.GetObjectID("CoreEnhance:IndustrialBaitCan");
+                var requires = entityManager.GetBuffer<InventorySlotRequirementBuffer>(entity);
+                var req = requires[1];
+                req.acceptsObjectIds[0] = id;
+                requires[1] = req;
+
+            }
+            return;
+            if (authoringData.GetEntityObjectID() == API.Authoring.GetObjectID("CoreEnhance:IndustrialBaitCan"))
             {
                 int count = authoringData.GetComponentCount();
                 for (int i = 0; i < count; i++)

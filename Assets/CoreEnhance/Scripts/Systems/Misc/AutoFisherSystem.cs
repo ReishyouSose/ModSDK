@@ -18,6 +18,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             Player = player;
         }
     }
+
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
     public partial class AutoFisherClient : PugSimulationSystemBase
@@ -47,6 +48,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             ins.queue.Enqueue(new(autoFisher, player));
         }
     }
+
+    [UpdateAfter(typeof(UniquePlaceableSystem))]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class AutoFisherServer : PugSimulationSystemBase
@@ -93,8 +96,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData,
                 ref AutoFisherCD af, ref RandomCD random, in InventoryCD inv, in LocalTransform trans) =>
             {
+                if (containers[0].objectID == ObjectID.None)
+                    return;
                 ref var rng = ref random.Value;
-                if (rng.NextFloat(10) > af.timer)
+                if (rng.NextFloat(5, 60) > af.timer)
                 {
                     af.timer += delta;
                     return;
@@ -128,18 +133,24 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 {
                     var item = drops[j];
                     objData.amount++;
-                    for (int i = 0; i < length; i++)
+                    ObjectID origin = item.objectID;
+                    if (!localStackable.TryGetValue((int)origin, out bool stack))
                     {
-                        var data = containers[i].objectData;
-                        ObjectID id = data.objectID;
-                        if (id == item.objectID)
+                        ref var info = ref PugDatabase.GetEntityObjectInfo(origin, localDatabase);
+                        localStackable.Add((int)origin, stack = info.isStackable);
+                    }
+                    if (stack)
+                    {
+                        int empty = -1;
+                        for (int i = 1; i < length; i++)
                         {
-                            if (!localStackable.TryGetValue((int)id, out bool stack))
+                            var data = containers[i].objectData;
+                            ObjectID id = data.objectID;
+                            if (empty < 0 && id == ObjectID.None)
                             {
-                                ref var info = ref PugDatabase.GetEntityObjectInfo(id, localDatabase);
-                                localStackable.Add((int)id, stack = info.isStackable);
+                                empty = i;
                             }
-                            if (stack)
+                            if (id == item.objectID)
                             {
                                 int amount = data.amount + item.amount;
                                 if (amount > 9999)
@@ -158,17 +169,21 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                                     break;
                                 }
                             }
-                            else
-                                continue;
                         }
-                        else if (id == ObjectID.None)
+                        if (empty >= 0)
                         {
-                            containers[i] = CreateItem(item.objectID, item.amount);
-                            break;
+                            containers[empty] = CreateItem(item.objectID, item.amount);
                         }
-                        else
+                    }
+                    else
+                    {
+                        for (int i = 0; i < length; i++)
                         {
-                            continue;
+                            if (containers[i].objectData.objectID == ObjectID.None)
+                            {
+                                containers[i] = CreateItem(item.objectID, item.amount);
+                                break;
+                            }
                         }
                     }
                 }

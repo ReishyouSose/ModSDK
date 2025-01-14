@@ -1,4 +1,5 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
+using PlayerEquipment;
 using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
@@ -53,6 +54,5 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                 .WithBurst()
                 .Schedule();
         }
-
     }
 }

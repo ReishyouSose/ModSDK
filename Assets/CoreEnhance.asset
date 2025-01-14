@@ -22,8 +22,11 @@ MonoBehaviour:
     requiredOn: 3
     files:
     - path: Localization/Localization.csv
-    - path: Scripts/Scripts/UI/AutoFisherUI.cs
+    - path: Scripts/Scripts/UI/TerminalChestUI.cs
+    - path: Scripts/Scripts/UI/HintContainerUI.cs
+    - path: Scripts/Scripts/Tiles/AutoFisherTerminalEM.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
+    - path: Scripts/Scripts/Systems/Misc/UniquePlaceableSystem.cs
     - path: Scripts/Scripts/Systems/Misc/QuickStackSystem.cs
     - path: Scripts/Scripts/Systems/Misc/DeathNoDropSyetem.cs
     - path: Scripts/Scripts/Systems/Misc/AutoFisherSystem.cs
@@ -39,7 +42,9 @@ MonoBehaviour:
     - path: Scripts/Scripts/Configs/ModConfig.cs
     - path: Scripts/Scripts/Configs/ConfigData.cs
     - path: Scripts/Scripts/Configs/ConfigCategory.cs
+    - path: Scripts/Scripts/Components/UniquePlaceableAuthoring.cs
     - path: Scripts/Scripts/Components/ProcessedTagCD.cs
+    - path: Scripts/Scripts/Components/ModSlotRequireAuthoring.cs
     - path: Scripts/Generated/AccelerateSystem__System_18637105950.g.cs
     - path: Scripts/Generated/Arena__System_1664514490.g.cs
     - path: Scripts/Generated/AutoFisherSystem__System_2481893110.g.cs
@@ -50,6 +55,7 @@ MonoBehaviour:
     - path: Scripts/Generated/Durability__System_6784147770.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822040.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822041.g.cs
+    - path: Scripts/Generated/UniquePlaceableSystem__System_216185090.g.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_AutoFisherExpRpcCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_QuickStackRpcCommandSerializer.cs
     - path: Bundles/CoreEnhance_Windows.assetbundle
@@ -68,20 +74,32 @@ MonoBehaviour:
   cacheBundles: 0
   buildLinux: 0
   assets:
+  - path: Assets/CoreEnhance/Items/9f5e0dd3304c04aa1f5d48404328610e.png
+    hash: 9140CAFA0096AF6438C6861E65F690B58A9407F45DB368ACB119039D34F91657
   - path: Assets/CoreEnhance/Items/Autofisher.png
     hash: 8C1A11FE176D828EAB2EB58AF0EE6465D3C791D6CD0AEEF6707F65A8C53350FD
   - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
-    hash: 6A0E63C074819092807A731E07579290C89F0CD505F92FE6B7936A4BD7CA1C53
+    hash: D694452D4E43562EC9C82039A9911E076522BFCCF0B4CBDBDDB27665E71DD288
+  - path: Assets/CoreEnhance/Items/AutoFisherTerminal.png
+    hash: 4451E4391DBFF3207F362A99CCFF141D91A7870D1C84ADA45519F0E074E7E6BD
+  - path: Assets/CoreEnhance/Items/IndustrialBaitCan.png
+    hash: 8348F0F8791E928A5C7DDCB6AEC622C309C48EA3D91359B8D6309987E11F351F
+  - path: Assets/CoreEnhance/Items/IndustrialBaitCan.prefab
+    hash: 11B6A7E1EC09292D30026FCC0DC51387160812C89C5E1A113065149BE5FF2B52
+  - path: Assets/CoreEnhance/Items/IndustrialBaitCanSmall.png
+    hash: BAFB8AABBBBBB78AED3CBC41004384B6021CF1C64EE35CD3F5603EC7C8A8D4B4
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 62CDD25EEAEA0ED2178B4DB5C6A81F17A3C6E88564F3C124F64EA1CF5368AB9C
+    hash: 35A7D2E25E1B58DEB99E877EC1A9B01B25780A46128664DD023777B9C2A0F6A2
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
     hash: FCF0C8BB69754C4E5D414D68E3A69532D041C904841247E7D65D2AE6F8DC3D0A
   - path: Assets/CoreEnhance/Tiles/AutoFisherShadow.asset
     hash: CBE96931DC2D34617C5DA7DF9672A516273A191772803BA828D8DBDCA5066356
   - path: Assets/CoreEnhance/Tiles/AutoFisherSprite.asset
     hash: B326434A65DF1E560265C394A16AD2AF57D090BB5D601FD72606136A4FFF871B
-  - path: Assets/CoreEnhance/Tiles/AutoFisherTIle.prefab
-    hash: 523EDA6AD1A24E7B9D93F60C296E548B815FF3B4AB819000A7D161E9722884F7
+  - path: Assets/CoreEnhance/Tiles/AutoFisherTile.prefab
+    hash: CCD4DDBEB0DDBAC56684A2474C41101529DE5137168479532D3435A885EED399
   - path: Assets/CoreEnhance/UI/AutoFisherUI.prefab
-    hash: 4F12BAD8B4C661D21F92CDDAD3270B206697D38A1D1DD383EAFE5C5E1E4FA8BB
+    hash: 5BD3BC5DE3173AFDE3A39BA3EABBE0DC353DB5BDB333A59D31C5B4B083C7D323
+  - path: Assets/CoreEnhance/UI/ItemSlot.controller
+    hash: 5051F6B0C74D05B6C870EB1C54B0E85536DE5838DE1C51F79651B05372D632FD
   lastBuildLinux: 0

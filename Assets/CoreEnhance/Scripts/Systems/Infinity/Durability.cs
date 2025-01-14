@@ -1,4 +1,4 @@
-﻿using Inventory;
+﻿using Assets.CoreEnhance.Scripts.Configs;
 using PlayerEquipment;
 using Unity.Entities;
 
@@ -20,6 +20,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         protected override void OnUpdate()
         {
+            if (!ModConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Durability))
+                return;
             var held = heldLookup;
             var all = allLookup;
             Entities.ForEach((Entity player) =>

@@ -1,6 +1,6 @@
 ﻿namespace Assets.CoreEnhance.Scripts.Tiles
 {
-    public class AutoFisherEM : Chest
+    public class AutoFisherTerminalEM : Chest
     {
     }
 }

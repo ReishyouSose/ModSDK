@@ -26,9 +26,10 @@ GameObject:
   - component: {fileID: 2445745560876883966}
   - component: {fileID: 4401662367938983526}
   - component: {fileID: 3991227550509896867}
-  - component: {fileID: 72843547506821830}
   - component: {fileID: -8323917109155467736}
-  - component: {fileID: 6898123512376623222}
+  - component: {fileID: -7460004867075468362}
+  - component: {fileID: -3086179831089239316}
+  - component: {fileID: 845021786232025266}
   m_Layer: 0
   m_Name: AutoFisherItem
   m_TagString: Untagged
@@ -463,28 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b4b9264304dc2b5f1e3feb621bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &72843547506821830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 863540370, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sizeX: 6
-  sizeY: 3
-  maxExtraSize: 0
-  canOnlyContainOneItemPerSlot: 0
-  objectsGetLockedInPlace: 0
-  cantAddObjectsToInventory: 1
-  canBeUsedInNearbyCrafting: 0
-  slotRequirements: []
-  itemsInInventory: []
-  addLootFromTable: 0
 --- !u!114 &-8323917109155467736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a704b347d6444974bb54807328a7bb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6898123512376623222
+--- !u!114 &-7460004867075468362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,6 +485,89 @@ MonoBehaviour:
   m_GameObject: {fileID: 548004899387042758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -762863004, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e912e9dcc12b1b40b21c4b118483023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3086179831089239316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7d711c4f6870846a99ab8ad07c3ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotRequirements:
+  - RequireIndex: 1
+    ReplaceIndex: 0
+    Name: CoreEnhance:IndustrialBaitCan
+--- !u!114 &845021786232025266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 863540370, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeX: 3
+  sizeY: 3
+  maxExtraSize: 36
+  canOnlyContainOneItemPerSlot: 0
+  objectsGetLockedInPlace: 0
+  cantAddObjectsToInventory: 0
+  canBeUsedInNearbyCrafting: 0
+  slotRequirements:
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: 32000000330000003400000035000000360000003700000038000000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: bc200000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: 08200000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: 45210000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: a8210000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: 05220000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: 73220000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: aa220000
+  - requirementAppliesToAllSlots: 0
+    dontShowAnyHint: 0
+    showInfoText: 0
+    acceptsObjectsWithTags: 
+    acceptsObjectIds: aa220000
+  itemsInInventory: []
+  addLootFromTable: 0
