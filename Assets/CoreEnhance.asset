@@ -37,6 +37,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Systems/AccelerateSystem.cs
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
     - path: Scripts/Scripts/Main.cs
+    - path: Scripts/Scripts/Items/AutoFisherTerminalAuthoring.cs
     - path: Scripts/Scripts/Items/AutoFisherAuthoring.cs
     - path: Scripts/Scripts/Configs/ModKeyBind.cs
     - path: Scripts/Scripts/Configs/ModConfig.cs
@@ -44,7 +45,6 @@ MonoBehaviour:
     - path: Scripts/Scripts/Configs/ConfigCategory.cs
     - path: Scripts/Scripts/Components/UniquePlaceableAuthoring.cs
     - path: Scripts/Scripts/Components/ProcessedTagCD.cs
-    - path: Scripts/Scripts/Components/ModSlotRequireAuthoring.cs
     - path: Scripts/Generated/AccelerateSystem__System_18637105950.g.cs
     - path: Scripts/Generated/Arena__System_1664514490.g.cs
     - path: Scripts/Generated/AutoFisherSystem__System_2481893110.g.cs
@@ -79,9 +79,13 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/Autofisher.png
     hash: 8C1A11FE176D828EAB2EB58AF0EE6465D3C791D6CD0AEEF6707F65A8C53350FD
   - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
-    hash: D694452D4E43562EC9C82039A9911E076522BFCCF0B4CBDBDDB27665E71DD288
-  - path: Assets/CoreEnhance/Items/AutoFisherTerminal.png
-    hash: 4451E4391DBFF3207F362A99CCFF141D91A7870D1C84ADA45519F0E074E7E6BD
+    hash: 10F43988F8CBBB2393463DD119A0334FC4D33F44794745FFA6FCEA0A292E70E0
+  - path: Assets/CoreEnhance/Items/AutoFisherTerminal_Item.png
+    hash: 0F5589183200053E25F72B369ECC8A4445EC851A3A160026BA32AD7597F471D4
+  - path: Assets/CoreEnhance/Items/AutoFisherTerminal_Small.png
+    hash: 2FFEAED03119A01BD74D57A6867029B15C503BCB43326703C7D053941E6A5C24
+  - path: Assets/CoreEnhance/Items/AutoFisherTerminalItem.prefab
+    hash: 99390164A8193ADC8558C37AF048DF9457E4146C9EC3794E71ED9FF59AD23C7A
   - path: Assets/CoreEnhance/Items/IndustrialBaitCan.png
     hash: 8348F0F8791E928A5C7DDCB6AEC622C309C48EA3D91359B8D6309987E11F351F
   - path: Assets/CoreEnhance/Items/IndustrialBaitCan.prefab
@@ -91,15 +95,23 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Localization/Localization.csv
     hash: 35A7D2E25E1B58DEB99E877EC1A9B01B25780A46128664DD023777B9C2A0F6A2
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
-    hash: FCF0C8BB69754C4E5D414D68E3A69532D041C904841247E7D65D2AE6F8DC3D0A
-  - path: Assets/CoreEnhance/Tiles/AutoFisherShadow.asset
-    hash: CBE96931DC2D34617C5DA7DF9672A516273A191772803BA828D8DBDCA5066356
+    hash: 9C0CFBFC7ABD977A46B343637A4BB0A72A55235F71A897CE1E311B7A4DEBA3DC
   - path: Assets/CoreEnhance/Tiles/AutoFisherSprite.asset
     hash: B326434A65DF1E560265C394A16AD2AF57D090BB5D601FD72606136A4FFF871B
+  - path: Assets/CoreEnhance/Tiles/AutoFisherTerminal.asset
+    hash: 74CAB36E4FFF6A1BA2C545DFED109592C3CE1132ED40981200E5C039E9D84EB1
+  - path: Assets/CoreEnhance/Tiles/AutoFisherTerminal_Place.png
+    hash: 17F19E4FC3AFD404265270A3E4B7FE6293CED29513653C892D158325199CB03F
+  - path: Assets/CoreEnhance/Tiles/AutoFisherTerminalTile.prefab
+    hash: B04C32EAD42387FA1AC7E8EDE7D6B0D15B4541520264938EC68B5283DB735F99
   - path: Assets/CoreEnhance/Tiles/AutoFisherTile.prefab
-    hash: CCD4DDBEB0DDBAC56684A2474C41101529DE5137168479532D3435A885EED399
+    hash: 1EF9A216AB73F255FBAFEC5C2271241354C582666581450D4D40DC66446FF269
+  - path: Assets/CoreEnhance/Tiles/Shadow.png
+    hash: EED51F7C6E3D31B3E8D9ACDF39F21A071325221CD18A085D46362BB8BC3D8C08
+  - path: Assets/CoreEnhance/Tiles/ShadowSprite.asset
+    hash: 4F40ACEE6D2264B5CA4976D006D994F05578278A7E448EE24760F85CE7F20493
   - path: Assets/CoreEnhance/UI/AutoFisherUI.prefab
-    hash: 5BD3BC5DE3173AFDE3A39BA3EABBE0DC353DB5BDB333A59D31C5B4B083C7D323
+    hash: D1397E24478C95C59CF3C0D2AAB9208D0B2764736FBE37E8BE34ED04B07E3A7D
   - path: Assets/CoreEnhance/UI/ItemSlot.controller
     hash: 5051F6B0C74D05B6C870EB1C54B0E85536DE5838DE1C51F79651B05372D632FD
   lastBuildLinux: 0

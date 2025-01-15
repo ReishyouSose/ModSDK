@@ -1,8 +1,9 @@
 ﻿using Assets.CoreEnhance.Scripts.Items;
-using PugTilemap;
+using CoreLib.Submodules.ModEntity.Patches;
+using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
+using Unity.Jobs;
 using Unity.NetCode;
 using Unity.Transforms;
 
@@ -57,9 +58,13 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         private NativeHashMap<int, bool> stackable;
         private BiomeLookup biomeLookup;
         private ComponentLookup<ObjectDataCD> objDataLookup;
+        private ComponentLookup<InitialMoveInventoryFromCD> moveLookup;
+        private float moveTimer;
+        private EntityQuery terminal;
         protected override void OnCreate()
         {
             stackable = new(1024, Allocator.Persistent);
+            terminal = EntityManager.CreateEntityQuery(typeof(AutoFisherTerminalCD));
             NeedDatabase();
             NeedLootBank();
             base.OnCreate();
@@ -74,10 +79,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         protected override void OnUpdate()
         {
             var ecb = CreateCommandBuffer();
-            var lookup = objDataLookup;
+            var objDataLookup = this.objDataLookup;
             Entities.ForEach((Entity e, in AutoFisherExpRpc exp) =>
             {
-                ref var objData = ref lookup.GetRefRW(exp.AutoFisher).ValueRW;
+                ref var objData = ref objDataLookup.GetRefRW(exp.AutoFisher).ValueRW;
                 PlayerController.AddSkill(exp.Player, SkillID.Fishing, objData.amount, ecb, true);
                 objData.amount = 0;
                 ecb.DestroyEntity(e);
@@ -96,36 +101,18 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData,
                 ref AutoFisherCD af, ref RandomCD random, in InventoryCD inv, in LocalTransform trans) =>
             {
-                if (containers[0].objectID == ObjectID.None)
+                if (!af.CheckRodLevel(containers, out float efficiency))
                     return;
                 ref var rng = ref random.Value;
-                if (rng.NextFloat(5, 60) > af.timer)
+                float targetTime = 60f / efficiency;
+                if (af.timer < targetTime)
                 {
                     af.timer += delta;
                     return;
                 }
                 af.timer = 0;
-                if (!af.init)
-                {
-                    af.init = true;
-                    int2 pos = trans.Position.xz.RoundToInt2();
-                    AreaLevel areaLevel = WaterTilesetToAreaLevel((Tileset)tileAccessor.GetTop(pos).tileset);
-                    (af.fishes, af.items) = areaLevel switch
-                    {
-                        AreaLevel.Passage => (LootTableID.PassageFishes, LootTableID.PassageFishingLoot),
-                        AreaLevel.Crystal => (LootTableID.CrystalFishes, LootTableID.CrystalFishingLoot),
-                        AreaLevel.Lava => (LootTableID.LavaFishes, LootTableID.LavaFishingLoot),
-                        AreaLevel.Desert => (LootTableID.DesertFishes, LootTableID.DesertFishingLoot),
-                        AreaLevel.Sea => (LootTableID.SeaFishes, LootTableID.SeaFishingLoot),
-                        AreaLevel.Mold => (LootTableID.MoldFishes, LootTableID.MoldFishingLoot),
-                        AreaLevel.Nature => (LootTableID.NatureFishes, LootTableID.NatureFishingLoot),
-                        AreaLevel.Stone => (LootTableID.StoneFishes, LootTableID.StoneFishingLoot),
-                        AreaLevel.LarvaHive => (LootTableID.LarvaFishes, LootTableID.LarvaFishingLoot),
-                        _ => (LootTableID.DirtFishes, LootTableID.DirtFishingLoot)
-                    };
-                    Biome biome = biomeLookup.GetBiome(pos);
-                }
-                var drops = PugDatabase.GetRandomLoot(rng.NextBool() ? af.fishes : af.items, 1, 1,
+                AutoFisherCD.Init(ref af, tileAccessor, biomeLookup, trans);
+                var drops = PugDatabase.GetRandomLoot(rng.NextInt(5) == 0 ? af.items : af.fishes, 1, 1,
                       ref rng, localLootBack, localDatabase, trans.Position, af.biome);
                 int length = inv.size;
                 int count = drops.Length;
@@ -142,7 +129,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     if (stack)
                     {
                         int empty = -1;
-                        for (int i = 1; i < length; i++)
+                        for (int i = 9; i < length; i++)
                         {
                             var data = containers[i].objectData;
                             ObjectID id = data.objectID;
@@ -193,6 +180,39 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 .WithBurst()
                 .Schedule();
 
+            if (moveTimer < 5)
+            {
+                moveTimer += delta;
+                return;
+            }
+            moveTimer = 0;
+            var terminalFind = terminal.ToEntityArray(Allocator.Temp);
+            if (!terminalFind.Any())
+            {
+                terminalFind.Dispose();
+                return;
+            }
+            Entity first = terminalFind.First();
+            terminalFind.Dispose();
+            var moveLookup = this.moveLookup;
+            Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData) =>
+            {
+                if (containers[2].objectID == ObjectID.None)
+                    return;
+                objDataLookup.GetRefRW(first).ValueRW.amount += objData.amount;
+                objData.amount = 0;
+                ecb.AddComponent(first, new InitialMoveInventoryFromCD()
+                {
+                    entityFrom = e,
+                    startSlotToMove = 9,
+                    amountToMove = 36
+                });
+            })
+                .WithName("AutoFisher_Move")
+                .WithAll<AutoFisherCD>()
+                .WithBurst()
+                .Schedule();
+
             base.OnUpdate();
         }
         private static ContainedObjectsBuffer CreateItem(ObjectID objID, int amount, int variation = 0)
@@ -206,52 +226,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     variation = variation,
                 }
             };
-        }
-        private static AreaLevel WaterTilesetToAreaLevel(Tileset tileset)
-        {
-            if (tileset <= Tileset.Desert)
-            {
-                switch (tileset)
-                {
-                    case Tileset.Dirt:
-                        return AreaLevel.Slime;
-                    case Tileset.Stone:
-                        return AreaLevel.Stone;
-                    case Tileset.Obsidian:
-                    case Tileset.Extras:
-                    case Tileset.BaseBuildingWood:
-                    case Tileset.BaseBuildingStone:
-                        break;
-                    case Tileset.Lava:
-                        return AreaLevel.Lava;
-                    case Tileset.LarvaHive:
-                        return AreaLevel.Clay;
-                    case Tileset.Nature:
-                        return AreaLevel.Nature;
-                    case Tileset.Mold:
-                        return AreaLevel.Mold;
-                    case Tileset.Sea:
-                        return AreaLevel.Sea;
-                    default:
-                        if (tileset == Tileset.Desert)
-                        {
-                            return AreaLevel.Desert;
-                        }
-                        break;
-                }
-            }
-            else
-            {
-                if (tileset == Tileset.Crystal)
-                {
-                    return AreaLevel.Crystal;
-                }
-                if (tileset == Tileset.Passage)
-                {
-                    return AreaLevel.Passage;
-                }
-            }
-            return AreaLevel.Slime;
         }
     }
 }

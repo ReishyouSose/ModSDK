@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 232162479, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
-  m_Name: AutoFisherShadow
+  m_Name: AutoFisherTerminal
   m_EditorClassIdentifier: 
   m_defaultGradientMap: {fileID: 0}
   m_editorHideEmissive: 0
   m_staticSpriteData:
-    texture: {fileID: 2800000, guid: 49d9f533ac7b6ad49b8fe999bd9e137d, type: 3}
+    texture: {fileID: 2800000, guid: 932f750e260c4124c884651f3e427c80, type: 3}
     emissiveTexture: {fileID: 0}
     normalTexture: {fileID: 0}
     pivot: {x: 0.5, y: 0}

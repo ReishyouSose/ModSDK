@@ -26,10 +26,10 @@ GameObject:
   - component: {fileID: 2445745560876883966}
   - component: {fileID: 4401662367938983526}
   - component: {fileID: 3991227550509896867}
-  - component: {fileID: -8323917109155467736}
+  - component: {fileID: -7460004867075468362}
   - component: {fileID: 845021786232025266}
   m_Layer: 0
-  m_Name: AutoFisherItem
+  m_Name: AutoFisherTerminalItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,9 +64,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellValue: 1
   buyValueMultiplier: 1
-  icon: {fileID: 21300000, guid: 49d9f533ac7b6ad49b8fe999bd9e137d, type: 3}
+  icon: {fileID: 21300000, guid: 4edb191c3b6df8449af2e4e67cf377d2, type: 3}
   iconOffset: {x: 0, y: 0}
-  smallIcon: {fileID: 21300000, guid: 49d9f533ac7b6ad49b8fe999bd9e137d, type: 3}
+  smallIcon: {fileID: 21300000, guid: c212903ac0389824e8233f569db05198, type: 3}
   isStackable: 1
   requiredObjectsToCraft: []
   craftingTime: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 318086258, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: CoreEnhance:AutoFisher
+  objectName: CoreEnhance:AutoFisherTerminal
   initialAmount: 1
   variation: 0
   variationIsDynamic: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   objectType: 800
   tags: 
   rarity: 1
-  graphicalPrefab: {fileID: 1881095102312471513, guid: 23f30f9005c24784fa22d3b2e602c984,
+  graphicalPrefab: {fileID: 1881095102312471513, guid: aed9e1f51b1adcb4f9ed9d76dc1df951,
     type: 3}
   isCustomScenePrefab: 0
   additionalSprites: []
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 1739311503, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabTileSize: {x: 1, y: 1}
+  prefabTileSize: {x: 2, y: 2}
   prefabCornerOffset: {x: 0, y: 0}
   centerIsAtEntityPosition: 0
   variationToPlace: 0
@@ -146,9 +146,9 @@ MonoBehaviour:
     y: 0
     z: 0
   m_PrimitiveSize:
-    x: 1
+    x: 2
     y: 1
-    z: 1
+    z: 2
   m_PrimitiveOrientation:
     Value:
       x: 0
@@ -156,15 +156,15 @@ MonoBehaviour:
       z: 0
     RotationOrder: 4
   m_Capsule:
-    Height: 1
-    Radius: 0.5
+    Height: 2
+    Radius: 1
     Axis: 2
   m_Cylinder:
     Height: 1
-    Radius: 0.5
-    Axis: 2
+    Radius: 1
+    Axis: 1
   m_CylinderSideCount: 20
-  m_SphereRadius: 0.5
+  m_SphereRadius: 1
   m_MinimumSkinnedVertexWeight: 0.1
   m_ConvexHullGenerationParameters:
     m_SimplificationTolerance: 0.015
@@ -299,7 +299,7 @@ MonoBehaviour:
   SupportedGhostModes: 3
   OptimizationMode: 0
   Importance: 1
-  prefabId: b79e31f03d044e943810f88ed13bb3f1
+  prefabId: 826f7b2794fcf3044b34dd17e6c7b4bf
   HasOwner: 0
   SupportAutoCommandTarget: 1
   TrackInterpolationDelay: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b4b9264304dc2b5f1e3feb621bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8323917109155467736
+--- !u!114 &-7460004867075468362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 548004899387042758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a704b347d6444974bb54807328a7bb20, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e912e9dcc12b1b40b21c4b118483023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &845021786232025266
@@ -486,58 +486,13 @@ MonoBehaviour:
   m_Script: {fileID: 863540370, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 3
+  sizeX: 12
   sizeY: 3
-  maxExtraSize: 36
+  maxExtraSize: 988
   canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 0
   canBeUsedInNearbyCrafting: 0
-  slotRequirements:
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 32000000330000003400000035000000360000003700000038000000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: bc200000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 08200000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 45210000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: a8210000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 05220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 73220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: aa220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: aa220000
+  slotRequirements: []
   itemsInInventory: []
   addLootFromTable: 0

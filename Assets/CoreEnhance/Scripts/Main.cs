@@ -3,6 +3,7 @@ using Assets.CoreEnhance.Scripts.Systems.Misc;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
+using CoreLib.Submodules.ModEntity.Patches;
 using CoreLib.UserInterface;
 using CoreLib.Util.Extensions;
 using PugMod;
@@ -73,11 +74,7 @@ namespace Assets.CoreEnhance.Scripts
             var p = Manager.main.player;
             if (p == null)
                 return;
-            Player rewiredPlayer = p.inputModule.rewiredPlayer;
-            if (rewiredPlayer.GetButtonDown(ModKeyBind.QuickStack))
-            {
-                QuickStackClient.SendRequest();
-            }
+            ModKeyBind.Handle(p);
         }
     }
 }
