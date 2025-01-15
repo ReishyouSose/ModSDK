@@ -1,6 +1,4 @@
 ﻿using Assets.CoreEnhance.Scripts.Items;
-using CoreLib.Submodules.ModEntity.Patches;
-using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
@@ -58,7 +56,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         private NativeHashMap<int, bool> stackable;
         private BiomeLookup biomeLookup;
         private ComponentLookup<ObjectDataCD> objDataLookup;
-        private ComponentLookup<InitialMoveInventoryFromCD> moveLookup;
+        private BufferLookup<ContainedObjectsBuffer> containerLookup;
         private float moveTimer;
         private EntityQuery terminal;
         protected override void OnCreate()
@@ -72,6 +70,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         protected override void OnStartRunning()
         {
             objDataLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
+            containerLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             biomeLookup = SystemAPI.TryGetSingleton<BiomeSamplesCD>(out var sample)
                 ? new(sample) : new(SystemAPI.GetSingleton<BiomeRangesCD>().Value, Allocator.Persistent);
             base.OnStartRunning();
@@ -99,12 +98,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var localStackable = stackable;
             var delta = SystemAPI.Time.DeltaTime;
             Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData,
-                ref AutoFisherCD af, ref RandomCD random, in InventoryCD inv, in LocalTransform trans) =>
+                ref AutoFisherCD af, ref RandomCD random, in LocalTransform trans) =>
             {
                 if (!af.CheckRodLevel(containers, out float efficiency))
                     return;
                 ref var rng = ref random.Value;
-                float targetTime = 60f / efficiency;
+                float targetTime = 10f / efficiency;
                 if (af.timer < targetTime)
                 {
                     af.timer += delta;
@@ -114,12 +113,78 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 AutoFisherCD.Init(ref af, tileAccessor, biomeLookup, trans);
                 var drops = PugDatabase.GetRandomLoot(rng.NextInt(5) == 0 ? af.items : af.fishes, 1, 1,
                       ref rng, localLootBack, localDatabase, trans.Position, af.biome);
-                int length = inv.size;
+                int count = containers.Length;
+                for (int i = 9; i < count; i++)
+                {
+                    if (containers[i].objectData.objectID == ObjectID.None)
+                    {
+                        var item = drops[0];
+                        containers[i] = CreateItem(item.objectID, item.amount);
+                        break;
+                    }
+                }
+                objData.amount++;
+                drops.Dispose();
+            })
+                .WithName("AutoFisher_Catch")
+                .WithBurst()
+                .Schedule();
+
+            if (moveTimer < 5)
+            {
+                moveTimer += delta;
+                return;
+            }
+            moveTimer = 0;
+
+            int exp = 0;
+            NativeHashMap<int, int> loot = new(128, Allocator.Temp);
+            JobHandle checkLoot = Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData) =>
+            {
+                if (containers[2].objectID == ObjectID.None)
+                    return;
+                exp += objData.amount;
+                objData.amount = 0;
+                int count = containers.Length;
+                for (int i = 9; i < count; i++)
+                {
+                    var item = containers[i];
+                    int id = (int)item.objectID;
+                    if (loot.ContainsKey(id))
+                        loot[id] += item.amount;
+                    else
+                        loot[id] = item.amount;
+                    containers[i] = CreateItem(ObjectID.None, 0);
+                }
+            })
+                 .WithName("AutoFisherTerminal_CheckLoot")
+                 .WithAll<AutoFisherCD>()
+                 .WithBurst()
+                 .ScheduleParallel(Dependency);
+
+            bool dispose = false;
+            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData) =>
+            {
+                if (dispose)
+                    return;
+                objData.amount += exp;
+                NativeList<ObjectDataCD> drops = new(Allocator.Temp);
+                foreach (var info in loot)
+                {
+                    drops.Add(new()
+                    {
+                        objectID = (ObjectID)info.Key,
+                        amount = info.Value
+                    });
+                }
+                loot.Dispose();
+                dispose = true;
+
+                int length = containers.Length;
                 int count = drops.Length;
                 for (int j = 0; j < count; j++)
                 {
                     var item = drops[j];
-                    objData.amount++;
                     ObjectID origin = item.objectID;
                     if (!localStackable.TryGetValue((int)origin, out bool stack))
                     {
@@ -129,7 +194,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     if (stack)
                     {
                         int empty = -1;
-                        for (int i = 9; i < length; i++)
+                        for (int i = 0; i < length; i++)
                         {
                             var data = containers[i].objectData;
                             ObjectID id = data.objectID;
@@ -137,7 +202,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                             {
                                 empty = i;
                             }
-                            if (id == item.objectID)
+                            if (id == item.objectID && data.amount < 9999)
                             {
                                 int amount = data.amount + item.amount;
                                 if (amount > 9999)
@@ -176,42 +241,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 }
                 drops.Dispose();
             })
-                .WithName("AutoFisher_Catch")
-                .WithBurst()
-                .Schedule();
-
-            if (moveTimer < 5)
-            {
-                moveTimer += delta;
-                return;
-            }
-            moveTimer = 0;
-            var terminalFind = terminal.ToEntityArray(Allocator.Temp);
-            if (!terminalFind.Any())
-            {
-                terminalFind.Dispose();
-                return;
-            }
-            Entity first = terminalFind.First();
-            terminalFind.Dispose();
-            var moveLookup = this.moveLookup;
-            Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData) =>
-            {
-                if (containers[2].objectID == ObjectID.None)
-                    return;
-                objDataLookup.GetRefRW(first).ValueRW.amount += objData.amount;
-                objData.amount = 0;
-                ecb.AddComponent(first, new InitialMoveInventoryFromCD()
-                {
-                    entityFrom = e,
-                    startSlotToMove = 9,
-                    amountToMove = 36
-                });
-            })
-                .WithName("AutoFisher_Move")
-                .WithAll<AutoFisherCD>()
-                .WithBurst()
-                .Schedule();
+                 .WithName("AutoFisherTerminal_PutLoot")
+                 .WithAll<AutoFisherTerminalCD>()
+                 .WithBurst()
+                 .ScheduleParallel(checkLoot);
 
             base.OnUpdate();
         }

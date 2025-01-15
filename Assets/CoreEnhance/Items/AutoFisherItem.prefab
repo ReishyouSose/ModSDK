@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 3991227550509896867}
   - component: {fileID: -8323917109155467736}
   - component: {fileID: 845021786232025266}
+  - component: {fileID: 8411571832227649171}
   m_Layer: 0
   m_Name: AutoFisherItem
   m_TagString: Untagged
@@ -488,8 +489,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 3
   sizeY: 3
-  maxExtraSize: 36
-  canOnlyContainOneItemPerSlot: 0
+  maxExtraSize: 0
+  canOnlyContainOneItemPerSlot: 1
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 0
   canBeUsedInNearbyCrafting: 0
@@ -541,3 +542,15 @@ MonoBehaviour:
     acceptsObjectIds: aa220000
   itemsInInventory: []
   addLootFromTable: 0
+--- !u!114 &8411571832227649171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 363721826, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

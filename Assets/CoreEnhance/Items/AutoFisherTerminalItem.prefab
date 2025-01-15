@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 3991227550509896867}
   - component: {fileID: -7460004867075468362}
   - component: {fileID: 845021786232025266}
+  - component: {fileID: 4676589220654314499}
+  - component: {fileID: 7287190631170143809}
   m_Layer: 0
   m_Name: AutoFisherTerminalItem
   m_TagString: Untagged
@@ -142,9 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShapeType: 0
   m_PrimitiveCenter:
-    x: 0
+    x: 0.5
     y: 0
-    z: 0
+    z: 0.125
   m_PrimitiveSize:
     x: 2
     y: 1
@@ -332,8 +334,8 @@ MonoBehaviour:
   dontCalculateHealthFromLevel: 0
   overrideStartHealth: 0
   normalizedOverrideStartHealth: 1
-  startHealth: 2
-  maxHealth: 2
+  startHealth: 3
+  maxHealth: 3
   maxHealthMultiplier: 1
   hasHealthRegeneration: 1
   healInCombatAsWell: 0
@@ -488,11 +490,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 12
   sizeY: 3
-  maxExtraSize: 988
+  maxExtraSize: 0
   canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
-  cantAddObjectsToInventory: 0
+  cantAddObjectsToInventory: 1
   canBeUsedInNearbyCrafting: 0
   slotRequirements: []
   itemsInInventory: []
   addLootFromTable: 0
+--- !u!114 &4676589220654314499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d084333c6e838d6408664667a184c986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7287190631170143809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 363721826, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
