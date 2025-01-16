@@ -1,9 +1,8 @@
 using Assets.CoreEnhance.Scripts.Configs;
-using Assets.CoreEnhance.Scripts.Systems.Misc;
+using Assets.CoreEnhance.Scripts.Helpers;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
-using CoreLib.Submodules.ModEntity.Patches;
 using CoreLib.UserInterface;
 using CoreLib.Util.Extensions;
 using PugMod;
@@ -21,13 +20,19 @@ namespace Assets.CoreEnhance.Scripts
             CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
             RewiredExtensionModule.AddKeybind(ModKeyBind.QuickStack, "Quick Stack", KeyboardKeyCode.I, ModifierKey.Control);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
+            API.Server.OnWorldCreated += Server_OnWorldCreated;
+        }
+
+        private void Server_OnWorldCreated()
+        {
+            ItemHelper.Load();
         }
 
         private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
             if (entityManager.HasBuffer<InventorySlotRequirementBuffer>(entity))
             {
-                if (authoringData.GetEntityObjectID() != API.Authoring.GetObjectID("CoreEnhance:AutoFisher"))
+                if (authoringData.GetEntityObjectID() != API.Authoring.GetObjectID("CoreEnhance:Source"))
                     return;
                 var id = API.Authoring.GetObjectID("CoreEnhance:IndustrialBaitCan");
                 var requires = entityManager.GetBuffer<InventorySlotRequirementBuffer>(entity);

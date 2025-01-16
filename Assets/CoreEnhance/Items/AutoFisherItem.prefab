@@ -509,7 +509,7 @@ MonoBehaviour:
     dontShowAnyHint: 0
     showInfoText: 0
     acceptsObjectsWithTags: 
-    acceptsObjectIds: 08200000
+    acceptsObjectIds: ab220000
   - requirementAppliesToAllSlots: 0
     dontShowAnyHint: 0
     showInfoText: 0

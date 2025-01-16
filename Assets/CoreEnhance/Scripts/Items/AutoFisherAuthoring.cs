@@ -89,9 +89,11 @@ namespace Assets.CoreEnhance.Scripts.Items
             }
             return AreaLevel.Slime;
         }
-        public readonly bool CheckRodLevel(DynamicBuffer<ContainedObjectsBuffer> containers, out float efficiency)
+        public readonly bool CheckRodLevel(DynamicBuffer<ContainedObjectsBuffer> containers,
+            out float efficiency, out int chance)
         {
             efficiency = 0;
+            chance = containers[2].objectID == ObjectID.None ? 0 : 3;
             ObjectID rod = containers[0].objectID;
             if (rod == ObjectID.None)
                 return false;
@@ -124,7 +126,7 @@ namespace Assets.CoreEnhance.Scripts.Items
                     additive++;
             }
             float bait = containers[1].objectID != ObjectID.None ? 1 : 0.1f;
-            efficiency = efficiency * additive * bait * 0.3f;
+            efficiency = efficiency * additive * bait;
             return allow;
         }
     }

@@ -29,6 +29,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Systems/Misc/UniquePlaceableSystem.cs
     - path: Scripts/Scripts/Systems/Misc/QuickStackSystem.cs
     - path: Scripts/Scripts/Systems/Misc/DeathNoDropSyetem.cs
+    - path: Scripts/Scripts/Systems/Misc/AutoFisherTerminalSystem.cs
     - path: Scripts/Scripts/Systems/Misc/AutoFisherSystem.cs
     - path: Scripts/Scripts/Systems/Infinity/Durability.cs
     - path: Scripts/Scripts/Systems/Infinity/Common.cs
@@ -37,8 +38,10 @@ MonoBehaviour:
     - path: Scripts/Scripts/Systems/AccelerateSystem.cs
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
     - path: Scripts/Scripts/Main.cs
+    - path: Scripts/Scripts/Items/TerminalExpSystem.cs
     - path: Scripts/Scripts/Items/AutoFisherTerminalAuthoring.cs
     - path: Scripts/Scripts/Items/AutoFisherAuthoring.cs
+    - path: Scripts/Scripts/Helpers/ItemHelper.cs
     - path: Scripts/Scripts/Configs/ModKeyBind.cs
     - path: Scripts/Scripts/Configs/ModConfig.cs
     - path: Scripts/Scripts/Configs/ConfigData.cs
@@ -49,14 +52,19 @@ MonoBehaviour:
     - path: Scripts/Generated/Arena__System_1664514490.g.cs
     - path: Scripts/Generated/AutoFisherSystem__System_2481893110.g.cs
     - path: Scripts/Generated/AutoFisherSystem__System_2481893111.g.cs
+    - path: Scripts/Generated/AutoFisherTerminalSystem__System_5755495710.g.cs
+    - path: Scripts/Generated/AutoFisherTerminalSystem__System_5755495711.g.cs
     - path: Scripts/Generated/AutomationSystem__System_20440786790.g.cs
     - path: Scripts/Generated/Common__System_18746596250.g.cs
     - path: Scripts/Generated/DeathNoDropSyetem__System_6712492330.g.cs
     - path: Scripts/Generated/Durability__System_6784147770.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822040.g.cs
     - path: Scripts/Generated/QuickStackSystem__System_2688822041.g.cs
+    - path: Scripts/Generated/TerminalExpSystem__System_4760671170.g.cs
+    - path: Scripts/Generated/TerminalExpSystem__System_4760671171.g.cs
     - path: Scripts/Generated/UniquePlaceableSystem__System_216185090.g.cs
-    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_AutoFisherExpRpcCommandSerializer.cs
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Items_ReceiveExpRpcCommandSerializer.cs
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_AFTerminalOpenRPCCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_QuickStackRpcCommandSerializer.cs
     - path: Bundles/CoreEnhance_Windows.assetbundle
     dependencies:
@@ -79,13 +87,13 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/Autofisher.png
     hash: 8C1A11FE176D828EAB2EB58AF0EE6465D3C791D6CD0AEEF6707F65A8C53350FD
   - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
-    hash: 83EF92DF034C1CF228A39959DF7A7C1B862163940F263ADB38E335FC072A7C68
+    hash: 5DAAAD59A316782D50D005B7780B2B70AF2A5AD3B2421F3D491FFB6792657B67
   - path: Assets/CoreEnhance/Items/AutoFisherTerminal_Item.png
     hash: 0F5589183200053E25F72B369ECC8A4445EC851A3A160026BA32AD7597F471D4
   - path: Assets/CoreEnhance/Items/AutoFisherTerminal_Small.png
     hash: 2FFEAED03119A01BD74D57A6867029B15C503BCB43326703C7D053941E6A5C24
   - path: Assets/CoreEnhance/Items/AutoFisherTerminalItem.prefab
-    hash: 607B8786967E7A711D8B1DCCFE641CD24445AD28686BCC98F2E4977C152FE043
+    hash: C0F1AEEFE1CF0818C5CD97E7094CE5B19928A3BE3D15852ECADCAA4646E505E9
   - path: Assets/CoreEnhance/Items/IndustrialBaitCan.png
     hash: 8348F0F8791E928A5C7DDCB6AEC622C309C48EA3D91359B8D6309987E11F351F
   - path: Assets/CoreEnhance/Items/IndustrialBaitCan.prefab
