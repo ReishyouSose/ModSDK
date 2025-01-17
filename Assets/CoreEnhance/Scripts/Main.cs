@@ -1,5 +1,6 @@
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Helpers;
+using Assets.CoreEnhance.Scripts.UI;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
@@ -32,7 +33,7 @@ namespace Assets.CoreEnhance.Scripts
         {
             if (entityManager.HasBuffer<InventorySlotRequirementBuffer>(entity))
             {
-                if (authoringData.GetEntityObjectID() != API.Authoring.GetObjectID("CoreEnhance:Source"))
+                if (authoringData.GetEntityObjectID() != API.Authoring.GetObjectID("CoreEnhance:AutoFisher"))
                     return;
                 var id = API.Authoring.GetObjectID("CoreEnhance:IndustrialBaitCan");
                 var requires = entityManager.GetBuffer<InventorySlotRequirementBuffer>(entity);
@@ -79,6 +80,7 @@ namespace Assets.CoreEnhance.Scripts
             var p = Manager.main.player;
             if (p == null)
                 return;
+            ArenaScannerUI.CheckScanner(p);
             ModKeyBind.Handle(p);
         }
     }

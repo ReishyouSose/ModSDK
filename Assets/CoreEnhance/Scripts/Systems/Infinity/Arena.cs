@@ -1,11 +1,11 @@
-﻿using System;
-using Unity.Entities;
-using Assets.CoreEnhance.Scripts.Configs;
+﻿using Assets.CoreEnhance.Scripts.Configs;
 using CoreLib.Data.Configuration;
-using Unity.Transforms;
+using System;
 using Unity.Collections;
-using Unity.Physics;
+using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Physics;
+using Unity.Transforms;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
@@ -14,6 +14,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         public float time;
         public bool chest;
     }
+
 
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]

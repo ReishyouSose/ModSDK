@@ -19,6 +19,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         {
             NeedDatabase();
             NeedLootBank();
+            RequireForUpdate<BiomeRangesCD>();
             base.OnCreate();
         }
         protected override void OnStartRunning()
@@ -41,8 +42,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var biomeLookup = this.biomeLookup;
             var localDatabase = database;
             var localLootBack = lootBank;
-            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData,
-                ref AutoFisherCD af, ref RandomCD random, in LocalTransform trans) =>
+            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref AutoFisherCD af,
+                ref RandomCD random, in LocalTransform trans) =>
             {
                 if (!af.CheckRodLevel(containers, out float efficiency, out int chance))
                     return;
@@ -53,9 +54,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     af.timer -= 3;
                     if (rng.NextInt(10) >= 5 + chance)
                         continue;
-                    objData.amount++;
                     AutoFisherCD.Init(ref af, tileAccessor, biomeLookup, trans);
-                    using var drops = PugDatabase.GetRandomLoot(rng.NextInt(5) == 0 ? af.items : af.fishes,
+                    using var drops = PugDatabase.GetRandomLoot(rng.NextInt(6) == 0 ? af.items : af.fishes,
                         1, 1, ref rng, localLootBack, localDatabase, trans.Position, af.biome);
                     int count = containers.Length;
                     for (int i = 9; i < count; i++)

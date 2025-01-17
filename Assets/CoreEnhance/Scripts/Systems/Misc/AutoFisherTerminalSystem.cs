@@ -1,5 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Items;
+using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
@@ -8,35 +9,55 @@ using static Assets.CoreEnhance.Scripts.Helpers.ItemHelper;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
-    public struct AFTerminalOpenRPC : IRpcCommand { }
+    public struct AFTerminalOpenRPC : IRpcCommand
+    {
+        public Entity Player;
+        public AFTerminalOpenRPC(Entity player) => Player = player;
+    }
 
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
     public partial class AutoFisherTerminalClient : PugSimulationSystemBase
     {
+        private static AutoFisherTerminalClient ins;
         private NativeQueue<AFTerminalOpenRPC> queue;
         private EntityArchetype archetype;
-        private static AutoFisherTerminalClient ins;
+        private EntityQuery query;
+        private float timer;
         protected override void OnCreate()
         {
             ins = this;
             queue = new(Allocator.Persistent);
             archetype = EntityManager.CreateArchetype(typeof(AFTerminalOpenRPC), typeof(SendRpcCommandRequest));
+            query = EntityManager.CreateEntityQuery(typeof(AutoFisherTerminalCD));
             base.OnCreate();
         }
         protected override void OnUpdate()
         {
             var ecb = CreateCommandBuffer();
-            while (queue.TryDequeue(out var open))
+            while (queue.TryDequeue(out _))
             {
-                Entity e = ecb.CreateEntity(archetype);
-                ecb.SetComponent(e, open);
+                ecb.CreateEntity(archetype);
+            }
+
+            if (timer < 60)
+            {
+                timer += World.Time.DeltaTime;
+            }
+            else
+            {
+                timer = 0;
+                var find = query.ToEntityArray(Allocator.Temp);
+                if (find.Any())
+                {
+                    queue.Enqueue(new(Entity.Null));
+                }
             }
             base.OnUpdate();
         }
         public static void OpenAFTerminal()
         {
-            ins.queue.Enqueue(new());
+            ins.queue.Enqueue(new(Manager.main.player.entity));
         }
     }
 
@@ -55,22 +76,31 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         {
             var queue = this.queue;
             var ecb = CreateCommandBuffer();
-            Entities.ForEach((Entity e) =>
+            Entities.ForEach((Entity e,in AFTerminalOpenRPC rpc) =>
             {
-                queue.Enqueue(new());
+                queue.Enqueue(rpc);
                 ecb.DestroyEntity(e);
             })
                 .WithName("AutoFisherTerminal_CheckOpen")
-                .WithAll<AFTerminalOpenRPC>()
                 .WithAll<ReceiveRpcCommandRequest>()
                 .WithBurst()
                 .Schedule();
 
-            while (queue.TryDequeue(out _))
+            while (queue.TryDequeue(out var open))
             {
+                bool isPlayerOpen = open.Player != Entity.Null;
                 NativeHashMap<int, int> loot = new(128, Allocator.Temp);
+                if (isPlayerOpen)
+                {
+                    loot.Add(-1, 0);
+                }
                 JobHandle checkLoot = Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref ObjectDataCD objData) =>
                 {
+                    if (isPlayerOpen)
+                    {
+                        loot[-1] += objData.amount - 1;
+                        objData.amount = 1;
+                    }
                     int count = containers.Length;
                     for (int i = 9; i < count; i++)
                     {
@@ -97,11 +127,18 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     NativeList<ObjectDataCD> drops = new(Allocator.Temp);
                     foreach (var info in loot)
                     {
-                        drops.Add(new()
+                        if (info.Key == -1)
                         {
-                            objectID = (ObjectID)info.Key,
-                            amount = info.Value
-                        });
+                            PlayerController.AddSkill(open.Player, SkillID.Fishing, info.Value, ecb, true);
+                        }
+                        else
+                        {
+                            drops.Add(new()
+                            {
+                                objectID = (ObjectID)info.Key,
+                                amount = info.Value
+                            });
+                        }
                     }
                     loot.Dispose();
                     dispose = true;
