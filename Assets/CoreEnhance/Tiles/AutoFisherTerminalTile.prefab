@@ -153,8 +153,9 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8839559773988441292}
-        m_TargetAssemblyTypeName: Chest, Pug.Other
-        m_MethodName: OnPlayerLeftChest
+        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.AutoFisherTerminalEM,
+          CoreEnhance
+        m_MethodName: CloseTerminal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -277,7 +278,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 87823563b972ec645ace60f82c8ba876, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

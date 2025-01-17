@@ -29,6 +29,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
     - path: Scripts/Scripts/Systems/Misc/UniquePlaceableSystem.cs
     - path: Scripts/Scripts/Systems/Misc/QuickStackSystem.cs
+    - path: Scripts/Scripts/Systems/Misc/QuickConsumableSystem.cs
     - path: Scripts/Scripts/Systems/Misc/DeathNoDropSyetem.cs
     - path: Scripts/Scripts/Systems/Misc/AutoFisherTerminalSystem.cs
     - path: Scripts/Scripts/Systems/Misc/AutoFisherSystem.cs
@@ -107,7 +108,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/IndustrialBaitCanSmall.png
     hash: BAFB8AABBBBBB78AED3CBC41004384B6021CF1C64EE35CD3F5603EC7C8A8D4B4
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 35A7D2E25E1B58DEB99E877EC1A9B01B25780A46128664DD023777B9C2A0F6A2
+    hash: 6C7D898BA8082F955D3EEA8E3E392D03A86C7723BA38651309B87770496C6346
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
     hash: 0D76CAA488E14EE94B4DA05959F4DD6B2EA4F5982A4B28F2AA40C1FFE9857375
   - path: Assets/CoreEnhance/Tiles/207724e09cf2c53cc6440296fb53f5ea.png
@@ -121,7 +122,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Tiles/AutoFisherTerminal_Place.png
     hash: 17F19E4FC3AFD404265270A3E4B7FE6293CED29513653C892D158325199CB03F
   - path: Assets/CoreEnhance/Tiles/AutoFisherTerminalTile.prefab
-    hash: D51CD06D68D23CBD554CBAA74FCD67FCF5F227D92D47F431C3D4A26BCA4F7551
+    hash: 6E872EF500B158905BBC3BEE8A67C09EC162C6BF862F70514B1A04F0FB374D13
   - path: Assets/CoreEnhance/Tiles/AutoFisherTile.prefab
     hash: 095410871EC47287A2A43E0AC9C1DE64A4374C301D15AA9331B35F93289D9108
   - path: Assets/CoreEnhance/Tiles/Shadow.png

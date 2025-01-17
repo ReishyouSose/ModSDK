@@ -38,6 +38,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
         private void AddValue(ConfigFile file)
         {
             TryAddValue(file, EnhanceCategory.Infinity, EC_Infinity.Arena, 100, new AcceptableValueRange<int>(100, 9999));
+            TryAddValue(file, EnhanceCategory.Infinity, EC_Infinity.Durability, 60, new AcceptableValueRange<int>(1, 60));
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Merchant, 0, new AcceptableValueRange<int>(0, 2100));
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Titan, 5, new AcceptableValueRange<int>(5, 300));
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 6, new AcceptableValueList<int>(1, 2, 3, 4, 5, 6), "Amount");
