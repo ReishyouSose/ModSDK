@@ -6,7 +6,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class InfinitySystem : PugSimulationSystemBase
+    public partial class InfinityCommonSystem: PugSimulationSystemBase
     {
         private const int ResetTimer = 60;
         private float timer;

@@ -16,16 +16,14 @@ namespace Assets.CoreEnhance.Scripts.Items
         public bool init;
         public LootTableID fishes;
         public LootTableID items;
-        public Biome biome;
         public AreaLevel level;
         public float timer;
 
-        public static void Init(ref AutoFisherCD af, TileAccessor tileAccessor, BiomeLookup biomeLookup, LocalTransform trans)
+        public static void Init(ref AutoFisherCD af, TileAccessor tileAccessor,int2 pos)
         {
             if (!af.init)
             {
                 af.init = true;
-                int2 pos = trans.Position.xz.RoundToInt2();
                 af.level = WaterTilesetToAreaLevel((Tileset)tileAccessor.GetTop(pos).tileset);
                 (af.fishes, af.items) = af.level switch
                 {
@@ -40,7 +38,6 @@ namespace Assets.CoreEnhance.Scripts.Items
                     AreaLevel.LarvaHive => (LootTableID.LarvaFishes, LootTableID.LarvaFishingLoot),
                     _ => (LootTableID.DirtFishes, LootTableID.DirtFishingLoot)
                 };
-                af.biome = biomeLookup.GetBiome(pos);
             }
         }
         private static AreaLevel WaterTilesetToAreaLevel(Tileset tileset)
@@ -89,7 +86,7 @@ namespace Assets.CoreEnhance.Scripts.Items
             }
             return AreaLevel.Slime;
         }
-        public readonly bool CheckRodLevel(DynamicBuffer<ContainedObjectsBuffer> containers,
+        public readonly bool CheckLevel(DynamicBuffer<ContainedObjectsBuffer> containers, Biome biome,
             out float efficiency, out int chance)
         {
             efficiency = 0;
@@ -110,13 +107,14 @@ namespace Assets.CoreEnhance.Scripts.Items
             };
             bool allow = level switch
             {
-                AreaLevel.Slime or AreaLevel.StartArea => true,
-                AreaLevel.Clay or AreaLevel.LarvaHive => efficiency >= 0.6f,
-                AreaLevel.Stone => efficiency >= 0.8f,
-                AreaLevel.Nature or AreaLevel.Mold => efficiency >= 1f,
-                AreaLevel.Sea or AreaLevel.City => efficiency >= 1.2f,
-                AreaLevel.Desert or AreaLevel.Lava => efficiency >= 1.4f,
-                AreaLevel.Crystal or AreaLevel.Passage or AreaLevel.Obsidian => efficiency >= 1.6f,
+                AreaLevel.Slime or AreaLevel.StartArea => biome is Biome.None or Biome.Slime,
+                AreaLevel.Clay or AreaLevel.LarvaHive => efficiency >= 0.6f && biome is Biome.Larva,
+                AreaLevel.Stone => efficiency >= 0.8f && biome is Biome.Stone,
+                AreaLevel.Nature or AreaLevel.Mold => efficiency >= 1f && biome is Biome.Nature,
+                AreaLevel.Sea or AreaLevel.City => efficiency >= 1.2f && biome is Biome.Sea,
+                AreaLevel.Desert or AreaLevel.Lava => efficiency >= 1.4f && biome is Biome.Desert,
+                AreaLevel.Crystal => efficiency >= 1.6f && biome is Biome.Crystal,
+                AreaLevel.Passage => efficiency >= 1.6f && biome is Biome.Passage,
                 _ => false,
             };
             float additive = 1;

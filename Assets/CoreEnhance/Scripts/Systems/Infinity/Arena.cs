@@ -18,7 +18,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class Arena : PugSimulationSystemBase
+    public partial class InfinityArenaSystem : PugSimulationSystemBase
     {
         protected override void OnUpdate()
         {

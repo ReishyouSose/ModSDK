@@ -5,11 +5,7 @@ namespace Assets.CoreEnhance.Scripts.Helpers
 {
     public static class ItemHelper
     {
-        private static NativeHashMap<int, bool> stackable;
-        public static void Load()
-        {
-            stackable = new(1024, Allocator.Persistent);
-        }
+        private readonly static NativeHashMap<int, bool> stackable = new(1024, Allocator.Persistent);
         public static ObjectID GetObjectID(string name) => API.Authoring.GetObjectID("CoreEnhance:" + name);
         public static ContainedObjectsBuffer CreateItem(ObjectID objID, int amount, int variation = 0)
         {
@@ -23,6 +19,8 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                 }
             };
         }
+
+        [GenerateTestsForBurstCompatibility]
         public static bool IsStackable(this ObjectID objID)
         {
             int id = (int)objID;

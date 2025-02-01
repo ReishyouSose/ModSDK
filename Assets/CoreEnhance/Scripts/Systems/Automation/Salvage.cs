@@ -9,29 +9,21 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class AutomationSystem : PugSimulationSystemBase
+    public partial class AutoSalvageSystem : PugSimulationSystemBase
     {
-        private int simulationTickRateForPlatform;
         protected override void OnCreate()
         {
-            simulationTickRateForPlatform = NetworkingManager.GetSimulationTickRateForPlatform();
             NeedDatabase();
             base.OnCreate();
         }
         protected override void OnUpdate()
         {
-            var manager = EntityManager;
             var ecb = CreateCommandBuffer();
             var localDataBase = database;
-            Automation_Salvage(localDataBase, manager, ecb);
-            base.OnUpdate();
-        }
-        private void Automation_Salvage(BlobAssetReference<PugDatabase.PugDatabaseBank> localDataBase, EntityManager manager, EntityCommandBuffer ecb)
-        {
             if (!ModConfig.TryGetValues(EnhanceCategory.Automation, EC_Automation.Salvage, out var values))
                 return;
             int checkCount = ((ConfigEntry<int>)values["Amount"]).Value;
-            int time = ((ConfigEntry<int>)values["Timer"]).Value * simulationTickRateForPlatform;
+            int time = ((ConfigEntry<int>)values["Timer"]).Value;
             ComponentLookup<LevelCD> lvLookup = SystemAPI.GetComponentLookup<LevelCD>();
             ComponentLookup<DurabilityCD> drLookup = SystemAPI.GetComponentLookup<DurabilityCD>();
             Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers,
@@ -116,8 +108,11 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 }
                 result.Dispose();
             })
+                .WithName("Automation_Salvage")
                 .WithAll<CraftingCD>()
+                .WithBurst()
                 .Schedule();
+            base.OnUpdate();
         }
     }
 }

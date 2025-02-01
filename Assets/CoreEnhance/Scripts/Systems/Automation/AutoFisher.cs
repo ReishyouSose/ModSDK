@@ -3,15 +3,15 @@ using Assets.CoreEnhance.Scripts.Items;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
+using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
-namespace Assets.CoreEnhance.Scripts.Systems.Misc
+namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
-
-    [UpdateAfter(typeof(UniquePlaceableSystem))]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class AutoFisherServer : PugSimulationSystemBase
+    public partial class AutoFisherSystem : PugSimulationSystemBase
     {
         private BiomeLookup biomeLookup;
         private float timer;
@@ -45,18 +45,20 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref AutoFisherCD af,
                 ref RandomCD random, in LocalTransform trans) =>
             {
-                if (!af.CheckRodLevel(containers, out float efficiency, out int chance))
+                int2 pos = trans.Position.xz.RoundToInt2();
+                var biome = biomeLookup.GetBiome(pos);
+                AutoFisherCD.Init(ref af, tileAccessor, pos);
+                if (!af.CheckLevel(containers, biome, out float efficiency, out int chance))
                     return;
                 ref var rng = ref random.Value;
                 af.timer += efficiency;
                 while (af.timer > 3)
                 {
                     af.timer -= 3;
-                    if (rng.NextInt(10) >= 5 + chance)
+                    if (rng.NextInt(10 - chance) >= 5)
                         continue;
-                    AutoFisherCD.Init(ref af, tileAccessor, biomeLookup, trans);
                     using var drops = PugDatabase.GetRandomLoot(rng.NextInt(6) == 0 ? af.items : af.fishes,
-                        1, 1, ref rng, localLootBack, localDatabase, trans.Position, af.biome);
+                        1, 1, ref rng, localLootBack, localDatabase, trans.Position, biome);
                     int count = containers.Length;
                     for (int i = 9; i < count; i++)
                     {

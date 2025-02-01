@@ -19,14 +19,13 @@ namespace Assets.CoreEnhance.Scripts
         {
             ModConfig.Load();
             CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
-            RewiredExtensionModule.AddKeybind(ModKeyBind.QuickStack, "Quick Stack", KeyboardKeyCode.I, ModifierKey.Control);
+            ModKeyBind.Load();
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             API.Server.OnWorldCreated += Server_OnWorldCreated;
         }
 
         private void Server_OnWorldCreated()
         {
-            ItemHelper.Load();
         }
 
         private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)

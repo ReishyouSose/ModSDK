@@ -27,18 +27,18 @@ MonoBehaviour:
     - path: Scripts/Scripts/UI/ArenaScannerUI.cs
     - path: Scripts/Scripts/Tiles/AutoFisherTerminalEM.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
-    - path: Scripts/Scripts/Systems/Misc/UniquePlaceableSystem.cs
-    - path: Scripts/Scripts/Systems/Misc/QuickStackSystem.cs
-    - path: Scripts/Scripts/Systems/Misc/QuickConsumableSystem.cs
-    - path: Scripts/Scripts/Systems/Misc/DeathNoDropSyetem.cs
-    - path: Scripts/Scripts/Systems/Misc/AutoFisherTerminalSystem.cs
-    - path: Scripts/Scripts/Systems/Misc/AutoFisherSystem.cs
+    - path: Scripts/Scripts/Systems/Misc/UniquePlaceable.cs
+    - path: Scripts/Scripts/Systems/Misc/QuickStack.cs
+    - path: Scripts/Scripts/Systems/Misc/QuickConsumable.cs
+    - path: Scripts/Scripts/Systems/Misc/DeathNoDrop.cs
     - path: Scripts/Scripts/Systems/Misc/ArenaScanner.cs
     - path: Scripts/Scripts/Systems/Infinity/Durability.cs
     - path: Scripts/Scripts/Systems/Infinity/Common.cs
     - path: Scripts/Scripts/Systems/Infinity/Arena.cs
-    - path: Scripts/Scripts/Systems/Automation/AutomationSystem.cs
-    - path: Scripts/Scripts/Systems/AccelerateSystem.cs
+    - path: Scripts/Scripts/Systems/Automation/Salvage.cs
+    - path: Scripts/Scripts/Systems/Automation/AutoFisherTerminal.cs
+    - path: Scripts/Scripts/Systems/Automation/AutoFisher.cs
+    - path: Scripts/Scripts/Systems/Accelerate/Common.cs
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
     - path: Scripts/Scripts/Main.cs
     - path: Scripts/Scripts/Items/AutoFisherTerminalAuthoring.cs
@@ -51,23 +51,26 @@ MonoBehaviour:
     - path: Scripts/Scripts/Configs/ConfigCategory.cs
     - path: Scripts/Scripts/Components/UniquePlaceableAuthoring.cs
     - path: Scripts/Scripts/Components/ProcessedTagCD.cs
-    - path: Scripts/Generated/AccelerateSystem__System_18637105950.g.cs
     - path: Scripts/Generated/ArenaScanner__System_11997502330.g.cs
     - path: Scripts/Generated/ArenaScanner__System_11997502331.g.cs
     - path: Scripts/Generated/Arena__System_1664514490.g.cs
-    - path: Scripts/Generated/AutoFisherSystem__System_2481893110.g.cs
-    - path: Scripts/Generated/AutoFisherTerminalSystem__System_5755495710.g.cs
-    - path: Scripts/Generated/AutoFisherTerminalSystem__System_5755495711.g.cs
-    - path: Scripts/Generated/AutomationSystem__System_20440786790.g.cs
+    - path: Scripts/Generated/AutoFisherTerminal__System_7167305810.g.cs
+    - path: Scripts/Generated/AutoFisherTerminal__System_7167305811.g.cs
+    - path: Scripts/Generated/AutoFisher__System_11529482530.g.cs
     - path: Scripts/Generated/Common__System_18746596250.g.cs
-    - path: Scripts/Generated/DeathNoDropSyetem__System_6712492330.g.cs
+    - path: Scripts/Generated/Common__System_21133886260.g.cs
+    - path: Scripts/Generated/DeathNoDrop__System_8468917600.g.cs
     - path: Scripts/Generated/Durability__System_6784147770.g.cs
-    - path: Scripts/Generated/QuickStackSystem__System_2688822040.g.cs
-    - path: Scripts/Generated/QuickStackSystem__System_2688822041.g.cs
-    - path: Scripts/Generated/UniquePlaceableSystem__System_216185090.g.cs
-    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_AFTerminalOpenRPCCommandSerializer.cs
+    - path: Scripts/Generated/QuickConsumable__System_201454160.g.cs
+    - path: Scripts/Generated/QuickConsumable__System_201454161.g.cs
+    - path: Scripts/Generated/QuickStack__System_12172474170.g.cs
+    - path: Scripts/Generated/QuickStack__System_12172474171.g.cs
+    - path: Scripts/Generated/Salvage__System_7264018700.g.cs
+    - path: Scripts/Generated/UniquePlaceable__System_9409139260.g.cs
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Automation_AFTerminalOpenRPCCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_ArenaScannerSwitchRpcCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_LocalArenaRpcCommandSerializer.cs
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_QuickConsumeRpcCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_QuickStackRpcCommandSerializer.cs
     - path: Bundles/CoreEnhance_Windows.assetbundle
     dependencies:

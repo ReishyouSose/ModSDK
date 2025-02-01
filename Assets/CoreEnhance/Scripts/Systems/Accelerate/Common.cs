@@ -1,16 +1,17 @@
-﻿using Assets.CoreEnhance.Scripts.Sturcts;
-using Assets.CoreEnhance.Scripts.Configs;
+﻿using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Patchs;
+using Assets.CoreEnhance.Scripts.Sturcts;
 using CoreLib.Data.Configuration;
 using PlayerState;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Mathematics;
 
 namespace Assets.CoreEnhance.Scripts.Systems
 {
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class AccelerateSystem : PugSimulationSystemBase
+    public partial class AccelerateCommonSystem : PugSimulationSystemBase
     {
         private uint tickRate;
         protected override void OnCreate()
@@ -79,21 +80,27 @@ namespace Assets.CoreEnhance.Scripts.Systems
                 return;
             int maxTime = value.Value;
             var current = GetServerTick();
-            Entities.ForEach((Entity e, ref DestroyTimerCD destroy) =>
+            bool any = false;
+            JobHandle job = Entities.ForEach((Entity e, ref DestroyTimerCD destroy) =>
             {
                 ref var timer = ref destroy.timer;
                 if (timer.GetRemainingSeconds(current, tickRate) > maxTime)
                 {
                     timer.SetTargetTicks(maxTime, tickRate);
                     ecb.AddComponent<ProcessedTagCD>(e);
-                    BossCheckPatch.ShouldCheckImmdiately = true;
+                    any = true;
                 }
             })
                 .WithName("Accelerate_SoulOrb")
                 .WithAll<SoulOrbCD>()
                 .WithNone<ProcessedTagCD>()
                 .WithBurst()
-                .Schedule();
+                .ScheduleParallel(Dependency);
+            job.Complete();
+            if (any)
+            {
+                BossCheckPatch.ShouldCheckImmdiately = true;
+            }
         }
 
         private void Accelerate_Crafting()

@@ -10,7 +10,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     [UpdateAfter(typeof(UpdateHealthSystemGroup))]
     [UpdateBefore(typeof(InitMoveInventorySystem))]
-    public partial class DeathNoDropSyetem : PugSimulationSystemBase
+    public partial class DeathNoDropSystem : PugSimulationSystemBase
     {
         protected override void OnUpdate()
         {

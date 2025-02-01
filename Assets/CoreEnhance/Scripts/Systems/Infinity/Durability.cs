@@ -6,9 +6,9 @@ using static PugDatabase;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
-    [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ServerSimulation)]
+    [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
-    public partial class Durability : PugSimulationSystemBase
+    public partial class InfinityDurabilitySystem : PugSimulationSystemBase
     {
         private ComponentLookup<DurabilityCD> durabilityLookup;
         private BufferLookup<InventoryChangeBuffer> invLookup;
