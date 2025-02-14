@@ -20,7 +20,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
         public AFTerminalOpenCD(Entity player) => Player = player;
     }
 
-    [UpdateAfter(typeof(UniquePlaceableSystem))]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
     public partial class AutoFisherTerminalClient : PugSimulationSystemBase

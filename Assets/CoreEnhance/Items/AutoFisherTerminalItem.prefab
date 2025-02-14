@@ -67,9 +67,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellValue: 1
   buyValueMultiplier: 1
-  icon: {fileID: 21300000, guid: 4edb191c3b6df8449af2e4e67cf377d2, type: 3}
+  icon: {fileID: 21300000, guid: fef617345986c544f9d93742f2c04095, type: 3}
   iconOffset: {x: 0, y: 0}
-  smallIcon: {fileID: 21300000, guid: c212903ac0389824e8233f569db05198, type: 3}
+  smallIcon: {fileID: 21300000, guid: b218d231cde25d94fa70c99eb5b585c4, type: 3}
   isStackable: 1
   requiredObjectsToCraft: []
   craftingTime: 0

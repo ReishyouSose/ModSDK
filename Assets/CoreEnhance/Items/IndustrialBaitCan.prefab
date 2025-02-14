@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellValue: 10
   buyValueMultiplier: 1
-  icon: {fileID: 21300000, guid: c89d96a0dc803bb49bb7bf4f6080f6e9, type: 3}
+  icon: {fileID: 21300000, guid: 5cb98bc7d435fd14ab11c04de7832c08, type: 3}
   iconOffset: {x: 0, y: 0}
-  smallIcon: {fileID: 21300000, guid: b0ada01756eb60e4ab9ba4dfb6595b95, type: 3}
+  smallIcon: {fileID: 21300000, guid: 53cf7a828f089e242854fb2c42113dd9, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
   - objectName: CritterBeetle

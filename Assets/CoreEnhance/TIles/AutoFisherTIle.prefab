@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881095102312471513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4dd24d0b212984c834479eaec1bb3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 58f61d32650ffc54ea95b383a3500d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   XScaler: {fileID: 6256658193971169941}
@@ -53,7 +53,6 @@ MonoBehaviour:
   interactable: {fileID: 3283554711783475014}
   spriteObjects:
   - {fileID: 3958745674098482210}
-  - {fileID: 2504232880110290858}
   useSharedTransformAnimations: 1
   reskinOptions: []
   paintableOptions:
@@ -82,6 +81,7 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
+  AllowSwitchPage: 0
 --- !u!1 &3378454193542082254
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,8 +154,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 938194858606819515}
-        m_TargetAssemblyTypeName: Chest, Pug.Other
-        m_MethodName: OnPlayerLeftChest
+        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.ContainerEM, CoreEnhance
+        m_MethodName: CloseTerminal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 179130730, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_asset: {fileID: 11400000, guid: 6c1cd577209e5a640b250cfc751ae121, type: 2}
+  m_asset: {fileID: 11400000, guid: e575abb4fe0607d498f7ace832fd3342, type: 2}
   skin: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
   emissiveColor: {r: 1, g: 1, b: 1, a: 1}

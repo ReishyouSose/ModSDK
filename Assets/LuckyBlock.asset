@@ -24,13 +24,14 @@ MonoBehaviour:
     - path: Localization/Localization.csv
     - path: Scripts/ModConfig.cs
     - path: Scripts/Main.cs
+    - path: Scripts/LuckyBlockTriggerSystem.cs
     - path: Scripts/LuckyBlockSystem.cs
     - path: Scripts/LuckyBlockEM.cs
     - path: Scripts/LuckyBlockAuthoring.cs
     - path: Scripts/ChallengePatch.cs
     - path: Scripts/Generated/LuckyBlockSystem__System_1781404630.g.cs
-    - path: Scripts/Generated/LuckyBlockSystem__System_1781404631.g.cs
-    - path: Scripts/Generated/LuckyBlockSystem__System_1781404632.g.cs
+    - path: Scripts/Generated/LuckyBlockTriggerSystem__System_15896062830.g.cs
+    - path: Scripts/Generated/LuckyBlockTriggerSystem__System_15896062831.g.cs
     - path: Scripts/Generated/Assets.LuckyBlock_TriggerLBCDCommandSerializer.cs
     - path: Bundles/LuckyBlock_Windows.assetbundle
     dependencies:
@@ -45,7 +46,7 @@ MonoBehaviour:
   buildLinux: 0
   assets:
   - path: Assets/LuckyBlock/Localization/Localization.csv
-    hash: B7A2E65F3A28B35BB750AE86A08298EFAA6D2E3FE482C345620069657B31D062
+    hash: E8D31D975319326E72D19E426DAC8411B7337B5BAB6F08888706FDD61C075750
   - path: Assets/LuckyBlock/LuckyBlockItem.prefab
     hash: 5A25BA173F1459D32EFF93FD6D4D484A5837B3B65DF592D6BB7392DF062D409C
   - path: Assets/LuckyBlock/LuckyBlockShadow.asset

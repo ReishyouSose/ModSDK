@@ -175,7 +175,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                     radius = 32;
                     break;
                 default:
-                    throw new Exception("Arena index out of range");
+                    throw new Exception("Arena Index out of range");
             }
             offset = new(x, y);
         }

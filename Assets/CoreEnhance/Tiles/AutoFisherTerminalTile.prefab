@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3578621336254896086}
-  - component: {fileID: 8839559773988441292}
+  - component: {fileID: 3626048772475115924}
   m_Layer: 0
   m_Name: AutoFisherTerminalTile
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 6364640607202063090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8839559773988441292
+--- !u!114 &3626048772475115924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881095102312471513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c445aa96f49c2d94aaa54ddf110795e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3177fc366c0e58847a21c39e639ee90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   XScaler: {fileID: 6256658193971169941}
@@ -81,6 +81,7 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 1
+  AllowSwitchPage: 1
 --- !u!1 &3378454193542082254
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weightMultiplier: 1
   useDiscreteOutlineColor: 0
-  entityMono: {fileID: 8839559773988441292}
+  entityMono: {fileID: 3626048772475115924}
   requiredFactionToInteract: 0
   optionalIcon: {fileID: 0}
   optionalOutlineController: {fileID: 0}
@@ -137,9 +138,22 @@ MonoBehaviour:
   onUseActions:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8839559773988441292}
-        m_TargetAssemblyTypeName: Chest, Pug.Other
+      - m_Target: {fileID: 3626048772475115924}
+        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.ContainerEM, CoreEnhance
         m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3626048772475115924}
+        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.AutoFisherTerminalEM,
+          CoreEnhance
+        m_MethodName: OnOpenTerminal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -152,9 +166,8 @@ MonoBehaviour:
   onTriggerExitActions:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8839559773988441292}
-        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.AutoFisherTerminalEM,
-          CoreEnhance
+      - m_Target: {fileID: 3626048772475115924}
+        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.ContainerEM, CoreEnhance
         m_MethodName: CloseTerminal
         m_Mode: 1
         m_Arguments:
@@ -277,12 +290,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87823563b972ec645ace60f82c8ba876, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cc7742009a83ea459dd7c5404e5e9a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.0625, y: 0.0625}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -389,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 179130730, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_asset: {fileID: 11400000, guid: e506b70cbb1199744821fc3a833591b8, type: 2}
+  m_asset: {fileID: 11400000, guid: a2c801bdf46692f44b1ad2e2bc0c4ac1, type: 2}
   skin: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
   emissiveColor: {r: 1, g: 1, b: 1, a: 1}
