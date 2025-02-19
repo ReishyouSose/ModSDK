@@ -6,7 +6,7 @@ namespace Assets.CoreEnhance.Scripts.Items
 {
     public class VerdantShrineAuthoring : MonoBehaviour
     {
-        public int radiums;
+        public int radiums = 16;
     }
     public struct VerdantShrineCD : IComponentData
     {
@@ -21,7 +21,6 @@ namespace Assets.CoreEnhance.Scripts.Items
     {
         protected override void Convert(VerdantShrineAuthoring authoring)
         {
-            EnsureHasComponent<RandomCD>();
             AddComponentData(new VerdantShrineCD()
             {
                 radiums = authoring.radiums,

@@ -1,13 +1,14 @@
 using Assets.CoreEnhance.Scripts.Configs;
-using Assets.CoreEnhance.Scripts.Helpers;
+using Assets.CoreEnhance.Scripts.Items;
+using Assets.CoreEnhance.Scripts.Systems.Misc;
 using Assets.CoreEnhance.Scripts.UI;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
 using CoreLib.Util.Extensions;
+using PugConversion;
 using PugMod;
-using Rewired;
 using Unity.Entities;
 using UnityEngine;
 
@@ -21,35 +22,17 @@ namespace Assets.CoreEnhance.Scripts
             CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
             ModKeyBind.Load();
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
+            API.Authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
             API.Server.OnWorldCreated += Server_OnWorldCreated;
         }
 
         private void Server_OnWorldCreated()
         {
+
         }
 
         private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            if (entityManager.HasBuffer<InventorySlotRequirementBuffer>(entity))
-            {
-                if (authoringData.GetEntityObjectID() != API.Authoring.GetObjectID("CoreEnhance:AutoFisher"))
-                    return;
-                var id = API.Authoring.GetObjectID("CoreEnhance:IndustrialBaitCan");
-                var requires = entityManager.GetBuffer<InventorySlotRequirementBuffer>(entity);
-                var req = requires[1];
-                req.acceptsObjectIds[0] = id;
-                requires[1] = req;
-
-            }
-            return;
-            if (authoringData.GetEntityObjectID() == API.Authoring.GetObjectID("CoreEnhance:IndustrialBaitCan"))
-            {
-                int count = authoringData.GetComponentCount();
-                for (int i = 0; i < count; i++)
-                {
-                    Debug.Log(authoringData.GetComponentAtIndex(i));
-                }
-            }
         }
 
         public void Init()
@@ -66,6 +49,10 @@ namespace Assets.CoreEnhance.Scripts
                 }
 
                 UserInterfaceModule.RegisterModUI(gameObject);
+            }
+            else if (obj is WorkbenchDefinition workbenchDefinition)
+            {
+                EntityModule.AddModWorkbench(workbenchDefinition);
             }
 
         }

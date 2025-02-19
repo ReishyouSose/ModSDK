@@ -16,7 +16,6 @@ namespace Assets.CoreEnhance.Scripts.Items
     {
         protected override void Convert(AutoFisherTerminalAuthoring authoring)
         {
-            AddComponentData(new AFTerminalOpenCD(), false);
             AddComponentData(new AutoFisherTerminalCD());
         }
     }

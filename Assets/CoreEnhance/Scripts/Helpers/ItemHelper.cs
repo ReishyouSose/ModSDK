@@ -1,5 +1,6 @@
 ﻿using PugMod;
 using Unity.Collections;
+using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Helpers
 {
@@ -29,6 +30,48 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                 stackable.Add(id, stack = PugDatabase.GetObjectInfo(objID).isStackable);
             }
             return stack;
+        }
+
+        [GenerateTestsForBurstCompatibility]
+        public static void PutItemToContainer(DynamicBuffer<ContainedObjectsBuffer> containers,
+            ObjectDataCD objData, int start = 0)
+            => PutItemToContainer(containers, objData.objectID, objData.amount, start);
+
+        [GenerateTestsForBurstCompatibility]
+        public static void PutItemToContainer(DynamicBuffer<ContainedObjectsBuffer> containers,
+            ObjectID objID, int amount = 1, int start = 0)
+        {
+            bool stackable = objID.IsStackable();
+            int waitAmount = amount;
+            for (int i = start; i < containers.Length; i++)
+            {
+                var info = containers[i];
+                if (info.objectID == ObjectID.None)
+                {
+                    containers[i] = CreateItem(objID, amount);
+                    return;
+                }
+                else
+                {
+                    if (info.objectID != objID)
+                        continue;
+                    if (stackable)
+                    {
+                        int total = info.amount + waitAmount;
+                        if (total > 9999)
+                        {
+                            containers[i] = CreateItem(objID, 9999);
+                            waitAmount = total - 9999;
+                            continue;
+                        }
+                        else
+                        {
+                            containers[i] = CreateItem(objID, total);
+                            return;
+                        }
+                    }
+                }
+            }
         }
     }
 }

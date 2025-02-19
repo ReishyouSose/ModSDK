@@ -26,11 +26,11 @@ GameObject:
   - component: {fileID: 2445745560876883966}
   - component: {fileID: 4401662367938983526}
   - component: {fileID: 3991227550509896867}
+  - component: {fileID: -7460004867075468362}
   - component: {fileID: 845021786232025266}
-  - component: {fileID: 8411571832227649171}
-  - component: {fileID: 944585976510833819}
-  - component: {fileID: -3297073366227715380}
-  - component: {fileID: 9178110440138898379}
+  - component: {fileID: 7287190631170143809}
+  - component: {fileID: 1880587996886501521}
+  - component: {fileID: -2177602903858007959}
   m_Layer: 0
   m_Name: VerdantShrineTerminalItem
   m_TagString: Untagged
@@ -71,7 +71,17 @@ MonoBehaviour:
   iconOffset: {x: 0, y: 0}
   smallIcon: {fileID: 21300000, guid: 47c47ff395436de488c06a7b28ca4137, type: 3}
   isStackable: 1
-  requiredObjectsToCraft: []
+  requiredObjectsToCraft:
+  - objectName: RootSeed
+    amount: 1
+  - objectName: FarmerHelm
+    amount: 1
+  - objectName: PetalRing
+    amount: 1
+  - objectName: RecallIdol
+    amount: 9
+  - objectName: WallGrassBlock
+    amount: 99
   craftingTime: 0
 --- !u!114 &8820479081943970441
 MonoBehaviour:
@@ -130,7 +140,7 @@ MonoBehaviour:
   wallSideVariationStartsOnIndex1: 0
   blocksHangingWallObjects: 0
   appearInMapUI: 0
-  mapColor: {r: 0, g: 0.6132076, b: 0.09828915, a: 0}
+  mapColor: {r: 0, g: 0.78431374, b: 1, a: 0}
 --- !u!114 &-4919486019328487863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,13 +155,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShapeType: 0
   m_PrimitiveCenter:
-    x: 0
+    x: 0.5
     y: 0
-    z: 0
+    z: 0.125
   m_PrimitiveSize:
-    x: 1
+    x: 2
     y: 1
-    z: 1
+    z: 2
   m_PrimitiveOrientation:
     Value:
       x: 0
@@ -159,15 +169,15 @@ MonoBehaviour:
       z: 0
     RotationOrder: 4
   m_Capsule:
-    Height: 1
-    Radius: 0.5
+    Height: 2
+    Radius: 1
     Axis: 2
   m_Cylinder:
     Height: 1
-    Radius: 0.5
-    Axis: 2
+    Radius: 1
+    Axis: 1
   m_CylinderSideCount: 20
-  m_SphereRadius: 0.5
+  m_SphereRadius: 1
   m_MinimumSkinnedVertexWeight: 0.1
   m_ConvexHullGenerationParameters:
     m_SimplificationTolerance: 0.015
@@ -302,7 +312,7 @@ MonoBehaviour:
   SupportedGhostModes: 3
   OptimizationMode: 0
   Importance: 1
-  prefabId: 84672e7daf8dcab4d81f1bc186c24f17
+  prefabId: 6d6131c0ee748d844905dc2908816296
   HasOwner: 0
   SupportAutoCommandTarget: 1
   TrackInterpolationDelay: 0
@@ -335,8 +345,8 @@ MonoBehaviour:
   dontCalculateHealthFromLevel: 0
   overrideStartHealth: 0
   normalizedOverrideStartHealth: 1
-  startHealth: 2
-  maxHealth: 2
+  startHealth: 3
+  maxHealth: 3
   maxHealthMultiplier: 1
   hasHealthRegeneration: 1
   healInCombatAsWell: 0
@@ -465,6 +475,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b4b9264304dc2b5f1e3feb621bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7460004867075468362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e912e9dcc12b1b40b21c4b118483023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &845021786232025266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,12 +504,12 @@ MonoBehaviour:
   maxExtraSize: 0
   canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
-  cantAddObjectsToInventory: 0
+  cantAddObjectsToInventory: 1
   canBeUsedInNearbyCrafting: 0
   slotRequirements: []
   itemsInInventory: []
   addLootFromTable: 0
---- !u!114 &8411571832227649171
+--- !u!114 &7287190631170143809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -499,19 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 363721826, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &944585976510833819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3713dc949be95c841bb5979e7aee3a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-3297073366227715380
+--- !u!114 &1880587996886501521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -523,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: -762863004, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9178110440138898379
+--- !u!114 &-2177602903858007959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -532,6 +542,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 548004899387042758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e912e9dcc12b1b40b21c4b118483023, type: 3}
+  m_Script: {fileID: 11500000, guid: 3713dc949be95c841bb5979e7aee3a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

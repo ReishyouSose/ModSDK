@@ -1,4 +1,5 @@
-﻿using PugConversion;
+﻿using Assets.CoreEnhance.Scripts.Buffers;
+using PugConversion;
 using Unity.Entities;
 using UnityEngine;
 
@@ -14,11 +15,12 @@ namespace Assets.CoreEnhance.Scripts.Items
 
     }
 
-    public class VerdantShrineTerminalConverter : SingleAuthoringComponentConverter<VerdantShrineAuthoring>
+    public class VerdantShrineTerminalConverter : SingleAuthoringComponentConverter<VerdantShrineTerminalAuthoring>
     {
-        protected override void Convert(VerdantShrineAuthoring authoring)
+        protected override void Convert(VerdantShrineTerminalAuthoring authoring)
         {
             AddComponentData(new VerdantShrineTerminalCD());
+            EnsureHasBuffer<VerdantShrineBuffer>();
         }
     }
 }

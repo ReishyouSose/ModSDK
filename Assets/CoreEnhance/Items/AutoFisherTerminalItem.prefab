@@ -71,7 +71,15 @@ MonoBehaviour:
   iconOffset: {x: 0, y: 0}
   smallIcon: {fileID: 21300000, guid: b218d231cde25d94fa70c99eb5b585c4, type: 3}
   isStackable: 1
-  requiredObjectsToCraft: []
+  requiredObjectsToCraft:
+  - objectName: SeaFoamRing
+    amount: 1
+  - objectName: RecallIdol
+    amount: 9
+  - objectName: Glass
+    amount: 9
+  - objectName: WallLimestoneBlock
+    amount: 99
   craftingTime: 0
 --- !u!114 &8820479081943970441
 MonoBehaviour:
@@ -491,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 12
   sizeY: 3
-  maxExtraSize: 0
+  maxExtraSize: 3564
   canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 1

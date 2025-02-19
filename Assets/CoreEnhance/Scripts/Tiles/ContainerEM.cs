@@ -1,5 +1,4 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
-using Assets.CoreEnhance.Scripts.Systems.Automation;
 using Rewired;
 using System;
 
@@ -12,8 +11,7 @@ namespace Assets.CoreEnhance.Scripts.Tiles
         public override void Use()
         {
             base.Use();
-            if (AllowSwitchPage)
-                SwitchPage(0);
+            SwitchPage(0);
         }
         public virtual void CloseTerminal()
         {
@@ -24,17 +22,13 @@ namespace Assets.CoreEnhance.Scripts.Tiles
             if (!AllowSwitchPage)
                 return;
             var p = Manager.main.player;
-            if (p == null)
+            if (p == null || p.activeInventoryHandler != inventoryHandler)
                 return;
             Player r = p.inputModule.rewiredPlayer;
-            var ui = Manager.ui;
-            if (ui.isChestInventoryUIShowing)
-            {
-                if (r.GetButtonDown(ModKeyBind.InvPageUp))
-                    SwitchPage(--Index);
-                else if (r.GetButtonDown(ModKeyBind.InvPageDown))
-                    SwitchPage(++Index);
-            }
+            if (r.GetButtonDown(ModKeyBind.InvPageUp))
+                SwitchPage(--Index);
+            else if (r.GetButtonDown(ModKeyBind.InvPageDown))
+                SwitchPage(++Index);
         }
         private void SwitchPage(int index)
         {

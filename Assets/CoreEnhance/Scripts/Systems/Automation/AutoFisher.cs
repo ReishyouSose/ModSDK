@@ -1,11 +1,11 @@
 ﻿using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Items;
+using Inventory;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
@@ -14,9 +14,13 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
     public partial class AutoFisherSystem : PugSimulationSystemBase
     {
         private BiomeLookup biomeLookup;
+        private BufferLookup<ContainedObjectsBuffer> containerLookup;
+        private ComponentLookup<ObjectDataCD> objLookup;
         private float timer;
         protected override void OnCreate()
         {
+            containerLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
+            objLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
             NeedDatabase();
             NeedLootBank();
             RequireForUpdate<BiomeRangesCD>();
@@ -38,17 +42,21 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             }
             timer = 0;
 
+            if (!SystemAPI.TryGetSingletonEntity<AutoFisherTerminalCD>(out var terminal))
+                return;
+            containerLookup.TryGetBuffer(terminal, out var containers);
+            var objData = objLookup.GetRefRW(terminal);
             var tileAccessor = CreateTileAccessor();
             var biomeLookup = this.biomeLookup;
             var localDatabase = database;
             var localLootBack = lootBank;
-            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> containers, ref AutoFisherCD af,
+            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> requires, ref AutoFisherCD af,
                 ref RandomCD random, in LocalTransform trans) =>
             {
                 int2 pos = trans.Position.xz.RoundToInt2();
                 var biome = biomeLookup.GetBiome(pos);
                 AutoFisherCD.Init(ref af, tileAccessor, pos);
-                if (!af.CheckLevel(containers, biome, out float efficiency, out int chance))
+                if (!af.CheckLevel(requires, biome, out float efficiency, out int chance))
                     return;
                 ref var rng = ref random.Value;
                 af.timer += efficiency;
@@ -59,15 +67,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                         continue;
                     using var drops = PugDatabase.GetRandomLoot(rng.NextInt(6) == 0 ? af.items : af.fishes,
                         1, 1, ref rng, localLootBack, localDatabase, trans.Position, biome);
-                    int count = containers.Length;
-                    for (int i = 9; i < count; i++)
-                    {
-                        if (containers[i].objectData.objectID != ObjectID.None)
-                            continue;
-                        var item = drops[0];
-                        containers[i] = ItemHelper.CreateItem(item.objectID, item.amount);
-                        break;
-                    }
+                    ItemHelper.PutItemToContainer(containers, drops[0].objectID, drops[0].amount);
+                    objData.ValueRW.amount++;
                 }
             })
                 .WithName("AutoFisher_Catch")

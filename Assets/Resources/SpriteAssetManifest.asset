@@ -19,10 +19,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d692de56c675254ea40aaa88afc55b3, type: 2}
   - {fileID: 11400000, guid: 9e28ec761815e0d499a4edb0add86b21, type: 2}
   - {fileID: 11400000, guid: ba74321b66260f243b800134760a9ec1, type: 2}
+  - {fileID: 11400000, guid: 89c292d22df2e6c4387fa0bc5dc93e8e, type: 2}
   - {fileID: 11400000, guid: 72dce2d0cd1fa78488c0e6799241cacb, type: 2}
   - {fileID: 11400000, guid: 302454012c5b0cd48b33102050d16cdb, type: 2}
   - {fileID: 11400000, guid: f6eaf54e9fd01e748b74f65c193f47dd, type: 2}
   - {fileID: 11400000, guid: 9e5aa8becaff59e40b5758e408e72387, type: 2}
+  - {fileID: 11400000, guid: 42fd75167e00ce54ba32692f0f76b20d, type: 2}
   - {fileID: 11400000, guid: d6d36324533a3a14092a17ce22ea322a, type: 2}
   gradientMaps: []
   transformAnimations: []

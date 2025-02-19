@@ -43,7 +43,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Titan, 5, new AcceptableValueRange<int>(5, 300));
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 6, new AcceptableValueList<int>(1, 2, 3, 4, 5, 6), "Amount");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 5, new AcceptableValueRange<int>(0, 60), "Timer");
-            TryAddValue(file, EnhanceCategory.Misc, EC_Misc.QuickStack, 10, new AcceptableValueRange<int>(3, 200));
+            TryAddValue(file, EnhanceCategory.Misc, EC_Misc.QuickStack, 10, new AcceptableValueRange<int>(3, 20));
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
             if (configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
             {
                 ConfigDefinition def = entry.Switch.Definition;
-                entry.SetValue(key, file.Bind(new(def.Section, def.Key + (key == string.Empty ? "Value" : key)),
+                entry.SetValue(key, file.Bind(new(def.Section, def.Key + key),
                     defaultV, new(string.Empty, accept), new()));
                 return true;
             }

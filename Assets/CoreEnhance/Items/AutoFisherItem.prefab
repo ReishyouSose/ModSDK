@@ -69,7 +69,15 @@ MonoBehaviour:
   iconOffset: {x: 0, y: 0}
   smallIcon: {fileID: 21300000, guid: eb81cc0c6dad85049825f31627398e4e, type: 3}
   isStackable: 1
-  requiredObjectsToCraft: []
+  requiredObjectsToCraft:
+  - objectName: GoldBar
+    amount: 1
+  - objectName: Glass
+    amount: 3
+  - objectName: ScarletBar
+    amount: 5
+  - objectName: CoralPlank
+    amount: 5
   craftingTime: 0
 --- !u!114 &8820479081943970441
 MonoBehaviour:
@@ -504,7 +512,7 @@ MonoBehaviour:
     dontShowAnyHint: 0
     showInfoText: 0
     acceptsObjectsWithTags: 
-    acceptsObjectIds: bc200000
+    acceptsObjectIds: c0200000
   - requirementAppliesToAllSlots: 0
     dontShowAnyHint: 0
     showInfoText: 0

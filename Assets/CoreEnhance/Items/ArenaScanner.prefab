@@ -51,7 +51,13 @@ MonoBehaviour:
   iconOffset: {x: 0, y: 0}
   smallIcon: {fileID: 21300000, guid: 97464762aaf09d545ad1de6d3bd8674d, type: 3}
   isStackable: 1
-  requiredObjectsToCraft: []
+  requiredObjectsToCraft:
+  - objectName: AncientGemstone
+    amount: 5
+  - objectName: MechanicalPart
+    amount: 5
+  - objectName: PandoriumBar
+    amount: 5
   craftingTime: 0
 --- !u!114 &-2679075660371452598
 MonoBehaviour:

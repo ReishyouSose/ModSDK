@@ -80,7 +80,7 @@ MonoBehaviour:
   hasDisableableParticles: 0
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
-  showSortAndQuickStackButtons: 1
+  showSortAndQuickStackButtons: 0
   AllowSwitchPage: 1
 --- !u!1 &3378454193542082254
 GameObject:

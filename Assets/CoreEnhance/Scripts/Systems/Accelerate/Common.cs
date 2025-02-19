@@ -131,20 +131,30 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Portal(EntityCommandBuffer ecb)
         {
-            var wayPointLookup = SystemAPI.GetComponentLookup<WayPointCD>();
-            var distanceLookup = SystemAPI.GetComponentLookup<DistanceToPlayerCD>();
-            Entities.ForEach((Entity e, ref ObjectDataCD objectDataCd) =>
+            if (!ModConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Portal))
+                return;
+            Entities.ForEach((Entity e, ref ObjectDataCD objData) =>
             {
-                if (wayPointLookup.TryGetComponent(e, out var wayPoint) && distanceLookup.TryGetComponent(e, out var dis))
-                {
-                    float minDis = dis.minDistanceSq;
-                    if (!(minDis > 0) || !(minDis <= wayPoint.distanceToActivateSQ))
-                        return;
-                }
+                objData.amount = 1200;
                 ecb.AddComponent<ProcessedTagCD>(e);
             })
-                .WithName("PortalCharge")
+                .WithName("Accelerate_Portal")
                 .WithAll<PortalCD>()
+                .WithNone<WayPointCD>()
+                .WithNone<ProcessedTagCD>()
+                .WithBurst()
+                .Schedule();
+
+            Entities.ForEach((Entity e, ref ObjectDataCD objData, in WayPointCD wayPoint, in DistanceToPlayerCD dis) =>
+            {
+                float minDis = dis.minDistanceSq;
+                if (minDis > 0 && minDis <= wayPoint.distanceToActivateSQ)
+                {
+                    objData.amount = 600;
+                    ecb.AddComponent<ProcessedTagCD>(e);
+                }
+            })
+                .WithName("Accelerate_WayPoint")
                 .WithNone<ProcessedTagCD>()
                 .WithBurst()
                 .Schedule();

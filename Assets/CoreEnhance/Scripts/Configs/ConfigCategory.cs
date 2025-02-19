@@ -25,11 +25,13 @@
     public enum EC_Automation//自动化 
     {
         Salvage,//拆解 done
-        Plant,//拿来控制神龛范围内是否自动收吧
+        Plant,//神龛范围内是否自动收
     }
     public enum EC_Misc//杂项
     {
         QuickStack,//快速堆叠到附近箱子 done
         DeathNoDrop,//死亡不掉落 done
+        AllPlayerSkill,//玩家全技能 done
+        AllPetSkill,//宠物全技能 done
     }
 }
