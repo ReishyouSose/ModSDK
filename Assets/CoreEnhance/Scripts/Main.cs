@@ -1,13 +1,10 @@
 using Assets.CoreEnhance.Scripts.Configs;
-using Assets.CoreEnhance.Scripts.Items;
-using Assets.CoreEnhance.Scripts.Systems.Misc;
+using Assets.CoreEnhance.Scripts.Edits;
 using Assets.CoreEnhance.Scripts.UI;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
-using CoreLib.Util.Extensions;
-using PugConversion;
 using PugMod;
 using Unity.Entities;
 using UnityEngine;
@@ -23,6 +20,7 @@ namespace Assets.CoreEnhance.Scripts
             ModKeyBind.Load();
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             API.Authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
+            API.Authoring.OnObjectTypeAdded += PlaceSizeEdit.EditResizeableTool;
             API.Server.OnWorldCreated += Server_OnWorldCreated;
         }
 

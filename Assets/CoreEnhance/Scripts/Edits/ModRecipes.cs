@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Assets.CoreEnhance.Scripts.Items
+namespace Assets.CoreEnhance.Scripts.Edits
 {
     public static class ModRecipes
     {
