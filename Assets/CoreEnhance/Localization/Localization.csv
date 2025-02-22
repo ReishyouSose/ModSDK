@@ -28,10 +28,14 @@ Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Core Enhance"""	
 CoreEnhance/Craft	Text		Craft	制作
 CoreEnhance/Switch	Text		Core Enhance Function Switch	更好的体验功能开关
 CoreEnhance/Value	Text		Core Enhance Additional Config	更好的体验额外配置
-CoreEnhance/Switch/Infinity	Text		Infinity	无限
-CoreEnhance/Switch/Accelerate	Text		Accelerate	加速
-CoreEnhance/Switch/Automation	Text		Automation	自动化
-CoreEnhance/Switch/Misc	Text		Misc	杂项
+CoreEnhance/Switch/Section/Infinity	Text		Infinity	无限
+CoreEnhance/Switch/Section/Accelerate	Text		Accelerate	加速
+CoreEnhance/Switch/Section/Automation	Text		Automation	自动化
+CoreEnhance/Switch/Section/Misc	Text		Misc	杂项
+CoreEnhance/Value/Section/Infinity	Text		Infinity	无限
+CoreEnhance/Value/Section/Accelerate	Text		Accelerate	加速
+CoreEnhance/Value/Section/Automation	Text		Automation	自动化
+CoreEnhance/Value/Section/Misc	Text		Misc	杂项
 CoreEnhance/Switch/Infinity/Durability	Text		Durability	耐久
 CoreEnhance/Switch/Infinity/Durability/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Value/Infinity/Durability	Text		Durability Recovery Interval	耐久度恢复间隔
@@ -73,3 +77,4 @@ CoreEnhance/Value/Misc/QuickStack/Description	Text		Determines how many blocks a
 CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
 CoreEnhance/Switch/Misc/AllPlayerSkill	Text		All Player Skill	玩家全技能
 CoreEnhance/Switch/Misc/AllPetSkill	Text		All Pet Skill	宠物全技能
+CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿

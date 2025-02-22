@@ -1,4 +1,5 @@
-﻿using Assets.CoreEnhance.Scripts.Sturcts;
+﻿using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Sturcts;
 using PugTilemap;
 using Unity.Collections;
 using Unity.Entities;
@@ -39,6 +40,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
+            if (!ModConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.ChainMining))
+                return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var damager))
                 return;
             var tileAccessor = this.tileAccessor;
