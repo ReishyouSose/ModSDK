@@ -1,10 +1,12 @@
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Edits;
+using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.UI;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
+using CoreLib.Util.Extensions;
 using PugMod;
 using Unity.Entities;
 using UnityEngine;
@@ -31,6 +33,10 @@ namespace Assets.CoreEnhance.Scripts
 
         private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
+            if (authoringData.GetEntityObjectID() == ObjectID.WallDirtBlock)
+            {
+                ItemHelper.LogComponent(authoringData);
+            }
         }
 
         public void Init()

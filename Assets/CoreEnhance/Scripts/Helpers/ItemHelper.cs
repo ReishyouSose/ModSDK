@@ -1,6 +1,7 @@
 ﻿using PugMod;
 using Unity.Collections;
 using Unity.Entities;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Helpers
 {
@@ -71,6 +72,16 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                         }
                     }
                 }
+            }
+        }
+
+        public static void LogComponent(GameObject authoringData)
+        {
+            int count = authoringData.GetComponentCount();
+            Debug.Log(count);
+            for (int i = 0; i < count; i++)
+            {
+                Debug.Log(authoringData.GetComponentAtIndex(i));
             }
         }
     }

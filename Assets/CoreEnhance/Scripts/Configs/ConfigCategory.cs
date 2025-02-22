@@ -33,5 +33,6 @@
         DeathNoDrop,//死亡不掉落 done
         AllPlayerSkill,//玩家全技能 done
         AllPetSkill,//宠物全技能 done
+        ChainMining,//连锁挖矿
     }
 }

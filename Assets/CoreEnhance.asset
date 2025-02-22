@@ -35,9 +35,9 @@ MonoBehaviour:
     - path: Scripts/Scripts/Systems/Misc/UniquePlaceable.cs
     - path: Scripts/Scripts/Systems/Misc/QuickStack.cs
     - path: Scripts/Scripts/Systems/Misc/QuickConsumable.cs
-    - path: Scripts/Scripts/Systems/Misc/PlaceModifier.cs
     - path: Scripts/Scripts/Systems/Misc/PetModifier.cs
     - path: Scripts/Scripts/Systems/Misc/DeathNoDrop.cs
+    - path: Scripts/Scripts/Systems/Misc/ChainMining.cs
     - path: Scripts/Scripts/Systems/Misc/ArenaScanner.cs
     - path: Scripts/Scripts/Systems/Infinity/Durability.cs
     - path: Scripts/Scripts/Systems/Infinity/Common.cs
@@ -54,11 +54,12 @@ MonoBehaviour:
     - path: Scripts/Scripts/Main.cs
     - path: Scripts/Scripts/Items/VerdantShrineTerminalAuthoring.cs
     - path: Scripts/Scripts/Items/VerdantShrineAuthoring.cs
-    - path: Scripts/Scripts/Items/ModRecipes.cs
     - path: Scripts/Scripts/Items/AutoFisherTerminalAuthoring.cs
     - path: Scripts/Scripts/Items/AutoFisherAuthoring.cs
     - path: Scripts/Scripts/Helpers/MathHelper.cs
     - path: Scripts/Scripts/Helpers/ItemHelper.cs
+    - path: Scripts/Scripts/Edits/PlaceSizeEdit.cs
+    - path: Scripts/Scripts/Edits/ModRecipes.cs
     - path: Scripts/Scripts/Configs/ModKeyBind.cs
     - path: Scripts/Scripts/Configs/ModConfig.cs
     - path: Scripts/Scripts/Configs/ConfigData.cs
@@ -72,6 +73,7 @@ MonoBehaviour:
     - path: Scripts/Generated/Arena__System_1664514490.g.cs
     - path: Scripts/Generated/AutoFisherTerminal__System_7167305810.g.cs
     - path: Scripts/Generated/AutoFisher__System_11529482530.g.cs
+    - path: Scripts/Generated/ChainMining__System_9423867050.g.cs
     - path: Scripts/Generated/Common__System_18746596250.g.cs
     - path: Scripts/Generated/Common__System_21133886260.g.cs
     - path: Scripts/Generated/DeathNoDrop__System_8468917600.g.cs
