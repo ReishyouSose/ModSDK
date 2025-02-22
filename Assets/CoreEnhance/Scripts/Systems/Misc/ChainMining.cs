@@ -16,12 +16,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
     {
         private TileAccessor tileAccessor;
         private ComponentLookup<TileCD> tileLookup;
-        private ComponentLookup<LocalTransform> transLookup;
         private static int2[] check;
         protected override void OnCreate()
         {
             tileLookup = SystemAPI.GetComponentLookup<TileCD>();
-            transLookup = SystemAPI.GetComponentLookup<LocalTransform>();
             check = new int2[4]
             {
                 new(-1, 0),
@@ -29,8 +27,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 new(0, 1),
                 new(0, -1),
             };
-            RequireForUpdate<TileCD>();
-            RequireForUpdate<KilledByPlayerCD>();
             base.OnCreate();
         }
         protected override void OnStartRunning()
@@ -48,7 +44,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var ecb = CreateCommandBuffer();
             var collision = GetPhysicsWorld().CollisionWorld;
             var tileLookup = this.tileLookup;
-            var transLookup = this.transLookup;
             Entities.ForEach((Entity e, in HealthCD health, in KilledByPlayerCD killer, in LocalTransform trans) =>
             {
                 if (health.health <= 0 && killer.playerEntity != Entity.Null)
