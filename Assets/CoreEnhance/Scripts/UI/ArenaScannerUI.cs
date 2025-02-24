@@ -44,9 +44,7 @@ namespace Assets.CoreEnhance.Scripts.UI
         private void Update()
         {
             var p = Manager.main.player;
-            if (p == null)
-                return;
-            if (Manager.ui.isAnyInventoryShowing)
+            if (p == null || Manager.ui.isAnyInventoryShowing)
             {
                 HideUI();
                 return;

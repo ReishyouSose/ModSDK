@@ -1,11 +1,13 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Sturcts;
+using Inventory;
 using PugTilemap;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.NetCode;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
@@ -14,11 +16,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class ChainMining : PugSimulationSystemBase
     {
-        private BiomeLookup biomeLookup;
         private TileAccessor tileAccessor;
         private ComponentLookup<TileCD> tileLookup;
         private static int2[] check;
-        private NativeHashMap<Entity, int> counts;
+        private NativeHashMap<Entity, NativeHashSet<int2>> lasts;
         protected override void OnCreate()
         {
             tileLookup = SystemAPI.GetComponentLookup<TileCD>();
@@ -29,20 +30,17 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 new(0, 1),
                 new(0, -1),
             };
-            counts = new(8, Allocator.Persistent);
-            NeedDatabase();
+            lasts = new(8, Allocator.Persistent);
             base.OnCreate();
         }
         protected override void OnStartRunning()
         {
             tileAccessor = CreateTileAccessor();
-            biomeLookup = SystemAPI.TryGetSingleton<BiomeSamplesCD>(out var sample)
-                ? new(sample) : new(SystemAPI.GetSingleton<BiomeRangesCD>().Value, Allocator.Persistent);
             base.OnStartRunning();
         }
         protected override void OnUpdate()
         {
-            if (!ModConfig.TryGetValue<int>(EnhanceCategory.Misc, EC_Misc.ChainMining, out var value))
+            if (!ModConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.ChainMining))
                 return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var damager))
                 return;
@@ -50,33 +48,30 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var ecb = CreateCommandBuffer();
             var collision = GetPhysicsWorld().CollisionWorld;
             var tileLookup = this.tileLookup;
-            var biomeLookup = this.biomeLookup;
-            var counts = this.counts;
-            var need = value.Value;
-            var database = this.database;
-            Entities.ForEach((Entity e, in HealthCD health, in KilledByPlayerCD killer, in TileCD tile, in LocalTransform trans) =>
+            var lasts = this.lasts;
+            Entities.ForEach((Entity e, in HealthCD health, in KilledByPlayerCD killer, in LocalTransform trans) =>
             {
                 var player = killer.playerEntity;
                 if (health.health <= 0 && player != Entity.Null)
                 {
-                    var pos = trans.Position.RoundToInt2();
-                    NativeHashSet<int2> done = new(32, Allocator.Temp);
-                    Chain(tileAccessor, tileLookup, pos, ref done);
-                    int count = done.Count;
-                    if (counts.ContainsKey(player))
+                    var wp = trans.Position;
+                    var pos = wp.RoundToInt2();
+                    if(lasts.TryGetValue(player,out var last))
                     {
-                        counts[player] += count;
+                        if (last.Contains(pos))
+                            return;
                     }
                     else
-                        counts.Add(player, count);
-                    while (counts[player] >= need)
                     {
-                        counts[player] -= need;
-                        ObjectID id = BiomeAndTilesetToChest(biomeLookup.GetBiome(pos), (Tileset)tile.tileset);
-                        EntityUtility.CreateAndDropItem(id, 0, 1, trans.Position, player, database, ecb);
+                        lasts[player] = new(64, Allocator.Persistent);
                     }
+                    lasts[player].Clear();
+                    lasts[player].Add(pos);
+                    NativeHashSet<int2> done = new(32, Allocator.Temp);
+                    Chain(tileAccessor, tileLookup, pos, ref done);
                     foreach (var p in done)
                     {
+                        lasts[player].Add(p);
                         damager.Add(new()
                         {
                             bypassMaxDamagePerHit = true,
@@ -91,11 +86,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                         });
                     }
                     done.Dispose();
-                    ecb.AddComponent<ProcessedTagCD>(e);
                 }
             })
                 .WithName("ChainMining")
-                .WithNone<ProcessedTagCD>()
                 .WithBurst()
                 .Schedule();
             base.OnUpdate();
