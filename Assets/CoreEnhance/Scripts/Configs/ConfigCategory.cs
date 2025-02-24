@@ -13,6 +13,7 @@
         Boulder,//大矿 done
         Arena,//竞技场 done
         Minion,//召唤物时长 done
+        Mana,//魔力 done
     }
     public enum EC_Accelerate//加速
     {
@@ -33,6 +34,7 @@
         DeathNoDrop,//死亡不掉落 done
         AllPlayerSkill,//玩家全技能 done
         AllPetSkill,//宠物全技能 done
-        ChainMining,//连锁挖矿
+        ChainMining,//连锁挖矿 done
+        NoRecoil,//无后坐力 done
     }
 }

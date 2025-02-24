@@ -1,14 +1,13 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
-using PlayerEquipment;
 using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
-    public partial class InfinityCommonSystem: PugSimulationSystemBase
+    public partial class InfinityCommonSystem : PugSimulationSystemBase
     {
-        private const int ResetTimer = 60;
+        private const int ResetTimer = 1;
         private float timer;
         protected override void OnCreate()
         {
@@ -17,13 +16,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         protected override void OnUpdate()
         {
-            Infinity_Minion();
             if (timer < ResetTimer)
             {
                 timer += World.Time.DeltaTime;
                 return;
             }
             timer = 0;
+            Infinity_Minion();
+            Infinity_Mana();
             Infinity_Boulder();
             base.OnUpdate();
         }
@@ -51,6 +51,21 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                     minion.lifespanTimer = minion.lifespan;
             })
                 .WithName("Infinity_Minion")
+                .WithBurst()
+                .Schedule();
+        }
+        private void Infinity_Mana()
+        {
+            if (!ModConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Mana))
+                return;
+            Entities.ForEach((ref ManaCD mana) =>
+            {
+                if (mana.mana != mana.maxMana)
+                {
+                    mana.mana = mana.maxMana;
+                }
+            })
+                .WithName("Infinity_Mana")
                 .WithBurst()
                 .Schedule();
         }
