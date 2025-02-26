@@ -14,6 +14,7 @@ namespace Assets.CoreEnhance.Scripts
 {
     public class Main : IMod
     {
+        private int timer;
         public void EarlyInit()
         {
             ModConfig.Load();
@@ -72,8 +73,14 @@ namespace Assets.CoreEnhance.Scripts
             var p = Manager.main.player;
             if (p == null)
                 return;
-            ArenaScannerUI.CheckScanner(p);
             ModKeyBind.Handle(p);
+            if (timer < 60)
+            {
+                timer++;
+                return;
+            }
+            timer = 0;
+            ArenaScannerUI.CheckScanner(p);
         }
     }
 }
