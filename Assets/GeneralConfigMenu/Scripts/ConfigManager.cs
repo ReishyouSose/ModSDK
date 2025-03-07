@@ -224,8 +224,8 @@ namespace Assets.GeneralConfigMenu.Scripts
             EntryPanel.gameObject.SetActive(true);
             var text = go.GetComponent<RUIText>();
             var key = text.customData[0] as ConfigFile;
-            EntryLabel.localize = LocalizationManager.TryGetTranslation(text.Text.textString, out _);
-            EntryLabel.Render(text.Text.textString);
+            EntryLabel.localize = LocalizationManager.TryGetTranslation(text.Text.displayedTextString, out _);
+            EntryLabel.Render(text.Text.displayedTextString);
             foreach (var (configFile, view) in configViews)
             {
                 view.gameObject.SetActive(configFile == key);

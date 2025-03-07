@@ -1,6 +1,7 @@
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Edits;
 using Assets.CoreEnhance.Scripts.UI;
+using Assets.CoreEnhance.Scripts.UI.ItemLookup;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
@@ -20,9 +21,11 @@ namespace Assets.CoreEnhance.Scripts
             ModConfig.Load();
             CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
             ModKeyBind.Load();
-            API.Authoring.OnObjectTypeAdded += NoRecoil;
-            API.Authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
-            API.Authoring.OnObjectTypeAdded += PlaceSizeEdit.EditResizeableTool;
+            var authoring = API.Authoring;
+            authoring.OnObjectTypeAdded += NoRecoil;
+            authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
+            authoring.OnObjectTypeAdded += PlaceSizeEdit.EditResizeableTool;
+            authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
             API.Server.OnWorldCreated += Server_OnWorldCreated;
         }
 
@@ -57,10 +60,10 @@ namespace Assets.CoreEnhance.Scripts
 
                 UserInterfaceModule.RegisterModUI(gameObject);
             }
-            else if (obj is WorkbenchDefinition workbenchDefinition)
+            /*else if (obj is WorkbenchDefinition workbenchDefinition)
             {
                 EntityModule.AddModWorkbench(workbenchDefinition);
-            }
+            }*/
 
         }
 

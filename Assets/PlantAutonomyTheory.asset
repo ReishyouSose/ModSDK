@@ -34,3 +34,9 @@ MonoBehaviour:
     - modName: CoreLib.Entity
       required: 1
   modPath: Assets\PlantAutonomyTheory
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets: []
+  lastBuildLinux: 0

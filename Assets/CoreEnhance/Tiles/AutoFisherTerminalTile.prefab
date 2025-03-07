@@ -81,7 +81,6 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
-  AllowSwitchPage: 1
 --- !u!1 &3378454193542082254
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +225,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2624914572565676298}
   - component: {fileID: 5608950531725209265}
-  - component: {fileID: 390850311370230746}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -301,18 +299,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &390850311370230746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3885925216690393756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1536336809, guid: 3b024c3700b14424aaa1008f2cb49541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6591590125872646557
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7958232068421322022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 179130730, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
+  m_Script: {fileID: 1908045241, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_asset: {fileID: 11400000, guid: a2c801bdf46692f44b1ad2e2bc0c4ac1, type: 2}
@@ -418,4 +404,8 @@ MonoBehaviour:
   m_randomStartTime: 0
   processAnimationEvents: 0
   syncSource: {fileID: 0}
+  syncAnimation: 1
+  syncVariant: 1
   syncSprite: 0
+  maskChannel: 0
+  maskInteraction: 0

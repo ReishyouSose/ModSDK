@@ -1,6 +1,6 @@
 ﻿namespace Assets.CoreEnhance.Scripts.Tiles
 {
-    public class VerdantShrineEM : ContainerEM
+    public class VerdantShrineEM : Chest
     {
     }
 }

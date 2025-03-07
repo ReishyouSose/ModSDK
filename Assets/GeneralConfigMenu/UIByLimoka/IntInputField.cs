@@ -22,13 +22,13 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
         protected override void OnCommit()
         {
-            if (int.TryParse(pugText.textString, out int value))
+            if (int.TryParse(pugText.displayedTextString, out int value))
             {
                 onValueChanged?.Invoke(value);
                 return;
             }
             
-            if (float.TryParse(pugText.textString, out float floatValue))
+            if (float.TryParse(pugText.displayedTextString, out float floatValue))
             {
                 onValueChanged?.Invoke(Mathf.RoundToInt(floatValue));
             }

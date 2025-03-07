@@ -902,6 +902,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -1065,6 +1066,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 7
     maskInteraction: 0
@@ -1564,6 +1566,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -1651,6 +1654,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 4
     maskInteraction: 0
@@ -1900,6 +1904,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -2146,6 +2151,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -2486,6 +2492,7 @@ MonoBehaviour:
     color: {r: 0.60784316, g: 0.60784316, b: 0.60784316, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -2573,6 +2580,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 7
     maskInteraction: 0
@@ -2660,6 +2668,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -3678,6 +3687,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -4017,6 +4027,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -4637,6 +4648,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -5379,6 +5391,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 9999
     maskInteraction: 0
@@ -5751,6 +5764,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 2
     maskInteraction: 0
@@ -5922,6 +5936,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -6293,6 +6308,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -6510,6 +6526,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -6815,6 +6832,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 6
     maskInteraction: 0
@@ -7376,6 +7394,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -7739,6 +7758,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 4
     maskInteraction: 0
@@ -7826,6 +7846,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -7913,6 +7934,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 7
     maskInteraction: 0
@@ -8266,6 +8288,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -8711,6 +8734,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -8966,6 +8990,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -9138,6 +9163,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -9787,6 +9813,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 4
     maskInteraction: 0
@@ -9874,6 +9901,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 7
     maskInteraction: 0
@@ -10060,6 +10088,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 1
     maskInteraction: 0
@@ -10378,6 +10407,7 @@ MonoBehaviour:
     color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 6
     maskInteraction: 0
@@ -10465,6 +10495,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -10744,6 +10775,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 3
     maskInteraction: 0
@@ -11014,6 +11046,7 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     outline: 0
     outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
     sortingLayer: 0
     orderInLayer: 4
     maskInteraction: 0

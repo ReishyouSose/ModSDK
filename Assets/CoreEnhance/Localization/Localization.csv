@@ -26,6 +26,7 @@ Items/CoreEnhance:VerdantShrineTerminalDesc	Text		The shrine will put loot into 
 Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
 Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Core Enhance"""	更好的体验专属制作站
 CoreEnhance/Craft	Text		Craft	制作
+CoreEnhance/ObtainWay	Text		Obtain Way	获取途径
 CoreEnhance/Switch	Text		Core Enhance Function Switch	更好的体验功能开关
 CoreEnhance/Value	Text		Core Enhance Additional Config	更好的体验额外配置
 CoreEnhance/Switch/Section/Infinity	Text		Infinity	无限

@@ -81,7 +81,6 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
-  AllowSwitchPage: 0
 --- !u!1 &3378454193542082254
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,10 +243,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3885925216690393756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 179130730, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
+  m_Script: {fileID: 1908045241, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_asset: {fileID: 11400000, guid: 9e08a00ac1364704d9939c92096b4f08, type: 2}
+  m_asset: {fileID: 11400000, guid: e575abb4fe0607d498f7ace832fd3342, type: 2}
   skin: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0.39215687}
   emissiveColor: {r: 1, g: 1, b: 1, a: 1}
@@ -263,7 +262,11 @@ MonoBehaviour:
   m_randomStartTime: 0
   processAnimationEvents: 0
   syncSource: {fileID: 0}
+  syncAnimation: 1
+  syncVariant: 1
   syncSprite: 0
+  maskChannel: 0
+  maskInteraction: 0
 --- !u!1 &6591590125872646557
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +353,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7958232068421322022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 179130730, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
+  m_Script: {fileID: 1908045241, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_asset: {fileID: 11400000, guid: e575abb4fe0607d498f7ace832fd3342, type: 2}
@@ -369,4 +372,8 @@ MonoBehaviour:
   m_randomStartTime: 0
   processAnimationEvents: 0
   syncSource: {fileID: 0}
+  syncAnimation: 1
+  syncVariant: 1
   syncSprite: 0
+  maskChannel: 0
+  maskInteraction: 0

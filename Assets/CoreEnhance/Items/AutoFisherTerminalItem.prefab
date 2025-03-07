@@ -139,6 +139,7 @@ MonoBehaviour:
   blocksHangingWallObjects: 0
   appearInMapUI: 0
   mapColor: {r: 0, g: 0.78431374, b: 1, a: 0}
+  alignWithPlayerDirection: 0
 --- !u!114 &-4919486019328487863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 178800199, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playIdleAnimation: 1
 --- !u!114 &-1929708704143473327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,11 +501,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 12
   sizeY: 3
-  maxExtraSize: 3564
+  maxExtraSize: 0
   canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 1
-  canBeUsedInNearbyCrafting: 0
+  autoTransferEnabled: 0
   slotRequirements: []
   itemsInInventory: []
   addLootFromTable: 0

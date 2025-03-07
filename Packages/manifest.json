@@ -25,8 +25,8 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.uielements": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
-    "ck.modding.corelib": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/CoreLibPackage#main",
-    "ck.modding.sdk-extensions": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/SDKExtensions#main",
-    "ck.modding.markdig": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main"
+    "ck.modding.corelib": "file:F:/CoreKeeperMod/CoreLib/Assets/CoreLibPackage",
+      "ck.modding.markdig": "file:F:/CoreKeeperMod/CoreLib/Assets/Markdig",
+      "ck.modding.sdk-extensions": "file:F:/CoreKeeperMod/CoreLib/Assets/SDKExtensions"
   }
 }

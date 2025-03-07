@@ -9,34 +9,36 @@ namespace Assets.CoreEnhance.Scripts.Edits
     public static class ModRecipes
     {
         private const string CoreEnhance = "CoreEnhance:";
-        private static List<string> WorkBench()
+        private static List<string> WorkBench => new()
         {
-            return new()
-            {
-                "AutoFisher",
-                "AutoFisherTerminal",
-                "VerdantShrine",
-                "VerdantShrineTerminal",
-                "ArenaScanner"
-            };
-        }
+            "AutoFisher",
+            "AutoFisherTerminal",
+            "VerdantShrine",
+            "VerdantShrineTerminal",
+            "ArenaScanner"
+        };
         internal static void EditWorkbench(Entity entity, GameObject authoring, EntityManager entityManager)
         {
             ObjectID objectID = authoring.GetEntityObjectID();
-            if (objectID == API.Authoring.GetObjectID(CoreEnhance + "WorkBench"))
+            if (objectID == ObjectID.SolariteWorkbench)
             {
+                var list = WorkBench;
                 var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
-                int i = 0;
-                foreach (var name in WorkBench())
+                int j = 0;
+                for (int i = 8; i < 12; i++)
                 {
-                    var item = API.Authoring.GetObjectID(CoreEnhance + name);
-                    canCraftBuffer[i++] = new CanCraftObjectsBuffer
+                    var item = API.Authoring.GetObjectID(CoreEnhance + list[j++]);
+                    canCraftBuffer[i] = new CanCraftObjectsBuffer
                     {
                         objectID = item,
                         amount = 1,
-                        entityAmountToConsume = 0
                     };
                 }
+                canCraftBuffer[2] = new()
+                {
+                    objectID = API.Authoring.GetObjectID(CoreEnhance + list[j]),
+                    amount = 1
+                };
             }
         }
     }

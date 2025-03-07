@@ -69,7 +69,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         private void InnerLeftDown_Server(GameObject go)
         {
             ServerExpand.SetExpand(false);
-            var value = go.GetComponent<RUIText>().Text.textString;
+            var value = go.GetComponent<RUIText>().Text.displayedTextString;
             if (ValueEquals(value))
                 return;
             server.Render(value);
@@ -80,7 +80,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         private void InnerLeftDown_Client(GameObject go)
         {
             ClientExpand.SetExpand(false);
-            var value = go.GetComponent<RUIText>().Text.textString;
+            var value = go.GetComponent<RUIText>().Text.displayedTextString;
             if (ValueEquals(value))
                 return;
             client.Render(value);
@@ -90,13 +90,13 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         protected override void ServerToClient()
         {
-            var value = server.textString;
+            var value = server.displayedTextString;
             client.Render(value);
             SetClient(value);
         }
         protected override void ClientToServer()
         {
-            var value = client.textString;
+            var value = client.displayedTextString;
             server.Render(value);
             SetAndSendChange(value);
         }
@@ -114,6 +114,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             client.Render(DefaultValue);
             SetClient(DefaultValue);
         }
-        public override bool ServerEqualsClient() => server.textString == client.textString;
+        public override bool ServerEqualsClient() => server.displayedTextString == client.displayedTextString;
     }
 }

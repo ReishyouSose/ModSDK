@@ -18,7 +18,7 @@ public class ModBuilderSettings : ScriptableObject
 	public bool forceReimport = true;
 	public bool buildBundles = true;
 	public bool cacheBundles = false;
-	public bool buildLinux = false;
+	public bool buildLinux = true;
 	
 	[HideInInspector]
 	public List<ModAsset> assets;

@@ -110,7 +110,7 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
             while (pugText.displayedTextString.Length > 0 && ((maxWidth > 0f && pugText.dimensions.width > maxWidth) ||
                                                                    (maxHeight > 0f && pugText.dimensions.height > maxHeight)))
             {
-                pugText.textString = pugText.displayedTextString.Substring(0, pugText.displayedTextString.Length - 1);
+                pugText.displayedTextString = pugText.displayedTextString.Substring(0, pugText.displayedTextString.Length - 1);
                 currentCharIndex--;
                 pugText.Render(false);
             }
@@ -120,13 +120,13 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
         private void UpdateHintText()
         {
-            if (pugText.textString == "" && hintText.textString == "")
+            if (pugText.displayedTextString == "" && hintText.displayedTextString == "")
             {
                 hintText.Render(hintString);
                 return;
             }
 
-            if (pugText.textString != "" && hintText.textString != "")
+            if (pugText.displayedTextString != "" && hintText.displayedTextString != "")
             {
                 hintText.Render("");
             }
@@ -169,11 +169,11 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
             if (currentCharIndex == pugText.displayedTextString.Length)
             {
-                pugText.textString = pugText.displayedTextString + s;
+                pugText.displayedTextString = pugText.displayedTextString + s;
             }
             else
             {
-                pugText.textString = pugText.displayedTextString.Insert(currentCharIndex, s);
+                pugText.displayedTextString = pugText.displayedTextString.Insert(currentCharIndex, s);
             }
 
             bool flag = currentCharIndex == pugText.displayedTextString.Length;
@@ -187,7 +187,7 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
             if ((maxWidth > 0f && pugText.dimensions.width > maxWidth) ||
                 (maxHeight > 0f && pugText.dimensions.height > maxHeight))
             {
-                pugText.textString = displayedTextString;
+                pugText.displayedTextString = displayedTextString;
                 currentCharIndex -= s.Length;
                 pugText.Render(false);
             }
@@ -213,7 +213,7 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
         {
             if (pugText.displayedTextString.Length > currentCharIndex)
             {
-                pugText.textString = pugText.displayedTextString.Remove(currentCharIndex, 1);
+                pugText.displayedTextString = pugText.displayedTextString.Remove(currentCharIndex, 1);
                 pugText.Render(false);
             }
         }
@@ -222,7 +222,7 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
         {
             if (currentCharIndex > 0 && pugText.displayedTextString.Length >= currentCharIndex)
             {
-                pugText.textString = pugText.displayedTextString.Remove(currentCharIndex - 1, 1);
+                pugText.displayedTextString = pugText.displayedTextString.Remove(currentCharIndex - 1, 1);
                 currentCharIndex--;
                 pugText.Render(false);
             }
@@ -262,12 +262,12 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
         public string GetInputText()
         {
-            return pugText.textString;
+            return pugText.displayedTextString;
         }
 
         public void SetInputText(string text)
         {
-            pugText.textString = ValidateInput(text);
+            pugText.displayedTextString = ValidateInput(text);
             pugText.Render(false);
             currentCharIndex = text.Length;
             UpdateHintText();
@@ -280,7 +280,7 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
             characterMarkBlinker.gameObject.SetActive(false);
             if (commit || triggerOnInputFieldDoneWhenCanceling)
             {
-                pugText.textString = ValidateInput(pugText.textString);
+                pugText.displayedTextString = ValidateInput(pugText.displayedTextString);
                 OnCommit();
                 pugText.Render();
             }
@@ -290,7 +290,7 @@ namespace Assets.GeneralConfigMenu.UIByLimoka
 
         protected virtual void OnCommit()
         {
-            onTextChanged?.Invoke(gameObject, pugText.textString);
+            onTextChanged?.Invoke(gameObject, pugText.displayedTextString);
         }
     }
 }

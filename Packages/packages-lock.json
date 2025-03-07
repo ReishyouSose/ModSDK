@@ -1,31 +1,28 @@
 {
   "dependencies": {
     "ck.modding.corelib": {
-      "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/CoreLibPackage#main",
+      "version": "file:F:/CoreKeeperMod/CoreLib/Assets/CoreLibPackage",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0",
         "ck.modding.markdig": "0.33.0"
-      },
-      "hash": "a6c93f6d7df7661b75f98078f8fcaef24a7a8e68"
+      }
     },
     "ck.modding.markdig": {
-      "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/Markdig#main",
+      "version": "file:F:/CoreKeeperMod/CoreLib/Assets/Markdig",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "3b49d54628bd0546beab9810e0236347150b402c"
+      "source": "local",
+      "dependencies": {}
     },
     "ck.modding.sdk-extensions": {
-      "version": "https://github.com/CoreKeeperMods/CoreLib.git?path=/Assets/SDKExtensions#main",
+      "version": "file:F:/CoreKeeperMod/CoreLib/Assets/SDKExtensions",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0",
         "ck.modding.markdig": "0.33.0"
-      },
-      "hash": "3b49d54628bd0546beab9810e0236347150b402c"
+      }
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -329,6 +326,17 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "dev.pugstorm.sprite": {
+      "version": "file:dev.pugstorm.sprite",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "12.1.8",
+        "com.unity.collections": "2.1.4",
+        "com.unity.burst": "1.8.4",
+        "com.unity.mathematics": "1.2.1"
       }
     },
     "dev.pugstorm.spriteinstancing": {

@@ -30,7 +30,6 @@
     }
     public enum EC_Misc//杂项
     {
-        QuickStack,//快速堆叠到附近箱子 done
         DeathNoDrop,//死亡不掉落 done
         AllPlayerSkill,//玩家全技能 done
         AllPetSkill,//宠物全技能 done
