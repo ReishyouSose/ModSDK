@@ -59,12 +59,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 if (!af.CheckLevel(requires, biome, out float efficiency, out int chance))
                     return;
                 ref var rng = ref random.Value;
-                af.timer += efficiency;
+                af.timer += 1;/* efficiency;*/
                 while (af.timer > 3)
                 {
                     af.timer -= 3;
-                    if (rng.NextInt(10 - chance) >= 5)
-                        continue;
+                    /*if (rng.NextInt(10 - chance) >= 5)
+                        continue;*/
                     using var drops = PugDatabase.GetRandomLoot(rng.NextInt(6) == 0 ? af.items : af.fishes,
                         1, 1, ref rng, localLootBack, localDatabase, trans.Position, biome);
                     ItemHelper.PutItemToContainer(containers, drops[0].objectID, drops[0].amount);

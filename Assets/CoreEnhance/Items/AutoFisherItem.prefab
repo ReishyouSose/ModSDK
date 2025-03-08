@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: -1710145029436095894}
   - component: {fileID: 2499561445316113348}
   - component: {fileID: 2445745560876883966}
-  - component: {fileID: 4401662367938983526}
   - component: {fileID: 3991227550509896867}
   - component: {fileID: -8323917109155467736}
   - component: {fileID: 845021786232025266}
@@ -70,6 +69,8 @@ MonoBehaviour:
   smallIcon: {fileID: 21300000, guid: eb81cc0c6dad85049825f31627398e4e, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
+  - objectName: PileOfChum
+    amount: 1
   - objectName: GoldBar
     amount: 1
   - objectName: Glass
@@ -137,6 +138,7 @@ MonoBehaviour:
   blocksHangingWallObjects: 0
   appearInMapUI: 0
   mapColor: {r: 0, g: 0.78431374, b: 1, a: 0}
+  alignWithPlayerDirection: 0
 --- !u!114 &-4919486019328487863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 178800199, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playIdleAnimation: 1
 --- !u!114 &-1929708704143473327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,18 +450,6 @@ MonoBehaviour:
   m_Script: {fileID: 83705680, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4401662367938983526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3991227550509896867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +492,7 @@ MonoBehaviour:
   canOnlyContainOneItemPerSlot: 1
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 0
-  canBeUsedInNearbyCrafting: 0
+  autoTransferEnabled: 0
   slotRequirements:
   - requirementAppliesToAllSlots: 0
     dontShowAnyHint: 0

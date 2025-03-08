@@ -31,7 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6256658193971169941}
-  - {fileID: 6364640607202063090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3626048772475115924
@@ -50,7 +49,7 @@ MonoBehaviour:
   shadow: {fileID: 3885925216690393756}
   indirectLightEmitters: []
   animator: {fileID: 0}
-  interactable: {fileID: 3283554711783475014}
+  interactable: {fileID: 0}
   spriteObjects:
   - {fileID: 3958745674098482210}
   useSharedTransformAnimations: 1
@@ -81,106 +80,7 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
---- !u!1 &3378454193542082254
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6364640607202063090}
-  - component: {fileID: 3283554711783475014}
-  m_Layer: 0
-  m_Name: Interactable
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6364640607202063090
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3378454193542082254}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3578621336254896086}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3283554711783475014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3378454193542082254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1216031652, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weightMultiplier: 1
-  useDiscreteOutlineColor: 0
-  entityMono: {fileID: 3626048772475115924}
-  requiredFactionToInteract: 0
-  optionalIcon: {fileID: 0}
-  optionalOutlineController: {fileID: 0}
-  additionalOutlineControllers: []
-  spriteObjects:
-  - {fileID: 3958745674098482210}
-  onUseActions:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3626048772475115924}
-        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.ContainerEM, CoreEnhance
-        m_MethodName: Use
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3626048772475115924}
-        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.AutoFisherTerminalEM,
-          CoreEnhance
-        m_MethodName: OnOpenTerminal
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTriggerExitActions:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3626048772475115924}
-        m_TargetAssemblyTypeName: Assets.CoreEnhance.Scripts.Tiles.ContainerEM, CoreEnhance
-        m_MethodName: CloseTerminal
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  radius: 1.7
-  interactingPoints: []
-  allowToUseOnlyWhenClaimed: 0
-  ignorePlayerDirection: 0
+  AllowSwitchPage: 0
 --- !u!1 &3617452469881410506
 GameObject:
   m_ObjectHideFlags: 0

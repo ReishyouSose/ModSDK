@@ -1,4 +1,6 @@
 ﻿using CoreLib.UserInterface;
+using PugMod;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
@@ -16,9 +18,35 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
         {
             return objData;
         }
-        public override TextAndFormatFields GetHoverTitle()
+        public override List<TextAndFormatFields> GetHoverDescription()
         {
-            return base.GetHoverTitle();
+            ContainedObjectsBuffer slotObject = GetSlotObject();
+            ObjectID objectID = slotObject.objectID;
+            if (objectID != 0)
+            {
+                objectID = PlayerController.GetAnyObjectIDReplaceForNameAndDesc(objectID);
+                if (!API.Authoring.ObjectProperties.TryGetPropertyString(objectID, "name", out var value))
+                {
+                    value = objectID.ToString();
+                }
+
+                string nameTermOverride = Manager.ui.itemOverridesTable.GetNameTermOverride(slotObject.objectData);
+                if (nameTermOverride != null)
+                {
+                    value = nameTermOverride;
+                }
+
+                return new List<TextAndFormatFields>
+                {
+                    new()
+                    {
+                        text = objectID.ToString()+$"({(int)objectID})",
+                        color = Color.cyan
+                    },
+                    new() { text = "Items/" + value + "Desc" }
+                };
+            }
+            return null;
         }
         public override void OnLeftClicked(bool mod1, bool mod2)
         {
@@ -60,7 +88,8 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
         public void SetItem(ItemSelectSlot another)
         {
             objData = another.objData;
-            icon.sprite = another.icon.sprite;
+            var icon = another.icon.sprite;
+            this.icon.sprite = icon == null ? ObtainLookupUI.ins.Missing : icon;
         }
     }
 }

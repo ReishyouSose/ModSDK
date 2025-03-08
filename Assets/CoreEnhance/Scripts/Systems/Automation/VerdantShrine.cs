@@ -34,7 +34,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             var tileLookup = tileAccessor;
             var ecb = CreateCommandBuffer();
             var tileUpdateEntity = SystemAPI.GetSingletonEntity<TileUpdateBuffer>();
-            Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> containers, ref VerdantShrineCD shrine, in LocalTransform trans) =>
+            Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> containers,
+                ref VerdantShrineCD shrine, in LocalTransform trans) =>
             {
                 shrine.Nature = containers[0].amount;
                 shrine.Sea = containers[1].amount;

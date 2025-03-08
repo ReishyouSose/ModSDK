@@ -17,6 +17,7 @@ namespace Assets.CoreEnhance.Scripts.Items
         protected override void Convert(AutoFisherTerminalAuthoring authoring)
         {
             AddComponentData(new AutoFisherTerminalCD());
+            EnsureHasComponent<DistanceToPlayerCD>();
         }
     }
 }

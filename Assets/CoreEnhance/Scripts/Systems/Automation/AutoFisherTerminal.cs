@@ -4,8 +4,8 @@ using Assets.CoreEnhance.Scripts.Systems.Misc;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-using Unity.NetCode;
 using Unity.Mathematics;
+using Unity.NetCode;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
@@ -49,6 +49,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
     public partial class AutoFisherTerminalServer : PugSimulationSystemBase
     {
         private NativeQueue<OpenTerminalRPC> queue;
+        private int timer;
         protected override void OnCreate()
         {
             queue = new(Allocator.Persistent);
@@ -56,8 +57,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
         }
         protected override void OnUpdate()
         {
-            var queue = this.queue;
+            if (timer < 180)
+            {
+                timer++;
+                return;
+            }
+            timer = 0;
             var ecb = CreateCommandBuffer();
+            /*var queue = this.queue;
             Entities.ForEach((Entity e, in OpenTerminalRPC rpc) =>
             {
                 if ((TerminalType)rpc.TerminalType == TerminalType.AutoFisher)
@@ -80,13 +87,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                         Player = open.Player
                     });
                 }
-            }
+            }*/
 
-            Entities.ForEach((Entity e, ref ObjectDataCD objData, in OpenTerminalCD open) =>
+            Entities.ForEach((Entity e, ref ObjectDataCD objData, in DistanceToPlayerCD dis) =>
             {
-                PlayerController.AddSkill(open.Player, SkillID.Fishing, objData.amount - 1, ecb, true);
+                PlayerController.AddSkill(dis.closestPlayer, SkillID.Fishing, objData.amount - 1, ecb, true);
                 objData.amount = 1;
-                ecb.RemoveComponent<OpenTerminalCD>(e);
             })
                 .WithName("AutoFisherTerminal_CollectLoots")
                 .WithAll<AutoFisherTerminalCD>()

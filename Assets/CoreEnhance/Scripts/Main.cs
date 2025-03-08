@@ -40,9 +40,14 @@ namespace Assets.CoreEnhance.Scripts
                 return;
             if (authoringData.TryGetComponent<WeaponAuthoring>(out var weapon))
             {
+                //weapon.isMoveFreelyWeapon = true;
                 ref var move = ref weapon.moveSpeedMultiplier;
                 move = math.max(move, 1f);
             }
+            /*if(authoringData.TryGetComponent<RangeWeaponAuthoring>(out var range))
+            {
+                range.recoilForce = 0;
+            }*/
         }
 
         public void Init()

@@ -2,7 +2,7 @@
 
 namespace Assets.CoreEnhance.Scripts.Tiles
 {
-    public class AutoFisherTerminalEM : Chest
+    public class AutoFisherTerminalEM : ContainerEM
     {
         public void OnOpenTerminal() => AutoFisherTerminalClient.OpenTerminal();
     }

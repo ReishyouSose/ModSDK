@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: -1710145029436095894}
   - component: {fileID: 2499561445316113348}
   - component: {fileID: 2445745560876883966}
-  - component: {fileID: 4401662367938983526}
   - component: {fileID: 3991227550509896867}
   - component: {fileID: 845021786232025266}
   - component: {fileID: 7287190631170143809}
@@ -70,12 +69,12 @@ MonoBehaviour:
   smallIcon: {fileID: 21300000, guid: 3a98f7dbd35ab724887e11578c71c29d, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
-  - objectName: Sprinkler
-    amount: 1
-  - objectName: ScarletHoe
-    amount: 1
-  - objectName: Pedestal
-    amount: 3
+  - objectName: NatureGemstone
+    amount: 10
+  - objectName: SeaGemstone
+    amount: 10
+  - objectName: DesertGemstone
+    amount: 10
   - objectName: WallGrassBlock
     amount: 12
   craftingTime: 0
@@ -447,18 +446,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 83705680, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4401662367938983526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3991227550509896867

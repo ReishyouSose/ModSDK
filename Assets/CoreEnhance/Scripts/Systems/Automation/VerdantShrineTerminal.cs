@@ -59,6 +59,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
         private BufferLookup<ContainedObjectsBuffer> containerLookup;
         private BufferLookup<VerdantShrineBuffer> shrineLookup;
         private NativeQueue<OpenTerminalRPC> queue;
+        private int timer;
         protected override void OnCreate()
         {
             propertiesLookup = SystemAPI.GetComponentLookup<ObjectPropertiesCD>();
@@ -75,8 +76,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
         {
             if (!SystemAPI.TryGetSingletonEntity<VerdantShrineTerminalCD>(out Entity terminal))
                 return;
-            var queue = this.queue;
             var ecb = CreateCommandBuffer();
+            /*var queue = this.queue;
             Entities.ForEach((Entity e, in OpenTerminalRPC rpc) =>
             {
                 if ((TerminalType)rpc.TerminalType == TerminalType.VerdantShrine)
@@ -107,7 +108,24 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                .WithName("VerdantShrineTerminal_GetExp")
                .WithAll<VerdantShrineTerminalCD>()
                .WithBurst()
-               .Schedule();
+               .Schedule();*/
+            if(timer < 180)
+            {
+                timer++;
+            }
+            else
+            {
+                timer = 0;
+                Entities.ForEach((Entity e, ref ObjectDataCD objData, in DistanceToPlayerCD dis) =>
+                {
+                    PlayerController.AddSkill(dis.closestPlayer, SkillID.Gardening, objData.amount - 1, ecb, true);
+                    objData.amount = 1;
+                })
+                   .WithName("VerdantShrineTerminal_GetExp")
+                   .WithAll<VerdantShrineTerminalCD>()
+                   .WithBurst()
+                   .Schedule();
+            }
 
             var terminalData = objLookup.GetRefRW(terminal);
             containerLookup.TryGetBuffer(terminal, out var containers);
@@ -119,9 +137,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             bool harvest = ModConfig.IsEnable(EnhanceCategory.Automation, EC_Automation.Plant);
             Entities.ForEach((Entity e, ref GrowingCD growing, in ObjectDataCD objData, in LocalTransform trans) =>
             {
-                bool hover = false;
-                int nature = 0, sea = 0, desert = 0;
-                foreach (var info in shrines)
+                bool hover = true;
+                int nature = 10, sea = 10, desert = 10;
+                /*foreach (var info in shrines)
                 {
                     var shrine = info.shrine;
                     if (ShrineHovering(shrine, info.trans, trans))
@@ -131,7 +149,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                         sea = math.max(sea, shrine.Sea);
                         desert = math.max(desert, shrine.Desert);
                     }
-                }
+                }*/
 
                 if (!hover)
                     return;
@@ -163,6 +181,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                             sea = math.min(sea, 10);
                             int extra = rng.NextInt(10) < sea ? 1 : 0;
                             plantLookup.GetRefRW(e).ValueRW.numberOfPlantsToDrop += 1 + extra;
+                            terminalData.ValueRW.amount++;
                             return;
                         }
                         else

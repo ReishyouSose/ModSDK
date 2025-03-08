@@ -2,7 +2,7 @@
 
 namespace Assets.CoreEnhance.Scripts.Tiles
 {
-    public class VerdantShrineTerminalEM : Chest
+    public class VerdantShrineTerminalEM : ContainerEM
     {
         public void OnOpenTerminal() => VerdantShrineTerminalClient.OpenTerminal();
     }

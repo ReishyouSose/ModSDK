@@ -20,6 +20,7 @@ namespace Assets.CoreEnhance.Scripts.Items
         protected override void Convert(VerdantShrineTerminalAuthoring authoring)
         {
             AddComponentData(new VerdantShrineTerminalCD());
+            AddComponentData(new DistanceToPlayerCD());
             EnsureHasBuffer<VerdantShrineBuffer>();
         }
     }
