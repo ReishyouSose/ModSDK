@@ -306,8 +306,8 @@ MonoBehaviour:
   dontCalculateHealthFromLevel: 0
   overrideStartHealth: 0
   normalizedOverrideStartHealth: 1
-  startHealth: 2
-  maxHealth: 2
+  startHealth: 1
+  maxHealth: 1
   maxHealthMultiplier: 1
   hasHealthRegeneration: 1
   healInCombatAsWell: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: -1720707325, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: 2014
+  objectToSpawn: 2212
   objectVariation: 0
   spawnChance: 1
   offset:

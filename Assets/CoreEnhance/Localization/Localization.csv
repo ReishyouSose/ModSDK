@@ -28,7 +28,7 @@ Support robot arm"	"祭坛会将收获直接放入水晶，每个世界只能放
 Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
 Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Qoc"""	更好的体验专属制作站
 Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
-Items/CoreEnhance:BoulderDemolishDesc	Text		Come closer, knock once, knock again	靠近，敲一下，再敲一下
+Items/CoreEnhance:BoulderDemolishDesc	Text		Place, knock, boom	放置，敲击，Boom
 CoreEnhance/Craft	Text		Craft	制作
 CoreEnhance/ObtainWay	Text		Obtain Way	获取途径
 CoreEnhance/Switch	Text		Quality of CK Function Switch	更好的体验功能开关

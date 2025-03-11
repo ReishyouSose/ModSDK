@@ -32,7 +32,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                 return;
             Entities.ForEach((ref HealthCD heal, in ObjectDataCD objdata) =>
             {
-                heal.health = heal.maxHealth;
+                if (heal.health < heal.maxHealth / 2)
+                    heal.health = heal.maxHealth;
             })
                 .WithName("Infinity_Boulder")
                 .WithAll<RequiresDrillCD>()

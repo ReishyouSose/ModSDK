@@ -53,7 +53,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                         continue;
                     var pos = local.Position.xz;
                     var ori = trans.Position.xz;
-                    if (math.distancesq(pos, ori) > 2)
+                    if (math.distancesq(pos, ori) > 32)
                         continue;
                     int count = (int)math.round((float)boulder.health / loot.damageToDealToDropLoot);
                     EntityUtility.CreateAndDropItem(loot.dropsLoot, 0, math.min(count, 1800),
