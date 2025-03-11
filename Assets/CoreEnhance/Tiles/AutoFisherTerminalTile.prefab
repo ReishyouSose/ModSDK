@@ -80,7 +80,6 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
-  AllowSwitchPage: 0
 --- !u!1 &3617452469881410506
 GameObject:
   m_ObjectHideFlags: 0

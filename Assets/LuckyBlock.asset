@@ -29,10 +29,6 @@ MonoBehaviour:
     - path: Scripts/LuckyBlockEM.cs
     - path: Scripts/LuckyBlockAuthoring.cs
     - path: Scripts/ChallengePatch.cs
-    - path: Scripts/Generated/LuckyBlockSystem__System_1781404630.g.cs
-    - path: Scripts/Generated/LuckyBlockTriggerSystem__System_15896062830.g.cs
-    - path: Scripts/Generated/LuckyBlockTriggerSystem__System_15896062831.g.cs
-    - path: Scripts/Generated/Assets.LuckyBlock_TriggerLBCDCommandSerializer.cs
     - path: Bundles/LuckyBlock_Windows.assetbundle
     dependencies:
     - modName: CoreLib
@@ -50,15 +46,15 @@ MonoBehaviour:
   - path: Assets/LuckyBlock/LuckyBlockItem.prefab
     hash: 5A25BA173F1459D32EFF93FD6D4D484A5837B3B65DF592D6BB7392DF062D409C
   - path: Assets/LuckyBlock/LuckyBlockShadow.asset
-    hash: DED7134A34027944A30BFAA242F8AC25189C22943ABF643855CE4473A6C2E7B6
+    hash: DED09CFFC6FE2B0F5951C2B04ABD6D9645E44E2A850F8AAD128A693D88CED09D
   - path: Assets/LuckyBlock/LuckyBlockSmall.png
     hash: 1C04D1C8E15B8101B31E1A1CA4F1A8B05C17FC8F623B194D32EEC76F3D6B801E
   - path: Assets/LuckyBlock/LuckyBlockSprite.asset
-    hash: D4D2F75FE3424EBC3232AFA1306948C9AF9CDCD61C99A6AEE7A5E39F9974BF3F
+    hash: A638A7F524CC30C84AEAB0368AC3669A228A4051F816182CDCCD62ABCB0402DF
   - path: Assets/LuckyBlock/LuckyBlockTex.png
     hash: E72908B049BECD5DEB2E28FD2045EF268A9B162391DFEC6596E1A779B8AA7620
   - path: Assets/LuckyBlock/LuckyBlockTile.prefab
-    hash: 833CAFB0478B309AFFB14424029E883B940D3AEBA8847FD66DEBCE4EA4DA5EBE
+    hash: 6C0463E948E7A907DD535CC9FE438756DE41338D128B641A7F5302E4632EBDF1
   - path: Assets/LuckyBlock/SpriteAssetManifest.asset
-    hash: 44D41695B03D6BC3595C78CABD4CC8DA9C9321546AF7E8935AC7708EEFA7031B
+    hash: 2FBD8A8785777337F6A35CD078604F4B369087F8672AB0C7696F7684C14FE7CF
   lastBuildLinux: 0

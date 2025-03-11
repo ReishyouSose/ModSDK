@@ -1,25 +1,23 @@
-﻿using Assets.GeneralConfigMenu.UIByLimoka;
-using UnityEngine;
-
-namespace Assets.GeneralConfigMenu.Scripts
+﻿namespace Assets.GeneralConfigMenu.Scripts
 {
     public class UIConfigEntryInput : UIConfigEntry
     {
-        private BetterInputField server, client;
+        private InputBox server, client;
         public override void SetChanger()
         {
             string value = ConfigEntry.GetSerializedValue();
-            server = ServerChanger.GetComponent<BetterInputField>();
+            server = ServerChanger.GetComponent<InputBox>();
             server.SetInputText(value);
-            server.onTextChanged += OnTextChanged_Server;
+            server.onInputFieldDone.AddListener(OnTextChanged_Server);
             server.AllowInput += CheckAdmin;
 
-            client = ClientChanger.GetComponent<BetterInputField>();
+            client = ClientChanger.GetComponent<InputBox>();
             client.SetInputText(value);
-            client.onTextChanged += OnTextChanged_Client;
+            client.onInputFieldDone.AddListener(OnTextChanged_Client);
         }
-        private void OnTextChanged_Server(GameObject go, string text)
+        private void OnTextChanged_Server()
         {
+            string text = server.GetInputText();
             if (ValueEquals(text))
                 return;
             SetAndSendChange(text);
@@ -27,8 +25,9 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (AutoStoC)
                 TryServerToClient();
         }
-        private void OnTextChanged_Client(GameObject go, string text)
+        private void OnTextChanged_Client()
         {
+            string text = client.GetInputText();
             if (ValueEquals(text))
                 return;
             SetClient(text);

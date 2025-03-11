@@ -134,7 +134,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             var plantLookup = this.plantLookup;
             var databaseLocal = database;
             var deltaTime = World.Time.DeltaTime;
-            bool harvest = ModConfig.IsEnable(EnhanceCategory.Automation, EC_Automation.Plant);
+            bool harvest = EnhanceConfig.IsEnable(EnhanceCategory.Automation, EC_Automation.Plant);
             Entities.ForEach((Entity e, ref GrowingCD growing, in ObjectDataCD objData, in LocalTransform trans) =>
             {
                 bool hover = true;

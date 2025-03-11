@@ -6,6 +6,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
@@ -22,7 +23,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
     {
         protected override void OnUpdate()
         {
-            if (!ModConfig.TryGetValue(EnhanceCategory.Infinity, EC_Infinity.Arena, out ConfigEntry<int> value))
+            if (!EnhanceConfig.TryGetValue(EnhanceCategory.Infinity, EC_Infinity.Arena, out ConfigEntry<int> value))
                 return;
             var ecb = CreateCommandBuffer();
             Entities.ForEach((Entity entity) =>
@@ -113,9 +114,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                         foreach (var hit in hits)
                         {
                             var e = hit.Entity;
-                            if (!healthLookup.HasComponent(e))
-                                continue;
                             if (!objDataLookup.TryGetComponent(e, out var data))
+                                continue;
+                            if(data.objectID == ObjectID.EventTerminal)
+                            {
+                                ecb.DestroyEntity(e);
+                                continue;
+                            }
+                            if (!healthLookup.HasComponent(e))
                                 continue;
                             if (IsExcept(data.objectID))
                                 continue;
@@ -184,5 +190,17 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
             ObjectID.Portal or ObjectID.WayPoint or ObjectID.Player or ObjectID.PlayerGrave => true,
             _ => false,
         };
+
+        public static void RecordArena(Entity entity, GameObject authoringData, EntityManager entityManager)
+        {
+            if (authoringData.TryGetComponent(out EntityMonoBehaviourData objData))
+            {
+                var info = objData.objectInfo;
+                if (info.objectID != ObjectID.EventTerminal || info.variation != 1)
+                    return;
+                entityManager.AddComponentData(entity, new DistanceToPlayerCD());
+                entityManager.AddComponentData(entity, new ArenaRecordCD());
+            }
+        }
     }
 }

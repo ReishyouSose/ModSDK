@@ -1,19 +1,16 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
-using Assets.CoreEnhance.Scripts.Sturcts;
-using Inventory;
 using PugTilemap;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.NetCode;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
     [UpdateInGroup(typeof(PredictedSimulationSystemGroup))]
     [UpdateAfter(typeof(TileDamageSystem))]
-    [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
+    [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation | WorldSystemFilterFlags.ClientSimulation)]
     public partial class ChainMining : PugSimulationSystemBase
     {
         private TileAccessor tileAccessor;
@@ -40,7 +37,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.ChainMining))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.ChainMining))
                 return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var damager))
                 return;
@@ -56,7 +53,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 {
                     var wp = trans.Position;
                     var pos = wp.RoundToInt2();
-                    if(lasts.TryGetValue(player,out var last))
+                    if (lasts.TryGetValue(player, out var last))
                     {
                         if (last.Contains(pos))
                             return;
@@ -99,8 +96,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             NativeArray<TileCD> array = tileAccessor.Get(ori, Allocator.Temp);
             foreach (var tile in array)
             {
-                var type = tile.tileType;
-                switch (type)
+                switch (tile.tileType)
                 {
                     case TileType.ore:
                     case TileType.ancientCrystal:
@@ -109,7 +105,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                             var pos = ori + check[i];
                             if (done.Contains(pos))
                                 continue;
-                            if (IsTarget(tileAccessor, pos, type))
+                            if (IsTarget(tileAccessor, pos))
                             {
                                 done.Add(pos);
                                 Chain(tileAccessor, tileLookup, pos, ref done);
@@ -120,84 +116,17 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             }
             array.Dispose();
         }
-        private static bool IsTarget(TileAccessor tileAccessor, int2 pos, TileType type)
+        private static bool IsTarget(TileAccessor tileAccessor, int2 pos)
         {
             NativeArray<TileCD> array = tileAccessor.Get(pos, Allocator.Temp);
             foreach (var tile in array)
             {
-                if (tile.tileType == type)
+                if (tile.tileType is TileType.ore or TileType.ancientCrystal)
                 {
                     return true;
                 }
             }
             return false;
-        }
-        private static ObjectID BiomeAndTilesetToChest(Biome biome, Tileset tileset)
-        {
-            switch (biome)
-            {
-                case Biome.Slime:
-                    if (tileset == Tileset.Dirt || tileset == Tileset.Turf || tileset == Tileset.Sand)
-                    {
-                        return ObjectID.LockedCopperChest;
-                    }
-
-                    break;
-                case Biome.Larva:
-                    if (tileset == Tileset.Clay || tileset == Tileset.Sand)
-                    {
-                        return ObjectID.LockedCopperChest;
-                    }
-
-                    break;
-                case Biome.Stone:
-                    if (tileset == Tileset.Stone || tileset == Tileset.Sand)
-                    {
-                        return ObjectID.LockedIronChest;
-                    }
-
-                    break;
-                case Biome.Nature:
-                    switch (tileset)
-                    {
-                        case Tileset.Stone:
-                        case Tileset.Nature:
-                            return ObjectID.LockedScarletChest;
-                        case Tileset.Crystal:
-                            return ObjectID.LockedSolariteChest;
-                    }
-
-                    break;
-                case Biome.Sea:
-                    switch (tileset)
-                    {
-                        case Tileset.Sea:
-                            return ObjectID.LockedOctarineChest;
-                        case Tileset.Crystal:
-                            return ObjectID.LockedSolariteChest;
-                    }
-
-                    break;
-                case Biome.Desert:
-                    switch (tileset)
-                    {
-                        case Tileset.Desert:
-                            return ObjectID.LockedGalaxiteChest;
-                        case Tileset.Crystal:
-                            return ObjectID.LockedSolariteChest;
-                    }
-
-                    break;
-                case Biome.Crystal:
-                    if (tileset == Tileset.Crystal)
-                    {
-                        return ObjectID.LockedSolariteChest;
-                    }
-
-                    break;
-            }
-
-            return ObjectID.None;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
         {
             var ecb = CreateCommandBuffer();
             var localDataBase = database;
-            if (!ModConfig.TryGetValues(EnhanceCategory.Automation, EC_Automation.Salvage, out var values))
+            if (!EnhanceConfig.TryGetValues(EnhanceCategory.Automation, EC_Automation.Salvage, out var values))
                 return;
             int checkCount = ((ConfigEntry<int>)values["Amount"]).Value;
             int time = ((ConfigEntry<int>)values["Timer"]).Value;

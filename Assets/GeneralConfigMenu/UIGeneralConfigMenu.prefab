@@ -1758,6 +1758,7 @@ GameObject:
   - component: {fileID: 181991756621528771}
   - component: {fileID: 2126126359590021907}
   - component: {fileID: 1060174376795041957}
+  - component: {fileID: 6225266919174715793}
   m_Layer: 5
   m_Name: ConfigTemplate
   m_TagString: Untagged
@@ -1823,6 +1824,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 26, y: 1, z: 1}
   m_Center: {x: 13, y: 0, z: 0}
+--- !u!114 &6225266919174715793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397079804209812718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3138e3295e775ce4eb539bbd85569f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Origin: 
 --- !u!1 &1567450997878361578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,6 +3561,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3957336439488287082}
+  - component: {fileID: 6523952409580727766}
+  - component: {fileID: 96599060864163274}
   m_Layer: 5
   m_Name: EntryPanel
   m_TagString: Untagged
@@ -3573,6 +3589,105 @@ Transform:
   - {fileID: 350760963679732291}
   m_Father: {fileID: 1559357910742469307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6523952409580727766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781504529794698588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1748679033, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topUIElements: []
+  bottomUIElements: []
+  leftUIElements: []
+  rightUIElements: []
+  childElements: []
+  selectFirstEnabledElementInList: 0
+  invokeSelectionEvents: 0
+  onElementSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onElementDeselectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canBeClicked: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  onLeftClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onRightClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8311216473479885761}
+        m_TargetAssemblyTypeName: Assets.GeneralConfigMenu.Scripts.ConfigManager,
+          GeneralConfigMenu
+        m_MethodName: BackLeftDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  optionalSelectedMarker: {fileID: 0}
+  optionToSelectOnHover: {fileID: 0}
+  spritesShownUnpressed: []
+  spritesShownPressed: []
+  skipUpdatingSpritesColor: 0
+  showHoverTitle: 0
+  optionalTitle:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  showHoverDesc: 0
+  optionalHoverDesc:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  optionalShortCut: 0
+  adjustSpritesToFitTextSize: 0
+  spritesSizePadding: {x: 0, y: 0}
+  text: {fileID: 0}
+  playClickSoundEffect: 0
+  clickSoundEffect: 0
+  clickSoundPitch: 0
+--- !u!65 &96599060864163274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781504529794698588}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 30, y: 17, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &3064892678655500054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,8 +6068,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7552415737962041378}
   - component: {fileID: 3977619829888227134}
-  - component: {fileID: 2509012129611871466}
   - component: {fileID: 843587535243347862}
+  - component: {fileID: 8514712508532255092}
   m_Layer: 5
   m_Name: ClientInput
   m_TagString: Untagged
@@ -6002,44 +6117,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2509012129611871466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4936882279591573505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe6489080ce0d6448e050e529e1814d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topUIElements: []
-  bottomUIElements: []
-  leftUIElements: []
-  rightUIElements: []
-  childElements: []
-  selectFirstEnabledElementInList: 0
-  invokeSelectionEvents: 0
-  onElementSelectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onElementDeselectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  hintString: 
-  maxWidth: 7
-  maxHeight: 1
-  dontAllowNewLines: 1
-  trim: 1
-  characterWhiteList: 
-  triggerOnInputFieldDoneWhenCanceling: 0
-  dontDeactivateOnDeselect: 0
-  pugText: {fileID: 4380193554448916489}
-  hintText: {fileID: 4884056381357654468}
-  background: {fileID: 0}
-  selectedMarker: {fileID: 6846061527500138079}
-  characterMarkBlinker: {fileID: 1248462785582472772}
 --- !u!114 &843587535243347862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6059,6 +6136,47 @@ MonoBehaviour:
   - GeneralConfigMenu/Changer/Client
   - GeneralConfigMenu/Changer/CtoS
   LockByOther: 0
+--- !u!114 &8514712508532255092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936882279591573505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ef0f8f4319d344c901ed611cec7d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topUIElements: []
+  bottomUIElements: []
+  leftUIElements: []
+  rightUIElements: []
+  childElements: []
+  selectFirstEnabledElementInList: 0
+  invokeSelectionEvents: 0
+  onElementSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onElementDeselectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  pugText: {fileID: 4380193554448916489}
+  hintText: {fileID: 4884056381357654468}
+  hintString: 
+  selectedMarker: {fileID: 4197211568432555156}
+  characterMarkBlinker: {fileID: 1248462785582472772}
+  maxWidth: 7
+  maxHeight: 1
+  dontAllowNewLines: 1
+  trim: 1
+  characterWhiteList: 
+  onInputFieldDone:
+    m_PersistentCalls:
+      m_Calls: []
+  triggerOnInputFieldDoneWhenCanceling: 0
+  dontDeactivateOnDeselect: 0
+  <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
 --- !u!1 &4958900399474787034
 GameObject:
   m_ObjectHideFlags: 0
@@ -8127,7 +8245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4599192076911637588
 Transform:
   m_ObjectHideFlags: 0
@@ -9180,8 +9298,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4072753582616550469}
   - component: {fileID: 2748536828706807469}
-  - component: {fileID: 8578963200870622881}
   - component: {fileID: 4843605054528492055}
+  - component: {fileID: 7248331387687221702}
   m_Layer: 5
   m_Name: ServerInput
   m_TagString: Untagged
@@ -9229,44 +9347,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8578963200870622881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7143555250606695541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfe6489080ce0d6448e050e529e1814d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topUIElements: []
-  bottomUIElements: []
-  leftUIElements: []
-  rightUIElements: []
-  childElements: []
-  selectFirstEnabledElementInList: 0
-  invokeSelectionEvents: 0
-  onElementSelectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onElementDeselectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  hintString: 
-  maxWidth: 7
-  maxHeight: 1
-  dontAllowNewLines: 1
-  trim: 1
-  characterWhiteList: 
-  triggerOnInputFieldDoneWhenCanceling: 0
-  dontDeactivateOnDeselect: 0
-  pugText: {fileID: 3552856472142877392}
-  hintText: {fileID: 8741668133179218764}
-  background: {fileID: 0}
-  selectedMarker: {fileID: 8766149711110647592}
-  characterMarkBlinker: {fileID: 2105138982174830678}
 --- !u!114 &4843605054528492055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9286,6 +9366,47 @@ MonoBehaviour:
   - GeneralConfigMenu/Changer/Server
   - GeneralConfigMenu/Changer/StoC
   LockByOther: 0
+--- !u!114 &7248331387687221702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143555250606695541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ef0f8f4319d344c901ed611cec7d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topUIElements: []
+  bottomUIElements: []
+  leftUIElements: []
+  rightUIElements: []
+  childElements: []
+  selectFirstEnabledElementInList: 0
+  invokeSelectionEvents: 0
+  onElementSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onElementDeselectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  pugText: {fileID: 3552856472142877392}
+  hintText: {fileID: 8741668133179218764}
+  hintString: 
+  selectedMarker: {fileID: 8371454076048074469}
+  characterMarkBlinker: {fileID: 2105138982174830678}
+  maxWidth: 7
+  maxHeight: 1
+  dontAllowNewLines: 1
+  trim: 1
+  characterWhiteList: 
+  onInputFieldDone:
+    m_PersistentCalls:
+      m_Calls: []
+  triggerOnInputFieldDoneWhenCanceling: 0
+  dontDeactivateOnDeselect: 0
+  <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
 --- !u!1 &7198785903723199828
 GameObject:
   m_ObjectHideFlags: 0
@@ -10514,6 +10635,7 @@ GameObject:
   - component: {fileID: 7592354062815416740}
   - component: {fileID: 7981754722657573534}
   - component: {fileID: 588278658341382072}
+  - component: {fileID: 2686156490693147398}
   m_Layer: 5
   m_Name: ConfigPanel
   m_TagString: Untagged
@@ -10610,6 +10732,84 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 30, y: 17, z: 1}
   m_Center: {x: 10, y: -1, z: 0}
+--- !u!114 &2686156490693147398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060302354071945718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1748679033, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topUIElements: []
+  bottomUIElements: []
+  leftUIElements: []
+  rightUIElements: []
+  childElements: []
+  selectFirstEnabledElementInList: 0
+  invokeSelectionEvents: 0
+  onElementSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onElementDeselectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canBeClicked: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  onLeftClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onRightClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8311216473479885761}
+        m_TargetAssemblyTypeName: Assets.GeneralConfigMenu.Scripts.ConfigManager,
+          GeneralConfigMenu
+        m_MethodName: HideUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  optionalSelectedMarker: {fileID: 0}
+  optionToSelectOnHover: {fileID: 0}
+  spritesShownUnpressed: []
+  spritesShownPressed: []
+  skipUpdatingSpritesColor: 0
+  showHoverTitle: 0
+  optionalTitle:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  showHoverDesc: 0
+  optionalHoverDesc:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  optionalShortCut: 0
+  adjustSpritesToFitTextSize: 0
+  spritesSizePadding: {x: 0, y: 0}
+  text: {fileID: 0}
+  playClickSoundEffect: 0
+  clickSoundEffect: 0
+  clickSoundPitch: 0
 --- !u!1 &8128081601113095862
 GameObject:
   m_ObjectHideFlags: 0
@@ -10705,7 +10905,7 @@ GameObject:
   - component: {fileID: 3238305606486401493}
   - component: {fileID: 4380193554448916489}
   m_Layer: 5
-  m_Name: ClientInputor
+  m_Name: ClientInputer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11155,7 +11355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1573581532276520206
 Transform:
   m_ObjectHideFlags: 0

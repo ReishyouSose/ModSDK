@@ -66,7 +66,7 @@ namespace Assets.CoreEnhance.Scripts.UI.ModScroll
         {
             float y = background.size.y;
             float y2 = math.max(scrollWindow.VisibleRatio * y, 0.625f);
-            Vector2 size = new Vector2(handle.handleSpriteRenderer.size.x, y2);
+            Vector2 size = new(handle.handleSpriteRenderer.size.x, y2);
             foreach (SpriteRenderer item in handle.handleSpritesToResize)
             {
                 item.size = size;

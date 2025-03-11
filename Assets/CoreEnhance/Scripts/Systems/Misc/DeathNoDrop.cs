@@ -20,7 +20,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         private void Misc_DeathNoDrop(EntityCommandBuffer ecb)
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.DeathNoDrop))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.DeathNoDrop))
                 return;
             var lookup = SystemAPI.GetComponentLookup<InitialMoveInventoryFromCD>();
             Entities.ForEach((Entity e) =>
@@ -36,9 +36,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 .WithAll<PlayerGraveCD>()
                 .WithNone<ProcessedTagCD>()
                 .WithBurst()
-                .Run();
-
-
+                .Schedule();
         }
     }
 }

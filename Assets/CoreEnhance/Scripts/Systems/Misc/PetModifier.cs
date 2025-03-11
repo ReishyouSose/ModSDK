@@ -35,6 +35,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         public static void ResetSkin(Entity player) => ins.queue.Enqueue(player);
     }
+
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     public partial class PetModifierServer : PugSimulationSystemBase

@@ -35,7 +35,8 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
             {
                 objectData = new() { objectID = id },
             };
-            return PlayerController.GetObjectName(buffer, true).text + $"({(int)id})";
+            var name = PlayerController.GetObjectName(buffer, true).text;
+            return (string.IsNullOrEmpty(name) ? id.ToString() : name) + $"({(int)id})";
         }
         public void SetInfoByLoot(ObjectID id, string info, float chance)
         {

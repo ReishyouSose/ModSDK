@@ -58,6 +58,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             ConfigPanel.gameObject.SetActive(true);
             EntryPanel.gameObject.SetActive(false);
             SetPlayerStateUI(false);
+            RenderLable();
         }
 
         private void SetPlayerStateUI(bool active)
@@ -88,8 +89,7 @@ namespace Assets.GeneralConfigMenu.Scripts
                     var newConfig = Instantiate(ConfigTemplate, view.transform);
                     newConfig.gameObject.SetActive(true);
                     newConfig.SetCustomData(configFile);
-                    newConfig.Text.localize = LocalizationManager.TryGetTranslation(localKey, out _);
-                    newConfig.Text.Render(localKey);
+                    newConfig.GetComponent<OriginText>().Origin = localKey;
                     newConfig.NeedHoverColor();
                     newConfig.AddEvent(RMouseEventType.LeftDown, ConfigLeftDown);
                     panel.AddChild(newConfig.gameObject);
@@ -106,12 +106,13 @@ namespace Assets.GeneralConfigMenu.Scripts
                     configViews.Add(configFile, entryView);
                     entryView.Reload((par, evt) =>
                     {
+                        var temp = localKey;
                         foreach (var (section, entries) in sections)
                         {
                             var newSection = Instantiate(SectionTemplate, evt);
                             newSection.gameObject.SetActive(true);
                             string sectionLabel = section;
-                            localKey += "/" + sectionLabel;
+                            localKey = temp + "/" + sectionLabel;
                             if (LocalizationManager.TryGetTranslation(localKey, out _))
                             {
                                 newSection.localize = true;
@@ -168,7 +169,7 @@ namespace Assets.GeneralConfigMenu.Scripts
                     }
                 }
             });
-            Back.AddEvent(RMouseEventType.LeftDown, BackLeftDown);
+            Back.AddEvent(RMouseEventType.LeftDown, _ => BackLeftDown());
             ServerReset.NeedHoverColor();
             ClientReset.NeedHoverColor();
             ServerReset.AddEvent(RMouseEventType.LeftDown, ResetServer);
@@ -185,6 +186,19 @@ namespace Assets.GeneralConfigMenu.Scripts
                 parent.GetComponentInChildren<MinionCountUI>(true),
                 parent.GetComponentInChildren<InGameButtonHintsUI>(true)
             };
+        }
+        private void RenderLable()
+        {
+            foreach (Transform trans in ConfigPanel.View.transform)
+            {
+                var obj = trans.gameObject;
+                if (obj.TryGetComponent<RUIText>(out var entry) && obj.TryGetComponent<OriginText>(out var origin))
+                {
+                    var ori = origin.Origin;
+                    bool hasLocal = LocalizationManager.TryGetTranslation(ori, out var local);
+                    entry.Text.Render(hasLocal ? local : ori, false, true);
+                }
+            }
         }
         private bool TryMatchListType(ConfigEntryBase entry, RUIScrollView par, Transform evt, RUIScrollView lockView)
         {
@@ -213,7 +227,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             par.AddChild(newEntry.gameObject);
             return true;
         }
-        private void BackLeftDown(GameObject go)
+        public void BackLeftDown()
         {
             ConfigPanel.gameObject.SetActive(true);
             EntryPanel.gameObject.SetActive(false);
@@ -224,7 +238,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             EntryPanel.gameObject.SetActive(true);
             var text = go.GetComponent<RUIText>();
             var key = text.customData[0] as ConfigFile;
-            EntryLabel.localize = LocalizationManager.TryGetTranslation(text.Text.displayedTextString, out _);
             EntryLabel.Render(text.Text.displayedTextString);
             foreach (var (configFile, view) in configViews)
             {

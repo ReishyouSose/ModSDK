@@ -22,9 +22,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         protected override void OnUpdate()
         {
-            if (!ModConfig.TryGetValue<int>(EnhanceCategory.Infinity, EC_Infinity.Durability,out var value))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Durability))
                 return;
-            if (timer < value.Value)
+            if (timer < 3)
             {
                 timer += World.Time.DeltaTime;
                 return;

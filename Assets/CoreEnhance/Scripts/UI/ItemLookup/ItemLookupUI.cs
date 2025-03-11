@@ -37,6 +37,7 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
 
         public void ShowUI()
         {
+            Manager.ui.HideAllInventoryAndCraftingUI();
             gameObject.SetActive(true);
         }
         public void SearchItem()

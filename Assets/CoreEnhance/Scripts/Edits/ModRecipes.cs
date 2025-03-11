@@ -15,28 +15,41 @@ namespace Assets.CoreEnhance.Scripts.Edits
             "AutoFisherTerminal",
             "VerdantShrine",
             "VerdantShrineTerminal",
-            "ArenaScanner"
+            "ArenaScanner",
+            "BoulderDemolish"
         };
         internal static void EditWorkbench(Entity entity, GameObject authoring, EntityManager entityManager)
         {
             ObjectID objectID = authoring.GetEntityObjectID();
+            /*if (objectID == API.Authoring.GetObjectID("CoreEnhance:WorkBench"))
+            {
+                var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
+                foreach (var id in WorkBench)
+                {
+                    canCraftBuffer.Add(new()
+                    {
+                        objectID = API.Authoring.GetObjectID(CoreEnhance + id),
+                        amount = 1
+                    });
+                }
+            }*/
             if (objectID == ObjectID.SolariteWorkbench)
             {
-                var list = WorkBench;
                 var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
-                int j = 0;
-                for (int i = 8; i < 12; i++)
-                {
-                    var item = API.Authoring.GetObjectID(CoreEnhance + list[j++]);
-                    canCraftBuffer[i] = new CanCraftObjectsBuffer
-                    {
-                        objectID = item,
-                        amount = 1,
-                    };
-                }
+
                 canCraftBuffer[2] = new()
                 {
-                    objectID = API.Authoring.GetObjectID(CoreEnhance + list[j]),
+                    objectID = API.Authoring.GetObjectID(CoreEnhance + "ArenaScanner"),
+                    amount = 1
+                };
+            }
+            if (objectID == ObjectID.LaboratoryWorkbench)
+            {
+                var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
+
+                canCraftBuffer[10] = new()
+                {
+                    objectID = API.Authoring.GetObjectID(CoreEnhance + "BoulderDemolish"),
                     amount = 1
                 };
             }

@@ -34,9 +34,11 @@ MonoBehaviour:
     - path: Scripts/Scripts/UIConfigEntryBool.cs
     - path: Scripts/Scripts/UIConfigEntry.cs
     - path: Scripts/Scripts/UIConfigAccessLevel.cs
+    - path: Scripts/Scripts/OriginText.cs
     - path: Scripts/Scripts/ModConfig.cs
     - path: Scripts/Scripts/MiscHelper.cs
     - path: Scripts/Scripts/Main.cs
+    - path: Scripts/Scripts/InputBox.cs
     - path: Scripts/Scripts/ConfigManager.cs
     - path: Scripts/RUIFramework/RUIText.cs
     - path: Scripts/RUIFramework/RUIManager.cs
@@ -80,5 +82,5 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/Localization/Localization.csv
     hash: E073D000684ECB0A38230B13A5B103A7B979E4D531FE0BFB4B757687D0DCD510
   - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
-    hash: 6B26090869505729FEE7571169C8FE144CBF326AC0002544AECD7936B857C164
+    hash: 51AD05E15E35E579566EFF9F216D0709A746F826AB72C6A26FC5AD7A5676451E
   lastBuildLinux: 1

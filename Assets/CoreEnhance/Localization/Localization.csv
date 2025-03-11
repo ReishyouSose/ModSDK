@@ -5,44 +5,50 @@ The loot depends on the environment
 Not work when hasn't terminal in this world"	"放置后，至少放入钓竿即可自动钓鱼
 战利品取决于环境
 世界中没有终端则不工作"
-Items/CoreEnhance:ArenaScanner	Text		Arena Scanner	竞技场扫描仪
+Items/CoreEnhance:ArenaScanner	Text		Arena Locator	竞技场定位仪
 Items/CoreEnhance:ArenaScannerDesc	Text		Just put it in inventory, will try to point out the location of arenas	放在背包中即可，会尝试指出竞技场的位置
 Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
-Items/CoreEnhance:AutoFisherTerminalDesc	Text		The auto fisher will put loot into terminal. Only one can be placed per world.	自动钓鱼机会将渔获直接放入终端，每个世界只能放置一个
+Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The auto fisher will put loot into terminal. Only one can be placed per world.
+Support robot arm"	"自动钓鱼机会将渔获直接放入终端，每个世界只能放置一个
+支持机械臂"
 Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
 Items/CoreEnhance:VerdantShrineDesc	Text		"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
+Has sprinkler effect, auto harverst and replant
+200% growing speed
+Extra 1 harvest amount
+Auto replant has 10% chance turn to golden
 Not work when hasn't crystal in this world"	"覆盖范围16*16
-自带-洒水器效果，自动收获与种植
-绿-生长加速
-蓝-额外收成
-红-金色几率
+自动浇水、收获，与种植，生长速度翻倍，产出增加
+自动种植时有10%概率变为金色作物
 世界中没有繁茂水晶则不工作"
 Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
-Items/CoreEnhance:VerdantShrineTerminalDesc	Text		The shrine will put loot into crystal. Only one can be placed per world.	祭坛会将收获直接放入水晶，每个世界只能放置一个
+Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The shrine will put loot into crystal. Only one can be placed per world.
+Support robot arm"	"祭坛会将收获直接放入水晶，每个世界只能放置一个
+支持机械臂"
 Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
-Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Core Enhance"""	更好的体验专属制作站
+Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Qoc"""	更好的体验专属制作站
+Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
+Items/CoreEnhance:BoulderDemolishDesc	Text		Come closer, knock once, knock again	靠近，敲一下，再敲一下
 CoreEnhance/Craft	Text		Craft	制作
 CoreEnhance/ObtainWay	Text		Obtain Way	获取途径
-CoreEnhance/Switch	Text		Core Enhance Function Switch	更好的体验功能开关
-CoreEnhance/Value	Text		Core Enhance Additional Config	更好的体验额外配置
-CoreEnhance/Switch/Section/Infinity	Text		Infinity	无限
-CoreEnhance/Switch/Section/Accelerate	Text		Accelerate	加速
-CoreEnhance/Switch/Section/Automation	Text		Automation	自动化
-CoreEnhance/Switch/Section/Misc	Text		Misc	杂项
-CoreEnhance/Value/Section/Infinity	Text		Infinity	无限
-CoreEnhance/Value/Section/Accelerate	Text		Accelerate	加速
-CoreEnhance/Value/Section/Automation	Text		Automation	自动化
-CoreEnhance/Value/Section/Misc	Text		Misc	杂项
+CoreEnhance/Switch	Text		Quality of CK Function Switch	更好的体验功能开关
+CoreEnhance/Value	Text		Quality of CK Extra Config	更好的体验额外配置
+CoreEnhance/Switch/Infinity	Text		Infinity	无限
+CoreEnhance/Switch/Accelerate	Text		Accelerate	加速
+CoreEnhance/Switch/Automation	Text		Automation	自动化
+CoreEnhance/Switch/Misc	Text		Misc	杂项
+CoreEnhance/Value/Infinity	Text		Infinity	无限
+CoreEnhance/Value/Accelerate	Text		Accelerate	加速
+CoreEnhance/Value/Automation	Text		Automation	自动化
+CoreEnhance/Value/Misc	Text		Misc	杂项
 CoreEnhance/Switch/Infinity/Durability	Text		Durability	耐久
 CoreEnhance/Switch/Infinity/Durability/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Value/Infinity/Durability	Text		Durability Recovery Interval	耐久度恢复间隔
 CoreEnhance/Switch/Infinity/Boulder	Text		Boulder	矿岩
 CoreEnhance/Switch/Infinity/Arena	Text		Arena	竞技场
-CoreEnhance/Switch/Infinity/Arena/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Switch/Infinity/Arena/Description	Text		"Please stand in the center of the broken arena and destroy the loot chest
+This entry has additional configs"	"请站在破损竞技场中心，并且已经摧毁战利品宝箱
+这个条目有额外配置"
 CoreEnhance/Value/Infinity/Arena	Text		Arena Cost	竞技场开销
 CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arnea rebuild	竞技场重生需消耗多少上古钱币
 CoreEnhance/Switch/Infinity/Minion	Text		Minion	召唤物时长
@@ -71,11 +77,5 @@ CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	自动拆解�
 CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
 CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
 CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
-CoreEnhance/Switch/Misc/QuickStack	Text		Quick Stack	快速堆叠
-CoreEnhance/Switch/Misc/QuickStack/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Misc/QuickStack	Text		Quick Stack Range	快速堆叠范围
-CoreEnhance/Value/Misc/QuickStack/Description	Text		Determines how many blocks around to search for the container	决定在多少个方块内搜索容器
 CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
-CoreEnhance/Switch/Misc/AllPlayerSkill	Text		All Player Skill	玩家全技能
-CoreEnhance/Switch/Misc/AllPetSkill	Text		All Pet Skill	宠物全技能
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿

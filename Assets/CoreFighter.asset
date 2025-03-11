@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: CoreFighter
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 3c52a250c9ac4bd8a50adccc9b90f52a
+    name: CoreFighter
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Localization/Localization.csv
+    - path: Scripts/Scripts/Systems/InfinityMana.cs
+    - path: Scripts/Scripts/Systems/InfinityExplosive.cs
+    - path: Scripts/Scripts/Systems/BlockExplosion.cs
+    - path: Scripts/Scripts/Systems/AttackSpeed.cs
+    - path: Scripts/Scripts/Patchs/CDDisplayPatch.cs
+    - path: Scripts/Scripts/Patchs/AllSkillsPatch.cs
+    - path: Scripts/Scripts/CoreFighterMod.cs
+    - path: Scripts/Scripts/Configs/FighterConfig.cs
+    - path: Scripts/Scripts/Configs/FighterCategory.cs
+    - path: Scripts/Scripts/Configs/AttackSpeedModifier.cs
+    - path: Scripts/Generated/AttackSpeed__System_18920313030.g.cs
+    - path: Scripts/Generated/BlockExplosion__System_9781848300.g.cs
+    - path: Scripts/Generated/InfinityExplosive__System_8506731810.g.cs
+    - path: Scripts/Generated/InfinityMana__System_12443208410.g.cs
+    - path: Bundles/CoreFighter_Windows.assetbundle
+    dependencies:
+    - modName: CoreEnhance
+      required: 1
+  modPath: Assets\CoreFighter
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets:
+  - path: Assets/CoreFighter/Localization/Localization.csv
+    hash: 68D9F1F45EB933CA9F88DF7F5085E9A9466809414D7F77E1E3ADC1AD57569ED2
+  lastBuildLinux: 1

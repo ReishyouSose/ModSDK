@@ -31,7 +31,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Merchant()
         {
-            if (!ModConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Merchant, out ConfigEntry<int> value))
+            if (!EnhanceConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Merchant, out ConfigEntry<int> value))
                 return;
             int timeLimit = value.Value;
             if (timeLimit == 0)
@@ -76,7 +76,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_SoulOrb(EntityCommandBuffer ecb, uint tickRate)
         {
-            if (!ModConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Titan, out ConfigEntry<int> value))
+            if (!EnhanceConfig.TryGetValue(EnhanceCategory.Accelerate, EC_Accelerate.Titan, out ConfigEntry<int> value))
                 return;
             int maxTime = value.Value;
             var current = GetServerTick();
@@ -105,7 +105,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
 
         private void Accelerate_Crafting()
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Crafting))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Crafting))
                 return;
             Entities.ForEach((ref CraftingCD crafting) =>
             {
@@ -119,7 +119,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Casting(uint tickRate)
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Casting))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Casting))
                 return;
             Entities.ForEach((ref CastingStateCD casting) =>
             {
@@ -131,7 +131,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Portal(EntityCommandBuffer ecb)
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Portal))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Portal))
                 return;
             Entities.ForEach((Entity e, ref ObjectDataCD objData) =>
             {

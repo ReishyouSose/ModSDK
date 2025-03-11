@@ -1,181 +1,79 @@
-Key	Type	Desc	English	German	French (France)	Portuguese (Brazil)	Italian (Italy)	Japanese	Korean	Russian	Spanish	Ukrainian	Chinese (Simplified)	Chinese (Traditional)	Thai
-Items/CoreEnhance:AutoFisher	Text		Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	Auto Fisher	自动钓鱼机	自动钓鱼机	Auto Fisher
+Key	Type	Desc	English	Chinese (Simplified)
+Items/CoreEnhance:AutoFisher	Text		Auto Fisher	自动钓鱼机
 Items/CoreEnhance:AutoFisherDesc	Text		"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
-Not work when hasn't terminal in this world"	"After placing it, put a fishing rod at least to automatically fish
 The loot depends on the environment
 Not work when hasn't terminal in this world"	"放置后，至少放入钓竿即可自动钓鱼
 战利品取决于环境
-世界中没有终端则不工作"	"放置后，至少放入钓竿即可自动钓鱼
-战利品取决于环境
-世界中没有终端则不工作"	"放置后，至少放入钓竿即可自动钓鱼
-战利品取决于环境
 世界中没有终端则不工作"
-Items/CoreEnhance:ArenaScanner	Text		Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	Arena Scanner	竞技场扫描仪	竞技场扫描仪	Arena Scanner
-Items/CoreEnhance:ArenaScannerDesc	Text		Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	Just put it in inventory, will try to point out the location of arenas	放在背包中即可，会尝试指出竞技场的位置	放在背包中即可，会尝试指出竞技场的位置	Just put it in inventory, will try to point out the location of arenas
-Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	Auto Fisher Terminal	自动钓鱼机终端	自动钓鱼机终端	Auto Fisher Terminal
-Items/CoreEnhance:AutoFisherTerminalDesc	Text		The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	The auto fisher will put loot into terminal. Only one can be placed per world.	自动钓鱼机会将渔获直接放入终端，每个世界只能放置一个	自动钓鱼机会将渔获直接放入终端，每个世界只能放置一个	The auto fisher will put loot into terminal. Only one can be placed per world.
-Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	Verdant Shrine	繁茂祭坛	繁茂祭坛	Verdant Shrine
+Items/CoreEnhance:ArenaScanner	Text		Arena Locator	竞技场定位仪
+Items/CoreEnhance:ArenaScannerDesc	Text		Just put it in inventory, will try to point out the location of arenas	放在背包中即可，会尝试指出竞技场的位置
+Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
+Items/CoreEnhance:AutoFisherTerminalDesc	Text		The auto fisher will put loot into terminal. Only one can be placed per world.	自动钓鱼机会将渔获直接放入终端，每个世界只能放置一个
+Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
 Items/CoreEnhance:VerdantShrineDesc	Text		"The effect range is 16*16
 Base-sprinkler effect, auto harverst and replant
 Green-Fast growing
 Blue-Extra harvest
 Red-Gold chance
-Not work when hasn't crystal in this world"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"Hover range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"	"覆盖范围16*16
+Not work when hasn't crystal in this world"	"覆盖范围16*16
 自带-洒水器效果，自动收获与种植
 绿-生长加速
 蓝-额外收成
 红-金色几率
-世界中没有繁茂水晶则不工作"	"覆盖范围16*16
-自带-洒水器效果，自动收获与种植
-绿-生长加速
-蓝-额外收成
-红-金色几率
-世界中没有繁茂水晶则不工作"	"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Green-Fast growing
-Blue-Extra harvest
-Red-Gold chance
-(Not work when hasn't crystal in this world)"
-Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	Verdant Crystal	繁茂水晶	繁茂水晶	Verdant Crystal
-Items/CoreEnhance:VerdantShrineTerminalDesc	Text		The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	The shrine will put loot into crystal. Only one can be placed per world.	祭坛会将收获直接放入水晶，每个世界只能放置一个	祭坛会将收获直接放入水晶，每个世界只能放置一个	The shrine will put loot into crystal. Only one can be placed per world.
-Items/CoreEnhance:WorkBench	Text		Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	Core Enhance Station	核心附魔台	核心附魔台	Core Enhance Station
-Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	"Craft station from mod ""Core Enhance"""	更好的体验专属制作站	更好的体验专属制作站	"Craft station from mod ""Core Enhance"""
-CoreEnhance/Craft	Text		Craft	Craft	Craft	Craft	Craft	Craft	Craft	Craft	Craft	Craft	制作	制作	Craft
-CoreEnhance/Switch	Text		Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	Core Enhance Function Switch	更好的体验功能开关	更好的体验功能开关	Core Enhance Function Switch
-CoreEnhance/Value	Text		Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	Core Enhance Additional Config	更好的体验额外配置	更好的体验额外配置	Core Enhance Additional Config
-CoreEnhance/Switch/Infinity	Text		Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	Infinity	无限	无限	Infinity
-CoreEnhance/Switch/Accelerate	Text		Accelerate	Accelerate	Accelerate	Accelerate	Accelerate	Accelerate	Accelerate	Accelerate	Accelerate	Accelerate	加速	加速	Accelerate
-CoreEnhance/Switch/Automation	Text		Automation	Automation	Automation	Automation	Automation	Automation	Automation	Automation	Automation	Automation	自动化	自动化	Automation
-CoreEnhance/Switch/Misc	Text		Misc	Misc	Misc	Misc	Misc	Misc	Misc	Misc	Misc	Misc	杂项	杂项	Misc
-CoreEnhance/Switch/Infinity/Durability	Text		Durability	Durability	Durability	Durability	Durability	Durability	Durability	Durability	Durability	Durability	耐久	耐久	Durability
-CoreEnhance/Switch/Infinity/Durability/Description	Text		This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	这个条目有额外配置	这个条目有额外配置	This entry has additional configs
-CoreEnhance/Value/Infinity/Durability	Text		Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	Durability Recovery Interval	耐久度恢复间隔	耐久度恢复间隔	Durability Recovery Interval
-CoreEnhance/Switch/Infinity/Boulder	Text		Boulder	Boulder	Boulder	Boulder	Boulder	Boulder	Boulder	Boulder	Boulder	Boulder	矿岩	矿岩	Boulder
-CoreEnhance/Switch/Infinity/Arena	Text		Arena	Arena	Arena	Arena	Arena	Arena	Arena	Arena	Arena	Arena	竞技场	竞技场	Arena
-CoreEnhance/Switch/Infinity/Arena/Description	Text		This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	这个条目有额外配置	这个条目有额外配置	This entry has additional configs
-CoreEnhance/Value/Infinity/Arena	Text		Arena Cost	Arena Cost	Arena Cost	Arena Cost	Arena Cost	Arena Cost	Arena Cost	Arena Cost	Arena Cost	Arena Cost	竞技场开销	竞技场开销	Arena Cost
-CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	How much ancient coin cost for arnea rebuild	竞技场重生需消耗多少上古钱币	竞技场重生需消耗多少上古钱币	How much ancient coin cost for arnea rebuild
-CoreEnhance/Switch/Infinity/Minion	Text		Minion	Minion	Minion	Minion	Minion	Minion	Minion	Minion	Minion	Minion	召唤物时长	召唤物时长	Minion
-CoreEnhance/Switch/Accelerate/Merchant	Text		Merchant	Merchant	Merchant	Merchant	Merchant	Merchant	Merchant	Merchant	Merchant	Merchant	商人	商人	Merchant
-CoreEnhance/Switch/Accelerate/Merchant/Description	Text		This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	这个条目有额外配置	这个条目有额外配置	This entry has additional configs
-CoreEnhance/Value/Accelerate/Merchant	Text		Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	Merchant Replenish Interval	商人补货间隔	商人补货间隔	Merchant Replenish Interval
+世界中没有繁茂水晶则不工作"
+Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
+Items/CoreEnhance:VerdantShrineTerminalDesc	Text		The shrine will put loot into crystal. Only one can be placed per world.	祭坛会将收获直接放入水晶，每个世界只能放置一个
+Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
+Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Qoc"""	更好的体验专属制作站
+Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
+Items/CoreEnhance:BoulderDemolishDesc	Text		Come closer, knock once, knock again	靠近，敲一下，再敲一下
+CoreEnhance/Craft	Text		Craft	制作
+CoreEnhance/ObtainWay	Text		Obtain Way	获取途径
+CoreEnhance/Switch	Text		Quality of CK Function Switch	更好的体验功能开关
+CoreEnhance/Value	Text		Quality of CK Extra Config	更好的体验额外配置
+CoreEnhance/Switch/Infinity	Text		Infinity	无限
+CoreEnhance/Switch/Accelerate	Text		Accelerate	加速
+CoreEnhance/Switch/Automation	Text		Automation	自动化
+CoreEnhance/Switch/Misc	Text		Misc	杂项
+CoreEnhance/Value/Infinity	Text		Infinity	无限
+CoreEnhance/Value/Accelerate	Text		Accelerate	加速
+CoreEnhance/Value/Automation	Text		Automation	自动化
+CoreEnhance/Value/Misc	Text		Misc	杂项
+CoreEnhance/Switch/Infinity/Durability	Text		Durability	耐久
+CoreEnhance/Switch/Infinity/Durability/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Infinity/Durability	Text		Durability Recovery Interval	耐久度恢复间隔
+CoreEnhance/Switch/Infinity/Boulder	Text		Boulder	矿岩
+CoreEnhance/Switch/Infinity/Arena	Text		Arena	竞技场
+CoreEnhance/Switch/Infinity/Arena/Description	Text		"Please stand in the center of the broken arena and destroy the loot chest
+This entry has additional configs"	"请站在破损竞技场中心，并且已经摧毁战利品宝箱
+这个条目有额外配置"
+CoreEnhance/Value/Infinity/Arena	Text		Arena Cost	竞技场开销
+CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arnea rebuild	竞技场重生需消耗多少上古钱币
+CoreEnhance/Switch/Infinity/Minion	Text		Minion	召唤物时长
+CoreEnhance/Switch/Accelerate/Merchant	Text		Merchant	商人
+CoreEnhance/Switch/Accelerate/Merchant/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Accelerate/Merchant	Text		Merchant Replenish Interval	商人补货间隔
 CoreEnhance/Value/Accelerate/Merchant/Description	Text		"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	"In second
-If set to 0, will replenish immediately while any item is sold out"	单位为秒，如果设为0，则有任何物品售罄时立即刷新	单位为秒，如果设为0，则有任何物品售罄时立即刷新	"In second
-If set to 0, will replenish immediately while any item is sold out"
-CoreEnhance/Switch/Accelerate/Titan	Text		Titan	Titan	Titan	Titan	Titan	Titan	Titan	Titan	Titan	Titan	泰坦	泰坦	Titan
-CoreEnhance/Switch/Accelerate/Titan/Description	Text		This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	这个条目有额外配置	这个条目有额外配置	This entry has additional configs
-CoreEnhance/Value/Accelerate/Titan	Text		Titan CD	Titan CD	Titan CD	Titan CD	Titan CD	Titan CD	Titan CD	Titan CD	Titan CD	Titan CD	泰坦冷却	泰坦冷却	Titan CD
+If set to 0, will replenish immediately while any item is sold out"	单位为秒，如果设为0，则有任何物品售罄时立即刷新
+CoreEnhance/Switch/Accelerate/Titan	Text		Titan	泰坦
+CoreEnhance/Switch/Accelerate/Titan/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Accelerate/Titan	Text		Titan CD	泰坦冷却
 CoreEnhance/Value/Accelerate/Titan/Description	Text		"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
-Equal to existence time of soul orb"	"In second
 Equal to existence time of soul orb"	"单位为秒
-等同于灵魂球存在时间"	"单位为秒
-等同于灵魂球存在时间"	"In second
-Equal to existence time of soul orb"
-CoreEnhance/Switch/Accelerate/Crafting	Text		Crafting	Crafting	Crafting	Crafting	Crafting	Crafting	Crafting	Crafting	Crafting	Crafting	制造	制造	Crafting
-CoreEnhance/Switch/Accelerate/Crafting/Description	Text		For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	For example, smelting, cooking, hatching eggs, etc.	例如，冶炼、烹饪、孵蛋等	例如，冶炼、烹饪、孵蛋等	For example, smelting, cooking, hatching eggs, etc.
-CoreEnhance/Switch/Accelerate/Casting	Text		Casting	Casting	Casting	Casting	Casting	Casting	Casting	Casting	Casting	Casting	使用	使用	Casting
-CoreEnhance/Switch/Accelerate/Casting/Description	Text		For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	For example, scanning, synthesis, etc.	例如，扫描、合成等	例如，扫描、合成等	For example, scanning, synthesis, etc.
-CoreEnhance/Switch/Accelerate/Portal	Text		Portal	Portal	Portal	Portal	Portal	Portal	Portal	Portal	Portal	Portal	传送点	传送点	Portal
-CoreEnhance/Switch/Automation/Salvage	Text		Salvage	Salvage	Salvage	Salvage	Salvage	Salvage	Salvage	Salvage	Salvage	Salvage	拆解	拆解	Salvage
-CoreEnhance/Switch/Automation/Salvage/Description	Text		This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	这个条目有额外配置	这个条目有额外配置	This entry has additional configs
-CoreEnhance/Value/Automation/SalvageAmount	Text		Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	Auto Salvage Amount	自动拆解数量	自动拆解数量	Auto Salvage Amount
+等同于灵魂球存在时间"
+CoreEnhance/Switch/Accelerate/Crafting	Text		Crafting	制造
+CoreEnhance/Switch/Accelerate/Crafting/Description	Text		For example, smelting, cooking, hatching eggs, etc.	例如，冶炼、烹饪、孵蛋等
+CoreEnhance/Switch/Accelerate/Casting	Text		Casting	使用
+CoreEnhance/Switch/Accelerate/Casting/Description	Text		For example, scanning, synthesis, etc.	例如，扫描、合成等
+CoreEnhance/Switch/Accelerate/Portal	Text		Portal	传送点
+CoreEnhance/Switch/Automation/Salvage	Text		Salvage	拆解
+CoreEnhance/Switch/Automation/Salvage/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Automation/SalvageAmount	Text		Auto Salvage Amount	自动拆解数量
 CoreEnhance/Value/Automation/SalvageAmount/Description	Text		"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	拆解台内物品数达到数量开始拆解倒计时	拆解台内物品数达到数量开始拆解倒计时	"Detection quantity
-When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"
-CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	Auto Salvage Timer	自动拆解倒计时	自动拆解倒计时	Auto Salvage Timer
-CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长	数量达标后执行拆解的倒计时长	The countdown time for auto salvage after the quantity is met
-CoreEnhance/Switch/Automation/Plant	Text		Plant	Plant	Plant	Plant	Plant	Plant	Plant	Plant	Plant	Plant	种植	种植	Plant
-CoreEnhance/Switch/Automation/Plant/Description	Text		This entry is useless	This entry is useless	This entry is useless	This entry is useless	This entry is useless	This entry is useless	This entry is useless	This entry is useless	This entry is useless	This entry is useless	这个条目是无用的	这个条目是无用的	This entry is useless
-CoreEnhance/Switch/Misc/QuickStack	Text		Quick Stack	Quick Stack	Quick Stack	Quick Stack	Quick Stack	Quick Stack	Quick Stack	Quick Stack	Quick Stack	Quick Stack	快速堆叠	快速堆叠	Quick Stack
-CoreEnhance/Switch/Misc/QuickStack/Description	Text		This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	This entry has additional configs	这个条目有额外配置	这个条目有额外配置	This entry has additional configs
-CoreEnhance/Value/Misc/QuickStack	Text		Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	Quick Stack Range	快速堆叠范围	快速堆叠范围	Quick Stack Range
-CoreEnhance/Value/Misc/QuickStack/Description	Text		Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	Determines how many blocks around to search for the container	决定在多少个方块内搜索容器	决定在多少个方块内搜索容器	Determines how many blocks around to search for the container
-CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	Death No Drop	Death No Drop	Death No Drop	Death No Drop	Death No Drop	Death No Drop	Death No Drop	Death No Drop	Death No Drop	死亡不掉落	死亡不掉落	Death No Drop
+When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	拆解台内物品数达到数量开始拆解倒计时
+CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	自动拆解倒计时
+CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
+CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
+CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
+CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
+CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿

@@ -23,13 +23,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
             }
             timer = 0;
             Infinity_Minion();
-            Infinity_Mana();
             Infinity_Boulder();
             base.OnUpdate();
         }
         private void Infinity_Boulder()
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Boulder))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Boulder))
                 return;
             Entities.ForEach((ref HealthCD heal, in ObjectDataCD objdata) =>
             {
@@ -43,7 +42,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         private void Infinity_Minion()
         {
-            if (!ModConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Minion))
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Minion))
                 return;
             Entities.ForEach((ref MinionCD minion) =>
             {
@@ -51,21 +50,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                     minion.lifespanTimer = minion.lifespan;
             })
                 .WithName("Infinity_Minion")
-                .WithBurst()
-                .Schedule();
-        }
-        private void Infinity_Mana()
-        {
-            if (!ModConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Mana))
-                return;
-            Entities.ForEach((ref ManaCD mana) =>
-            {
-                if (mana.mana != mana.maxMana)
-                {
-                    mana.mana = mana.maxMana;
-                }
-            })
-                .WithName("Infinity_Mana")
                 .WithBurst()
                 .Schedule();
         }

@@ -63,9 +63,9 @@ namespace Assets.CoreEnhance.Scripts.UI.ModScroll
 
         private bool _isCreditsMenu;
 
-        private List<SpriteObject> _spriteObjects = new List<SpriteObject>();
+        private List<SpriteObject> _spriteObjects = new();
 
-        private List<Vector3> _spriteObjectStartPositions = new List<Vector3>();
+        private List<Vector3> _spriteObjectStartPositions = new();
 
         private Vector3 _spriteObjectOffset = Vector3.zero;
 
@@ -118,10 +118,10 @@ namespace Assets.CoreEnhance.Scripts.UI.ModScroll
         private bool IsMouseWithinScrollArea()
         {
             Vector3 position = Manager.ui.mouse.pointer.transform.position;
-            Vector2 size = new Vector2(windowWidth, windowHeight);
+            Vector2 size = new(windowWidth, windowHeight);
             Vector2 vector = new Vector2(windowWidth, windowHeight) / 2f;
             Vector3 position2 = transform.position;
-            Vector2 vector2 = new Vector2(position2.x, position2.y);
+            Vector2 vector2 = new(position2.x, position2.y);
             return new Rect(vector2 + windowLocalCenter - vector, size).Contains(position);
         }
 

@@ -58,7 +58,11 @@ namespace Assets.GeneralConfigMenu.Scripts
         {
             if (RewiredPlayer.GetButtonDown(OpenMenu))
             {
-                UserInterfaceModule.OpenModUI("GeneralConfigMenu:Screen");
+                if (ConfigManager.Instance.Root.activeInHierarchy)
+                {
+                    ConfigManager.Instance.HideUI();
+                }
+                else UserInterfaceModule.OpenModUI("GeneralConfigMenu:Screen");
             }
         }
     }
