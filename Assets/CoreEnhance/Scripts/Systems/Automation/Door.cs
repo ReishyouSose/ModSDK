@@ -20,15 +20,16 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 if (min > 2)
                     return;
                 ref var variation = ref objData.variation;
+                bool open = false;
                 foreach (var condition in adaptive)
                 {
-                    if (condition.adaptiveCondition.variation != variation)
-                        continue;
-                    if (min > 1.5f)
-                        variation = PugDatabase.GetObjectInfo(objData.objectID, variation).variationToToggleTo;
-                    return;
+                    if (condition.adaptiveCondition.variation == variation)
+                    {
+                        open = true;
+                        break;
+                    }
                 }
-                if (min <= 1.5f)
+                if (open && min > 1 || !open && min <= 1)
                 {
                     variation = PugDatabase.GetObjectInfo(objData.objectID, variation).variationToToggleTo;
                 }
@@ -37,7 +38,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 .WithAll<ChangeVariationTriggerCD>()
                 .WithAll<DoorCD>()
                 .WithBurst()
-                .Schedule();
+                .Run();
             base.OnUpdate();
         }
         public static void AddDistanceCD(Entity e, GameObject authoringData, EntityManager manager)
