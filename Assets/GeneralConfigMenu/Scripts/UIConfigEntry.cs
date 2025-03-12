@@ -102,8 +102,8 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         public void TryServerToClient()
         {
-            if (ServerEqualsClient())
-                return;
+            /*if (ServerEqualsClient())
+                return;*/
             ServerToClient();
         }
         protected virtual void ServerToClient()
@@ -113,8 +113,8 @@ namespace Assets.GeneralConfigMenu.Scripts
         {
             if (!ServerChanger.activeSelf || !CheckAdmin())
                 return;
-            if (ServerEqualsClient())
-                return;
+            /*if (ServerEqualsClient())
+                return;*/
             ClientToServer();
         }
         protected virtual void ClientToServer()
@@ -147,9 +147,9 @@ namespace Assets.GeneralConfigMenu.Scripts
 
         public bool CheckAdmin() => !AdminOnly || Manager.main.player.adminPrivileges > 0;
         public virtual bool ValueEquals(string value) => ConfigEntry.GetSerializedValue() == value;
-        public virtual bool ServerEqualsClient()
+        /*public virtual bool ServerEqualsClient()
         {
             return false;
-        }
+        }*/
     }
 }

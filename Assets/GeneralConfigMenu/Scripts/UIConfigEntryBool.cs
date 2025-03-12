@@ -69,6 +69,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             }
             return base.ValueEquals(value);
         }
-        public override bool ServerEqualsClient() => server.IsToggle == client.IsToggle;
+        //public override bool ServerEqualsClient() => server.IsToggle == client.IsToggle;
     }
 }

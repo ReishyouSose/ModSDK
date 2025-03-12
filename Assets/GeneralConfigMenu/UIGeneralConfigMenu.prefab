@@ -3561,8 +3561,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3957336439488287082}
-  - component: {fileID: 6523952409580727766}
-  - component: {fileID: 96599060864163274}
   m_Layer: 5
   m_Name: EntryPanel
   m_TagString: Untagged
@@ -3589,105 +3587,6 @@ Transform:
   - {fileID: 350760963679732291}
   m_Father: {fileID: 1559357910742469307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6523952409580727766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2781504529794698588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1748679033, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topUIElements: []
-  bottomUIElements: []
-  leftUIElements: []
-  rightUIElements: []
-  childElements: []
-  selectFirstEnabledElementInList: 0
-  invokeSelectionEvents: 0
-  onElementSelectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onElementDeselectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  canBeClicked: 1
-  disabledColor: {r: 1, g: 1, b: 1, a: 1}
-  onLeftClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onRightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8311216473479885761}
-        m_TargetAssemblyTypeName: Assets.GeneralConfigMenu.Scripts.ConfigManager,
-          GeneralConfigMenu
-        m_MethodName: BackLeftDown
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls: []
-  optionalSelectedMarker: {fileID: 0}
-  optionToSelectOnHover: {fileID: 0}
-  spritesShownUnpressed: []
-  spritesShownPressed: []
-  skipUpdatingSpritesColor: 0
-  showHoverTitle: 0
-  optionalTitle:
-    mTerm: 
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  showHoverDesc: 0
-  optionalHoverDesc:
-    mTerm: 
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  optionalShortCut: 0
-  adjustSpritesToFitTextSize: 0
-  spritesSizePadding: {x: 0, y: 0}
-  text: {fileID: 0}
-  playClickSoundEffect: 0
-  clickSoundEffect: 0
-  clickSoundPitch: 0
---- !u!65 &96599060864163274
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2781504529794698588}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 30, y: 17, z: 1}
-  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &3064892678655500054
 GameObject:
   m_ObjectHideFlags: 0
@@ -6174,7 +6073,7 @@ MonoBehaviour:
   onInputFieldDone:
     m_PersistentCalls:
       m_Calls: []
-  triggerOnInputFieldDoneWhenCanceling: 0
+  triggerOnInputFieldDoneWhenCanceling: 1
   dontDeactivateOnDeselect: 0
   <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
 --- !u!1 &4958900399474787034
@@ -9404,7 +9303,7 @@ MonoBehaviour:
   onInputFieldDone:
     m_PersistentCalls:
       m_Calls: []
-  triggerOnInputFieldDoneWhenCanceling: 0
+  triggerOnInputFieldDoneWhenCanceling: 1
   dontDeactivateOnDeselect: 0
   <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
 --- !u!1 &7198785903723199828
@@ -10635,7 +10534,6 @@ GameObject:
   - component: {fileID: 7592354062815416740}
   - component: {fileID: 7981754722657573534}
   - component: {fileID: 588278658341382072}
-  - component: {fileID: 2686156490693147398}
   m_Layer: 5
   m_Name: ConfigPanel
   m_TagString: Untagged
@@ -10732,84 +10630,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 30, y: 17, z: 1}
   m_Center: {x: 10, y: -1, z: 0}
---- !u!114 &2686156490693147398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8060302354071945718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1748679033, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topUIElements: []
-  bottomUIElements: []
-  leftUIElements: []
-  rightUIElements: []
-  childElements: []
-  selectFirstEnabledElementInList: 0
-  invokeSelectionEvents: 0
-  onElementSelectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onElementDeselectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  canBeClicked: 1
-  disabledColor: {r: 1, g: 1, b: 1, a: 1}
-  onLeftClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onRightClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8311216473479885761}
-        m_TargetAssemblyTypeName: Assets.GeneralConfigMenu.Scripts.ConfigManager,
-          GeneralConfigMenu
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeselected:
-    m_PersistentCalls:
-      m_Calls: []
-  optionalSelectedMarker: {fileID: 0}
-  optionToSelectOnHover: {fileID: 0}
-  spritesShownUnpressed: []
-  spritesShownPressed: []
-  skipUpdatingSpritesColor: 0
-  showHoverTitle: 0
-  optionalTitle:
-    mTerm: 
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  showHoverDesc: 0
-  optionalHoverDesc:
-    mTerm: 
-    mRTL_IgnoreArabicFix: 0
-    mRTL_MaxLineLength: 0
-    mRTL_ConvertNumbers: 0
-    m_DontLocalizeParameters: 0
-  optionalShortCut: 0
-  adjustSpritesToFitTextSize: 0
-  spritesSizePadding: {x: 0, y: 0}
-  text: {fileID: 0}
-  playClickSoundEffect: 0
-  clickSoundEffect: 0
-  clickSoundPitch: 0
 --- !u!1 &8128081601113095862
 GameObject:
   m_ObjectHideFlags: 0

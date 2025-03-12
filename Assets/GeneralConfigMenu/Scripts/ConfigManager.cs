@@ -331,5 +331,18 @@ namespace Assets.GeneralConfigMenu.Scripts
             }
             Debug.Log(data + " can't find config entry in UI");
         }
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (EntryPanel.gameObject.activeInHierarchy)
+                {
+                    EntryPanel.gameObject.SetActive(false);
+                    ConfigPanel.gameObject.SetActive(true);
+                    return;
+                }
+                HideUI();
+            }
+        }
     }
 }

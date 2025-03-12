@@ -87,9 +87,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellValue: 99
   buyValueMultiplier: 1
-  icon: {fileID: 21300000, guid: ba015d083543dce478c9404fd6df2e14, type: 3}
+  icon: {fileID: 21300000, guid: c4a5032b4034fb741bff8406e9abbbc0, type: 3}
   iconOffset: {x: 0, y: 0}
-  smallIcon: {fileID: 21300000, guid: fd53711ef9c981e47b9b0292eb507e1f, type: 3}
+  smallIcon: {fileID: 21300000, guid: 913ed6e398ea1ae4bb954e7617031407, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
   - objectName: DarkVoidCrystal

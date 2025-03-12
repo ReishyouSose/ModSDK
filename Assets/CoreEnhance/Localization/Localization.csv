@@ -77,5 +77,6 @@ CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	自动拆解�
 CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
 CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
 CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
+CoreEnhance/Switch/Automation/Door	Text		Door	门
 CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿

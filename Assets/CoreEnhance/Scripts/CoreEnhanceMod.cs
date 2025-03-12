@@ -1,5 +1,7 @@
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Edits;
+using Assets.CoreEnhance.Scripts.Helpers;
+using Assets.CoreEnhance.Scripts.Systems.Automation;
 using Assets.CoreEnhance.Scripts.Systems.Infinity;
 using Assets.CoreEnhance.Scripts.UI;
 using Assets.CoreEnhance.Scripts.UI.ItemLookup;
@@ -26,6 +28,13 @@ namespace Assets.CoreEnhance.Scripts
             authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
             //authoring.OnObjectTypeAdded += PlaceSizeEdit.EditResizeableTool;
             authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
+            authoring.OnObjectTypeAdded += AutoDoorSystem.AddDistanceCD;
+            //authoring.OnObjectTypeAdded += Test;
+        }
+
+        private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
+        {
+            authoringData.LogComponent(ObjectID.WoodFenceGate);
         }
 
         public void Init()

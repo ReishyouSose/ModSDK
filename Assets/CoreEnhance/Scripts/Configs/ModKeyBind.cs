@@ -1,7 +1,10 @@
-﻿using Assets.CoreEnhance.Scripts.UI.ItemLookup;
+﻿using Assets.CoreEnhance.Scripts.Systems.Quick;
+using Assets.CoreEnhance.Scripts.UI.ItemLookup;
 using CoreLib.RewiredExtension;
 using CoreLib.UserInterface;
 using Rewired;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Configs
 {
@@ -9,12 +12,22 @@ namespace Assets.CoreEnhance.Scripts.Configs
     {
         private const string CoreEnhance = "CoreEnhance:";
         internal const string ItemLookup = CoreEnhance + nameof(ItemLookup);
+        internal const string QuickOpenLockedChest = CoreEnhance + nameof(QuickOpenLockedChest);
         //internal const string QuickHealth = CoreEnhance + nameof(QuickHealth);
         //internal const string QuickPotion = CoreEnhance + nameof(QuickPotion);
         //internal const string QuickCooked = CoreEnhance + nameof(QuickCooked);
         public static void Load()
         {
-            RewiredExtensionModule.AddKeybind(ItemLookup, "Item Lookup", KeyboardKeyCode.F, ModifierKey.Control);
+            RewiredExtensionModule.AddKeybind(ItemLookup, new Dictionary<string, string>()
+            {
+                {"en", "Item Lookup" },
+                { "zh-CN","查询获取途径" }
+            }, KeyboardKeyCode.F, ModifierKey.Control);
+            RewiredExtensionModule.AddKeybind(QuickOpenLockedChest, new Dictionary<string, string>()
+            {
+                {"en", "Quick Open Locked Chest" },
+                { "zh-CN","快速开启上锁宝箱" }
+            }, KeyboardKeyCode.O, ModifierKey.Control);
             //RewiredExtensionModule.AddKeybind(QuickHealth, "Quick Health", KeyboardKeyCode.Q, ModifierKey.Control);
             //RewiredExtensionModule.AddKeybind(QuickPotion, "Quick Potion", KeyboardKeyCode.W, ModifierKey.Control);
             //RewiredExtensionModule.AddKeybind(QuickCooked, "Quick Cooked", KeyboardKeyCode.E, ModifierKey.Control);
@@ -22,20 +35,22 @@ namespace Assets.CoreEnhance.Scripts.Configs
         public static void Handle(PlayerController p)
         {
             Player r = p.inputModule.rewiredPlayer;
+            var lookup = ItemLookupUI.ins;
+            var obtain = ObtainLookupUI.ins;
             if (r.GetButtonDown(ItemLookup))
             {
-                if (ItemLookupUI.ins.Root.activeInHierarchy)
-                    ItemLookupUI.ins.HideUI();
-                else if (ObtainLookupUI.ins.Root.activeInHierarchy)
-                    ObtainLookupUI.ins.HideUI();
+                if (lookup.Root.activeInHierarchy)
+                    lookup.HideUI();
+                else if (obtain.Root.activeInHierarchy)
+                    obtain.HideUI();
                 else
                 {
                     var select = Manager.ui.currentSelectedUIElement;
                     if (select is SlotUIBase slot)
                     {
                         UserInterfaceModule.OpenModUI("CoreEnhance:ObtainLookup");
-                        ObtainLookupUI.ins.Focus.SetItem(slot.GetContainedObject().objectID);
-                        ObtainLookupUI.ins.SearchLoot();
+                        obtain.Focus.SetItem(slot.GetContainedObject().objectID);
+                        obtain.SearchLoot();
                     }
                     else
                     {
@@ -43,6 +58,10 @@ namespace Assets.CoreEnhance.Scripts.Configs
                     }
                 }
             }
+
+            if (r.GetButtonDown(QuickOpenLockedChest))
+                QuickOpenLockedChestClient.Trigger(p);
+
             //if (r.GetButtonDown(QuickHealth))
             //    QuickConsumableClient.QuickConsume(QuickConsumeType.Health);
             //if (r.GetButtonDown(QuickPotion))

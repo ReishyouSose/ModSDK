@@ -59,6 +59,8 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
                 bool nameMatch = local.ToLower().Contains(input);
                 if (!idMatch && !nameMatch)
                     continue;
+                if (id == ObjectID.None)
+                    return;
                 any = true;
                 if (slots.Count <= i)
                 {
@@ -99,6 +101,8 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
         }
         private void Update()
         {
+            if (Input.GetMouseButtonDown(1))
+                HideUI();
         }
     }
 }

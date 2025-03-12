@@ -20,6 +20,7 @@
         AllPlayerSkill,//玩家全技能 done
         AllPetSkill,//宠物全技能 done
         ImmuneExplosion,//拦截爆炸伤害 done
+        MapMarkerTeleport,//标记传送
     }
     //EatableSlotConsumeResultEvaluationSystem
 }

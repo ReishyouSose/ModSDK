@@ -28,10 +28,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         protected override void OnUpdate()
         {
             if (!SystemAPI.TryGetSingletonBuffer<HealthChangeBuffer>(out var healthChangeBuffer))
-            {
-                Debug.Log("No buffer");
                 return;
-            }
             var boulders = queue.ToEntityArray(Allocator.Temp);
             var transLookup = this.transLookup;
             var healthLookup = this.healthLookup;

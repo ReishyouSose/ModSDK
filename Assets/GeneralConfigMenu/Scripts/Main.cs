@@ -56,13 +56,17 @@ namespace Assets.GeneralConfigMenu.Scripts
 
         public void Update()
         {
+            if (Manager.main.player == null)
+                return;
+            var ui = ConfigManager.Instance;
             if (RewiredPlayer.GetButtonDown(OpenMenu))
             {
-                if (ConfigManager.Instance.Root.activeInHierarchy)
+                if (ui.Root.activeInHierarchy)
                 {
-                    ConfigManager.Instance.HideUI();
+                    ui.HideUI();
                 }
-                else UserInterfaceModule.OpenModUI("GeneralConfigMenu:Screen");
+                else
+                    UserInterfaceModule.OpenModUI("GeneralConfigMenu:Screen");
             }
         }
     }

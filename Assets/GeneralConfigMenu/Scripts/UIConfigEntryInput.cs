@@ -61,6 +61,6 @@
             client.SetInputText(DefaultValue);
             SetClient(DefaultValue);
         }
-        public override bool ServerEqualsClient() => server.GetInputText() == client.GetInputText();
+        //public override bool ServerEqualsClient() => server.GetInputText() == client.GetInputText();
     }
 }

@@ -60,6 +60,7 @@ MonoBehaviour:
     - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_ConfigDataRPCCommandSerializer.cs
     - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_JoinRequestCommandSerializer.cs
     - path: Bundles/GeneralConfigMenu_Windows.assetbundle
+    - path: Bundles/GeneralConfigMenu_Linux.assetbundle
     dependencies:
     - modName: CoreLib
       required: 1
@@ -82,5 +83,5 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/Localization/Localization.csv
     hash: E073D000684ECB0A38230B13A5B103A7B979E4D531FE0BFB4B757687D0DCD510
   - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
-    hash: 51AD05E15E35E579566EFF9F216D0709A746F826AB72C6A26FC5AD7A5676451E
+    hash: A9C7A5A28069C9ED85693A110910555EACF18BC7607002B36964233931FDDEFA
   lastBuildLinux: 1

@@ -37,6 +37,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Tiles/BoulderDemolishEM.cs
     - path: Scripts/Scripts/Tiles/AutoFisherTerminalEM.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
+    - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
     - path: Scripts/Scripts/Systems/Misc/UniquePlaceable.cs
     - path: Scripts/Scripts/Systems/Misc/PetModifier.cs
     - path: Scripts/Scripts/Systems/Misc/DeathNoDrop.cs
@@ -49,6 +50,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Systems/Automation/VerdantShrineTerminal.cs
     - path: Scripts/Scripts/Systems/Automation/VerdantShrine.cs
     - path: Scripts/Scripts/Systems/Automation/Salvage.cs
+    - path: Scripts/Scripts/Systems/Automation/Door.cs
     - path: Scripts/Scripts/Systems/Automation/AutoFisherTerminal.cs
     - path: Scripts/Scripts/Systems/Automation/AutoFisher.cs
     - path: Scripts/Scripts/Systems/Accelerate/Common.cs
@@ -82,7 +84,9 @@ MonoBehaviour:
     - path: Scripts/Generated/Common__System_18746596250.g.cs
     - path: Scripts/Generated/Common__System_21133886260.g.cs
     - path: Scripts/Generated/DeathNoDrop__System_8468917600.g.cs
+    - path: Scripts/Generated/Door__System_15135613590.g.cs
     - path: Scripts/Generated/Durability__System_6784147770.g.cs
+    - path: Scripts/Generated/OpenLockedChest__System_18896766460.g.cs
     - path: Scripts/Generated/PetModifier__System_1726164320.g.cs
     - path: Scripts/Generated/PetModifier__System_1726164321.g.cs
     - path: Scripts/Generated/Salvage__System_7264018700.g.cs
@@ -93,6 +97,7 @@ MonoBehaviour:
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_ArenaScannerSwitchRpcCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_LocalArenaRpcCommandSerializer.cs
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_ResetPetSkinRPCCommandSerializer.cs
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_QuickOpenLockedChestRPCCommandSerializer.cs
     - path: Bundles/CoreEnhance_Windows.assetbundle
     dependencies:
     - modName: CoreLib.Entity
@@ -112,7 +117,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/AutoFisherTerminalItem.prefab
     hash: FFB8DB1DE036BC2F5AC1FB72D91E8B08694CEC4BA554FC8957E7BF44805C4C14
   - path: Assets/CoreEnhance/Items/BoulderDemolishItem.prefab
-    hash: 56EBE047A243CD3AEFBF096A44635C140C2F0A1B19BA4438F919652480494CE3
+    hash: 3C889A3B9EDB065335D8EF8CFDC655699617040C9448430BAC4921BEC328783A
   - path: Assets/CoreEnhance/Items/VerdantShrineItem.prefab
     hash: 1BFDC2D80F4403C84EFEBBAA135015581925D673E88B2663689F4ACA6ECA7BFB
   - path: Assets/CoreEnhance/Items/VerdantShrineTerminalItem.prefab
@@ -122,7 +127,7 @@ MonoBehaviour:
   - path: "Assets/CoreEnhance/Localization/Localization - \u526F\u672C.csv"
     hash: 498D310A28A11347B3D889028C425E78C3169ED47EAD71A3ABEB7E996F35AACA
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 8FD7DDCAB258B13D28544DAB8042990A85EA458243943B2E424522A94F7DC1C9
+    hash: EC61354FD9C78AD9A3B01F7515EC72A3F6B4A45535214A9EC3E2CF3B2914E3E8
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
     hash: 01C930C242CA03FAD8C40288938A680C93544A78686058688C4AC435804FE2C6
   - path: Assets/CoreEnhance/Sprites/Item/ArenaScanner.png
@@ -132,7 +137,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Sprites/Item/AutoFisherTerminal.png
     hash: 2F2BA11CD18D4C9792BC4F0BAC06BD8C2C1ACEFDFC7C9455306FD98FBA59A8C8
   - path: Assets/CoreEnhance/Sprites/Item/BoulderDemolish.png
-    hash: EAF976CE93817A7F8A61FCA3EA3AD9691FA38EC52F0C1C7AC2424723551FEFF8
+    hash: 5A55511A98D3C12D2DE8396EB107636B3F8542620A4144D369E2055AA423FCFC
   - path: Assets/CoreEnhance/Sprites/Item/IndustrialBaitCan.png
     hash: 8348F0F8791E928A5C7DDCB6AEC622C309C48EA3D91359B8D6309987E11F351F
   - path: Assets/CoreEnhance/Sprites/Item/VerdantShrine.png
@@ -151,8 +156,8 @@ MonoBehaviour:
     hash: A4EA73915FE8A098FDD8598316FF40336BEF6C46F011229E386B56EB78F1FD17
   - path: Assets/CoreEnhance/Sprites/Small/AutoFisherTerminal.png
     hash: ED1511AA528F8B86BF1F2D834974BDBDA7A91B7342FBD01A41E3495C0BD14397
-  - path: Assets/CoreEnhance/Sprites/Small/BoulderDemolishSamll.png
-    hash: 7C1D280EE612CA03F7F9A12155E14995858D559C3D14CD9D0E2802027F24C674
+  - path: Assets/CoreEnhance/Sprites/Small/BoulderDemolishSmall.png
+    hash: 258CF995FD9345C2498399100AC27233DE9AC1211EE176B4E783CC5B6FF1AE7A
   - path: Assets/CoreEnhance/Sprites/Small/IndustrialBaitCan.png
     hash: BAFB8AABBBBBB78AED3CBC41004384B6021CF1C64EE35CD3F5603EC7C8A8D4B4
   - path: Assets/CoreEnhance/Sprites/Small/VerdantShrine.png
@@ -168,7 +173,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Sprites/Sprite2D/AutoFisherTerminal2.asset
     hash: FD0F4E753A997190DAA97DD322D0612633194AEB3BA5FDE9BAAC15916EDFE6F1
   - path: Assets/CoreEnhance/Sprites/Sprite2D/BoulderDemolish.asset
-    hash: 2298BE70656C7CEB927F73591670746E0BBA95C6ECBB677961CE8A4687FC7508
+    hash: F2C25B7988BD88EA6AA05E837043CC4E445B1F6D8CCE11D63B27400709550094
   - path: Assets/CoreEnhance/Sprites/Sprite2D/Shadow.asset
     hash: 12542771BAE4BA6214BD95A2CE754322DBBF9DCBE6A6B3B4942E4D0CBF5711B6
   - path: Assets/CoreEnhance/Sprites/Sprite2D/VerdantShrine.asset
@@ -194,7 +199,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Tiles/AutoFisherTile.prefab
     hash: 3AE131B0280EC92A2F0A8F2FD6AE4F32C413E2A55A249F378AF883D37040EC5A
   - path: Assets/CoreEnhance/Tiles/BoulderDemolishTile.prefab
-    hash: 66B026F4AA25E6163B795D0A020CBAD2456E9A66E070841D4081E5844554C65F
+    hash: DE52979CCDF130FBBB8F9BC36E1654B43DF65EE094D611B5C3B8551132FE301B
   - path: Assets/CoreEnhance/Tiles/VerdantShrineTerminalTile.prefab
     hash: E8993F7DE95F4ABB257140FED1860FDF2CB29AEB043E2FD7D64CB77162FBC3AE
   - path: Assets/CoreEnhance/Tiles/VerdantShrineTile.prefab
@@ -210,9 +215,9 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/UI/IconClipShader.shader
     hash: E6758C11B3E77F4469CC3E09BF359629BAAE60A2E05D5C7299A7ABB163857442
   - path: Assets/CoreEnhance/UI/ItemLookupUI.prefab
-    hash: F7859CB7BCED7820941FC7B19CAFBDEA89A8E615F9776C0408C339B49892E588
+    hash: 02CC21F7978A1601C457F46C6D7A4324537EF07C2025C986459B0FBC82028794
   - path: Assets/CoreEnhance/UI/ItemSlot.controller
     hash: 5051F6B0C74D05B6C870EB1C54B0E85536DE5838DE1C51F79651B05372D632FD
   - path: Assets/CoreEnhance/UI/ObtainLookupUI.prefab
-    hash: 6F0018CB130DCBA8AA55F6A0B27A0B12AADE838671D3430FEC1A8F8A71512427
+    hash: BDCD3E6CF966F72131E59504B578AE71B53A9780D979C34CE75242C8011D6467
   lastBuildLinux: 0

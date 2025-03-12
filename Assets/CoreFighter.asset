@@ -26,6 +26,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Systems/InfinityExplosive.cs
     - path: Scripts/Scripts/Systems/BlockExplosion.cs
     - path: Scripts/Scripts/Systems/AttackSpeed.cs
+    - path: Scripts/Scripts/Patchs/MapMarkerPatch.cs
     - path: Scripts/Scripts/Patchs/CDDisplayPatch.cs
     - path: Scripts/Scripts/Patchs/AllSkillsPatch.cs
     - path: Scripts/Scripts/CoreFighterMod.cs
@@ -47,5 +48,5 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/CoreFighter/Localization/Localization.csv
-    hash: 68D9F1F45EB933CA9F88DF7F5085E9A9466809414D7F77E1E3ADC1AD57569ED2
+    hash: 947E6D1073ED67D3249EE9EA6D7771B372575DF1710B2B8A585D948567C70239
   lastBuildLinux: 1

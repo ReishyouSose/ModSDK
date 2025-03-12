@@ -257,5 +257,10 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
             HideUI();
             UserInterfaceModule.OpenModUI("CoreEnhance:ItemLookup");
         }
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(1))
+                ClearSearch();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Assets.CoreFighter.Scripts.Patchs
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SaveManager), "GetAvailableTalentPoints")]
-        public static bool PreGetAvailableTalentPoints(SkillID skillTreeID, ref int __result)
+        private static bool PreGetAvailableTalentPoints(SkillID skillTreeID, ref int __result)
         {
             if (!FighterConfig.IsEnable(FighterCategory.Misc, FC_Misc.AllPlayerSkill))
                 return true;

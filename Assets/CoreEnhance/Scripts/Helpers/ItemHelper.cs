@@ -1,4 +1,5 @@
-﻿using PugMod;
+﻿using CoreLib.Util.Extensions;
+using PugMod;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -75,13 +76,16 @@ namespace Assets.CoreEnhance.Scripts.Helpers
             }
         }
 
-        public static void LogComponent(GameObject authoringData)
+        public static void LogComponent(this GameObject authoringData,ObjectID target)
         {
-            int count = authoringData.GetComponentCount();
-            Debug.Log(count);
-            for (int i = 0; i < count; i++)
+            if (authoringData.GetEntityObjectID() == target)
             {
-                Debug.Log(authoringData.GetComponentAtIndex(i));
+                int count = authoringData.GetComponentCount();
+                Debug.Log(count);
+                for (int i = 0; i < count; i++)
+                {
+                    Debug.Log(authoringData.GetComponentAtIndex(i));
+                }
             }
         }
     }

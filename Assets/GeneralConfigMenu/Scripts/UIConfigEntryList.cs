@@ -114,6 +114,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             client.Render(DefaultValue);
             SetClient(DefaultValue);
         }
-        public override bool ServerEqualsClient() => server.displayedTextString == client.displayedTextString;
+        //public override bool ServerEqualsClient() => server.displayedTextString == client.displayedTextString;
     }
 }

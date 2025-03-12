@@ -20,12 +20,12 @@ namespace PugMod
 				BuildTarget = BuildTarget.StandaloneWindows64,
 				BuildTargetGroup = BuildTargetGroup.Standalone,
 			},
-			/*new BuildConfig
+			new BuildConfig
 			{
 				Name = "Linux",
 				BuildTarget = BuildTarget.StandaloneLinux64,
 				BuildTargetGroup = BuildTargetGroup.Standalone,
-			},*/
+			},
 		};
 
 		public static void BuildMod(ModBuilderSettings settings, string exportPath, Action<bool> callback, bool installInSubDirectory = true)
