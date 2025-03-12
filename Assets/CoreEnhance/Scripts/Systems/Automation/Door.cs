@@ -17,19 +17,11 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 ref ObjectDataCD objData, in DistanceToPlayerCD dis) =>
             {
                 var min = dis.minDistanceSq;
-                if (min > 2)
+                if (min > 3)
                     return;
                 ref var variation = ref objData.variation;
-                bool open = false;
-                foreach (var condition in adaptive)
-                {
-                    if (condition.adaptiveCondition.variation == variation)
-                    {
-                        open = true;
-                        break;
-                    }
-                }
-                if (open && min > 1 || !open && min <= 1)
+                bool open = variation % 2 == 1;
+                if (open && min > 1.5f || !open && min <= 1.5f)
                 {
                     variation = PugDatabase.GetObjectInfo(objData.objectID, variation).variationToToggleTo;
                 }
