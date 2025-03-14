@@ -1,4 +1,5 @@
-﻿using Assets.CoreEnhance.Scripts.UI.ModScroll;
+﻿using Assets.GeneralConfigMenu.Scripts;
+using Assets.GeneralConfigMenu.Scripts.ModScroll;
 using CoreLib.UserInterface;
 using CoreLib.Util.Extensions;
 using System.Collections.Generic;
@@ -35,11 +36,12 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
         public void HideUI()
         {
             gameObject.SetActive(false);
+            GeneralConfigMenuMod.SetPlayerStateUI(true);
         }
 
         public void ShowUI()
         {
-            Manager.ui.HideAllInventoryAndCraftingUI();
+            GeneralConfigMenuMod.SetPlayerStateUI(false);
             gameObject.SetActive(true);
         }
         public void SearchLoot()

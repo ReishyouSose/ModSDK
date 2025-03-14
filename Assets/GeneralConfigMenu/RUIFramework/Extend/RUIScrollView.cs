@@ -110,7 +110,7 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
             }
             else
                 return;
-            bool shift = rewiredPlayer.GetButton(Main.HorizenScroll);
+            bool shift = rewiredPlayer.GetButton(GeneralConfigMenuMod.HorizenScroll);
             UpdateMovable(shift ? y : 0, shift ? 0 : y);
         }
         public void AddChild(GameObject go)

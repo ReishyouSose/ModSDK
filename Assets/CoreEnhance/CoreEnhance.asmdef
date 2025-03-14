@@ -19,7 +19,9 @@
         "CoreLib",
         "CoreLib.Entity",
         "CoreLib.UserInterface",
-        "CoreLib.RewiredExtension"
+        "CoreLib.RewiredExtension",
+        "GeneralConfigMenu",
+        "Unity.Physics.Custom"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -138,7 +140,8 @@
         "XblPCSandbox.dll",
         "ZipSaveFolder.dll",
         "0Harmony.dll",
-        "SpriteInstancing.dll"
+        "SpriteInstancing.dll",
+        "PugText.Editor.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [],

@@ -136,7 +136,9 @@
         "WorldPatcher.dll",
         "XblPCSandbox.dll",
         "ZipSaveFolder.dll",
-        "0Harmony.dll"
+        "0Harmony.dll",
+        "SpriteInstancing.dll",
+        "PugText.Editor.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [],

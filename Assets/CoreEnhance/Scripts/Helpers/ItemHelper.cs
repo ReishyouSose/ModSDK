@@ -22,8 +22,6 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                 }
             };
         }
-
-        [GenerateTestsForBurstCompatibility]
         public static bool IsStackable(this ObjectID objID)
         {
             int id = (int)objID;
@@ -34,12 +32,10 @@ namespace Assets.CoreEnhance.Scripts.Helpers
             return stack;
         }
 
-        [GenerateTestsForBurstCompatibility]
         public static void PutItemToContainer(DynamicBuffer<ContainedObjectsBuffer> containers,
             ObjectDataCD objData, int start = 0)
             => PutItemToContainer(containers, objData.objectID, objData.amount, start);
 
-        [GenerateTestsForBurstCompatibility]
         public static void PutItemToContainer(DynamicBuffer<ContainedObjectsBuffer> containers,
             ObjectID objID, int amount = 1, int start = 0)
         {

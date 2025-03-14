@@ -37,12 +37,15 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> containers,
                 ref VerdantShrineCD shrine, in LocalTransform trans) =>
             {
-                shrine.Nature = containers[0].amount;
-                shrine.Sea = containers[1].amount;
-                shrine.Desert = containers[2].amount;
+                shrine.Nature = containers[0].objectID == ObjectID.NatureGemstone;
+                shrine.Sea = containers[1].objectID == ObjectID.SeaGemstone;
+                shrine.Desert = containers[2].objectID == ObjectID.DesertGemstone;
                 verdantShrineBuffer.Add(new VerdantShrineBuffer()
                 {
-                    shrine = shrine,
+                    radiums = shrine.radiums,
+                    Nature = shrine.Nature,
+                    Sea = shrine.Sea,
+                    Desert = shrine.Desert,
                     trans = trans
                 });
                 ref float timer = ref shrine.timer;
@@ -77,8 +80,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             })
                 .WithName("VerdantShrine_Count")
                 .WithBurst()
-                .Run();
-            //.ScheduleParallel(Dependency);
+                .Schedule();
             base.OnUpdate();
         }
     }

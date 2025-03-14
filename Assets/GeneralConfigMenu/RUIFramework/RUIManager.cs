@@ -17,6 +17,9 @@ namespace Assets.GeneralConfigMenu.RUIFramework
 
         [Tooltip("Align Top Left")]
         public PugText HoverTextTemplate;
+
+        public RUIElement hoverElement { get; private set; }
+
         private bool mouseLeftDown;
         private bool mouseRightDown;
         private readonly RKeyCD mouseLeftCD = new(() => Input.GetMouseButton(0));
@@ -83,6 +86,7 @@ namespace Assets.GeneralConfigMenu.RUIFramework
                         hoverTips.InsertRange(0, uie.GetHoverDesc());
                 }
             }
+            hoverElement = interactedBuffer.LastOrDefault();
 
             UpdateHoverText(mouse);
 

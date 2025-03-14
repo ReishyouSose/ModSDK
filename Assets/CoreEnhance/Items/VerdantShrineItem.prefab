@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 845021786232025266}
   - component: {fileID: 7287190631170143809}
   - component: {fileID: 1409854035443387756}
+  - component: {fileID: 5135853659845186368}
+  - component: {fileID: 4675374340104899348}
   m_Layer: 0
   m_Name: VerdantShrineItem
   m_TagString: Untagged
@@ -69,12 +71,8 @@ MonoBehaviour:
   smallIcon: {fileID: 21300000, guid: 3a98f7dbd35ab724887e11578c71c29d, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
-  - objectName: NatureGemstone
-    amount: 10
-  - objectName: SeaGemstone
-    amount: 10
-  - objectName: DesertGemstone
-    amount: 10
+  - objectName: Sprinkler
+    amount: 1
   - objectName: WallGrassBlock
     amount: 12
   craftingTime: 0
@@ -153,14 +151,14 @@ MonoBehaviour:
   m_PrimitiveCenter:
     x: 0.5
     y: 0
-    z: 0.37
+    z: 0.375
   m_PrimitiveSize:
     x: 2
     y: 1
     z: 1.75
   m_PrimitiveOrientation:
     Value:
-      x: 0
+      x: -0
       y: 0
       z: 0
     RotationOrder: 4
@@ -177,7 +175,7 @@ MonoBehaviour:
   m_MinimumSkinnedVertexWeight: 0.1
   m_ConvexHullGenerationParameters:
     m_SimplificationTolerance: 0.015
-    m_BevelRadius: 0
+    m_BevelRadius: 0.1
     m_MinimumAngle: 2.5000002
   m_CustomMesh: {fileID: 0}
   m_ForceUnique: 0
@@ -314,6 +312,7 @@ MonoBehaviour:
   TrackInterpolationDelay: 0
   GhostGroup: 0
   UsePreSerialization: 0
+  DontUsePredictionBackup: 0
 --- !u!114 &3741555730807914574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,7 +474,7 @@ MonoBehaviour:
   sizeX: 3
   sizeY: 1
   maxExtraSize: 0
-  canOnlyContainOneItemPerSlot: 0
+  canOnlyContainOneItemPerSlot: 1
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 0
   autoTransferEnabled: 0
@@ -522,3 +521,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radiums: 8
+--- !u!114 &5135853659845186368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4675374340104899348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11489657cbb054242984e1ff0348e554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpFix: -0.25
+  DownFix: 0
+  LeftFix: 0
+  RightFix: 0
+  BevelRadius: 0.1

@@ -37,7 +37,6 @@ namespace Assets.GeneralConfigMenu.Scripts
         public bool PlayerExist { get; private set; }
 
         private Dictionary<ConfigFile, RUIScrollView> configViews;
-        private List<MonoBehaviour> needChanges;
 
         private void Awake()
         {
@@ -47,29 +46,20 @@ namespace Assets.GeneralConfigMenu.Scripts
         public void HideUI()
         {
             Root.SetActive(false);
-            SetPlayerStateUI(true);
+            GeneralConfigMenuMod.SetPlayerStateUI(true);
         }
 
         public void ShowUI()
         {
             Init();
-            Main.ConfigSync?.JoinRequest();
+            GeneralConfigMenuMod.ConfigSync?.JoinRequest();
             Root.SetActive(true);
             ConfigPanel.gameObject.SetActive(true);
             EntryPanel.gameObject.SetActive(false);
-            SetPlayerStateUI(false);
+            GeneralConfigMenuMod.SetPlayerStateUI(false);
             RenderLable();
         }
 
-        private void SetPlayerStateUI(bool active)
-        {
-            if (!Loaded)
-                return;
-            foreach (var ui in needChanges)
-            {
-                ui.gameObject.SetActive(active);
-            }
-        }
         private void Init()
         {
             if (Loaded)
@@ -174,18 +164,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             ClientReset.NeedHoverColor();
             ServerReset.AddEvent(RMouseEventType.LeftDown, ResetServer);
             ClientReset.AddEvent(RMouseEventType.LeftDown, ResetClient);
-
-            var parent = Manager.ui.playerHealthBarUI.transform.parent;
-            needChanges = new()
-            {
-                parent.GetComponentInChildren<PlayerHealthBarUI>(true),
-                parent.GetComponentInChildren<MagicBarrierBarUI>(true),
-                parent.GetComponentInChildren<PlayerHungerBarUI>(true),
-                parent.GetComponentInChildren<PlayerManaBarUI>(true),
-                parent.GetComponentInChildren<ConditionsContainerUI>(true),
-                parent.GetComponentInChildren<MinionCountUI>(true),
-                parent.GetComponentInChildren<InGameButtonHintsUI>(true)
-            };
         }
         private void RenderLable()
         {
@@ -246,7 +224,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         private void ResetServer(GameObject go)
         {
-            bool auto = Main.config.AutoStoC.Value;
+            bool auto = GeneralConfigMenuMod.config.AutoStoC.Value;
             var children = configViews.First(x => x.Value.gameObject.activeInHierarchy).Value.children;
             foreach (var (_, child) in children)
             {
@@ -264,7 +242,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         private void ResetClient(GameObject go)
         {
-            bool auto = Main.config.AutoCtoS.Value;
+            bool auto = GeneralConfigMenuMod.config.AutoCtoS.Value;
             var children = configViews.First(x => x.Value.gameObject.activeInHierarchy).Value.children;
             foreach (var (_, child) in children)
             {
@@ -333,12 +311,15 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         private void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && Manager.ui.currentSelectedUIElement == null)
             {
                 if (EntryPanel.gameObject.activeInHierarchy)
                 {
-                    EntryPanel.gameObject.SetActive(false);
-                    ConfigPanel.gameObject.SetActive(true);
+                    if (GetComponent<RUIManager>().hoverElement == null)
+                    {
+                        EntryPanel.gameObject.SetActive(false);
+                        ConfigPanel.gameObject.SetActive(true);
+                    }
                     return;
                 }
                 HideUI();

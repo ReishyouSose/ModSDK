@@ -11,9 +11,9 @@ namespace Assets.CoreEnhance.Scripts.Items
     public struct VerdantShrineCD : IComponentData
     {
         public int radiums;
-        public int Nature;
-        public int Sea;
-        public int Desert;
+        public bool Nature;
+        public bool Sea;
+        public bool Desert;
         public float timer;
     }
 

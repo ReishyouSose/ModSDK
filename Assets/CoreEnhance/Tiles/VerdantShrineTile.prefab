@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3578621336254896086}
   - component: {fileID: -869823915844714204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VerdantShrineTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   shadow: {fileID: 3885925216690393756}
   indirectLightEmitters: []
   animator: {fileID: 0}
-  interactable: {fileID: 0}
+  interactable: {fileID: 4866800489289699872}
   spriteObjects:
   - {fileID: 3958745674098482210}
   useSharedTransformAnimations: 1
@@ -81,7 +81,6 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
-  AllowSwitchPage: 0
 --- !u!1 &3617452469881410506
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6256658193971169941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: XScaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2624914572565676298}
   - component: {fileID: 5608950531725209265}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3760105942155971909}
   - component: {fileID: 3584493653452300267}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3362293601013111336}
   - component: {fileID: 3958745674098482210}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7412253763850573700}
   - component: {fileID: 4866800489289699872}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 8696950198539174764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0.375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -361,24 +360,39 @@ MonoBehaviour:
   optionalIcon: {fileID: 0}
   optionalOutlineController: {fileID: 0}
   additionalOutlineControllers: []
-  spriteObjects: []
+  spriteObjects:
+  - {fileID: 3958745674098482210}
   onUseActions:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1881095102312471513}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: -869823915844714204}
+        m_TargetAssemblyTypeName: Chest, Pug.Other
+        m_MethodName: Use
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onTriggerExitActions: []
-  radius: 0.7
+  onTriggerExitActions:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -869823915844714204}
+        m_TargetAssemblyTypeName: Chest, Pug.Other
+        m_MethodName: OnPlayerLeftChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  radius: 1.7
   interactingPoints: []
   allowToUseOnlyWhenClaimed: 0
   ignorePlayerDirection: 0

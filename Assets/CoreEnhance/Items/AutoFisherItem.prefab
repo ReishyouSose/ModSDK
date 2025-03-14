@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: -8323917109155467736}
   - component: {fileID: 845021786232025266}
   - component: {fileID: 8411571832227649171}
+  - component: {fileID: -3773880519904238061}
   m_Layer: 0
   m_Name: AutoFisherItem
   m_TagString: Untagged
@@ -316,6 +317,7 @@ MonoBehaviour:
   TrackInterpolationDelay: 0
   GhostGroup: 0
   UsePreSerialization: 0
+  DontUsePredictionBackup: 0
 --- !u!114 &3741555730807914574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,59 +488,19 @@ MonoBehaviour:
   m_Script: {fileID: 863540370, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeX: 3
-  sizeY: 3
+  sizeX: 1
+  sizeY: 1
   maxExtraSize: 0
   canOnlyContainOneItemPerSlot: 1
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 0
   autoTransferEnabled: 0
   slotRequirements:
-  - requirementAppliesToAllSlots: 0
+  - requirementAppliesToAllSlots: 1
     dontShowAnyHint: 0
     showInfoText: 0
     acceptsObjectsWithTags: 
     acceptsObjectIds: 32000000330000003400000035000000360000003700000038000000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: c0200000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: ab220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 45210000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: a8210000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 05220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: 73220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: aa220000
-  - requirementAppliesToAllSlots: 0
-    dontShowAnyHint: 0
-    showInfoText: 0
-    acceptsObjectsWithTags: 
-    acceptsObjectIds: aa220000
   itemsInInventory: []
   addLootFromTable: 0
 --- !u!114 &8411571832227649171
@@ -551,5 +513,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 363721826, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3773880519904238061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

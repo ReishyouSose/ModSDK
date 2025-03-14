@@ -66,9 +66,10 @@ namespace Assets.GeneralConfigMenu.ConfigSync
             })
                 .WithAll<ReceiveRpcCommandRequest>()
                 .WithBurst()
-                .Run();
+                .Schedule();
 
-            if (!ConfigManager.Instance.Loaded)
+            var ins = ConfigManager.Instance;
+            if (ins == null || !ins.Loaded)
                 return;
             if (Manager.main.player == null)
             {
@@ -92,7 +93,6 @@ namespace Assets.GeneralConfigMenu.ConfigSync
 
         protected override void OnCreate()
         {
-            UpdatesInRunGroup();
             rpcQueue = new NativeQueue<ConfigDataRPC>(Allocator.Persistent);
             rpcArchetype = EntityManager.CreateArchetype(typeof(ConfigDataRPC), typeof(SendRpcCommandRequest));
             base.OnCreate();

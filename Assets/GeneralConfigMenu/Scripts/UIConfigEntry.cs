@@ -135,14 +135,14 @@ namespace Assets.GeneralConfigMenu.Scripts
             ConfigEntry.SetSerializedValue(value);
             ConfigEntry.ConfigFile.Save();
         }
-        public static bool ClientSync => Main.config.ChangeClientWhenSync.Value;
-        public static bool AutoStoC => Main.config.AutoStoC.Value;
-        public static bool AutoCtoS => Main.config.AutoCtoS.Value;
+        public static bool ClientSync => GeneralConfigMenuMod.config.ChangeClientWhenSync.Value;
+        public static bool AutoStoC => GeneralConfigMenuMod.config.AutoStoC.Value;
+        public static bool AutoCtoS => GeneralConfigMenuMod.config.AutoCtoS.Value;
         public void SetAndSendChange(string value)
         {
             var entry = ConfigEntry;
             entry.SetSerializedValue(value);
-            Main.ConfigSync.SendConfigChange(entry);
+            GeneralConfigMenuMod.ConfigSync.SendConfigChange(entry);
         }
 
         public bool CheckAdmin() => !AdminOnly || Manager.main.player.adminPrivileges > 0;

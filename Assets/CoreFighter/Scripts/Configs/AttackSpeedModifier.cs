@@ -31,7 +31,6 @@ namespace Assets.CoreFighter.Scripts.Configs
             return new()
             {
                 Switch = Switch.Value,
-                OriginSpeed = OriginSpeed,
                 Tool = Tool.Value,
                 Melee = Melee.Value,
                 Range = Range.Value,
@@ -45,7 +44,6 @@ namespace Assets.CoreFighter.Scripts.Configs
     public struct ATKSpeedModifer
     {
         public bool Switch;
-        public float OriginSpeed;
         public float Tool;
         public float Melee;
         public float Range;

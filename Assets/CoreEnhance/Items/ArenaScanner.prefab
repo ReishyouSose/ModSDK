@@ -56,7 +56,7 @@ MonoBehaviour:
     amount: 5
   - objectName: MechanicalPart
     amount: 5
-  - objectName: PandoriumBar
+  - objectName: SolariteBar
     amount: 5
   craftingTime: 0
 --- !u!114 &-2679075660371452598

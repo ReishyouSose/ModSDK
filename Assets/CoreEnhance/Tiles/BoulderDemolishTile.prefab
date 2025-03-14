@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3387145894542885207}
   - component: {fileID: -3135504866141350482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoulderDemolishTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015184868207882583}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: XScaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2318306166592808391}
   - component: {fileID: 8694285476848305625}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5289307720726167891}
   - component: {fileID: 3171116646607428857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

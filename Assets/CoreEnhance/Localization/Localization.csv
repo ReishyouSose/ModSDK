@@ -2,28 +2,38 @@ Key	Type	Desc	English	Chinese (Simplified)
 Items/CoreEnhance:AutoFisher	Text		Auto Fisher	自动钓鱼机
 Items/CoreEnhance:AutoFisherDesc	Text		"After placing it, put a fishing rod at least to automatically fish
 The loot depends on the environment
-Not work when hasn't terminal in this world"	"放置后，至少放入钓竿即可自动钓鱼
+Not work when hasn't terminal in this world"	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
 战利品取决于环境
 世界中没有终端则不工作"
 Items/CoreEnhance:ArenaScanner	Text		Arena Locator	竞技场定位仪
-Items/CoreEnhance:ArenaScannerDesc	Text		Just put it in inventory, will try to point out the location of arenas	放在背包中即可，会尝试指出竞技场的位置
+Items/CoreEnhance:ArenaScannerDesc	Text		"Just put it in inventory, will try to point out the location of arenas
+If there is no mark, it means the arena has not been generated, please go to the crystal area to explore"	"放在背包中即可，会尝试指出竞技场的位置
+若没有标记，说明竞技场未生成，请前往水晶区探索"
 Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
-Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The auto fisher will put loot into terminal. Only one can be placed per world.
-Support robot arm"	"自动钓鱼机会将渔获直接放入终端，每个世界只能放置一个
+Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The auto fisher will put loot into terminal
+If there are multiple terminals, which one to be put will become unclear
+Support robot arm"	"自动钓鱼机会将渔获直接放入终端
+如果有多个终端，那我也不知道会放进哪个
 支持机械臂"
 Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
 Items/CoreEnhance:VerdantShrineDesc	Text		"The effect range is 16*16
-Has sprinkler effect, auto harverst and replant
-200% growing speed
-Extra 1 harvest amount
-Auto replant has 10% chance turn to golden
+Base-sprinkler effect, auto harverst and replant
+Put corresponding gems to get additional effects
+Green-Fast growing (100%)
+Blue-Extra harvest (50%)
+Red-Gold chance (5%)
 Not work when hasn't crystal in this world"	"覆盖范围16*16
-自动浇水、收获，与种植，生长速度翻倍，产出增加
-自动种植时有10%概率变为金色作物
+自带-洒水器效果，自动收获与种植
+放入对应宝石获得额外效果
+绿-生长加速（100%）
+蓝-额外收成（50%）
+红-金色几率（5%）
 世界中没有繁茂水晶则不工作"
 Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
-Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The shrine will put loot into crystal. Only one can be placed per world.
-Support robot arm"	"祭坛会将收获直接放入水晶，每个世界只能放置一个
+Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The shrine will put loot into crystal
+If there are multiple crystals, which one to be put will become unclear
+Support robot arm"	"祭坛会将收获直接放入水晶
+如果有多个水晶，会放进哪个就不知道了
 支持机械臂"
 Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
 Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Qoc"""	更好的体验专属制作站
@@ -46,8 +56,8 @@ CoreEnhance/Switch/Infinity/Durability/Description	Text		This entry has addition
 CoreEnhance/Value/Infinity/Durability	Text		Durability Recovery Interval	耐久度恢复间隔
 CoreEnhance/Switch/Infinity/Boulder	Text		Boulder	矿岩
 CoreEnhance/Switch/Infinity/Arena	Text		Arena	竞技场
-CoreEnhance/Switch/Infinity/Arena/Description	Text		"Please stand in the center of the broken arena and destroy the loot chest
-This entry has additional configs"	"请站在破损竞技场中心，并且已经摧毁战利品宝箱
+CoreEnhance/Switch/Infinity/Arena/Description	Text		"Please take enough ancient coins and stand in the center of the broken arena and destroy the loot chest
+This entry has additional configs"	"请带上足够的上古钱币站在破损竞技场中心，并且已经摧毁战利品宝箱
 这个条目有额外配置"
 CoreEnhance/Value/Infinity/Arena	Text		Arena Cost	竞技场开销
 CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arnea rebuild	竞技场重生需消耗多少上古钱币
@@ -78,5 +88,9 @@ CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time f
 CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
 CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
 CoreEnhance/Switch/Automation/Door	Text		Door	门
+CoreEnhance/Switch/Automation/GiveExp	Text		Give Exp	给予经验
+CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal give the closet player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
+CoreEnhance/Value/Automation/GiveExpGardening	Text		The chance of giving the closet player gardening skill exp when the Verdant Crystal harvesting crops or accumulating crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
+CoreEnhance/Value/Automation/GiveExpFishing	Text		The chance of giving the closet player fishing skill exp when the Auto Fisher get a loot	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
 CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿

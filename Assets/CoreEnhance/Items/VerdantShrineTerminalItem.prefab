@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8820479081943970441}
   - component: {fileID: -8187456092112066529}
   - component: {fileID: -4919486019328487863}
+  - component: {fileID: 5857734807752706335}
   - component: {fileID: -2171681978386578495}
   - component: {fileID: 3008732032669865846}
   - component: {fileID: 3741555730807914574}
@@ -25,11 +26,11 @@ GameObject:
   - component: {fileID: 2499561445316113348}
   - component: {fileID: 2445745560876883966}
   - component: {fileID: 3991227550509896867}
-  - component: {fileID: -7460004867075468362}
   - component: {fileID: 845021786232025266}
   - component: {fileID: 7287190631170143809}
   - component: {fileID: 1880587996886501521}
   - component: {fileID: -2177602903858007959}
+  - component: {fileID: -1227587028817444619}
   m_Layer: 0
   m_Name: VerdantShrineTerminalItem
   m_TagString: Untagged
@@ -157,20 +158,20 @@ MonoBehaviour:
   m_PrimitiveCenter:
     x: 0.5
     y: 0
-    z: 0.37
+    z: 0.375
   m_PrimitiveSize:
     x: 2
     y: 1
-    z: 1.5
+    z: 1.75
   m_PrimitiveOrientation:
     Value:
-      x: 0
+      x: -0
       y: 0
       z: 0
     RotationOrder: 4
   m_Capsule:
     Height: 2
-    Radius: 0.75
+    Radius: 0.875
     Axis: 0
   m_Cylinder:
     Height: 1
@@ -181,7 +182,7 @@ MonoBehaviour:
   m_MinimumSkinnedVertexWeight: 0.1
   m_ConvexHullGenerationParameters:
     m_SimplificationTolerance: 0.015
-    m_BevelRadius: 0
+    m_BevelRadius: 0.1
     m_MinimumAngle: 2.5000002
   m_CustomMesh: {fileID: 0}
   m_ForceUnique: 0
@@ -284,6 +285,23 @@ MonoBehaviour:
         Tag07: 0
     m_SerializedVersion: 1
   m_SerializedVersion: 1
+--- !u!114 &5857734807752706335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11489657cbb054242984e1ff0348e554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpFix: -0.25
+  DownFix: 0
+  LeftFix: 0
+  RightFix: 0
+  BevelRadius: 0.1
 --- !u!114 &-2171681978386578495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +336,7 @@ MonoBehaviour:
   TrackInterpolationDelay: 0
   GhostGroup: 0
   UsePreSerialization: 0
+  DontUsePredictionBackup: 0
 --- !u!114 &3741555730807914574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,18 +483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276b4b9264304dc2b5f1e3feb621bc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7460004867075468362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e912e9dcc12b1b40b21c4b118483023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &845021786232025266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,5 +539,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3713dc949be95c841bb5979e7aee3a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1227587028817444619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

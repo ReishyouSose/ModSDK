@@ -6,7 +6,10 @@ namespace Assets.CoreEnhance.Scripts.Buffers
 {
     public struct VerdantShrineBuffer : IBufferElementData
     {
-        public VerdantShrineCD shrine;
+        public int radiums;
+        public bool Nature;
+        public bool Sea;
+        public bool Desert;
         public LocalTransform trans;
     }
 }

@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 378562440376048647}
   - component: {fileID: -1284326193051932072}
   - component: {fileID: 3176974082274657840}
+  - component: {fileID: 5301200751362321631}
   m_Layer: 0
   m_Name: BoulderDemolishItem
   m_TagString: Untagged
@@ -493,5 +494,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4965f057dbd20234f90a8d779587d4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5301200751362321631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017784995729629170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 973679317, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

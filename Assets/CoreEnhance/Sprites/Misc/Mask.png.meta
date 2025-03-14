@@ -139,7 +139,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,6 +147,27 @@ TextureImporter:
       bones: []
       spriteID: e62fd694cc804884fa7c9abaeece041c
       internalID: -1601617289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mask_ConfigMenu
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 384
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15e594645688c3d45b28dbe4c247b1d8
+      internalID: -145270043
       vertices: []
       indices: 
       edges: []
@@ -162,6 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Mask_ConfigMenu: -145270043
       Mask_Icon: -1601617289
       Mask_ItemLookup: -309899381
       Mask_LootInfoIcon: -1635797639

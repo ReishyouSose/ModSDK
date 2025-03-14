@@ -40,14 +40,13 @@ namespace Assets.CoreFighter.Scripts.Systems
         }
         protected override void OnUpdate()
         {
-            if (!FighterConfig.ATKSpeedModifierIsEnable)
-                return;
             if (timer < 1)
             {
                 timer += World.Time.DeltaTime;
                 return;
             }
             timer = 0;
+            bool enable = FighterConfig.ATKSpeedModifierIsEnable;
             var database = this.database;
             var modifiers = FighterConfig.GetModifiers();
             var cdLookup = this.cdLookup;
@@ -55,38 +54,44 @@ namespace Assets.CoreFighter.Scripts.Systems
             var job = Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> inv,
                 in EquippedObjectCD held, in EquipmentCD equip) =>
             {
-                ModifierATKSpeed(inv, held.equippedSlotIndex, database, originCDLookup, modifiers, cdLookup);
-                ModifierATKSpeed(inv, equip.offHandIndex, database, originCDLookup, modifiers, cdLookup);
+                ModifierATKSpeed(inv, held.equippedSlotIndex, enable, database, originCDLookup, modifiers, cdLookup);
+                ModifierATKSpeed(inv, equip.offHandIndex, enable, database, originCDLookup, modifiers, cdLookup);
             })
                 .ScheduleParallel(Dependency);
             job.Complete();
             modifiers.Dispose();
             base.OnUpdate();
         }
-        private static void ModifierATKSpeed(DynamicBuffer<ContainedObjectsBuffer> inv, int index, BlobAssetReference<PugDatabase.PugDatabaseBank> database, ComponentLookup<OriginCoolDownCD> originCDLookup, NativeHashMap<float, ATKSpeedModifer> modifiers, ComponentLookup<CooldownCD> cdLookup)
+        private static void ModifierATKSpeed(DynamicBuffer<ContainedObjectsBuffer> inv, int index, bool enable, BlobAssetReference<PugDatabase.PugDatabaseBank> database, ComponentLookup<OriginCoolDownCD> originCDLookup, NativeHashMap<float, ATKSpeedModifer> modifiers, ComponentLookup<CooldownCD> cdLookup)
         {
             Entity e = PugDatabase.GetPrimaryPrefabEntity(inv[index].objectID, database);
-            if (originCDLookup.TryGetComponent(e, out var origin)
-                && modifiers.TryGetValue(origin.CoolDown, out var modifier))
+            if (!originCDLookup.TryGetComponent(e, out var origin))
+                return;
+            ref var cd = ref cdLookup.GetRefRW(e).ValueRW;
+            var oriCD = origin.CoolDown;
+            if (!enable)
             {
-                ref var cd = ref cdLookup.GetRefRW(e).ValueRW;
-                if (!modifier.Switch)
-                {
-                    cd.cooldown = modifier.OriginSpeed;
-                    return;
-                }
-                cd.cooldown = (ItemType)origin.ItemType switch
-                {
-                    ItemType.Tool => modifier.Tool,
-                    ItemType.Melee => modifier.Melee,
-                    ItemType.Range => modifier.Range,
-                    ItemType.Magic => modifier.Magic,
-                    ItemType.Throw => modifier.Throw,
-                    ItemType.OffHand => modifier.OffHand,
-                    ItemType.Consume => modifier.Consume,
-                    _ => modifier.OriginSpeed
-                };
+                cd.cooldown = oriCD;
+                return;
             }
+            if (!modifiers.TryGetValue(oriCD, out var modifier))
+                return;
+            if (!modifier.Switch)
+            {
+                cd.cooldown = oriCD;
+                return;
+            }
+            cd.cooldown = (ItemType)origin.ItemType switch
+            {
+                ItemType.Tool => modifier.Tool,
+                ItemType.Melee => modifier.Melee,
+                ItemType.Range => modifier.Range,
+                ItemType.Magic => modifier.Magic,
+                ItemType.Throw => modifier.Throw,
+                ItemType.OffHand => modifier.OffHand,
+                ItemType.Consume => modifier.Consume,
+                _ => oriCD
+            };
         }
         internal static void RecordOriginATKSpeed(Entity e, GameObject authoringData, EntityManager manager)
         {

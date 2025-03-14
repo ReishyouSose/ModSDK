@@ -1,5 +1,4 @@
-﻿using Assets.CoreEnhance.Scripts.Systems.Automation;
-using PugConversion;
+﻿using PugConversion;
 using Unity.Entities;
 using UnityEngine;
 
@@ -17,7 +16,6 @@ namespace Assets.CoreEnhance.Scripts.Items
         protected override void Convert(AutoFisherTerminalAuthoring authoring)
         {
             AddComponentData(new AutoFisherTerminalCD());
-            EnsureHasComponent<DistanceToPlayerCD>();
         }
     }
 }

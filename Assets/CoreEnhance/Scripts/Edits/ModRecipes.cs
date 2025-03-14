@@ -16,7 +16,10 @@ namespace Assets.CoreEnhance.Scripts.Edits
             "VerdantShrine",
             "VerdantShrineTerminal",
             "ArenaScanner",
-            "BoulderDemolish"
+        };
+        private static Dictionary<string, int> WorkBench_Count => new()
+        {
+            { "BoulderDemolish", 3}
         };
         internal static void EditWorkbench(Entity entity, GameObject authoring, EntityManager entityManager)
         {
@@ -32,11 +35,27 @@ namespace Assets.CoreEnhance.Scripts.Edits
                         amount = 1
                     });
                 }
+                foreach (var (id, count) in WorkBench_Count)
+                {
+                    canCraftBuffer.Add(new()
+                    {
+                        objectID = API.Authoring.GetObjectID(CoreEnhance + id),
+                        amount = count
+                    });
+                }
             }*/
             if (objectID == ObjectID.SolariteWorkbench)
             {
+                var list = WorkBench;
                 var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
-
+                for (int i = 8; i < 12; i++)
+                {
+                    canCraftBuffer[i] = new()
+                    {
+                        objectID = API.Authoring.GetObjectID(CoreEnhance + list[i - 8]),
+                        amount = 1
+                    };
+                }
                 canCraftBuffer[2] = new()
                 {
                     objectID = API.Authoring.GetObjectID(CoreEnhance + "ArenaScanner"),
@@ -50,7 +69,7 @@ namespace Assets.CoreEnhance.Scripts.Edits
                 canCraftBuffer[10] = new()
                 {
                     objectID = API.Authoring.GetObjectID(CoreEnhance + "BoulderDemolish"),
-                    amount = 1
+                    amount = 3
                 };
             }
         }

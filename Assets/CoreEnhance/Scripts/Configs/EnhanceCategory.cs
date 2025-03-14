@@ -27,6 +27,7 @@
         Salvage,//拆解 done
         Plant,//神龛范围内是否自动收
         Door,//自动门 done
+        GiveExp,
     }
     public enum EC_Misc//杂项
     {
