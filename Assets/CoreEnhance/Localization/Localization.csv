@@ -87,6 +87,12 @@ CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	自动拆解�
 CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
 CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
 CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
+CoreEnhance/Value/Automation/PlantNature	Text		Emerald Max	绿宝石上限
+CoreEnhance/Value/Automation/PlantNature/Description	Text		The max number of effective emeralds in the Verdant shrine	繁茂祭坛中绿宝石生效数量上限
+CoreEnhance/Value/Automation/PlantSea	Text		Sapphire Max	蓝宝石上限
+CoreEnhance/Value/Automation/PlantSea/Description	Text		The max number of effective sapphires in the Verdant shrine	繁茂祭坛中蓝宝石生效数量上限
+CoreEnhance/Value/Automation/PlantDesert	Text		Ruby Max	红宝石上限
+CoreEnhance/Value/Automation/PlantDesert/Description	Text		The max number of effective rubies in the Verdant shrine	繁茂祭坛中红宝石生效数量上限
 CoreEnhance/Switch/Automation/Door	Text		Door	门
 CoreEnhance/Switch/Automation/GiveExp	Text		Give Exp	给予经验
 CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal give the closet player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值

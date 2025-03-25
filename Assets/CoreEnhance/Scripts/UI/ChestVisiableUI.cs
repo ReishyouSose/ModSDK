@@ -1,6 +1,8 @@
 ﻿using Assets.CoreEnhance.Scripts.Systems.Misc;
 using CoreLib.UserInterface;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.UI
@@ -11,6 +13,7 @@ namespace Assets.CoreEnhance.Scripts.UI
         public Transform BG;
         public SpriteRenderer Template;
         private List<SpriteRenderer> pools;
+        private EntityQuery query;
 
         public bool showWithPlayerInventory => false;
 
@@ -44,6 +47,7 @@ namespace Assets.CoreEnhance.Scripts.UI
             if (count == 0)
                 return;
             var player = Manager.main.player;
+            var target = player.GetEquippedSlot().containedObject;
             var wp = Manager.camera.smoothedCameraPosition;
             // Debug.Log(player.SmoothWorldPosition);
             for (int i = 0; i < count; i++)

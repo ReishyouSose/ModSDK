@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d692de56c675254ea40aaa88afc55b3, type: 2}
   - {fileID: 11400000, guid: 9e28ec761815e0d499a4edb0add86b21, type: 2}
   - {fileID: 11400000, guid: ba74321b66260f243b800134760a9ec1, type: 2}
-  - {fileID: 11400000, guid: 89c292d22df2e6c4387fa0bc5dc93e8e, type: 2}
+  - {fileID: 11400000, guid: a4a1ba4ba1b710844a02f703b0b31d3b, type: 2}
   - {fileID: 11400000, guid: 42fd75167e00ce54ba32692f0f76b20d, type: 2}
   gradientMaps: []
   transformAnimations: []

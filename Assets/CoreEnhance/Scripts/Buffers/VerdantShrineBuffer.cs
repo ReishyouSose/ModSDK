@@ -7,9 +7,9 @@ namespace Assets.CoreEnhance.Scripts.Buffers
     public struct VerdantShrineBuffer : IBufferElementData
     {
         public int radiums;
-        public bool Nature;
-        public bool Sea;
-        public bool Desert;
+        public int Nature;
+        public int Sea;
+        public int Desert;
         public LocalTransform trans;
     }
 }

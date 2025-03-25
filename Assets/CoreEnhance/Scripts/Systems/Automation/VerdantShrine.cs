@@ -4,7 +4,6 @@ using PugTilemap;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
@@ -34,12 +33,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             var tileLookup = tileAccessor;
             var ecb = CreateCommandBuffer();
             var tileUpdateEntity = SystemAPI.GetSingletonEntity<TileUpdateBuffer>();
-            Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> containers,
-                ref VerdantShrineCD shrine, in LocalTransform trans) =>
+            Entities.ForEach((Entity e, ref VerdantShrineCD shrine,
+                in DynamicBuffer<ContainedObjectsBuffer> containers, in LocalTransform trans) =>
             {
-                shrine.Nature = containers[0].objectID == ObjectID.NatureGemstone;
-                shrine.Sea = containers[1].objectID == ObjectID.SeaGemstone;
-                shrine.Desert = containers[2].objectID == ObjectID.DesertGemstone;
+                shrine.Nature = containers[0].amount;
+                shrine.Sea = containers[1].amount;
+                shrine.Desert = containers[2].amount;
                 verdantShrineBuffer.Add(new VerdantShrineBuffer()
                 {
                     radiums = shrine.radiums,

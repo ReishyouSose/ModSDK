@@ -2,6 +2,7 @@
 using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Items;
+using CoreLib.Data.Configuration;
 using PugProperties;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -44,24 +45,31 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             var plantLookup = this.plantLookup;
             var disLookup = this.disLookup;
             var databaseLocal = database;
-            bool harvest = EnhanceConfig.IsEnable(EnhanceCategory.Automation, EC_Automation.Plant);
+            bool harvest = EnhanceConfig.TryGetValues(EnhanceCategory.Automation, EC_Automation.Plant, out var values);
+            int green = (values["Nature"] as ConfigEntry<int>).Value;
+            int blue = (values["Sea"] as ConfigEntry<int>).Value;
+            int red = (values["Desert"] as ConfigEntry<int>).Value;
             Entities.ForEach((Entity e, ref GrowingCD growing, in ObjectDataCD objData, in LocalTransform trans) =>
             {
                 bool hover = false;
-                bool nature = false, sea = false, desert = false;
+                int nature = 0, sea = 0, desert = 0;
                 foreach (var info in shrines)
                 {
                     if (ShrineHovering(info, trans))
                     {
                         hover = true;
-                        nature = nature || info.Nature;
-                        sea = sea || info.Sea;
-                        desert = desert || info.Desert;
+                        nature = math.max(nature, info.Nature);
+                        sea = math.max(sea, info.Sea);
+                        desert = math.max(desert, info.Desert);
                     }
                 }
 
                 if (!hover)
                     return;
+
+                nature = math.min(green, nature);
+                sea = math.min(blue, sea);
+                desert = math.min(red, desert);
 
                 if (propertiesLookup.TryGetComponent(e, out var properties)
                     && growing.HasFinishedGrowing(properties) && plantLookup.TryGetComponent(e, out var plant))
@@ -70,9 +78,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                     if (harvest)
                     {
                         var rng = PugRandom.GetRng();
-                        ItemHelper.PutItemToContainer(containers, plant.objectToDropWhenHarvested, plant.numberOfPlantsToDrop + ((sea && rng.NextBool()) ? 1 : 0));
+                        int extra = 0;
+                        for (int i = 0; i < sea; i++)
+                        {
+                            extra += rng.NextInt(10) == 0 ? 1 : 0;
+                        }
+                        ItemHelper.PutItemToContainer(containers, plant.objectToDropWhenHarvested, plant.numberOfPlantsToDrop + extra);
                         EntityUtility.CreateEntity(ecb, trans.Position, objData.objectID - 1, 1, databaseLocal,
-                            desert && objData.objectID != ObjectID.GrubKapokPlant && rng.NextInt(100) < 5 ? 1 : 0);
+                            objData.objectID != ObjectID.GrubKapokPlant && rng.NextInt(100) < desert ? 1 : 0);
                         if (rng.NextInt(100) < expChance)
                             PlayerController.AddSkill(dis.closestPlayer, SkillID.Gardening, 1, ecb, true);
                         ecb.DestroyEntity(e);
@@ -84,21 +97,23 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                         {
                             var rng = PugRandom.GetRng();
                             growing.grownTime = 0;
-                            plantLookup.GetRefRW(e).ValueRW.numberOfPlantsToDrop +=
-                                1 + ((sea && rng.NextBool()) ? 1 : 0);
+                            int extra = 0;
+                            for (int i = 0; i < sea; i++)
+                            {
+                                extra += rng.NextInt(10) == 0 ? 1 : 0;
+                            }
+                            ItemHelper.PutItemToContainer(containers, plant.objectToDropWhenHarvested, 1 + extra);
                             if (rng.NextInt(100) < expChance)
                                 PlayerController.AddSkill(dis.closestPlayer, SkillID.Gardening, 1, ecb, true);
                             return;
                         }
                         else
                         {
-                            growing.grownTime += deltaTime;
+                            growing.grownTime += deltaTime * (nature / 10f + 1);
                         }
                     }
                 }
-                if (!nature)
-                    return;
-                growing.grownTime += deltaTime / 10;
+                growing.grownTime += deltaTime * nature / 10;
             })
                 .WithName("VerdantShrine_Effect")
                 .WithNone<RootPlantCD>()

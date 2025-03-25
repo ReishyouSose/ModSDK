@@ -500,8 +500,8 @@ MonoBehaviour:
   maxExtraSize: 0
   canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
-  cantAddObjectsToInventory: 1
-  autoTransferEnabled: 0
+  cantAddObjectsToInventory: 0
+  autoTransferEnabled: 1
   slotRequirements: []
   itemsInInventory: []
   addLootFromTable: 0

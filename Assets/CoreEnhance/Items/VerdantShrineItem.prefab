@@ -474,7 +474,7 @@ MonoBehaviour:
   sizeX: 3
   sizeY: 1
   maxExtraSize: 0
-  canOnlyContainOneItemPerSlot: 1
+  canOnlyContainOneItemPerSlot: 0
   objectsGetLockedInPlace: 0
   cantAddObjectsToInventory: 0
   autoTransferEnabled: 0
