@@ -64,8 +64,11 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 int2 pos = trans.Position.xz.RoundToInt2();
                 if (!af.init)
                 {
+                    af.init = true;
                     var biome = biomeLookup.GetBiome(pos);
                     Tileset tileSet = (Tileset)tileAccessor.GetTop(pos).tileset;
+                    if (!(af.biome = CheckBiome(WaterTilesetToAreaLevel(tileSet), biome)))
+                        return;
                     FishingInfoData info = fishingTable.GetFishingInfoFromWaterTileset(tileSet);
                     af.require = FishingTable.GetSkillRequiredForWater(tileSet);
                     if (info.lootTableID == LootTableID.Empty || tileSet == Tileset.Dirt)
@@ -75,8 +78,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                     }
                     af.fishes = info.fishLootTableID;
                     af.items = info.lootTableID;
-                    af.init = true;
                 }
+                if (!af.biome)
+                    return;
                 ObjectID id = inv[0].objectID;
                 if (id != af.rod)
                 {
@@ -116,6 +120,64 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 .Schedule();
             base.OnUpdate();
         }
+        private static AreaLevel WaterTilesetToAreaLevel(Tileset tileset)
+        {
+            if (tileset <= Tileset.Desert)
+            {
+                switch (tileset)
+                {
+                    case Tileset.Dirt:
+                        return AreaLevel.Slime;
+                    case Tileset.Stone:
+                        return AreaLevel.Stone;
+                    case Tileset.Obsidian:
+                    case Tileset.Extras:
+                    case Tileset.BaseBuildingWood:
+                    case Tileset.BaseBuildingStone:
+                        break;
+                    case Tileset.Lava:
+                        return AreaLevel.Lava;
+                    case Tileset.LarvaHive:
+                        return AreaLevel.Clay;
+                    case Tileset.Nature:
+                        return AreaLevel.Nature;
+                    case Tileset.Mold:
+                        return AreaLevel.Mold;
+                    case Tileset.Sea:
+                        return AreaLevel.Sea;
+                    default:
+                        if (tileset == Tileset.Desert)
+                        {
+                            return AreaLevel.Desert;
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                if (tileset == Tileset.Crystal)
+                {
+                    return AreaLevel.Crystal;
+                }
+                if (tileset == Tileset.Passage)
+                {
+                    return AreaLevel.Passage;
+                }
+            }
+            return AreaLevel.Slime;
+        }
+        private static bool CheckBiome(AreaLevel level, Biome biome) => level switch
+        {
+            AreaLevel.Slime or AreaLevel.StartArea => biome is Biome.None or Biome.Slime,
+            AreaLevel.Clay or AreaLevel.LarvaHive => biome is Biome.Larva,
+            AreaLevel.Stone => biome is Biome.Stone,
+            AreaLevel.Nature or AreaLevel.Mold => biome is Biome.Nature,
+            AreaLevel.Sea or AreaLevel.City => biome is Biome.Sea,
+            AreaLevel.Desert or AreaLevel.Lava => biome is Biome.Desert,
+            AreaLevel.Crystal => biome is Biome.Crystal,
+            AreaLevel.Passage => biome is Biome.Passage,
+            _ => false,
+        };
         //fishing loot determind - Pug.Other.Fising line:598
     }
 }

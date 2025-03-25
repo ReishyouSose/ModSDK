@@ -1,5 +1,7 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Helpers;
 using Unity.Entities;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
@@ -9,11 +11,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
     {
         private const int ResetTimer = 1;
         private float timer;
-        protected override void OnCreate()
-        {
-            NeedDatabase();
-            base.OnCreate();
-        }
         protected override void OnUpdate()
         {
             if (timer < ResetTimer)
@@ -30,10 +27,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         {
             if (!EnhanceConfig.IsEnable(EnhanceCategory.Infinity, EC_Infinity.Boulder))
                 return;
-            Entities.ForEach((ref HealthCD heal, in ObjectDataCD objdata) =>
+            Entities.ForEach((ref HealthCD heal, in DropsLootWhenDamagedCD dr) =>
             {
-                if (heal.health < heal.maxHealth / 2)
+                if (heal.health < heal.maxHealth - dr.damageToDealToDropLoot)
+                {
                     heal.health = heal.maxHealth;
+                }
             })
                 .WithName("Infinity_Boulder")
                 .WithAll<RequiresDrillCD>()

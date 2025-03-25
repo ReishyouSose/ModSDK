@@ -18,6 +18,7 @@ namespace Assets.CoreEnhance.Scripts.Items
         public ObjectID rod;
         public LootTableID fishes;
         public LootTableID items;
+        public bool biome;
     }
     public class AutoFisherConverter : SingleAuthoringComponentConverter<AutoFisherAuthoring>
     {

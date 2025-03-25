@@ -1,9 +1,9 @@
 Key	Type	Desc	English	Chinese (Simplified)
 Items/CoreEnhance:AutoFisher	Text		Auto Fisher	自动钓鱼机
 Items/CoreEnhance:AutoFisherDesc	Text		"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the environment
+The loot depends on the biome, requiring the tile to match the biome
 Not work when hasn't terminal in this world"	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
-战利品取决于环境
+战利品取决于环境，要求所处地块与环境匹配
 世界中没有终端则不工作"
 Items/CoreEnhance:ArenaScanner	Text		Arena Locator	竞技场定位仪
 Items/CoreEnhance:ArenaScannerDesc	Text		"Just put it in inventory, will try to point out the location of arenas
@@ -90,7 +90,13 @@ CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verd
 CoreEnhance/Switch/Automation/Door	Text		Door	门
 CoreEnhance/Switch/Automation/GiveExp	Text		Give Exp	给予经验
 CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal give the closet player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
-CoreEnhance/Value/Automation/GiveExpGardening	Text		The chance of giving the closet player gardening skill exp when the Verdant Crystal harvesting crops or accumulating crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
-CoreEnhance/Value/Automation/GiveExpFishing	Text		The chance of giving the closet player fishing skill exp when the Auto Fisher get a loot	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
+CoreEnhance/Value/Automation/GiveExpGardening	Text		Chance of  get Gardening Exp	给予种植经验的概率
+CoreEnhance/Value/Automation/GiveExpGardening/Description	Text		The chance of giving the closet player gardening skill exp when the Verdant Crystal harvesting crops or accumulating crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
+CoreEnhance/Value/Automation/GiveExpFishing	Text		Chance of  get Fishing Exp	给予钓鱼经验的概率
+CoreEnhance/Value/Automation/GiveExpFishing/Description	Text		The chance of giving the closet player fishing skill exp when the Auto Fisher get a loot	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
 CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿
+CoreEnhance/Switch/Misc/ChainMining/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Misc/ChainMiningAdsorption	Text		Adsorption Chain Loot	吸附连锁战利品
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Need Player	由玩家连锁
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether the damage have to be caused by the player for it to chain	是否必须由玩家造成伤害才能连锁

@@ -22,14 +22,6 @@ MonoBehaviour:
     requiredOn: 3
     files:
     - path: Localization/Localization.csv
-    - path: Scripts/UIByLimoka/ToggleButton.cs
-    - path: Scripts/UIByLimoka/RadioButtonUIElement.cs
-    - path: Scripts/UIByLimoka/RadioButtonsGroup.cs
-    - path: Scripts/UIByLimoka/IntInputField.cs
-    - path: Scripts/UIByLimoka/FuelIconUI.cs
-    - path: Scripts/UIByLimoka/DescriptionInventorySlotUI.cs
-    - path: Scripts/UIByLimoka/BetterInputField.cs
-    - path: Scripts/Scripts/VConfigManager.cs
     - path: Scripts/Scripts/UIConfigEntryList.cs
     - path: Scripts/Scripts/UIConfigEntryInput.cs
     - path: Scripts/Scripts/UIConfigEntryBool.cs
@@ -40,10 +32,9 @@ MonoBehaviour:
     - path: Scripts/Scripts/ModScroll/ModScrollBar.cs
     - path: Scripts/Scripts/ModConfig.cs
     - path: Scripts/Scripts/MiscHelper.cs
-    - path: Scripts/Scripts/Main.cs
     - path: Scripts/Scripts/InputBox.cs
+    - path: Scripts/Scripts/GeneralConfigMenuMod.cs
     - path: Scripts/Scripts/ConfigManager.cs
-    - path: Scripts/Scripts/ConfigEntryUI.cs
     - path: Scripts/RUIFramework/RUIText.cs
     - path: Scripts/RUIFramework/RUIManager.cs
     - path: Scripts/RUIFramework/RUIElement.cs
@@ -58,11 +49,6 @@ MonoBehaviour:
     - path: Scripts/Patches/BetterTextInputDefense.cs
     - path: Scripts/ConfigSync/ConfigSyncSystem.cs
     - path: Scripts/ConfigSync/ConfigChangeRPC.cs
-    - path: Scripts/Generated/ConfigSyncSystem__System_18521754110.g.cs
-    - path: Scripts/Generated/ConfigSyncSystem__System_18521754111.g.cs
-    - path: Scripts/Generated/ConfigSyncSystem__System_18521754112.g.cs
-    - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_ConfigDataRPCCommandSerializer.cs
-    - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_JoinRequestCommandSerializer.cs
     - path: Bundles/GeneralConfigMenu_Windows.assetbundle
     - path: Bundles/GeneralConfigMenu_Linux.assetbundle
     dependencies:
@@ -86,8 +72,10 @@ MonoBehaviour:
     hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
   - path: Assets/GeneralConfigMenu/Localization/Localization.csv
     hash: E073D000684ECB0A38230B13A5B103A7B979E4D531FE0BFB4B757687D0DCD510
-  - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu 1.prefab
-    hash: 22A826D0DA316A1913A2CD355FC96395FC11E15AA90B7F9EC6A6C5CD48B297D2
+  - path: Assets/GeneralConfigMenu/SelectNo.png
+    hash: 7B818002D2A2B9257727470A2BD4FF03D6B74D0C5611B277C667DD058D7F2682
+  - path: Assets/GeneralConfigMenu/SelectYes.png
+    hash: 1B8DD4877C9DDD992D166CEDDF69E53AE1F9A49B36053147A2691A9A8DAF5FDC
   - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
-    hash: A9C7A5A28069C9ED85693A110910555EACF18BC7607002B36964233931FDDEFA
+    hash: E5049742897EEBD737EE59F199A6EA7E9632FA25AD9CB455043C80E3B3708BDF
   lastBuildLinux: 1

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Custom_IconClippingShader
-  m_Shader: {fileID: 4800000, guid: fe886a7b2dd951e468820b1f543ff993, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3e5eb37de5e3a624a8310b5e250a9467, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

@@ -9,6 +9,7 @@ using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
+using CoreLib.Util.Extensions;
 using PugMod;
 using Unity.Entities;
 using UnityEngine;
@@ -34,7 +35,8 @@ namespace Assets.CoreEnhance.Scripts
 
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            authoringData.LogComponent(ObjectID.WoodFenceGate);
+            ItemHelper.LogComponent(authoringData, ObjectID.PandoriumCrystal);
+            ItemHelper.LogComponent(authoringData, ObjectID.SmallPandoriumCrystal);
         }
 
         public void Init()
@@ -52,10 +54,10 @@ namespace Assets.CoreEnhance.Scripts
 
                 UserInterfaceModule.RegisterModUI(gameObject);
             }
-            /*else if (obj is WorkbenchDefinition workbenchDefinition)
+            else if (obj is WorkbenchDefinition workbenchDefinition)
             {
                 EntityModule.AddModWorkbench(workbenchDefinition);
-            }*/
+            }
         }
 
         public void Shutdown()

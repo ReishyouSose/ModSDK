@@ -18,25 +18,29 @@ MonoBehaviour:
   m_staticReplacementData:
     m_guid: 
     m_spriteData:
-      texture: {fileID: 2800000, guid: 9c1865a16c970ec4db6b1a7e5b3ff044, type: 3}
+      texture: {fileID: 2800000, guid: 1a3ea2f7b2935f348a1aed1782844cc7, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0}
+      positionalData: []
       inheritPivot: 1
     m_variants:
     - texture: {fileID: 2800000, guid: 9c1865a16c970ec4db6b1a7e5b3ff044, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0}
+      positionalData: []
       inheritPivot: 1
     - texture: {fileID: 2800000, guid: 9c1865a16c970ec4db6b1a7e5b3ff044, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0}
+      positionalData: []
       inheritPivot: 1
     - texture: {fileID: 2800000, guid: 9c1865a16c970ec4db6b1a7e5b3ff044, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0}
+      positionalData: []
       inheritPivot: 1
   m_replacementData: []

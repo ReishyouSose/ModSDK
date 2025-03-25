@@ -44,6 +44,8 @@ namespace Assets.CoreEnhance.Scripts.Configs
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 5, new AcceptableValueRange<int>(0, 60), "Timer");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.GiveExp, 100, new AcceptableValueRange<int>(0, 100), "Gardening");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.GiveExp, 10, new AcceptableValueRange<int>(0, 100), "Fishing");
+            TryAddValue(file, EnhanceCategory.Misc, EC_Misc.ChainMining, true, null, "Adsorption");
+            TryAddValue(file, EnhanceCategory.Misc, EC_Misc.ChainMining, true, null, "NeedPlayer");
         }
 
         /// <summary>

@@ -1,33 +1,33 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
-using PugTilemap;
+using CoreLib.Data.Configuration;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.NetCode;
 using Unity.Transforms;
+using static Assets.CoreEnhance.Scripts.Helpers.TileHelper;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
     [UpdateInGroup(typeof(PredictedSimulationSystemGroup))]
-    [UpdateAfter(typeof(TileDamageSystem))]
+    [UpdateBefore(typeof(DropLootSystem))]
+    [UpdateAfter(typeof(SetEntitiesDestroyedSystem))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation | WorldSystemFilterFlags.ClientSimulation)]
-    public partial class ChainMining : PugSimulationSystemBase
+    public partial class ChainMiningSystem : PugSimulationSystemBase
     {
+        private NativeList<int2> offset;
         private TileAccessor tileAccessor;
-        private ComponentLookup<TileCD> tileLookup;
-        private static int2[] check;
-        private NativeHashMap<Entity, NativeHashSet<int2>> lasts;
+        private ComponentLookup<KilledByPlayerCD> killLookup;
         protected override void OnCreate()
         {
-            tileLookup = SystemAPI.GetComponentLookup<TileCD>();
-            check = new int2[4]
+            offset = new(4, Allocator.Persistent)
             {
-                new(-1, 0),
                 new(1, 0),
+                new(-1, 0),
                 new(0, 1),
-                new(0, -1),
+                new(0, -1)
             };
-            lasts = new(8, Allocator.Persistent);
+            killLookup = SystemAPI.GetComponentLookup<KilledByPlayerCD>();
             base.OnCreate();
         }
         protected override void OnStartRunning()
@@ -37,96 +37,57 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
-            if (!EnhanceConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.ChainMining))
+            if (!EnhanceConfig.TryGetValues(EnhanceCategory.Misc, EC_Misc.ChainMining, out var values))
                 return;
-            if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var damager))
+            if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var buffer))
                 return;
             var tileAccessor = this.tileAccessor;
-            var ecb = CreateCommandBuffer();
-            var collision = GetPhysicsWorld().CollisionWorld;
-            var tileLookup = this.tileLookup;
-            var lasts = this.lasts;
-            Entities.ForEach((Entity e, in HealthCD health, in KilledByPlayerCD killer, in LocalTransform trans) =>
+            var offset = this.offset;
+            var killLookup = this.killLookup;
+            bool adsorption = (values["Adsorption"] as ConfigEntry<bool>).Value;
+            bool needPlayer = (values["NeedPlayer"] as ConfigEntry<bool>).Value;
+            Entities.ForEach((Entity e, in LocalTransform local) =>
             {
-                var player = killer.playerEntity;
-                if (health.health <= 0 && player != Entity.Null)
+                var player = Entity.Null;
+                if (killLookup.TryGetComponent(e, out var killer))
+                    player = killer.playerEntity;
+                if (needPlayer && player == null)
+                    return;
+
+                var p = local.Position.RoundToInt2();
+                var tiles = tileAccessor.Get(p, Allocator.Temp);
+                TryGetResource(tiles, out bool ore, out bool wood);
+                tiles.Dispose();
+                if (ore || wood)
                 {
-                    var wp = trans.Position;
-                    var pos = wp.RoundToInt2();
-                    if (lasts.TryGetValue(player, out var last))
+                    foreach (var target in offset)
                     {
-                        if (last.Contains(pos))
-                            return;
-                    }
-                    else
-                    {
-                        lasts[player] = new(64, Allocator.Persistent);
-                    }
-                    lasts[player].Clear();
-                    lasts[player].Add(pos);
-                    NativeHashSet<int2> done = new(32, Allocator.Temp);
-                    Chain(tileAccessor, tileLookup, pos, ref done);
-                    foreach (var p in done)
-                    {
-                        lasts[player].Add(p);
-                        damager.Add(new()
+                        var pos = p + target;
+                        tiles = tileAccessor.Get(pos, Allocator.Temp);
+                        TryGetResource(tiles, out bool isOre, out bool isWood);
+                        if ((isOre && ore) || (isWood && wood))
                         {
-                            bypassMaxDamagePerHit = true,
-                            bypassDamageReduction = true,
-                            causedByEntity = player,
-                            damage = 114514,
-                            canHitGround = true,
-                            position = p,
-                            pullAnyLootToPlayer = true,
-                            dontHitGroundSlime = true,
-                            dontHitBridges = true,
-                        });
+                            buffer.Add(new()
+                            {
+                                pullAnyLootToPlayer = adsorption,
+                                causedByEntity = player,
+                                damage = 999999,
+                                canHitLowColliders = wood,
+                                dontHitGroundSlime = true,
+                                position = pos
+                            });
+                        }
+                        tiles.Dispose();
                     }
-                    done.Dispose();
                 }
             })
                 .WithName("ChainMining")
                 .WithBurst()
+                .WithAll<MineableCD>()
+                .WithAll<EntityDestroyedCD>()
+                .WithDisabled<StartDroppingLootCD>()
                 .Schedule();
             base.OnUpdate();
-        }
-        private static void Chain(TileAccessor tileAccessor, ComponentLookup<TileCD> tileLookup,
-            int2 ori, ref NativeHashSet<int2> done)
-        {
-            NativeArray<TileCD> array = tileAccessor.Get(ori, Allocator.Temp);
-            foreach (var tile in array)
-            {
-                switch (tile.tileType)
-                {
-                    case TileType.ore:
-                    case TileType.ancientCrystal:
-                        for (int i = 0; i < 4; i++)
-                        {
-                            var pos = ori + check[i];
-                            if (done.Contains(pos))
-                                continue;
-                            if (IsTarget(tileAccessor, pos))
-                            {
-                                done.Add(pos);
-                                Chain(tileAccessor, tileLookup, pos, ref done);
-                            }
-                        }
-                        break;
-                }
-            }
-            array.Dispose();
-        }
-        private static bool IsTarget(TileAccessor tileAccessor, int2 pos)
-        {
-            NativeArray<TileCD> array = tileAccessor.Get(pos, Allocator.Temp);
-            foreach (var tile in array)
-            {
-                if (tile.tileType is TileType.ore or TileType.ancientCrystal)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

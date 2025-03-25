@@ -1,4 +1,5 @@
 ﻿using CoreLib.Util.Extensions;
+using Pug.Sprite;
 using PugMod;
 using System.Collections.Generic;
 using Unity.Entities;
@@ -24,7 +25,7 @@ namespace Assets.CoreEnhance.Scripts.Edits
         internal static void EditWorkbench(Entity entity, GameObject authoring, EntityManager entityManager)
         {
             ObjectID objectID = authoring.GetEntityObjectID();
-            /*if (objectID == API.Authoring.GetObjectID("CoreEnhance:WorkBench"))
+            if (objectID == API.Authoring.GetObjectID("CoreEnhance:WorkBench"))
             {
                 var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
                 foreach (var id in WorkBench)
@@ -43,8 +44,13 @@ namespace Assets.CoreEnhance.Scripts.Edits
                         amount = count
                     });
                 }
-            }*/
-            if (objectID == ObjectID.SolariteWorkbench)
+                var prefab = authoring.GetComponent<ObjectAuthoring>().graphicalPrefab;
+                var em = prefab.GetComponent<EntityMonoBehaviour>();
+                var sprite = em.XScaler;
+                var pos = sprite.transform.position;
+                sprite.transform.position = new(pos.x, pos.y, pos.z - 0.25f);
+            }
+            /*if (objectID == ObjectID.SolariteWorkbench)
             {
                 var list = WorkBench;
                 var canCraftBuffer = entityManager.GetBuffer<CanCraftObjectsBuffer>(entity);
@@ -71,7 +77,7 @@ namespace Assets.CoreEnhance.Scripts.Edits
                     objectID = API.Authoring.GetObjectID(CoreEnhance + "BoulderDemolish"),
                     amount = 3
                 };
-            }
+            }*/
         }
     }
 }

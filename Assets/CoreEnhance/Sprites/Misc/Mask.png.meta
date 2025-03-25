@@ -172,6 +172,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Mask_Sliced
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1076
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a37fad0260bd75f4db0211c1d9611baf
+      internalID: -1653018856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -187,6 +208,7 @@ TextureImporter:
       Mask_Icon: -1601617289
       Mask_ItemLookup: -309899381
       Mask_LootInfoIcon: -1635797639
+      Mask_Sliced: -1653018856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
