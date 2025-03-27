@@ -18,6 +18,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         private NativeList<int2> offset;
         private TileAccessor tileAccessor;
         private ComponentLookup<KilledByPlayerCD> killLookup;
+        private ComponentLookup<PlayerGhost> playerLookup;
         protected override void OnCreate()
         {
             offset = new(4, Allocator.Persistent)
@@ -28,6 +29,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 new(0, -1)
             };
             killLookup = SystemAPI.GetComponentLookup<KilledByPlayerCD>();
+            playerLookup = SystemAPI.GetComponentLookup<PlayerGhost>();
             base.OnCreate();
         }
         protected override void OnStartRunning()
@@ -44,6 +46,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var tileAccessor = this.tileAccessor;
             var offset = this.offset;
             var killLookup = this.killLookup;
+            var playerLookup = this.playerLookup;
             bool adsorption = (values["Adsorption"] as ConfigEntry<bool>).Value;
             bool needPlayer = (values["NeedPlayer"] as ConfigEntry<bool>).Value;
             Entities.ForEach((Entity e, in LocalTransform local) =>
@@ -51,8 +54,13 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 var player = Entity.Null;
                 if (killLookup.TryGetComponent(e, out var killer))
                     player = killer.playerEntity;
-                if (needPlayer && player == null)
-                    return;
+                if (needPlayer)
+                {
+                    if (player == Entity.Null)
+                        return;
+                    if (!playerLookup.HasComponent(player))
+                        return;
+                }
 
                 var p = local.Position.RoundToInt2();
                 var tiles = tileAccessor.Get(p, Allocator.Temp);

@@ -96,12 +96,24 @@ namespace Assets.CoreEnhance.Scripts.Configs
                 return false;
             return entry.TryGetValue(key, out value);
         }
-        public static bool TryGetValues(EnhanceCategory category, object ec, out Dictionary<string, ConfigEntryBase> values)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="ec"></param>
+        /// <param name="values">Extra Configs</param>
+        /// <returns>查询失败或条目未启用均返回false</returns>
+        public static bool TryGetValues(EnhanceCategory category, object ec,
+            out Dictionary<string, ConfigEntryBase> values)
         {
             values = null;
-            if (Ins.configs.TryGetValue(((int)category, (int)ec), out var entry))
-                values = entry.Values;
-            return values != null;
+            if (!Ins.configs.TryGetValue(((int)category, (int)ec), out var entry))
+                return false;
+            if (!entry.Enable)
+                return false;
+            values = entry.Values;
+            return true;
         }
     }
 }

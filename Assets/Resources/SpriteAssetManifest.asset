@@ -20,18 +20,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d692de56c675254ea40aaa88afc55b3, type: 2}
   - {fileID: 11400000, guid: 9e28ec761815e0d499a4edb0add86b21, type: 2}
   - {fileID: 11400000, guid: ba74321b66260f243b800134760a9ec1, type: 2}
-  - {fileID: 11400000, guid: 89c292d22df2e6c4387fa0bc5dc93e8e, type: 2}
+  - {fileID: 11400000, guid: a4a1ba4ba1b710844a02f703b0b31d3b, type: 2}
   - {fileID: 11400000, guid: 72dce2d0cd1fa78488c0e6799241cacb, type: 2}
   - {fileID: 11400000, guid: 302454012c5b0cd48b33102050d16cdb, type: 2}
   - {fileID: 11400000, guid: 9e5aa8becaff59e40b5758e408e72387, type: 2}
   - {fileID: 11400000, guid: 42fd75167e00ce54ba32692f0f76b20d, type: 2}
   - {fileID: 11400000, guid: d6d36324533a3a14092a17ce22ea322a, type: 2}
-  - {fileID: 11400000, guid: ff5328bb93d50ca4fa220829ed0b4225, type: 2}
-  - {fileID: 11400000, guid: 54fdcb34da4a4d34c805f797a5796cc4, type: 2}
-  - {fileID: 11400000, guid: 36b40ad4a61bdec4e9299203a6b89201, type: 2}
-  - {fileID: 11400000, guid: d45f18c19a8d08d40a80ee0e4d7aa256, type: 2}
-  - {fileID: 11400000, guid: 4987a62b9351ace4d8f3adfabe3ba876, type: 2}
-  - {fileID: 11400000, guid: b4248a25380c44a46871442c260ca1c2, type: 2}
-  - {fileID: 11400000, guid: a4a1ba4ba1b710844a02f703b0b31d3b, type: 2}
   gradientMaps: []
   transformAnimations: []

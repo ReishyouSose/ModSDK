@@ -4,7 +4,6 @@ using CoreLib.RewiredExtension;
 using CoreLib.UserInterface;
 using Rewired;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Configs
 {
@@ -13,6 +12,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
         private const string CoreEnhance = "CoreEnhance:";
         internal const string ItemLookup = CoreEnhance + nameof(ItemLookup);
         internal const string QuickOpenLockedChest = CoreEnhance + nameof(QuickOpenLockedChest);
+        internal const string ContainerHighLight = CoreEnhance + nameof(ContainerHighLight);
         //internal const string QuickHealth = CoreEnhance + nameof(QuickHealth);
         //internal const string QuickPotion = CoreEnhance + nameof(QuickPotion);
         //internal const string QuickCooked = CoreEnhance + nameof(QuickCooked);
@@ -23,11 +23,18 @@ namespace Assets.CoreEnhance.Scripts.Configs
                 {"en", "Item Lookup" },
                 { "zh-CN","查询获取途径" }
             }, KeyboardKeyCode.F, ModifierKey.Control);
+
             RewiredExtensionModule.AddKeybind(QuickOpenLockedChest, new Dictionary<string, string>()
             {
                 {"en", "Quick Open Locked Chest" },
                 { "zh-CN","快速开启上锁宝箱" }
             }, KeyboardKeyCode.O, ModifierKey.Control);
+
+            RewiredExtensionModule.AddKeybind(ContainerHighLight, new Dictionary<string, string>()
+            {
+                {"en", "Container HighLight (Hold)" },
+                { "zh-CN","容器高亮（按住）" }
+            }, KeyboardKeyCode.LeftAlt);
             //RewiredExtensionModule.AddKeybind(QuickHealth, "Quick Health", KeyboardKeyCode.Q, ModifierKey.Control);
             //RewiredExtensionModule.AddKeybind(QuickPotion, "Quick Potion", KeyboardKeyCode.W, ModifierKey.Control);
             //RewiredExtensionModule.AddKeybind(QuickCooked, "Quick Cooked", KeyboardKeyCode.E, ModifierKey.Control);
@@ -61,7 +68,6 @@ namespace Assets.CoreEnhance.Scripts.Configs
 
             if (r.GetButtonDown(QuickOpenLockedChest))
                 QuickOpenLockedChestClient.Trigger(p);
-
             //if (r.GetButtonDown(QuickHealth))
             //    QuickConsumableClient.QuickConsume(QuickConsumeType.Health);
             //if (r.GetButtonDown(QuickPotion))

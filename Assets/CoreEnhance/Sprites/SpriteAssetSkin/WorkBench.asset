@@ -14,15 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_defaultGradientMap: {fileID: 0}
   m_editorHideEmissive: 0
-  m_targetAsset: {fileID: 11400000, guid: a4a1ba4ba1b710844a02f703b0b31d3b, type: 2}
+  m_targetAsset: {fileID: 11400000, guid: 9e5aa8becaff59e40b5758e408e72387, type: 2}
   m_staticReplacementData:
     m_guid: 
     m_spriteData:
-      texture: {fileID: 2800000, guid: 1a3ea2f7b2935f348a1aed1782844cc7, type: 3}
+      texture: {fileID: 2800000, guid: 6a5fe2d18a2e10d4fbbfdc02ec215b94, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.1}
       positionalData: []
-      inheritPivot: 0
-    m_variants: []
+      inheritPivot: 1
+    m_variants:
+    - texture: {fileID: 2800000, guid: 29777a90f5154c1438c1c81f974349d4, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0.1}
+      positionalData: []
+      inheritPivot: 1
+    - texture: {fileID: 2800000, guid: 22b93c443818eeb47a4fd7be72690c37, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0.1}
+      positionalData: []
+      inheritPivot: 1
+    - texture: {fileID: 2800000, guid: c39bcbd2f1ce7fd4284c7d771b22051f, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0.1}
+      positionalData: []
+      inheritPivot: 1
   m_replacementData: []

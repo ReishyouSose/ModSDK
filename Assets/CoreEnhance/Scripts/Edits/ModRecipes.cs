@@ -44,11 +44,6 @@ namespace Assets.CoreEnhance.Scripts.Edits
                         amount = count
                     });
                 }
-                var prefab = authoring.GetComponent<ObjectAuthoring>().graphicalPrefab;
-                var em = prefab.GetComponent<EntityMonoBehaviour>();
-                var sprite = em.XScaler;
-                var pos = sprite.transform.position;
-                sprite.transform.position = new(pos.x, pos.y, pos.z - 0.25f);
             }
             /*if (objectID == ObjectID.SolariteWorkbench)
             {

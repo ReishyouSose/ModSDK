@@ -19,15 +19,15 @@ Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
 Items/CoreEnhance:VerdantShrineDesc	Text		"The effect range is 16*16
 Base-sprinkler effect, auto harverst and replant
 Put corresponding gems to get additional effects
-Green-Fast growing (100%)
-Blue-Extra harvest (50%)
-Red-Gold chance (5%)
+Green-Fast growing (1:10%)
+Blue-Extra harvest (1:10%, Each independent judgment)
+Red-Gold chance (1:3%)
 Not work when hasn't crystal in this world"	"覆盖范围16*16
 自带-洒水器效果，自动收获与种植
 放入对应宝石获得额外效果
-绿-生长加速（100%）
-蓝-额外收成（50%）
-红-金色几率（5%）
+绿-生长加速（1:10%）
+蓝-额外收成（1:10%，每颗独立判定）
+红-金色几率（1:3%）
 世界中没有繁茂水晶则不工作"
 Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
 Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The shrine will put loot into crystal
@@ -103,6 +103,9 @@ CoreEnhance/Value/Automation/GiveExpFishing/Description	Text		The chance of givi
 CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿
 CoreEnhance/Switch/Misc/ChainMining/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Switch/Misc/ContainerDisplay	Text		Container Display	容器显示
+CoreEnhance/Switch/Misc/ContainerDisplay/Description	Text		When the mouse hover an item, highlight any nearby containers that include the same item	当附近容器内有鼠标指向物品时高亮容器
 CoreEnhance/Value/Misc/ChainMiningAdsorption	Text		Adsorption Chain Loot	吸附连锁战利品
-CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Need Player	由玩家连锁
+CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Text		Whether the drops from chain mining will be absorbed by the player	连锁挖矿掉落的战利品是否会被玩家吸附
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Need Player	必须由玩家连锁
 CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether the damage have to be caused by the player for it to chain	是否必须由玩家造成伤害才能连锁

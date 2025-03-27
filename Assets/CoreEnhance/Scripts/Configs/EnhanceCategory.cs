@@ -27,11 +27,12 @@
         Salvage,//拆解 done
         Plant,//神龛范围内是否自动收
         Door,//自动门 done
-        GiveExp,
+        GiveExp,//自动化给予经验 done
     }
     public enum EC_Misc//杂项
     {
         DeathNoDrop,//死亡不掉落 done
         ChainMining,//连锁挖矿 done
+        ContainerDisplay,//容器显示 done
     }
 }

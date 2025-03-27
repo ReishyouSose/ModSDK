@@ -69,7 +69,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
 
                 nature = math.min(green, nature);
                 sea = math.min(blue, sea);
-                desert = math.min(red, desert);
+                desert = math.min(red, desert) * 3;
 
                 if (propertiesLookup.TryGetComponent(e, out var properties)
                     && growing.HasFinishedGrowing(properties) && plantLookup.TryGetComponent(e, out var plant))
