@@ -1,28 +1,29 @@
 Key	Type	Desc	English	Chinese (Simplified)
 Items/CoreEnhance:AutoFisher	Text		Auto Fisher	自动钓鱼机
-Items/CoreEnhance:AutoFisherDesc	Text		"After placing it, put a fishing rod at least to automatically fish
-The loot depends on the biome, requiring the tile to match the biome
-Not work when hasn't terminal in this world"	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
+Items/CoreEnhance:AutoFisherDesc	Text		"Requires a fishing rod once placed.
+The loot depends on the biome, requiring the tile to match the biome.
+Will not work without a Fishing Terminal placed."	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
 战利品取决于环境，要求所处地块与环境匹配
 世界中没有终端则不工作"
 Items/CoreEnhance:ArenaScanner	Text		Arena Locator	竞技场定位仪
-Items/CoreEnhance:ArenaScannerDesc	Text		"Just put it in inventory, will try to point out the location of arenas
-If there is no mark, it means the arena has not been generated, please go to the crystal area to explore"	"放在背包中即可，会尝试指出竞技场的位置
+Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically mark the nearest arena once in your inventory.
+If one is not marked, an arena has not generated yet. Please go to the crystal area to explore."	"放在背包中即可，会尝试指出竞技场的位置
 若没有标记，说明竞技场未生成，请前往水晶区探索"
 Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
-Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The auto fisher will put loot into terminal
-If there are multiple terminals, which one to be put will become unclear
-Support robot arm"	"自动钓鱼机会将渔获直接放入终端
+Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The Auto Fisher Terminal is required for Auto Fishers to function.
+Loot from Auto Fishers will automatically be put in this inventory.
+If multiple terminals are placed, it will randomly select one to put loot into.
+Supports the use of robot arms."	"自动钓鱼机会将渔获直接放入终端
 如果有多个终端，那我也不知道会放进哪个
 支持机械臂"
 Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
-Items/CoreEnhance:VerdantShrineDesc	Text		"The effect range is 16*16
-Base-sprinkler effect, auto harverst and replant
-Put corresponding gems to get additional effects
-Green-Fast growing (1:10%)
-Blue-Extra harvest (1:10%, Each independent judgment)
-Red-Gold chance (1:3%)
-Not work when hasn't crystal in this world"	"覆盖范围16*16
+Items/CoreEnhance:VerdantShrineDesc	Text		"Works like a normal sprinkler that will auto harvest and replant.
+The effect range is 16 x 16.
+Will not work without a Verdant Crystal placed.
+Put in the corresponding gems to get additional effects:
+Green Gem - Faster growing (1:10%)
+Blue Gem - Extra harvest (1:10%, Each independent judgment)
+Red Gem - Gold chance (1:3%)"	"覆盖范围16*16
 自带-洒水器效果，自动收获与种植
 放入对应宝石获得额外效果
 绿-生长加速（1:10%）
@@ -30,13 +31,14 @@ Not work when hasn't crystal in this world"	"覆盖范围16*16
 红-金色几率（1:3%）
 世界中没有繁茂水晶则不工作"
 Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
-Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The shrine will put loot into crystal
-If there are multiple crystals, which one to be put will become unclear
-Support robot arm"	"祭坛会将收获直接放入水晶
+Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The Verdant Crystal is required for Verdant Shrines to function.
+Loot from Verdant Shrines will automatically be put in this inventory.
+If multiple terminals are placed, it will randomly select one to put loot into.
+Supports the use of robot arms."	"祭坛会将收获直接放入水晶
 如果有多个水晶，会放进哪个就不知道了
 支持机械臂"
 Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
-Items/CoreEnhance:WorkBenchDesc	Text		"Craft station from mod ""Qoc"""	更好的体验专属制作站
+Items/CoreEnhance:WorkBenchDesc	Text		The workbench for Quality of Core Keeper.	更好的体验专属制作站
 Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
 Items/CoreEnhance:BoulderDemolishDesc	Text		Place, knock, boom	放置，敲击，Boom
 CoreEnhance/Craft	Text		Craft	制作
@@ -60,17 +62,17 @@ CoreEnhance/Switch/Infinity/Arena/Description	Text		"Please take enough ancient 
 This entry has additional configs"	"请带上足够的上古钱币站在破损竞技场中心，并且已经摧毁战利品宝箱
 这个条目有额外配置"
 CoreEnhance/Value/Infinity/Arena	Text		Arena Cost	竞技场开销
-CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arnea rebuild	竞技场重生需消耗多少上古钱币
+CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arena rebuild	竞技场重生需消耗多少上古钱币
 CoreEnhance/Switch/Infinity/Minion	Text		Minion	召唤物时长
 CoreEnhance/Switch/Accelerate/Merchant	Text		Merchant	商人
 CoreEnhance/Switch/Accelerate/Merchant/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Value/Accelerate/Merchant	Text		Merchant Replenish Interval	商人补货间隔
-CoreEnhance/Value/Accelerate/Merchant/Description	Text		"In second
+CoreEnhance/Value/Accelerate/Merchant/Description	Text		"In seconds
 If set to 0, will replenish immediately while any item is sold out"	单位为秒，如果设为0，则有任何物品售罄时立即刷新
 CoreEnhance/Switch/Accelerate/Titan	Text		Titan	泰坦
 CoreEnhance/Switch/Accelerate/Titan/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Value/Accelerate/Titan	Text		Titan CD	泰坦冷却
-CoreEnhance/Value/Accelerate/Titan/Description	Text		"In second
+CoreEnhance/Value/Accelerate/Titan/Description	Text		"In seconds
 Equal to existence time of soul orb"	"单位为秒
 等同于灵魂球存在时间"
 CoreEnhance/Switch/Accelerate/Crafting	Text		Crafting	制造
@@ -95,17 +97,17 @@ CoreEnhance/Value/Automation/PlantDesert	Text		Ruby Max	红宝石上限
 CoreEnhance/Value/Automation/PlantDesert/Description	Text		The max number of effective rubies in the Verdant shrine	繁茂祭坛中红宝石生效数量上限
 CoreEnhance/Switch/Automation/Door	Text		Door	门
 CoreEnhance/Switch/Automation/GiveExp	Text		Give Exp	给予经验
-CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal give the closet player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
+CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal will give the closest player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
 CoreEnhance/Value/Automation/GiveExpGardening	Text		Chance of  get Gardening Exp	给予种植经验的概率
-CoreEnhance/Value/Automation/GiveExpGardening/Description	Text		The chance of giving the closet player gardening skill exp when the Verdant Crystal harvesting crops or accumulating crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
+CoreEnhance/Value/Automation/GiveExpGardening/Description	Text		The chance of giving the closest player gardening skill exp when the Verdant Crystal harvests crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
 CoreEnhance/Value/Automation/GiveExpFishing	Text		Chance of  get Fishing Exp	给予钓鱼经验的概率
-CoreEnhance/Value/Automation/GiveExpFishing/Description	Text		The chance of giving the closet player fishing skill exp when the Auto Fisher get a loot	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
-CoreEnhance/Switch/Misc/DeathNoDrop	Text		Death No Drop	死亡不掉落
+CoreEnhance/Value/Automation/GiveExpFishing/Description	Text		The chance of giving the closest player fishing skill exp when the Auto Fisher catches something	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
+CoreEnhance/Switch/Misc/DeathNoDrop	Text		Keep Loot on Death	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿
 CoreEnhance/Switch/Misc/ChainMining/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Switch/Misc/ContainerDisplay	Text		Container Display	容器显示
-CoreEnhance/Switch/Misc/ContainerDisplay/Description	Text		When the mouse hover an item, highlight any nearby containers that include the same item	当附近容器内有鼠标指向物品时高亮容器
-CoreEnhance/Value/Misc/ChainMiningAdsorption	Text		Adsorption Chain Loot	吸附连锁战利品
-CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Text		Whether the drops from chain mining will be absorbed by the player	连锁挖矿掉落的战利品是否会被玩家吸附
-CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Need Player	必须由玩家连锁
-CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether the damage have to be caused by the player for it to chain	是否必须由玩家造成伤害才能连锁
+CoreEnhance/Switch/Misc/ContainerDisplay/Description	Text		When the mouse hovers over an item, highlight any nearby containers that include the same item.	当附近容器内有鼠标指向物品时高亮容器
+CoreEnhance/Value/Misc/ChainMiningAdsorption	Text		Absorb Chain Loot	吸附连锁战利品
+CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Text		Whether the drops from chain mining will be automatically put in the players inventory or if it drops on the ground.	连锁挖矿掉落的战利品是否会被玩家吸附
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Mining Requires Player	必须由玩家连锁
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether or not a player is required to Chain Mine.	是否必须由玩家造成伤害才能连锁
