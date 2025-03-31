@@ -7,10 +7,10 @@ Biome requirement can be disabled in the config."	"放置后，放入高于或�
 战利品取决于环境，要求所处地块与环境匹配（这条限制可以在配置中关闭）
 世界中没有终端则不工作"
 Items/CoreEnhance:ArenaScanner	Text		Arena Scanner	竞技场扫描仪
-Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically mark the nearest arena once in your inventory.
-If one is not marked, an arena has not generated yet. Please go to the crystal area to explore.
-Locate a Shimmering Frontier Biome and right click this item to generate an arena nearby.
-If any arena is already marked, the generate function will not work."	"放在背包中即可，会尝试指出竞技场的位置
+Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically point you in the direction of the nearest arena once in your inventory.
+If you're not close enough to an Arena or one has not generated it will not direct you to one.
+If an Arena has not been detected and you're in the Shimmering Frontier,
+you can right click to generate one nearby."	"放在背包中即可，会尝试指出竞技场的位置
 若没有标记，说明竞技场未生成，请前往水晶区探索
 或在荧光边境使用该物品，将在附近直接生成竞技场，已经标记出竞技场时无效"
 Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
@@ -20,10 +20,7 @@ Only supports 1 Terminal.
 Supports the use of robot arms."	"自动钓鱼机会将渔获直接放入终端
 如果有多个终端，那我也不知道会放进哪个
 支持机械臂"
-Items/CoreEnhance:VerdantShrine	Text		"Will automatically mark the nearest arena once in your inventory.
-If one is not marked, an arena has not generated yet. Please go to the crystal area to explore.
-Locate a Shimmering Frontier Biome and right click this item to generate an arena nearby.
-If any arena is already marked, the generate function will fail."	繁茂祭坛
+Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
 Items/CoreEnhance:VerdantShrineDesc	Text		"Works like a normal sprinkler that will auto harvest and replant.
 The effect range is 16 x 16.
 Will not work without a Verdant Crystal placed.

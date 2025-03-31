@@ -58,10 +58,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 ref var casting = ref stateUpdateAspect.castingStateCD.ValueRW;
                 if (!casting.castTimer.IsTimerElapsed(currentTick))
                     return;
-                casting.itemIsInProcessOfBeingUsed = true;
                 Entity equipmentPrefab = stateUpdateAspect.equippedObjectCD.ValueRO.equipmentPrefab;
                 if (!spawnSceneLookup.TryGetComponent(equipmentPrefab, out var spawnScene))
                     return;
+                casting.itemIsInProcessOfBeingUsed = true;
                 if (casting.objectData.objectID == QocObjectID.ArenaScanner && !arenaQuery.IsEmpty)
                 {
                     playerState.SetNextState(PlayerStateEnum.Walk, false);
