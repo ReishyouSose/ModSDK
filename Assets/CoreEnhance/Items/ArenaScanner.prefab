@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6048130881862013138}
   - component: {fileID: 1422318343882277800}
   - component: {fileID: -2679075660371452598}
+  - component: {fileID: -822286364011042264}
+  - component: {fileID: -6471366951354165795}
   m_Layer: 0
   m_Name: ArenaScanner
   m_TagString: Untagged
@@ -76,9 +78,48 @@ MonoBehaviour:
   variation: 0
   variationIsDynamic: 0
   variationToToggleTo: 0
-  objectType: 1500
+  objectType: 602
   tags: 
   rarity: 0
   graphicalPrefab: {fileID: 0}
   isCustomScenePrefab: 0
   additionalSprites: []
+--- !u!114 &-822286364011042264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838562553020914518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f29cae09f9a9540b83a57780b8481f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneNames:
+  - EventTerminalCrystal1
+  - EventTerminalCrystal2
+  - EventTerminalCrystal3
+  - EventTerminalCrystal4
+  - EventTerminalCrystal5
+  LimitRange: 0
+  MinRadiums: 0
+  MaxRadiums: 0
+  Consume: 1
+  Biome: 9
+--- !u!114 &-6471366951354165795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4838562553020914518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2014588969, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castTime: 1
+  useType: 4
+  achievement: 0
+  castCompleteEffect: 23

@@ -26,6 +26,7 @@
     {
         Salvage,//拆解 done
         Plant,//神龛范围内是否自动收
+        Fish,//钓鱼机是否要求匹配地块与环境
         Door,//自动门 done
         GiveExp,//自动化给予经验 done
     }

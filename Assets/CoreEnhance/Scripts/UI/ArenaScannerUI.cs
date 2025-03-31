@@ -62,14 +62,14 @@ namespace Assets.CoreEnhance.Scripts.UI
             {
                 pointer.gameObject.SetActive(false);
             }
-            var player = p.WorldPosition.ToFloat2();
+            var player = p.WorldPosition.RoundToInt2();
             int i = 0;
             foreach (var arena in arenas)
             {
                 var pos = arena;
                 var offset = pos - player;
                 var dis = math.distancesq(offset.x, offset.y);
-                var dir = math.normalizesafe(pos - player, float2.zero) * 6;
+                var dir = math.normalizesafe(pos - player, int2.zero) * 6;
                 if (pointers.Count == i)
                 {
                     pointers.Add(Instantiate(Pointer, Ring));

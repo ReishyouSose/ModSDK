@@ -1,22 +1,29 @@
 Key	Type	Desc	English	Chinese (Simplified)
 Items/CoreEnhance:AutoFisher	Text		Auto Fisher	自动钓鱼机
 Items/CoreEnhance:AutoFisherDesc	Text		"Requires a fishing rod once placed.
-The loot depends on the biome, requiring the tile to match the biome.
-Will not work without a Fishing Terminal placed."	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
-战利品取决于环境，要求所处地块与环境匹配
+The loot depends on the biome, requiring the tile it's place on to match the biome.
+Will not work without a Fishing Terminal placed.
+Biome requirement can be disabled in the config."	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
+战利品取决于环境，要求所处地块与环境匹配（这条限制可以在配置中关闭）
 世界中没有终端则不工作"
-Items/CoreEnhance:ArenaScanner	Text		Arena Locator	竞技场定位仪
+Items/CoreEnhance:ArenaScanner	Text		Arena Scanner	竞技场扫描仪
 Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically mark the nearest arena once in your inventory.
-If one is not marked, an arena has not generated yet. Please go to the crystal area to explore."	"放在背包中即可，会尝试指出竞技场的位置
-若没有标记，说明竞技场未生成，请前往水晶区探索"
+If one is not marked, an arena has not generated yet. Please go to the crystal area to explore.
+Locate a Shimmering Frontier Biome and right click this item to generate an arena nearby.
+If any arena is already marked, the generate function will not work."	"放在背包中即可，会尝试指出竞技场的位置
+若没有标记，说明竞技场未生成，请前往水晶区探索
+或在荧光边境使用该物品，将在附近直接生成竞技场，已经标记出竞技场时无效"
 Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
 Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The Auto Fisher Terminal is required for Auto Fishers to function.
 Loot from Auto Fishers will automatically be put in this inventory.
-If multiple terminals are placed, it will randomly select one to put loot into.
+Only supports 1 Terminal.
 Supports the use of robot arms."	"自动钓鱼机会将渔获直接放入终端
 如果有多个终端，那我也不知道会放进哪个
 支持机械臂"
-Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
+Items/CoreEnhance:VerdantShrine	Text		"Will automatically mark the nearest arena once in your inventory.
+If one is not marked, an arena has not generated yet. Please go to the crystal area to explore.
+Locate a Shimmering Frontier Biome and right click this item to generate an arena nearby.
+If any arena is already marked, the generate function will fail."	繁茂祭坛
 Items/CoreEnhance:VerdantShrineDesc	Text		"Works like a normal sprinkler that will auto harvest and replant.
 The effect range is 16 x 16.
 Will not work without a Verdant Crystal placed.
@@ -33,12 +40,12 @@ Red Gem - Gold chance (1:3%)"	"覆盖范围16*16
 Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
 Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The Verdant Crystal is required for Verdant Shrines to function.
 Loot from Verdant Shrines will automatically be put in this inventory.
-If multiple terminals are placed, it will randomly select one to put loot into.
+Only supports 1 Terminal.
 Supports the use of robot arms."	"祭坛会将收获直接放入水晶
 如果有多个水晶，会放进哪个就不知道了
 支持机械臂"
 Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
-Items/CoreEnhance:WorkBenchDesc	Text		The workbench for Quality of Core Keeper.	更好的体验专属制作站
+Items/CoreEnhance:WorkBenchDesc	Text		The workbench for Quality of Core Keeper	更好的体验专属制作站
 Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
 Items/CoreEnhance:BoulderDemolishDesc	Text		Place, knock, boom	放置，敲击，Boom
 CoreEnhance/Craft	Text		Craft	制作
@@ -87,6 +94,8 @@ CoreEnhance/Value/Automation/SalvageAmount/Description	Text		"Detection quantity
 When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	拆解台内物品数达到数量开始拆解倒计时
 CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	自动拆解倒计时
 CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
+CoreEnhance/Switch/Automation/Fish	Text		Auto Fisher Requires Biome	自动钓鱼机限制环境
+CoreEnhance/Switch/Automation/Fish/Description			Whether the autofisher is required to be in the biome that matches the floor tile its placed on	自动钓鱼机是否需要地块与环境匹配
 CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
 CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
 CoreEnhance/Value/Automation/PlantNature	Text		Emerald Max	绿宝石上限
@@ -106,7 +115,7 @@ CoreEnhance/Switch/Misc/DeathNoDrop	Text		Keep Loot on Death	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿
 CoreEnhance/Switch/Misc/ChainMining/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Switch/Misc/ContainerDisplay	Text		Container Display	容器显示
-CoreEnhance/Switch/Misc/ContainerDisplay/Description	Text		When the mouse hovers over an item, highlight any nearby containers that include the same item.	当附近容器内有鼠标指向物品时高亮容器
+CoreEnhance/Switch/Misc/ContainerDisplay/Description	Text		Whether when holding keybind (default: Left Alt, customizable) and hovering over an item, it will highlight nearby containers containing the item you hover.	当附近容器内有鼠标指向物品时高亮容器
 CoreEnhance/Value/Misc/ChainMiningAdsorption	Text		Absorb Chain Loot	吸附连锁战利品
 CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Text		Whether the drops from chain mining will be automatically put in the players inventory or if it drops on the ground.	连锁挖矿掉落的战利品是否会被玩家吸附
 CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Mining Requires Player	必须由玩家连锁

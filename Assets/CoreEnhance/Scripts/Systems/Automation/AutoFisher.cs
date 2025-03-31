@@ -7,6 +7,7 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
@@ -49,6 +50,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 return;
             if (!SystemAPI.TryGetSingleton<FishingTableCD>(out var fishingTable))
                 return;
+            bool requireBiome = EnhanceConfig.IsEnable(EnhanceCategory.Automation, EC_Automation.Fish);
             float expChance = EnhanceConfig.TryGetValue<int>(EnhanceCategory.Automation,
                 EC_Automation.GiveExp, out var exp, "Fishing") ? exp.Value : 0;
             containerLookup.TryGetBuffer(terminal, out var containers);
@@ -62,13 +64,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                in DistanceToPlayerCD dis, in LocalTransform trans) =>
             {
                 int2 pos = trans.Position.xz.RoundToInt2();
+                ref var biome = ref af.biome;
                 if (!af.init)
                 {
                     af.init = true;
-                    var biome = biomeLookup.GetBiome(pos);
+                    biome = biomeLookup.GetBiome(pos);
                     Tileset tileSet = (Tileset)tileAccessor.GetTop(pos).tileset;
-                    if (!(af.biome = CheckBiome(WaterTilesetToAreaLevel(tileSet), biome)))
-                        return;
+                    af.biome = CheckBiome(WaterTilesetToAreaLevel(tileSet));
+                    af.biomeIsMatch = biome == af.biome;
                     FishingInfoData info = fishingTable.GetFishingInfoFromWaterTileset(tileSet);
                     af.require = FishingTable.GetSkillRequiredForWater(tileSet);
                     if (info.lootTableID == LootTableID.Empty || tileSet == Tileset.Dirt)
@@ -79,7 +82,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                     af.fishes = info.fishLootTableID;
                     af.items = info.lootTableID;
                 }
-                if (!af.biome)
+                if (requireBiome && !af.biomeIsMatch)
                     return;
                 ObjectID id = inv[0].objectID;
                 if (id != af.rod)
@@ -107,8 +110,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                     af.timer = 0;
                     var rng = PugRandom.GetRng();
                     af.wait = rng.NextInt(3, 11);
-                    var biome = biomeLookup.GetBiome(pos);
-                    using var drops = PugDatabase.GetRandomLoot(rng.NextInt(6) == 0 ? af.items : af.fishes,
+                    LootTableID lt = rng.NextInt(6) == 0 ? af.items : af.fishes;
+                    using var drops = PugDatabase.GetRandomLoot(lt,
                         1, 1, ref rng, lootBack, database, trans.Position, biome);
                     ItemHelper.PutItemToContainer(containers, drops[0].objectID, drops[0].amount);
                     if (rng.NextInt(100) < expChance)
@@ -166,17 +169,17 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             }
             return AreaLevel.Slime;
         }
-        private static bool CheckBiome(AreaLevel level, Biome biome) => level switch
+        private static Biome CheckBiome(AreaLevel level) => level switch
         {
-            AreaLevel.Slime or AreaLevel.StartArea => biome is Biome.None or Biome.Slime,
-            AreaLevel.Clay or AreaLevel.LarvaHive => biome is Biome.Larva,
-            AreaLevel.Stone => biome is Biome.Stone,
-            AreaLevel.Nature or AreaLevel.Mold => biome is Biome.Nature,
-            AreaLevel.Sea or AreaLevel.City => biome is Biome.Sea,
-            AreaLevel.Desert or AreaLevel.Lava => biome is Biome.Desert,
-            AreaLevel.Crystal => biome is Biome.Crystal,
-            AreaLevel.Passage => biome is Biome.Passage,
-            _ => false,
+            AreaLevel.Slime or AreaLevel.StartArea => Biome.Slime,
+            AreaLevel.Clay or AreaLevel.LarvaHive => Biome.Larva,
+            AreaLevel.Stone => Biome.Stone,
+            AreaLevel.Nature or AreaLevel.Mold => Biome.Nature,
+            AreaLevel.Sea or AreaLevel.City => Biome.Sea,
+            AreaLevel.Desert or AreaLevel.Lava => Biome.Desert,
+            AreaLevel.Crystal => Biome.Crystal,
+            AreaLevel.Passage => Biome.Passage,
+            _ => Biome.Slime,
         };
         //fishing loot determind - Pug.Other.Fising line:598
     }

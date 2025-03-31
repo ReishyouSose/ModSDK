@@ -1,4 +1,5 @@
 using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Datas;
 using Assets.CoreEnhance.Scripts.Edits;
 using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Systems.Automation;
@@ -18,6 +19,7 @@ namespace Assets.CoreEnhance.Scripts
 {
     public class CoreEnhanceMod : IMod
     {
+        public const string InternalName = "CoreEnhance:";
         private int timer;
         public void EarlyInit()
         {
@@ -41,6 +43,7 @@ namespace Assets.CoreEnhance.Scripts
 
         public void Init()
         {
+            QocObjectID.Load();
         }
 
         public void ModObjectLoaded(Object obj)

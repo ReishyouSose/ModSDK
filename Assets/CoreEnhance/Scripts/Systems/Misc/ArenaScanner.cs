@@ -5,6 +5,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.NetCode;
 using Unity.Transforms;
+using static EventTerminalSystem;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
@@ -57,9 +58,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
 
             while (queue.TryDequeue(out var rpc))
             {
-                arenas.Add(rpc);
+                if (!arenas.Add(rpc))
+                    arenas.Remove(rpc);
             }
-            while(switcher.TryDequeue(out var rpc))
+            while (switcher.TryDequeue(out var rpc))
             {
                 Entity e = ecb.CreateEntity(archetype);
                 ecb.SetComponent(e, rpc);
@@ -82,12 +84,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         private float timer;
         private NativeHashMap<int, bool> openMap;
         private NativeHashSet<float2> arenas;
+        private ComponentLookup<TerminalActiveCD> activeLookup;
         protected override void OnCreate()
         {
             switcher = new(Allocator.Persistent);
             archetype = EntityManager.CreateArchetype(typeof(LocalArenaRpc), typeof(SendRpcCommandRequest));
             openMap = new(16, Allocator.Persistent);
             arenas = new(10, Allocator.Persistent);
+            activeLookup = SystemAPI.GetComponentLookup<TerminalActiveCD>();
             base.OnCreate();
         }
         protected override void OnUpdate()
@@ -124,19 +128,32 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
 
             var archetype = this.archetype;
             var arenas = this.arenas;
-            Entities.ForEach((in LocalTransform trans) =>
+            var activeLookup = this.activeLookup;
+            Entities.ForEach((Entity entity, in LocalTransform trans) =>
             {
                 var pos = trans.Position.xz;
                 if (pos.HasNaN())
                     return;
-                if (arenas.Contains(pos))
-                    return;
-                arenas.Add(pos);
-                Entity e = ecb.CreateEntity(archetype);
-                ecb.SetComponent(e, new LocalArenaRpc(pos));
+                if (activeLookup.HasComponent(entity))
+                {
+                    if (arenas.Remove(pos))
+                    {
+                        Entity e = ecb.CreateEntity(archetype);
+                        ecb.SetComponent(e, new LocalArenaRpc(pos));
+                    }
+                }
+                else
+                {
+                    if (arenas.Add(pos))
+                    {
+                        Entity e = ecb.CreateEntity(archetype);
+                        ecb.SetComponent(e, new LocalArenaRpc(pos));
+                    }
+                }
             })
                 .WithName("ArenaScanner_SendPos")
                 .WithAll<EventTerminalCD>()
+                .WithNone<EndTerminalEvent>()
                 .WithBurst()
                 .Schedule();
 

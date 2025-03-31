@@ -7,13 +7,13 @@ CoreFighter/Switch/Infinity/Mana	Text		Mana	魔力
 CoreFighter/Switch/Infinity/Explosive	Text		Explosive	炸药
 CoreFighter/Switch/Equip	Text		Equip	装备
 CoreFighter/Switch/Equip/NoRecoil	Text		No Recoil	无后坐力
-CoreFighter/Switch/Equip/NoRecoil/Description	Text		Currently only available for Obliteration Ray and StormBringer	目前仅适用于毁灭射线和闪电冲击枪
+CoreFighter/Switch/Equip/NoRecoil/Description	Text		Whether you get pushed back while using the Obliteration Ray or StormBringer	目前仅适用于毁灭射线和闪电冲击枪
 CoreFighter/Switch/Misc	Text		Misc	杂项
-CoreFighter/Switch/Misc/AllPlayerSkill	Text		All Player Skills	玩家全技能
-CoreFighter/Switch/Misc/AllPetSkill	Text		All Pet Skills	宠物全技能
-CoreFighter/Switch/Misc/ImmuneExplosion	Text		Immune Explosion	免疫爆炸
-CoreFighter/Switch/Misc/MapMarkerTeleport	Text		Map Mark Teleport	地图标记传送
-CoreFighter/AttackSpeed	Text		Foc/Attack Speed Modifier	更好的战斗/攻速修改器
+CoreFighter/Switch/Misc/AllPlayerSkill	Text		Allow All Player Skills	玩家全技能
+CoreFighter/Switch/Misc/AllPetSkill	Text		Allow All Pet Skills	宠物全技能
+CoreFighter/Switch/Misc/ImmuneExplosion	Text		Immune To Explosions	免疫爆炸
+CoreFighter/Switch/Misc/MapMarkerTeleport	Text		Teleport To Map Markers	地图标记传送
+CoreFighter/AttackSpeed	Text		FOC/Attack Speed Modifier	更好的战斗/攻速修改器
 CoreFighter/AttackSpeed/General	Text		General	通用
 CoreFighter/AttackSpeed/General/MainSwitch	Text		Main Switch	总开关
 CoreFighter/AttackSpeed/OriginCoolDown0.2	Text		OriginCoolDown 0.2s (5.0/s)	原冷却 0.2s (5.0/s)
