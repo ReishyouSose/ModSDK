@@ -72,7 +72,7 @@ namespace Assets.CoreEnhance.Scripts.Helpers
             }
         }
 
-        public static void LogComponent(this GameObject authoringData,ObjectID target)
+        public static void LogComponent(this GameObject authoringData, ObjectID target)
         {
             if (authoringData.GetEntityObjectID() == target)
             {
@@ -83,6 +83,10 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                     Debug.Log(authoringData.GetComponentAtIndex(i));
                 }
             }
+        }
+        public static bool HasComponent<T>(this GameObject authoringData) where T : MonoBehaviour
+        {
+            return authoringData.TryGetComponent<T>(out _);
         }
     }
 }

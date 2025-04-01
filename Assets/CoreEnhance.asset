@@ -114,7 +114,7 @@ MonoBehaviour:
   buildLinux: 0
   assets:
   - path: Assets/CoreEnhance/Items/ArenaScanner.prefab
-    hash: 0195AA721680E5BCF54896409FDC09FCAF8B4E9A69DF720A09143517E1D9B151
+    hash: C2E2FF6A34182F9390A2B461EAA0993FEE4AF3233BB022CBC8969FB5F20CB790
   - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
     hash: 634A608B4FEC2375112F813B2481857CD135B3EA0C5862B541819E9A1A83F69B
   - path: Assets/CoreEnhance/Items/AutoFisherTerminalItem.prefab
@@ -128,7 +128,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/WorkBench.asset
     hash: 9062053718B668B71D082E3745AABDF408BEC4F446A07926E158886E787B50C8
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 3FCA57A0EBC1C4E078C6E25CBE8AE944C959C887519DFD7DE3DA44EFDBFF58EF
+    hash: EBEF8828B5E056B27AFA2EE7B78AECCCFA00613C7FA0C4D6621134B48F750937
   - path: Assets/CoreEnhance/Shaders/IconClipShader.shader
     hash: E6758C11B3E77F4469CC3E09BF359629BAAE60A2E05D5C7299A7ABB163857442
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset

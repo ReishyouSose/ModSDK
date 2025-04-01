@@ -4,13 +4,13 @@ using Assets.CoreEnhance.Scripts.Edits;
 using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Systems.Automation;
 using Assets.CoreEnhance.Scripts.Systems.Infinity;
+using Assets.CoreEnhance.Scripts.Systems.Misc;
 using Assets.CoreEnhance.Scripts.UI;
 using Assets.CoreEnhance.Scripts.UI.ItemLookup;
 using CoreLib;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
-using CoreLib.Util.Extensions;
 using PugMod;
 using Unity.Entities;
 using UnityEngine;
@@ -27,18 +27,18 @@ namespace Assets.CoreEnhance.Scripts
             CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
             ModKeyBind.Load();
             var authoring = API.Authoring;
-            authoring.OnObjectTypeAdded += InfinityArenaSystem.RecordArena;
+            authoring.OnObjectTypeAdded += InfinityArenaSystem.MarkArena;
             authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
             //authoring.OnObjectTypeAdded += PlaceSizeEdit.EditResizeableTool;
             authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
-            authoring.OnObjectTypeAdded += AutoDoorSystem.AddDistanceCD;
-            //authoring.OnObjectTypeAdded += Test;
+            authoring.OnObjectTypeAdded += AutoDoorSystem.MarkDoor;
+            authoring.OnObjectTypeAdded += ContainerDisplaySystem.MarkHighLight;
+            authoring.OnObjectTypeAdded += Test;
         }
 
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            ItemHelper.LogComponent(authoringData, ObjectID.PandoriumCrystal);
-            ItemHelper.LogComponent(authoringData, ObjectID.SmallPandoriumCrystal);
+            ItemHelper.LogComponent(authoringData, ObjectID.VendingMachine);
         }
 
         public void Init()

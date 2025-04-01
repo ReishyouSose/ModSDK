@@ -191,7 +191,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
             _ => false,
         };
 
-        public static void RecordArena(Entity entity, GameObject authoringData, EntityManager entityManager)
+        public static void MarkArena(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
             if (authoringData.TryGetComponent(out EntityMonoBehaviourData objData))
             {

@@ -1,5 +1,5 @@
-﻿using CoreLib.Util.Extensions;
-using Pug.Sprite;
+﻿using Assets.CoreEnhance.Scripts.Datas;
+using CoreLib.Util.Extensions;
 using PugMod;
 using System.Collections.Generic;
 using Unity.Entities;

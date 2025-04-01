@@ -1,9 +1,13 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Helpers;
+using CoreLib.Util.Extensions;
 using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Automation
 {
+    public struct AutoDoorCD : IComponentData { }
+
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ServerSimulation)]
     public partial class AutoDoorSystem : PugSimulationSystemBase
@@ -13,8 +17,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             if (!EnhanceConfig.IsEnable(EnhanceCategory.Automation, EC_Automation.Door))
                 return;
 
-            Entities.ForEach((DynamicBuffer<AdaptiveEntityBuffer> adaptive,
-                ref ObjectDataCD objData, in DistanceToPlayerCD dis) =>
+            Entities.ForEach((ref ObjectDataCD objData, in DistanceToPlayerCD dis) =>
             {
                 var min = dis.minDistanceSq;
                 if (min > 3)
@@ -27,16 +30,20 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 }
             })
                 .WithName("Automation_Door")
-                .WithAll<ChangeVariationTriggerCD>()
-                .WithAll<DoorCD>()
+                .WithAll<AutoDoorCD>()
                 .WithBurst()
-                .Run();
+                .Schedule();
             base.OnUpdate();
         }
-        public static void AddDistanceCD(Entity e, GameObject authoringData, EntityManager manager)
+        internal static void MarkDoor(Entity e, GameObject authoringData, EntityManager manager)
         {
-            if (authoringData.TryGetComponent<DoorAuthoring>(out _))
+            if (authoringData.HasComponent<DoorAuthoring>()
+                || authoringData.HasComponent<FenceGateAuthoring>())
+            {
+                Debug.Log("[CoreEnhance] AutoDoor: Mark " + authoringData.GetEntityObjectID());
                 manager.AddComponentData(e, new DistanceToPlayerCD());
+                manager.AddComponentData(e, new AutoDoorCD());
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
+using Assets.CoreEnhance.Scripts.Helpers;
+using CoreLib.Util.Extensions;
 using Interaction;
 using Unity.Entities;
 using UnityEngine;
@@ -7,34 +9,30 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
     public struct ContainerHighLightCD : IComponentData
     {
-        public bool needRefresh;
+        public bool marking;
     }
 
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateInGroup(typeof(LocalPresentationCueSystemGroup))]
+    [UpdateAfter(typeof(InteractableVisualUpdateSystem))]
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
     public partial class ContainerDisplaySystem : PugSimulationSystemBase
     {
         private ComponentLookup<InteractorCD> interactorLookup;
+        private BufferLookup<ContainedObjectsBuffer> containerLookup;
+        private BufferLookup<CanCraftObjectsBuffer> craftLookup;
+        private BufferLookup<VendingMachineItemBuffer> vendingLookup;
         protected override void OnCreate()
         {
             interactorLookup = SystemAPI.GetComponentLookup<InteractorCD>();
+            containerLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
+            craftLookup = SystemAPI.GetBufferLookup<CanCraftObjectsBuffer>();
+            vendingLookup = SystemAPI.GetBufferLookup<VendingMachineItemBuffer>();
             base.OnCreate();
         }
         protected override void OnUpdate()
         {
             if (!EnhanceConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.ContainerDisplay))
                 return;
-            var ecb = CreateCommandBuffer();
-            Entities.ForEach((Entity e) =>
-            {
-                ecb.AddComponent<ContainerHighLightCD>(e);
-            })
-                .WithName("CheckInteractable")
-                .WithAll<InteractableObjectReferenceCD>()
-                .WithAll<ContainedObjectsBuffer>()
-                .WithNone<ContainerHighLightCD>()
-                .WithBurst()
-                .Schedule();
 
             var player = Manager.main.player;
             if (player == null)
@@ -48,38 +46,103 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 needLight = target != ObjectID.None;
             }
             var closet = interactorLookup.GetRefRO(player.entity).ValueRO.currentClosestInteractable;
-            Entities.ForEach((Entity e, ref ContainerHighLightCD highLight, in InteractableObjectReferenceCD interact,
-                in DynamicBuffer<ContainedObjectsBuffer> containers) =>
+            var containerLookup = this.containerLookup;
+            var craftLookup = this.craftLookup;
+            var vendingLookup = this.vendingLookup;
+            Entities.ForEach((Entity e, ref ContainerHighLightCD hl, in InteractableObjectReferenceCD interact) =>
             {
                 if (e == closet)
                     return;
-                ref bool refresh = ref highLight.needRefresh;
+                ref bool marking = ref hl.marking;
                 if (needLight)
                 {
-                    foreach (var container in containers)
+                    if (containerLookup.TryGetBuffer(e, out var containers))
                     {
-                        if (container.objectID == target)
+                        foreach (var container in containers)
                         {
-                            UpdateHighLight(interact, Color.cyan);
-                            refresh = true;
-                            return;
+                            if (container.objectID == target)
+                            {
+                                UpdateHighLight(interact, Color.cyan);
+                                marking = true;
+                                return;
+                            }
+                        }
+                    }
+                    if (craftLookup.TryGetBuffer(e, out var crafts))
+                    {
+                        foreach (var craft in crafts)
+                        {
+                            if (craft.objectID == target)
+                            {
+                                UpdateHighLight(interact, Color.cyan);
+                                marking = true;
+                                return;
+                            }
+                        }
+                    }
+                    if (vendingLookup.TryGetBuffer(e, out var vendings))
+                    {
+                        foreach (var vending in vendings)
+                        {
+                            if (vending.objectID == target)
+                            {
+                                UpdateHighLight(interact, Color.cyan);
+                                marking = true;
+                                return;
+                            }
                         }
                     }
                 }
-                if (!refresh)
+                if (!marking)
                     return;
-                refresh = false;
+                marking = false;
                 UpdateHighLight(interact, Color.clear);
             })
                 .WithName("ContainerHighLight")
                 .WithBurst()
-                .Schedule();
+                .Run();
         }
         private static void UpdateHighLight(InteractableObjectReferenceCD interact, Color color)
         {
-            foreach (var sprite in interact.Value.Value.spriteObjects)
+            var interactObject = interact.Value.Value;
+            var optionalOutlineController = interactObject.optionalOutlineController;
+            if (optionalOutlineController != null)
+            {
+                optionalOutlineController.showOutline = true;
+                optionalOutlineController.SetColor(color);
+            }
+
+            foreach (OutlineController additionalOutlineController in interactObject.additionalOutlineControllers)
+            {
+                additionalOutlineController.showOutline = true;
+                additionalOutlineController.SetColor(color);
+            }
+
+            var spriteObjects = interactObject.spriteObjects;
+            if (spriteObjects == null)
+            {
+                return;
+            }
+            if (spriteObjects == null)
+            {
+                return;
+            }
+            foreach (var sprite in spriteObjects)
             {
                 sprite.outlineColor = color;
+            }
+        }
+        internal static void MarkHighLight(Entity e, GameObject authoringData, EntityManager manager)
+        {
+            if (!authoringData.HasComponent<LocalInteractableAuthoring>())
+                return;
+            if (authoringData.HasComponent<InventoryAuthoring>()
+                || authoringData.HasComponent<MerchantAuthoring>()
+                || authoringData.HasComponent<CraftingAuthoring>()
+                || authoringData.HasComponent<VendingMachineAuthoring>())
+            {
+                Debug.Log("[CoreEnhance] Container Display: Mark " + authoringData.GetEntityObjectID());
+                manager.AddComponent<ContainerHighLightCD>(e);
             }
         }
     }
