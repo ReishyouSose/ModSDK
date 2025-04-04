@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 845021786232025266}
   - component: {fileID: 8411571832227649171}
   - component: {fileID: -3773880519904238061}
+  - component: {fileID: -6569459689449197715}
   m_Layer: 0
   m_Name: AutoFisherItem
   m_TagString: Untagged
@@ -65,9 +66,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellValue: 1
   buyValueMultiplier: 1
-  icon: {fileID: 21300000, guid: eb81cc0c6dad85049825f31627398e4e, type: 3}
+  icon: {fileID: 21300000, guid: 3e5ace55c6488e4439526428aa65a95e, type: 3}
   iconOffset: {x: 0, y: 0}
-  smallIcon: {fileID: 21300000, guid: eb81cc0c6dad85049825f31627398e4e, type: 3}
+  smallIcon: {fileID: 21300000, guid: ef1de42f35b8ec247a7e114dd90e3b20, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
   - objectName: PileOfChum
@@ -527,3 +528,21 @@ MonoBehaviour:
   m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6569459689449197715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548004899387042758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 74837128, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDirection:
+    x: 0
+    y: 0
+    z: -1
+  rotatePhysics: 0
+  rotationIconOffset: 0

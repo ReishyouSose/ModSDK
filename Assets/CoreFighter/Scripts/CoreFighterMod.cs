@@ -12,11 +12,9 @@ namespace Assets.CoreFighter.Scripts
 {
     public class CoreFighterMod : IMod
     {
-        private Dictionary<float, HashSet<ObjectID>> atkSpeeds;
         public void EarlyInit()
         {
             FighterConfig.Load();
-            atkSpeeds = new();
             var authoring = API.Authoring;
             authoring.OnObjectTypeAdded += NoRecoil;
             authoring.OnObjectTypeAdded += AttackSpeedModifierSystem.RecordOriginATKSpeed;

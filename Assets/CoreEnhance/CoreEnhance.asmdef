@@ -17,6 +17,7 @@
         "Unity.Transforms",
         "PugMod.SDK",
         "CoreLib",
+        "CoreLib.Resources",
         "CoreLib.Entity",
         "CoreLib.UserInterface",
         "CoreLib.RewiredExtension",

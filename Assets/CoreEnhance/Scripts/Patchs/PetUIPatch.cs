@@ -30,7 +30,7 @@ namespace Assets.CoreEnhance.Scripts.Patchs
             return InventoryUtility.GetTotalAmount(bufferLookup, singleton, player.entity, ObjectID.AncientCoin) >= 200;
         }
 
-        public static void ResetSkin()
+        private static void ResetSkin()
         {
             PlayerController player = Manager.main.player;
             if (player == null)

@@ -97,6 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3578621336254896086}
   - component: {fileID: 5161245716453948384}
+  - component: {fileID: -4050699460858967296}
   m_Layer: 6
   m_Name: AutoFisherTile
   m_TagString: Untagged
@@ -168,6 +169,21 @@ MonoBehaviour:
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
   showSortAndQuickStackButtons: 0
+--- !u!114 &-4050699460858967296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881095102312471513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -122692614, guid: 3519ac58e5ff54941a4a69512016923c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spritesToRotate:
+  - {fileID: 3958745674098482210}
+  reflectSides: 0
 --- !u!1 &3617452469881410506
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 1908045241, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_asset: {fileID: 11400000, guid: e575abb4fe0607d498f7ace832fd3342, type: 2}
+  m_asset: {fileID: 11400000, guid: 7d692de56c675254ea40aaa88afc55b3, type: 2}
   skin: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0.39215687}
   emissiveColor: {r: 1, g: 1, b: 1, a: 1}
@@ -356,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 1908045241, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_asset: {fileID: 11400000, guid: e575abb4fe0607d498f7ace832fd3342, type: 2}
+  m_asset: {fileID: 11400000, guid: f08b07995c204764d958ae5fef82ab7b, type: 2}
   skin: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
   emissiveColor: {r: 1, g: 1, b: 1, a: 1}

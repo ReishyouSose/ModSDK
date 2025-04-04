@@ -25,6 +25,8 @@ namespace Assets.CoreFighter.Scripts.Patchs
                 float cooldown = cooldownCD.cooldown;
                 if (cooldown < 1f)
                 {
+                    if (cooldown == 0f)
+                        return;
                     ConditionUI.DurationFormat durationStrings = ConditionUI.GetDurationStrings(cooldown, out string text9, out string text10, true);
                     string[] formatFields = Array.Empty<string>();
                     string text11 = cooldownSecString;

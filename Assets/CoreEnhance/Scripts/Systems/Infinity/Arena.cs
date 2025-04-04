@@ -21,6 +21,24 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class InfinityArenaSystem : PugSimulationSystemBase
     {
+        private CollisionWorld collision;
+        private BufferLookup<ContainedObjectsBuffer> invLookup;
+        private ComponentLookup<DistanceToPlayerCD> disLookup;
+        private ComponentLookup<HealthCD> healthLookup;
+        private ComponentLookup<ObjectDataCD> objDataLookup;
+        protected override void OnCreate()
+        {
+            invLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
+            disLookup = SystemAPI.GetComponentLookup<DistanceToPlayerCD>();
+            healthLookup = SystemAPI.GetComponentLookup<HealthCD>();
+            objDataLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
+            base.OnCreate();
+        }
+        protected override void OnStartRunning()
+        {
+            collision = GetPhysicsWorld().CollisionWorld;
+            base.OnStartRunning();
+        }
         protected override void OnUpdate()
         {
             if (!EnhanceConfig.TryGetValue(EnhanceCategory.Infinity, EC_Infinity.Arena, out ConfigEntry<int> value))
@@ -36,11 +54,11 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                 .WithBurst()
                 .Schedule();
 
-            var collision = GetPhysicsWorld().CollisionWorld;
-            var invLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
-            var disLookup = SystemAPI.GetComponentLookup<DistanceToPlayerCD>();
-            var healthLookup = SystemAPI.GetComponentLookup<HealthCD>();
-            var objDataLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
+            var collision = this.collision;
+            var invLookup = this.invLookup;
+            var disLookup = this.disLookup;
+            var healthLookup = this.healthLookup;
+            var objDataLookup = this.objDataLookup;
             var count = value.Value;
             Entities.ForEach((Entity entity, ref ArenaRecordCD arena, in LocalTransform local) =>
             {
@@ -116,7 +134,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                             var e = hit.Entity;
                             if (!objDataLookup.TryGetComponent(e, out var data))
                                 continue;
-                            if(data.objectID == ObjectID.EventTerminal)
+                            if (data.objectID == ObjectID.EventTerminal)
                             {
                                 ecb.DestroyEntity(e);
                                 continue;

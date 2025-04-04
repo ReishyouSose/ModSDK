@@ -8,9 +8,11 @@ using Assets.CoreEnhance.Scripts.Systems.Misc;
 using Assets.CoreEnhance.Scripts.UI;
 using Assets.CoreEnhance.Scripts.UI.ItemLookup;
 using CoreLib;
+using CoreLib.ModResources;
 using CoreLib.RewiredExtension;
 using CoreLib.Submodules.ModEntity;
 using CoreLib.UserInterface;
+using CoreLib.Util.Extensions;
 using PugMod;
 using Unity.Entities;
 using UnityEngine;
@@ -24,12 +26,13 @@ namespace Assets.CoreEnhance.Scripts
         public void EarlyInit()
         {
             EnhanceConfig.Load();
+            var modInfo = this.GetModInfo();
+            ResourcesModule.RegisterBundles(modInfo);
             CoreLibMod.LoadModules(typeof(EntityModule), typeof(UserInterfaceModule), typeof(RewiredExtensionModule));
             ModKeyBind.Load();
             var authoring = API.Authoring;
             authoring.OnObjectTypeAdded += InfinityArenaSystem.MarkArena;
             authoring.OnObjectTypeAdded += ModRecipes.EditWorkbench;
-            //authoring.OnObjectTypeAdded += PlaceSizeEdit.EditResizeableTool;
             authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
             authoring.OnObjectTypeAdded += AutoDoorSystem.MarkDoor;
             authoring.OnObjectTypeAdded += ContainerDisplaySystem.MarkHighLight;

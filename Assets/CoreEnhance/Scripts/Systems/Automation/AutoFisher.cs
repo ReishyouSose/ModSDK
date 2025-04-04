@@ -88,10 +88,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 if (id != af.rod)
                 {
                     af.rod = id;
+                    af.enable = false;
+                    af.timer = 0;
+                    af.wait = 10;
                     var rodEntity = PugDatabase.GetPrimaryPrefabEntity(id, database);
                     if (!conditionLookup.TryGetBuffer(rodEntity, out var conditions))
                         return;
-                    af.enable = false;
                     foreach (var condition in conditions)
                     {
                         var c = condition.equipmentCondition;

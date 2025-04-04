@@ -46,6 +46,7 @@ namespace Assets.CoreFighter.Scripts.Configs
             List<float> target = new()
             {
                 0.2f,
+                0.25f,
                 0.3f,
                 0.4f,
                 0.5f,

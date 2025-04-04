@@ -18,26 +18,26 @@ MonoBehaviour:
   m_staticReplacementData:
     m_guid: 
     m_spriteData:
-      texture: {fileID: 2800000, guid: 6a5fe2d18a2e10d4fbbfdc02ec215b94, type: 3}
+      texture: {fileID: 2800000, guid: b7aab86f4bf1275438519cccf26faae4, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0.1}
       positionalData: []
       inheritPivot: 1
     m_variants:
-    - texture: {fileID: 2800000, guid: 29777a90f5154c1438c1c81f974349d4, type: 3}
+    - texture: {fileID: 2800000, guid: 3a8c53b4a5115344b8462ed9aeb148b8, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0.1}
       positionalData: []
       inheritPivot: 1
-    - texture: {fileID: 2800000, guid: 22b93c443818eeb47a4fd7be72690c37, type: 3}
+    - texture: {fileID: 2800000, guid: 9605133c67f689d4590243d549ab67b5, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0.1}
       positionalData: []
       inheritPivot: 1
-    - texture: {fileID: 2800000, guid: c39bcbd2f1ce7fd4284c7d771b22051f, type: 3}
+    - texture: {fileID: 2800000, guid: c7a1fb5cedc6e084cb57764af0c6566f, type: 3}
       emissiveTexture: {fileID: 0}
       normalTexture: {fileID: 0}
       pivot: {x: 0.5, y: 0.1}

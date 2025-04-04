@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: SpriteAssetManifest
   m_EditorClassIdentifier: 
   spriteAssets:
-  - {fileID: 11400000, guid: e575abb4fe0607d498f7ace832fd3342, type: 2}
+  - {fileID: 11400000, guid: f08b07995c204764d958ae5fef82ab7b, type: 2}
   - {fileID: 11400000, guid: e4f96182ef91f994ca6c92ec03a44866, type: 2}
   - {fileID: 11400000, guid: a2c801bdf46692f44b1ad2e2bc0c4ac1, type: 2}
   - {fileID: 11400000, guid: 89c0502a3bb5b1945828a87b844ea0d8, type: 2}
   - {fileID: 11400000, guid: 7d692de56c675254ea40aaa88afc55b3, type: 2}
   - {fileID: 11400000, guid: 9e28ec761815e0d499a4edb0add86b21, type: 2}
   - {fileID: 11400000, guid: ba74321b66260f243b800134760a9ec1, type: 2}
-  - {fileID: 11400000, guid: a4a1ba4ba1b710844a02f703b0b31d3b, type: 2}
   - {fileID: 11400000, guid: 72dce2d0cd1fa78488c0e6799241cacb, type: 2}
   - {fileID: 11400000, guid: 302454012c5b0cd48b33102050d16cdb, type: 2}
   - {fileID: 11400000, guid: 9e5aa8becaff59e40b5758e408e72387, type: 2}

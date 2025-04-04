@@ -6,6 +6,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.NetCode;
+using Unity.Physics;
 using Unity.Transforms;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
@@ -19,6 +20,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         private ComponentLookup<QocCastingSpawnSceneCD> spawnSceneLookup;
         private ComponentLookup<LocalTransform> transLookup;
         private ComponentLookup<GodModeCD> godLookup;
+        private ComponentLookup<HealthCD> healthLookup;
+        private ComponentLookup<ObjectDataCD> objDataLookup;
         private EntityQuery sceneQuery;
         private EntityQuery arenaQuery;
         protected override void OnCreate()
@@ -28,6 +31,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             godLookup = SystemAPI.GetComponentLookup<GodModeCD>();
             sceneQuery = EntityManager.CreateEntityQuery(typeof(CustomSceneTableCD));
             arenaQuery = EntityManager.CreateEntityQuery(typeof(EventTerminalCD));
+            healthLookup = SystemAPI.GetComponentLookup<HealthCD>();
+            objDataLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
             RequireForUpdate<CustomSceneTableCD>();
             RequireForUpdate<BiomeRangesCD>();
             base.OnCreate();
@@ -49,7 +54,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var transLookup = this.transLookup;
             var biomeLookup = this.biomeLookup;
             var godLookup = this.godLookup;
+            var healthLookup = this.healthLookup;
+            var objDataLookup = this.objDataLookup;
             var ecb = CreateCommandBuffer();
+            var collision = GetPhysicsWorld().CollisionWorld;
             Entities.ForEach((StateUpdateAspect stateUpdateAspect) =>
             {
                 ref var playerState = ref stateUpdateAspect.playerStateCD.ValueRW;
@@ -95,12 +103,38 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     if (!god && spawnScene.LimitRange)
                     {
                         float dis = 0;
+                        int j = 0;
                         while (dis < spawnScene.MinRadiums || dis > spawnScene.MaxRadiums)
                         {
                             p = new(p.x + rng.NextInt(-r, r + 1), p.y + rng.NextInt(-r, r + 1));
                             dis = math.lengthsq(p);
+                            if (++j >= 100)
+                            {
+                                playerState.SetNextState(PlayerStateEnum.Walk, false);
+                                return;
+                            }
                         }
                     }
+
+                    var hits = new NativeList<ColliderCastHit>(Allocator.Temp);
+                    collision.SphereCastAll(p.ToFloat3(), r, float3.zero, 0, ref hits, CollisionFilter.Default);
+                    foreach (var hit in hits)
+                    {
+                        var e = hit.Entity;
+                        if (!objDataLookup.TryGetComponent(e, out var data))
+                            continue;
+                        if (data.objectID == ObjectID.EventTerminal)
+                        {
+                            ecb.DestroyEntity(e);
+                            continue;
+                        }
+                        if (!healthLookup.HasComponent(e))
+                            continue;
+                        if (IsExcept(data.objectID))
+                            continue;
+                        ecb.DestroyEntity(e);
+                    }
+                    hits.Dispose();
                     Entity name = ecb.CreateEntity();
                     ecb.AddComponent(name, new CustomSceneCD { name = new(sceneName) });
 
@@ -130,5 +164,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 .Schedule();
             base.OnUpdate();
         }
+        private static bool IsExcept(ObjectID id) => id switch
+        {
+            ObjectID.Portal or ObjectID.WayPoint or ObjectID.Player or ObjectID.PlayerGrave => true,
+            _ => false,
+        };
     }
 }
