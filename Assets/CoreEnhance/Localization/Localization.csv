@@ -53,8 +53,8 @@ CoreEnhance/ExtraChestAction/TakeAll	Text		Take All	拿取全部
 CoreEnhance/ExtraChestAction/TakeAllDesc	Text		Take all items from the chest	从箱子拿取所有道具
 CoreEnhance/ExtraChestAction/Replenish	Text		Replenish	补货
 CoreEnhance/ExtraChestAction/ReplenishDesc	Text		Moves already existing items in your inventory from the chest to your inventory	将箱子里与道具栏中现有道具相同的道具移动到道具栏中
-CoreEnhance/ExtraChestAction/Split	Text		Split	拆分
-CoreEnhance/ExtraChestAction/SplitbDesc	Text		Split the stack and divide it equally by type	拆分堆叠，按种类均分
+CoreEnhance/ExtraChestAction/Split	Text		Split Stack	拆分堆叠
+CoreEnhance/ExtraChestAction/SplitDesc	Text		Split stack into single, until the next slot is not empty	拆分堆叠，直到下一个栏位不为空
 CoreEnhance/Switch	Text		Quality of CK Function Switch	更好的体验功能开关
 CoreEnhance/Value	Text		Quality of CK Extra Config	更好的体验额外配置
 CoreEnhance/Switch/Infinity	Text		Infinity	无限

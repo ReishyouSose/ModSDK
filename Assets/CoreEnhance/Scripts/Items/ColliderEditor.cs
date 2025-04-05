@@ -20,11 +20,14 @@ namespace Assets.CoreEnhance.Scripts.Items
             float x = size.x, y = size.y;
             Vector2 origin = new((x - 1) / 2, (y - 1) / 2);
             Vector2 offset = new(RightFix - LeftFix, UpFix - DownFix);
+            float cy = collider.GetBoxProperties().Center.y;
+            var c = (origin + offset / 2).X0Y();
+            c.y = cy;
             collider.SetBox(new Unity.Physics.BoxGeometry()
             {
                 BevelRadius = BevelRadius,
                 Size = new(x + LeftFix + RightFix, 1, y + UpFix + DownFix),
-                Center = (origin + offset / 2).X0Y(),
+                Center = c,
             });
         }
     }

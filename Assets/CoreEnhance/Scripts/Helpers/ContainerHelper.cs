@@ -4,7 +4,6 @@ using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Helpers
 {
-
     public static class ContainerHelper
     {
         [GenerateTestsForBurstCompatibility]
@@ -125,6 +124,8 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                 }
             }
         }
+
+        [GenerateTestsForBurstCompatibility]
         public static void SplitStacks(in InventoryHandlerShared shared, Entity container)
         {
             if (!shared.containedObjectsBufferLookup.TryGetBuffer(container, out var slots) ||
@@ -136,9 +137,9 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                 int start = inv.startIndex;
                 int end = start + inv.size;
 
-                for (int i = start; i < end; /* 注意：i++在循环内控制 */)
+                for (int i = start; i < end;)
                 {
-                    int originalIndex = i; // 固定原堆叠位置
+                    int originalIndex = i; 
                     var originalItem = slots[originalIndex];
                     var id = originalItem.objectID;
 
@@ -151,7 +152,6 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                     int splitCount = 0;
                     int nextPos = i + 1;
 
-                    // 尝试向右拆分
                     while (splitCount < originalItem.amount - 1 && nextPos < end)
                     {
                         if (slots[nextPos].objectID == ObjectID.None)
@@ -169,17 +169,15 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                         }
                         else
                         {
-                            // 遇到非空栏位，立即跳转到该位置
                             i = nextPos;
                             break;
                         }
                         nextPos++;
                     }
 
-                    // 精确更新原堆叠（原数量 - 实际拆分出的数量）
-                    slots[originalIndex] = new ContainedObjectsBuffer
+                    slots[originalIndex] = new ()
                     {
-                        objectData = new ObjectDataCD
+                        objectData = new ()
                         {
                             objectID = id,
                             variation = originalItem.variation,
