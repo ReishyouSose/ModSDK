@@ -17,6 +17,7 @@ CoreFighter/AttackSpeed	Text		FOC/Attack Speed Modifier	更好的战斗/攻速�
 CoreFighter/AttackSpeed/General	Text		General	通用
 CoreFighter/AttackSpeed/General/MainSwitch	Text		Main Switch	总开关
 CoreFighter/AttackSpeed/OriginCoolDown0.2	Text		OriginCoolDown 0.2s (5.0/s)	原冷却 0.2s (5.0/s)
+CoreFighter/AttackSpeed/OriginCoolDown0.25	Text		OriginCoolDown 0.25s (4.0/s)	原冷却 0.25s (4.0/s)
 CoreFighter/AttackSpeed/OriginCoolDown0.3	Text		OriginCoolDown 0.3s (3.3/s)	原冷却 0.3s (3.3/s)
 CoreFighter/AttackSpeed/OriginCoolDown0.4	Text		OriginCoolDown 0.4s (2.5/s)	原冷却 0.4s (2.5/s)
 CoreFighter/AttackSpeed/OriginCoolDown0.5	Text		OriginCoolDown 0.5s (2.0/s)	原冷却 0.5s (2.0/s)
@@ -34,6 +35,14 @@ CoreFighter/AttackSpeed/OriginCoolDown0.2/Magic	Text		Magic Weapon	魔法武器
 CoreFighter/AttackSpeed/OriginCoolDown0.2/Throw	Text		Throw Weapon	投掷武器
 CoreFighter/AttackSpeed/OriginCoolDown0.2/OffHand	Text		Off-Hand	手持物
 CoreFighter/AttackSpeed/OriginCoolDown0.2/Consume	Text		Consume	消耗品
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Switch	Text		Switch	开关
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Tool	Text		Tool	工具
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Melee	Text		Melee Weapon	近战武器
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Range	Text		Range Weapon	远程武器
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Magic	Text		Magic Weapon	魔法武器
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Throw	Text		Throw Weapon	投掷武器
+CoreFighter/AttackSpeed/OriginCoolDown0.25/OffHand	Text		Off-Hand	手持物
+CoreFighter/AttackSpeed/OriginCoolDown0.25/Consume	Text		Consume	消耗品
 CoreFighter/AttackSpeed/OriginCoolDown0.3/Switch	Text		Switch	开关
 CoreFighter/AttackSpeed/OriginCoolDown0.3/Tool	Text		Tool	工具
 CoreFighter/AttackSpeed/OriginCoolDown0.3/Melee	Text		Melee Weapon	近战武器
