@@ -1,0 +1,317 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -217761678, guid: 8755fc0f8990e9f418149df4a482da57, type: 3}
+  m_Name: AutoFisher_Main
+  m_EditorClassIdentifier: 
+  m_defaultGradientMap: {fileID: 0}
+  m_editorHideEmissive: 0
+  m_staticSpriteData:
+    texture: {fileID: 2800000, guid: 698e749fc3af5fb4fb95a9c241ee7116, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: -0}
+    positionalData: []
+    inheritPivot: 0
+  m_staticVariants:
+  - texture: {fileID: 2800000, guid: f1f8625fcd8ab264db4361965a63d7a8, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  - texture: {fileID: 2800000, guid: 7a137e4a82539d04585d50d1b55122a7, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  - texture: {fileID: 2800000, guid: 1b0d098bfe6fa2c458c48cad83162777, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  - texture: {fileID: 2800000, guid: 7f6292189acbcc84bb3f046760b42a6e, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  - texture: {fileID: 2800000, guid: e39b0cdb8efcd98418935990f478e76e, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  - texture: {fileID: 2800000, guid: 792bbe733a86b454393a5ec161018fb6, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  - texture: {fileID: 2800000, guid: 886672cdae933c44db847eda66142d74, type: 3}
+    emissiveTexture: {fileID: 0}
+    normalTexture: {fileID: 0}
+    pivot: {x: 0.5, y: 0}
+    positionalData: []
+    inheritPivot: 0
+  m_animations:
+  - m_guid: e82e9864-7326-4174-bafb-37c49c336f09
+    m_spriteData:
+      texture: {fileID: 2800000, guid: 3ae9366508d331d42930369a2d43fee9, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: 2ae90e75-7483-46df-917b-3b84107bbffc
+    m_spriteData:
+      texture: {fileID: 2800000, guid: a188b070b468a574cbda174063d400ee, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: 76056680-4188-41a1-afb6-fbcf8a028b03
+    m_spriteData:
+      texture: {fileID: 2800000, guid: 3f623f041abdf1e4e90e3b2ba9f3f87b, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: eadbcf6b-498a-4b6d-8ad0-54b534df0e3c
+    m_spriteData:
+      texture: {fileID: 2800000, guid: 689d075d18a588d4cb5a5252c66453e0, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: ed841e97-e4e9-409b-98c5-ff53d7073bf9
+    m_spriteData:
+      texture: {fileID: 2800000, guid: fa67056802ede0348a45f9fb69adee5d, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: dd426e64-e0c6-46ac-a519-5b6e43ded561
+    m_spriteData:
+      texture: {fileID: 2800000, guid: bfab0a119dfbf234bbd3830a49434c38, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: 09a0786f-510e-48ed-9dd6-d1dd4dc5445e
+    m_spriteData:
+      texture: {fileID: 2800000, guid: 9618533ff2bfc374c8427b6335e8fffa, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  - m_guid: 27ac14f5-50d3-486f-85ba-c784955ea99d
+    m_spriteData:
+      texture: {fileID: 2800000, guid: c008bf39d1b606341998d4113f0e4a1d, type: 3}
+      emissiveTexture: {fileID: 0}
+      normalTexture: {fileID: 0}
+      pivot: {x: 0.5, y: 0}
+      positionalData: []
+      inheritPivot: 0
+    srcFrameCount: 8
+    fps: 10
+    loop: 0
+    m_exitAnimationGuid: 
+    m_variants: []
+    m_transitions: []
+    frameData:
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+    - holdFrames: 0
+      eventMask: 0
+  m_events: []
+  m_positionalData: []

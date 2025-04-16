@@ -82,11 +82,12 @@ namespace Assets.CoreEnhance.Scripts.UI
         }
         public static void CheckScanner(PlayerController player)
         {
+            var lockState = API.Client.World.EntityManager.GetBuffer<LockedObjectsBuffer>(player.entity);
             var containers = API.Client.World.EntityManager.GetBuffer<ContainedObjectsBuffer>(player.entity);
             bool hasScanner = false;
-            foreach (var container in containers)
+            for (int i = 0; i < containers.Length; i++)
             {
-                if (container.objectID == scanner)
+                if (containers[i].objectID == scanner && lockState[i].Value)
                 {
                     hasScanner = true;
                     break;

@@ -13,12 +13,24 @@ MonoBehaviour:
   m_Name: SpriteAssetManifest
   m_EditorClassIdentifier: 
   spriteAssets:
-  - {fileID: 11400000, guid: f08b07995c204764d958ae5fef82ab7b, type: 2}
-  - {fileID: 11400000, guid: e4f96182ef91f994ca6c92ec03a44866, type: 2}
   - {fileID: 11400000, guid: 89c0502a3bb5b1945828a87b844ea0d8, type: 2}
   - {fileID: 11400000, guid: 9e28ec761815e0d499a4edb0add86b21, type: 2}
   - {fileID: 11400000, guid: ba74321b66260f243b800134760a9ec1, type: 2}
-  - {fileID: 11400000, guid: 686bb9490ef930c48a0e66ae0a5ec54e, type: 2}
   - {fileID: 11400000, guid: 42fd75167e00ce54ba32692f0f76b20d, type: 2}
+  - {fileID: 11400000, guid: 1628ae170ecc97649958d19aabc98386, type: 2}
+  - {fileID: 11400000, guid: 97b743ed4495b884eb00729d6081de33, type: 2}
+  - {fileID: 11400000, guid: ce64d67598aee554c8d2687bf753e5a1, type: 2}
+  - {fileID: 11400000, guid: f729e338fa6948e41886fb97eeee17da, type: 2}
+  - {fileID: 11400000, guid: 59d6054c62f28914b807528f35364507, type: 2}
+  - {fileID: 11400000, guid: 0c0a3d11663e3434eb6efbcb888d7f05, type: 2}
+  - {fileID: 11400000, guid: 7294524e1a6ed2e4f80362e472ea0c04, type: 2}
+  - {fileID: 11400000, guid: 32eb9a1294d36194d8f37e22ee53d7d8, type: 2}
+  - {fileID: 11400000, guid: 4b566f2c92987d640a903236295b91a7, type: 2}
+  - {fileID: 11400000, guid: cfb4b52b0e13dd74c95b19ab8a1d69ff, type: 2}
+  - {fileID: 11400000, guid: 2ae417bf66fc29042b1ec3ea4cda4d5c, type: 2}
+  - {fileID: 11400000, guid: c8ad0983c5f416446b50d98c8c892c2b, type: 2}
+  - {fileID: 11400000, guid: 9600e4a671c247e42abc3f2951bb4c55, type: 2}
+  - {fileID: 11400000, guid: 669b852d2faa9dd439664bf02a681c1e, type: 2}
+  - {fileID: 11400000, guid: 498c5ee5e2fbe8a41bd11f20344b1610, type: 2}
   gradientMaps: []
   transformAnimations: []

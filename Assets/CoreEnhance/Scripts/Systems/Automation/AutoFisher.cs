@@ -61,63 +61,68 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             var lootBack = lootBank;
             var ecb = CreateCommandBuffer();
             Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> inv, ref AutoFisherCD af,
-               in DistanceToPlayerCD dis, in LocalTransform trans) =>
+               in DistanceToPlayerCD dis, in LocalTransform trans, in ElectricityCD power, in DirectionCD dir) =>
             {
-                int2 pos = trans.Position.xz.RoundToInt2();
-                ref var biome = ref af.biome;
-                if (!af.init)
-                {
-                    af.init = true;
-                    biome = biomeLookup.GetBiome(pos);
-                    Tileset tileSet = (Tileset)tileAccessor.GetTop(pos).tileset;
-                    af.biome = CheckBiome(WaterTilesetToAreaLevel(tileSet));
-                    af.biomeIsMatch = biome == af.biome;
-                    FishingInfoData info = fishingTable.GetFishingInfoFromWaterTileset(tileSet);
-                    af.require = FishingTable.GetSkillRequiredForWater(tileSet);
-                    if (info.lootTableID == LootTableID.Empty || tileSet == Tileset.Dirt)
-                    {
-                        info = fishingTable.GetFishingInfoFromBiome(biome);
-                        af.require = FishingTable.GetSkillRequiredForBiome(biome);
-                    }
-                    af.fishes = info.fishLootTableID;
-                    af.items = info.lootTableID;
-                }
-                if (requireBiome && !af.biomeIsMatch)
-                    return;
                 ObjectID id = inv[0].objectID;
-                if (id != af.rod)
+                int2 pos = trans.Position.xz.RoundToInt2();
+                ref var state = ref af.state;
+                ref var timer = ref af.timer;
+                ref var wait = ref af.wait;
+                switch (state)
                 {
-                    af.rod = id;
-                    af.enable = false;
-                    af.timer = 0;
-                    af.wait = 10;
-                    var rodEntity = PugDatabase.GetPrimaryPrefabEntity(id, database);
-                    if (!conditionLookup.TryGetBuffer(rodEntity, out var conditions))
-                        return;
-                    foreach (var condition in conditions)
-                    {
-                        var c = condition.equipmentCondition;
-                        if (c.id == ConditionID.IncreasedFishing && c.value > af.require)
+                    case AutoFisherState.Idle:
+                        Tileset groundSet = (Tileset)tileAccessor.GetTop(pos).tileset;
+                        Tileset waterSet = (Tileset)tileAccessor.GetTop(pos + dir.direction.RoundToInt2()).tileset;
+                        FishingInfoData info = fishingTable.GetFishingInfoFromWaterTileset(waterSet);
+                        if (info.lootTableID == LootTableID.Empty || waterSet == Tileset.Dirt)
                         {
-                            af.enable = true;
-                            break;
+                            var biome = CheckBiome(TilesetToAreaLevel(groundSet));
+                            info = fishingTable.GetFishingInfoFromBiome(biome);
+                            af.biome = biome;
+                            af.require = FishingTable.GetSkillRequiredForBiome(biome);
+                            af.biomeIsMatch = af.biome == biomeLookup.GetBiome(pos);
                         }
-                    }
-                }
-                if (!af.enable)
-                    return;
-                af.timer++;
-                if (af.timer >= af.wait)
-                {
-                    af.timer = 0;
-                    var rng = PugRandom.GetRng();
-                    af.wait = rng.NextInt(3, 11);
-                    LootTableID lt = rng.NextInt(6) == 0 ? af.items : af.fishes;
-                    using var drops = PugDatabase.GetRandomLoot(lt,
-                        1, 1, ref rng, lootBack, database, trans.Position, biome);
-                    ItemHelper.PutItemToContainer(containers, drops[0].objectID, drops[0].amount);
-                    if (rng.NextInt(100) < expChance)
-                        PlayerController.AddSkill(dis.closestPlayer, SkillID.Fishing, 1, ecb, true);
+                        else
+                        {
+                            af.biome = CheckBiome(TilesetToAreaLevel(waterSet));
+                            af.require = FishingTable.GetSkillRequiredForWater(waterSet);
+                            af.biomeIsMatch = true;
+                        }
+                        if (id != af.rod)
+                            af.CheckRod(id, conditionLookup, database);
+                        if (!af.CheckAllCondition(power.hasEnoughElectricityToPowerStuff, requireBiome))
+                            break;
+                        af.fishes = info.fishLootTableID;
+                        af.items = info.lootTableID;
+                        state = AutoFisherState.Start;
+                        break;
+                    case AutoFisherState.Start:
+                        {
+                            var rng = PugRandom.GetRng();
+                            wait = rng.NextInt(3, 11);
+                            state = AutoFisherState.Catching;
+                        }
+                        break;
+                    case AutoFisherState.Catching:
+                        if (!power.hasEnoughElectricityToPowerStuff || id == ObjectID.None)
+                            af.ForceIdle();
+                        if (++timer >= wait)
+                        {
+                            timer = 0;
+                            state = AutoFisherState.End;
+                            var rng = PugRandom.GetRng();
+                            LootTableID lt = rng.NextInt(6) == 0 ? af.items : af.fishes;
+                            var drops = PugDatabase.GetRandomLoot(lt,
+                               1, 1, ref rng, lootBack, database, trans.Position, af.biome);
+                            ItemHelper.PutItemToContainer(containers, drops[0].objectID, drops[0].amount);
+                            drops.Dispose();
+                            if (rng.NextInt(100) < expChance)
+                                PlayerController.AddSkill(dis.closestPlayer, SkillID.Fishing, 1, ecb, true);
+                        }
+                        break;
+                    case AutoFisherState.End:
+                        state = AutoFisherState.Idle;
+                        break;
                 }
             })
                 .WithName("AutoFisher_Catch")
@@ -125,7 +130,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 .Schedule();
             base.OnUpdate();
         }
-        private static AreaLevel WaterTilesetToAreaLevel(Tileset tileset)
+        private static AreaLevel TilesetToAreaLevel(Tileset tileset)
         {
             if (tileset <= Tileset.Desert)
             {

@@ -7,10 +7,10 @@ Biome requirement can be disabled in the config."	"放置后，放入高于或�
 战利品取决于环境，要求所处地块与环境匹配（这条限制可以在配置中关闭）
 世界中没有终端则不工作"
 Items/CoreEnhance:ArenaScanner	Text		Arena Scanner	竞技场扫描仪
-Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically point you in the direction of the nearest arena once in your inventory.
+Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically point you in the direction of the nearest arena once in your inventory and locked.
 If you're not close enough to an Arena or one has not generated it will not direct you to one.
 If an Arena has not been detected and you're in the Shimmering Frontier,
-you can right click to generate one nearby."	"放在背包中即可，会尝试指出竞技场的位置
+you can right click to generate one nearby."	"放在背包中并锁定即可，会尝试指出竞技场的位置
 若没有标记，说明竞技场未生成，请前往水晶区探索
 或在荧光边境使用该物品，将在附近直接生成竞技场，已经标记出竞技场时无效"
 Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
@@ -47,8 +47,8 @@ Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
 Items/CoreEnhance:BoulderDemolishDesc	Text		Place, knock, boom	放置，敲击，Boom
 CoreEnhance/Craft	Text		Craft	制作
 CoreEnhance/ObtainWay	Text		Obtain Way	获取途径
-CoreEnhance/ExtraChestAction/PutAll	Text		Put All	放入全部
-CoreEnhance/ExtraChestAction/PutAllDesc	Text		Put all items into the chest	将所有道具放入箱子
+CoreEnhance/ExtraChestAction/PutAll	Text		Store All	放入全部
+CoreEnhance/ExtraChestAction/PutAllDesc	Text		Store all items into the chest	将所有道具放入箱子
 CoreEnhance/ExtraChestAction/TakeAll	Text		Take All	拿取全部
 CoreEnhance/ExtraChestAction/TakeAllDesc	Text		Take all items from the chest	从箱子拿取所有道具
 CoreEnhance/ExtraChestAction/Replenish	Text		Replenish	补货
@@ -127,3 +127,4 @@ CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Mining Requires Player	
 CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether or not a player is required to Chain Mine.	是否必须由玩家造成伤害才能连锁
 CoreEnhance/Switch/Misc/ReplaceQuickStack	Text		Replace Quick Stack Function	替换快速堆叠功能
 CoreEnhance/Switch/Misc/ReplaceQuickStack/Description	Text		Vanilla function wiil not handle unstackable item (like any weapon)	原版功能不会处理不可堆叠的物品（比如任意武器）
+CoreEnhance/Switch/Misc/PetTalentDisplay	Text		Pet Talents Display	宠物技能显示

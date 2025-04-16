@@ -36,12 +36,12 @@ namespace Assets.CoreEnhance.Scripts
             authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
             authoring.OnObjectTypeAdded += AutoDoorSystem.MarkDoor;
             authoring.OnObjectTypeAdded += ContainerDisplaySystem.MarkHighLight;
-            authoring.OnObjectTypeAdded += Test;
+            //authoring.OnObjectTypeAdded += Test;
         }
 
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            ItemHelper.LogComponent(authoringData, ObjectID.VendingMachine);
+            ItemHelper.LogComponent(authoringData, ObjectID.RobotArm);
         }
 
         public void Init()
