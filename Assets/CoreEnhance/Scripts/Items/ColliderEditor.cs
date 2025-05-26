@@ -1,4 +1,5 @@
-﻿using Unity.Physics.Authoring;
+﻿using Pug.UnityExtensions;
+using Unity.Physics.Authoring;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Items

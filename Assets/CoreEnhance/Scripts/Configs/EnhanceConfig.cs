@@ -40,6 +40,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
             TryAddValue(file, EnhanceCategory.Infinity, EC_Infinity.Arena, 1000, new AcceptableValueRange<int>(100, 9999));
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Merchant, 0, new AcceptableValueRange<int>(0, 3500));
             TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Titan, 5, new AcceptableValueRange<int>(5, 300));
+            TryAddValue(file, EnhanceCategory.Accelerate, EC_Accelerate.Crafting, false, null, "Animals");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 6, new AcceptableValueList<int>(1, 2, 3, 4, 5, 6), "Amount");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Salvage, 5, new AcceptableValueRange<int>(0, 60), "Timer");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.GiveExp, 100, new AcceptableValueRange<int>(0, 100), "Gardening");
@@ -71,7 +72,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
             if (configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
             {
                 ConfigDefinition def = entry.Switch.Definition;
-                entry.SetValue(key, file.Bind(new(def.Section, def.Key + key),
+                entry.AddValue(key, file.Bind(new(def.Section, def.Key + key),
                     defaultV, new(string.Empty, accept), new()));
                 return true;
             }

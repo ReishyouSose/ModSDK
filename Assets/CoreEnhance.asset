@@ -34,6 +34,7 @@ MonoBehaviour:
     - path: Scripts/Scripts/Tiles/RotationTile.cs
     - path: Scripts/Scripts/Tiles/BoulderDemolishEM.cs
     - path: Scripts/Scripts/Tiles/AutoFisherTerminalEM.cs
+    - path: Scripts/Scripts/Tiles/AutoFisherOldEM.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM2.cs
     - path: Scripts/Scripts/Tiles/AutoFisherEM.cs
     - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
@@ -126,8 +127,8 @@ MonoBehaviour:
   assets:
   - path: Assets/CoreEnhance/Items/ArenaScanner.prefab
     hash: C2E2FF6A34182F9390A2B461EAA0993FEE4AF3233BB022CBC8969FB5F20CB790
-  - path: Assets/CoreEnhance/Items/AutoFisherItemLeft.prefab
-    hash: 5C1A1AE87F6B7D6441BC41925E7AA2120DFAF4A62D7160D3787890BAC6AFD1D6
+  - path: Assets/CoreEnhance/Items/AutoFisherItem.prefab
+    hash: B6344E270AAAB852A06F2390F7EC3309540E64EDE5C8DBB946839A2E62E07936
   - path: Assets/CoreEnhance/Items/AutoFisherTerminalItem.prefab
     hash: A958AEA00C08E21B7359D0B3B702554BD572E2B75D83B415DDD7B3D956CE7CF7
   - path: Assets/CoreEnhance/Items/BoulderDemolishItem.prefab
@@ -139,11 +140,11 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Items/WorkBench.asset
     hash: 9062053718B668B71D082E3745AABDF408BEC4F446A07926E158886E787B50C8
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 0A96AC59DBFA65B139354639829DCEF55792C9A0BDEE0EF5FF58C21536FCE30C
+    hash: 7EC5B5E9DA61695D02C9B384C202D450167D87F50BC593894405C5D7BEECA855
   - path: Assets/CoreEnhance/Shaders/IconClipShader.shader
     hash: E6758C11B3E77F4469CC3E09BF359629BAAE60A2E05D5C7299A7ABB163857442
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
-    hash: 42F0255E3BFEE7B404A5422EC5724C3B0809E068F0E30085F2A8B3BFAC4FB340
+    hash: 3F66CE64FCB664AEE35409F3F875A881328A7AABAE8A5CEA9F19A562C9DA35B2
   - path: Assets/CoreEnhance/Sprites/Item/ArenaScanner.png
     hash: 12089301361DE7BCAECC1FA663D8F16D4F0F6CF8E017D6B1A4C5CDAE3C883D37
   - path: Assets/CoreEnhance/Sprites/Item/AutoFisher.png
@@ -314,6 +315,12 @@ MonoBehaviour:
     hash: 93668F2E49CCA53669585481AD5FABEE3565E744680628D226853EAB6B652446
   - path: Assets/CoreEnhance/Tiles/AutoFisher2/AutoFisher2Tile.prefab
     hash: 74434FA2C3484DAD005470C298F821A742DE473B79687FFA97AE1EF346091179
+  - path: Assets/CoreEnhance/Tiles/AutoFisher2/AutoFisherOld.asset
+    hash: A4C3C63CC1D0CF016EB0F9F37889C1E1047C6E6AC435287CF7182818CAE25A13
+  - path: Assets/CoreEnhance/Tiles/AutoFisher2/AutofisherOld.png
+    hash: D8D79354D3DD06A42AA828018281F78874F747B1860EFBADC3CEFFF05A5124B4
+  - path: Assets/CoreEnhance/Tiles/AutoFisher2/AutoFisherTileOld.prefab
+    hash: E24DD79B581CEDFC9AD19AFB2DCBD206E0F2CA85D2603847125CBDD74E10B869
   - path: Assets/CoreEnhance/Tiles/AutoFisher2/Base.asset
     hash: 5A75BC985C9FEF5EB95328495CA5BB3067973056FC8011B77EE0BCC6EA066728
   - path: Assets/CoreEnhance/Tiles/AutoFisher2/Extra.asset

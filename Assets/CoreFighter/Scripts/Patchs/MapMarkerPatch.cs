@@ -1,5 +1,6 @@
 ﻿using Assets.CoreFighter.Scripts.Configs;
 using HarmonyLib;
+using Pug.UnityExtensions;
 using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;

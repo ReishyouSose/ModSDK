@@ -3,6 +3,7 @@ using Assets.CoreEnhance.Scripts.Configs;
 using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Items;
 using CoreLib.Data.Configuration;
+using Pug.UnityExtensions;
 using PugProperties;
 using Unity.Entities;
 using Unity.Mathematics;

@@ -86,7 +86,7 @@ namespace Assets.CoreFighter.Scripts.Configs
             if (configs.TryGetValue(((int)category, (int)ec), out ConfigData entry))
             {
                 ConfigDefinition def = entry.Switch.Definition;
-                entry.SetValue(key, file.Bind(new(def.Section, def.Key + key),
+                entry.AddValue(key, file.Bind(new(def.Section, def.Key + key),
                     defaultV, new(string.Empty, accept), new()));
                 return true;
             }

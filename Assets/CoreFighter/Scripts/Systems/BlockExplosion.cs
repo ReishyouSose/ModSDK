@@ -20,7 +20,7 @@ namespace Assets.CoreFighter.Scripts.Systems.Misc
         private TileAccessor tileAccessor;
         private BufferLookup<LevelEntitiesBuffer> levelEntitiesBufferLookup;
         private ComponentLookup<LevelCD> levelLookup;
-        private ComponentLookup<OwnerCD> ownerLookup;
+        private ComponentLookup<OwnerReferenceCD> ownerLookup;
         private ComponentLookup<PlayerGhost> playerGhostLookup;
         private ComponentLookup<IndestructibleCD> indesctructibleLookup;
         protected override void OnCreate()
@@ -39,7 +39,7 @@ namespace Assets.CoreFighter.Scripts.Systems.Misc
             RequireForUpdate<ExplosionCD>();
             levelEntitiesBufferLookup = SystemAPI.GetBufferLookup<LevelEntitiesBuffer>();
             levelLookup = SystemAPI.GetComponentLookup<LevelCD>();
-            ownerLookup = SystemAPI.GetComponentLookup<OwnerCD>();
+            ownerLookup = SystemAPI.GetComponentLookup<OwnerReferenceCD>();
             playerGhostLookup = SystemAPI.GetComponentLookup<PlayerGhost>();
             indesctructibleLookup = SystemAPI.GetComponentLookup<IndestructibleCD>();
             NeedDatabase();
@@ -98,7 +98,7 @@ namespace Assets.CoreFighter.Scripts.Systems.Misc
                 int tileDamage = valueRW.tileDamage;
                 bool flag = false;
                 Entity causedByEntity = entity;
-                if (ownerLookup.TryGetComponent(entity, out OwnerCD ownerCD))
+                if (ownerLookup.TryGetComponent(entity, out OwnerReferenceCD ownerCD))
                 {
                     causedByEntity = ownerCD.owner;
                     flag = playerGhostLookup.HasComponent(ownerCD.owner);

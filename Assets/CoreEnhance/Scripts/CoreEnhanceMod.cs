@@ -41,7 +41,8 @@ namespace Assets.CoreEnhance.Scripts
 
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            ItemHelper.LogComponent(authoringData, ObjectID.RobotArm);
+            ItemHelper.LogComponent(authoringData, ObjectID.Camel);
+            ItemHelper.LogComponent(authoringData, ObjectID.Cow);
         }
 
         public void Init()

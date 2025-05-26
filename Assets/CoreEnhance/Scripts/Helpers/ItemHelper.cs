@@ -1,5 +1,6 @@
 ﻿using CoreLib.Util.Extensions;
 using PugMod;
+using System;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -82,6 +83,13 @@ namespace Assets.CoreEnhance.Scripts.Helpers
                 {
                     Debug.Log(authoringData.GetComponentAtIndex(i));
                 }
+            }
+        }
+        public static void FindTargetWithComponent<T>(this GameObject authoringData, Func<T, bool> predicate = null) where T : MonoBehaviour
+        {
+            if (authoringData.TryGetComponent<T>(out var t) && predicate?.Invoke(t) != false)
+            {
+                Debug.Log("[Find target] " + authoringData.GetEntityObjectID());
             }
         }
         public static bool HasComponent<T>(this GameObject authoringData) where T : MonoBehaviour

@@ -36,7 +36,10 @@ namespace Assets.THCompass.Compasses
         }
         public static LootTableID AddPetEggs(this LootTableID lt)
         {
-            lt.AddNewDropRange(1, 3, Egg, false, ObjectID.PetBirdEgg, ObjectID.PetBunnyEgg, ObjectID.PetCatEgg, ObjectID.PetDogEgg, ObjectID.PetMothEgg, ObjectID.PetTardigradeEgg, ObjectID.PetMagicEgg);
+            lt.AddNewDropRange(1, 3, Egg, false, ObjectID.PetBirdEgg, ObjectID.PetBunnyEgg,
+                ObjectID.PetCatEgg, ObjectID.PetDogEgg, ObjectID.PetMothEgg,
+                ObjectID.PetTardigradeEgg, ObjectID.PetMagicEgg,
+                ObjectID.PetElectricEgg, ObjectID.PetWarlockEgg);
             return lt;
         }
         public static LootTableID AddAnimals(this LootTableID lt)

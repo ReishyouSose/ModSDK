@@ -14,9 +14,11 @@ namespace Assets.CoreEnhance.Scripts.Systems
     public partial class AccelerateCommonSystem : PugSimulationSystemBase
     {
         private uint tickRate;
+        private ComponentLookup<CattleCD> cattleLookup;
         protected override void OnCreate()
         {
             tickRate = (uint)NetworkingManager.GetSimulationTickRateForPlatform();
+            cattleLookup = SystemAPI.GetComponentLookup<CattleCD>();
             base.OnCreate();
         }
         protected override void OnUpdate()
@@ -24,7 +26,7 @@ namespace Assets.CoreEnhance.Scripts.Systems
             var ecb = CreateCommandBuffer();
             Accelerate_Merchant();
             Accelerate_SoulOrb(ecb, tickRate);
-            Accelerate_Crafting();
+            Accelerate_Crafting(cattleLookup);
             Accelerate_Casting(tickRate);
             Accelerate_Portal(ecb);
             base.OnUpdate();
@@ -103,17 +105,27 @@ namespace Assets.CoreEnhance.Scripts.Systems
             }
         }
 
-        private void Accelerate_Crafting()
+        private void Accelerate_Crafting(ComponentLookup<CattleCD> cattleLookup)
         {
             if (!EnhanceConfig.IsEnable(EnhanceCategory.Accelerate, EC_Accelerate.Crafting))
                 return;
-            Entities.ForEach((ref CraftingCD crafting) =>
+            bool animals = EnhanceConfig.TryGetValue<bool>(EnhanceCategory.Accelerate,
+                EC_Accelerate.Crafting, out var animalConfig, "Animals") && animalConfig.Value;
+
+            Entities.ForEach((Entity e, ref CraftingCD crafting) =>
             {
+                if (crafting.currentlyCraftingIndex < 0)
+                    return;
                 if (crafting.disable != 0)
+                    return;
+                if (crafting.timeLeftToCraft <= 0)
+                    return;
+                if (!animals && cattleLookup.HasComponent(e))
                     return;
                 crafting.timeLeftToCraft = 0;
             })
                 .WithName("Accelerate_Crafting")
+                .WithNone<PlayerGhost>()
                 .WithBurst()
                 .Schedule();
         }

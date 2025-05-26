@@ -1,4 +1,5 @@
 ﻿using Assets.THCompass.Compasses;
+using Pug.UnityExtensions;
 using Unity.Mathematics;
 
 namespace Assets.THCompass.DataStruct

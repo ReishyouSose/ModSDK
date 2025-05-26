@@ -29,11 +29,8 @@ GameObject:
   - component: {fileID: 845021786232025266}
   - component: {fileID: 8411571832227649171}
   - component: {fileID: -3773880519904238061}
-  - component: {fileID: -2528079672868846236}
-  - component: {fileID: 2618188284211853443}
-  - component: {fileID: -898575367224908453}
   m_Layer: 0
-  m_Name: AutoFisherItemLeft
+  m_Name: AutoFisherItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,9 +65,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellValue: 1
   buyValueMultiplier: 1
-  icon: {fileID: 21300000, guid: faa03c1d1f57f3c48b91ecbf9184156f, type: 3}
+  icon: {fileID: 21300000, guid: e58e0285ab9e69a49b68e941a5c8c211, type: 3}
   iconOffset: {x: 0, y: 0}
-  smallIcon: {fileID: 21300000, guid: 15cfd35123b92574994caa3d94d7ddf4, type: 3}
+  smallIcon: {fileID: 21300000, guid: e58e0285ab9e69a49b68e941a5c8c211, type: 3}
   isStackable: 1
   requiredObjectsToCraft:
   - objectName: PileOfChum
@@ -104,7 +101,7 @@ MonoBehaviour:
   objectType: 800
   tags: 
   rarity: 1
-  graphicalPrefab: {fileID: 1881095102312471513, guid: cfdd8468b8818d14fa57abe990c084fa,
+  graphicalPrefab: {fileID: 7990330470829160026, guid: 3adbb9329468a6e4e8aacf1d22077488,
     type: 3}
   isCustomScenePrefab: 0
   additionalSprites: []
@@ -333,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 793611198, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playFailedEffectOnZeroDamage: 0
 --- !u!114 &1190940595796060340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,9 +351,8 @@ MonoBehaviour:
   maxHealthMultiplier: 1
   hasHealthRegeneration: 1
   healInCombatAsWell: 0
-  healDirectlyWhenLeavingCombat: 0
-  healthPercentagePerFifthSecond: 100
-  startHealDelay: 5
+  healthIncreasePercentPerFiveSeconds: 100
+  healDelayAfterLeavingCombat: 5
   level: {fileID: 0}
 --- !u!114 &-3083998134496899010
 MonoBehaviour:
@@ -530,86 +527,3 @@ MonoBehaviour:
   m_Script: {fileID: -2043779946, guid: a25fd8c6d4fbb824e9d4fe4466f12a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2528079672868846236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1631903901, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circuitType: 0
-  direction: {x: 0, y: 0}
-  blocksElectricity: 0
-  sourceEnergy: 0
-  isLever: 0
-  isCrossConnector: 0
-  isWire: 0
---- !u!114 &2618188284211853443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 622530669, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectsLayer:
-    Category00: 0
-    Category01: 0
-    Category02: 0
-    Category03: 0
-    Category04: 0
-    Category05: 0
-    Category06: 0
-    Category07: 0
-    Category08: 0
-    Category09: 0
-    Category10: 0
-    Category11: 0
-    Category12: 0
-    Category13: 0
-    Category14: 0
-    Category15: 0
-    Category16: 0
-    Category17: 0
-    Category18: 0
-    Category19: 0
-    Category20: 0
-    Category21: 0
-    Category22: 0
-    Category23: 0
-    Category24: 0
-    Category25: 0
-    Category26: 0
-    Category27: 0
-    Category28: 0
-    Category29: 0
-    Category30: 0
-    Category31: 0
-  radius: 0
---- !u!114 &-898575367224908453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548004899387042758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 74837128, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialDirection:
-    x: 0
-    y: 0
-    z: -1
-  rotatePhysics: 0
-  rotationIconOffset: 0

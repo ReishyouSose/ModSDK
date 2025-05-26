@@ -27,3 +27,9 @@ MonoBehaviour:
     - modName: CoreLib.RewiredExtension
       required: 1
   modPath: Assets\MyTest
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets: []
+  lastBuildLinux: 0

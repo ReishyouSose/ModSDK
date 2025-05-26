@@ -1,4 +1,5 @@
-﻿using PugMod;
+﻿using Pug.UnityExtensions;
+using PugMod;
 using System;
 using Unity.Collections;
 using Unity.Entities;

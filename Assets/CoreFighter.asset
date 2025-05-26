@@ -33,11 +33,8 @@ MonoBehaviour:
     - path: Scripts/Scripts/Configs/FighterConfig.cs
     - path: Scripts/Scripts/Configs/FighterCategory.cs
     - path: Scripts/Scripts/Configs/AttackSpeedModifier.cs
-    - path: Scripts/Generated/AttackSpeed__System_18920313030.g.cs
-    - path: Scripts/Generated/BlockExplosion__System_9781848300.g.cs
-    - path: Scripts/Generated/InfinityExplosive__System_8506731810.g.cs
-    - path: Scripts/Generated/InfinityMana__System_12443208410.g.cs
     - path: Bundles/CoreFighter_Windows.assetbundle
+    - path: Bundles/CoreFighter_Linux.assetbundle
     dependencies:
     - modName: CoreEnhance
       required: 1
@@ -48,5 +45,5 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/CoreFighter/Localization/Localization.csv
-    hash: 947E6D1073ED67D3249EE9EA6D7771B372575DF1710B2B8A585D948567C70239
+    hash: 8451A2C116186FFE8722196B4F04E62F170518451D7142E04413D1682F66FC94
   lastBuildLinux: 1

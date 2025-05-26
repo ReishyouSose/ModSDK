@@ -87,6 +87,8 @@ CoreEnhance/Value/Accelerate/Titan	Text		Titan CD	泰坦冷却
 CoreEnhance/Value/Accelerate/Titan/Description	Text		"In seconds
 Equal to existence time of soul orb"	"单位为秒
 等同于灵魂球存在时间"
+CoreEnhance/Value/Accelerate/CraftingAnimals	Text		Block Animals	阻止牲畜
+CoreEnhance/Value/Accelerate/CraftingAnimals/Description	Text		Whether Accelerate-Crafting is effective on animals	“加速—制造”的效果是否对牲畜生效
 CoreEnhance/Switch/Accelerate/Crafting	Text		Crafting	制造
 CoreEnhance/Switch/Accelerate/Crafting/Description	Text		For example, smelting, cooking, hatching eggs, etc.	例如，冶炼、烹饪、孵蛋等
 CoreEnhance/Switch/Accelerate/Casting	Text		Casting	使用

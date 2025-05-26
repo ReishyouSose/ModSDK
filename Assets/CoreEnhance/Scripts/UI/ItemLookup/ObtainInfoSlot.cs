@@ -1,4 +1,5 @@
 ﻿using Assets.CoreEnhance.Scripts.Helpers;
+using Pug.UnityExtensions;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.UI.ItemLookup

@@ -12,7 +12,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
             Switch = @switch;
         }
         public bool Enable => Switch.Value;
-        public bool SetValue(string key, ConfigEntryBase value)
+        public bool AddValue(string key, ConfigEntryBase value)
         {
             Values ??= new();
             return Values.TryAdd(key, value);

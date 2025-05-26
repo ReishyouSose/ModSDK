@@ -4,6 +4,7 @@ using Assets.THCompass.DropManager.Rule;
 using Assets.THCompass.Helper;
 using Assets.THCompass.System;
 using CoreLib.Drops;
+using Pug.UnityExtensions;
 using System;
 using System.Collections.Generic;
 using Unity.Collections;

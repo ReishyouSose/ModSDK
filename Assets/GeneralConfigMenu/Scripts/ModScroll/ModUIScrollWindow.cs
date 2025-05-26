@@ -1,4 +1,5 @@
 ﻿using Pug.Sprite;
+using Pug.UnityExtensions;
 using System;
 using System.Collections.Generic;
 using Unity.Mathematics;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pug.UnityExtensions;
+using System;
 using Random =  Unity.Mathematics.Random;
 
 namespace Assets.THCompass.Helper

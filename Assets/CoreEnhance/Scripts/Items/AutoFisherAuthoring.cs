@@ -19,6 +19,7 @@ namespace Assets.CoreEnhance.Scripts.Items
     [GhostComponent]
     public struct AutoFisherCD : IComponentData
     {
+        public bool init;
         public int require;
         public int timer;
         public int wait;

@@ -1,9 +1,10 @@
 ﻿using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Items;
+using CoreLib.Util.Extensions;
 using Pug.Sprite;
+using System;
 using System.Collections;
 using Unity.Mathematics;
-using Unity.Transforms;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Tiles
@@ -35,13 +36,14 @@ namespace Assets.CoreEnhance.Scripts.Tiles
         protected override void Awake()
         {
             //HookSprite.gameObject.SetActive(false);
-            GetComponent<RotationTile>().ExtraRotEvent += ExtraRot;
             base.Awake();
+            GetComponent<RotationTile>().ExtraRotEvent += ExtraRot;
         }
 
         private void ExtraRot(float3 dir, int index)
         {
-            WaterPos = EntityUtility.GetComponentData<LocalTransform>(entity, world).Position + dir;
+            WaterPos = transform.position + Vector3.up * 0.375f;
+            WaterPos += dir.ToVector3();
             dirIndex = index;
             var pos = MainPos[index];
             if (pos != Vector3.zero)
@@ -69,7 +71,7 @@ namespace Assets.CoreEnhance.Scripts.Tiles
             Light.gameObject.SetActive(EntityUtility.GetComponentData<ElectricityCD>(entity, world)
                 .hasEnoughElectricityToPowerStuff);
             var rod = info.rodLevel;
-            /*if (oldRod != rod)
+            if (oldRod != rod)
             {
                 oldRod = rod;
                 if (rod > 0)
@@ -81,7 +83,7 @@ namespace Assets.CoreEnhance.Scripts.Tiles
                     StopAndReset(dirIndex);
                     HookSprite.gameObject.SetActive(false);
                 }
-            }*/
+            }
             if (oldState != state)
             {
                 oldState = state;
@@ -105,7 +107,7 @@ namespace Assets.CoreEnhance.Scripts.Tiles
             HookSprite.PlayAnimationByIndex(0, dirIndex);
             yield return new WaitForSeconds(0.4f);
             Manager.effects.PlayPuff(PuffID.SmallWaterSplash, WaterPos, 1);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.35f);
             StopAndReset(dirIndex + 4);
             yield return null;
             yield break;
@@ -116,7 +118,7 @@ namespace Assets.CoreEnhance.Scripts.Tiles
             HookSprite.PlayAnimationByIndex(0, dirIndex + 4);
             yield return new WaitForSeconds(0.4f);
             Manager.effects.PlayPuff(PuffID.SmallWaterSplash, WaterPos, 1);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.35f);
             StopAndReset(dirIndex);
             yield return null;
             yield break;

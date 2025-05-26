@@ -1,5 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Configs;
 using CoreLib.Data.Configuration;
+using Pug.UnityExtensions;
 using System;
 using Unity.Collections;
 using Unity.Entities;

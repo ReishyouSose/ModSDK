@@ -1,4 +1,5 @@
 ﻿using Inventory;
+using Pug.UnityExtensions;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.NetCode;
@@ -41,12 +42,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
     public partial class PetModifierServer : PugSimulationSystemBase
     {
         private ComponentLookup<PetCD> petLookup;
-        private ComponentLookup<EquipmentCD> equipLookup;
+        private ComponentLookup<PetOwnerCD> petOwnerLookup;
         private BufferLookup<ContainedObjectsBuffer> containerLookup;
         protected override void OnCreate()
         {
             petLookup = SystemAPI.GetComponentLookup<PetCD>();
-            equipLookup = SystemAPI.GetComponentLookup<EquipmentCD>();
+            petOwnerLookup = SystemAPI.GetComponentLookup<PetOwnerCD>();
             containerLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             NeedDatabase();
             base.OnCreate();
@@ -58,12 +59,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 var ecb = CreateCommandBuffer();
                 var database = this.database;
                 var petLookup = this.petLookup;
-                var equipLookup = this.equipLookup;
+                var petOwnerLookup = this.petOwnerLookup;
                 var containerLookup = this.containerLookup;
                 Entities.ForEach((Entity e, in ResetPetSkinRPC rpc) =>
                 {
                     var player = rpc.Player;
-                    int index = equipLookup[player].petIndex;
+                    int index = petOwnerLookup[player].SlotIndex;
                     invChangeBuffer.Add(new()
                     {
                         inventoryChangeData = Create.ConsumeObjectType(player, ObjectID.AncientCoin, 200),
