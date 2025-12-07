@@ -37,5 +37,6 @@
         ContainerDisplay,//容器显示 done
         ReplaceQuickStack,//替换原版快速堆叠 done
         PetTalentDisplay,//宠物技能显示done
+        CloseMoreChestButton,
     }
 }

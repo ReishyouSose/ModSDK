@@ -345,6 +345,7 @@ MonoBehaviour:
   hideInStreamerMode: 0
   maxWidth: 0
   textString: CoreEnhance/ObtainWay
+  textSuffix: 
   formatFields: []
   overrideMaterial: {fileID: 0}
   offsetKey: 
@@ -569,6 +570,7 @@ MonoBehaviour:
   hideInStreamerMode: 0
   maxWidth: 0
   textString: 
+  textSuffix: 
   formatFields: []
   overrideMaterial: {fileID: 0}
   offsetKey: 
@@ -1579,6 +1581,7 @@ MonoBehaviour:
   darkBackground: {fileID: 0}
   hoverBorder: {fileID: 3549382167827955130}
   activeBorder: {fileID: 137791462794291013}
+  highlightBorder: {fileID: 0}
   dontWrapAroundNavigation: 0
   upgradeIcon: {fileID: 0}
   upgradeSprites: []
@@ -1733,6 +1736,7 @@ MonoBehaviour:
   hideInStreamerMode: 0
   maxWidth: 0
   textString: 
+  textSuffix: 
   formatFields: []
   overrideMaterial: {fileID: 0}
   offsetKey: 

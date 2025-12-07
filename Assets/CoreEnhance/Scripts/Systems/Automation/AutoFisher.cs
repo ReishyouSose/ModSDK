@@ -260,12 +260,13 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 if (!af.init)
                 {
                     var biome = biomeLookup.GetBiome(pos);
-                    Tileset tileSet = (Tileset)tileAccessor.GetTop(pos).tileset;
-                    FishingInfoData info = fishingTable.GetFishingInfoFromWaterTileset(tileSet);
+                    int ts = tileAccessor.GetTop(pos).tileset;
+                    Tileset tileSet = (Tileset)ts;
+                    FishingInfoData info = fishingTable.Value.Value.fishingInfoByWaterTileset[ts];
                     af.require = FishingTable.GetSkillRequiredForWater(tileSet);
                     if (info.lootTableID == LootTableID.Empty || tileSet == Tileset.Dirt)
                     {
-                        info = fishingTable.GetFishingInfoFromBiome(biome);
+                        info = fishingTable.Value.Value.fishingInfoByBiome[(int)biome];
                         af.require = FishingTable.GetSkillRequiredForBiome(biome);
                     }
                     af.fishes = info.fishLootTableID;

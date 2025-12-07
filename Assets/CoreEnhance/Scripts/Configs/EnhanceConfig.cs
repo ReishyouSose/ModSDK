@@ -1,15 +1,17 @@
 ﻿using CoreLib.Data.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.CoreEnhance.Scripts.Configs
 {
     public class EnhanceConfig
     {
-        private static EnhanceConfig Ins;
+        internal static EnhanceConfig Ins => ins ??= new();
+        private static EnhanceConfig ins;
         private readonly Dictionary<(int, int), ConfigData> configs;
-        internal static void Load() => Ins = new();
+        internal static void Load() => ins ??= new();
         public EnhanceConfig()
         {
             configs = new();
@@ -33,6 +35,7 @@ namespace Assets.CoreEnhance.Scripts.Configs
                 }
             }
             AddValue(new("CoreEnhance/Value.cfg", true));
+            ScopeAdjust(file);
         }
 
         private void AddValue(ConfigFile file)
@@ -50,6 +53,13 @@ namespace Assets.CoreEnhance.Scripts.Configs
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Plant, 10, new AcceptableValueRange<int>(10, 100), "Nature");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Plant, 10, new AcceptableValueRange<int>(10, 100), "Sea");
             TryAddValue(file, EnhanceCategory.Automation, EC_Automation.Plant, 10, new AcceptableValueRange<int>(10, 100), "Desert");
+        }
+
+        private void ScopeAdjust(ConfigFile file)
+        {
+            ConfigEntryBase config = file.Entries.FirstOrDefault(x => x.Key.Section == EnhanceCategory.Misc.ToString() && x.Key.Key == EC_Misc.CloseMoreChestButton.ToString()).Value;
+            config.Scope.RequireReload = true;
+            config.Scope.AccessLevel = ConfigAccessLevel.Client;
         }
 
         /// <summary>

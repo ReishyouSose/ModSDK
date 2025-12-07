@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Unity.Entities;
-using UnityEngine;
 using static PugDatabase;
 
 namespace Assets.CoreEnhance.Scripts.Patchs
@@ -78,10 +77,11 @@ namespace Assets.CoreEnhance.Scripts.Patchs
 
         private static bool HasEnoughCoin(PlayerController player)
         {
-            BufferLookup<ContainedObjectsBuffer> bufferLookup = player.querySystem.GetBufferLookup<ContainedObjectsBuffer>(true);
+            BufferLookup<ContainedObjectsBuffer> container = player.querySystem.GetBufferLookup<ContainedObjectsBuffer>(true);
+            BufferLookup<InventoryBuffer> inventory = player.querySystem.GetBufferLookup<InventoryBuffer>(true);
             DatabaseBankCD singleton = Manager.ecs.ClientWorld.EntityManager.GetDatabaseBankCD();
             //player.querySystem.GetSingleton<DatabaseBankCD>();
-            return InventoryUtility.GetTotalAmount(bufferLookup, singleton, player.entity, ObjectID.AncientCoin) >= 200;
+            return InventoryUtility.GetTotalAmount(container, inventory, singleton, player.entity, ObjectID.AncientCoin) >= 200;
         }
         private static void ResetSkin()
         {

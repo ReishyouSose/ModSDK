@@ -21,6 +21,8 @@ namespace Assets.CoreEnhance.Scripts.Patchs
         [HarmonyPostfix]
         private static void AddExtraButton(InventoryUI __instance)
         {
+            if (EnhanceConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.CloseMoreChestButton))
+                return;
             var origin = __instance.optionalQuickStackButton;
             if (origin == null)
                 return;
@@ -64,6 +66,8 @@ namespace Assets.CoreEnhance.Scripts.Patchs
         [HarmonyPostfix]
         private static void UpdatePosition(InventoryUI __instance)
         {
+            if (EnhanceConfig.IsEnable(EnhanceCategory.Misc, EC_Misc.CloseMoreChestButton))
+                return;
             var inventoryHandler = __instance.GetInventoryHandler();
             Chest chest = inventoryHandler.entityMonoBehaviour as Chest;
             var quickStack = __instance.optionalQuickStackButton;

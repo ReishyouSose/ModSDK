@@ -66,6 +66,25 @@ namespace Assets.CoreEnhance.Scripts
                 EntityModule.AddModWorkbench(workbenchDefinition);
             }
         }
+        /*public void ModObjectLoaded(Object obj)
+        {
+            if (obj == null) return;
+            if (obj is not GameObject gameObject) return;
+
+            var objectAuthoring = gameObject.GetComponent<ObjectAuthoring>();
+            var entityData = gameObject.GetComponent<EntityMonoBehaviourData>();
+            if (objectAuthoring != null || entityData != null)
+            {
+                Log.LogInfo($"Registering {gameObject.name} for authoring!");
+                EntityModule.AddToAuthoringList(gameObject);
+            }
+
+            var entityMono = gameObject.GetComponent<EntityMonoBehaviour>();
+            if (entityMono != null)
+            {
+                EntityModule.EnablePooling(gameObject);
+            }
+        }*///Limoka提示的对象池修复
 
         public void Shutdown()
         {

@@ -130,3 +130,7 @@ CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether or not a 
 CoreEnhance/Switch/Misc/ReplaceQuickStack	Text		Replace Quick Stack Function	替换快速堆叠功能
 CoreEnhance/Switch/Misc/ReplaceQuickStack/Description	Text		Vanilla function wiil not handle unstackable item (like any weapon)	原版功能不会处理不可堆叠的物品（比如任意武器）
 CoreEnhance/Switch/Misc/PetTalentDisplay	Text		Pet Talents Display	宠物技能显示
+CoreEnhance/Switch/Misc/CloseMoreChestButton	Text		Close More Chest Button	关闭新增宝箱按钮
+CoreEnhance/Switch/Misc/CloseMoreChestButton/Description	Text		"Whether to turn off the newly added chest UI buttons (quick stack, put all, take all, restock, etc.)
+According to feedback, it has a bug, but the triggering reason is unclear"	"是否关闭新增的宝箱整理按钮，（快速堆叠、放入全部、拿取全部、补货等等）
+根据反馈，这个功能有bug，但触发原因不明"
