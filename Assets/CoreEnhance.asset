@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: CoreEnhance
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 512af5363e584954991d6f7214f5cd8d
+    name: CoreEnhance
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
+      guid: 5bac40d44c88ce742bbeca053dd6537c
+    - path: Scripts/Scripts/Systems/Misc/DeathNoDrop.cs
+      guid: bae06273d2dd48746a97ddca4767d4e7
+    - path: Scripts/Scripts/Systems/Misc/ChainMining.cs
+      guid: 92292b46d4932b4439e8102403660c2c
+    - path: Scripts/Scripts/Systems/Infinity/Durability.cs
+      guid: f692dee60a48e3a4c80988b80799bfa3
+    - path: Scripts/Scripts/Systems/Infinity/Common.cs
+      guid: 3461af39146547a4d9fd0cd87419a551
+    - path: Scripts/Scripts/Systems/Infinity/Arena.cs
+      guid: bf4a928d81c8cc8458c2f8f9ccbd7377
+    - path: Scripts/Scripts/Systems/Automation/Door.cs
+      guid: 513d9244a8201a6488ea56297cd0141c
+    - path: Scripts/Scripts/Systems/Accelerate/Level.cs
+      guid: 6a887d61d61b0994a8863d950b8981f9
+    - path: Scripts/Scripts/Systems/Accelerate/Crafting.cs
+      guid: da0702fc1c5c4704dbedc9170d922b24
+    - path: Scripts/Scripts/Systems/Accelerate/Common.cs
+      guid: 8a058387ff0ef5745b31bc2f98b5d58b
+    - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
+      guid: 8504d1659690a334e8b7709bb4d507eb
+    - path: Scripts/Scripts/Helpers/TileHelper.cs
+      guid: 7ce6ac70fa3fdfc48b12a347dcb13b95
+    - path: Scripts/Scripts/Helpers/MiscHelper.cs
+      guid: 86432b1b54b40ea46a01a312a07589ee
+    - path: Scripts/Scripts/Helpers/MathHelper.cs
+      guid: 2dbb5d75b243ec640b3df48705c03a99
+    - path: Scripts/Scripts/Helpers/ItemHelper.cs
+      guid: 230e6abaa6b5bad42913b11b98c581a7
+    - path: Scripts/Scripts/Components/ProcessedTagCD.cs
+      guid: 94d85382e27dbe54a910a675c686b4b7
+    - path: Scripts/CoreEnhance.cs
+      guid: 77b31bc24fa1a6b4b82cceab5847b20f
+    - path: Scripts/Generated/Arena__System_21345283780.g.cs
+      guid: 
+    - path: Scripts/Generated/ChainMining__System_4927882160.g.cs
+      guid: 
+    - path: Scripts/Generated/Common__System_3326017700.g.cs
+      guid: 
+    - path: Scripts/Generated/Common__System_7055668610.g.cs
+      guid: 
+    - path: Scripts/Generated/Crafting__System_2959574260.g.cs
+      guid: 
+    - path: Scripts/Generated/DeathNoDrop__System_3285046110.g.cs
+      guid: 
+    - path: Scripts/Generated/Door__System_5961554220.g.cs
+      guid: 
+    - path: Scripts/Generated/Durability__System_20098094000.g.cs
+      guid: 
+    - path: Scripts/Generated/Level__System_11224993260.g.cs
+      guid: 
+    - path: Scripts/Generated/OpenLockedChest__System_11022013290.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_QuickOpenLockedChestRPCCommandSerializer.cs
+      guid: 
+    - path: Bundles/CoreEnhance_Windows.assetbundle
+      guid: 
+    - path: Bundles/CoreEnhance_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/CoreEnhance_Linux.assetbundle
+      guid: 
+    - path: Bundles/CoreEnhance_Linux.assetbundle.manifest
+      guid: 
+    dependencies: []
+  modPath: Assets\CoreEnhance
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets:
+  - path: Assets/CoreEnhance/Data/CoreEnhance.asset
+    hash: B2BC2770B69F6EB9CC8C80875F0425753B7050DFC9F4E414B552855DFF5A8EF3
+  lastBuildLinux: 1

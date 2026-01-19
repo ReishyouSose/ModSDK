@@ -1,0 +1,290 @@
+using PugMod;
+using System.Collections.Generic;
+using System.Text;
+using Unity.Entities;
+using UnityEngine;
+
+public class LootsLookup : IMod
+{
+    private static Dictionary<ObjectID, DropLootAuthoring> loots;
+    private static Dictionary<ObjectID, MerchantAuthoring> shops;
+    private static Dictionary<ObjectID, CraftingAuthoring> recipes;
+    private static Dictionary<ObjectID, LootTableID> chests;
+    private static Dictionary<ObjectID, ChangeVariationWhenContainingObjectAuthoring> lockedChests;
+
+    public void EarlyInit()
+    {
+        var authoring = API.Authoring;
+        authoring.OnObjectTypeAdded += CheckData;
+    }
+
+    private void CheckData(Entity entity, GameObject authoringData, EntityManager entityManager)
+    {
+        ObjectID id = GetEntityObjectID(authoringData);
+        if (authoringData.TryGetComponent<DropLootAuthoring>(out var dropLoot))
+        {
+            loots ??= new();
+            loots[id] = dropLoot;
+        }
+        if (authoringData.TryGetComponent<MerchantAuthoring>(out var merchant))
+        {
+            shops ??= new();
+            shops[id] = merchant;
+        }
+        if (authoringData.TryGetComponent<CraftingAuthoring>(out var crafting))
+        {
+            recipes ??= new();
+            recipes[id] = crafting;
+        }
+        if (authoringData.TryGetComponent<InventoryAuthoring>(out var inventory))
+        {
+            if (inventory.addLootFromTable != LootTableID.Empty)
+            {
+                chests ??= new();
+                chests[id] = inventory.addLootFromTable;
+            }
+        }
+        if (authoringData.TryGetComponent<ChangeVariationWhenContainingObjectAuthoring>(out var chest))
+        {
+            lockedChests ??= new();
+            lockedChests[id] = chest;
+        }
+    }
+
+    public void Init()
+    {
+    }
+
+    public void ModObjectLoaded(Object obj)
+    {
+    }
+
+    public void Shutdown()
+    {
+    }
+
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.K))
+        {
+            if (Manager.ui.currentSelectedUIElement is not SlotUIBase slot)
+                return;
+
+            ObjectID id = slot.GetContainedObject().objectID;
+            GetItemObtainSources(id);
+        }
+    }
+
+    public static ObjectID GetEntityObjectID(GameObject gameObject)
+    {
+        var entityMonoBehaviorData = gameObject.GetComponent<EntityMonoBehaviourData>();
+        var objectAuthoring = gameObject.GetComponent<ObjectAuthoring>();
+
+        if (entityMonoBehaviorData != null)
+        {
+            return entityMonoBehaviorData.objectInfo.objectID;
+        }
+        if (objectAuthoring != null)
+        {
+            return API.Authoring.GetObjectID(objectAuthoring.objectName);
+        }
+
+        return 0;
+    }
+    public static void NewText(string msg)
+    {
+        Manager.ui.chatWindow.AddInfoText(new string[1] { msg }, ChatWindow.MessageTextType.Sent);
+    }
+    public static void GetItemObtainSources(ObjectID targetId)
+    {
+        StringBuilder result = new();
+        bool foundAny = false;
+
+        // 获取物品名称
+        string itemName = I2.Loc.LocalizationManager.GetTranslation("Items/" + targetId);
+        if (string.IsNullOrEmpty(itemName))
+            itemName = targetId.ToString();
+
+        result.AppendLine($"物品: {itemName} (ID: {(int)targetId})");
+        result.AppendLine("获取方式:");
+        result.AppendLine("=".PadRight(40, '='));
+
+        // 1. 查询掉落表（最通用的方式）
+        var lootTables = Manager.mod.LootTable;
+
+        // 检查所有掉落表
+        foreach (var lootTable in lootTables)
+        {
+            bool foundInThisTable = false;
+
+            // 检查保底掉落
+            foreach (var loot in lootTable.guaranteedLootInfos)
+            {
+                if (loot.objectID == targetId)
+                {
+                    result.AppendLine($"[掉落表] {lootTable.id}");
+                    result.AppendLine($"  类型: 保底掉落");
+                    result.AppendLine($"  几率: {loot.editorVisualDropChance:P2}");
+                    result.AppendLine();
+                    foundAny = true;
+                    foundInThisTable = true;
+                    break;
+                }
+            }
+
+            // 检查普通掉落
+            if (!foundInThisTable)
+            {
+                foreach (var loot in lootTable.lootInfos)
+                {
+                    if (loot.objectID == targetId)
+                    {
+                        result.AppendLine($"[掉落表] {lootTable.id}");
+                        result.AppendLine($"  类型: 普通掉落");
+                        result.AppendLine($"  几率: {loot.editorVisualDropChance:P2}");
+                        result.AppendLine();
+                        foundAny = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 2. 查询自定义掉落组件
+        if (loots != null)
+        {
+            foreach (var (sourceId, lootInfo) in loots)
+            {
+
+                // 自定义掉落
+                if (lootInfo.hasCustomLoot)
+                {
+                    foreach (var loot in lootInfo.customLoot.Values)
+                    {
+                        if (loot.lootDropID == targetId)
+                        {
+                            result.AppendLine($"[掉落] {GetObjectName(sourceId)}");
+                            result.AppendLine($"  类型: 自定义掉落");
+                            result.AppendLine($"  几率: {lootInfo.customLoot.chance:P2}");
+                            result.AppendLine();
+                            foundAny = true;
+                            break;
+                        }
+                    }
+                }
+
+                // 受伤害时掉落
+                if (lootInfo.hasLootDropsOnTakingDamage)
+                {
+                    var loot = lootInfo.lootDropsWhenDamaged.dropsLoot;
+                    if (loot == targetId)
+                    {
+                        result.AppendLine($"[掉落] {GetObjectName(sourceId)}");
+                        result.AppendLine($"  类型: 受伤害时掉落");
+                        result.AppendLine($"  几率: 100%");
+                        result.AppendLine();
+                        foundAny = true;
+                    }
+                }
+
+                // 使用时掉落
+                if (lootInfo.hasLootDropsOnUse)
+                {
+                    foreach (var loot in lootInfo.onUseLootDrops.lootDrops)
+                    {
+                        if (loot.lootDropID == targetId)
+                        {
+                            result.AppendLine($"[掉落] {GetObjectName(sourceId)}");
+                            result.AppendLine($"  类型: 使用时掉落");
+                            result.AppendLine($"  数量: {loot.amount}");
+                            result.AppendLine($"  几率: {loot.chance:P2}");
+                            result.AppendLine();
+                            foundAny = true;
+                            break;
+                        }
+                    }
+                }
+
+                // 季节性掉落
+                if (lootInfo.hasSeasonalLoot)
+                {
+                    foreach (var season in lootInfo.seasonalLootDrops.lootDrops)
+                    {
+                        foreach (var loot in season.lootDrops)
+                        {
+                            if (loot.lootDropID == targetId)
+                            {
+                                result.AppendLine($"[掉落] {GetObjectName(sourceId)}");
+                                result.AppendLine($"  类型: 季节性掉落");
+                                result.AppendLine($"  季节: {season.season}");
+                                result.AppendLine($"  几率: {loot.chance:P2}");
+                                result.AppendLine();
+                                foundAny = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. 查询商店
+        if (shops != null)
+        {
+            foreach (var (npcId, shopInfo) in shops)
+            {
+                foreach (var item in shopInfo.items)
+                {
+                    if (item.objectID == targetId)
+                    {
+                        result.AppendLine($"[商店] {GetObjectName(npcId)}");
+                        result.AppendLine($"  类型: 商店出售");
+                        if (!string.IsNullOrEmpty(item.requirementToBeAvailable.ToString()))
+                            result.AppendLine($"  要求: {item.requirementToBeAvailable}");
+                        result.AppendLine();
+                        foundAny = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 4. 查询制作配方
+        if (recipes != null)
+        {
+            foreach (var (stationId, recipeInfo) in recipes)
+            {
+                foreach (var recipe in recipeInfo.canCraftObjects)
+                {
+                    if (recipe.objectID == targetId)
+                    {
+                        result.AppendLine($"[制作] {GetObjectName(stationId)}");
+                        result.AppendLine($"  单次制作数量: {recipe.amount}");
+                        result.AppendLine();
+                        foundAny = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!foundAny)
+        {
+            result.AppendLine("无渠道");
+            Debug.Log(result.ToString());
+            NewText("未找到该物品的任何获取方式");
+            return;
+        }
+        NewText("查询成功，已复制到剪贴板");
+        Debug.Log(GUIUtility.systemCopyBuffer = result.ToString());
+    }
+
+    // 辅助方法：获取物品名称
+    private static string GetObjectName(ObjectID id)
+    {
+        string name = I2.Loc.LocalizationManager.GetTranslation("Items/" + id);
+        if (!string.IsNullOrEmpty(name))
+            return name;
+        return id.ToString();
+    }
+}
