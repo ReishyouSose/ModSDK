@@ -1,4 +1,7 @@
-﻿using Pug.UnityExtensions;
+﻿using Assets.CoreEnhance.Scripts.Components;
+using Assets.CoreEnhance.Scripts.Cores;
+using CoreLib.Data.Configuration;
+using Pug.UnityExtensions;
 using System;
 using Unity.Collections;
 using Unity.Entities;
@@ -12,7 +15,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
     public struct ArenaRecordCD : IComponentData
     {
         public float time;
-        public bool chest;
+        public bool chestCleared;
     }
 
 
@@ -40,6 +43,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.TryGetValue(EnhanceCategory.Arena, out ConfigEntry<int> value))
+                return;
             var ecb = CreateCommandBuffer();
             Entities.ForEach((Entity entity) =>
             {
@@ -56,7 +61,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
             var disLookup = this.disLookup;
             var healthLookup = this.healthLookup;
             var objDataLookup = this.objDataLookup;
-            var count = 1000;
+            var count = value.Value;
             Entities.ForEach((Entity entity, ref ArenaRecordCD arena, in LocalTransform local) =>
             {
                 if (!disLookup.TryGetComponent(entity, out var dis))
@@ -68,10 +73,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                 {
                     NativeList<ColliderCastHit> hits;
                     float3 pos = local.Position;
-                    if (!arena.chest)
+                    if (!arena.chestCleared)
                     {
                         hits = new(Allocator.Temp);
-                        collision.SphereCastAll(pos, 1, float3.zero, 0, ref hits, CollisionFilter.Default);
+                        collision.SphereCastAll(pos, 1.5f, float3.zero, 0, ref hits, CollisionFilter.Default);
                         bool has = false;
                         foreach (var hit in hits)
                         {
@@ -86,7 +91,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                         hits.Dispose();
                         if (has)
                             return;
-                        arena.chest = true;
+                        arena.chestCleared = true;
                     }
 
                     arena.time++;
@@ -121,8 +126,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                         int index = PugRandom.GetRng().NextInt(5);
                         GetArenaScene(index, out var sceneName, out var radius, out var offset);
 
-                        Entity name = ecb.CreateEntity();
-                        ecb.AddComponent(name, new CustomSceneCD { name = sceneName });
+                        /*Entity name = ecb.CreateEntity();
+                        ecb.AddComponent(name, new CustomSceneCD { name = sceneName });*/
 
                         hits = new(Allocator.Temp);
                         collision.SphereCastAll(pos - offset.ToFloat3(), radius, float3.zero, 0, ref hits, CollisionFilter.Default);
@@ -153,6 +158,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                             name = sceneName,
                             seed = PugRandom.GetSeed()
                         });
+                        ecb.AddComponent<ProcessedTagCD>(spawn);
                         ecb.DestroyEntity(entity);
                     }
                 }

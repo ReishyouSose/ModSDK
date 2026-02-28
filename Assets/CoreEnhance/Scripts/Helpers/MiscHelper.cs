@@ -2,7 +2,7 @@
 using UnityEngine;
 using static CombatText;
 
-namespace Assets.CoreEnhance.Helpers
+namespace Assets.CoreEnhance.Scripts.Helpers
 {
     public static class MiscHelper
     {

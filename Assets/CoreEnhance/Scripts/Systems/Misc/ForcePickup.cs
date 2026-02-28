@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Unity.Entities;
 using Unity.NetCode;
 
 namespace Assets.CoreEnhance.Scripts.Systems
@@ -10,6 +11,8 @@ namespace Assets.CoreEnhance.Scripts.Systems
     {
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.IgnoreRayChecksForPickup))
+                return;
             Entities.ForEach((ref PickUpItemCD pickup) =>
             {
                 if (pickup.state != PickUpItemState.ForcePickUp)

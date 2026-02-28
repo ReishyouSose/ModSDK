@@ -1,4 +1,5 @@
-﻿using Pug.Automation;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Pug.Automation;
 using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
@@ -8,12 +9,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class AccelerateCraftingSystem : PugSimulationSystemBase
     {
+        private ComponentLookup<CattleCD> cattleLookup;
         private ComponentLookup<BigEntityRefCD> bigLookup;
         private ComponentLookup<CraftingCD> craftingLookup;
         private ComponentLookup<CrafterForSlotCD> slotLookup;
         private BufferLookup<CraftingTimerSlotBuffer> timerLookup;
         protected override void OnCreate()
         {
+            cattleLookup = SystemAPI.GetComponentLookup<CattleCD>();
             bigLookup = SystemAPI.GetComponentLookup<BigEntityRefCD>();
             craftingLookup = SystemAPI.GetComponentLookup<CraftingCD>();
             slotLookup = SystemAPI.GetComponentLookup<CrafterForSlotCD>();
@@ -22,9 +25,13 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.TryGetValue<bool>(EnhanceCategory.Crafting, out var animal, "Animals"))
+                return;
+            bool animals = animal.Value;
             var bigLookup = this.bigLookup;
             var slotLookup = this.slotLookup;
             var timerLookup = this.timerLookup;
+            var cattleLookup = this.cattleLookup;
             var craftingLookup = this.craftingLookup;
             Entities.ForEach((ref PugTimerCD timer, in PugTimerRefCD timerRef) =>
             {
@@ -38,6 +45,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
                 var bigEntity = big.Value;
                 int index = slot.slotIndex;
                 if (!craftingLookup.HasComponent(bigEntity))
+                    return;
+                if (!animals && cattleLookup.HasComponent(bigEntity))//TODO:动物需要测试
                     return;
                 if (!timerLookup.TryGetBuffer(bigEntity, out var craftTimerSlot))
                     return;

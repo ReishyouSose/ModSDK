@@ -1,5 +1,4 @@
-﻿using Assets.CoreEnhance.Helpers;
-using PugMod;
+﻿using PugMod;
 using System;
 using Unity.Collections;
 using Unity.Entities;
@@ -91,10 +90,6 @@ namespace Assets.CoreEnhance.Scripts.Helpers
             {
                 Debug.Log("[Find target] " + authoringData.GetEntityObjectID());
             }
-        }
-        public static bool HasComponent<T>(this GameObject authoringData) where T : MonoBehaviour
-        {
-            return authoringData.TryGetComponent<T>(out _);
         }
     }
 }

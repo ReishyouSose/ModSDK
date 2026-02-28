@@ -1,4 +1,5 @@
-﻿using PlayerState;
+﻿using Assets.CoreFighter.Scripts.Cores;
+using PlayerState;
 using Unity.Entities;
 
 namespace Assets.CoreFighter.Scripts.Systems
@@ -16,6 +17,10 @@ namespace Assets.CoreFighter.Scripts.Systems
         }
         protected override void OnUpdate()
         {
+            if (!FighterConfig.TryGetValue<bool>(FighterCategory.MapMarkerTeleport, out var value))
+                return;
+            if (!value.Value)
+                return;
             var world = World;
             var condition = SystemAPI.GetSingleton<ConditionsTableCD>();
             var tick = GetServerTick();

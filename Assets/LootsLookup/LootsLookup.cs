@@ -8,51 +8,45 @@ public class LootsLookup : IMod
 {
     private static Dictionary<ObjectID, DropLootAuthoring> loots;
     private static Dictionary<ObjectID, MerchantAuthoring> shops;
-    private static Dictionary<ObjectID, CraftingAuthoring> recipes;
+    private static Dictionary<ObjectID, CraftingAuthoring> crafts;
+    private static Dictionary<ObjectID, RecipeAuthoring> recipes;
     private static Dictionary<ObjectID, LootTableID> chests;
     private static Dictionary<ObjectID, ChangeVariationWhenContainingObjectAuthoring> lockedChests;
+    private static CustomScenesDataTable sceneData;
 
     public void EarlyInit()
     {
         var authoring = API.Authoring;
+        loots = new();
+        shops = new();
+        crafts = new();
+        recipes = new();
+        chests = new();
+        lockedChests = new();
         authoring.OnObjectTypeAdded += CheckData;
+    }
+
+    public void Init()
+    {
+        sceneData = Resources.Load<CustomScenesDataTable>("Scenes/CustomScenesDataTable");
     }
 
     private void CheckData(Entity entity, GameObject authoringData, EntityManager entityManager)
     {
         ObjectID id = GetEntityObjectID(authoringData);
         if (authoringData.TryGetComponent<DropLootAuthoring>(out var dropLoot))
-        {
-            loots ??= new();
             loots[id] = dropLoot;
-        }
         if (authoringData.TryGetComponent<MerchantAuthoring>(out var merchant))
-        {
-            shops ??= new();
             shops[id] = merchant;
-        }
         if (authoringData.TryGetComponent<CraftingAuthoring>(out var crafting))
-        {
-            recipes ??= new();
-            recipes[id] = crafting;
-        }
-        if (authoringData.TryGetComponent<InventoryAuthoring>(out var inventory))
-        {
-            if (inventory.addLootFromTable != LootTableID.Empty)
-            {
-                chests ??= new();
-                chests[id] = inventory.addLootFromTable;
-            }
-        }
+            crafts[id] = crafting;
+        if (authoringData.TryGetComponent<RecipeAuthoring>(out var recipe))
+            recipes[id] = recipe;
+        if (authoringData.TryGetComponent<InventoryAuthoring>(out var inventory)
+            && inventory.addLootFromTable != LootTableID.Empty)
+            chests[id] = inventory.addLootFromTable;
         if (authoringData.TryGetComponent<ChangeVariationWhenContainingObjectAuthoring>(out var chest))
-        {
-            lockedChests ??= new();
             lockedChests[id] = chest;
-        }
-    }
-
-    public void Init()
-    {
     }
 
     public void ModObjectLoaded(Object obj)
@@ -124,7 +118,11 @@ public class LootsLookup : IMod
                 {
                     result.AppendLine($"[掉落表] {lootTable.id}");
                     result.AppendLine($"  类型: 保底掉落");
-                    result.AppendLine($"  几率: {loot.editorVisualDropChance:P2}");
+                    result.AppendLine($"  几率: {(loot.editorVisualDropChance / 100):P2}");
+                    if (loot.onlyDropsInBiome != Biome.None)
+                    {
+                        result.AppendLine($" 仅限 {loot.onlyDropsInBiome} 环境");
+                    }
                     result.AppendLine();
                     foundAny = true;
                     foundInThisTable = true;
@@ -141,7 +139,11 @@ public class LootsLookup : IMod
                     {
                         result.AppendLine($"[掉落表] {lootTable.id}");
                         result.AppendLine($"  类型: 普通掉落");
-                        result.AppendLine($"  几率: {loot.editorVisualDropChance:P2}");
+                        result.AppendLine($"  几率: {(loot.editorVisualDropChance / 100):P2}");
+                        if (loot.onlyDropsInBiome != Biome.None)
+                        {
+                            result.AppendLine($" 仅限 {loot.onlyDropsInBiome} 环境");
+                        }
                         result.AppendLine();
                         foundAny = true;
                         break;
@@ -229,40 +231,65 @@ public class LootsLookup : IMod
         }
 
         // 3. 查询商店
-        if (shops != null)
+        foreach (var (npcId, shopInfo) in shops)
         {
-            foreach (var (npcId, shopInfo) in shops)
+            foreach (var item in shopInfo.items)
             {
-                foreach (var item in shopInfo.items)
+                if (item.objectID == targetId)
                 {
-                    if (item.objectID == targetId)
-                    {
-                        result.AppendLine($"[商店] {GetObjectName(npcId)}");
-                        result.AppendLine($"  类型: 商店出售");
-                        if (!string.IsNullOrEmpty(item.requirementToBeAvailable.ToString()))
-                            result.AppendLine($"  要求: {item.requirementToBeAvailable}");
-                        result.AppendLine();
-                        foundAny = true;
-                        break;
-                    }
+                    result.AppendLine($"[商店] {GetObjectName(npcId)}");
+                    result.AppendLine($"  类型: 商店出售");
+                    if (!string.IsNullOrEmpty(item.requirementToBeAvailable.ToString()))
+                        result.AppendLine($"  要求: {item.requirementToBeAvailable}");
+                    result.AppendLine();
+                    foundAny = true;
+                    break;
                 }
             }
         }
 
         // 4. 查询制作配方
-        if (recipes != null)
+        foreach (var (stationId, craftInfo) in crafts)
         {
-            foreach (var (stationId, recipeInfo) in recipes)
+            foreach (var recipe in craftInfo.canCraftObjects)
             {
-                foreach (var recipe in recipeInfo.canCraftObjects)
+                if (recipe.objectID == targetId)
                 {
-                    if (recipe.objectID == targetId)
+                    result.AppendLine($"[制作] {GetObjectName(stationId)}");
+                    result.AppendLine($"  单次制作数量: {recipe.amount}");
+                    result.AppendLine();
+                    foundAny = true;
+                    break;
+                }
+            }
+        }
+
+        //手持合成
+        foreach (var (itemID, recipeInfo) in recipes)
+        {
+            var recipe = recipeInfo.objectToCraft;
+            if (recipe.objectID == targetId)
+            {
+                result.AppendLine($"[合成] {GetObjectName(itemID)}");
+                result.AppendLine($"  单次制作数量: {recipe.amount}");
+                result.AppendLine();
+                foundAny = true;
+                break;
+            }
+        }
+
+        //特殊场景
+        foreach (var scene in sceneData.scenes)
+        {
+            foreach (var inv in scene.prefabInventoryOverrides)
+            {
+                foreach (var item in inv.itemsOverride)
+                {
+                    if (item.item.objectID == targetId)
                     {
-                        result.AppendLine($"[制作] {GetObjectName(stationId)}");
-                        result.AppendLine($"  单次制作数量: {recipe.amount}");
+                        result.AppendLine($"[场景] {scene.sceneName}");
                         result.AppendLine();
                         foundAny = true;
-                        break;
                     }
                 }
             }
@@ -276,7 +303,9 @@ public class LootsLookup : IMod
             return;
         }
         NewText("查询成功，已复制到剪贴板");
-        Debug.Log(GUIUtility.systemCopyBuffer = result.ToString());
+        string r = result.ToString();
+        Debug.Log(r);
+        GUIUtility.systemCopyBuffer = r;
     }
 
     // 辅助方法：获取物品名称
@@ -284,7 +313,7 @@ public class LootsLookup : IMod
     {
         string name = I2.Loc.LocalizationManager.GetTranslation("Items/" + id);
         if (!string.IsNullOrEmpty(name))
-            return name;
+            return name + $"(id: {id}[{(int)id})]";
         return id.ToString();
     }
 }

@@ -1,9 +1,11 @@
 using Assets.CoreEnhance.Scripts.Components;
+using Assets.CoreEnhance.Scripts.Cores;
 using Assets.CoreEnhance.Scripts.Patchs;
+using CoreLib.Data.Configuration;
 using PlayerState;
-using Pug.Automation;
 using Unity.Entities;
 using Unity.Jobs;
+using Unity.Mathematics;
 
 namespace Assets.CoreEnhance.Scripts.Systems
 {
@@ -29,30 +31,54 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Merchant()
         {
-            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> inventoryBuffer,
-                ref MerchantCD merchantCD, ref ObjectDataCD objectData) =>
+            if (!EnhanceConfig.TryGetValue(EnhanceCategory.Merchant, out ConfigEntry<int> value))
+                return;
+            int timeLimit = value.Value;
+            if (timeLimit == 0)
             {
-                int count = 0;
-                foreach (var item in inventoryBuffer)
+                Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> inventoryBuffer,
+                    ref MerchantCD merchantCD, ref ObjectDataCD objectData) =>
                 {
-                    if (item.objectID != ObjectID.None)
+                    int count = 0;
+                    foreach (var item in inventoryBuffer)
                     {
-                        count++;
+                        if (item.objectID != ObjectID.None)
+                        {
+                            count++;
+                        }
                     }
-                }
-                if (count != merchantCD.previousAmountOfItems)
+                    if (count != merchantCD.previousAmountOfItems)
+                    {
+                        objectData.amount = 0;
+                    }
+                })
+                    .WithName("Accelerate_Merchant_Immediate")
+                    .WithAll<StateInfoCD>()
+                    .WithBurst()
+                    .Schedule();
+            }
+            else
+            {
+                int time = math.max(180, timeLimit);
+                Entities.ForEach((ref ObjectDataCD objectData) =>
                 {
-                    objectData.amount = 0;
-                }
-            })
-                .WithName("Accelerate_Merchant_Immediate")
-                .WithAll<StateInfoCD>()
-                .WithBurst()
-                .Schedule();
+                    if (objectData.amount > time)
+                    {
+                        objectData.amount = time;
+                    }
+                })
+                    .WithName("Accelerate_Merchant_Reduce")
+                    .WithAll<MerchantCD>()
+                    .WithAll<StateInfoCD>()
+                    .WithBurst()
+                    .Schedule();
+            }
         }
         private void Accelerate_SoulOrb(EntityCommandBuffer ecb, uint tickRate)
         {
-            int maxTime = 5;
+            if (!EnhanceConfig.TryGetValue(EnhanceCategory.Titan, out ConfigEntry<int> value))
+                return;
+            int maxTime = value.Value;
             var current = GetServerTick();
             bool any = false;
             JobHandle job = Entities.ForEach((Entity e, ref DestroyTimerCD destroy) =>
@@ -78,6 +104,8 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Casting(uint tickRate)
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Casting))
+                return;
             Entities.ForEach((ref CastingStateCD casting) =>
             {
                 casting.castTimer.SetTargetTicks(0, tickRate);
@@ -88,6 +116,8 @@ namespace Assets.CoreEnhance.Scripts.Systems
         }
         private void Accelerate_Portal(EntityCommandBuffer ecb)
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Portal))
+                return;
             Entities.ForEach((Entity e, ref ObjectDataCD objData) =>
             {
                 objData.amount = 1200;

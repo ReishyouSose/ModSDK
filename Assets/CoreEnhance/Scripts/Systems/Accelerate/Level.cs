@@ -1,4 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Components;
+using Assets.CoreEnhance.Scripts.Cores;
+using CoreLib.Util.Extension;
 using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
@@ -9,7 +11,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
     {
         protected override void OnUpdate()
         {
-            int multipler = 10;
+            if (!EnhanceConfig.TryGetValue<int>(EnhanceCategory.Level, out var value))
+                return;
+            int multipler = value.Value;
             var ecb = CreateCommandBuffer();
             Entities.ForEach((Entity e, ref AddSkillValueCD skill) =>
             {

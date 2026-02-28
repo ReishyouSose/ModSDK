@@ -15,6 +15,7 @@ MonoBehaviour:
   metadata:
     guid: 512af5363e584954991d6f7214f5cd8d
     name: CoreEnhance
+    displayName: 
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
@@ -85,7 +86,11 @@ MonoBehaviour:
       guid: 
     - path: Bundles/CoreEnhance_Linux.assetbundle.manifest
       guid: 
-    dependencies: []
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: GeneralConfigMenu
+      required: 1
   modPath: Assets\CoreEnhance
   forceReimport: 1
   buildBundles: 1

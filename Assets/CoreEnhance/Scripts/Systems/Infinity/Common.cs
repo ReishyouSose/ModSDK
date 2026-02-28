@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {
@@ -22,6 +23,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         private void Infinity_Boulder()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Boulder))//TODO:无限大矿需要测试
+                return;
             Entities.ForEach((ref HealthCD heal, in DropsLootWhenDamagedCD dr) =>
             {
                 if (heal.health < heal.maxHealth - dr.damageToDealToDropLoot)
@@ -37,6 +40,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         private void Infinity_Minion()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Minion))
+                return;
             Entities.ForEach((ref MinionCD minion) =>
             {
                 if (minion.hasStartedLifeSpanTimer)

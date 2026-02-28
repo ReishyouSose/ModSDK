@@ -4,6 +4,7 @@ CoreFighter/Value	Text		Fighter of CK Extra Config	更好的战斗额外配置
 CoreFighter/Switch	Text		Fighter of CK Function Switch	更好的战斗功能开关
 CoreFighter/Switch/Infinity	Text		Infinity	无限
 CoreFighter/Switch/Infinity/Mana	Text		Mana	魔力
+CoreFighter/Switch/Infinity/Hunger	Text		Hunger	饱食度
 CoreFighter/Switch/Infinity/Explosive	Text		Explosive	炸药
 CoreFighter/Switch/Equip	Text		Equip	装备
 CoreFighter/Switch/Equip/NoRecoil	Text		No Recoil	无后坐力
@@ -13,9 +14,13 @@ CoreFighter/Switch/Misc/AllPlayerSkill	Text		Allow All Player Skills	玩家全�
 CoreFighter/Switch/Misc/AllPetSkill	Text		Allow All Pet Skills	宠物全技能
 CoreFighter/Switch/Misc/ImmuneExplosion	Text		Immune To Explosions	免疫爆炸
 CoreFighter/Switch/Misc/MapMarkerTeleport	Text		Teleport To Map Markers	地图标记传送
+CoreFighter/Switch/Misc/Vampire	Text		Attack Vampire	攻击吸血
+CoreFighter/Switch/Misc/Vampire/Description			This entry has additional configs	这个条目有额外配置
+CoreFighter/Value/Misc/Vampire	Text		Attack Vampire Multiplier	攻击吸血倍率
 CoreFighter/AttackSpeed	Text		FOC/Attack Speed Modifier	更好的战斗/攻速修改器
 CoreFighter/AttackSpeed/General	Text		General	通用
 CoreFighter/AttackSpeed/General/MainSwitch	Text		Main Switch	总开关
+CoreFighter/AttackSpeed/OriginCoolDown0.125	Text		OriginCoolDown 0.125s (8.0/s)	原冷却 0.125s (8.0/s)
 CoreFighter/AttackSpeed/OriginCoolDown0.2	Text		OriginCoolDown 0.2s (5.0/s)	原冷却 0.2s (5.0/s)
 CoreFighter/AttackSpeed/OriginCoolDown0.25	Text		OriginCoolDown 0.25s (4.0/s)	原冷却 0.25s (4.0/s)
 CoreFighter/AttackSpeed/OriginCoolDown0.3	Text		OriginCoolDown 0.3s (3.3/s)	原冷却 0.3s (3.3/s)
@@ -27,6 +32,14 @@ CoreFighter/AttackSpeed/OriginCoolDown1.0	Text		OriginCoolDown 1.0s (1.0/s)	原�
 CoreFighter/AttackSpeed/OriginCoolDown1.5	Text		OriginCoolDown 1.5s (0.7/s)	原冷却 1.5s (0.7/s)
 CoreFighter/AttackSpeed/OriginCoolDown2.0	Text		OriginCoolDown 2.0s (0.5/s)	原冷却 2.0s (0.5/s)
 CoreFighter/AttackSpeed/OriginCoolDown5.0	Text		OriginCoolDown 5.0s (0.2/s)	原冷却 5.0s (0.2/s)
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Switch	Text		Switch	开关
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Tool	Text		Tool	工具
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Melee	Text		Melee Weapon	近战武器
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Range	Text		Range Weapon	远程武器
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Magic	Text		Magic Weapon	魔法武器
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Throw	Text		Throw Weapon	投掷武器
+CoreFighter/AttackSpeed/OriginCoolDown0.125/OffHand	Text		Off-Hand	手持物
+CoreFighter/AttackSpeed/OriginCoolDown0.125/Consume	Text		Consume	消耗品
 CoreFighter/AttackSpeed/OriginCoolDown0.2/Switch	Text		Switch	开关
 CoreFighter/AttackSpeed/OriginCoolDown0.2/Tool	Text		Tool	工具
 CoreFighter/AttackSpeed/OriginCoolDown0.2/Melee	Text		Melee Weapon	近战武器

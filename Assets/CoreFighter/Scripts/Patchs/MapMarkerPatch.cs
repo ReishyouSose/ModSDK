@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using Assets.CoreFighter.Scripts.Cores;
+using HarmonyLib;
 using Pug.UnityExtensions;
 using System.Collections.Generic;
 using Unity.Entities;
@@ -53,6 +54,8 @@ namespace Assets.CoreFighter.Scripts.Patchs
         [HarmonyPrefix]
         private static bool OverrideLeftClicked(MapMarkerUIElement __instance, bool mod1, bool mod2)
         {
+            if (!FighterConfig.IsEnable(FighterCategory.MapMarkerTeleport))
+                return true;
             if (!mod2)
                 return false;
             var entity = __instance.mapMarkerEntity;

@@ -15,13 +15,18 @@ MonoBehaviour:
   metadata:
     guid: 539e20a265954ca880b24a9c512f721b
     name: CoreFighter
+    displayName: 
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
     files: []
-    dependencies: []
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: GeneralConfigMenu
+      required: 1
   modPath: Assets\CoreFighter
   forceReimport: 1
   buildBundles: 1

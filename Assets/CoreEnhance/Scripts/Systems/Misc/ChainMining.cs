@@ -1,4 +1,5 @@
-﻿using Assets.CoreEnhance.Scripts.Components;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using CoreLib.Data.Configuration;
 using Pug.UnityExtensions;
 using Unity.Collections;
 using Unity.Entities;
@@ -47,6 +48,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.TryGetValues(EnhanceCategory.ChainMining, out var values))
+                return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var tileDamageBuffer))
                 return;
             if (!SystemAPI.TryGetSingletonBuffer<HealthChangeBuffer>(out var healthChangeBuffer))
@@ -56,9 +59,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var killLookup = this.killLookup;
             var playerLookup = this.playerLookup;
             var objLookup = this.objLookup;
-            bool adsorption = true;
-            bool needPlayer = true;
-            bool addSkill = true;
+            bool adsorption = (values["Adsorption"] as ConfigEntry<bool>).Value;
+            bool needPlayer = (values["NeedPlayer"] as ConfigEntry<bool>).Value;
+            bool addSkill = (values["GiveExp"] as ConfigEntry<bool>).Value;
             var ecb = CreateCommandBuffer();
             var collision = this.collision;
             Entities.ForEach((Entity e, in LocalTransform local) =>

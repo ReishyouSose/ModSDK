@@ -1,4 +1,5 @@
-﻿using Assets.CoreEnhance.Helpers;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Assets.CoreEnhance.Scripts.Helpers;
 using Unity.Entities;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Door))
+                return;
             var database = this.database;
             Entities.ForEach((ref ObjectDataCD objData, in DistanceToPlayerCD dis) =>
             {
@@ -32,12 +35,15 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
             })
                 .WithName("Automation_Door")
                 .WithAll<AutoDoorCD>()
+                .WithNone<ChangeVariationWhenContainingObjectCD>()
                 .WithBurst()
                 .Schedule();
             base.OnUpdate();
         }
         public static void MarkDoor(Entity e, GameObject authoringData, EntityManager manager)
         {
+            if (authoringData.HasComponent<ActivatedByElectricityStateAuthoring>())
+                return;
             if (authoringData.HasComponent<DoorAuthoring>()
                 || authoringData.HasComponent<FenceGateAuthoring>())
             {

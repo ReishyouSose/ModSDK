@@ -1,4 +1,5 @@
-﻿using Inventory;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Inventory;
 using Unity.Collections;
 using Unity.Entities;
 using static PugDatabase;
@@ -21,6 +22,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.Durability))
+                return;
             if (timer < 3)
             {
                 timer += World.Time.DeltaTime;

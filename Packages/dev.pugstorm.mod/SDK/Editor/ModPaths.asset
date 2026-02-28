@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: ModPaths
   m_EditorClassIdentifier: 
   latestBuildOrInstallPaths:
-  - E:\steam\steamapps\common\Core Keeper Ambassador\CoreKeeper_Data\StreamingAssets\Mods\CoreEnhance
-  - E:\steam\steamapps\common\Core Keeper Ambassador\CoreKeeper_Data\StreamingAssets\Mods\CoreFighter
+  - E:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\ModConfigMenu
+  - E:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\CoreEnhance
+  - E:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\CoreFighter
+  - E:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\GeneralConfigMenu
