@@ -91,13 +91,15 @@ Equal to existence time of soul orb"	"单位为秒
 等同于灵魂球存在时间"
 CoreEnhance/Value/Accelerate/CraftingAnimals	Text		Block Animals	阻止牲畜
 CoreEnhance/Value/Accelerate/CraftingAnimals/Description	Text		Whether Accelerate-Crafting is effective on animals	“加速—制造”的效果是否对牲畜生效
+CoreEnhance/Value/Accelerate/CraftingFishingNet	Text		Block Fishing Nets	阻止渔网
+CoreEnhance/Value/Accelerate/CraftingFishingNet/Description			Whether Accelerate-Crafting is effective on fishing nets	“加速—制造”的效果是否对渔网生效
 CoreEnhance/Switch/Accelerate/Crafting	Text		Crafting	制造
 CoreEnhance/Switch/Accelerate/Crafting/Description	Text		For example, smelting, cooking, hatching eggs, etc.	例如，冶炼、烹饪、孵蛋等
 CoreEnhance/Switch/Accelerate/Casting	Text		Casting	使用
 CoreEnhance/Switch/Accelerate/Casting/Description	Text		For example, scanning, synthesis, etc.	例如，扫描、合成等
 CoreEnhance/Switch/Accelerate/Portal	Text		Portal	传送点
 CoreEnhance/Switch/Accelerate/Level	Text		Level	等级
-CoreEnhance/Switch/Accelerate/Level	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Switch/Accelerate/Level/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreEnhance/Value/Accelerate/Level	Text		Exp Multiplier	经验值倍率
 CoreEnhance/Switch/Automation/Salvage	Text		Salvage	拆解
 CoreEnhance/Switch/Automation/Salvage/Description	Text		This entry has additional configs	这个条目有额外配置
@@ -117,6 +119,17 @@ CoreEnhance/Value/Automation/PlantSea/Description	Text		The max number of effect
 CoreEnhance/Value/Automation/PlantDesert	Text		Ruby Max	红宝石上限
 CoreEnhance/Value/Automation/PlantDesert/Description	Text		The max number of effective rubies in the Verdant shrine	繁茂祭坛中红宝石生效数量上限
 CoreEnhance/Switch/Automation/Door	Text		Door	门
+CoreEnhance/Switch/Automation/FishingNetNoCritter	Text		Fishing net not need bait	渔网无需诱饵
+CoreEnhance/Switch/Automation/FishingNetNoCritter/Description	Text		If the fishing net slot is empty, a  bait will be automatically filled	如果渔网栏位是空，将自动填入一份诱饵
+CoreEnhance/Switch/Automation/FishingNetCanGetItem	Text		Fishing net can get item	渔网可捕捞物品
+CoreEnhance/Switch/Automation/FishingNetCanGetItem/Description	Text		This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Automation/FishingNetCanGetItem	Text		Fishing net get item chance	渔网捕捞物品概率
+CoreEnhance/Switch/Automation/GoldenPlantToSeed	Text		Golden Plant To Seed	金色作物回收种子
+CoreEnhance/Switch/Automation/GoldenPlantToSeed/Description	Text		"Putting golden plants into the seed extractor produces seeds, instead of gold ore
+This entry has additional configs"	"将金色作物放入种子提取器后产出的是种子而不是金矿
+这个条目有额外配置"
+CoreEnhance/Value/Automation/GoldenPlantToSeed	Text		Golden Plant Extra Seed	金作物额外种子
+CoreEnhance/Value/Automation/GoldenPlantToSeed/Description	Text		The extra amount of seeds produced after placing golden plants into the seed extractor	将金色作物放入种子提取器后额外产出种子的数量
 CoreEnhance/Switch/Automation/GiveExp	Text		Give Exp	给予经验
 CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal will give the closest player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
 CoreEnhance/Value/Automation/GiveExpGardening	Text		Chance of  get Gardening Exp	给予种植经验的概率

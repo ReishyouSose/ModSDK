@@ -29,6 +29,9 @@ namespace Assets.CoreEnhance.Scripts.Cores
                 ConfigDefinition def = new(section, function);
                 ConfigScope scope = index switch
                 {
+                    EnhanceCategory.RollSkill => new(ConfigAccessLevel.Admin, false),
+                    EnhanceCategory.Level => new(ConfigAccessLevel.Admin, false),
+                    EnhanceCategory.GoldenPlantToSeed => new(ConfigAccessLevel.Server, true),
                     EnhanceCategory.CloseMoreChestButton => new(ConfigAccessLevel.Client, true),
                     _ => new(),
                 };
@@ -43,7 +46,10 @@ namespace Assets.CoreEnhance.Scripts.Cores
             TryAddValue(file, EnhanceCategory.Merchant, 0, new AcceptableValueRange<int>(0, 3500));
             TryAddValue(file, EnhanceCategory.Titan, 5, new AcceptableValueRange<int>(5, 300));
             TryAddValue(file, EnhanceCategory.Crafting, false, null, "Animals");
-            TryAddValue(file, EnhanceCategory.Level, 10, new AcceptableValueRange<int>(1, 100));
+            TryAddValue(file, EnhanceCategory.Crafting, false, null, "FishingNet");
+            TryAddValue(file, EnhanceCategory.FishingNetCanGetItem, 0.4f, new AcceptableValueRange<float>(0, 0.5f));
+            TryAddValue(file, EnhanceCategory.GoldenPlantToSeed, 8, new AcceptableValueRange<int>(0, 8));
+            TryAddValue(file, EnhanceCategory.Level, 10, new AcceptableValueRange<int>(1, 100), "", new(ConfigAccessLevel.Admin, false));
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "Adsorption");
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "NeedPlayer");
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "GiveExp");
@@ -64,13 +70,13 @@ namespace Assets.CoreEnhance.Scripts.Cores
             return entry.Enable;
         }
         private bool TryAddValue<T>(ConfigFile file, EnhanceCategory category,
-            T defaultV, AcceptableValueBase accept = null, string key = "")
+            T defaultV, AcceptableValueBase accept = null, string key = "", ConfigScope scope = null)
         {
             if (configs.TryGetValue(category, out ConfigData entry))
             {
                 ConfigDefinition def = entry.Switch.Definition;
                 entry.SetValue(key, file.Bind(new(def.Section, def.Key + key),
-                    defaultV, new(string.Empty, accept), new()));
+                    defaultV, new(string.Empty, accept), scope ?? new()));
                 return true;
             }
             Debug.Log($"Can't find {category} config");

@@ -145,7 +145,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 || authoringData.HasComponent<CraftingAuthoring>()
                 || authoringData.HasComponent<VendingMachineAuthoring>())
             {
-                Debug.Log("[CoreEnhance] Container Display: Mark " + authoringData.GetEntityObjectID());
+                //Debug.Log("[CoreEnhance] Container Display: Mark " + authoringData.GetEntityObjectID());
                 manager.AddComponent<ContainerHighLightCD>(e);
             }
         }

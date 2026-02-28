@@ -1,4 +1,4 @@
-﻿using Assets.CoreEnhance.Scripts.Helpers;
+using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.GeneralConfigMenu.Scripts;
 using Assets.GeneralConfigMenu.Scripts.ModScroll;
 using CoreLib.Submodule.UserInterface;
@@ -208,7 +208,7 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
         }
         internal static void CheckData(Entity entity, GameObject authoringData, EntityManager manager)
         {
-            ObjectID id = authoringData.GetEntityObjectID();
+            ObjectID id = authoringData.GetEntityObjectID(out _);
             if (authoringData.TryGetComponent<DropLootAuthoring>(out var dropLoot))
             {
                 loots ??= new();

@@ -74,7 +74,7 @@ namespace Assets.CoreEnhance.Scripts.Helpers
 
         public static void LogComponent(this GameObject authoringData, ObjectID target)
         {
-            if (authoringData.GetEntityObjectID() == target)
+            if (authoringData.GetEntityObjectID(out _) == target)
             {
                 int count = authoringData.GetComponentCount();
                 Debug.Log(count);
@@ -88,7 +88,7 @@ namespace Assets.CoreEnhance.Scripts.Helpers
         {
             if (authoringData.TryGetComponent<T>(out var t) && predicate?.Invoke(t) != false)
             {
-                Debug.Log("[Find target] " + authoringData.GetEntityObjectID());
+                Debug.Log("[Find target] " + authoringData.GetEntityObjectID(out _));
             }
         }
     }

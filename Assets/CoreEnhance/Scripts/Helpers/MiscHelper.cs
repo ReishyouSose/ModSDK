@@ -22,21 +22,24 @@ namespace Assets.CoreEnhance.Scripts.Helpers
             return gameObject.TryGetComponent<T>(out _);
         }
 
-        public static ObjectID GetEntityObjectID(this GameObject gameObject)
+        public static ObjectID GetEntityObjectID(this GameObject gameObject, out int variation)
         {
             var entityMonoBehaviorData = gameObject.GetComponent<EntityMonoBehaviourData>();
             var objectAuthoring = gameObject.GetComponent<ObjectAuthoring>();
-
+            variation = 0;
             if (entityMonoBehaviorData != null)
             {
-                return entityMonoBehaviorData.objectInfo.objectID;
+                var info = entityMonoBehaviorData.objectInfo;
+                variation = info.variation;
+                return info.objectID;
             }
             if (objectAuthoring != null)
             {
+                variation = objectAuthoring.variation;
                 return API.Authoring.GetObjectID(objectAuthoring.objectName);
             }
 
-            return 0;
+            return ObjectID.None;
         }
     }
 }

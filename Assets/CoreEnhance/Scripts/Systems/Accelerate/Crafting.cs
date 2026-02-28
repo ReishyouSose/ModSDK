@@ -1,4 +1,5 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
+using CoreLib.Data.Configuration;
 using Pug.Automation;
 using Unity.Entities;
 
@@ -10,6 +11,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
     public partial class AccelerateCraftingSystem : PugSimulationSystemBase
     {
         private ComponentLookup<CattleCD> cattleLookup;
+        private ComponentLookup<FishingCD> fishingLookup;
         private ComponentLookup<BigEntityRefCD> bigLookup;
         private ComponentLookup<CraftingCD> craftingLookup;
         private ComponentLookup<CrafterForSlotCD> slotLookup;
@@ -17,6 +19,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
         protected override void OnCreate()
         {
             cattleLookup = SystemAPI.GetComponentLookup<CattleCD>();
+            fishingLookup = SystemAPI.GetComponentLookup<FishingCD>();
             bigLookup = SystemAPI.GetComponentLookup<BigEntityRefCD>();
             craftingLookup = SystemAPI.GetComponentLookup<CraftingCD>();
             slotLookup = SystemAPI.GetComponentLookup<CrafterForSlotCD>();
@@ -25,13 +28,15 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
         }
         protected override void OnUpdate()
         {
-            if (!EnhanceConfig.TryGetValue<bool>(EnhanceCategory.Crafting, out var animal, "Animals"))
+            if (!EnhanceConfig.TryGetValues(EnhanceCategory.Crafting, out var values))
                 return;
-            bool animals = animal.Value;
+            bool animals = (values["Animals"] as ConfigEntry<bool>).Value;
+            bool fishingNets = (values["FishingNet"] as ConfigEntry<bool>).Value;
             var bigLookup = this.bigLookup;
             var slotLookup = this.slotLookup;
             var timerLookup = this.timerLookup;
             var cattleLookup = this.cattleLookup;
+            var fishingLookup = this.fishingLookup;
             var craftingLookup = this.craftingLookup;
             Entities.ForEach((ref PugTimerCD timer, in PugTimerRefCD timerRef) =>
             {
@@ -46,7 +51,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
                 int index = slot.slotIndex;
                 if (!craftingLookup.HasComponent(bigEntity))
                     return;
-                if (!animals && cattleLookup.HasComponent(bigEntity))//TODO:动物需要测试
+                if (animals && cattleLookup.HasComponent(bigEntity))//TODO:动物需要测试
+                    return;
+                if (fishingNets && fishingLookup.HasComponent(bigEntity))
                     return;
                 if (!timerLookup.TryGetBuffer(bigEntity, out var craftTimerSlot))
                     return;

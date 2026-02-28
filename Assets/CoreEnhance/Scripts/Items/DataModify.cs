@@ -1,0 +1,53 @@
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Assets.CoreEnhance.Scripts.Helpers;
+using Unity.Entities;
+using UnityEngine;
+
+namespace Assets.CoreEnhance.Scripts.Items
+{
+    public static class DataModify
+    {
+        public static void AuthoringModify(Entity entity, GameObject authoringData, EntityManager entityManager)
+        {
+            GoldenPlantExtractToSeed(authoringData);
+        }
+        private static void GoldenPlantExtractToSeed(GameObject authoringData)
+        {
+            if (!EnhanceConfig.TryGetValue<int>(EnhanceCategory.GoldenPlantToSeed, out var value))
+                return;
+            if (!authoringData.TryGetComponent<ExtractableAuthoring>(out var extractable))
+                return;
+            ObjectID seed = authoringData.GetEntityObjectID(out _) switch
+            {
+                ObjectID.HeartBerryRare => ObjectID.HeartBerrySeed,
+                ObjectID.GlowingTulipFlowerRare => ObjectID.GlowingTulipSeed,
+                ObjectID.BombPepperRare => ObjectID.BombPepperSeed,
+                ObjectID.CarrockRare => ObjectID.CarrockSeed,
+                ObjectID.GrumpkinRare => ObjectID.GrumpkinSeed,
+                ObjectID.BloatOatRare => ObjectID.BloatOatSeed,
+                ObjectID.PuffungiRare => ObjectID.PuffungiSeed,
+                ObjectID.PewpayaRare => ObjectID.PewpayaSeed,
+                ObjectID.PinegrappleRare => ObjectID.PinegrappleSeed,
+                ObjectID.SunriceRare => ObjectID.SunriceSeed,
+                ObjectID.LunacornRare => ObjectID.LunacornSeed,
+                _ => ObjectID.None
+            };
+            if (seed == ObjectID.None)
+                return;
+            var crafts = extractable.extractedObject;
+            for (int i = 0; i < crafts.Count; i++)
+            {
+                var craft = crafts[i];
+                if (craft.objectID != ObjectID.GoldOre)
+                    continue;
+                int rng = value.Value;
+                crafts[i] = new()
+                {
+                    objectID = seed,
+                    variation = 0,
+                    minMaxRandomAmountOverride = new(rng, rng)
+                };
+            }
+        }
+    }
+}

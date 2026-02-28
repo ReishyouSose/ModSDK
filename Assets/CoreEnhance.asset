@@ -16,24 +16,46 @@ MonoBehaviour:
     guid: 512af5363e584954991d6f7214f5cd8d
     name: CoreEnhance
     displayName: 
-    skipSafetyChecks: 0
+    skipSafetyChecks: 1
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
+    - path: Localization/Localization.csv
+      guid: a47ceafe81885f14a9fc08d601f30c96
+    - path: Scripts/Scripts/UI/ItemLookup/ObtainLookupUI.cs
+      guid: 5e9ffc522dd2b3f4fa455490dbfe01f1
+    - path: Scripts/Scripts/UI/ItemLookup/ObtainInfoSlot.cs
+      guid: a22c0190ee52e024ea7b6c924e3676cc
+    - path: Scripts/Scripts/UI/ItemLookup/ItemSelectSlot.cs
+      guid: 699556e6a8844fc4d9855a213558aeb0
+    - path: Scripts/Scripts/UI/ItemLookup/ItemLookupUI.cs
+      guid: 5f78ec84c46b2094581ede2c305bab59
     - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
       guid: 5bac40d44c88ce742bbeca053dd6537c
+    - path: Scripts/Scripts/Systems/Pet/Modifier.cs
+      guid: 62b2b2f29d0649644bff7a1cd9e4123a
+    - path: Scripts/Scripts/Systems/Misc/ReportSpawnedScene.cs
+      guid: 65f71a6d40320bc44b38e49f563563cb
+    - path: Scripts/Scripts/Systems/Misc/ForcePickup.cs
+      guid: def2f974f489c6c4e8c4c0eec5214301
     - path: Scripts/Scripts/Systems/Misc/DeathNoDrop.cs
       guid: bae06273d2dd48746a97ddca4767d4e7
+    - path: Scripts/Scripts/Systems/Misc/ContainerDisplay.cs
+      guid: 379bf69b084cef643b525d2376e4643c
     - path: Scripts/Scripts/Systems/Misc/ChainMining.cs
       guid: 92292b46d4932b4439e8102403660c2c
+    - path: Scripts/Scripts/Systems/Misc/BoulderDemolish.cs
+      guid: 6ce4641697d419d439c35f7dfed0f03f
     - path: Scripts/Scripts/Systems/Infinity/Durability.cs
       guid: f692dee60a48e3a4c80988b80799bfa3
     - path: Scripts/Scripts/Systems/Infinity/Common.cs
       guid: 3461af39146547a4d9fd0cd87419a551
     - path: Scripts/Scripts/Systems/Infinity/Arena.cs
       guid: bf4a928d81c8cc8458c2f8f9ccbd7377
+    - path: Scripts/Scripts/Systems/Automation/FishingNetNoCritter.cs
+      guid: e78170d9a54d80f409be36b0889fb41b
     - path: Scripts/Scripts/Systems/Automation/Door.cs
       guid: 513d9244a8201a6488ea56297cd0141c
     - path: Scripts/Scripts/Systems/Accelerate/Level.cs
@@ -42,8 +64,16 @@ MonoBehaviour:
       guid: da0702fc1c5c4704dbedc9170d922b24
     - path: Scripts/Scripts/Systems/Accelerate/Common.cs
       guid: 8a058387ff0ef5745b31bc2f98b5d58b
+    - path: Scripts/Scripts/Patchs/PetUIPatch.cs
+      guid: 465f6f7ab2527df4fb07f5fc463b0390
+    - path: Scripts/Scripts/Patchs/InventoryUtilityPatch.cs
+      guid: 37581a3d496b7cf49b4aef069dee04b3
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
       guid: 8504d1659690a334e8b7709bb4d507eb
+    - path: Scripts/Scripts/Items/DataModify.cs
+      guid: 00f5c3ec37d6ec549910d66c11d151f2
+    - path: Scripts/Scripts/Items/BoulderDemolishAuthoring.cs
+      guid: 02442d50b36105445b136bb429e130f1
     - path: Scripts/Scripts/Helpers/TileHelper.cs
       guid: 7ce6ac70fa3fdfc48b12a347dcb13b95
     - path: Scripts/Scripts/Helpers/MiscHelper.cs
@@ -52,32 +82,18 @@ MonoBehaviour:
       guid: 2dbb5d75b243ec640b3df48705c03a99
     - path: Scripts/Scripts/Helpers/ItemHelper.cs
       guid: 230e6abaa6b5bad42913b11b98c581a7
+    - path: Scripts/Scripts/Cores/PetModifyID.cs
+      guid: 19ceeb27bc3001f4eaf6869d5a01eec6
+    - path: Scripts/Scripts/Cores/ModKeyBind.cs
+      guid: 2015d9b2e6ad63845b9fec5e8d382e99
+    - path: Scripts/Scripts/Cores/EnhanceConfig.cs
+      guid: f0c03c75a6cfdf449ac77b7ffaa3fcc0
+    - path: Scripts/Scripts/Cores/EnhanceCategory.cs
+      guid: 59b9321521d2da14b9e2cb803827a250
     - path: Scripts/Scripts/Components/ProcessedTagCD.cs
       guid: 94d85382e27dbe54a910a675c686b4b7
     - path: Scripts/CoreEnhance.cs
       guid: 77b31bc24fa1a6b4b82cceab5847b20f
-    - path: Scripts/Generated/Arena__System_21345283780.g.cs
-      guid: 
-    - path: Scripts/Generated/ChainMining__System_4927882160.g.cs
-      guid: 
-    - path: Scripts/Generated/Common__System_3326017700.g.cs
-      guid: 
-    - path: Scripts/Generated/Common__System_7055668610.g.cs
-      guid: 
-    - path: Scripts/Generated/Crafting__System_2959574260.g.cs
-      guid: 
-    - path: Scripts/Generated/DeathNoDrop__System_3285046110.g.cs
-      guid: 
-    - path: Scripts/Generated/Door__System_5961554220.g.cs
-      guid: 
-    - path: Scripts/Generated/Durability__System_20098094000.g.cs
-      guid: 
-    - path: Scripts/Generated/Level__System_11224993260.g.cs
-      guid: 
-    - path: Scripts/Generated/OpenLockedChest__System_11022013290.g.cs
-      guid: 
-    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_QuickOpenLockedChestRPCCommandSerializer.cs
-      guid: 
     - path: Bundles/CoreEnhance_Windows.assetbundle
       guid: 
     - path: Bundles/CoreEnhance_Windows.assetbundle.manifest
@@ -99,4 +115,6 @@ MonoBehaviour:
   assets:
   - path: Assets/CoreEnhance/Data/CoreEnhance.asset
     hash: B2BC2770B69F6EB9CC8C80875F0425753B7050DFC9F4E414B552855DFF5A8EF3
+  - path: Assets/CoreEnhance/Localization/Localization.csv
+    hash: B3A4A2E120C25B85E383B2CCD2AE5779594C67AE4250619211A85A0DE2805B01
   lastBuildLinux: 1
