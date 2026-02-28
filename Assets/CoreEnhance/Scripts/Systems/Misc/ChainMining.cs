@@ -48,7 +48,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
-            if (!EnhanceConfig.TryGetValues(EnhanceCategory.ChainMining, out var values))
+            bool chainMining = EnhanceConfig.TryGetValues(EnhanceCategory.ChainMining, out var values);
+            bool chainWood = EnhanceConfig.IsEnable(EnhanceCategory.ChainWood);
+            if (!chainMining || !chainWood)
                 return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var tileDamageBuffer))
                 return;
@@ -83,7 +85,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 TryGetResource(tiles, out bool ore, out bool wood);
                 tiles.Dispose();
                 int count = 0;
-                if (ore || wood)
+                if ((chainMining && ore) || (chainWood && wood))
                 {
                     foreach (var target in offset)
                     {

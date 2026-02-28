@@ -7,6 +7,8 @@ using Assets.CoreEnhance.Scripts.Systems.Misc;
 using Assets.CoreEnhance.Scripts.UI.ItemLookup;
 using CoreLib;
 using CoreLib.Submodule.ControlMapping;
+using CoreLib.Submodule.Entity;
+using CoreLib.Submodule.UserInterface;
 using Pug.Automation;
 using PugMod;
 using Unity.Entities;
@@ -27,7 +29,7 @@ namespace Assets.CoreEnhance
             authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
             authoring.OnObjectTypeAdded += ContainerDisplaySystem.MarkHighLight;
             authoring.OnObjectTypeAdded += Test;
-            CoreLibMod.LoadSubmodule(typeof(ControlMappingModule));
+            CoreLibMod.LoadSubmodule(typeof(ControlMappingModule)/*,typeof(EntityModule)*/);
             ModKeyBind.Load();
         }
 

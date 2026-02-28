@@ -27,6 +27,7 @@
         IgnoreRayChecksForPickup,//忽略掉落吸附检测
         DeathNoDrop,//死亡不掉落 done
         ChainMining,//连锁挖矿 done
+        ChainWood,
         ContainerDisplay,//容器显示 done
         ReplaceQuickStack,//替换原版快速堆叠 done
         CloseMoreChestButton,

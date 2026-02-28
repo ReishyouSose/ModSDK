@@ -1,170 +1,171 @@
-Key	Type	Desc	English	Chinese (Simplified)
-Items/CoreEnhance:AutoFisher	Text		Auto Fisher	自动钓鱼机
-Items/CoreEnhance:AutoFisherDesc	Text		"Requires a fishing rod once placed.
+Key	English	Chinese (Simplified)
+Items/CoreEnhance_AutoFisher	Auto Fisher	自动钓鱼机
+Items/CoreEnhance_AutoFisherDesc	"Requires a fishing rod once placed.
 The loot depends on the biome, requiring the tile it's place on to match the biome.
 Will not work without a Fishing Terminal placed.
 Biome requirement can be disabled in the config."	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
 战利品取决于环境，要求所处地块与环境匹配（这条限制可以在配置中关闭）
 世界中没有终端则不工作"
-Items/CoreEnhance:ArenaScanner	Text		Arena Scanner	竞技场扫描仪
-Items/CoreEnhance:ArenaScannerDesc	Text		"Will automatically point you in the direction of the nearest arena once in your inventory and locked.
+Items/CoreEnhance_ArenaScanner	Arena Scanner	竞技场扫描仪
+Items/CoreEnhance_ArenaScannerDesc	"Will automatically point you in the direction of the nearest arena once in your inventory and locked.
 If you're not close enough to an Arena or one has not generated it will not direct you to one.
 If an Arena has not been detected and you're in the Shimmering Frontier,
 you can right click to generate one nearby."	"放在背包中并锁定即可，会尝试指出竞技场的位置
 若没有标记，说明竞技场未生成，请前往水晶区探索
 或在荧光边境使用该物品，将在附近直接生成竞技场，已经标记出竞技场时无效"
-Items/CoreEnhance:AutoFisherTerminal	Text		Auto Fisher Terminal	自动钓鱼机终端
-Items/CoreEnhance:AutoFisherTerminalDesc	Text		"The Auto Fisher Terminal is required for Auto Fishers to function.
+Items/CoreEnhance_AutoFisherTerminal	Auto Fisher Terminal	自动钓鱼机终端
+Items/CoreEnhance_AutoFisherTerminalDesc	"The Auto Fisher Terminal is required for Auto Fishers to function.
 Loot from Auto Fishers will automatically be put in this inventory.
 Only supports 1 Terminal.
 Supports the use of robot arms."	"自动钓鱼机会将渔获直接放入终端
 如果有多个终端，那我也不知道会放进哪个
 支持机械臂"
-Items/CoreEnhance:VerdantShrine	Text		Verdant Shrine	繁茂祭坛
-Items/CoreEnhance:VerdantShrineDesc	Text		"Works like a normal sprinkler that will auto harvest and replant.
+Items/CoreEnhance_VerdantShrine	Verdant Shrine	繁茂祭坛
+Items/CoreEnhance_VerdantShrineDesc	"Works like a normal sprinkler that will auto harvest and replant.
 The effect range is 16 x 16.
 Will not work without a Verdant Crystal placed.
-Put in the corresponding gems to get additional effects:
-Green Gem - Faster growing (1:10%)
-Blue Gem - Extra harvest (1:10%, Each independent judgment)
-Red Gem - Gold chance (1:3%)"	"覆盖范围16*16
+Put in the corresponding gems to get additional effects_
+Green Gem - Faster growing (1_10%)
+Blue Gem - Extra harvest (1_10%, Each independent judgment)
+Red Gem - Gold chance (1_3%)"	"覆盖范围16*16
 自带-洒水器效果，自动收获与种植
 放入对应宝石获得额外效果
-绿-生长加速（1:10%）
-蓝-额外收成（1:10%，每颗独立判定）
-红-金色几率（1:3%）
+绿-生长加速（1_10%）
+蓝-额外收成（1_10%，每颗独立判定）
+红-金色几率（1_3%）
 世界中没有繁茂水晶则不工作"
-Items/CoreEnhance:VerdantShrineTerminal	Text		Verdant Crystal	繁茂水晶
-Items/CoreEnhance:VerdantShrineTerminalDesc	Text		"The Verdant Crystal is required for Verdant Shrines to function.
+Items/CoreEnhance_VerdantShrineTerminal	Verdant Crystal	繁茂水晶
+Items/CoreEnhance_VerdantShrineTerminalDesc	"The Verdant Crystal is required for Verdant Shrines to function.
 Loot from Verdant Shrines will automatically be put in this inventory.
 Only supports 1 Terminal.
 Supports the use of robot arms."	"祭坛会将收获直接放入水晶
 如果有多个水晶，会放进哪个就不知道了
 支持机械臂"
-Items/CoreEnhance:WorkBench	Text		Core Enhance Station	核心附魔台
-Items/CoreEnhance:WorkBenchDesc	Text		The workbench for Quality of Core Keeper	更好的体验专属制作站
-Items/CoreEnhance:BoulderDemolish	Text		Boulder Demolisher	矿岩毁灭者
-Items/CoreEnhance:BoulderDemolishDesc	Text		Place, knock, boom	放置，敲击，Boom
-CoreEnhance/Craft	Text		Craft	制作
-CoreEnhance/ObtainWay	Text		Obtain Way	获取途径
-CoreEnhance/ExtraChestAction/PutAll	Text		Store All	放入全部
-CoreEnhance/ExtraChestAction/PutAllDesc	Text		Store all items into the chest	将所有道具放入箱子
-CoreEnhance/ExtraChestAction/TakeAll	Text		Take All	拿取全部
-CoreEnhance/ExtraChestAction/TakeAllDesc	Text		Take all items from the chest	从箱子拿取所有道具
-CoreEnhance/ExtraChestAction/Replenish	Text		Replenish	补货
-CoreEnhance/ExtraChestAction/ReplenishDesc	Text		Moves already existing items in your inventory from the chest to your inventory	将箱子里与道具栏中现有道具相同的道具移动到道具栏中
-CoreEnhance/ExtraChestAction/Split	Text		Split Stack	拆分堆叠
-CoreEnhance/ExtraChestAction/SplitDesc	Text		Split stack into single, until the next slot is not empty	拆分堆叠，直到下一个栏位不为空
-CoreEnhance/Switch	Text		Quality of CK Function Switch	更好的体验功能开关
-CoreEnhance/Value	Text		Quality of CK Extra Config	更好的体验额外配置
-CoreEnhance/Switch/Infinity	Text		Infinity	无限
-CoreEnhance/Switch/Accelerate	Text		Accelerate	加速
-CoreEnhance/Switch/Automation	Text		Automation	自动化
-CoreEnhance/Switch/Pet	Text		Pet	宠物
-CoreEnhance/Switch/Misc	Text		Misc	杂项
-CoreEnhance/Value/Infinity	Text		Infinity	无限
-CoreEnhance/Value/Accelerate	Text		Accelerate	加速
-CoreEnhance/Value/Automation	Text		Automation	自动化
-CoreEnhance/Value/Pet	Text		Pet	宠物
-CoreEnhance/Value/Misc	Text		Misc	杂项
-CoreEnhance/Switch/Infinity/Durability	Text		Durability	耐久
-CoreEnhance/Switch/Infinity/Durability/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Infinity/Durability	Text		Durability Recovery Interval	耐久度恢复间隔
-CoreEnhance/Switch/Infinity/Boulder	Text		Boulder	矿岩
-CoreEnhance/Switch/Infinity/Arena	Text		Arena	竞技场
-CoreEnhance/Switch/Infinity/Arena/Description	Text		"Please take enough ancient coins and stand in the center of the broken arena and destroy the loot chest
+Items/CoreEnhance_WorkBench	Core Enhance Station	核心附魔台
+Items/CoreEnhance_WorkBenchDesc	The workbench for Quality of Core Keeper	更好的体验专属制作站
+Items/CoreEnhance_BoulderDemolish	Boulder Demolisher	矿岩毁灭者
+Items/CoreEnhance_BoulderDemolishDesc	Place, knock, boom	放置，敲击，Boom
+CoreEnhance/Craft	Craft	制作
+CoreEnhance/ObtainWay	Obtain Way	获取途径
+CoreEnhance/ExtraChestAction/PutAll	Store All	放入全部
+CoreEnhance/ExtraChestAction/PutAllDesc	Store all items into the chest	将所有道具放入箱子
+CoreEnhance/ExtraChestAction/TakeAll	Take All	拿取全部
+CoreEnhance/ExtraChestAction/TakeAllDesc	Take all items from the chest	从箱子拿取所有道具
+CoreEnhance/ExtraChestAction/Replenish	Replenish	补货
+CoreEnhance/ExtraChestAction/ReplenishDesc	Moves already existing items in your inventory from the chest to your inventory	将箱子里与道具栏中现有道具相同的道具移动到道具栏中
+CoreEnhance/ExtraChestAction/Split	Split Stack	拆分堆叠
+CoreEnhance/ExtraChestAction/SplitDesc	Split stack into single, until the next slot is not empty	拆分堆叠，直到下一个栏位不为空
+CoreEnhance/Switch	Quality of CK Function Switch	更好的体验功能开关
+CoreEnhance/Value	Quality of CK Extra Config	更好的体验额外配置
+CoreEnhance/Switch/Infinity	Infinity	无限
+CoreEnhance/Switch/Accelerate	Accelerate	加速
+CoreEnhance/Switch/Automation	Automation	自动化
+CoreEnhance/Switch/Pet	Pet	宠物
+CoreEnhance/Switch/Misc	Misc	杂项
+CoreEnhance/Value/Infinity	Infinity	无限
+CoreEnhance/Value/Accelerate	Accelerate	加速
+CoreEnhance/Value/Automation	Automation	自动化
+CoreEnhance/Value/Pet	Pet	宠物
+CoreEnhance/Value/Misc	Misc	杂项
+CoreEnhance/Switch/Infinity/Durability	Durability	耐久
+CoreEnhance/Switch/Infinity/Durability/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Infinity/Durability	Durability Recovery Interval	耐久度恢复间隔
+CoreEnhance/Switch/Infinity/Boulder	Boulder	矿岩
+CoreEnhance/Switch/Infinity/Arena	Arena	竞技场
+CoreEnhance/Switch/Infinity/Arena/Description	"Please take enough ancient coins and stand in the center of the broken arena and destroy the loot chest
 This entry has additional configs"	"请带上足够的上古钱币站在破损竞技场中心，并且已经摧毁战利品宝箱
 这个条目有额外配置"
-CoreEnhance/Value/Infinity/Arena	Text		Arena Cost	竞技场开销
-CoreEnhance/Value/Infinity/Arena/Description	Text		How much ancient coin cost for arena rebuild	竞技场重生需消耗多少上古钱币
-CoreEnhance/Switch/Infinity/Minion	Text		Minion	召唤物时长
-CoreEnhance/Switch/Accelerate/Merchant	Text		Merchant	商人
-CoreEnhance/Switch/Accelerate/Merchant/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Accelerate/Merchant	Text		Merchant Replenish Interval	商人补货间隔
-CoreEnhance/Value/Accelerate/Merchant/Description	Text		"In seconds
+CoreEnhance/Value/Infinity/Arena	Arena Cost	竞技场开销
+CoreEnhance/Value/Infinity/Arena/Description	How much ancient coin cost for arena rebuild	竞技场重生需消耗多少上古钱币
+CoreEnhance/Switch/Infinity/Minion	Minion	召唤物时长
+CoreEnhance/Switch/Accelerate/Merchant	Merchant	商人
+CoreEnhance/Switch/Accelerate/Merchant/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Accelerate/Merchant	Merchant Replenish Interval	商人补货间隔
+CoreEnhance/Value/Accelerate/Merchant/Description	"In seconds
 If set to 0, will replenish immediately while any item is sold out"	单位为秒，如果设为0，则有任何物品售罄时立即刷新
-CoreEnhance/Switch/Accelerate/Titan	Text		Titan	泰坦
-CoreEnhance/Switch/Accelerate/Titan/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Accelerate/Titan	Text		Titan CD	泰坦冷却
-CoreEnhance/Value/Accelerate/Titan/Description	Text		"In seconds
+CoreEnhance/Switch/Accelerate/Titan	Titan	泰坦
+CoreEnhance/Switch/Accelerate/Titan/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Accelerate/Titan	Titan CD	泰坦冷却
+CoreEnhance/Value/Accelerate/Titan/Description	"In seconds
 Equal to existence time of soul orb"	"单位为秒
 等同于灵魂球存在时间"
-CoreEnhance/Value/Accelerate/CraftingAnimals	Text		Block Animals	阻止牲畜
-CoreEnhance/Value/Accelerate/CraftingAnimals/Description	Text		Whether Accelerate-Crafting is effective on animals	“加速—制造”的效果是否对牲畜生效
-CoreEnhance/Value/Accelerate/CraftingFishingNet	Text		Block Fishing Nets	阻止渔网
-CoreEnhance/Value/Accelerate/CraftingFishingNet/Description			Whether Accelerate-Crafting is effective on fishing nets	“加速—制造”的效果是否对渔网生效
-CoreEnhance/Switch/Accelerate/Crafting	Text		Crafting	制造
-CoreEnhance/Switch/Accelerate/Crafting/Description	Text		For example, smelting, cooking, hatching eggs, etc.	例如，冶炼、烹饪、孵蛋等
-CoreEnhance/Switch/Accelerate/Casting	Text		Casting	使用
-CoreEnhance/Switch/Accelerate/Casting/Description	Text		For example, scanning, synthesis, etc.	例如，扫描、合成等
-CoreEnhance/Switch/Accelerate/Portal	Text		Portal	传送点
-CoreEnhance/Switch/Accelerate/Level	Text		Level	等级
-CoreEnhance/Switch/Accelerate/Level/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Accelerate/Level	Text		Exp Multiplier	经验值倍率
-CoreEnhance/Switch/Automation/Salvage	Text		Salvage	拆解
-CoreEnhance/Switch/Automation/Salvage/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Automation/SalvageAmount	Text		Auto Salvage Amount	自动拆解数量
-CoreEnhance/Value/Automation/SalvageAmount/Description	Text		"Detection quantity
+CoreEnhance/Value/Accelerate/CraftingAnimals	Block Animals	阻止牲畜
+CoreEnhance/Value/Accelerate/CraftingAnimals/Description	Whether Accelerate-Crafting is effective on animals	“加速—制造”的效果是否对牲畜生效
+CoreEnhance/Value/Accelerate/CraftingFishingNet	Block Fishing Nets	阻止渔网
+CoreEnhance/Value/Accelerate/CraftingFishingNet/Description	Whether Accelerate-Crafting is effective on fishing nets	“加速—制造”的效果是否对渔网生效
+CoreEnhance/Switch/Accelerate/Crafting	Crafting	制造
+CoreEnhance/Switch/Accelerate/Crafting/Description	For example, smelting, cooking, hatching eggs, etc.	例如，冶炼、烹饪、孵蛋等
+CoreEnhance/Switch/Accelerate/Casting	Casting	使用
+CoreEnhance/Switch/Accelerate/Casting/Description	For example, scanning, synthesis, etc.	例如，扫描、合成等
+CoreEnhance/Switch/Accelerate/Portal	Portal	传送点
+CoreEnhance/Switch/Accelerate/Level	Level	等级
+CoreEnhance/Switch/Accelerate/Level/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Accelerate/Level	Exp Multiplier	经验值倍率
+CoreEnhance/Switch/Automation/Salvage	Salvage	拆解
+CoreEnhance/Switch/Automation/Salvage/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Automation/SalvageAmount	Auto Salvage Amount	自动拆解数量
+CoreEnhance/Value/Automation/SalvageAmount/Description	"Detection quantity
 When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	拆解台内物品数达到数量开始拆解倒计时
-CoreEnhance/Value/Automation/SalvageTimer	Text		Auto Salvage Timer	自动拆解倒计时
-CoreEnhance/Value/Automation/SalvageTimer/Description	Text		The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
-CoreEnhance/Switch/Automation/Fish	Text		Auto Fisher Requires Biome	自动钓鱼机限制环境
-CoreEnhance/Switch/Automation/Fish/Description	Text		Whether the autofisher is required to be in the biome that matches the floor tile its placed on	自动钓鱼机是否需要地块与环境匹配
-CoreEnhance/Switch/Automation/Plant	Text		Shrine Harvest	祭坛收获
-CoreEnhance/Switch/Automation/Plant/Description	Text		Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
-CoreEnhance/Value/Automation/PlantNature	Text		Emerald Max	绿宝石上限
-CoreEnhance/Value/Automation/PlantNature/Description	Text		The max number of effective emeralds in the Verdant shrine	繁茂祭坛中绿宝石生效数量上限
-CoreEnhance/Value/Automation/PlantSea	Text		Sapphire Max	蓝宝石上限
-CoreEnhance/Value/Automation/PlantSea/Description	Text		The max number of effective sapphires in the Verdant shrine	繁茂祭坛中蓝宝石生效数量上限
-CoreEnhance/Value/Automation/PlantDesert	Text		Ruby Max	红宝石上限
-CoreEnhance/Value/Automation/PlantDesert/Description	Text		The max number of effective rubies in the Verdant shrine	繁茂祭坛中红宝石生效数量上限
-CoreEnhance/Switch/Automation/Door	Text		Door	门
-CoreEnhance/Switch/Automation/FishingNetNoCritter	Text		Fishing net not need bait	渔网无需诱饵
-CoreEnhance/Switch/Automation/FishingNetNoCritter/Description	Text		If the fishing net slot is empty, a  bait will be automatically filled	如果渔网栏位是空，将自动填入一份诱饵
-CoreEnhance/Switch/Automation/FishingNetCanGetItem	Text		Fishing net can get item	渔网可捕捞物品
-CoreEnhance/Switch/Automation/FishingNetCanGetItem/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Value/Automation/FishingNetCanGetItem	Text		Fishing net get item chance	渔网捕捞物品概率
-CoreEnhance/Switch/Automation/GoldenPlantToSeed	Text		Golden Plant To Seed	金色作物回收种子
-CoreEnhance/Switch/Automation/GoldenPlantToSeed/Description	Text		"Putting golden plants into the seed extractor produces seeds, instead of gold ore
+CoreEnhance/Value/Automation/SalvageTimer	Auto Salvage Timer	自动拆解倒计时
+CoreEnhance/Value/Automation/SalvageTimer/Description	The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
+CoreEnhance/Switch/Automation/Fish	Auto Fisher Requires Biome	自动钓鱼机限制环境
+CoreEnhance/Switch/Automation/Fish/Description	Whether the autofisher is required to be in the biome that matches the floor tile its placed on	自动钓鱼机是否需要地块与环境匹配
+CoreEnhance/Switch/Automation/Plant	Shrine Harvest	祭坛收获
+CoreEnhance/Switch/Automation/Plant/Description	Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
+CoreEnhance/Value/Automation/PlantNature	Emerald Max	绿宝石上限
+CoreEnhance/Value/Automation/PlantNature/Description	The max number of effective emeralds in the Verdant shrine	繁茂祭坛中绿宝石生效数量上限
+CoreEnhance/Value/Automation/PlantSea	Sapphire Max	蓝宝石上限
+CoreEnhance/Value/Automation/PlantSea/Description	The max number of effective sapphires in the Verdant shrine	繁茂祭坛中蓝宝石生效数量上限
+CoreEnhance/Value/Automation/PlantDesert	Ruby Max	红宝石上限
+CoreEnhance/Value/Automation/PlantDesert/Description	The max number of effective rubies in the Verdant shrine	繁茂祭坛中红宝石生效数量上限
+CoreEnhance/Switch/Automation/Door	Door	门
+CoreEnhance/Switch/Automation/FishingNetNoCritter	Fishing net not need bait	渔网无需诱饵
+CoreEnhance/Switch/Automation/FishingNetNoCritter/Description	If the fishing net slot is empty, a  bait will be automatically filled	如果渔网栏位是空，将自动填入一份诱饵
+CoreEnhance/Switch/Automation/FishingNetCanGetItem	Fishing net can get item	渔网可捕捞物品
+CoreEnhance/Switch/Automation/FishingNetCanGetItem/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Automation/FishingNetCanGetItem	Fishing net get item chance	渔网捕捞物品概率
+CoreEnhance/Switch/Automation/GoldenPlantToSeed	Golden Plant To Seed	金色作物回收种子
+CoreEnhance/Switch/Automation/GoldenPlantToSeed/Description	"Putting golden plants into the seed extractor produces seeds, instead of gold ore
 This entry has additional configs"	"将金色作物放入种子提取器后产出的是种子而不是金矿
 这个条目有额外配置"
-CoreEnhance/Value/Automation/GoldenPlantToSeed	Text		Golden Plant Extra Seed	金作物额外种子
-CoreEnhance/Value/Automation/GoldenPlantToSeed/Description	Text		The extra amount of seeds produced after placing golden plants into the seed extractor	将金色作物放入种子提取器后额外产出种子的数量
-CoreEnhance/Switch/Automation/GiveExp	Text		Give Exp	给予经验
-CoreEnhance/Switch/Automation/GiveExp/Description	Text		Whether the Auto Fisher or the Verdant Crystal will give the closest player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
-CoreEnhance/Value/Automation/GiveExpGardening	Text		Chance of  get Gardening Exp	给予种植经验的概率
-CoreEnhance/Value/Automation/GiveExpGardening/Description	Text		The chance of giving the closest player gardening skill exp when the Verdant Crystal harvests crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
-CoreEnhance/Value/Automation/GiveExpFishing	Text		Chance of  get Fishing Exp	给予钓鱼经验的概率
-CoreEnhance/Value/Automation/GiveExpFishing/Description	Text		The chance of giving the closest player fishing skill exp when the Auto Fisher catches something	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
-CoreEnhance/Switch/Pet/TalentDisplay	Text		Talents Display	技能显示
-CoreEnhance/Switch/Pet/TalentDisplay/Description	Text		"When the mouse hovers a pet,
+CoreEnhance/Value/Automation/GoldenPlantToSeed	Golden Plant Extra Seed	金作物额外种子
+CoreEnhance/Value/Automation/GoldenPlantToSeed/Description	The extra amount of seeds produced after placing golden plants into the seed extractor	将金色作物放入种子提取器后额外产出种子的数量
+CoreEnhance/Switch/Automation/GiveExp	Give Exp	给予经验
+CoreEnhance/Switch/Automation/GiveExp/Description	Whether the Auto Fisher or the Verdant Crystal will give the closest player exp	自动钓鱼机或繁茂水晶是否给离得最近的玩家对应技能经验值
+CoreEnhance/Value/Automation/GiveExpGardening	Chance of  get Gardening Exp	给予种植经验的概率
+CoreEnhance/Value/Automation/GiveExpGardening/Description	The chance of giving the closest player gardening skill exp when the Verdant Crystal harvests crops	当繁茂水晶收获或累加作物时给予离得最近的玩家园艺经验的概率
+CoreEnhance/Value/Automation/GiveExpFishing	Chance of  get Fishing Exp	给予钓鱼经验的概率
+CoreEnhance/Value/Automation/GiveExpFishing/Description	The chance of giving the closest player fishing skill exp when the Auto Fisher catches something	当自动钓鱼机钓到战利品时给予离得最近的玩家钓鱼经验的概率
+CoreEnhance/Switch/Pet/TalentDisplay	Talents Display	技能显示
+CoreEnhance/Switch/Pet/TalentDisplay/Description	"When the mouse hovers a pet,
 a statistic showing the number of the pet's talents
 will be added to its item description"	"当鼠标悬浮在一个宠物上时
 在其物品描述中追加显示宠物的技能数量统计"
-CoreEnhance/Switch/Pet/ResetSkin	Text		Reset Skin	重置皮肤
-CoreEnhance/Switch/Pet/ResetSkin/Description	Text		"Right-click the ""Reset Pet Talents"" button to use this function, requires 200 Ancient Coins
+CoreEnhance/Switch/Pet/ResetSkin	Reset Skin	重置皮肤
+CoreEnhance/Switch/Pet/ResetSkin/Description	"Right-click the ""Reset Pet Talents"" button to use this function, requires 200 Ancient Coins
 This function is ineffective for pets with only one skin color"	"右键点击“重置宠物技能”按钮来使用此功能，需要200上古钱币
 对仅有一个皮肤颜色的宠物无效"
-CoreEnhance/Switch/Pet/RollSkill	Text		Reset Talents	重置天赋
-CoreEnhance/Switch/Pet/RollSkill/Description	Text		"Prerequisite:  Hold down any modifier key (Shift, Ctrl, Alt)
+CoreEnhance/Switch/Pet/RollSkill	Reset Talents	重置天赋
+CoreEnhance/Switch/Pet/RollSkill/Description	"Prerequisite_  Hold down any modifier key (Shift, Ctrl, Alt)
 Right-click the ""Reset Pet Talents"" button to reroll all talents, costing 200 Ancient Coins
 Left-click a single pet talent to reroll that talent, costing 100 Beast Booster"	"按住任意修饰键（Shift，Ctrl，Alt）后
 右键点击“重置宠物天赋”按钮将重新随机所有天赋，消耗200上古钱币
 左键点击单个宠物天赋将单个重新随机，消耗100野兽能量糖"
-CoreEnhance/Switch/Misc/IgnoreRayChecksForPickup	Text		Ignore pickup occlusion detection	忽略拾取阻挡检测
-CoreEnhance/Switch/Misc/DeathNoDrop	Text		Keep Loot on Death	死亡不掉落
-CoreEnhance/Switch/Misc/ChainMining	Text		Chain Mining Ore	连锁挖矿
-CoreEnhance/Switch/Misc/ChainMining/Description	Text		This entry has additional configs	这个条目有额外配置
-CoreEnhance/Switch/Misc/ContainerDisplay	Text		Container Display	容器显示
-CoreEnhance/Switch/Misc/ContainerDisplay/Description	Text		Whether when holding keybind (default: Left Alt, customizable) and hovering over an item, it will highlight nearby containers containing the item you hover.	当附近容器内有鼠标指向物品时高亮容器
-CoreEnhance/Value/Misc/ChainMiningAdsorption	Text		Absorb Chain Loot	吸附连锁战利品
-CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Text		Whether the drops from chain mining will be automatically put in the players inventory or if it drops on the ground.	连锁挖矿掉落的战利品是否会被玩家吸附
-CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Text		Chain Mining Requires Player	必须由玩家连锁
-CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Text		Whether or not a player is required to Chain Mine.	是否必须由玩家造成伤害才能连锁
-CoreEnhance/Value/Misc/ChainMiningGiveExp			Chain Mining Give Exp	连锁挖矿提供经验
-CoreEnhance/Switch/Misc/ReplaceQuickStack	Text		Replace Quick Stack Function	替换快速堆叠功能
-CoreEnhance/Switch/Misc/ReplaceQuickStack/Description	Text		Vanilla function wiil not handle unstackable item (like any weapon)	原版功能不会处理不可堆叠的物品（比如任意武器）
-CoreEnhance/Switch/Misc/CloseMoreChestButton	Text		Close More Chest Button	关闭新增宝箱按钮
-CoreEnhance/Switch/Misc/CloseMoreChestButton/Description	Text		"Whether to turn off the newly added chest UI buttons (quick stack, put all, take all, restock, etc.)
+CoreEnhance/Switch/Misc/IgnoreRayChecksForPickup	Ignore pickup occlusion detection	忽略拾取阻挡检测
+CoreEnhance/Switch/Misc/DeathNoDrop	Keep Loot on Death	死亡不掉落
+CoreEnhance/Switch/Misc/ChainMining	Vine Miner	连锁挖矿
+CoreEnhance/Switch/Misc/ChainMining/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Switch/Misc/ContainerDisplay	Container Display	容器显示
+CoreEnhance/Switch/Misc/ContainerDisplay/Description	Whether when holding keybind (default_ Left Alt, customizable) and hovering over an item, it will highlight nearby containers containing the item you hover.	当附近容器内有鼠标指向物品时高亮容器
+CoreEnhance/Value/Misc/ChainMiningAdsorption	Absorb Chain Loot	吸附连锁战利品
+CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Whether the drops from chain mining will be automatically put in the players inventory or if it drops on the ground.	连锁挖矿掉落的战利品是否会被玩家吸附
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Chain Mining Requires Player	必须由玩家连锁
+CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Whether or not a player is required to Chain Mine.	是否必须由玩家造成伤害才能连锁
+CoreEnhance/Value/Misc/ChainMiningGiveExp	Chain Mining Give Exp	连锁挖矿提供经验
+CoreEnhance/Switch/Misc/ChainWood	Chain Wood	连锁木头
+CoreEnhance/Switch/Misc/ReplaceQuickStack	Replace Quick Stack Function	替换快速堆叠功能
+CoreEnhance/Switch/Misc/ReplaceQuickStack/Description	Vanilla function wiil not handle unstackable item (like any weapon)	原版功能不会处理不可堆叠的物品（比如任意武器）
+CoreEnhance/Switch/Misc/CloseMoreChestButton	Close More Chest Button	关闭新增宝箱按钮
+CoreEnhance/Switch/Misc/CloseMoreChestButton/Description	"Whether to turn off the newly added chest UI buttons (quick stack, put all, take all, restock, etc.)
 According to feedback, it has a bug, but the triggering reason is unclear"	"是否关闭新增的宝箱整理按钮，（快速堆叠、放入全部、拿取全部、补货等等）
 根据反馈，这个功能有bug，但触发原因不明"

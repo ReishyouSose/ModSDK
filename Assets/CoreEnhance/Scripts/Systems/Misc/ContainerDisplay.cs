@@ -1,11 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
 using Assets.CoreEnhance.Scripts.Helpers;
 using Interaction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity.Entities;
 using UnityEngine;
 

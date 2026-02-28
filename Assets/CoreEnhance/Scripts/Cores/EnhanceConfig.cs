@@ -27,15 +27,35 @@ namespace Assets.CoreEnhance.Scripts.Cores
                     continue;
                 }
                 ConfigDefinition def = new(section, function);
-                ConfigScope scope = index switch
+                ConfigScope scope = null;
+                bool _default = true;
+                switch (index)
                 {
-                    EnhanceCategory.RollSkill => new(ConfigAccessLevel.Admin, false),
-                    EnhanceCategory.Level => new(ConfigAccessLevel.Admin, false),
-                    EnhanceCategory.GoldenPlantToSeed => new(ConfigAccessLevel.Server, true),
-                    EnhanceCategory.CloseMoreChestButton => new(ConfigAccessLevel.Client, true),
-                    _ => new(),
-                };
-                configs.Add(index, new(file.Bind(def, true, null, scope)));
+                    case EnhanceCategory.Boulder:
+                    case EnhanceCategory.Titan:
+                    case EnhanceCategory.Crafting:
+                    case EnhanceCategory.FishingNetNoCritter:
+                    case EnhanceCategory.FishingNetCanGetItem:
+                    case EnhanceCategory.IgnoreRayChecksForPickup:
+                        _default = false;
+                        break;
+                    case EnhanceCategory.RollSkill:
+                        _default = false;
+                        scope = new(ConfigAccessLevel.Admin, false);
+                        break;
+                    case EnhanceCategory.Level:
+                        _default = false;
+                        scope = new(ConfigAccessLevel.Admin, false);
+                        break;
+                    case EnhanceCategory.GoldenPlantToSeed:
+                        _default = false;
+                        scope = new(ConfigAccessLevel.Server, true);
+                        break;
+                    case EnhanceCategory.CloseMoreChestButton:
+                        scope = new(ConfigAccessLevel.Client, true);
+                        break;
+                }
+                configs.Add(index, new(file.Bind(def, _default, null, scope ?? new())));
             }
             AddValue(new("CoreEnhance/Value.cfg", true));
         }
@@ -45,8 +65,8 @@ namespace Assets.CoreEnhance.Scripts.Cores
             TryAddValue(file, EnhanceCategory.Arena, 1000, new AcceptableValueRange<int>(100, 9999));
             TryAddValue(file, EnhanceCategory.Merchant, 0, new AcceptableValueRange<int>(0, 3500));
             TryAddValue(file, EnhanceCategory.Titan, 5, new AcceptableValueRange<int>(5, 300));
-            TryAddValue(file, EnhanceCategory.Crafting, false, null, "Animals");
-            TryAddValue(file, EnhanceCategory.Crafting, false, null, "FishingNet");
+            TryAddValue(file, EnhanceCategory.Crafting, true, null, "Animals");
+            TryAddValue(file, EnhanceCategory.Crafting, true, null, "FishingNet");
             TryAddValue(file, EnhanceCategory.FishingNetCanGetItem, 0.4f, new AcceptableValueRange<float>(0, 0.5f));
             TryAddValue(file, EnhanceCategory.GoldenPlantToSeed, 8, new AcceptableValueRange<int>(0, 8));
             TryAddValue(file, EnhanceCategory.Level, 10, new AcceptableValueRange<int>(1, 100), "", new(ConfigAccessLevel.Admin, false));

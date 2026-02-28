@@ -27,6 +27,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                 return;
             Entities.ForEach((ref HealthCD heal, in DropsLootWhenDamagedCD dr) =>
             {
+                if (heal.health <= 0)
+                    return;
                 if (heal.health < heal.maxHealth - dr.damageToDealToDropLoot)
                 {
                     heal.health = heal.maxHealth;

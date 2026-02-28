@@ -2,7 +2,6 @@
 using Assets.CoreEnhance.Scripts.Systems.Misc;
 using HarmonyLib;
 using I2.Loc;
-using Inventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,5 @@
 ﻿using Assets.CoreEnhance.Scripts.Components;
 using Assets.CoreEnhance.Scripts.Cores;
-using CoreLib.Util.Extension;
 using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Accelerate

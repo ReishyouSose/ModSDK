@@ -1,5 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
 using Assets.CoreEnhance.Scripts.Helpers;
+using PugMod;
 using Unity.Entities;
 using UnityEngine;
 
@@ -10,6 +11,23 @@ namespace Assets.CoreEnhance.Scripts.Items
         public static void AuthoringModify(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
             GoldenPlantExtractToSeed(authoringData);
+            ModifyLoot(entity, authoringData, entityManager);
+        }
+        private static void ModifyLoot(Entity entity, GameObject authoringData, EntityManager entityManager)
+        {
+            if (authoringData.GetEntityObjectID(out _) != ObjectID.CoreBoss)
+                return;
+            DynamicBuffer<DropsLootBuffer> buffer;
+            if (!entityManager.HasBuffer<DropsLootBuffer>(entity))
+                buffer = entityManager.AddBuffer<DropsLootBuffer>(entity);
+            else
+                buffer = entityManager.GetBuffer<DropsLootBuffer>(entity);
+            buffer.Add(new DropsLootBuffer()
+            {
+                amount = 3,
+                multiplayerAmountAdditionScaling = 3,
+                lootDropID = API.Authoring.GetObjectID("CoreEnhance:BoulderDemolish")
+            });
         }
         private static void GoldenPlantExtractToSeed(GameObject authoringData)
         {

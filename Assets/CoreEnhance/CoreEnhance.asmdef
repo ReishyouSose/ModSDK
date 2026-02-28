@@ -226,7 +226,8 @@
         "XblPCSandbox.dll",
         "ZipSaveFolder.dll",
         "0Harmony.dll",
-        "PugSprite.dll"
+        "PugSprite.dll",
+        "ScriptableData.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [],

@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -472462764, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: CoreEnhance
+  m_Script: {fileID: 1876717734, guid: 292700ef68995bdb2163e35989fc7eb0, type: 3}
+  m_Name: SpriteAssetManifest
   m_EditorClassIdentifier: 
-  enableOverloading: 1
+  spriteAssets:
+  - {fileID: 11400000, guid: d71ed2df322d22645a4319613302c565, type: 2}
+  gradientMaps: []
+  transformAnimations: []
