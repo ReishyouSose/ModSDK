@@ -17,8 +17,8 @@ MonoBehaviour:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: 2478160867424654047
-    m_high: 7333269987938354010
+    m_low: -5330964203901539130
+    m_high: 7660061780479236504
   m_dynamicCollections:
     m_list: []
   m_defaultPrimaryGradientMap: {fileID: 0}

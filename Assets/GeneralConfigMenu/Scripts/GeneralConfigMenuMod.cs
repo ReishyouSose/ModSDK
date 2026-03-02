@@ -12,8 +12,8 @@ namespace Assets.GeneralConfigMenu.Scripts
     public class GeneralConfigMenuMod : IMod
     {
         private static List<MonoBehaviour> needChanges;
-        private const string OpenMenu = "GCM:OpenMenu";
-        internal const string HorizenScroll = "GCM:HorizenScroll";
+        private const string OpenMenu = "GCM_OpenMenu";
+        internal const string HorizenScroll = "GCM_HorizenScroll";
         internal static ModConfig config;
         internal static ConfigSyncClient ConfigSync { get; private set; }
         public void EarlyInit()
@@ -24,8 +24,9 @@ namespace Assets.GeneralConfigMenu.Scripts
                 { "en", "Open Mod Config Menu" },
                 { "zh-CN", "打开模组配置菜单" }
             };
-            ControlMappingModule.AddKeyboardBind(OpenMenu, KeyboardKeyCode.K, ModifierKey.Control);
-            ControlMappingModule.AddKeyboardBind(HorizenScroll, KeyboardKeyCode.LeftShift);
+            int cateogry = ControlMappingModule.AddNewCategory("GCM");
+            ControlMappingModule.AddKeyboardBind(OpenMenu, KeyboardKeyCode.K, ModifierKey.Control, categoryId: cateogry);
+            ControlMappingModule.AddKeyboardBind(HorizenScroll, KeyboardKeyCode.LeftShift, categoryId: cateogry);
             config = new();
             API.Client.OnWorldCreated += Client_OnWorldCreated;
         }

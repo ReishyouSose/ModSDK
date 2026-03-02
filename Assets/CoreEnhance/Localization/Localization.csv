@@ -1,60 +1,11 @@
 Key	English	Chinese (Simplified)
-Items/CoreEnhance_AutoFisher	Auto Fisher	自动钓鱼机
-Items/CoreEnhance_AutoFisherDesc	"Requires a fishing rod once placed.
-The loot depends on the biome, requiring the tile it's place on to match the biome.
-Will not work without a Fishing Terminal placed.
-Biome requirement can be disabled in the config."	"放置后，放入高于或等于环境的鱼竿即可自动钓鱼
-战利品取决于环境，要求所处地块与环境匹配（这条限制可以在配置中关闭）
-世界中没有终端则不工作"
-Items/CoreEnhance_ArenaScanner	Arena Scanner	竞技场扫描仪
-Items/CoreEnhance_ArenaScannerDesc	"Will automatically point you in the direction of the nearest arena once in your inventory and locked.
-If you're not close enough to an Arena or one has not generated it will not direct you to one.
-If an Arena has not been detected and you're in the Shimmering Frontier,
-you can right click to generate one nearby."	"放在背包中并锁定即可，会尝试指出竞技场的位置
-若没有标记，说明竞技场未生成，请前往水晶区探索
-或在荧光边境使用该物品，将在附近直接生成竞技场，已经标记出竞技场时无效"
-Items/CoreEnhance_AutoFisherTerminal	Auto Fisher Terminal	自动钓鱼机终端
-Items/CoreEnhance_AutoFisherTerminalDesc	"The Auto Fisher Terminal is required for Auto Fishers to function.
-Loot from Auto Fishers will automatically be put in this inventory.
-Only supports 1 Terminal.
-Supports the use of robot arms."	"自动钓鱼机会将渔获直接放入终端
-如果有多个终端，那我也不知道会放进哪个
-支持机械臂"
-Items/CoreEnhance_VerdantShrine	Verdant Shrine	繁茂祭坛
-Items/CoreEnhance_VerdantShrineDesc	"Works like a normal sprinkler that will auto harvest and replant.
-The effect range is 16 x 16.
-Will not work without a Verdant Crystal placed.
-Put in the corresponding gems to get additional effects_
-Green Gem - Faster growing (1_10%)
-Blue Gem - Extra harvest (1_10%, Each independent judgment)
-Red Gem - Gold chance (1_3%)"	"覆盖范围16*16
-自带-洒水器效果，自动收获与种植
-放入对应宝石获得额外效果
-绿-生长加速（1_10%）
-蓝-额外收成（1_10%，每颗独立判定）
-红-金色几率（1_3%）
-世界中没有繁茂水晶则不工作"
-Items/CoreEnhance_VerdantShrineTerminal	Verdant Crystal	繁茂水晶
-Items/CoreEnhance_VerdantShrineTerminalDesc	"The Verdant Crystal is required for Verdant Shrines to function.
-Loot from Verdant Shrines will automatically be put in this inventory.
-Only supports 1 Terminal.
-Supports the use of robot arms."	"祭坛会将收获直接放入水晶
-如果有多个水晶，会放进哪个就不知道了
-支持机械臂"
-Items/CoreEnhance_WorkBench	Core Enhance Station	核心附魔台
-Items/CoreEnhance_WorkBenchDesc	The workbench for Quality of Core Keeper	更好的体验专属制作站
-Items/CoreEnhance_BoulderDemolish	Boulder Demolisher	矿岩毁灭者
-Items/CoreEnhance_BoulderDemolishDesc	Place, knock, boom	放置，敲击，Boom
+ControlMapper/CoreEnhanceCategory	Quality of Core Keeper	更好的体验
+ControlMapper/CoreEnhanceDescription	Quality of Core Keeper Control Mapper	更好的体验键位映射
+ControlMapper/CoreEnhance_QuickOpenLockedChest	Quick Open Locked Chest	快捷开箱
+ControlMapper/CoreEnhance_ItemLookup	Item Lookup (Not implemented)	物品查询（未实装）
+ControlMapper/CoreEnhance_ContainerHighLight	Container HighLight (Hold on)	容器高亮（按住）
 CoreEnhance/Craft	Craft	制作
 CoreEnhance/ObtainWay	Obtain Way	获取途径
-CoreEnhance/ExtraChestAction/PutAll	Store All	放入全部
-CoreEnhance/ExtraChestAction/PutAllDesc	Store all items into the chest	将所有道具放入箱子
-CoreEnhance/ExtraChestAction/TakeAll	Take All	拿取全部
-CoreEnhance/ExtraChestAction/TakeAllDesc	Take all items from the chest	从箱子拿取所有道具
-CoreEnhance/ExtraChestAction/Replenish	Replenish	补货
-CoreEnhance/ExtraChestAction/ReplenishDesc	Moves already existing items in your inventory from the chest to your inventory	将箱子里与道具栏中现有道具相同的道具移动到道具栏中
-CoreEnhance/ExtraChestAction/Split	Split Stack	拆分堆叠
-CoreEnhance/ExtraChestAction/SplitDesc	Split stack into single, until the next slot is not empty	拆分堆叠，直到下一个栏位不为空
 CoreEnhance/Switch	Quality of CK Function Switch	更好的体验功能开关
 CoreEnhance/Value	Quality of CK Extra Config	更好的体验额外配置
 CoreEnhance/Switch/Infinity	Infinity	无限
@@ -146,7 +97,7 @@ CoreEnhance/Switch/Pet/ResetSkin/Description	"Right-click the ""Reset Pet Talent
 This function is ineffective for pets with only one skin color"	"右键点击“重置宠物技能”按钮来使用此功能，需要200上古钱币
 对仅有一个皮肤颜色的宠物无效"
 CoreEnhance/Switch/Pet/RollSkill	Reset Talents	重置天赋
-CoreEnhance/Switch/Pet/RollSkill/Description	"Prerequisite_  Hold down any modifier key (Shift, Ctrl, Alt)
+CoreEnhance/Switch/Pet/RollSkill/Description	"Prerequisite:  Hold down any modifier key (Shift, Ctrl, Alt)
 Right-click the ""Reset Pet Talents"" button to reroll all talents, costing 200 Ancient Coins
 Left-click a single pet talent to reroll that talent, costing 100 Beast Booster"	"按住任意修饰键（Shift，Ctrl，Alt）后
 右键点击“重置宠物天赋”按钮将重新随机所有天赋，消耗200上古钱币
@@ -156,7 +107,7 @@ CoreEnhance/Switch/Misc/DeathNoDrop	Keep Loot on Death	死亡不掉落
 CoreEnhance/Switch/Misc/ChainMining	Vine Miner	连锁挖矿
 CoreEnhance/Switch/Misc/ChainMining/Description	This entry has additional configs	这个条目有额外配置
 CoreEnhance/Switch/Misc/ContainerDisplay	Container Display	容器显示
-CoreEnhance/Switch/Misc/ContainerDisplay/Description	Whether when holding keybind (default_ Left Alt, customizable) and hovering over an item, it will highlight nearby containers containing the item you hover.	当附近容器内有鼠标指向物品时高亮容器
+CoreEnhance/Switch/Misc/ContainerDisplay/Description	Whether when holding keybind (default: Left Alt, customizable) and hovering over an item, it will highlight nearby containers containing the item you hover.	当附近容器内有鼠标指向物品时高亮容器
 CoreEnhance/Value/Misc/ChainMiningAdsorption	Absorb Chain Loot	吸附连锁战利品
 CoreEnhance/Value/Misc/ChainMiningAdsorption/Description	Whether the drops from chain mining will be automatically put in the players inventory or if it drops on the ground.	连锁挖矿掉落的战利品是否会被玩家吸附
 CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Chain Mining Requires Player	必须由玩家连锁

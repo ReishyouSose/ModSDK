@@ -36,7 +36,6 @@ namespace Assets.CoreEnhance.Scripts.Cores
                     case EnhanceCategory.Crafting:
                     case EnhanceCategory.FishingNetNoCritter:
                     case EnhanceCategory.FishingNetCanGetItem:
-                    case EnhanceCategory.IgnoreRayChecksForPickup:
                         _default = false;
                         break;
                     case EnhanceCategory.RollSkill:
@@ -51,9 +50,9 @@ namespace Assets.CoreEnhance.Scripts.Cores
                         _default = false;
                         scope = new(ConfigAccessLevel.Server, true);
                         break;
-                    case EnhanceCategory.CloseMoreChestButton:
+                    /*case EnhanceCategory.CloseMoreChestButton:
                         scope = new(ConfigAccessLevel.Client, true);
-                        break;
+                        break;*/
                 }
                 configs.Add(index, new(file.Bind(def, _default, null, scope ?? new())));
             }

@@ -8,7 +8,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
 {
     public static class ModKeyBind
     {
-        private const string CoreEnhance = "CoreEnhance:";
+        private const string CoreEnhance = "CoreEnhance_";
         internal const string ItemLookup = CoreEnhance + nameof(ItemLookup);
         internal const string QuickOpenLockedChest = CoreEnhance + nameof(QuickOpenLockedChest);
         internal const string ContainerHighLight = CoreEnhance + nameof(ContainerHighLight);
@@ -17,15 +17,16 @@ namespace Assets.CoreEnhance.Scripts.Cores
         //internal const string QuickCooked = CoreEnhance + nameof(QuickCooked);
         public static void Load()
         {
-            ControlMappingModule.AddKeyboardBind(ItemLookup, KeyboardKeyCode.F, ModifierKey.Control);
+            int cateogry = ControlMappingModule.AddNewCategory("CoreEnhance");
+            ControlMappingModule.AddKeyboardBind(ItemLookup, KeyboardKeyCode.F, ModifierKey.Control, categoryId: cateogry);
             /*{ "en", "Item Lookup" },
                 { "zh-CN","查询获取途径" }*/
 
-            ControlMappingModule.AddKeyboardBind(QuickOpenLockedChest, KeyboardKeyCode.O, ModifierKey.Control);
+            ControlMappingModule.AddKeyboardBind(QuickOpenLockedChest, KeyboardKeyCode.O, ModifierKey.Control, categoryId: cateogry);
             /*{ "en", "Quick Open Locked Chest" },
                 { "zh-CN","快速开启上锁宝箱" }*/
 
-            ControlMappingModule.AddKeyboardBind(ContainerHighLight, KeyboardKeyCode.LeftAlt);
+            ControlMappingModule.AddKeyboardBind(ContainerHighLight, KeyboardKeyCode.LeftAlt, categoryId: cateogry);
             /*{ "en", "Container HighLight (Hold)" },
                 { "zh-CN","容器高亮（按住）" }*/
             //RewiredExtensionModule.AddKeybind(QuickHealth, "Quick Health", KeyboardKeyCode.Q, ModifierKey.Control);
@@ -39,7 +40,6 @@ namespace Assets.CoreEnhance.Scripts.Cores
             var obtain = ObtainLookupUI.ins;
             if (r.GetButtonDown(ItemLookup))
             {
-                return;
                 if (lookup.Root.activeInHierarchy)
                     lookup.HideUI();
                 else if (obtain.Root.activeInHierarchy)

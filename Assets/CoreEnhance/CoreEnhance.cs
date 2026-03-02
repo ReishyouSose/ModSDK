@@ -18,6 +18,7 @@ namespace Assets.CoreEnhance
 {
     public class CoreEnhance : IMod
     {
+        public static CustomScenesDataTable sceneData;
         public const string InternalName = "CoreEnhance:";
         private int timer;
         public void EarlyInit()
@@ -29,8 +30,9 @@ namespace Assets.CoreEnhance
             authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
             authoring.OnObjectTypeAdded += ContainerDisplaySystem.MarkHighLight;
             authoring.OnObjectTypeAdded += Test;
-            CoreLibMod.LoadSubmodule(typeof(ControlMappingModule)/*,typeof(EntityModule)*/);
+            CoreLibMod.LoadSubmodule(typeof(ControlMappingModule), typeof(EntityModule));
             ModKeyBind.Load();
+            sceneData = Resources.Load<CustomScenesDataTable>("Scenes/CustomScenesDataTable");
         }
 
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
@@ -62,6 +64,8 @@ namespace Assets.CoreEnhance
 
         public void ModObjectLoaded(Object obj)
         {
+            if (obj is GameObject gameObject)
+                UserInterfaceModule.RegisterModUI(gameObject);
         }
 
         public void Shutdown()

@@ -1,6 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
 using Assets.CoreEnhance.Scripts.Helpers;
-using PugMod;
+using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
@@ -15,19 +15,31 @@ namespace Assets.CoreEnhance.Scripts.Items
         }
         private static void ModifyLoot(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            if (authoringData.GetEntityObjectID(out _) != ObjectID.CoreBoss)
+            ObjectID id = authoringData.GetEntityObjectID(out _);
+            List<DropsLootBuffer> add = new();
+            switch (id)
+            {
+                case ObjectID.CoreBoss:
+                    authoringData.TryGetComponent<DropLootAuthoring>(out var dropLoot);
+                    dropLoot.hasCustomLoot = true;
+                    dropLoot.customLoot.Values.Add(new()
+                    {
+                        amount = 3,
+                        multiplayerAmountAdditionScaling = 3,
+                    });
+                    break;
+            }
+            if (add.Count == 0)
                 return;
             DynamicBuffer<DropsLootBuffer> buffer;
             if (!entityManager.HasBuffer<DropsLootBuffer>(entity))
                 buffer = entityManager.AddBuffer<DropsLootBuffer>(entity);
             else
                 buffer = entityManager.GetBuffer<DropsLootBuffer>(entity);
-            buffer.Add(new DropsLootBuffer()
+            foreach (var drop in add)
             {
-                amount = 3,
-                multiplayerAmountAdditionScaling = 3,
-                lootDropID = API.Authoring.GetObjectID("CoreEnhance:BoulderDemolish")
-            });
+                buffer.Add(drop);
+            }
         }
         private static void GoldenPlantExtractToSeed(GameObject authoringData)
         {

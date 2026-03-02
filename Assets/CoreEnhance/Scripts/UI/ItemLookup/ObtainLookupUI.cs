@@ -23,7 +23,6 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
         private static Dictionary<ObjectID, CraftingAuthoring> recipes;
         private static Dictionary<ObjectID, LootTableID> chests;
         private static Dictionary<ObjectID, ChangeVariationWhenContainingObjectAuthoring> lockedChests;
-        private static CustomScenesDataTable sceneData;
         public GameObject Root => gameObject;
         public bool ShowWithPlayerInventory => false;
 
@@ -34,10 +33,6 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
             ins = this;
             slots = new();
             View.scrollable = this;
-        }
-        private void Start()
-        {
-            sceneData = Resources.Load<CustomScenesDataTable>("Scenes/CustomScenesDataTable");
         }
         public void HideUI()
         {
@@ -166,7 +161,7 @@ namespace Assets.CoreEnhance.Scripts.UI.ItemLookup
                     AddLootInfoByLootTable(lootTables[index], id, chest, ref i, ref height);
             }
             //特殊场景
-            foreach (var scene in sceneData.scenes)
+            foreach (var scene in CoreEnhance.sceneData.scenes)
             {
                 foreach (var inv in scene.prefabInventoryOverrides)
                 {
