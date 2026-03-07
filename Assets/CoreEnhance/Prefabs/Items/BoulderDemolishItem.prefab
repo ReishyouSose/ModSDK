@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: -1284326193051932072}
   - component: {fileID: 5301200751362321631}
   - component: {fileID: 2090431386909862538}
+  - component: {fileID: 7584448282590151990}
   m_Layer: 0
   m_Name: BoulderDemolishItem
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 318086258, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: CoreEnhance:BoulderDemolish
+  objectName: CoreEnhance_BoulderDemolish
   initialAmount: 1
   variation: 0
   variationIsDynamic: 0
@@ -519,3 +520,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02442d50b36105445b136bb429e130f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7584448282590151990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017784995729629170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae7684ea6f84c868d0b30fa9ecd2b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bindToRootWorkbench: 0
+  amount: 1

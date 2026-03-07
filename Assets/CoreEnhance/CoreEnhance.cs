@@ -4,11 +4,9 @@ using Assets.CoreEnhance.Scripts.Items;
 using Assets.CoreEnhance.Scripts.Systems.Automation;
 using Assets.CoreEnhance.Scripts.Systems.Infinity;
 using Assets.CoreEnhance.Scripts.Systems.Misc;
-using Assets.CoreEnhance.Scripts.UI.ItemLookup;
 using CoreLib;
 using CoreLib.Submodule.ControlMapping;
 using CoreLib.Submodule.Entity;
-using CoreLib.Submodule.UserInterface;
 using Pug.Automation;
 using PugMod;
 using Unity.Entities;
@@ -24,37 +22,25 @@ namespace Assets.CoreEnhance
         public void EarlyInit()
         {
             var authoring = API.Authoring;
-            authoring.OnObjectTypeAdded += AutoDoorSystem.MarkDoor;
-            authoring.OnObjectTypeAdded += InfinityArenaSystem.MarkArena;
-            authoring.OnObjectTypeAdded += DataModify.AuthoringModify;
-            authoring.OnObjectTypeAdded += ObtainLookupUI.CheckData;
-            authoring.OnObjectTypeAdded += ContainerDisplaySystem.MarkHighLight;
-            authoring.OnObjectTypeAdded += Test;
+            authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule), typeof(EntityModule));
             ModKeyBind.Load();
             sceneData = Resources.Load<CustomScenesDataTable>("Scenes/CustomScenesDataTable");
         }
 
+        private void Authoring_OnObjectTypeAdded(Entity entity, GameObject authoringData, EntityManager entityManager)
+        {
+            AutoDoorSystem.MarkDoor(entity, authoringData, entityManager);
+            InfinityArenaSystem.MarkArena(entity, authoringData, entityManager);
+            DataModify.AuthoringModify(entity, authoringData, entityManager);
+            ContainerDisplaySystem.MarkHighLight(entity, authoringData, entityManager);
+            SledgeRangeSystem.MarkSledge(entity, authoringData, entityManager);
+            Test(entity, authoringData, entityManager);
+        }
+
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            if (authoringData.GetEntityObjectID(out int variation) == ObjectID.HeartBerry)
-            {
-                Debug.Log(variation);
-                var extract = authoringData.GetComponent<ExtractableAuthoring>();
-                foreach (var ex in extract.extractedObject)
-                {
-                    Debug.Log((ex.objectID, ex.minMaxRandomAmountOverride));
-                }
-            }
-            if (authoringData.GetEntityObjectID(out _) == ObjectID.FishingNet)
-            {
-                var crafts = authoringData.GetComponent<CraftingAuthoring>();
-                Debug.LogWarning("fishing net craft: " + crafts.canCraftObjects.Count);
-                foreach (var craft in crafts.canCraftObjects)
-                {
-                    Debug.Log((craft.objectID, craft.hasPrerequisites));
-                }
-            }
+            authoringData.LogComponent(ObjectID.CopperSledge);
         }
 
         public void Init()
@@ -64,8 +50,6 @@ namespace Assets.CoreEnhance
 
         public void ModObjectLoaded(Object obj)
         {
-            if (obj is GameObject gameObject)
-                UserInterfaceModule.RegisterModUI(gameObject);
         }
 
         public void Shutdown()

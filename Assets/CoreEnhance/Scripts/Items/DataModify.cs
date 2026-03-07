@@ -1,5 +1,6 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
 using Assets.CoreEnhance.Scripts.Helpers;
+using PugMod;
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
@@ -20,10 +21,9 @@ namespace Assets.CoreEnhance.Scripts.Items
             switch (id)
             {
                 case ObjectID.CoreBoss:
-                    authoringData.TryGetComponent<DropLootAuthoring>(out var dropLoot);
-                    dropLoot.hasCustomLoot = true;
-                    dropLoot.customLoot.Values.Add(new()
+                    add.Add(new()
                     {
+                        lootDropID = API.Authoring.GetObjectID("CoreEnhance_BoulderDemolish"),
                         amount = 3,
                         multiplayerAmountAdditionScaling = 3,
                     });

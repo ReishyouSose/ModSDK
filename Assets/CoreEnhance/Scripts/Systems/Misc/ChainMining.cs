@@ -50,7 +50,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         {
             bool chainMining = EnhanceConfig.TryGetValues(EnhanceCategory.ChainMining, out var values);
             bool chainWood = EnhanceConfig.IsEnable(EnhanceCategory.ChainWood);
-            if (!chainMining || !chainWood)
+            if (!chainMining && !chainWood)
                 return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var tileDamageBuffer))
                 return;

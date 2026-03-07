@@ -159,13 +159,17 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
                 return;
             if (Horizen)
             {
-                LeftCol.Render(states[1].ToString());
-                RightCol.Render(states[2].ToString());
+                if (LeftCol)
+                    LeftCol.Render(states[1].ToString());
+                if (RightCol)
+                    RightCol.Render(states[2].ToString());
             }
             if (Vertical)
             {
-                UpRow.Render(states[3].ToString());
-                DownRow.Render(states[4].ToString());
+                if (UpRow)
+                    UpRow.Render(states[3].ToString());
+                if (DownRow)
+                    DownRow.Render(states[4].ToString());
             }
         }
     }

@@ -1,9 +1,28 @@
 Key	English	Chinese (Simplified)
+Items/CoreEnhance_BoulderDemolish	Boulder Demolisher	矿岩毁灭者
+Items/CoreEnhance_BoulderDemolishDesc	"Place, Kick, Boom
+Destroy nearby ore boulders"	"放置，敲击，Boom
+炸毁附近的矿岩"
+CoreEnhance/UI/ItemLookup/CustomLoot	Fixed Loot {[amount]} at a time	固定掉落 {[amount]}个
+CoreEnhance/UI/ItemLookup/LootWhenDamaged	Loot When Damaged	受伤时掉落
+CoreEnhance/UI/ItemLookup/OnUse	On use, get {[amount]} at a time	使用时掉落 {[amount]}个
+CoreEnhance/UI/ItemLookup/Guaranteed	Guaranteed Roll - {[lootTable]}	保底随机{[lootTable]}
+CoreEnhance/UI/ItemLookup/Normal	Normal Roll - {[lootTable]}	普通随机{[lootTable]}
+CoreEnhance/UI/ItemLookup/Season	Season - {[season]} {[amount]} at a time	季节 {[season]} {[amount]}个
+CoreEnhance/UI/ItemLookup/Shop	Shop	商店
+CoreEnhance/UI/ItemLookup/ShopRequire	Sell Condition:	售卖条件：
+CoreEnhance/UI/ItemLookup/Recipe	Recipe	合成
+CoreEnhance/UI/ItemLookup/RecipeAmount	Get {[amount]} at a time	一次性合成{[amount]}个
+CoreEnhance/UI/ItemLookup/Craft	Craft	制作
+CoreEnhance/UI/ItemLookup/CraftAmount	Get {[amount]} at a time	一次性制作{[amount]}个
+CoreEnhance/UI/ItemLookup/DropChance	[Chance {[value]}]	[概率 {[value]}]
+CoreEnhance/UI/ItemLookup/Scene	Special Scene - {[scene]}	特殊场景 {[scene]}
 ControlMapper/CoreEnhanceCategory	Quality of Core Keeper	更好的体验
 ControlMapper/CoreEnhanceDescription	Quality of Core Keeper Control Mapper	更好的体验键位映射
 ControlMapper/CoreEnhance_QuickOpenLockedChest	Quick Open Locked Chest	快捷开箱
 ControlMapper/CoreEnhance_ItemLookup	Item Lookup (Not implemented)	物品查询（未实装）
 ControlMapper/CoreEnhance_ContainerHighLight	Container HighLight (Hold on)	容器高亮（按住）
+ControlMapper/CoreEnhance_ClearDropItem	Clear Drop Items	清除掉落物
 CoreEnhance/Craft	Craft	制作
 CoreEnhance/ObtainWay	Obtain Way	获取途径
 CoreEnhance/Switch	Quality of CK Function Switch	更好的体验功能开关
@@ -59,16 +78,6 @@ CoreEnhance/Value/Automation/SalvageAmount/Description	"Detection quantity
 When the number of items in the salvage station is greater than or equal to the detection quantity, the auto salvage countdown begins"	拆解台内物品数达到数量开始拆解倒计时
 CoreEnhance/Value/Automation/SalvageTimer	Auto Salvage Timer	自动拆解倒计时
 CoreEnhance/Value/Automation/SalvageTimer/Description	The countdown time for auto salvage after the quantity is met	数量达标后执行拆解的倒计时长
-CoreEnhance/Switch/Automation/Fish	Auto Fisher Requires Biome	自动钓鱼机限制环境
-CoreEnhance/Switch/Automation/Fish/Description	Whether the autofisher is required to be in the biome that matches the floor tile its placed on	自动钓鱼机是否需要地块与环境匹配
-CoreEnhance/Switch/Automation/Plant	Shrine Harvest	祭坛收获
-CoreEnhance/Switch/Automation/Plant/Description	Whether the plants in verdant shrine's effect range auto harvest and regrow	繁茂祭坛效果范围内植物是否自动收获并重新生长
-CoreEnhance/Value/Automation/PlantNature	Emerald Max	绿宝石上限
-CoreEnhance/Value/Automation/PlantNature/Description	The max number of effective emeralds in the Verdant shrine	繁茂祭坛中绿宝石生效数量上限
-CoreEnhance/Value/Automation/PlantSea	Sapphire Max	蓝宝石上限
-CoreEnhance/Value/Automation/PlantSea/Description	The max number of effective sapphires in the Verdant shrine	繁茂祭坛中蓝宝石生效数量上限
-CoreEnhance/Value/Automation/PlantDesert	Ruby Max	红宝石上限
-CoreEnhance/Value/Automation/PlantDesert/Description	The max number of effective rubies in the Verdant shrine	繁茂祭坛中红宝石生效数量上限
 CoreEnhance/Switch/Automation/Door	Door	门
 CoreEnhance/Switch/Automation/FishingNetNoCritter	Fishing net not need bait	渔网无需诱饵
 CoreEnhance/Switch/Automation/FishingNetNoCritter/Description	If the fishing net slot is empty, a  bait will be automatically filled	如果渔网栏位是空，将自动填入一份诱饵
@@ -114,9 +123,7 @@ CoreEnhance/Value/Misc/ChainMiningNeedPlayer	Chain Mining Requires Player	必须
 CoreEnhance/Value/Misc/ChainMiningNeedPlayer/Description	Whether or not a player is required to Chain Mine.	是否必须由玩家造成伤害才能连锁
 CoreEnhance/Value/Misc/ChainMiningGiveExp	Chain Mining Give Exp	连锁挖矿提供经验
 CoreEnhance/Switch/Misc/ChainWood	Chain Wood	连锁木头
-CoreEnhance/Switch/Misc/ReplaceQuickStack	Replace Quick Stack Function	替换快速堆叠功能
-CoreEnhance/Switch/Misc/ReplaceQuickStack/Description	Vanilla function wiil not handle unstackable item (like any weapon)	原版功能不会处理不可堆叠的物品（比如任意武器）
-CoreEnhance/Switch/Misc/CloseMoreChestButton	Close More Chest Button	关闭新增宝箱按钮
-CoreEnhance/Switch/Misc/CloseMoreChestButton/Description	"Whether to turn off the newly added chest UI buttons (quick stack, put all, take all, restock, etc.)
-According to feedback, it has a bug, but the triggering reason is unclear"	"是否关闭新增的宝箱整理按钮，（快速堆叠、放入全部、拿取全部、补货等等）
-根据反馈，这个功能有bug，但触发原因不明"
+CoreEnhance/Switch/Misc/ModifySledgeRange	Modify Sledge Attack Range	修改大锤攻击范围
+CoreEnhance/Switch/Misc/ModifySledgeRange/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Misc/ModifySledgeRange	Sledge Attack Range	大锤攻击范围
+CoreEnhance/Value/Misc/ModifySledgeRange/Description	This is radius	这是半径

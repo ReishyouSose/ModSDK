@@ -29,8 +29,7 @@
         ChainMining,//连锁挖矿 done
         ChainWood,
         ContainerDisplay,//容器显示 done
-        ReplaceQuickStack,//替换原版快速堆叠 done
-        //CloseMoreChestButton,
+        ModifySledgeRange,
         _Count
     }
 }

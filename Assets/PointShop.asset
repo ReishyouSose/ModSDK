@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: PointShop
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 41cca58433454eddb4c27d360f8d3b06
+    name: PointShop
+    displayName: 
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Localization/Localization.csv
+      guid: 9ac3d70f498b8974da4019aa30b1fe9f
+    - path: Scripts/Scripts/ZoneMark.cs
+      guid: a38e2c9bdd62edb4f9350a8592ddd365
+    - path: Scripts/Scripts/Zone.cs
+      guid: e6e35756b6d83f74a96a2d23197b1873
+    - path: Scripts/Scripts/UIZoneSlot.cs
+      guid: 5743d7dc596fdf145820805d18947562
+    - path: Scripts/Scripts/UIShopSlot.cs
+      guid: 8c0a4b3f1323e0743af0ef8cef325191
+    - path: Scripts/Scripts/ShopInfo.cs
+      guid: 4fd29e4bcfcc1b04ab3c96c5ad9c6700
+    - path: Scripts/Scripts/PointShopUI.cs
+      guid: e95cc48defeaf534cad8d85d89b94854
+    - path: Scripts/Scripts/BossDefeatedSystem.cs
+      guid: f15b9cc2aa8e2184da154b46a71d632c
+    - path: Scripts/Scripts/BossDefeatedInfo.cs
+      guid: 1df4630066c987a4ba122a4784709405
+    - path: Scripts/PointShop.cs
+      guid: 17b9590c60c6ffb44bfd9ffcc35425ae
+    - path: Scripts/Generated/BossDefeatedSystem__System_12476826520.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.PointShop.Scripts_BossDefeatedInfoSerializer.cs
+      guid: 
+    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
+      guid: 
+    - path: Bundles/PointShop_Windows.assetbundle
+      guid: 
+    - path: Bundles/PointShop_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/PointShop_Linux.assetbundle
+      guid: 
+    - path: Bundles/PointShop_Linux.assetbundle.manifest
+      guid: 
+    dependencies:
+    - modName: CoreLib
+      required: 1
+    - modName: GeneralConfigMenu
+      required: 1
+  modPath: Assets\PointShop
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets:
+  - path: Assets/PointShop/Data/PointShop.asset
+    hash: 93A6DC68B01D47CCCB833DE8785C576F185A3AD1FBF3F18FDD7A1A7DF15095A9
+  - path: Assets/PointShop/Localization/Localization.csv
+    hash: 8D7B0D238C8F7625F46429917AA9BC69DA3B81701628B4B8C8D0D27A69616C11
+  - path: Assets/PointShop/PointShopUI.prefab
+    hash: A6B859FC3FB58655A2CD115CC543A6994B58158CA43467546925CC9371E30229
+  lastBuildLinux: 1

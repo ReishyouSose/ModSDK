@@ -50,9 +50,9 @@ namespace Assets.CoreEnhance.Scripts.Cores
                         _default = false;
                         scope = new(ConfigAccessLevel.Server, true);
                         break;
-                    /*case EnhanceCategory.CloseMoreChestButton:
-                        scope = new(ConfigAccessLevel.Client, true);
-                        break;*/
+                        /*case EnhanceCategory.CloseMoreChestButton:
+                            scope = new(ConfigAccessLevel.Client, true);
+                            break;*/
                 }
                 configs.Add(index, new(file.Bind(def, _default, null, scope ?? new())));
             }
@@ -72,6 +72,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "Adsorption");
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "NeedPlayer");
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "GiveExp");
+            TryAddValue(file, EnhanceCategory.ModifySledgeRange, 2.5f, new AcceptableValueRange<float>(1.4f, 5f));
         }
 
         /// <summary>
