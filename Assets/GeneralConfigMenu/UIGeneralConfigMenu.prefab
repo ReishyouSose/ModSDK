@@ -1390,15 +1390,13 @@ MonoBehaviour:
   Horizen: 0
   Vertical: 1
   ShowHidden: 1
-  HorizontalPriority: 0
-  MaxCol: 0
+  HorizontalPriority: 1
   MaxShowCol: 1
   ColSpacing: 0
   Left: {fileID: 0}
   Right: {fileID: 0}
   LeftCol: {fileID: 0}
   RightCol: {fileID: 0}
-  MaxRow: 0
   MaxShowRow: 3
   RowSpacing: 1.25
   Up: {fileID: 4329683140605233163}
@@ -7259,15 +7257,13 @@ MonoBehaviour:
   Horizen: 0
   Vertical: 1
   ShowHidden: 1
-  HorizontalPriority: 0
-  MaxCol: 0
+  HorizontalPriority: 1
   MaxShowCol: 1
   ColSpacing: 0
   Left: {fileID: 0}
   Right: {fileID: 0}
   LeftCol: {fileID: 0}
   RightCol: {fileID: 0}
-  MaxRow: 0
   MaxShowRow: 8
   RowSpacing: 1.25
   Up: {fileID: 6368261689559671430}
@@ -10792,15 +10788,13 @@ MonoBehaviour:
   Horizen: 0
   Vertical: 1
   ShowHidden: 1
-  HorizontalPriority: 0
-  MaxCol: 0
+  HorizontalPriority: 1
   MaxShowCol: 1
   ColSpacing: 0
   Left: {fileID: 0}
   Right: {fileID: 0}
   LeftCol: {fileID: 0}
   RightCol: {fileID: 0}
-  MaxRow: 0
   MaxShowRow: 8
   RowSpacing: 1.25
   Up: {fileID: 2240508985702502306}
@@ -11905,15 +11899,13 @@ MonoBehaviour:
   Horizen: 0
   Vertical: 1
   ShowHidden: 1
-  HorizontalPriority: 0
-  MaxCol: 0
+  HorizontalPriority: 1
   MaxShowCol: 1
   ColSpacing: 0
   Left: {fileID: 0}
   Right: {fileID: 0}
   LeftCol: {fileID: 0}
   RightCol: {fileID: 0}
-  MaxRow: 0
   MaxShowRow: 3
   RowSpacing: 1.25
   Up: {fileID: 8230738255091575139}

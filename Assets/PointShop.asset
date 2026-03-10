@@ -24,27 +24,33 @@ MonoBehaviour:
     files:
     - path: Localization/Localization.csv
       guid: 9ac3d70f498b8974da4019aa30b1fe9f
-    - path: Scripts/Scripts/ZoneMark.cs
-      guid: a38e2c9bdd62edb4f9350a8592ddd365
     - path: Scripts/Scripts/Zone.cs
-      guid: e6e35756b6d83f74a96a2d23197b1873
+      guid: 4003bdc4263dd8e47925a71183d9e63c
     - path: Scripts/Scripts/UIZoneSlot.cs
-      guid: 5743d7dc596fdf145820805d18947562
+      guid: 2880cae3cda6d434eaac5c8dfc530330
     - path: Scripts/Scripts/UIShopSlot.cs
-      guid: 8c0a4b3f1323e0743af0ef8cef325191
+      guid: 76a362882323aab4d871647c0ed4a7fa
     - path: Scripts/Scripts/ShopInfo.cs
-      guid: 4fd29e4bcfcc1b04ab3c96c5ad9c6700
+      guid: 52a28ad13b7665e47bdbbb1c3a9f4273
     - path: Scripts/Scripts/PointShopUI.cs
-      guid: e95cc48defeaf534cad8d85d89b94854
+      guid: cf2a5d10b535c1c4e8856317937ece4a
+    - path: Scripts/Scripts/PointShopSystem.cs
+      guid: 3ce997709d1b34f46b52db2872c43520
     - path: Scripts/Scripts/BossDefeatedSystem.cs
-      guid: f15b9cc2aa8e2184da154b46a71d632c
+      guid: b297fdb56fef51944a1c1ea1a242d03f
     - path: Scripts/Scripts/BossDefeatedInfo.cs
-      guid: 1df4630066c987a4ba122a4784709405
+      guid: 2b889370628536649b30b5d3b0fba657
     - path: Scripts/PointShop.cs
       guid: 17b9590c60c6ffb44bfd9ffcc35425ae
     - path: Scripts/Generated/BossDefeatedSystem__System_12476826520.g.cs
       guid: 
+    - path: Scripts/Generated/PointShopSystem__System_6029873930.g.cs
+      guid: 
+    - path: Scripts/Generated/PointShopSystem__System_6029873931.g.cs
+      guid: 
     - path: Scripts/Generated/Assets.PointShop.Scripts_BossDefeatedInfoSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.PointShop.Scripts_PointShopRPCCommandSerializer.cs
       guid: 
     - path: Scripts/Generated/GhostComponentSerializerCollection.cs
       guid: 
@@ -70,7 +76,7 @@ MonoBehaviour:
   - path: Assets/PointShop/Data/PointShop.asset
     hash: 93A6DC68B01D47CCCB833DE8785C576F185A3AD1FBF3F18FDD7A1A7DF15095A9
   - path: Assets/PointShop/Localization/Localization.csv
-    hash: 8D7B0D238C8F7625F46429917AA9BC69DA3B81701628B4B8C8D0D27A69616C11
+    hash: 4B5652D257577A6B9EB77E173D87618A9C51066F141174E522F6C1679D122941
   - path: Assets/PointShop/PointShopUI.prefab
-    hash: A6B859FC3FB58655A2CD115CC543A6994B58158CA43467546925CC9371E30229
+    hash: 919316B6CEA5C5C3B60E0AC0E7F7010246B5A0FF106897F24E8F229C3EDDBA89
   lastBuildLinux: 1

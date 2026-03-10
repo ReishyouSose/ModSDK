@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Unity.Entities;
+using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {
@@ -7,86 +8,52 @@ namespace Assets.PointShop.Scripts
     {
         internal static ShopInfo Ins { get; private set; }
         private readonly Dictionary<Zone, List<ObjectID>> Shops;
-        private readonly Dictionary<Zone, bool> allow;
-        private EntityQuery query;
-        private bool entityQueryLoaded;
+        private readonly Dictionary<Zone, ObjectID> boss;
         public ShopInfo()
         {
             Ins = this;
-            Shops = new();
-            allow = new();
-            int max = (int)Zone.MAX;
-            for (int i = 0; i < max; i++)
+            Shops = new()
             {
-                Zone zone = (Zone)i;
-                allow[zone] = false;
-            }
-            Shops[Zone.Dirt] = Dirt();
-            Shops[Zone.Clay] = Clay();
-            Shops[Zone.LarvaHive] = LarvaHive();
-            Shops[Zone.Stone] = Stone();
-            Shops[Zone.Nature] = Nature();
-            Shops[Zone.Mold] = Mold();
-            Shops[Zone.Sea] = Sea();
-            Shops[Zone.City] = City();
-            Shops[Zone.Desert] = Desert();
-            Shops[Zone.Lava] = Lava();
-            Shops[Zone.Oasis] = Oasis();
-            Shops[Zone.Crystal] = Crystal();
-            Shops[Zone.Alien] = Alien();
-            Shops[Zone.Passage] = Passage();
-            Shops[Zone.Excavation] = Excavation();
+                [Zone.Dirt] = Dirt(),
+                [Zone.Clay] = Clay(),
+                [Zone.LarvaHive] = LarvaHive(),
+                [Zone.Stone] = Stone(),
+                [Zone.Nature] = Nature(),
+                [Zone.Mold] = Mold(),
+                [Zone.Sea] = Sea(),
+                [Zone.City] = City(),
+                [Zone.Desert] = Desert(),
+                [Zone.Lava] = Lava(),
+                [Zone.Oasis] = Oasis(),
+                [Zone.Crystal] = Crystal(),
+                [Zone.Alien] = Alien(),
+                [Zone.Passage] = Passage(),
+                [Zone.Excavation] = Excavation()
+            };
+            boss = new()
+            {
+                [Zone.Dirt] = ObjectID.SlimeBoss,
+                [Zone.Clay] = ObjectID.BossLarva,
+                [Zone.LarvaHive] = ObjectID.LarvaHiveBoss,
+                [Zone.Stone] = ObjectID.ShamanBoss,
+                [Zone.Nature] = ObjectID.BirdBoss,
+                [Zone.Mold] = ObjectID.PoisonSlimeBoss,
+                [Zone.Sea] = ObjectID.OctopusBoss,
+                [Zone.City] = ObjectID.SlipperySlimeBoss,
+                [Zone.Desert] = ObjectID.ScarabBoss,
+                [Zone.Lava] = ObjectID.LavaSlimeBoss,
+                [Zone.Oasis] = ObjectID.GiantCicadaBoss,
+                [Zone.Crystal] = ObjectID.HydraBossDesert,
+                [Zone.Alien] = ObjectID.CoreBoss,
+                [Zone.Passage] = ObjectID.WallBoss,
+                [Zone.Excavation] = ObjectID.RobotBoss
+            };
         }
         public bool TryGetShopItem(Zone zone, out List<ObjectID> shop)
         {
-            if (!Shops.TryGetValue(zone, out shop))
-                return false;
-            return allow.TryGetValue(zone, out bool defeat) && defeat;
+            return Shops.TryGetValue(zone, out shop);
         }
-
-        public void CheckDefeat()
-        {
-            var player = Manager.main.player;
-            if (player == null)
-                return;
-            if (!entityQueryLoaded)
-            {
-                query = Manager.ecs.GetClientEntityQuery(new ComponentType[] { typeof(BossDefeatedInfo) });
-                entityQueryLoaded = true;
-            }
-            if (!query.TryGetSingleton(out BossDefeatedInfo info))
-                return;
-            if (info.Slime)
-                allow[Zone.Dirt] = true;
-            if (info.Devourer)
-                allow[Zone.Clay] = true;
-            if (info.LarvaHive)
-                allow[Zone.LarvaHive] = true;
-            if (info.Shaman)
-                allow[Zone.Stone] = true;
-            if (info.Bird)
-                allow[Zone.Nature] = true;
-            if (info.PoisonSlime)
-                allow[Zone.Mold] = true;
-            if (info.Octopus)
-                allow[Zone.Sea] = true;
-            if (info.SlipperySlime)
-                allow[Zone.City] = true;
-            if (info.Scarab)
-                allow[Zone.Desert] = true;
-            if (info.LavaSlime)
-                allow[Zone.Lava] = true;
-            if (info.HydraDesert)
-                allow[Zone.Crystal] = true;
-            if (info.CoreCommander)
-                allow[Zone.Alien] = true;
-            if (info.Cicada)
-                allow[Zone.Oasis] = true;
-            if (info.WallSlime)
-                allow[Zone.Passage] = true;
-            if (info.Robot)
-                allow[Zone.Excavation] = true;
-        }
+        public ObjectID GetBoss(Zone zone) => boss[zone];
         private List<ObjectID> Dirt()
         {
             return new()

@@ -13,13 +13,20 @@ namespace Assets.PointShop.Scripts
         [HideInInspector]
         public int Price;
 
+        [HideInInspector]
+        public Zone Zone;
+
         public SpriteRenderer icon;
         public PugText PriceText;
+        public void Awake()
+        {
+            AddEvent(RMouseEventType.LeftClick, OnLeftClick);
+        }
         public ContainedObjectsBuffer GetSlotObject()
         {
             return objectData;
         }
-        public List<TextAndFormatFields> GetHoverDescription()
+        public override List<TextAndFormatFields> GetHoverDesc()
         {
             ContainedObjectsBuffer slotObject = GetSlotObject();
             ObjectID objectID = slotObject.objectID;
@@ -39,6 +46,7 @@ namespace Assets.PointShop.Scripts
 
                 return new List<TextAndFormatFields>
                 {
+                    GetHoverTitle(),
                     new()
                     {
                         text = objectID.ToString()+$"({(int)objectID})",
@@ -88,6 +96,12 @@ namespace Assets.PointShop.Scripts
                 textAndFormatFields.color = Manager.text.GetRarityColor(objectRarity);
             }
             return textAndFormatFields;
+        }
+        private static void OnLeftClick(GameObject go)
+        {
+            UIShopSlot slot = go.GetComponent<UIShopSlot>();
+            PointShopClient.TryBuyItem(Manager.main.player.entity, slot.objectData.objectID,
+                ShopInfo.Ins.GetBoss(slot.Zone), slot.Price);
         }
     }
 }

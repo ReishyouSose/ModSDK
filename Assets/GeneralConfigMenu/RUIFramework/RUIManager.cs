@@ -31,10 +31,12 @@ namespace Assets.GeneralConfigMenu.RUIFramework
         private readonly List<RUIElement> exceptRightUpBuffer = new();
         private readonly List<PugText> TempTexts = new();
         private readonly List<TextAndFormatFields> hoverTips = new();
+        private readonly List<RUIManager> managers = new();
         private void Awake()
         {
             HoverTextBG.gameObject.SetActive(false);
             HoverTextTemplate.gameObject.SetActive(false);
+            managers.Add(this);
         }
         private void Update()
         {

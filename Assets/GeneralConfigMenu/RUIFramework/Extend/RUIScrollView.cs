@@ -23,14 +23,12 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
         public bool HorizontalPriority = true;
 
         [Header("HorizenSetting")]
-        public int MaxCol;
         public int MaxShowCol;
         public float ColSpacing;
         public RUIButton Left, Right;
         public PugText LeftCol, RightCol;
 
         [Header("VerticalSetting")]
-        public int MaxRow;
         public int MaxShowRow;
         public float RowSpacing;
         public RUIButton Up, Down;
@@ -71,6 +69,12 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
         {
             currentRow = 0;
             currentCol = 0;
+            TotalCol = 0;
+            TotalRow = 0;
+            ShowCol = 0;
+            ShowRow = 0;
+            MovableCol = 0;
+            MovableRow = 0;
             foreach (var (_, go) in children)
             {
                 Destroy(go);
@@ -118,27 +122,27 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
             var local = go.AddComponent<RUIViewLocator>();
             local.Init(this, currentRow, currentCol);
             children.Add(local, go);
+            TotalCol = Math.Max(TotalCol, currentCol + 1);
+            TotalRow = Math.Max(TotalRow, currentRow + 1);
             if (HorizontalPriority)
             {
-                currentCol++;
-                if (MaxCol > 0 && currentCol > MaxCol)
+                if (++currentCol >= MaxShowCol)
                 {
                     currentRow++;
+                    currentCol = 0;
                 }
             }
             else
             {
-                currentRow++;
-                if (MaxRow > 0 && currentRow > MaxRow)
+                if (++currentRow >= MaxShowRow)
                 {
                     currentCol++;
+                    currentRow = 0;
                 }
             }
         }
         public void UpdateView()
         {
-            TotalCol = currentCol;
-            TotalRow = currentRow;
             MovableCol = Math.Max(TotalCol - MaxShowCol, 0);
             MovableRow = Math.Max(TotalRow - MaxShowRow, 0);
             UpdateMovable(ShowCol, ShowRow);
@@ -146,30 +150,26 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
 
         private void UpdateMovable(int moveX, int moveY)
         {
-            int[] states = new int[5];
+            //int[] states = new int[5];
             int oldx = ShowCol, oldy = ShowRow;
             ShowCol = Math.Clamp(ShowCol + moveX, 0, MovableCol);
             ShowRow = Math.Clamp(ShowRow - moveY, 0, MovableRow);
             foreach (var (local, _) in children)
             {
-                local.Move(oldx - ShowCol, oldy - ShowRow, out var rangeState);
-                states[(int)rangeState]++;
+                local.Move(oldx - ShowCol, oldy - ShowRow, out _/*var rangeState*/);
+                //states[(int)rangeState]++;
             }
             if (!ShowHidden)
                 return;
             if (Horizen)
             {
-                if (LeftCol)
-                    LeftCol.Render(states[1].ToString());
-                if (RightCol)
-                    RightCol.Render(states[2].ToString());
+                LeftCol.Render(ShowCol.ToString());
+                RightCol.Render((MovableCol - ShowCol).ToString());
             }
             if (Vertical)
             {
-                if (UpRow)
-                    UpRow.Render(states[3].ToString());
-                if (DownRow)
-                    DownRow.Render(states[4].ToString());
+                UpRow.Render(ShowRow.ToString());
+                DownRow.Render((MovableRow - ShowRow).ToString());
             }
         }
     }

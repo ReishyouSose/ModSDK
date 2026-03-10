@@ -31,6 +31,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                 .WithName("FishingNetNoCritter")
                 .WithBurst()
                 .WithAll<FishingCD>()
+                .WithEntityQueryOptions(EntityQueryOptions.IncludeDisabledEntities)
                 .Schedule();
         }
     }

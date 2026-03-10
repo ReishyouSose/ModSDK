@@ -1,20 +1,18 @@
-﻿using Inventory;
-using Pug.UnityExtensions;
-using Unity.Collections;
+﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.NetCode;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
-    public struct ClearDropItemRPC : IRpcCommand
-    {
-        public Entity Player;
-    }
-    [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
+    [GhostComponent]
+    public struct ClearAllDropItemCD : IComponentData { }
+
+    public struct ClearDropItemRPC : IRpcCommand { }
+    [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
-    public partial class ClearDropItemClient : PugSimulationSystemBase
+    public partial class ClearDropItemRPCClient : PugSimulationSystemBase
     {
-        private static ClearDropItemClient ins;
+        private static ClearDropItemRPCClient ins;
         private NativeQueue<Entity> queue;
         private EntityArchetype archetype;
         protected override void OnCreate()
@@ -27,57 +25,68 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         protected override void OnUpdate()
         {
             var ecb = CreateCommandBuffer();
-            while (queue.TryDequeue(out var player))
+            while (queue.TryDequeue(out _))
             {
-                var e = ecb.CreateEntity(archetype);
-                ecb.SetComponent(e, new ClearDropItemRPC()
-                {
-                    Player = player
-                });
+                ecb.CreateEntity(archetype);
             }
             base.OnUpdate();
         }
-        public static void Clear(Entity player)
+        public static void Clear(PlayerController p)
         {
-            ins.queue.Enqueue(player);
+            if (p.adminPrivileges > 0)
+                ins.queue.Enqueue(p.entity);
         }
     }
 
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
-    public partial class ClearDropItemServer : PugSimulationSystemBase
+    public partial class ClearDropItemRPCServer : PugSimulationSystemBase
     {
-        private NativeQueue<Entity> queue;
+        private EntityArchetype archetype;
         protected override void OnCreate()
         {
-            queue = new(Allocator.Persistent);
+            archetype = EntityManager.CreateArchetype(typeof(ClearAllDropItemCD));
             base.OnCreate();
         }
         protected override void OnUpdate()
         {
-            var queue = this.queue;
             var ecb = CreateCommandBuffer();
-            Entities.ForEach((Entity e) =>
+            var archetype = this.archetype;
+            Entities.ForEach((Entity e, in ClearDropItemRPC rpc) =>
             {
-                queue.Enqueue(e);
                 ecb.DestroyEntity(e);
+                ecb.CreateEntity(archetype);
             })
                 .WithName("ReceiveClearDropItemRPC")
                 .WithBurst()
                 .WithAll<ReceiveRpcCommandRequest>()
-                .WithAll<ClearDropItemRPC>()
                 .Schedule();
-            while(queue.TryDequeue(out var player))
+            base.OnUpdate();
+        }
+    }
+
+    [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation | WorldSystemFilterFlags.ClientSimulation)]
+    [UpdateInGroup(typeof(PredictedSimulationSystemGroup))]
+    [UpdateAfter(typeof(PickUpItemSystem))]
+    [UpdateBefore(typeof(EndPredictedSimulationSystemGroup))]
+    public partial class ClearAllDropItemSystem : PugSimulationSystemBase
+    {
+        protected override void OnUpdate()
+        {
+            if (!SystemAPI.TryGetSingletonEntity<ClearAllDropItemCD>(out var clear))
+                return;
+            var ecb = CreateCommandBuffer();
+            ecb.DestroyEntity(clear);
+            var job = Entities.ForEach((Entity e, in PickUpItemCD pick) =>
             {
-                Entities.ForEach((Entity e) =>
-                {
-                    ecb.DestroyEntity(e);
-                })
-                    .WithName("ClearDropItem")
-                    .WithBurst()
-                    .WithAll<PickUpItemCD>()
-                    .Schedule();
-            }
+                if (pick.state != PickUpItemState.None)
+                    return;
+                ecb.DestroyEntity(e);
+            })
+                .WithName("ClearAllDropItems")
+                .WithEntityQueryOptions(EntityQueryOptions.IncludeDisabledEntities)
+                .WithBurst()
+                .ScheduleParallel(Dependency);
             base.OnUpdate();
         }
     }

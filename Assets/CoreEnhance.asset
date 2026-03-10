@@ -24,18 +24,14 @@ MonoBehaviour:
     files:
     - path: Localization/Localization.csv
       guid: a47ceafe81885f14a9fc08d601f30c96
-    - path: Scripts/Scripts/UI/ItemLookup/ObtainLookupUI.cs
-      guid: 5e9ffc522dd2b3f4fa455490dbfe01f1
-    - path: Scripts/Scripts/UI/ItemLookup/ObtainInfoSlot.cs
-      guid: a22c0190ee52e024ea7b6c924e3676cc
-    - path: Scripts/Scripts/UI/ItemLookup/ItemSelectSlot.cs
-      guid: 699556e6a8844fc4d9855a213558aeb0
-    - path: Scripts/Scripts/UI/ItemLookup/ItemLookupUI.cs
-      guid: 5f78ec84c46b2094581ede2c305bab59
+    - path: Scripts/Scripts/Tiles/BoulderDemolishEM.cs
+      guid: 1ef597e7ef260164dba9c355452c69bc
     - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
       guid: 5bac40d44c88ce742bbeca053dd6537c
     - path: Scripts/Scripts/Systems/Pet/Modifier.cs
       guid: 62b2b2f29d0649644bff7a1cd9e4123a
+    - path: Scripts/Scripts/Systems/Misc/SledgeRange.cs
+      guid: d9c810474adb71f4b9837b088b0733a2
     - path: Scripts/Scripts/Systems/Misc/ReportSpawnedScene.cs
       guid: 65f71a6d40320bc44b38e49f563563cb
     - path: Scripts/Scripts/Systems/Misc/ForcePickup.cs
@@ -44,6 +40,8 @@ MonoBehaviour:
       guid: bae06273d2dd48746a97ddca4767d4e7
     - path: Scripts/Scripts/Systems/Misc/ContainerDisplay.cs
       guid: 379bf69b084cef643b525d2376e4643c
+    - path: Scripts/Scripts/Systems/Misc/ClearDropItem.cs
+      guid: a70cb10406c990a458425fbdaa5081ca
     - path: Scripts/Scripts/Systems/Misc/ChainMining.cs
       guid: 92292b46d4932b4439e8102403660c2c
     - path: Scripts/Scripts/Systems/Misc/BoulderDemolish.cs
@@ -94,6 +92,58 @@ MonoBehaviour:
       guid: 94d85382e27dbe54a910a675c686b4b7
     - path: Scripts/CoreEnhance.cs
       guid: 77b31bc24fa1a6b4b82cceab5847b20f
+    - path: Scripts/Generated/Arena__System_21345283780.g.cs
+      guid: 
+    - path: Scripts/Generated/BoulderDemolish__System_4115406650.g.cs
+      guid: 
+    - path: Scripts/Generated/ChainMining__System_4927882160.g.cs
+      guid: 
+    - path: Scripts/Generated/ClearDropItem__System_11679719740.g.cs
+      guid: 
+    - path: Scripts/Generated/ClearDropItem__System_11679719741.g.cs
+      guid: 
+    - path: Scripts/Generated/ClearDropItem__System_11679719742.g.cs
+      guid: 
+    - path: Scripts/Generated/Common__System_3326017700.g.cs
+      guid: 
+    - path: Scripts/Generated/Common__System_7055668610.g.cs
+      guid: 
+    - path: Scripts/Generated/ContainerDisplay__System_20375038920.g.cs
+      guid: 
+    - path: Scripts/Generated/Crafting__System_2959574260.g.cs
+      guid: 
+    - path: Scripts/Generated/DeathNoDrop__System_3285046110.g.cs
+      guid: 
+    - path: Scripts/Generated/Door__System_5961554220.g.cs
+      guid: 
+    - path: Scripts/Generated/Durability__System_20098094000.g.cs
+      guid: 
+    - path: Scripts/Generated/FishingNetNoCritter__System_7962089970.g.cs
+      guid: 
+    - path: Scripts/Generated/ForcePickup__System_18430559220.g.cs
+      guid: 
+    - path: Scripts/Generated/Level__System_11224993260.g.cs
+      guid: 
+    - path: Scripts/Generated/Modifier__System_14415880890.g.cs
+      guid: 
+    - path: Scripts/Generated/Modifier__System_14415880891.g.cs
+      guid: 
+    - path: Scripts/Generated/OpenLockedChest__System_11022013290.g.cs
+      guid: 
+    - path: Scripts/Generated/ReportSpawnedScene__System_7773483250.g.cs
+      guid: 
+    - path: Scripts/Generated/ReportSpawnedScene__System_7773483251.g.cs
+      guid: 
+    - path: Scripts/Generated/SledgeRange__System_5290161180.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_ClearDropItemRPCCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_PetModifierRPCCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_QuickOpenLockedChestRPCCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
+      guid: 
     - path: Bundles/CoreEnhance_Windows.assetbundle
       guid: 
     - path: Bundles/CoreEnhance_Windows.assetbundle.manifest
@@ -114,7 +164,25 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/CoreEnhance/Data/CoreEnhance.asset
-    hash: B2BC2770B69F6EB9CC8C80875F0425753B7050DFC9F4E414B552855DFF5A8EF3
+    hash: 0D426FCAD1AA2BA6A878601130E0ABD4052804CF4ED26A4FC246D6B9A5EEEC39
+  - path: Assets/CoreEnhance/Data/SpriteAsset/BoulderDemolish.asset
+    hash: 67EF999BFA6F7229D813B0EA960733C56992981E54D024F0647BEAD9F9115DEB
   - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: B3A4A2E120C25B85E383B2CCD2AE5779594C67AE4250619211A85A0DE2805B01
+    hash: 172AB267958C5ACD3784A1BEB9658870E15811F0A9C2F65472CDF19827D31CC7
+  - path: Assets/CoreEnhance/Prefabs/Items/BoulderDemolishItem.prefab
+    hash: C31CFFEF9DFAEDC0DDE636F1F2FE348F2DF6545175139D6628C48E6ECD425762
+  - path: Assets/CoreEnhance/Prefabs/Tiles/BoulderDemolishTile.prefab
+    hash: 07EF2E787A49C617310FCAB18A0CBE33CA0A22A0C78FF8B3F123003FF09312CD
+  - path: Assets/CoreEnhance/Shaders/IconClipShader.shader
+    hash: E6758C11B3E77F4469CC3E09BF359629BAAE60A2E05D5C7299A7ABB163857442
+  - path: Assets/CoreEnhance/SpriteAssetManifest.asset
+    hash: 477BDF0C494414A612B68097A2C4A15BCD0B08CBBF98CBBA68704257B65C9FF8
+  - path: Assets/CoreEnhance/Sprites/Items/BoulderDemolish.png
+    hash: 1DB93CCE2ED1D048232763F1ED98B0A95EF424821E430893AAB801C265D1E7D8
+  - path: Assets/CoreEnhance/Sprites/Items_Small/BoulderDemolishSmall.png
+    hash: 165A36BA58A57CC7F70F4C26F186C0E2B767B2E1515AC54E20C451DBC408620F
+  - path: Assets/CoreEnhance/Sprites/Misc/ChestUI.png
+    hash: 42EA7EBD48D5DFD50F81B2B625E5D77FBC25A50F70736D87A8DF2522C5C31C48
+  - path: Assets/CoreEnhance/Sprites/Misc/Shadow.png
+    hash: EED51F7C6E3D31B3E8D9ACDF39F21A071325221CD18A085D46362BB8BC3D8C08
   lastBuildLinux: 1

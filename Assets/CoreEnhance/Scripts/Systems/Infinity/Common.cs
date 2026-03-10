@@ -37,6 +37,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
                 .WithName("Infinity_Boulder")
                 .WithAll<RequiresDrillCD>()
                 .WithAll<DontDropSelfCD>()
+                .WithEntityQueryOptions(EntityQueryOptions.IncludeDisabledEntities)
                 .WithBurst()
                 .Schedule();
         }

@@ -63,6 +63,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Accelerate
             })
                 .WithName("Accelerate_Crafting")
                 .WithBurst()
+                .WithEntityQueryOptions(EntityQueryOptions.IncludeDisabledEntities)
                 .Schedule();
             base.OnUpdate();
         }
