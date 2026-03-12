@@ -315,7 +315,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             {
                 if (EntryPanel.gameObject.activeInHierarchy)
                 {
-                    if (GetComponent<RUIManager>().hoverElement == null)
+                    if (GetComponent<RUIManager>().HoverElement == null)
                     {
                         EntryPanel.gameObject.SetActive(false);
                         ConfigPanel.gameObject.SetActive(true);

@@ -1,6 +1,8 @@
 Key	English	Chinese (Simplified)
 ControlMapper/PointShop_Open	Open Point Shop	打开积分商店
+ControlMapper/PointShop_Scale	Buy ten copies (Hold on)	购买十份（按住）
 PointShop/LarvaHive	Larva Hive Biome	虫巢生态区
 PointShop/Alien	Alien Biome	外星生态区
 Items/PointShop_Currency	Point Coin	积分币
 Items/PointShop_CurrencyDesc	Obtained by defeating enemies, and used to exchange for items in the points shop	通过击败敌人获取，用于在积分商店交换物品
+PointShop/Scale	Hold on Bind Key to buy ten copies at once	按住绑定键一次性购买十份

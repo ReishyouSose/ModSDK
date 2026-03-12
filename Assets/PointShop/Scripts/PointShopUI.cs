@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {
+    [RequireComponent(typeof(ShopInfo))]
     public class PointShopUI : MonoBehaviour, IModUI
     {
         public GameObject Root => gameObject;
@@ -19,19 +20,22 @@ namespace Assets.PointShop.Scripts
         public UIShopSlot ShopSlotTemplate;
         public PugText Header;
         public PugText PointValue;
+        public PugText ScaleTip;
         private ShopInfo info;
         private Zone currentZone;
         private ObjectID currency;
         public void Awake()
         {
-            info = new();
+            info = GetComponent<ShopInfo>();
             currency = API.Authoring.GetObjectID("PointShop_Currency");
             currentZone = Zone.Dirt;
             ZoneTemplate.gameObject.SetActive(false);
             ShopSlotTemplate.gameObject.SetActive(false);
-            ZonePanel.Reload(RegisterZone);
-            ZonePanel.gameObject.SetActive(true);
             HideUI();
+        }
+        public void Start()
+        {
+            ZonePanel.Reload(RegisterZone);
         }
 
         public void HideUI()
@@ -61,11 +65,13 @@ namespace Assets.PointShop.Scripts
         }
         private void RegisterShop(RUIScrollView view, Transform parent)
         {
-            info.TryGetShopItem(currentZone, out var shop);
-            for (int i = 0; i < shop.Count; i++)
+            var items = info.GetShop(currentZone);
+            var boss = info.GetBoss(currentZone);
+            for (int i = 0; i < items.Count; i++)
             {
                 UIShopSlot slot = Instantiate(ShopSlotTemplate, parent);
-                slot.SetItem(shop[i], 100);
+                slot.Boss = boss;
+                slot.SetItem(items[i], 100);
                 slot.gameObject.SetActive(true);
                 view.AddChild(slot.gameObject);
             }
@@ -88,6 +94,7 @@ namespace Assets.PointShop.Scripts
         private void Update()
         {
             PointValue.Render(Manager.main.player.playerInventoryHandler.GetExistingAmountOfObject(currency).ToString(), false, true);
+            ScaleTip.SetTempColor(PointShop.IsScale ? Color.yellow : Color.white);
         }
         private static Sprite SelectZoneIcon(Zone zone)
         {

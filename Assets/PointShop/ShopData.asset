@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d997e184a8e1249922bc5fa18299fe, type: 3}
+  m_Name: ShopData
+  m_EditorClassIdentifier: 
+  shopList:
+  - Zone: 0
+    Boss: SlimeBoss
+    Items:
+    - ObjectID: CopperOreBoulder
+      Amount: 0
+  - Zone: 1
+    Boss: BossLarva
+    Items:
+    - ObjectID: TinOreBoulder
+      Amount: 0
+  - Zone: 2
+    Boss: LarvaHiveBoss
+    Items: []
+  - Zone: 3
+    Boss: ShamanBoss
+    Items:
+    - ObjectID: IronOreBoulder
+      Amount: 0
+  - Zone: 4
+    Boss: BirdBoss
+    Items:
+    - ObjectID: ScarletOreBoulder
+      Amount: 0
+  - Zone: 5
+    Boss: PoisonSlimeBoss
+    Items: []
+  - Zone: 6
+    Boss: OctopusBoss
+    Items: []
+  - Zone: 7
+    Boss: SlipperySlimeBoss
+    Items: []
+  - Zone: 8
+    Boss: ScarabBoss
+    Items: []
+  - Zone: 9
+    Boss: LavaSlimeBoss
+    Items: []
+  - Zone: 10
+    Boss: GiantCicadaBoss
+    Items: []
+  - Zone: 11
+    Boss: HydraBossDesert
+    Items: []
+  - Zone: 12
+    Boss: CoreBoss
+    Items: []
+  - Zone: 13
+    Boss: WallBoss
+    Items: []
+  - Zone: 14
+    Boss: RobotBoss
+    Items: []

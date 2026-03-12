@@ -1,5 +1,4 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 

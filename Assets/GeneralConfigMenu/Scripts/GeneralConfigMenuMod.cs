@@ -1,7 +1,9 @@
 using Assets.GeneralConfigMenu.ConfigSync;
+using Assets.GeneralConfigMenu.RUIFramework;
 using CoreLib;
 using CoreLib.Submodule.ControlMapping;
 using CoreLib.Submodule.UserInterface;
+using HarmonyLib;
 using PugMod;
 using Rewired;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
+    [HarmonyPatch]
     public class GeneralConfigMenuMod : IMod
     {
         private static List<MonoBehaviour> needChanges;
@@ -16,14 +19,10 @@ namespace Assets.GeneralConfigMenu.Scripts
         internal const string HorizenScroll = "GCM_HorizenScroll";
         internal static ModConfig config;
         internal static ConfigSyncClient ConfigSync { get; private set; }
+        private static GameObject containerPrefab;
         public void EarlyInit()
         {
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule), typeof(UserInterfaceModule));
-            var local = new Dictionary<string, string>()
-            {
-                { "en", "Open Mod Config Menu" },
-                { "zh-CN", "打开模组配置菜单" }
-            };
             int cateogry = ControlMappingModule.AddNewCategory("GCM");
             ControlMappingModule.AddKeyboardBind(OpenMenu, KeyboardKeyCode.K, ModifierKey.Control, categoryId: cateogry);
             ControlMappingModule.AddKeyboardBind(HorizenScroll, KeyboardKeyCode.LeftShift, categoryId: cateogry);
@@ -47,6 +46,10 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (obj is not GameObject gameObject)
                 return;
             UserInterfaceModule.RegisterModUI(gameObject);
+            if (gameObject.TryGetComponent<RUIHoverTextContainer>(out _))
+            {
+                containerPrefab = gameObject;
+            }
         }
 
         public void Shutdown()
@@ -92,6 +95,12 @@ namespace Assets.GeneralConfigMenu.Scripts
             {
                 ui.gameObject.SetActive(active);
             }
+        }
+
+        [HarmonyPatch(typeof(UIMouse),"Awake"),HarmonyPostfix]
+        private static void AddContainer(UIMouse __instance)
+        {
+            Object.Instantiate(containerPrefab, __instance.pointer);
         }
     }
 }

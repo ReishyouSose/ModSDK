@@ -1,24 +1,14 @@
-﻿using HarmonyLib;
-using I2.Loc;
+﻿using I2.Loc;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.RUIFramework
 {
-    [HarmonyPatch]
     public class RUIManager : MonoBehaviour
     {
-        [Tooltip("Should with 75%+ opacity BG")]
-        public Transform HoverTextBG;
 
-        [Tooltip("Just create an empty")]
-        public Transform HoverTopLeft;
-
-        [Tooltip("Align Top Left")]
-        public PugText HoverTextTemplate;
-
-        public RUIElement hoverElement { get; private set; }
+        public RUIElement HoverElement { get; private set; }
 
         private bool mouseLeftDown;
         private bool mouseRightDown;
@@ -30,13 +20,10 @@ namespace Assets.GeneralConfigMenu.RUIFramework
         private readonly List<RUIElement> expectLeftUpBuffer = new();
         private readonly List<RUIElement> exceptRightUpBuffer = new();
         private readonly List<PugText> TempTexts = new();
-        private readonly List<TextAndFormatFields> hoverTips = new();
-        private readonly List<RUIManager> managers = new();
+        public readonly List<TextAndFormatFields> hoverTips = new();
         private void Awake()
         {
-            HoverTextBG.gameObject.SetActive(false);
-            HoverTextTemplate.gameObject.SetActive(false);
-            managers.Add(this);
+            RUIHoverTextContainer.managers.Add(this);
         }
         private void Update()
         {
@@ -88,9 +75,9 @@ namespace Assets.GeneralConfigMenu.RUIFramework
                         hoverTips.InsertRange(0, uie.GetHoverDesc());
                 }
             }
-            hoverElement = interactedBuffer.LastOrDefault();
+            HoverElement = interactedBuffer.LastOrDefault();
 
-            UpdateHoverText(mouse);
+            //UpdateHoverText(mouse);
 
             bool nowMouseLeft = Input.GetMouseButton(0);
             if (mouseLeftDown != nowMouseLeft)
@@ -182,89 +169,5 @@ namespace Assets.GeneralConfigMenu.RUIFramework
         {
             hoverTips.Clear();
         }
-
-        private void UpdateHoverText(Vector3 mouse, float maxWidthToUse = 9f)
-        {
-            int count = hoverTips.Count;
-            if (count == 0)
-            {
-                HoverTextBG.gameObject.SetActive(false);
-                return;
-            }
-            HoverTextBG.gameObject.SetActive(true);
-            Vector3 vector = new(0, 0, 0);
-            float num = 0f;
-            float num3 = maxWidthToUse;
-            float offset = -1;
-            foreach (var temp in TempTexts)
-            {
-                temp.gameObject.SetActive(false);
-            }
-            for (int i = 0; i < count; i++)
-            {
-                if (TempTexts.Count <= i)
-                {
-                    TempTexts.Add(Instantiate(HoverTextTemplate, HoverTopLeft));
-                }
-                var text = TempTexts[i];
-                var hoverTip = hoverTips[i];
-                text.localize = !string.IsNullOrEmpty(LocalizationManager.GetTranslation(hoverTip.text));
-                text.gameObject.SetActive(true);
-                text.maxWidth = num3;
-                text.formatFields = hoverTip.formatFields;
-                text.Render(hoverTip.text, false, false);
-                Color color = hoverTips[i].color;
-                text.SetTempColor(color);
-                text.transform.localPosition = vector;
-                var size = text.dimensions.size;
-                vector.y -= size.y;
-                if (offset < 0)
-                {
-                    float offY = size.y / text.displayedTextStringLinesAmount / 2f;
-                    offset = offY;
-                }
-                float width5 = size.x;
-                num = Mathf.Max(width5, num);
-            }
-            float width = num;
-            float height = -vector.y;
-            //超出屏幕高度，加宽然后重新计算高度
-            if (height > 16.5f && maxWidthToUse + 4f < 30f)
-            {
-                UpdateHoverText(mouse, maxWidthToUse + 4f);
-                return;
-            }
-            HoverTopLeft.transform.localPosition = new(-width / 2f, height / 2f - offset, 0);
-            width += 0.5f;
-            height += 0.25f;
-            //var (x, y) = GetPanelCenter(30, 17, width, height, mouse);
-            HoverTextBG.transform.localPosition = new(14.5f - width / 2f, height / 2f - 8f, 0f);
-            HoverTextBG.GetComponent<SpriteRenderer>().size = new(width, height);
-        }
-        public (float x, float y) GetPanelCenter(float screenWidth, float screenHeight, float width, float height, Vector3 mouse)
-        {
-            // 初步设置悬浮面板的 topLeft
-            screenWidth /= 2;
-            screenHeight /= 2;
-            float topLeftX = mouse.x + 0.5f;
-            float topLeftY = mouse.y - 0.5f;
-
-            // 计算面板的 bottomRight
-            float bottomRightX = topLeftX + width;
-            float bottomRightY = topLeftY - height;
-
-            // 调整 topLeft 使 bottomRight 不超出屏幕范围
-            if (bottomRightX > screenWidth)
-            {
-                topLeftX -= bottomRightX - screenWidth;
-            }
-            if (bottomRightY < screenHeight)
-            {
-                topLeftY += screenHeight - screenHeight;
-            }
-
-            return (topLeftX + width / 2f, topLeftY - height / 2f);
-        }
-
     }
 }

@@ -8,7 +8,7 @@ namespace Assets.PointShop.Scripts
     public class UIShopSlot : RUIButton
     {
         [HideInInspector]
-        public ContainedObjectsBuffer objectData;
+        public ObjectData objectData;
 
         [HideInInspector]
         public int Price;
@@ -16,20 +16,18 @@ namespace Assets.PointShop.Scripts
         [HideInInspector]
         public Zone Zone;
 
+        [HideInInspector]
+        public ObjectID Boss;
+
         public SpriteRenderer icon;
         public PugText PriceText;
         public void Awake()
         {
             AddEvent(RMouseEventType.LeftClick, OnLeftClick);
         }
-        public ContainedObjectsBuffer GetSlotObject()
-        {
-            return objectData;
-        }
         public override List<TextAndFormatFields> GetHoverDesc()
         {
-            ContainedObjectsBuffer slotObject = GetSlotObject();
-            ObjectID objectID = slotObject.objectID;
+            ObjectID objectID = objectData.objectID;
             if (objectID != 0)
             {
                 objectID = PlayerController.GetAnyObjectIDReplaceForNameAndDesc(objectID);
@@ -38,7 +36,7 @@ namespace Assets.PointShop.Scripts
                     value = objectID.ToString();
                 }
 
-                string nameTermOverride = Manager.ui.itemOverridesTable.GetNameTermOverride(slotObject.objectData);
+                string nameTermOverride = Manager.ui.itemOverridesTable.GetNameTermOverride(objectData);
                 if (nameTermOverride != null)
                 {
                     value = nameTermOverride;
@@ -57,10 +55,11 @@ namespace Assets.PointShop.Scripts
             }
             return null;
         }
-        public void SetItem(ObjectID id, int sellPrice)
+        public void SetItem(ObjectData objData, int sellPrice)
         {
             Price = sellPrice;
             PriceText.Render(sellPrice.ToString(), false, true);
+            ObjectID id = objData.objectID;
             if (id == ObjectID.None)
             {
                 objectData = default;
@@ -72,21 +71,14 @@ namespace Assets.PointShop.Scripts
                 return;
             var sprite = info.icon;
             var offset = info.iconOffset;
-            objectData = new()
-            {
-                objectData = new()
-                {
-                    objectID = id,
-                    amount = 1
-                }
-            };
+            objectData = objData;
             icon.sprite = sprite;
             icon.gameObject.SetActive(true);
             icon.transform.localPosition = offset;
         }
         public TextAndFormatFields GetHoverTitle()
         {
-            ContainedObjectsBuffer slotObject = GetSlotObject();
+            ContainedObjectsBuffer slotObject = new() { objectData = objectData };
             ObjectID objectID = slotObject.objectID;
             TextAndFormatFields textAndFormatFields = null;
             if (objectID != ObjectID.None)
@@ -100,8 +92,12 @@ namespace Assets.PointShop.Scripts
         private static void OnLeftClick(GameObject go)
         {
             UIShopSlot slot = go.GetComponent<UIShopSlot>();
-            PointShopClient.TryBuyItem(Manager.main.player.entity, slot.objectData.objectID,
-                ShopInfo.Ins.GetBoss(slot.Zone), slot.Price);
+            slot.OnLeftClick();
+        }
+        private void OnLeftClick()
+        {
+            PointShopClient.TryBuyItem(Manager.main.player.entity, objectData,
+                Boss, Price, PointShop.IsScale);
         }
     }
 }

@@ -21,7 +21,83 @@ MonoBehaviour:
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
-    files: []
+    files:
+    - path: Localization/Localization.csv
+      guid: 6f4dd62abac02994db9d44e833cba61f
+    - path: Scripts/Scripts/UIConfigEntryList.cs
+      guid: ad7e17ffc5bed8a41b52dd423a12b56c
+    - path: Scripts/Scripts/UIConfigEntryInput.cs
+      guid: 710ac84ec2bd8004499acd9d9ad50620
+    - path: Scripts/Scripts/UIConfigEntryBool.cs
+      guid: f1f373bd92b2eda49a1a688d2fb4efab
+    - path: Scripts/Scripts/UIConfigEntry.cs
+      guid: 97f70a3efc74c9b449ddf401fcd57d53
+    - path: Scripts/Scripts/UIConfigAccessLevel.cs
+      guid: edf7146baa7bd1b4888d55816cf0fea4
+    - path: Scripts/Scripts/OriginText.cs
+      guid: 9acd884e2bcc63a419f0b0c6f668a8f1
+    - path: Scripts/Scripts/ModScroll/ModUIScrollWindow.cs
+      guid: 8c21d149ba6e7614e8086ddc79493945
+    - path: Scripts/Scripts/ModScroll/ModScrollBar.cs
+      guid: 3e40160dcea186d46a0615b3d195c8c0
+    - path: Scripts/Scripts/ModConfig.cs
+      guid: 28f0d02d60909124a85886e97fe9450e
+    - path: Scripts/Scripts/MiscHelper.cs
+      guid: 79f2f3320c5653c4592bb6c787728442
+    - path: Scripts/Scripts/InputBox.cs
+      guid: 51b6c16f50a69fe439b64c30342b7acd
+    - path: Scripts/Scripts/GeneralConfigMenuMod.cs
+      guid: ad4e5e1338d7d4c4aa8895c3adfef5b1
+    - path: Scripts/Scripts/ConfigManager.cs
+      guid: 2452252d91b51cd4cbb3922a1e2c91c8
+    - path: Scripts/Scripts/ConfigData.cs
+      guid: 292c974f1b07a8d4aa22bed7698b29d2
+    - path: Scripts/RUIFramework/RUIText.cs
+      guid: d9c62b3bd7666f74c8e906fa7217a127
+    - path: Scripts/RUIFramework/RUIManager.cs
+      guid: 64ed15fb6dbc1ee4480a59b4cff5e689
+    - path: Scripts/RUIFramework/RUIHoverTextContainer.cs
+      guid: 4c6e594ed82b0404e9c57455514d3c98
+    - path: Scripts/RUIFramework/RUIElement.cs
+      guid: 5a76092bd90ed7544abee16cf22f9304
+    - path: Scripts/RUIFramework/RUIButton.cs
+      guid: 54bc650d4482bdd4fa99c9db66fbbc09
+    - path: Scripts/RUIFramework/RMouseEventType.cs
+      guid: 5852a38dd84ea494a9e9b7ec93d2fd6b
+    - path: Scripts/RUIFramework/RKeyCD.cs
+      guid: 27551183344648a45b83a312e0c4ebf9
+    - path: Scripts/RUIFramework/Extend/RUIViewLocator.cs
+      guid: 8acd8d9ce2254544bb04545078dff286
+    - path: Scripts/RUIFramework/Extend/RUIScrollView.cs
+      guid: 39242cd3480e12047b1bef28ce13c946
+    - path: Scripts/RUIFramework/Extend/RUIPageSwitcher.cs
+      guid: 65cc6e644aa3c1943b277a1f5ac3609f
+    - path: Scripts/RUIFramework/Extend/RUIExpand.cs
+      guid: ddb093e9823ee0145b8baa29c862f732
+    - path: Scripts/RUIFramework/Extend/RUIButtonGroup.cs
+      guid: 68f4d7e124a78a44b9674d603dc4d2cd
+    - path: Scripts/ConfigSync/ConfigSyncSystem.cs
+      guid: 9052d3071aac0b249adce8ab8764ae85
+    - path: Scripts/ConfigSync/ConfigChangeRPC.cs
+      guid: b6304ea65d3eedd409a502b71836ff99
+    - path: Scripts/Generated/ConfigSyncSystem__System_20420586840.g.cs
+      guid: 
+    - path: Scripts/Generated/ConfigSyncSystem__System_20420586841.g.cs
+      guid: 
+    - path: Scripts/Generated/ConfigSyncSystem__System_20420586842.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_ConfigDataRPCCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_JoinRequestCommandSerializer.cs
+      guid: 
+    - path: Bundles/GeneralConfigMenu_Windows.assetbundle
+      guid: 
+    - path: Bundles/GeneralConfigMenu_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/GeneralConfigMenu_Linux.assetbundle
+      guid: 
+    - path: Bundles/GeneralConfigMenu_Linux.assetbundle.manifest
+      guid: 
     dependencies:
     - modName: CoreLib
       required: 1
@@ -30,5 +106,25 @@ MonoBehaviour:
   buildBundles: 1
   cacheBundles: 0
   buildLinux: 1
-  assets: []
-  lastBuildLinux: 0
+  assets:
+  - path: Assets/GeneralConfigMenu/32x32_map_border.png
+    hash: 3056BB6DB71CC3E6CA831A1C1E62C1B0D94D9D7570F0CC81183F1E7BE232EEA9
+  - path: Assets/GeneralConfigMenu/creative_ui.png
+    hash: C641BF5607E7E5FB894924DE786CD1CBE49045D71EBA649F1BE34854AF648029
+  - path: Assets/GeneralConfigMenu/cursor_placement.png
+    hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
+  - path: Assets/GeneralConfigMenu/Data/GeneralConfigMenu.asset
+    hash: 80E4CC4DCA37E8A23237E175B1385C8679117C1EDBDE17A23B533BD641A26E4E
+  - path: Assets/GeneralConfigMenu/Localization/Localization.csv
+    hash: E054CF3A05E0A2445B783EB6957F3180B5846E989ADC279A958910CAC54B070E
+  - path: Assets/GeneralConfigMenu/Mask.png
+    hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
+  - path: Assets/GeneralConfigMenu/RUIHoverTextContainer.prefab
+    hash: 7072516F82A1358AAF0FC884C696251912CC9C198482CE61EE35BA35941D01D3
+  - path: Assets/GeneralConfigMenu/SelectNo.png
+    hash: 7B818002D2A2B9257727470A2BD4FF03D6B74D0C5611B277C667DD058D7F2682
+  - path: Assets/GeneralConfigMenu/SelectYes.png
+    hash: B9B20ED49D5C2D74EF60C62F4B07358D73D9AEFB81BDF28DDBFB434BEE47E082
+  - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
+    hash: 042DA3E8E0A1A5701AC81910201D26D3CAA8D34E7AE9E392846009CC1F8B4581
+  lastBuildLinux: 1

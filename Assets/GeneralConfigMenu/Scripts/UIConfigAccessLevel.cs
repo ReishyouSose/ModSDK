@@ -1,6 +1,4 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-using CoreLib.Data.Configuration;
-using System;
+﻿using CoreLib.Data.Configuration;
 using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts

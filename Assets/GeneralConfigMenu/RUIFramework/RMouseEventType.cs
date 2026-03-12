@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Assets.GeneralConfigMenu.RUIFramework
+﻿namespace Assets.GeneralConfigMenu.RUIFramework
 {
     public enum RMouseEventType
     {

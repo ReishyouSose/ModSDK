@@ -4,16 +4,16 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.NetCode;
 using Unity.Transforms;
-using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {
     public struct PointShopRPC : IRpcCommand
     {
         public Entity Player;
-        public ObjectID ObjectID;
+        public ObjectData Item;
         public ObjectID Boss;
         public int Price;
+        public bool Scale;
     }
 
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
@@ -40,14 +40,15 @@ namespace Assets.PointShop.Scripts
             }
             base.OnUpdate();
         }
-        public static void TryBuyItem(Entity player, ObjectID item, ObjectID boss, int price)
+        public static void TryBuyItem(Entity player, ObjectData item, ObjectID boss, int price, bool scale)
         {
             ins.queue.Enqueue(new()
             {
                 Player = player,
-                ObjectID = item,
+                Item = item,
                 Boss = boss,
-                Price = price
+                Price = price,
+                Scale = scale
             });
         }
     }
@@ -61,7 +62,7 @@ namespace Assets.PointShop.Scripts
         protected override void OnCreate()
         {
             NeedDatabase();
-            coin =API.Authoring.GetObjectID("PointShop_Currency");
+            coin = API.Authoring.GetObjectID("PointShop_Currency");
             RequireForUpdate<KilledEnemiesBuffer>();
             RequireForUpdate<InventoryChangeBuffer>();
             transLookup = SystemAPI.GetComponentLookup<LocalTransform>();
@@ -96,6 +97,13 @@ namespace Assets.PointShop.Scripts
                 }
                 if (!defeated)
                     return;
+                var item = rpc.Item;
+                int amount = item.amount;
+                if (rpc.Scale)
+                {
+                    price *= 10;
+                    amount *= 10;
+                }
                 if (!InventoryUtility.HasObject(containedLookup, player, currentcy, price))
                     return;
                 inv.Add(new()
@@ -103,8 +111,8 @@ namespace Assets.PointShop.Scripts
                     inventoryChangeData = Create.ConsumeObjectType(player, currentcy, price),
                     playerEntity = player
                 });
-                EntityUtility.CreateAndDropItem(rpc.ObjectID, 0, 1, transLookup[player].Position,
-                    player, database, ecb);
+                EntityUtility.CreateAndDropItem(item.objectID, item.variation, amount,
+                    transLookup[player].Position, player, database, ecb);
             })
                 .WithName("PointShopUpdate")
                 .WithAll<ReceiveRpcCommandRequest>()

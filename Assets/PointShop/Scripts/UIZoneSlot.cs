@@ -7,23 +7,10 @@ namespace Assets.PointShop.Scripts
     public class UIZoneSlot : RUIButton
     {
         [HideInInspector]
-        public Zone Zone
-        {
-            get => zone;
-            set
-            {
-                zone = value;
-                buffer = new()
-                {
-                    objectData = new()
-                    {
-                        objectID = ShopInfo.Ins.GetBoss(value)
-                    }
-                };
-            }
-        }
-        private Zone zone;
-        private ContainedObjectsBuffer buffer;
+        public Zone Zone;
+
+        [HideInInspector]
+        public ObjectID Boss;
 
         public SpriteRenderer Icon;
         public override List<TextAndFormatFields> GetHoverDesc()
@@ -32,13 +19,13 @@ namespace Assets.PointShop.Scripts
             {
                 new()
                 {
-                    text = zone is Zone.LarvaHive or Zone.Alien ? $"PointShop/{zone}"
-                        : $"ItemCategory/Environment_{zone}Biome",
+                    text = Zone is Zone.LarvaHive or Zone.Alien ? $"PointShop/{Zone}"
+                        : $"ItemCategory/Environment_{Zone}Biome",
                     color = Color.white,
                 },
                 new()
                 {
-                    text ="Names/" + (zone == Zone.Clay ? "LarvaBoss": ShopInfo.Ins.GetBoss(zone)),
+                    text ="Names/" + (Zone == Zone.Clay ? "LarvaBoss" : Boss),
                     color = Color.white,
                 },
             };

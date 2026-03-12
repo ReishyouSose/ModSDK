@@ -1,6 +1,5 @@
 ﻿using Assets.GeneralConfigMenu.Scripts;
 using Unity.Collections;
-using Unity.Entities;
 using Unity.NetCode;
 
 namespace Assets.GeneralConfigMenu.ConfigSync

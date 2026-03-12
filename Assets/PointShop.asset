@@ -36,23 +36,13 @@ MonoBehaviour:
       guid: cf2a5d10b535c1c4e8856317937ece4a
     - path: Scripts/Scripts/PointShopSystem.cs
       guid: 3ce997709d1b34f46b52db2872c43520
-    - path: Scripts/Scripts/BossDefeatedSystem.cs
-      guid: b297fdb56fef51944a1c1ea1a242d03f
-    - path: Scripts/Scripts/BossDefeatedInfo.cs
-      guid: 2b889370628536649b30b5d3b0fba657
     - path: Scripts/PointShop.cs
       guid: 17b9590c60c6ffb44bfd9ffcc35425ae
-    - path: Scripts/Generated/BossDefeatedSystem__System_12476826520.g.cs
-      guid: 
     - path: Scripts/Generated/PointShopSystem__System_6029873930.g.cs
       guid: 
     - path: Scripts/Generated/PointShopSystem__System_6029873931.g.cs
       guid: 
-    - path: Scripts/Generated/Assets.PointShop.Scripts_BossDefeatedInfoSerializer.cs
-      guid: 
     - path: Scripts/Generated/Assets.PointShop.Scripts_PointShopRPCCommandSerializer.cs
-      guid: 
-    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
       guid: 
     - path: Bundles/PointShop_Windows.assetbundle
       guid: 
@@ -73,10 +63,16 @@ MonoBehaviour:
   cacheBundles: 0
   buildLinux: 1
   assets:
+  - path: Assets/PointShop/Currency.prefab
+    hash: 9B3AC9D796254505AC127C4B95835B3A210CEA0EF9709582E82AF2FB327D0C74
   - path: Assets/PointShop/Data/PointShop.asset
     hash: 93A6DC68B01D47CCCB833DE8785C576F185A3AD1FBF3F18FDD7A1A7DF15095A9
   - path: Assets/PointShop/Localization/Localization.csv
-    hash: 4B5652D257577A6B9EB77E173D87618A9C51066F141174E522F6C1679D122941
+    hash: 0CCE23D9084F7EA8180CA84481B943F200ABA39C1802F08B5E067C590A5EAD9F
   - path: Assets/PointShop/PointShopUI.prefab
-    hash: 919316B6CEA5C5C3B60E0AC0E7F7010246B5A0FF106897F24E8F229C3EDDBA89
+    hash: FEAF59698E56E7D3924032C6618F7D76142CD90793CCB5F1EE1C01B5B580089D
+  - path: Assets/PointShop/ShopCoin.png
+    hash: 0B270A4F8B7C8EBA570B767696535DCAB93041D896734897299F831A5FE7899B
+  - path: Assets/PointShop/ShopCoin_Small.png
+    hash: C2DED93927AAF91568E4F975E480DD96EA76621B4E8D33EEA8727D0840843626
   lastBuildLinux: 1
