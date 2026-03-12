@@ -24,6 +24,7 @@ namespace Assets.PointShop.Scripts
         private ShopInfo info;
         private Zone currentZone;
         private ObjectID currency;
+        private bool init;
         public void Awake()
         {
             info = GetComponent<ShopInfo>();
@@ -33,11 +34,6 @@ namespace Assets.PointShop.Scripts
             ShopSlotTemplate.gameObject.SetActive(false);
             HideUI();
         }
-        public void Start()
-        {
-            ZonePanel.Reload(RegisterZone);
-        }
-
         public void HideUI()
         {
             Root.SetActive(false);
@@ -45,6 +41,12 @@ namespace Assets.PointShop.Scripts
 
         public void ShowUI()
         {
+            if (!init)
+            {
+                info.Init();
+                ZonePanel.Reload(RegisterZone);
+                init = true;
+            }
             Root.SetActive(true);
         }
         private void RegisterZone(RUIScrollView view, Transform parent)
@@ -69,9 +71,10 @@ namespace Assets.PointShop.Scripts
             var boss = info.GetBoss(currentZone);
             for (int i = 0; i < items.Count; i++)
             {
+                var item = items[i];
                 UIShopSlot slot = Instantiate(ShopSlotTemplate, parent);
                 slot.Boss = boss;
-                slot.SetItem(items[i], 100);
+                slot.SetItem(item.Item, item.Price);
                 slot.gameObject.SetActive(true);
                 view.AddChild(slot.gameObject);
             }

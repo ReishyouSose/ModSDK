@@ -1,35 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 namespace Assets.PointShop.Scripts
 {
-    [CreateAssetMenu(fileName = "ShopData", menuName = "PointShop/ShopData")]
-    public class ShopData : ScriptableObject
+    public struct ShopData
     {
-        public List<ZoneShopSerialize> shopList;
-    }
-
-    [Serializable]
-    public struct ZoneShopSerialize
-    {
-        public Zone Zone;
-        public string Boss;
+        public ObjectID Boss;
         public List<ShopItem> Items;
     }
-
-
-    [Serializable]
     public struct ShopItem
     {
-        public string ObjectID;
-        public int Amount;
-    }
-
-    public struct ZoneShop
-    {
-        public Zone Zone;
-        public ObjectID Boss;
-        public List<ObjectData> Items;
+        public ObjectData Item;
+        public int Price;
+        public static implicit operator ShopItem(ObjectID id)
+        {
+            return new()
+            {
+                Item = new()
+                {
+                    objectID = id,
+                    amount = 1,
+                },
+                Price = 1
+            };
+        }
+        public static implicit operator ShopItem((ObjectID id, int price) value)
+        {
+            return new()
+            {
+                Item = new()
+                {
+                    objectID = value.id,
+                    amount = 1,
+                },
+                Price = value.price
+            };
+        }
     }
 }
