@@ -30,6 +30,7 @@
         ChainWood,
         ContainerDisplay,//容器显示 done
         ModifySledgeRange,
+        Trophy,
         _Count
     }
 }

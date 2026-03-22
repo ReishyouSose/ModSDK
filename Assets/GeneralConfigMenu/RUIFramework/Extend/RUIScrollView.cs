@@ -159,17 +159,25 @@ namespace Assets.GeneralConfigMenu.RUIFramework.Extend
                 local.Move(oldx - ShowCol, oldy - ShowRow, out _/*var rangeState*/);
                 //states[(int)rangeState]++;
             }
-            if (!ShowHidden)
-                return;
             if (Horizen)
             {
-                LeftCol.Render(ShowCol.ToString());
-                RightCol.Render((MovableCol - ShowCol).ToString());
+                Left.SetState(ShowCol > 0, false, true);
+                Right.SetState(MovableCol - ShowCol > 0, false, true);
+                if (ShowHidden)
+                {
+                    LeftCol.Render(ShowCol.ToString(), false, true);
+                    RightCol.Render((MovableCol - ShowCol).ToString(), false, true);
+                }
             }
             if (Vertical)
             {
-                UpRow.Render(ShowRow.ToString());
-                DownRow.Render((MovableRow - ShowRow).ToString());
+                Up.SetState(ShowRow > 0, false, true);
+                Down.SetState(MovableRow - ShowRow > 0, false, true);
+                if (ShowHidden)
+                {
+                    UpRow.Render(ShowRow.ToString(), false, true);
+                    DownRow.Render((MovableRow - ShowRow).ToString(), false, true);
+                }
             }
         }
     }

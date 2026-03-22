@@ -98,8 +98,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 UpdateHighLight(interact, Color.clear);
             })
                 .WithName("ContainerHighLight")
-                .WithBurst()
-                .Run();
+                .WithoutBurst()
+                .Schedule();
         }
         private static void UpdateHighLight(InteractableObjectReferenceCD interact, Color color)
         {

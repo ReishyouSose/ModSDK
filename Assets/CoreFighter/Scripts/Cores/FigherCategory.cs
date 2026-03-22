@@ -14,11 +14,13 @@ namespace Assets.CoreFighter.Scripts.Cores
         Explosive,//无限炸药（不消耗）
         _Equip,
         NoRecoil,//无后坐力 done
+        EnableAllPreset,
         _Misc,
         //AllPlayerSkill,//玩家全技能 done
         //AllPetSkill,//宠物全技能 done
-        //ImmuneExplosion,//拦截爆炸伤害 done
+        ImmuneExplosion,//拦截爆炸伤害 done
         MapMarkerTeleport,//标记传送
         Vampire,
+        ImmunePushBack,
     }
 }

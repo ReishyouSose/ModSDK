@@ -40,7 +40,7 @@ namespace Assets.CoreEnhance
 
         private void Test(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
-            authoringData.LogComponent(ObjectID.CopperSledge);
+            //authoringData.LogComponent(ObjectID.ClayWormTrophy);
         }
 
         public void Init()

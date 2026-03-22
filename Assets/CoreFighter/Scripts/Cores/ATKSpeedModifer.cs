@@ -8,6 +8,7 @@
         public float Range;
         public float Magic;
         public float Throw;
+        public float Beam;
         public float OffHand;
         public float Consume;
     }

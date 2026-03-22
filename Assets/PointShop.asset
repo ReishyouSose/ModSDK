@@ -30,17 +30,27 @@ MonoBehaviour:
       guid: 2880cae3cda6d434eaac5c8dfc530330
     - path: Scripts/Scripts/UIShopSlot.cs
       guid: 76a362882323aab4d871647c0ed4a7fa
+    - path: Scripts/Scripts/ShopSwitch.cs
+      guid: 6da20bba8e53ae3419b744adfa5fb2b9
     - path: Scripts/Scripts/ShopInfo.cs
       guid: 52a28ad13b7665e47bdbbb1c3a9f4273
+    - path: Scripts/Scripts/ShopData.cs
+      guid: 82d997e184a8e1249922bc5fa18299fe
     - path: Scripts/Scripts/PointShopUI.cs
       guid: cf2a5d10b535c1c4e8856317937ece4a
     - path: Scripts/Scripts/PointShopSystem.cs
       guid: 3ce997709d1b34f46b52db2872c43520
+    - path: Scripts/Scripts/DropPointSystem.cs
+      guid: 535262b2d6cf2404d9fc27ee427dc786
     - path: Scripts/PointShop.cs
       guid: 17b9590c60c6ffb44bfd9ffcc35425ae
+    - path: Scripts/Generated/DropPointSystem__System_10144205940.g.cs
+      guid: 
     - path: Scripts/Generated/PointShopSystem__System_6029873930.g.cs
       guid: 
     - path: Scripts/Generated/PointShopSystem__System_6029873931.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.PointShop.Scripts_BuyFailureRPCCommandSerializer.cs
       guid: 
     - path: Scripts/Generated/Assets.PointShop.Scripts_PointShopRPCCommandSerializer.cs
       guid: 
@@ -64,13 +74,13 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/PointShop/Currency.prefab
-    hash: 9B3AC9D796254505AC127C4B95835B3A210CEA0EF9709582E82AF2FB327D0C74
+    hash: D0F291E2FCD63DD45DCDFDDF6F3BFC4E0858F5E3CA8A83E4CAA324C76008185B
   - path: Assets/PointShop/Data/PointShop.asset
     hash: 93A6DC68B01D47CCCB833DE8785C576F185A3AD1FBF3F18FDD7A1A7DF15095A9
   - path: Assets/PointShop/Localization/Localization.csv
-    hash: 0CCE23D9084F7EA8180CA84481B943F200ABA39C1802F08B5E067C590A5EAD9F
+    hash: 6142A4EFCE07369132AC1C71F4D75BCD6C86F962B804B90DFDF87A30BF932C2D
   - path: Assets/PointShop/PointShopUI.prefab
-    hash: FEAF59698E56E7D3924032C6618F7D76142CD90793CCB5F1EE1C01B5B580089D
+    hash: 0F9134BBE0962F61B0EA32BEDFD40BE4509170CAE33C3B59A090CE5D4F33EA79
   - path: Assets/PointShop/ShopCoin.png
     hash: 0B270A4F8B7C8EBA570B767696535DCAB93041D896734897299F831A5FE7899B
   - path: Assets/PointShop/ShopCoin_Small.png

@@ -2,6 +2,7 @@
 {
     public enum Zone
     {
+        None,
         Dirt,
         Clay,
         LarvaHive,

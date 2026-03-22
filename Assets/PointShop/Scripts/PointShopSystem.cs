@@ -1,5 +1,4 @@
 ﻿using Inventory;
-using PugMod;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.NetCode;
@@ -12,8 +11,14 @@ namespace Assets.PointShop.Scripts
         public Entity Player;
         public ObjectData Item;
         public ObjectID Boss;
+        public ObjectID Currency;
         public int Price;
         public bool Scale;
+    }
+
+    public struct BuyFailureRPC : IRpcCommand
+    {
+        public int Reason;
     }
 
     [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
@@ -21,32 +26,61 @@ namespace Assets.PointShop.Scripts
     public partial class PointShopClient : PugSimulationSystemBase
     {
         private static PointShopClient ins;
-        private NativeQueue<PointShopRPC> queue;
+        private NativeQueue<PointShopRPC> sendQueue;
+        private NativeQueue<BuyFailureRPC> receiveQueue;
         private EntityArchetype archetype;
         protected override void OnCreate()
         {
             ins = this;
-            queue = new NativeQueue<PointShopRPC>(Allocator.Persistent);
+            sendQueue = new NativeQueue<PointShopRPC>(Allocator.Persistent);
+            receiveQueue = new NativeQueue<BuyFailureRPC>(Allocator.Persistent);
             archetype = EntityManager.CreateArchetype(typeof(PointShopRPC), typeof(SendRpcCommandRequest));
             base.OnCreate();
         }
         protected override void OnUpdate()
         {
-            while (queue.TryDequeue(out var rpc))
+            var ecb = CreateCommandBuffer();
+            while (sendQueue.TryDequeue(out var rpc))
             {
-                var ecb = CreateCommandBuffer();
                 Entity e = ecb.CreateEntity(archetype);
                 ecb.SetComponent(e, rpc);
             }
+
+
+            var receive = receiveQueue;
+            while (receive.TryDequeue(out var failure))
+            {
+                var shop = PointShopUI.Ins;
+                switch (failure.Reason)
+                {
+                    case 0:
+                        shop.CurrentZoneSlot.WarnNotDefeat();
+                        break;
+                    case 1:
+                        shop.CurrentShopSlot.WarnNotEnough();
+                        break;
+                }
+            }
+            Entities.ForEach((Entity e, in BuyFailureRPC rpc) =>
+            {
+                ecb.DestroyEntity(e);
+                receive.Enqueue(rpc);
+            })
+                .WithName("ReceiveBuyFailure")
+                .WithBurst()
+                .WithAll<ReceiveRpcCommandRequest>()
+                .Schedule();
+
             base.OnUpdate();
         }
-        public static void TryBuyItem(Entity player, ObjectData item, ObjectID boss, int price, bool scale)
+        public static void TryBuyItem(Entity player, ObjectData item, ObjectID boss, ObjectID currency, int price, bool scale)
         {
-            ins.queue.Enqueue(new()
+            ins.sendQueue.Enqueue(new()
             {
                 Player = player,
                 Item = item,
                 Boss = boss,
+                Currency = currency,
                 Price = price,
                 Scale = scale
             });
@@ -58,15 +92,15 @@ namespace Assets.PointShop.Scripts
     {
         private ComponentLookup<LocalTransform> transLookup;
         private BufferLookup<ContainedObjectsBuffer> containedLookup;
-        private ObjectID coin;
+        private EntityArchetype archetype;
         protected override void OnCreate()
         {
             NeedDatabase();
-            coin = API.Authoring.GetObjectID("PointShop_Currency");
             RequireForUpdate<KilledEnemiesBuffer>();
             RequireForUpdate<InventoryChangeBuffer>();
             transLookup = SystemAPI.GetComponentLookup<LocalTransform>();
             containedLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
+            archetype = EntityManager.CreateArchetype(typeof(BuyFailureRPC), typeof(SendRpcCommandRequest));
             base.OnCreate();
         }
         protected override void OnUpdate()
@@ -78,47 +112,65 @@ namespace Assets.PointShop.Scripts
             var ecb = CreateCommandBuffer();
             var transLookup = this.transLookup;
             var containedLookup = this.containedLookup;
-            var currentcy = coin;
             var database = this.database;
-            Entities.ForEach((Entity e, in PointShopRPC rpc) =>
+            var coin = PointShop.Coin;
+            var archetype = this.archetype;
+            Entities.ForEach((Entity e, in PointShopRPC rpc, in ReceiveRpcCommandRequest receive) =>
             {
                 ecb.DestroyEntity(e);
                 var player = rpc.Player;
                 var boss = rpc.Boss;
+                var currency = rpc.Currency == ObjectID.None ? coin : rpc.Currency;
                 var price = rpc.Price;
-                bool defeated = false;
-                foreach (var killed in killeds)
+                if (boss != ObjectID.None)
                 {
-                    if (killed.objectData.objectID == boss)
+                    bool defeated = false;
+                    foreach (var killed in killeds)
                     {
-                        defeated = true;
-                        break;
+                        if (killed.objectData.objectID == boss)
+                        {
+                            defeated = true;
+                            break;
+                        }
+                    }
+                    if (!defeated)
+                    {
+                        SendFailure(ecb, archetype, 0, receive);
+                        return;
                     }
                 }
-                if (!defeated)
-                    return;
                 var item = rpc.Item;
+                var id = item.objectID;
+                var variation = item.variation;
                 int amount = item.amount;
-                if (rpc.Scale)
+                ref var info = ref PugDatabase.GetEntityObjectInfo(id, database, variation);
+                if (info.isStackable && rpc.Scale)
                 {
                     price *= 10;
                     amount *= 10;
                 }
-                if (!InventoryUtility.HasObject(containedLookup, player, currentcy, price))
+                if (!InventoryUtility.HasObject(containedLookup, player, currency, price))
+                {
+                    SendFailure(ecb, archetype, 1, receive);
                     return;
+                }
                 inv.Add(new()
                 {
-                    inventoryChangeData = Create.ConsumeObjectType(player, currentcy, price),
+                    inventoryChangeData = Create.ConsumeObjectType(player, currency, price),
                     playerEntity = player
                 });
-                EntityUtility.CreateAndDropItem(item.objectID, item.variation, amount,
-                    transLookup[player].Position, player, database, ecb);
+                EntityUtility.CreateAndDropItem(id, variation, amount, transLookup[player].Position, player, database, ecb);
             })
                 .WithName("PointShopUpdate")
-                .WithAll<ReceiveRpcCommandRequest>()
                 .WithBurst()
                 .Schedule();
             base.OnUpdate();
+        }
+        private static void SendFailure(EntityCommandBuffer ecb, EntityArchetype archetype, int reason, ReceiveRpcCommandRequest receive)
+        {
+            var e = ecb.CreateEntity(archetype);
+            ecb.SetComponent(e, new BuyFailureRPC() { Reason = reason });
+            ecb.SetComponent(e, new SendRpcCommandRequest() { TargetConnection = receive.SourceConnection });
         }
     }
 }

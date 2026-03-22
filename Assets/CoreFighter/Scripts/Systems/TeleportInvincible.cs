@@ -30,7 +30,6 @@ namespace Assets.CoreFighter.Scripts.Systems
             {
                 if (!state.HasAnyState(PlayerStateEnum.Teleporting))
                     return;
-
                 EntityUtility.AddOrRefreshCondition(new ConditionData()
                 {
                     conditionID = ConditionID.ImmuneToDamageAfterRespawn,

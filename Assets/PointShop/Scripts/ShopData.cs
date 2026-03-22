@@ -10,30 +10,37 @@ namespace Assets.PointShop.Scripts
     public struct ShopItem
     {
         public ObjectData Item;
+        public ObjectID Currency;
         public int Price;
-        public static implicit operator ShopItem(ObjectID id)
+        public ShopItem(ObjectData objData, int price = 1, ObjectID currency = ObjectID.None)
         {
-            return new()
-            {
-                Item = new()
-                {
-                    objectID = id,
-                    amount = 1,
-                },
-                Price = 1
-            };
+            Item = objData;
+            Price = price;
+            Currency = currency;
+
         }
-        public static implicit operator ShopItem((ObjectID id, int price) value)
+        public ShopItem(ObjectID id, int amount)
         {
-            return new()
+            Item = new()
             {
-                Item = new()
-                {
-                    objectID = value.id,
-                    amount = 1,
-                },
-                Price = value.price
+                objectID = id,
+                amount = amount,
             };
+            Price = 1;
+            Currency = ObjectID.None;
         }
+        public ShopItem(ObjectID id, int price = 1, ObjectID currency = ObjectID.None)
+        {
+            Item = new()
+            {
+                objectID = id,
+                amount = 1,
+            };
+            Price = price;
+            Currency = currency;
+        }
+        public static implicit operator ShopItem(ObjectID id) => new(id, 1);
+        public static implicit operator ShopItem(ObjectData obj) => new(obj);
+        public static implicit operator ShopItem((ObjectID id, int price) value) => new(value.id, value.price, ObjectID.None);
     }
 }

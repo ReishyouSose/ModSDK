@@ -29,7 +29,7 @@ namespace Assets.GeneralConfigMenu.RUIFramework
             OffSprite.gameObject.SetActive(!IsToggle);
             SetHoverSR(false);
         }
-        private void Awake()
+        protected virtual void Awake()
         {
             AddEvent(RMouseEventType.LeftDown, OnLeftDown);
             AddEvent(RMouseEventType.MouseEnter, _ => SetHoverSR(true));

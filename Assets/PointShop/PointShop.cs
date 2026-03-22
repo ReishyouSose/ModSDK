@@ -1,4 +1,6 @@
+using Assets.PointShop.Scripts;
 using CoreLib;
+using CoreLib.Data.Configuration;
 using CoreLib.Submodule.ControlMapping;
 using CoreLib.Submodule.UserInterface;
 using PugMod;
@@ -11,17 +13,21 @@ namespace Assets.PointShop
     {
         private const string UIName = "PointShop_PointShopMenu";
         private const string Open = "PointShop_Open";
-        private const string Scale = "PointShop_Scale";
-        public static bool IsScale { get; private set;  }
+        public static ObjectID Coin { get; private set; }
+        public static bool IsScale { get; private set; }
+        public static ConfigEntry<bool> ShowSwitch { get; private set; }
         public void EarlyInit()
         {
             CoreLibMod.LoadSubmodule(typeof(UserInterfaceModule), typeof(ControlMappingModule));
-            ControlMappingModule.AddKeyboardBind(Open, KeyboardKeyCode.O, ModifierKey.Control);
-            ControlMappingModule.AddKeyboardBind(Scale, KeyboardKeyCode.LeftControl);
+            ControlMappingModule.AddKeyboardBind(Open, KeyboardKeyCode.P, ModifierKey.Control);
+            API.Authoring.OnObjectTypeAdded += DropPointSystem.AddPointDrop;
+            ConfigFile file = new(nameof(PointShop) + "/Config.cfg", true);
+            ShowSwitch = file.Bind("General", nameof(ShowSwitch), true, null, new(ConfigAccessLevel.Client));
         }
 
         public void Init()
         {
+            Coin = API.Authoring.GetObjectID("PointShop_Currency");
         }
 
         public void ModObjectLoaded(Object obj)
@@ -41,10 +47,14 @@ namespace Assets.PointShop
             var player = Manager.main.player;
             if (player == null)
                 return;
+            IsScale = Input.GetKey(KeyCode.LeftControl);
             var p = player.inputModule.rewiredPlayer;
             if (p.GetButtonDown(Open))
-                UserInterfaceModule.OpenModUI(UIName);
-            IsScale = p.GetButton(Scale);
+                OpenShop();
+        }
+        public static void OpenShop()
+        {
+            UserInterfaceModule.OpenModUI(UIName);
         }
     }
 }

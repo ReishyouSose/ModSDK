@@ -1,10 +1,5 @@
 ﻿using Assets.CoreFighter.Scripts.Cores;
 using PlayerEquipment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -19,6 +14,7 @@ namespace Assets.CoreFighter.Scripts.Systems
         Range,
         Magic,
         Throw,
+        Beam,
         OffHand,
         Consume
     }
@@ -93,6 +89,7 @@ namespace Assets.CoreFighter.Scripts.Systems
                 ItemType.Range => modifier.Range,
                 ItemType.Magic => modifier.Magic,
                 ItemType.Throw => modifier.Throw,
+                ItemType.Beam => modifier.Beam,
                 ItemType.OffHand => modifier.OffHand,
                 ItemType.Consume => modifier.Consume,
                 _ => oriCD
@@ -112,6 +109,7 @@ namespace Assets.CoreFighter.Scripts.Systems
                     ObjectType.MeleeWeapon => ItemType.Melee,
                     ObjectType.RangeWeapon => authoringData.GetComponent<WeaponDamageAuthoring>()
                                                .isMagic ? ItemType.Magic : ItemType.Range,
+                    ObjectType.BeamWeapon => ItemType.Beam,
                     ObjectType.ThrowingWeapon => ItemType.Throw,
                     ObjectType.Offhand => ItemType.OffHand,
                     ObjectType.Eatable => ItemType.Consume,

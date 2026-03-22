@@ -15,6 +15,7 @@ MonoBehaviour:
   metadata:
     guid: 37deafad35204f76bdd82e13d151766c
     name: THCompass
+    displayName: 
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1

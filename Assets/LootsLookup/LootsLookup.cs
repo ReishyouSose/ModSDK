@@ -59,7 +59,7 @@ public class LootsLookup : IMod
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.L))
         {
             if (Manager.ui.currentSelectedUIElement is not SlotUIBase slot)
                 return;
@@ -99,7 +99,7 @@ public class LootsLookup : IMod
         if (string.IsNullOrEmpty(itemName))
             itemName = targetId.ToString();
 
-        result.AppendLine($"物品: {itemName} (ID: {(int)targetId})");
+        result.AppendLine($"物品: {itemName} (ID:{targetId} {(int)targetId})");
         result.AppendLine("获取方式:");
         result.AppendLine("=".PadRight(40, '='));
 

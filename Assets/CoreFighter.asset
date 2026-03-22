@@ -24,7 +24,7 @@ MonoBehaviour:
     files: []
     dependencies:
     - modName: CoreLib
-      required: 1
+      required: 0
     - modName: GeneralConfigMenu
       required: 1
   modPath: Assets\CoreFighter

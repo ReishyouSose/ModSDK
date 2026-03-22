@@ -127,3 +127,6 @@ CoreEnhance/Switch/Misc/ModifySledgeRange	Modify Sledge Attack Range	修改大�
 CoreEnhance/Switch/Misc/ModifySledgeRange/Description	This entry has additional configs	这个条目有额外配置
 CoreEnhance/Value/Misc/ModifySledgeRange	Sledge Attack Range	大锤攻击范围
 CoreEnhance/Value/Misc/ModifySledgeRange/Description	This is radius	这是半径
+CoreEnhance/Switch/Misc/Trophy	Extra Trophy Drop	额外雕像掉落
+CoreEnhance/Switch/Misc/Trophy/Description	This entry has additional configs	这个条目有额外配置
+CoreEnhance/Value/Misc/Trophy	Trophy Drop Chance	雕像掉落率

@@ -1,6 +1,7 @@
 ﻿using Assets.GeneralConfigMenu.RUIFramework;
 using CoreLib.Data.Configuration;
 using I2.Loc;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -73,8 +74,15 @@ namespace Assets.GeneralConfigMenu.Scripts
             }
             string key = ConfigEntry.Definition.Key;
             StringBuilder builder = new();
-            builder.Append(ConfigEntry.ConfigFile.ConfigFilePath.Replace(".cfg", "/"))
-                .Append(ConfigEntry.Definition.Section).Append('/').Append(key);
+            if (ConfigEntry.Description.Tags.FirstOrDefault(x => x is LocalizationOverride) is LocalizationOverride lfx)
+            {
+                builder.Append(lfx.Key);
+            }
+            else
+            {
+                builder.Append(ConfigEntry.ConfigFile.ConfigFilePath.Replace(".cfg", "/"))
+                    .Append(ConfigEntry.Definition.Section).Append('/').Append(key);
+            }
             var keyLocal = builder.ToString();
             if (LocalizationManager.TryGetTranslation(keyLocal, out _))
             {

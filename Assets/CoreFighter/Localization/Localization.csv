@@ -14,9 +14,12 @@ CoreFighter/Switch/Misc/AllPlayerSkill	Text		Allow All Player Skills	玩家全�
 CoreFighter/Switch/Misc/AllPetSkill	Text		Allow All Pet Skills	宠物全技能
 CoreFighter/Switch/Misc/ImmuneExplosion	Text		Immune To Explosions	免疫爆炸
 CoreFighter/Switch/Misc/MapMarkerTeleport	Text		Teleport To Map Markers	地图标记传送
+CoreFighter/Value/Misc/MapMarkerTeleport	Text		Invincible After Teleport	传送后无敌
 CoreFighter/Switch/Misc/Vampire	Text		Attack Vampire	攻击吸血
-CoreFighter/Switch/Misc/Vampire/Description			This entry has additional configs	这个条目有额外配置
+CoreFighter/Switch/Misc/Vampire/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreFighter/Value/Misc/Vampire	Text		Attack Vampire Multiplier	攻击吸血倍率
+CoreFighter/Switch/Misc/ImmunePushBack	Text		Immune Push Back	免疫击退
+CoreFighter/Switch/Misc/ImmunePushBack/Description	Text		Immune to knockback from explosions, beam weapons, etc	免疫受到爆炸、使用光束武器等的击退
 CoreFighter/AttackSpeed	Text		FOC/Attack Speed Modifier	更好的战斗/攻速修改器
 CoreFighter/AttackSpeed/General	Text		General	通用
 CoreFighter/AttackSpeed/General/MainSwitch	Text		Main Switch	总开关
@@ -32,99 +35,12 @@ CoreFighter/AttackSpeed/OriginCoolDown1.0	Text		OriginCoolDown 1.0s (1.0/s)	原�
 CoreFighter/AttackSpeed/OriginCoolDown1.5	Text		OriginCoolDown 1.5s (0.7/s)	原冷却 1.5s (0.7/s)
 CoreFighter/AttackSpeed/OriginCoolDown2.0	Text		OriginCoolDown 2.0s (0.5/s)	原冷却 2.0s (0.5/s)
 CoreFighter/AttackSpeed/OriginCoolDown5.0	Text		OriginCoolDown 5.0s (0.2/s)	原冷却 5.0s (0.2/s)
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.125/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.125/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.2/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.2/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.25/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.25/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.3/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.3/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.4/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.4/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.5/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.5/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.6/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.6/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown0.7/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown0.7/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown1.0/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown1.0/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown1.5/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown1.5/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown2.0/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown2.0/Consume	Text		Consume	消耗品
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Switch	Text		Switch	开关
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Tool	Text		Tool	工具
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Melee	Text		Melee Weapon	近战武器
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Range	Text		Range Weapon	远程武器
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Magic	Text		Magic Weapon	魔法武器
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Throw	Text		Throw Weapon	投掷武器
-CoreFighter/AttackSpeed/OriginCoolDown5.0/OffHand	Text		Off-Hand	手持物
-CoreFighter/AttackSpeed/OriginCoolDown5.0/Consume	Text		Consume	消耗品
+CoreFighter/AttackSpeed/Switch	Text		Switch	开关
+CoreFighter/AttackSpeed/Tool	Text		Tool	工具
+CoreFighter/AttackSpeed/Melee	Text		Melee Weapon	近战武器
+CoreFighter/AttackSpeed/Range	Text		Range Weapon	远程武器
+CoreFighter/AttackSpeed/Magic	Text		Magic Weapon	魔法武器
+CoreFighter/AttackSpeed/Throw	Text		Throw Weapon	投掷武器
+CoreFighter/AttackSpeed/Beam	Text		Beam Weapon	光束武器
+CoreFighter/AttackSpeed/OffHand	Text		Off-Hand	手持物
+CoreFighter/AttackSpeed/Consume	Text		Consume	消耗品

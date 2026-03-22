@@ -63,6 +63,7 @@ namespace Assets.CoreFighter.Scripts.Cores
         {
             TryAddValue(file, FighterCategory.MapMarkerTeleport, true, null);
             TryAddValue(file, FighterCategory.Vampire, 0.01f, new AcceptableValueRange<float>(0.01f, 1f));
+            TryAddValue(file, FighterCategory.EnableAllPreset, true);
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace Assets.CoreEnhance.Scripts.Items
                     {
                         lootDropID = API.Authoring.GetObjectID("CoreEnhance_BoulderDemolish"),
                         amount = 3,
-                        multiplayerAmountAdditionScaling = 3,
+                        multiplayerAmountAdditionScaling = 1,
                     });
                     break;
             }

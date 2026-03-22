@@ -110,7 +110,7 @@ namespace Assets.GeneralConfigMenu.RUIFramework
             }
 
             // 设置HoverTopLeft的位置
-            HoverTopLeft.localPosition = new Vector3(-panelWidth / 2f, panelHeight / 2f, 0f);
+            HoverTopLeft.localPosition = new Vector3(-panelWidth / 2f - 0.3125f, panelHeight / 2f + 0.1875f, 0f);
 
             // 背景大小计算（原版中的处理）
             panelWidth += 0.5625f;
