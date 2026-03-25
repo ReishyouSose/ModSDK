@@ -15,12 +15,11 @@ namespace Assets.CoreFighter.Scripts.Cores
         _Equip,
         NoRecoil,//无后坐力 done
         EnableAllPreset,
+        _Immune,
+        Explosion,//拦截爆炸伤害 done
+        PushBack,
         _Misc,
-        //AllPlayerSkill,//玩家全技能 done
-        //AllPetSkill,//宠物全技能 done
-        ImmuneExplosion,//拦截爆炸伤害 done
         MapMarkerTeleport,//标记传送
         Vampire,
-        ImmunePushBack,
     }
 }

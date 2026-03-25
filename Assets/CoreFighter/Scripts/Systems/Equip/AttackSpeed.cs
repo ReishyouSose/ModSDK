@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Assets.CoreFighter.Scripts.Systems
+namespace Assets.CoreFighter.Scripts.Systems.Equip
 {
     public enum ItemType
     {

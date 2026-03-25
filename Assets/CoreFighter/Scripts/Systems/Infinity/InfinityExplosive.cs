@@ -2,7 +2,7 @@
 using PlayerState;
 using Unity.Entities;
 
-namespace Assets.CoreFighter.Scripts.Systems
+namespace Assets.CoreFighter.Scripts.Systems.Infinity
 {
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation | WorldSystemFilterFlags.ClientSimulation)]
     [UpdateInGroup(typeof(ConditionEffectsUpdateSystemGroup), OrderLast = true)]

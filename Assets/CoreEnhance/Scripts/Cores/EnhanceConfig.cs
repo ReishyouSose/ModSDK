@@ -50,6 +50,9 @@ namespace Assets.CoreEnhance.Scripts.Cores
                         _default = false;
                         scope = new(ConfigAccessLevel.Server, true);
                         break;
+                    case EnhanceCategory.ModifySledgeRange:
+                        _default = false;
+                        break;
                 }
                 configs.Add(index, new(file.Bind(def, _default, null, scope ?? new())));
             }

@@ -20,7 +20,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         {
             sledgeLookup = SystemAPI.GetComponentLookup<SledgeCD>();
             meleeLookup = SystemAPI.GetComponentLookup<MeleeWeaponCD>();
-            NeedDatabase();
             base.OnCreate();
         }
         protected override void OnUpdate()
@@ -32,20 +31,19 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             }
             timer = 0;
             bool enable = EnhanceConfig.TryGetValue<float>(EnhanceCategory.ModifySledgeRange, out var value);
-            var database = this.database;
             var sledgeLookup = this.sledgeLookup;
             var meleeLookup = this.meleeLookup;
             float range = value.Value;
-            Entities.ForEach((DynamicBuffer<ContainedObjectsBuffer> inv, in EquippedObjectCD held) =>
+            Entities.ForEach((in EquippedObjectCD held) =>
             {
-                int index = held.equippedSlotIndex;
-                Entity e = PugDatabase.GetPrimaryPrefabEntity(inv[index].objectID, database);
+                Entity e = held.equipmentPrefab;
                 if (!sledgeLookup.HasComponent(e))
                     return;
                 ref var melee = ref meleeLookup.GetRefRW(e).ValueRW;
                 melee.baseHitColliderSize = enable ? range : 1.4f;
             })
                 .WithName("SledgeRangeModify")
+                .WithAll<PlayerGhost>()
                 .WithBurst()
                 .ScheduleParallel(Dependency);
             base.OnUpdate();

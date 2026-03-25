@@ -2,7 +2,7 @@
 using Unity.Entities;
 using Unity.NetCode;
 
-namespace Assets.CoreFighter.Scripts.Systems
+namespace Assets.CoreFighter.Scripts.Systems.Immune
 {
     [UpdateAfter(typeof(PhysicsWorldHistory))]
     [UpdateBefore(typeof(PushbackSystem))]
@@ -12,7 +12,7 @@ namespace Assets.CoreFighter.Scripts.Systems
     {
         protected override void OnUpdate()
         {
-            if (!FighterConfig.IsEnable(FighterCategory.ImmunePushBack))
+            if (!FighterConfig.IsEnable(FighterCategory.PushBack))
                 return;
             Entities.ForEach((Entity e, ref ReceivedPushbackCD pushBack) =>
             {

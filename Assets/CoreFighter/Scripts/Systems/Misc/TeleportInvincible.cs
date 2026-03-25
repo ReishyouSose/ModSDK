@@ -2,7 +2,7 @@
 using PlayerState;
 using Unity.Entities;
 
-namespace Assets.CoreFighter.Scripts.Systems
+namespace Assets.CoreFighter.Scripts.Systems.Misc
 {
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation | WorldSystemFilterFlags.ClientSimulation)]
     [UpdateInGroup(typeof(PlayerStateSystemGroup))]

@@ -77,7 +77,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 return;
             var ecb = CreateCommandBuffer();
             ecb.DestroyEntity(clear);
-            var job = Entities.ForEach((Entity e, in PickUpItemCD pick) =>
+            /*var job = */Entities.ForEach((Entity e, in PickUpItemCD pick) =>
             {
                 if (pick.state != PickUpItemState.None)
                     return;
@@ -86,7 +86,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 .WithName("ClearAllDropItems")
                 .WithEntityQueryOptions(EntityQueryOptions.IncludeDisabledEntities)
                 .WithBurst()
-                .ScheduleParallel(Dependency);
+                .Run();
             base.OnUpdate();
         }
     }

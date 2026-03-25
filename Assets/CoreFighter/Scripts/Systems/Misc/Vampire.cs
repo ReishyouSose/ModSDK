@@ -2,7 +2,7 @@
 using System;
 using Unity.Entities;
 
-namespace Assets.CoreFighter.Scripts.Systems
+namespace Assets.CoreFighter.Scripts.Systems.Misc
 {
     [UpdateInGroup(typeof(UpdateHealthSystemGroup))]
     [UpdateBefore(typeof(UpdateHealthFromBufferSystem))]

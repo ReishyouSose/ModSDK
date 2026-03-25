@@ -3,23 +3,33 @@ CoreFighter/PressShift	Text		Hold on Shift	按住Shift
 CoreFighter/Value	Text		Fighter of CK Extra Config	更好的战斗额外配置
 CoreFighter/Switch	Text		Fighter of CK Function Switch	更好的战斗功能开关
 CoreFighter/Switch/Infinity	Text		Infinity	无限
+CoreFighter/Value/Infinity	Text		Infinity	无限
 CoreFighter/Switch/Infinity/Mana	Text		Mana	魔力
 CoreFighter/Switch/Infinity/Hunger	Text		Hunger	饱食度
 CoreFighter/Switch/Infinity/Explosive	Text		Explosive	炸药
 CoreFighter/Switch/Equip	Text		Equip	装备
+CoreFighter/Value/Equip	Text		Equip	装备
 CoreFighter/Switch/Equip/NoRecoil	Text		No Recoil	无后坐力
-CoreFighter/Switch/Equip/NoRecoil/Description	Text		Whether you get pushed back while using the Obliteration Ray or StormBringer	目前仅适用于毁灭射线和闪电冲击枪
+CoreFighter/Switch/Equip/EnableAllPreset	Text		All Preset Effective	全预设生效
+CoreFighter/Switch/Equip/EnableAllPreset/Description	Text		"Make the equipment effects of all armor presets take effect
+This entry has additional configs"	"使所有套装预设的装备效果生效
+这个条目有额外配置"
+CoreFighter/Value/Equip/EnableAllPreset			Armor set bonus effective	允许激活套装效果
+CoreFighter/Value/Equip/EnableAllPreset/Description			Note that set bonuses cannot across presets	注意无法跨预设组成套装
+CoreFighter/Switch/Immune	Text		Immune	免疫
+CoreFighter/Value/Immune	Text		Immune	免疫
+CoreFighter/Switch/Immune/Explosion	Text		Explosions	爆炸
+CoreFighter/Switch/Immune/PushBack	Text		Push Back	击退
+CoreFighter/Switch/Immune/PushBack/Description	Text		Immune to knockback from explosions, beam weapons, etc	免疫受到爆炸、使用光束武器等的击退
 CoreFighter/Switch/Misc	Text		Misc	杂项
+CoreFighter/Value/Misc	Text		Misc	杂项
 CoreFighter/Switch/Misc/AllPlayerSkill	Text		Allow All Player Skills	玩家全技能
 CoreFighter/Switch/Misc/AllPetSkill	Text		Allow All Pet Skills	宠物全技能
-CoreFighter/Switch/Misc/ImmuneExplosion	Text		Immune To Explosions	免疫爆炸
 CoreFighter/Switch/Misc/MapMarkerTeleport	Text		Teleport To Map Markers	地图标记传送
 CoreFighter/Value/Misc/MapMarkerTeleport	Text		Invincible After Teleport	传送后无敌
 CoreFighter/Switch/Misc/Vampire	Text		Attack Vampire	攻击吸血
 CoreFighter/Switch/Misc/Vampire/Description	Text		This entry has additional configs	这个条目有额外配置
 CoreFighter/Value/Misc/Vampire	Text		Attack Vampire Multiplier	攻击吸血倍率
-CoreFighter/Switch/Misc/ImmunePushBack	Text		Immune Push Back	免疫击退
-CoreFighter/Switch/Misc/ImmunePushBack/Description	Text		Immune to knockback from explosions, beam weapons, etc	免疫受到爆炸、使用光束武器等的击退
 CoreFighter/AttackSpeed	Text		FOC/Attack Speed Modifier	更好的战斗/攻速修改器
 CoreFighter/AttackSpeed/General	Text		General	通用
 CoreFighter/AttackSpeed/General/MainSwitch	Text		Main Switch	总开关
