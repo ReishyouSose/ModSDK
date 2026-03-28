@@ -12,23 +12,11 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
     [UpdateAfter(typeof(SummarizeConditionsSystem))]
     public partial class EnableAllPresetSystem : PugSimulationSystemBase
     {
-        public struct BonusRecord : IEquatable<BonusRecord>
-        {
-            public int BonusID;
-            public int RequirePieces;
-
-            public readonly bool Equals(BonusRecord other)
-                => BonusID == other.BonusID && RequirePieces == other.RequirePieces;
-
-            public readonly override int GetHashCode()
-                => (BonusID * 397) ^ RequirePieces;
-        }
-
+        private ComponentLookup<LevelCD> levelLookup;
+        private ComponentLookup<DurabilityCD> durabilityLookup;
+        private BufferLookup<LevelEntitiesBuffer> levelEntitiesLookup;
         private NativeParallelHashMap<int, SetBonusID> objectIDToSetBonus;
         private NativeParallelMultiHashMap<int, SetBonusData> setBonusesLookUp;
-        private ComponentLookup<DurabilityCD> durabilityLookup;
-        private ComponentLookup<LevelCD> levelLookup;
-        private BufferLookup<LevelEntitiesBuffer> levelEntitiesLookup;
         private BufferLookup<GivesConditionsWhenEquippedBuffer> equippedStatsLookup;
 
         protected override void OnCreate()
@@ -58,15 +46,6 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
                     setBonusesLookUp.Add((int)setBonusInfo.setBonusID, setBonusData);
                 }
             }
-
-            PetInfosTable table = PetInfosTable.GetTable();
-            if (table == null)
-            {
-                Debug.LogError("Could not find PetInfosTable asset, conditions are disabled.");
-                Enabled = false;
-                return;
-            }
-
             durabilityLookup = SystemAPI.GetComponentLookup<DurabilityCD>();
             levelLookup = SystemAPI.GetComponentLookup<LevelCD>();
             levelEntitiesLookup = SystemAPI.GetBufferLookup<LevelEntitiesBuffer>();
@@ -87,34 +66,31 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
         {
             if (!FighterConfig.TryGetValue<bool>(FighterCategory.EnableAllPreset, out var bonusSet))
                 return;
+            if (!SystemAPI.TryGetSingleton<ConditionsTableCD>(out var conditionsTableCD))
+                return;
             bool allowBonus = bonusSet.Value;
-
             var database = this.database;
-            var durabilityLookup = this.durabilityLookup;
             var levelLookup = this.levelLookup;
+            var setBonusesLookUp = this.setBonusesLookUp;
+            var durabilityLookup = this.durabilityLookup;
+            var conditionsTable = conditionsTableCD.Value;
+            var objectIDToSetBonus = this.objectIDToSetBonus;
             var levelEntitiesLookup = this.levelEntitiesLookup;
             var equippedStatsLookup = this.equippedStatsLookup;
-            var ConditionsTable = SystemAPI.GetSingleton<ConditionsTableCD>().Value;
-            var ObjectIDToSetBonus = objectIDToSetBonus;
-            var SetBonusesLookUp = setBonusesLookUp;
-
             Entities.ForEach((Entity e, DynamicBuffer<SummarizedConditionEffectsBuffer> effects,
                 DynamicBuffer<SummarizedConditionsBuffer> conditions, DynamicBuffer<ContainedObjectsBuffer> container,
                 in ActiveEquipmentPresetCD active, in DynamicBuffer<EquipmentPresetsBuffer> preset) =>
             {
                 var equipped = new NativeList<ObjectDataCD>(16, Allocator.Temp);
-                var bonusRequireCount = new NativeParallelHashMap<int, int>(16, Allocator.Temp);
+                var bonusSetCount = new NativeParallelHashMap<int, int>(16, Allocator.Temp);
                 var processedEquip = new NativeParallelHashSet<int>(16, Allocator.Temp);
-                var processedBonus = new NativeParallelHashSet<BonusRecord>(16, Allocator.Temp);
-                var sort = new NativeList<int>(3, Allocator.Temp) { 0, 1, 2 };
                 int current = active.Value;
-                sort.RemoveAt(current);
-                sort.Add(current);
 
-                for (int i = 2; i >= 0; i--)
+                for (int i = preset.Length - 1; i >= 0; i--)
                 {
-                    int index = sort[i];
-                    EquipmentCD equip = preset[index].equipment;
+                    if (i == current)
+                        continue;
+                    EquipmentCD equip = preset[i].equipment;
                     equipped.Clear();
                     equipped.Add(container[equip.helmSlotIndex].objectData);
                     equipped.Add(container[equip.breastSlotIndex].objectData);
@@ -123,15 +99,13 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
                     equipped.Add(container[equip.ring1SlotIndex].objectData);
                     equipped.Add(container[equip.ring2SlotIndex].objectData);
                     equipped.Add(container[equip.offHandIndex].objectData);
-                    bool apply = index != current;
-
                     foreach (ObjectDataCD objData in equipped)
                     {
                         ObjectID objID = objData.objectID;
                         Entity primary = PugDatabase.GetPrimaryPrefabEntity(objID, database, 0);
                         //有耐久组件但耐久归零
-                        if (durabilityLookup.TryGetComponent(primary, out DurabilityCD durabilityCD)
-                            && objData.amount <= 0)
+                        bool hasDura = durabilityLookup.TryGetComponent(primary, out DurabilityCD durabilityCD);
+                        if (hasDura && objData.amount <= 0)
                             continue;
                         //装备必须是有等级的
                         if (!levelLookup.TryGetComponent(primary, out LevelCD levelCD))
@@ -147,80 +121,65 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
                         if (!equippedStatsLookup.HasBuffer(entity))
                             continue;
                         DynamicBuffer<GivesConditionsWhenEquippedBuffer> equippedStats = equippedStatsLookup[entity];
-                        bool reinForced = durabilityCD.IsReinforced(objData.amount);
-                        if (apply)
+                        bool reinForced = hasDura && durabilityCD.IsReinforced(objData.amount);
+                        for (int j = 0; j < equippedStats.Length; j++)
                         {
-                            for (int j = 0; j < equippedStats.Length; j++)
+                            EquipmentCondition equipmentCondition = equippedStats[j].equipmentCondition;
+                            var condition = conditionsTable.Value.infos[(int)equipmentCondition.id];
+                            int value = equipmentCondition.value;
+                            if (!condition.isUnique && reinForced && condition.effect != ConditionEffect.MaxMinions)
                             {
-                                EquipmentCondition equipmentCondition = equippedStats[j].equipmentCondition;
-                                var condition = ConditionsTable.Value.infos[(int)equipmentCondition.id];
-                                int value = equipmentCondition.value;
-                                if (!condition.isUnique && reinForced && condition.effect != ConditionEffect.MaxMinions)
+                                int sign = math.sign(value);
+                                if (sign != 0)
                                 {
-                                    int sign = math.sign(value);
-                                    if (sign != 0)
+                                    float percent = math.abs(value) * 0.15f;
+                                    int delta = (int)math.round(math.max(1f, percent));
+                                    delta *= sign;
+                                    if (condition.isNegative)
                                     {
-                                        float percent = math.abs(value) * 0.15f;
-                                        int delta = (int)math.round(math.max(1f, percent));
-                                        delta *= sign;
-                                        if (condition.isNegative)
-                                        {
-                                            delta = -delta;
-                                        }
-
-                                        value += delta;
+                                        delta = -delta;
                                     }
+
+                                    value += delta;
                                 }
-                                AddConditionToSummarizedBuffers(equipmentCondition.id, value, ConditionsTable, conditions, effects);
                             }
+                            AddConditionToSummarizedBuffers(equipmentCondition.id, value, conditionsTable, conditions, effects);
                         }
 
                         int id = (int)objID;
-                        if (ObjectIDToSetBonus.TryGetValue(id, out SetBonusID setBonusID) &&
+                        if (objectIDToSetBonus.TryGetValue(id, out SetBonusID setBonusID) &&
                             !processedEquip.Contains(id))
                         {
                             int bonusID = (int)setBonusID;
-                            bonusRequireCount.TryGetValue(bonusID, out int count);
-                            bonusRequireCount[bonusID] = count + 1;
+                            bonusSetCount.TryGetValue(bonusID, out int count);
+                            bonusSetCount[bonusID] = count + 1;
                             processedEquip.Add(id);
                         }
                     }
 
-                    if (allowBonus)
+                    if (!allowBonus)
+                        continue;
+                    foreach (var kv in bonusSetCount)
                     {
-                        foreach (var kv in bonusRequireCount)
+                        int key = kv.Key;
+                        int count = kv.Value;
+                        foreach (SetBonusData setBonusData in setBonusesLookUp.GetValuesForKey(key))
                         {
-                            int key = kv.Key;
-                            int count = kv.Value;
-                            foreach (SetBonusData setBonusData in SetBonusesLookUp.GetValuesForKey(key))
-                            {
-                                int require = setBonusData.requiredPieces;
-                                BonusRecord record = new()
-                                {
-                                    BonusID = key,
-                                    RequirePieces = require
-                                };
-                                if (processedBonus.Contains(record))
-                                    continue;
-                                if (count < require)
-                                    continue;
-                                if (apply)
-                                    AddConditionToSummarizedBuffers(setBonusData.conditionData, ConditionsTable, conditions, effects);
-                                processedBonus.Add(record);
-                            }
+                            if (count < setBonusData.requiredPieces)
+                                continue;
+                            var data = setBonusData.conditionData;
+                            AddConditionToSummarizedBuffers(data.conditionID, data.value, conditionsTable, conditions, effects);
                         }
                     }
 
-                    bonusRequireCount.Clear();
+                    bonusSetCount.Clear();
                     processedEquip.Clear();
                     equipped.Clear();
                 }
 
                 equipped.Dispose();
-                bonusRequireCount.Dispose();
+                bonusSetCount.Dispose();
                 processedEquip.Dispose();
-                processedBonus.Dispose();
-                sort.Dispose();
             })
                 .WithName("EnableAllPreset")
                 .WithBurst()
@@ -233,15 +192,15 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
             DynamicBuffer<SummarizedConditionsBuffer> sumConditionsBuffer,
             DynamicBuffer<SummarizedConditionEffectsBuffer> sumConditionEffectsBuffer)
         {
-            if (id < ConditionID.None || id >= (ConditionID)ConditionsTable.Value.infos.Length)
+            ref var infos = ref ConditionsTable.Value.infos;
+            if (id < ConditionID.None || id >= (ConditionID)infos.Length)
             {
                 Debug.LogError(string.Format("Condition id {0} is out of bounds for conditions table of length {1}.",
-                    (int)id, ConditionsTable.Value.infos.Length));
+                    (int)id, infos.Length));
                 return;
             }
 
-            int effect = (int)ConditionsTable.Value.infos[(int)id].effect;
-
+            int effect = (int)infos[(int)id].effect;
             sumConditionsBuffer[(int)id] = new SummarizedConditionsBuffer
             {
                 value = sumConditionsBuffer[(int)id].value + value
@@ -251,15 +210,6 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
             {
                 value = sumConditionEffectsBuffer[effect].value + value
             };
-        }
-
-        private static void AddConditionToSummarizedBuffers(ConditionData data,
-            BlobAssetReference<ConditionsTableBlob> ConditionsTable,
-            DynamicBuffer<SummarizedConditionsBuffer> sumConditionsBuffer,
-            DynamicBuffer<SummarizedConditionEffectsBuffer> sumConditionEffectsBuffer)
-        {
-            AddConditionToSummarizedBuffers(data.conditionID, data.value, ConditionsTable,
-                sumConditionsBuffer, sumConditionEffectsBuffer);
         }
     }
 }

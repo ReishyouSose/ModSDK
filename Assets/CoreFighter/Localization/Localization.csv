@@ -14,8 +14,7 @@ CoreFighter/Switch/Equip/EnableAllPreset	Text		All Preset Effective	全预设生
 CoreFighter/Switch/Equip/EnableAllPreset/Description	Text		"Make the equipment effects of all armor presets take effect
 This entry has additional configs"	"使所有套装预设的装备效果生效
 这个条目有额外配置"
-CoreFighter/Value/Equip/EnableAllPreset			Armor set bonus effective	允许激活套装效果
-CoreFighter/Value/Equip/EnableAllPreset/Description			Note that set bonuses cannot across presets	注意无法跨预设组成套装
+CoreFighter/Value/Equip/EnableAllPreset	Text		Armor set bonus effective	允许激活套装效果
 CoreFighter/Switch/Immune	Text		Immune	免疫
 CoreFighter/Value/Immune	Text		Immune	免疫
 CoreFighter/Switch/Immune/Explosion	Text		Explosions	爆炸
