@@ -12,7 +12,12 @@ using static Assets.CoreEnhance.Scripts.Helpers.TileHelper;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Misc
 {
-    public struct OreCD : IComponentData { }
+    public enum ChainTarget
+    {
+        OreOnly,
+        WoodOnly,
+        OreAndWood
+    }
 
     [UpdateInGroup(typeof(PredictedSimulationSystemGroup))]
     [UpdateBefore(typeof(DropLootSystem))]
@@ -48,9 +53,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         }
         protected override void OnUpdate()
         {
-            bool chainMining = EnhanceConfig.TryGetValues(EnhanceCategory.ChainMining, out var values);
-            bool chainWood = EnhanceConfig.IsEnable(EnhanceCategory.ChainWood);
-            if (!chainMining && !chainWood)
+            if (!EnhanceConfig.TryGetValues(EnhanceCategory.ChainMining, out var values))
                 return;
             if (!SystemAPI.TryGetSingletonBuffer<TileDamageBuffer>(out var tileDamageBuffer))
                 return;
@@ -61,6 +64,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             var killLookup = this.killLookup;
             var playerLookup = this.playerLookup;
             var objLookup = this.objLookup;
+            var target = (values["Target"] as ConfigEntry<ChainTarget>).Value;
+            bool chainOre = target != ChainTarget.WoodOnly;
+            bool chainWood = target >= ChainTarget.WoodOnly;
             bool adsorption = (values["Adsorption"] as ConfigEntry<bool>).Value;
             bool needPlayer = (values["NeedPlayer"] as ConfigEntry<bool>).Value;
             bool addSkill = (values["GiveExp"] as ConfigEntry<bool>).Value;
@@ -85,7 +91,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 TryGetResource(tiles, out bool ore, out bool wood);
                 tiles.Dispose();
                 int count = 0;
-                if ((chainMining && ore) || (chainWood && wood))
+                if ((chainOre && ore) || (chainWood && wood))
                 {
                     foreach (var target in offset)
                     {

@@ -24,6 +24,11 @@ namespace Assets.PointShop.Scripts
                 {
                     text = $"ItemCategory/Environment_{Zone}Biome",
                     color = Color.white,
+                },
+                new()
+                {
+                    text = "PointShop/NeedDefeat",
+                    color = Color.white,
                 }
             };
             if(Zone != Zone.None)

@@ -1,4 +1,5 @@
-﻿using Assets.GeneralConfigMenu.Scripts;
+﻿using Assets.CoreEnhance.Scripts.Systems.Misc;
+using Assets.GeneralConfigMenu.Scripts;
 using CoreLib.Data.Configuration;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
                         _default = false;
                         break;
                 }
-                configs.Add(index, new(file.Bind(def, _default, null, scope ?? new())));
+                configs.Add(index, new(file, def, _default, scope ?? new()));
             }
             AddValue(new("CoreEnhance/Value.cfg", true));
         }
@@ -72,6 +73,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "Adsorption");
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "NeedPlayer");
             TryAddValue(file, EnhanceCategory.ChainMining, true, null, "GiveExp");
+            TryAddValue(file, EnhanceCategory.ChainMining, ChainTarget.OreAndWood, null, "Target");
             TryAddValue(file, EnhanceCategory.ModifySledgeRange, 2.5f, new AcceptableValueRange<float>(1.4f, 5f));
         }
 

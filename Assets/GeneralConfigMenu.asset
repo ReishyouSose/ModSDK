@@ -22,8 +22,6 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Localization/Localization.csv
-      guid: 6f4dd62abac02994db9d44e833cba61f
     - path: Scripts/Scripts/UIConfigEntryList.cs
       guid: ad7e17ffc5bed8a41b52dd423a12b56c
     - path: Scripts/Scripts/UIConfigEntryInput.cs
@@ -34,8 +32,6 @@ MonoBehaviour:
       guid: 97f70a3efc74c9b449ddf401fcd57d53
     - path: Scripts/Scripts/UIConfigAccessLevel.cs
       guid: edf7146baa7bd1b4888d55816cf0fea4
-    - path: Scripts/Scripts/OriginText.cs
-      guid: 9acd884e2bcc63a419f0b0c6f668a8f1
     - path: Scripts/Scripts/ModScroll/ModUIScrollWindow.cs
       guid: 8c21d149ba6e7614e8086ddc79493945
     - path: Scripts/Scripts/ModScroll/ModScrollBar.cs
@@ -44,6 +40,8 @@ MonoBehaviour:
       guid: 28f0d02d60909124a85886e97fe9450e
     - path: Scripts/Scripts/MiscHelper.cs
       guid: 79f2f3320c5653c4592bb6c787728442
+    - path: Scripts/Scripts/LocalizationOverride.cs
+      guid: 6c8ad768b892ec74294fbbfb0337cf9a
     - path: Scripts/Scripts/InputBox.cs
       guid: 51b6c16f50a69fe439b64c30342b7acd
     - path: Scripts/Scripts/GeneralConfigMenuMod.cs
@@ -80,11 +78,11 @@ MonoBehaviour:
       guid: 9052d3071aac0b249adce8ab8764ae85
     - path: Scripts/ConfigSync/ConfigChangeRPC.cs
       guid: b6304ea65d3eedd409a502b71836ff99
-    - path: Scripts/Generated/ConfigSyncSystem__System_20420586840.g.cs
+    - path: Scripts/Generated/ConfigSyncSystem__System_21175399300.g.cs
       guid: 
-    - path: Scripts/Generated/ConfigSyncSystem__System_20420586841.g.cs
+    - path: Scripts/Generated/ConfigSyncSystem__System_21175399301.g.cs
       guid: 
-    - path: Scripts/Generated/ConfigSyncSystem__System_20420586842.g.cs
+    - path: Scripts/Generated/ConfigSyncSystem__System_21175399302.g.cs
       guid: 
     - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_ConfigDataRPCCommandSerializer.cs
       guid: 
@@ -114,17 +112,71 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/cursor_placement.png
     hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
   - path: Assets/GeneralConfigMenu/Data/GeneralConfigMenu.asset
-    hash: 80E4CC4DCA37E8A23237E175B1385C8679117C1EDBDE17A23B533BD641A26E4E
-  - path: Assets/GeneralConfigMenu/Localization/Localization.csv
-    hash: E054CF3A05E0A2445B783EB6957F3180B5846E989ADC279A958910CAC54B070E
+    hash: E4155F97DAA513F63F9E853C9DE9F1CC2DD93D96A696ACE95147C9622F2967F6
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCM_HorizenScroll.asset
+    hash: 238F977C0172BA19629D7BFD90DC7AF0BF30465D9E61F9AB8749CE35BBE3D143
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCM_OpenMenu.asset
+    hash: 7E6F1C7968BE43BDED5A2BC68D9D59A785315119304EB3C3A64B7FCC8AC23608
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCMCategory.asset
+    hash: E1255544DBB1229EC72899EB5A19814DCD6B9F5FFC27FAA54F791B7C1DF4248D
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCMDescription.asset
+    hash: A79B6659BCA3328A38D79F722EF947B78E930247A76FA48F856437654E86D46C
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Click.asset
+    hash: 6381F1F0A8953476ACA5752B9C25CBB7F4E6F0EC3CF24D64164C76F09D151293
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Client.asset
+    hash: 07200A8618DBB79CE4DA6BC18F485D15C7C622A28BEAE019AE896F91B508D1B0
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Config.asset
+    hash: 30B7F1C3EB031D02F72D22092065229E45F97634937B549C475C45B8755AACD0
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/ConfigList.asset
+    hash: 88DFD0E7DA94CA6ECC991029267382933917C8C4F7270BAE0012532FD2CE310D
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Entry.asset
+    hash: 56BB7CBD9BBCBEA9FF39451022270BE8DC45BE7A6E5C51B1573B3D93A2B63E60
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/HasExtraConfig.asset
+    hash: FBB2071E7A469417E771BCCEB5BD93F5D4D45D1C5C84322F6A065FFFDD82D1E7
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/NeedReload.asset
+    hash: 123C900A52A7FA37AC5A8CF9B97361D6848868F957FE939278DBF4EE2E5894D2
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Reset.asset
+    hash: 7DEB0C50E07148B9B2D1BD85FA406F241CA1A279E94DB6AA428A4D5283A72E56
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Server.asset
+    hash: 60F4F1DBF6F06DAFEEFD6748AFFD83A2C897B61F77D11597618B4B5066339499
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Admin.asset
+    hash: 1E666C1784040140185C1DBBC1F48AA4F0A2ECDC54BDEEC50A12CB56F8565CEB
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Client.asset
+    hash: 4EDCDE1D1534BC444486109E9813BEC778AD988572895657A8E956CE1B39478F
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Server.asset
+    hash: EC8F7BDE8BD0F2821C85AC5E9521FF602AE53A6AD30D2825C366D7DD36208DE6
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/ViewOnly.asset
+    hash: C7808004FEBE3D2EC71FB0952ED8AF74E894E808B393B66B048BE0DAA5BEA89B
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/Client.asset
+    hash: 94B3DC94556796DC919B92EEC95277127C305F9915D9D4452E1FBA3AD4057791
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/CtoS.asset
+    hash: C9E670C3DC5781DAD7F5AF0E7A7CF16FB3E9467FD47B19A06D81EAD715AEB0D3
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/Server.asset
+    hash: 1FC633F12AC59659F52CD1026CF892B38E48FA13F1CC82F74E21919ECB9F6FAF
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/StoC.asset
+    hash: E46DBDD10A5D74022A0AE795B6AC846BB3B4607C866B3418F2AD2580F4D42908
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config/Manual.asset
+    hash: A36CE7C3BA7EDF8BCB08964F023FD6B0564E9B9D23BAA50ED96E546233462A76
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config/Sync.asset
+    hash: 1F45EEF73076CD7539ED19208EEFDAA663DE23BE61ACAE29190C31CB88F81C62
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AutoCtoS.asset
+    hash: C4875133680DF71EE7366C290A68E9913F55453A1B1D56E6543D4152E7932D84
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AutoStoC.asset
+    hash: 493156F423EDDCC81749C9FD12AA25A3694114DBE7A1B494370FE8E3D5919824
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Sync/ChangeClientWhenSync.asset
+    hash: 96DDCEE4C2601CDD0B2EFB24C1D03BF09F28ABFC36D046C01E09B7E1489E4DD7
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Reset/Client.asset
+    hash: 02094049E8E45461EBD9FF7C1F40611E0BAE7F3A0522D6A8A6096669D9A64645
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Reset/Server.asset
+    hash: C6959F60BD1DAC7AFD1600F68EA1F79F1CC8E9F4C572E40CB4B77F51A22542C3
   - path: Assets/GeneralConfigMenu/Mask.png
     hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
   - path: Assets/GeneralConfigMenu/RUIHoverTextContainer.prefab
-    hash: 7072516F82A1358AAF0FC884C696251912CC9C198482CE61EE35BA35941D01D3
+    hash: 47A7B0636E70EC6979B78BA418775AF3C15E3E6B39981E95D4AEED3F42F96464
   - path: Assets/GeneralConfigMenu/SelectNo.png
     hash: 7B818002D2A2B9257727470A2BD4FF03D6B74D0C5611B277C667DD058D7F2682
   - path: Assets/GeneralConfigMenu/SelectYes.png
     hash: B9B20ED49D5C2D74EF60C62F4B07358D73D9AEFB81BDF28DDBFB434BEE47E082
   - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
-    hash: 042DA3E8E0A1A5701AC81910201D26D3CAA8D34E7AE9E392846009CC1F8B4581
+    hash: 7A461680543F9ED0990D5D21628A256EBDA4F28CB3C642BB77ED6434F79045A3
   lastBuildLinux: 1

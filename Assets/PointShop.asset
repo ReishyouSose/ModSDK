@@ -30,6 +30,8 @@ MonoBehaviour:
       guid: 2880cae3cda6d434eaac5c8dfc530330
     - path: Scripts/Scripts/UIShopSlot.cs
       guid: 76a362882323aab4d871647c0ed4a7fa
+    - path: Scripts/Scripts/ShopSwitchUI.cs
+      guid: 86846664b9d06c54e97d8a98b55b33e2
     - path: Scripts/Scripts/ShopSwitch.cs
       guid: 6da20bba8e53ae3419b744adfa5fb2b9
     - path: Scripts/Scripts/ShopInfo.cs
@@ -44,11 +46,11 @@ MonoBehaviour:
       guid: 535262b2d6cf2404d9fc27ee427dc786
     - path: Scripts/PointShop.cs
       guid: 17b9590c60c6ffb44bfd9ffcc35425ae
-    - path: Scripts/Generated/DropPointSystem__System_10144205940.g.cs
+    - path: Scripts/Generated/DropPointSystem__System_15061729080.g.cs
       guid: 
-    - path: Scripts/Generated/PointShopSystem__System_6029873930.g.cs
+    - path: Scripts/Generated/PointShopSystem__System_3449264010.g.cs
       guid: 
-    - path: Scripts/Generated/PointShopSystem__System_6029873931.g.cs
+    - path: Scripts/Generated/PointShopSystem__System_3449264011.g.cs
       guid: 
     - path: Scripts/Generated/Assets.PointShop.Scripts_BuyFailureRPCCommandSerializer.cs
       guid: 
@@ -74,15 +76,39 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/PointShop/Currency.prefab
-    hash: D0F291E2FCD63DD45DCDFDDF6F3BFC4E0858F5E3CA8A83E4CAA324C76008185B
+    hash: D9855ADBB7AF374B53ED3F699E7A6172FD85257E978B78FDF9CC0C5086620030
   - path: Assets/PointShop/Data/PointShop.asset
-    hash: 93A6DC68B01D47CCCB833DE8785C576F185A3AD1FBF3F18FDD7A1A7DF15095A9
+    hash: A3AFE1B12465EB8CB988A7F2D46F7AD731E3CB566D72205B836993B05DBE2538
+  - path: Assets/PointShop/Data/TextDataBlock/ControlMapper/New Data Block.asset
+    hash: 8BDBDADFB4FAF1BC8481BDA56486B927359FC83F280F4B331DAA922B83419B49
+  - path: Assets/PointShop/Data/TextDataBlock/ControlMapper/PointShop_Open.asset
+    hash: C9550233ACAE58BA952A9CA0A9FCB79F9825CBD12C2343E5056FA480DC296477
+  - path: Assets/PointShop/Data/TextDataBlock/ControlMapper/PointShop_Scale.asset
+    hash: 8489D8DF932CD96BBBBDC8D823E83B6B82BFA789850B8BF3DD15EB2C5FB6B517
+  - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/AlienBiome.asset
+    hash: 4BB40B1DFE6CC8464BB2CA430F6DFE230CC9770601B5DA5768DCD81B29C6862E
+  - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/Environment_LarvaHiveBiome.asset
+    hash: D9B49F8453C2E564BF72A7A6FD737AC0B934260D6BF568C6892FEDADC21405FE
+  - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/Environment_NoneBiome.asset
+    hash: 7DC814A4E2D6C3AF9CC5AD0B7A4DEEAC235F4EB27CC009A257D5820BC0B27752
+  - path: Assets/PointShop/Data/TextDataBlock/Items/PointShop_Currency.asset
+    hash: C7698F90007615EF6AF5D9977B3E06D833A3506A4DD5405D61AC12EE172658EA
+  - path: Assets/PointShop/Data/TextDataBlock/PointShop/Config.asset
+    hash: 220C6A4EFAA2C38ACF9794A9574045FBA7CB25CBF63A93746076DCCD9E4E8D5D
+  - path: Assets/PointShop/Data/TextDataBlock/PointShop/NeedDefeat.asset
+    hash: 52871EAAE0401AD3CC0A513F14ED6D8B7D55E50D7BB08F211945814AE501C874
+  - path: Assets/PointShop/Data/TextDataBlock/PointShop_Config/General.asset
+    hash: C5344A22BF2DDC44CD05FF56CA68CF73C6A87213657D0BEE1F531911A4A38D72
+  - path: Assets/PointShop/Data/TextDataBlock/PointSHop_Config_General/ShowSwitch.asset
+    hash: E3115C4306D773399D7FCE51E729E96EEF252D643B085BD9573F76E3EA2D3AE6
   - path: Assets/PointShop/Localization/Localization.csv
-    hash: 6142A4EFCE07369132AC1C71F4D75BCD6C86F962B804B90DFDF87A30BF932C2D
+    hash: 96118D3FBFAA257D9719AC00BC3669AC06B0B3EF5978D02B675436CBDCA951FF
   - path: Assets/PointShop/PointShopUI.prefab
-    hash: 0F9134BBE0962F61B0EA32BEDFD40BE4509170CAE33C3B59A090CE5D4F33EA79
+    hash: 3EC96BA2FF153AF6E0C1A2B25E8D16FDD5E2507985372C664C387342136399DB
   - path: Assets/PointShop/ShopCoin.png
     hash: 0B270A4F8B7C8EBA570B767696535DCAB93041D896734897299F831A5FE7899B
   - path: Assets/PointShop/ShopCoin_Small.png
     hash: C2DED93927AAF91568E4F975E480DD96EA76621B4E8D33EEA8727D0840843626
+  - path: Assets/PointShop/ShopSwitchUI.prefab
+    hash: 9D07148542D543CB1CD6ED981C48DEA8338C47043B58C12AE9E918308D8906CD
   lastBuildLinux: 1

@@ -13,10 +13,10 @@ namespace Assets.CoreFighter.Scripts.Cores
         private const string _Switch = nameof(Switch), _Tool = nameof(Tool), _Melee = nameof(Melee),
                             _Range = nameof(Range), _Magic = nameof(Magic), _Throw = nameof(Throw),
                             _Beam = nameof(Beam), _OffHand = nameof(OffHand), _Consume = nameof(Consume);
-        public AttackSpeedModifier(float originCD, ConfigFile file)
+        public AttackSpeedModifier(string speed, float originCD, ConfigFile file)
         {
             OriginSpeed = originCD;
-            string section = Section + originCD.ToString("G");
+            string section = Section + speed;
             string desc = string.Empty;
             AcceptableValueRange<float> range = new(0.1f, 5f);
             Switch = file.Bind(new(section, _Switch), false, new(desc, null, GetLocalFix(_Switch)), new());
@@ -44,6 +44,6 @@ namespace Assets.CoreFighter.Scripts.Cores
                 Consume = Consume.Value,
             };
         }
-        private static LocalizationOverride GetLocalFix(string key) => new() { Key = "CoreFighter/AttackSpeed/" + key };
+        private static LocalizationOverride GetLocalFix(string key) => new() { Key = "CoreFighter_AttackSpeed/" + key };
     }
 }

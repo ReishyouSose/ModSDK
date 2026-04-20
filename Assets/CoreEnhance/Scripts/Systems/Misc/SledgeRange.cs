@@ -33,14 +33,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             bool enable = EnhanceConfig.TryGetValue<float>(EnhanceCategory.ModifySledgeRange, out var value);
             var sledgeLookup = this.sledgeLookup;
             var meleeLookup = this.meleeLookup;
-            float range = value.Value;
+            float range = enable ? value.Value : 1.4f;
             Entities.ForEach((in EquippedObjectCD held) =>
             {
                 Entity e = held.equipmentPrefab;
                 if (!sledgeLookup.HasComponent(e))
                     return;
                 ref var melee = ref meleeLookup.GetRefRW(e).ValueRW;
-                melee.baseHitColliderSize = enable ? range : 1.4f;
+                melee.baseHitColliderSize = range;
             })
                 .WithName("SledgeRangeModify")
                 .WithAll<PlayerGhost>()

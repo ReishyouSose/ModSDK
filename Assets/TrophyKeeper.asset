@@ -21,7 +21,27 @@ MonoBehaviour:
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
-    files: []
+    files:
+    - path: Localization/Localization.csv
+      guid: 76b0ab1ed5fa7974990106c0a194498e
+    - path: Scripts/TrophyKeeper.cs
+      guid: 3e82b6d08585b8640a9bdfc97f27f932
+    - path: Scripts/TrophyEntityDropSystem.cs
+      guid: 0bb9d2eed00a45d4ebcfcf77129a232d
+    - path: Scripts/DropTrophySystem.cs
+      guid: 4c6d78d569f359b41bd55337d94bf8b9
+    - path: Scripts/Generated/DropTrophySystem__System_5738871870.g.cs
+      guid: 
+    - path: Scripts/Generated/TrophyEntityDropSystem__System_12959818740.g.cs
+      guid: 
+    - path: Bundles/TrophyKeeper_Windows.assetbundle
+      guid: 
+    - path: Bundles/TrophyKeeper_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/TrophyKeeper_Linux.assetbundle
+      guid: 
+    - path: Bundles/TrophyKeeper_Linux.assetbundle.manifest
+      guid: 
     dependencies:
     - modName: CoreLib
       required: 1
@@ -30,5 +50,17 @@ MonoBehaviour:
   buildBundles: 1
   cacheBundles: 0
   buildLinux: 1
-  assets: []
-  lastBuildLinux: 0
+  assets:
+  - path: Assets/TrophyKeeper/Data/TextDataBlock/TrophyKeeper/Config.asset
+    hash: A905185E11514C23975BFCDD2BC50ACA121F23606B9D2F0924F2933E4DFD23BA
+  - path: Assets/TrophyKeeper/Data/TextDataBlock/TrophyKeeper_Config/General.asset
+    hash: 2DB57AF4FEF112037B1E6EDC36492651E99B4D57F38EF45B483BC0FFFDE48D65
+  - path: Assets/TrophyKeeper/Data/TextDataBlock/TrophyKeeper_Config_General/DropChance.asset
+    hash: C4C3152FCE129C7F08877519EDE16361CB7F0A98BE3B026656AE6AF7A6F2E71F
+  - path: Assets/TrophyKeeper/Data/TextDataBlock/TrophyKeeper_Config_General/TrophyEntityDrop.asset
+    hash: DC1D9C39D8F8D23635A7BD1D74B11A40B22FC0144BE8B96EB34862875D77F815
+  - path: Assets/TrophyKeeper/Data/TrophyKeeper.asset
+    hash: D471E3174BD7E9E5D6422F3D42EF2D6C4621AB2BEDA6C9F77E23E87A45DB6A8E
+  - path: Assets/TrophyKeeper/Localization/Localization.csv
+    hash: 4D3FBD19C6D4801F55D5C1BC9916AD5667823C9E5AF1B742B10DF0D189F85152
+  lastBuildLinux: 1

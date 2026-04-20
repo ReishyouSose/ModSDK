@@ -7,14 +7,19 @@ namespace Assets.GeneralConfigMenu.Scripts
     {
         public ConfigEntry<bool> Switch { get; private set; }
         public Dictionary<string, ConfigEntryBase> Values { get; private set; }
-        public ConfigData(ConfigEntry<bool> @switch)
+        public const string HasExtraConfig = nameof(HasExtraConfig);
+        public ConfigData(ConfigFile file, ConfigDefinition def, bool _default, ConfigScope scope)
         {
-            Switch = @switch;
+            Switch = file.Bind(def, _default, new(string.Empty, null, string.Empty), scope);
         }
         public bool Enable => Switch.Value;
         public bool SetValue(string key, ConfigEntryBase value)
         {
-            Values ??= new();
+            if (Values == null)
+            {
+                Values = new();
+                Switch.Description.Tags[0] = HasExtraConfig;
+            }
             return Values.TryAdd(key, value);
         }
         public bool TryGetValue<T>(string key, out ConfigEntry<T> value)

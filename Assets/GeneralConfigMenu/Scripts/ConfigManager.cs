@@ -2,7 +2,6 @@
 using Assets.GeneralConfigMenu.RUIFramework.Extend;
 using CoreLib.Data.Configuration;
 using CoreLib.Submodule.UserInterface.Interface;
-using I2.Loc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +11,7 @@ using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
+    [RequireComponent(typeof(RUIManager))]
     public class ConfigManager : MonoBehaviour, IModUI
     {
         internal static ConfigManager Instance { get; private set; }
@@ -57,7 +57,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             ConfigPanel.gameObject.SetActive(true);
             EntryPanel.gameObject.SetActive(false);
             GeneralConfigMenuMod.SetPlayerStateUI(false);
-            RenderLable();
         }
 
         private void Init()
@@ -72,14 +71,16 @@ namespace Assets.GeneralConfigMenu.Scripts
             {
                 foreach (var configFile in ConfigFile.AllConfigFilesReadOnly)
                 {
-                    if (configFile.ConfigFilePath.StartsWith("CoreLib"))
+                    var path = configFile.ConfigFilePath;
+                    if (path.StartsWith("CoreLib"))
                         continue;
-                    string localKey = configFile.ConfigFilePath.Replace(".cfg", string.Empty);
                     configFile.SaveOnConfigSet = false;
+
                     var newConfig = Instantiate(ConfigTemplate, view.transform);
                     newConfig.gameObject.SetActive(true);
                     newConfig.SetCustomData(configFile);
-                    newConfig.GetComponent<OriginText>().Origin = localKey;
+                    var localKey = MiscHelper.GetLocalKey(path);
+                    newConfig.Text.SetText(localKey, localKey);
                     newConfig.NeedHoverColor();
                     newConfig.AddEvent(RMouseEventType.LeftDown, ConfigLeftDown);
                     panel.AddChild(newConfig.gameObject);
@@ -94,38 +95,29 @@ namespace Assets.GeneralConfigMenu.Scripts
 
                     var entryView = Instantiate(EntryViewTemplate, EntryPanel);
                     configViews.Add(configFile, entryView);
-                    entryView.Reload((par, evt) =>
+                    entryView.Reload((view, parent) =>
                     {
-                        var temp = localKey;
                         foreach (var (section, entries) in sections)
                         {
-                            var newSection = Instantiate(SectionTemplate, evt);
+                            var newSection = Instantiate(SectionTemplate, parent);
                             newSection.gameObject.SetActive(true);
-                            string sectionLabel = section;
-                            localKey = temp + "/" + sectionLabel;
-                            if (LocalizationManager.TryGetTranslation(localKey, out _))
-                            {
-                                newSection.localize = true;
-                                newSection.Render(localKey);
-                            }
-                            else
-                                newSection.Render(sectionLabel);
-                            par.AddChild(newSection.gameObject);
+                            newSection.SetText(MiscHelper.GetLocalKey(path, section), section);
+                            view.AddChild(newSection.gameObject);
 
                             foreach (var entry in entries)
                             {
                                 UIConfigEntry newEntry;
                                 if (entry.SettingType == typeof(bool))
-                                    newEntry = Instantiate(BoolTempalte, evt);
+                                    newEntry = Instantiate(BoolTempalte, parent);
                                 else
                                 {
-                                    if (TryMatchListType(entry, par, evt, entryView))
+                                    if (TryMatchListType(entry, view, parent, entryView))
                                         continue;
                                     else
-                                        newEntry = Instantiate(InputTemplate, evt);
+                                        newEntry = Instantiate(InputTemplate, parent);
                                 }
                                 newEntry.SetEntry(entry);
-                                par.AddChild(newEntry.gameObject);
+                                view.AddChild(newEntry.gameObject);
                             }
                         }
                     });
@@ -164,19 +156,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             ClientReset.NeedHoverColor();
             ServerReset.AddEvent(RMouseEventType.LeftDown, ResetServer);
             ClientReset.AddEvent(RMouseEventType.LeftDown, ResetClient);
-        }
-        private void RenderLable()
-        {
-            foreach (Transform trans in ConfigPanel.View.transform)
-            {
-                var obj = trans.gameObject;
-                if (obj.TryGetComponent<RUIText>(out var entry) && obj.TryGetComponent<OriginText>(out var origin))
-                {
-                    var ori = origin.Origin;
-                    bool hasLocal = LocalizationManager.TryGetTranslation(ori, out var local);
-                    entry.Text.Render(hasLocal ? local : ori, false, true);
-                }
-            }
         }
         private bool TryMatchListType(ConfigEntryBase entry, RUIScrollView par, Transform evt, RUIScrollView lockView)
         {

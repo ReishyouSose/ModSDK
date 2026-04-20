@@ -31,7 +31,7 @@ namespace Assets.CoreFighter.Scripts.Cores
                     continue;
                 }
                 ConfigDefinition def = new(section, function);
-                configs.Add(index, new(file.Bind(def, true, null, new())));
+                configs.Add(index, new(file, def, true, new()));
             }
             AddValue(new("CoreFighter/Value.cfg", true));
 
@@ -39,24 +39,27 @@ namespace Assets.CoreFighter.Scripts.Cores
             ConfigFile atkSpeed = new("CoreFighter/AttackSpeed.cfg", true);
             EnableATKSpeedModifier = atkSpeed.Bind(new("General", "MainSwitch"),
                 false, null, new(ConfigAccessLevel.Admin));
-            List<float> target = new()
+            List<string> target = new()
             {
-                0.125f,
-                0.2f,
-                0.25f,
-                0.3f,
-                0.4f,
-                0.5f,
-                0.6f,
-                0.7f,
-                1.0f,
-                1.5f,
-                2.0f,
-                5.0f
+                "0.125",
+                "0.2",
+                "0.25",
+                "0.3",
+                "0.4",
+                "0.5",
+                "0.6",
+                "0.7",
+                "1.0",
+                "1.5",
+                "2.0",
+                "5.0"
             };
             count = target.Count;
-            foreach (var speed in target)
-                speedModifiers[speed] = new(speed, atkSpeed);
+            foreach (var s in target)
+            {
+                var speed = float.Parse(s);
+                speedModifiers[speed] = new(s,speed, atkSpeed);
+            }
         }
 
         private void AddValue(ConfigFile file)

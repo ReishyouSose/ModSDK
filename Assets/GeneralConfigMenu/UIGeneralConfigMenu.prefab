@@ -594,7 +594,7 @@ Transform:
   m_GameObject: {fileID: 547455500695473002}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1789,7 +1789,6 @@ GameObject:
   - component: {fileID: 181991756621528771}
   - component: {fileID: 2126126359590021907}
   - component: {fileID: 1060174376795041957}
-  - component: {fileID: 6225266919174715793}
   m_Layer: 5
   m_Name: ConfigTemplate
   m_TagString: Untagged
@@ -1855,19 +1854,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 26, y: 1, z: 1}
   m_Center: {x: 13, y: 0, z: 0}
---- !u!114 &6225266919174715793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397079804209812718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9acd884e2bcc63a419f0b0c6f668a8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Origin: 
 --- !u!1 &1567450997878361578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,8 +2951,8 @@ MonoBehaviour:
   CanBeInteract: 1
   Sensitive: 0
   HoverText:
-  - GeneralConfigMenu/Changer/Server
-  - GeneralConfigMenu/Changer/StoC
+  - GeneralConfigMenu_Changer/Server
+  - GeneralConfigMenu_Changer/StoC
   LockByOther: 0
   OnSprite: {fileID: 5246013660709276331}
   OffSprite: {fileID: 3519788001491127069}
@@ -3643,6 +3629,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 409679038280769444}
+  - {fileID: 9012011616681787523}
   - {fileID: 5322195196481346772}
   - {fileID: 520216762294251936}
   - {fileID: 350760963679732291}
@@ -3944,6 +3931,95 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3416575843489268420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9012011616681787523}
+  - component: {fileID: 3133257114946054903}
+  m_Layer: 5
+  m_Name: EntryText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9012011616681787523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416575843489268420}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3957336439488287082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3133257114946054903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416575843489268420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1873953792, guid: 548e3dd2d27c1e2d0bdf82f0889cb8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerInParent: 0
+  activeInPlatforms: -1
+  activeInStoreFronts: -1
+  renderOnStart: 1
+  keepEnabledOnStart: 1
+  alwaysUpdateDynamicTextPixelPos: 0
+  isWrittenToByUser: 0
+  checkForProfanity: 0
+  isHidden: 0
+  trackDynamicTextCharacterEndPositions: 0
+  localize: 1
+  topAligned: 0
+  languagesToForceLatinFont: 
+  localizePlaceholders: 0
+  dontResetEffectsOnRender: 0
+  hideInStreamerMode: 0
+  maxWidth: 0
+  textString: GeneralConfigMenu/Entry
+  textSuffix: 
+  formatFields: []
+  overrideMaterial: {fileID: 0}
+  offsetKey: 
+  style:
+    fontFace: 16777232
+    capitalization: 0
+    horizontalAlignment: 0
+    verticalAlignment: 1
+    extraCharSpacing: 0
+    extraSpaceWidth: 0
+    extraLineSpacing: 0
+    extraEmptyLineSpacing: 0
+    forceMonospace: 0
+    wrapAtComma: 0
+    rightToLeftXOffset: 0
+    invertHorizontalAlignment: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    outline: 0
+    outlineColor: {r: 0, g: 0, b: 0, a: 0}
+    supportColorTags: 0
+    sortingLayer: 0
+    orderInLayer: 1
+    maskInteraction: 0
+  styleOverrides: []
+  usePooledResources: 1
+  freeResourcesOnDisable: 0
 --- !u!1 &3487805740865698158
 GameObject:
   m_ObjectHideFlags: 0
@@ -7425,8 +7501,8 @@ MonoBehaviour:
   CanBeInteract: 1
   Sensitive: 0
   HoverText:
-  - GeneralConfigMenu/Changer/Client
-  - GeneralConfigMenu/Changer/CtoS
+  - GeneralConfigMenu_Changer/Client
+  - GeneralConfigMenu_Changer/CtoS
   LockByOther: 0
   OnSprite: {fileID: 2589923847620742384}
   OffSprite: {fileID: 2397560476095866449}
@@ -7605,8 +7681,7 @@ MonoBehaviour:
   IsMouseHover: 0
   CanBeInteract: 1
   Sensitive: 0
-  HoverText:
-  - GeneralConfigMenu/AccessLevel/
+  HoverText: []
   LockByOther: 0
   Text: {fileID: 5816278895296879420}
   Origin: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -8144,8 +8219,7 @@ MonoBehaviour:
   IsMouseHover: 0
   CanBeInteract: 1
   Sensitive: 0
-  HoverText:
-  - GeneralConfigMenu/AccessLevel/
+  HoverText: []
   LockByOther: 0
   Text: {fileID: 2852586647287992779}
   Origin: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -9084,7 +9158,7 @@ Transform:
   m_GameObject: {fileID: 7106499199445463249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: 5, z: 0}
+  m_LocalPosition: {x: -12, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11181,8 +11255,7 @@ MonoBehaviour:
   IsMouseHover: 0
   CanBeInteract: 1
   Sensitive: 0
-  HoverText:
-  - GeneralConfigMenu/AccessLevel/
+  HoverText: []
   LockByOther: 0
   Text: {fileID: 9082420690224176905}
   Origin: {r: 0.5, g: 0.5, b: 0.5, a: 1}

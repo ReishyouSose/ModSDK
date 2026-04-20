@@ -21,7 +21,65 @@ MonoBehaviour:
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
     requiredOn: 3
-    files: []
+    files:
+    - path: Scripts/Scripts/Systems/Misc/Vampire.cs
+      guid: 6fc512ae7b7f2554f95d81fe53612ebe
+    - path: Scripts/Scripts/Systems/Misc/TeleportInvincible.cs
+      guid: 5109ffa5a2299e8468cb2780155d10e1
+    - path: Scripts/Scripts/Systems/Infinity/InfinityStats.cs
+      guid: 544b9c64316c2ef4da1bfce17f9a5dc6
+    - path: Scripts/Scripts/Systems/Infinity/InfinityExplosive.cs
+      guid: a6c1d3c9001929543ad67a6a921dcbaf
+    - path: Scripts/Scripts/Systems/Immune/SkipPushBack.cs
+      guid: ad3a316d88a244d42a91837c46e1f448
+    - path: Scripts/Scripts/Systems/Immune/BlockExplosion.cs
+      guid: 9a14c63598122ca4dbd4c8a303cb4318
+    - path: Scripts/Scripts/Systems/Equip/NoRecoil.cs
+      guid: f141a0c2ca1947043924a26714e33780
+    - path: Scripts/Scripts/Systems/Equip/EnableAllPreset.cs
+      guid: 1c1b1c154475c634396ac35f7f97d415
+    - path: Scripts/Scripts/Systems/Equip/AttackSpeed.cs
+      guid: c60aeff3d867ad441920adcea737ae79
+    - path: Scripts/Scripts/Patchs/MapMarkerPatch.cs
+      guid: 899538f472014a443b7fe5684af01d02
+    - path: Scripts/Scripts/Patchs/CDDisplayPatch.cs
+      guid: 312719feadd53e748a27126e39a28883
+    - path: Scripts/Scripts/Cores/FighterConfig.cs
+      guid: 38148c37d664ad74c9569c7583269226
+    - path: Scripts/Scripts/Cores/FigherCategory.cs
+      guid: 3771699a85630774daa394a1b4ccf8ce
+    - path: Scripts/Scripts/Cores/AttackSpeedModifier.cs
+      guid: feb54c1446f64b84e9d758e59ca7601e
+    - path: Scripts/Scripts/Cores/ATKSpeedModifer.cs
+      guid: 494e85f63e42c164695515f83f75d5ea
+    - path: Scripts/CoreFighter.cs
+      guid: f1953cd101ab25b4dbdfb765567208e9
+    - path: Scripts/Generated/AttackSpeed__System_18673404450.g.cs
+      guid: 
+    - path: Scripts/Generated/BlockExplosion__System_19600624410.g.cs
+      guid: 
+    - path: Scripts/Generated/EnableAllPreset__System_6905346110.g.cs
+      guid: 
+    - path: Scripts/Generated/InfinityExplosive__System_7750533610.g.cs
+      guid: 
+    - path: Scripts/Generated/InfinityStats__System_8616747950.g.cs
+      guid: 
+    - path: Scripts/Generated/NoRecoil__System_14998245410.g.cs
+      guid: 
+    - path: Scripts/Generated/SkipPushBack__System_10766348370.g.cs
+      guid: 
+    - path: Scripts/Generated/TeleportInvincible__System_4900365960.g.cs
+      guid: 
+    - path: Scripts/Generated/Vampire__System_21288102240.g.cs
+      guid: 
+    - path: Bundles/CoreFighter_Windows.assetbundle
+      guid: 
+    - path: Bundles/CoreFighter_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/CoreFighter_Linux.assetbundle
+      guid: 
+    - path: Bundles/CoreFighter_Linux.assetbundle.manifest
+      guid: 
     dependencies:
     - modName: CoreLib
       required: 1
@@ -32,5 +90,101 @@ MonoBehaviour:
   buildBundles: 1
   cacheBundles: 0
   buildLinux: 1
-  assets: []
-  lastBuildLinux: 0
+  assets:
+  - path: Assets/CoreFighter/Data/CoreFighter.asset
+    hash: D06769CFC2E36367E37632B350DEF9AC83F942794F74AB7FFBFCD733AA0FBBC4
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/AttackSpeed.asset
+    hash: FEAF4402A86B2D465C2141E510BD902794E7C65F429DFE941E43C2910371B0FB
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/PressShift.asset
+    hash: FA399E8D05D88ACCC7D8C70CEA32314456EEE445601EBB791538D047829B5E72
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/Switch.asset
+    hash: A178D46AA5366BA2D54BCAAC3E59C2D4C9463B0087FAF1145DDD4CA1DA24DB56
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/Value.asset
+    hash: 7E01C24C4A151B4B8FB22831AC0A5DC50FBFBF8B700EE4E4A4559B70159E022F
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Beam.asset
+    hash: CF8A9A2E20B42EC7F76953B12C61B6799B42D4F849081CD25F14C518C2925F14
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Consume.asset
+    hash: 07D54D8B005E8A9CCD815C0F6F5495EECC8801D7BB92D613D4B8CAD2A6DC7A9A
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/General.asset
+    hash: D6B6F7E5E3D8A41E352C98387C75502CE21C2CEDF3542851C4B2A74E510ED989
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/General_MainSwitch.asset
+    hash: 9F87B8A1AC8EDF0BA0F1446AA9DD7D7D7AD9B22D5AC8B8FF971423E284476BAF
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Magic.asset
+    hash: 354A37FF5831A77F683E786FD11ACB7537B13EA6FDA851350DAB3C4DBA44C1AB
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Melee.asset
+    hash: AFF2416F917C1CDA6B03E231405AEEA338CAE27CC116C3CE9DBAE407A1D6B948
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OffHand.asset
+    hash: 0EE432313542E5033BF5657BC8E01616FD6F518BA42B1043EAA451D73F9ABAB2
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.2.asset
+    hash: 24BB738F99F4136526B298EC1DE7DEFEFF01497F9496F80F948F768E2B121F8F
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.3.asset
+    hash: 313A4D8F7568B1DC08E6B84868B60A961511ACFA00A54730F962CF17C010CB2B
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.4.asset
+    hash: 259600EF0D7C20C3C62B3961675B3C0924E9642F23AF2DCD8A92BB603B0548C7
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.5.asset
+    hash: 53AB97CDAFC82EDE3BE62F7627D07FB191714950EDD3E08DA8CE9B9CF375396B
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.6.asset
+    hash: B48F0E5F893FC686D92F89BB1A8293E3AC54446338AFE781581970137C104A0B
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.7.asset
+    hash: 2B2B25264EB7BE4C21D950AAC486CC9AC0E8C1C037ECFE6DE6EBA68A6D745BDB
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.25.asset
+    hash: B0504B42699A7148A17451DBCB01539329332D9200145FD48AC3E9CBD72E057F
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown0.125.asset
+    hash: D159A2D1F0EB06C488018BBB1F22CC26D95F545FFEB22F1CB8CE7EB000DC6FD0
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown1.0.asset
+    hash: BE74D9347333EB91CECFCC7B4F332CFCA801320082CEDBC540F1AC0A0ED9CA26
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown1.5.asset
+    hash: 0BD3959B19A0D1ABD48442B01230355002E54E12456F09D633E88867FE43C3A7
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown2.0.asset
+    hash: 95770BF34E58D81D58D094170849D628D7F9387EE862DCE406938ECE38B011C2
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/OriginCoolDown5.0.asset
+    hash: C67AB22CC294C0B531ECF137E12457CACE02C174CB8FFA72306FBA58EC3909A8
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Range.asset
+    hash: EB9C6A6B8687C5C5B490729FC5A17E85D172F9B9B72A1BF1B783747D49714BEE
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Switch.asset
+    hash: 7FAE6BC8320C1945522E120747BF520D6A6F5256E8DBBA13B0772D7B473BB870
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Throw.asset
+    hash: 314A2F9BC8786417D821648DC9CA7911AE23BFD8EA1270BBFCD6A425DE1FBDF6
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Tool.asset
+    hash: 165D1E05B9FB49BE58C534BD13BB2CCDD464AEF33AB132F9F21830FBB1AA2E4C
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch/Equip.asset
+    hash: 9EDA3A4CFC4B197DFD12CD7E4CE12396E271822188D42FDC65720177C2EF519A
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch/Immune.asset
+    hash: 37C5B8640E7ED230E637E6BC2C19EC69FE7869EC978CAAF6665A05ACB2DD4664
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch/Infinity.asset
+    hash: 684475E20EEFC98B5515072316147D146FF1AFEF043DDC0504DD045374F393CC
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch/Misc.asset
+    hash: 839C8A97091BDF3F2399CDA16AAE381D767E9C1917ADA98DC0BACE240922D185
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Equip/EnableAllPreset.asset
+    hash: D27FBDE3BF7420462E110F534D21DC8AAEAFE74B963B86A77EB8AFD3278874C3
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Equip/NoRecoil.asset
+    hash: A7E1CBE0BD9E31EA928A4FDA0C404CB46C7DAFF8911F7AC3896849640EDF02C4
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Immune/Explosion.asset
+    hash: 9FA888C5B7B8E36EC4B6723C7356545FF4A0B1FD5834DBEBEC04B9740B1046C0
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Immune/PushBack.asset
+    hash: 88164BACDF2889C9E95864674B68EFBB73375A8C0BA74E01DEEAD6FB99966008
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Infinity/Explosive.asset
+    hash: B09208D50B3379B69891DEB2ADD396D4CC447DE0DBEE6979414765C29617B129
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Infinity/Hunger.asset
+    hash: 2B72F7D3A7CD802CD4D015B721463FDC1AB3A9C697AA872558584176A831C2B6
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Infinity/Mana.asset
+    hash: 1240987EDFCEAB3014C7834CFF9D43F27341A2F4F066BB1CBC763C45102E7FBB
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Misc/MapMarkerTeleport.asset
+    hash: 053B5F70A751080BB835AA0951BC69D7BA1F439D500206DF1B2DA1F33E92396E
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch_Misc/Vampire.asset
+    hash: 20B1E5F4ADF85DABB16A6F96AB6C0BC98AEF39E0A0AF094576ECD0267E4B70B1
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value/Equip.asset
+    hash: F9FEFF9A88875C6B46A6F4FFBE5BF8917D931A543E7E8C67E4EA1B374CAA7665
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value/Immune.asset
+    hash: DB9E62C2049C1F4E4D8D03975C89F33BEED7970A31457FA9883943D8F975021B
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value/Infinity.asset
+    hash: D5DDC527222C2CA7E5D2CF1512C3DEF4991AFD74358A3834FB79B7EDA70E318C
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value/Misc.asset
+    hash: F206D99503AA23A2A82428E6B54F98404AA0831531302C3460CF1B4C76D701DB
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value_Equip/EnableAllPreset.asset
+    hash: 61D6EC5719BB05B573ADF20ACC62B3C0992E443BDF69AB2EB08A5967B53F9EF0
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value_Misc/MapMarkerTeleport.asset
+    hash: 5E6C9D3B2D0EE884106A842056F4045E188EDA5A19BA052F6289C4957DBD1005
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Value_Misc/Vampire.asset
+    hash: 4E79A1B206016F40C4832D85C8E5EA09042272B9EDA9A71417926CBD41327AA0
+  lastBuildLinux: 1

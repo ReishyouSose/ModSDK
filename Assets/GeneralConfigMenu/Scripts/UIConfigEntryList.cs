@@ -39,7 +39,11 @@ namespace Assets.GeneralConfigMenu.Scripts
                     var inner = Instantiate(template, view);
                     inner.SetActive(true);
                     RUIText text = inner.GetComponent<RUIText>();
-                    text.Text.Render(accept);
+                    var entry = ConfigEntry;
+                    var def = entry.Definition;
+                    string key = MiscHelper.GetLocalKey(entry.ConfigFile.ConfigFilePath, entry.Definition.Section, entry.Definition.Key, accept);
+                    Debug.LogWarning("config entry list: " + key);
+                    text.Text.SetText(key, accept);
                     text.NeedHoverColor();
                     text.AddEvent(RMouseEventType.LeftDown, InnerLeftDown);
                     par.AddChild(inner);

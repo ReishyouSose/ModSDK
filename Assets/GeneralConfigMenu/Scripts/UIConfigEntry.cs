@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
+    [RequireComponent(typeof(RUIText))]
     public class UIConfigEntry : MonoBehaviour
     {
         [HideInInspector]
@@ -17,6 +18,8 @@ namespace Assets.GeneralConfigMenu.Scripts
         public PugText ViewOnlyValue;
         public UIConfigAccessLevel UIConfigAccessLevel;
         private const string NeedReload = "GeneralConfigMenu/NeedReload";
+        private const string HasExtraConfig = "GeneralConfigMenu/HasExtraConfig";
+        private const string AccessLevelKey = "GeneralConfigMenu_AccessLevel/";
         public string DefaultValue { get; protected set; }
 
         public RUIText Label { get; private set; }
@@ -28,15 +31,26 @@ namespace Assets.GeneralConfigMenu.Scripts
             var scope = ConfigEntry.Scope;
             var level = scope.accessLevel;
             Label = GetComponent<RUIText>();
-            Label.HoverText[0] += level;
+            var hoverText = Label.HoverText;
+            hoverText.Insert(0, AccessLevelKey + level);
+            hoverText.Insert(1, AccessLevelKey + level + "Desc");
+            Label.SpecialHoverTextSnip += (index, text) =>
+            {
+                if (index >= 2)
+                    return null;
+                return new()
+                {
+                    text = text,
+                    formatFields = new string[0],
+                    color = Color.yellow,
+                };
+            };
             if (scope.requireReload)
             {
                 Label.Hover = Color.red;
-                Label.HoverText.Add(NeedReload);
+                hoverText.Add(NeedReload);
                 Label.SpecialHoverTextSnip += (index, text) =>
                 {
-                    if (index != 1)
-                        return null;
                     if (text != NeedReload)
                         return null;
                     return new()
@@ -48,7 +62,6 @@ namespace Assets.GeneralConfigMenu.Scripts
                 };
             }
             Label.NeedHoverColor();
-            Label.Hover = scope.requireReload ? Color.red : Color.white;
             UIConfigAccessLevel.SetLevel(level);
             var server = ServerChanger.GetComponent<RUIElement>();
             var client = ClientChanger.GetComponent<RUIElement>();
@@ -72,36 +85,38 @@ namespace Assets.GeneralConfigMenu.Scripts
                     client.AddEvent(RMouseEventType.RightDown, _ => TryClientToServer());
                     break;
             }
-            string key = ConfigEntry.Definition.Key;
-            StringBuilder builder = new();
-            if (ConfigEntry.Description.Tags.FirstOrDefault(x => x is LocalizationOverride) is LocalizationOverride lfx)
-            {
-                builder.Append(lfx.Key);
-            }
-            else
-            {
-                builder.Append(ConfigEntry.ConfigFile.ConfigFilePath.Replace(".cfg", "/"))
-                    .Append(ConfigEntry.Definition.Section).Append('/').Append(key);
-            }
-            var keyLocal = builder.ToString();
+            var def = configEntry.Definition;
+            string key = def.Key;
+            var tags = ConfigEntry.Description.Tags;
+            var keyLocal = tags.FirstOrDefault(x => x is LocalizationOverride) is LocalizationOverride lfx ? lfx.Key :
+                MiscHelper.GetLocalKey(ConfigEntry.ConfigFile.ConfigFilePath, def.Section, key);
+            Label.Text.SetText(keyLocal, key);
+            bool hasLocalize = LocalizationManager.TryGetTranslation(keyLocal, out _);
+            keyLocal += "Desc";
             if (LocalizationManager.TryGetTranslation(keyLocal, out _))
             {
-                Label.Text.localize = true;
-                Label.Text.Render(keyLocal);
-            }
-            else
-                Label.Text.Render(key);
-            builder.Append('/').Append("Description");
-            keyLocal = builder.ToString();
-            if (LocalizationManager.TryGetTranslation(keyLocal, out _))
-            {
-                Label.HoverText.Add(keyLocal);
+                hoverText.Add(keyLocal);
             }
             else
             {
-                builder = new();
+                StringBuilder builder = new();
                 ConfigEntry.WriteDescription(builder);
-                Label.HoverText.Add(builder.ToString());
+                hoverText.Add(builder.ToString());
+            }
+            if (tags.Contains(ConfigData.HasExtraConfig))
+            {
+                hoverText.Add(HasExtraConfig);
+                Label.SpecialHoverTextSnip += (index, text) =>
+                {
+                    if (text != HasExtraConfig)
+                        return null;
+                    return new()
+                    {
+                        text = HasExtraConfig,
+                        formatFields = new string[0],
+                        color = Color.cyan,
+                    };
+                };
             }
             SetChanger();
         }

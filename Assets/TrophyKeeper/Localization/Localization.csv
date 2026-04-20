@@ -1,7 +1,0 @@
-Key	English	Chinese (Simplified)
-TrophyKeeper/Config	Trophy Keeper Config	雕像纪元配置
-TrophyKeeper/Config/General	General	通用
-TrophyKeeper/Config/General/DropChance	Trophy Drop Chance	雕像掉落率
-TrophyKeeper/Config/General/DropChance/Description	Additional enemy trophy drop chance outside of the original	独立于原版之外的额外小雕像掉落率
-TrophyKeeper/Config/General/TrophyEntityDrop	Materialization Drop	实体化仪器掉落
-TrophyKeeper/Config/General/TrophyEntityDrop/Description	Allow enemies spawned by the materialization to drop loot.	允许由实体化仪器生成的怪物掉落战利品

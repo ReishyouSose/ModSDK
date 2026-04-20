@@ -22,8 +22,6 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Localization/Localization.csv
-      guid: a47ceafe81885f14a9fc08d601f30c96
     - path: Scripts/Scripts/Tiles/BoulderDemolishEM.cs
       guid: 1ef597e7ef260164dba9c355452c69bc
     - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
@@ -92,49 +90,47 @@ MonoBehaviour:
       guid: 94d85382e27dbe54a910a675c686b4b7
     - path: Scripts/CoreEnhance.cs
       guid: 77b31bc24fa1a6b4b82cceab5847b20f
-    - path: Scripts/Generated/Arena__System_21345283780.g.cs
+    - path: Scripts/Generated/Arena__System_21198745320.g.cs
       guid: 
-    - path: Scripts/Generated/BoulderDemolish__System_4115406650.g.cs
+    - path: Scripts/Generated/BoulderDemolish__System_6807536970.g.cs
       guid: 
-    - path: Scripts/Generated/ChainMining__System_4927882160.g.cs
+    - path: Scripts/Generated/ChainMining__System_8624145980.g.cs
       guid: 
-    - path: Scripts/Generated/ClearDropItem__System_11679719740.g.cs
+    - path: Scripts/Generated/ClearDropItem__System_533421520.g.cs
       guid: 
-    - path: Scripts/Generated/ClearDropItem__System_11679719741.g.cs
+    - path: Scripts/Generated/ClearDropItem__System_533421521.g.cs
       guid: 
-    - path: Scripts/Generated/ClearDropItem__System_11679719742.g.cs
+    - path: Scripts/Generated/Common__System_1196941080.g.cs
       guid: 
-    - path: Scripts/Generated/Common__System_3326017700.g.cs
+    - path: Scripts/Generated/Common__System_4976305010.g.cs
       guid: 
-    - path: Scripts/Generated/Common__System_7055668610.g.cs
+    - path: Scripts/Generated/ContainerDisplay__System_10450986660.g.cs
       guid: 
-    - path: Scripts/Generated/ContainerDisplay__System_20375038920.g.cs
+    - path: Scripts/Generated/Crafting__System_11812170680.g.cs
       guid: 
-    - path: Scripts/Generated/Crafting__System_2959574260.g.cs
+    - path: Scripts/Generated/DeathNoDrop__System_15192936710.g.cs
       guid: 
-    - path: Scripts/Generated/DeathNoDrop__System_3285046110.g.cs
+    - path: Scripts/Generated/Door__System_9804176880.g.cs
       guid: 
-    - path: Scripts/Generated/Door__System_5961554220.g.cs
+    - path: Scripts/Generated/Durability__System_8883317580.g.cs
       guid: 
-    - path: Scripts/Generated/Durability__System_20098094000.g.cs
+    - path: Scripts/Generated/FishingNetNoCritter__System_9716111650.g.cs
       guid: 
-    - path: Scripts/Generated/FishingNetNoCritter__System_7962089970.g.cs
+    - path: Scripts/Generated/ForcePickup__System_501551320.g.cs
       guid: 
-    - path: Scripts/Generated/ForcePickup__System_18430559220.g.cs
+    - path: Scripts/Generated/Level__System_17605050000.g.cs
       guid: 
-    - path: Scripts/Generated/Level__System_11224993260.g.cs
+    - path: Scripts/Generated/Modifier__System_14671751850.g.cs
       guid: 
-    - path: Scripts/Generated/Modifier__System_14415880890.g.cs
+    - path: Scripts/Generated/Modifier__System_14671751851.g.cs
       guid: 
-    - path: Scripts/Generated/Modifier__System_14415880891.g.cs
+    - path: Scripts/Generated/OpenLockedChest__System_2253056810.g.cs
       guid: 
-    - path: Scripts/Generated/OpenLockedChest__System_11022013290.g.cs
+    - path: Scripts/Generated/ReportSpawnedScene__System_16258375810.g.cs
       guid: 
-    - path: Scripts/Generated/ReportSpawnedScene__System_7773483250.g.cs
+    - path: Scripts/Generated/ReportSpawnedScene__System_16258375811.g.cs
       guid: 
-    - path: Scripts/Generated/ReportSpawnedScene__System_7773483251.g.cs
-      guid: 
-    - path: Scripts/Generated/SledgeRange__System_5290161180.g.cs
+    - path: Scripts/Generated/SledgeRange__System_8104886080.g.cs
       guid: 
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_ClearDropItemRPCCommandSerializer.cs
       guid: 
@@ -164,15 +160,135 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/CoreEnhance/Data/CoreEnhance.asset
-    hash: 0D426FCAD1AA2BA6A878601130E0ABD4052804CF4ED26A4FC246D6B9A5EEEC39
+    hash: 8866C233B6259FD1C414A5441FDDAB547CB67742592E4E5C71E5C4167D76039D
   - path: Assets/CoreEnhance/Data/SpriteAsset/BoulderDemolish.asset
-    hash: 67EF999BFA6F7229D813B0EA960733C56992981E54D024F0647BEAD9F9115DEB
-  - path: Assets/CoreEnhance/Localization/Localization.csv
-    hash: 172AB267958C5ACD3784A1BEB9658870E15811F0A9C2F65472CDF19827D31CC7
+    hash: C9AF5DBC899997AEFB34B9D4AC3EE26303A9939B21CBE94D4DFF0C9852DF324A
+  - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhance_ClearDropItem.asset
+    hash: 4DA04D6F920BA4C9D055A17A1098A2D24182A2AD6A619E7E527E91BA7916F457
+  - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhance_ContainerHighLight.asset
+    hash: 2E58B6284DD1BDBD6A2BF703DE1AFB360C28B910823702D529A7603BDA4A3ED7
+  - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhance_QuickOpenLockedChest.asset
+    hash: D0C492129AB41BD4D374B263FE9C09CE08ED37215B17AAFA58E7F3B3561CD79A
+  - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhanceCategory.asset
+    hash: 3838BDA5ABAF19846E8EC934B59CAF36A951A43DF44630D6FC52E3860494EDB4
+  - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhanceDescription.asset
+    hash: FC9337874B2A7F0AB44D2C76D0F5D5E6B1C12441867345D8C653255C9A13215D
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance/Switch.asset
+    hash: 5C1735F4F7647EC7BBA5E2B0C806DE1CA3F2AC728834E5C0218C05377EFF53AF
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance/Value.asset
+    hash: 92F65EF827A2AE4E9BBE2A2A429D6B79FED6178FE05F013564B15C1E77CA50C5
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch/Accelerate.asset
+    hash: 960E94202639DBA0B8B678125C059AC7400ED440838BD74E892A2DC28F4A01E0
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch/Automation.asset
+    hash: F905B3CE19EBAFFAFCE8E7DD9FC6F1AF7DB00D3A6EE6E5072A80441A033C0AA9
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch/Infinity.asset
+    hash: C2EE71E88B667E89CE82B24838281F2E5016C3F9466555299741DC781B61D057
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch/Misc.asset
+    hash: DC9CBDDD772F6E1CA0ADC4D65900504E04CC59D0AFDC2A773B9B55B4B6401E52
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch/Pet.asset
+    hash: D73589B695DF45F4BD9BAA693FA6BD251E9AD45805433AD57754673AFB3EF9D8
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Accelerate/Casting.asset
+    hash: C452DD3052B480D182703B9DCD50262416B107FBD7AD65A10BBAECA20040D9E2
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Accelerate/Crafting.asset
+    hash: 6CB030FC4E9CF56182922E9DC9D1EDBE2D8F26DABD93AD456623B024051527D7
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Accelerate/Level.asset
+    hash: F26B3AA4F0C97400C9D3DB8F95D8FD2EF18FF622A6E26AB603D817B1D4DFE355
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Accelerate/Merchant.asset
+    hash: D515AE8185169BF87CCDFE25BF6DAE180A36F7168F7B0C83ED550B0E09C0B941
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Accelerate/Portal.asset
+    hash: 45300456234912F31FC6508C2364BC4FE5828DDF65652D9819B1E4F034AF4E8C
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Accelerate/Titan.asset
+    hash: BC51710907349C0800842D9CF905CC3691648EBE280DEE64408A744004A13D04
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Automation/Door.asset
+    hash: 2E609BF3A07C6321EE592E52FE7D2B3A42F9DA84895A4D832FD569357BCB4F37
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Automation/FishingNetCanGetItem.asset
+    hash: C19E694D34DAF70BD42E7CFC48C7FA7085FB15BE7821829F5F78FD92B48FD12B
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Automation/FishingNetNoCritter.asset
+    hash: 0AAE4B15E6A76CDDC143B0CFC1DC6DB4826D60E83E852DAAA03919F906322EF4
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Automation/GoldenPlantToSeed.asset
+    hash: ECB917BE089258D1D8034693948CF5F9FE712F63C2DB9D7873DE81B2881DE7EE
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Automation/Salvage.asset
+    hash: 143587359E9DF4455C9F854929E9C530A98505060D7A98BAA6D00CFA744AB5C7
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Infinity/Arena.asset
+    hash: C1A09B9CBFB069C4D710308FBC67AA0ED1E78834DBA46623DE5C6B7EB8FCCD6A
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Infinity/Boulder.asset
+    hash: 7BD7C6773AFAD3E0543A4B40731711F4D205D6D6B15D2A8988771FBAA67BF89D
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Infinity/Durability.asset
+    hash: 39BF9CF5E55FEA6B55197996A764B9CA211747418CA391AF3FC9BBE0872DB39B
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Infinity/Minion.asset
+    hash: 07B0AA0094C42B015D9B8F23ADB5343435B03268FC85A43A5FBFA9FF4BB83B37
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/ChainMining.asset
+    hash: 8B0A37C31885FBF610B461312DE030F0F1F30C1191FC6F0162423DE850250ED4
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/ChainWood.asset
+    hash: 55D10F1253CC11222DBF2941B08CDC9E8785C1C573F836D04CFDD74E91ABA90E
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/ContainerDisplay.asset
+    hash: 1C6A66EF1BBAB2478DE4A4952C39C8D6F1CC5E3940A149BE344B31972FF142FF
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/DeathNoDrop.asset
+    hash: 935C2C3BA3A92754F9517E9FA51729618DB5652CE1DFD738286BC3259ABA9EAB
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/IgnoreModifySledgeRange.asset
+    hash: A45A78CA4B911D5F4AADB012FFB47D10A3D84C62F99303F43839BB87D268EBA3
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/IgnoreRayChecksForPickup.asset
+    hash: 0738331D4D833635749F7DA2864E6B445C6F957CEE8C8768A8DA13F556909A37
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Misc/ModifySledgeRange.asset
+    hash: 28E5ACE800BE203F58C9407D3A030C89965DB5AA356BF51A7907E982249D5793
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Pet/ResetSkin.asset
+    hash: C665B7F31DCEAAB740850EC523ACCBEFB07E2C7EB7E43F8762A6AD5E99A0D2E0
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Pet/RollSkill.asset
+    hash: 26F750D030355DA914B08A7709E24DB04281C4DD1BA64C616CEDA359A8A7C86B
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Switch_Pet/TalentDisplay.asset
+    hash: 6FF942283D46482B0067AF0C1EB664D66CE3185D3173CA92F71EB94FD9C6BA79
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value/Accelerate.asset
+    hash: 1F5BE11A9F936CCA5DAC446F976BA1CCD693AD5E123A181D7AF2B4D30269F640
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value/Automation.asset
+    hash: 2E2B0C1D39A95C61BD5F0FC08EAF2FFD445CACAA5E1A7D18D0A70120AEC8C866
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value/Infinity.asset
+    hash: CD40CD4BFD5DC3F98E6CB42785D0E98F1ADAE48748F94DEE57F7B2A6271341CF
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value/Misc.asset
+    hash: 1B2A176D9B9539B3F3C42ED2A5E4FED02F81471557CC3F50576B74EA55226A2E
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Accelerate/CraftingAnimals.asset
+    hash: D1ECA1C0B3B1B7184E50C1F1040E442DE82120F5662248D64F5036446F6534B9
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Accelerate/CraftingFishingNet.asset
+    hash: 3971B513BD3184DBED6A085D8A6662ECD7B997D6B380802E4DD7A7F77147FEE7
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Accelerate/Level.asset
+    hash: DB4133495711ECE1DD9D9D4E4F56BA76CDF111472270D0663C7EDD49AA58D3EB
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Accelerate/Merchant.asset
+    hash: 46D9B36E78DE8B63814243F5A2ACF1D341E0562E9B5E9780302296009B88E821
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Accelerate/Titan.asset
+    hash: F9A0164E590A304B92DE91E49D65ED2006ADD0097D259AC2E326059D0D928A78
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Automation/FishingNetCanGetItem.asset
+    hash: E1F73E7C2B27C0357B54CFFB26EF0460875D55E44D43CBBB550737100209F2E9
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Automation/GoldenPlantToSeed.asset
+    hash: 2EF1DCD1E516D4C6259A67A05A19967150BEA58C13455E938EAFC9136DB3B337
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Automation/SalvageAmount.asset
+    hash: 32F39352F853F212F8571B4FA1711009574A73EDF0F6A1DA0807FC3324DEBD62
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Automation/SalvageTimer.asset
+    hash: C855981DF6B675D214BCD90D5F741223F2CE18B098872970387DF7D15EF5DC0C
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Infinity/Arena.asset
+    hash: EA5CBB1E2416359436C7FC65369D5E288C87A0119808E360752CBF6ED8A20171
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Infinity/Durability.asset
+    hash: 0718CD28525EE83F7ABA3DD71C9C50FAD9A17B13D93762ECF0CB1ECF27FB01D1
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc/ChainMiningAdsorption.asset
+    hash: 6DA813045E466F1D6E99B003063E1BA36194184104D3112197610116AA4CC1AF
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc/ChainMiningGiveExp.asset
+    hash: 8B5B5CB1CFCA0AC188992C58CCCC4A9E99EE14310220E0C1A8C567B84ECDAC15
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc/ChainMiningNeedPlayer.asset
+    hash: ABBD9618AB961A7F00496D80BD2D68BE533765C34BB74AA33574F89ACBD108E1
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc/ChainMiningTarget.asset
+    hash: 3A207196ED8F0190A3D069147EA79CFE887D1E23161AB9BB804A946FED695694
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc/ModifySledgeRange.asset
+    hash: 52C4ADD070C12E783C4D8DA0B96F674B1B58DD17BA6B406DA7E3F76DE1875E51
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMining/OreAndWood.asset
+    hash: C33D8E90C471C6C6F6E7E2E6D259D5D60FD89901295816DB7569824CFFB345F0
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMining/OreOnly.asset
+    hash: 37A51DB9197DDC3E0C2A6013E35DAC01763E3DD12D70FB88611B77E2F36A09F2
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMining/WoodOnly.asset
+    hash: 637BCB8D4B3DD8D23607C7C67BCBB791801106CD98E965D616EBFE6B45082AC3
+  - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_BoulderDemolish.asset
+    hash: 15A2BE7CDDEAEAB0E62254802D13F3EBDC37AAFCEDFE82C55E7387B448358D07
   - path: Assets/CoreEnhance/Prefabs/Items/BoulderDemolishItem.prefab
-    hash: C31CFFEF9DFAEDC0DDE636F1F2FE348F2DF6545175139D6628C48E6ECD425762
+    hash: D410A80805A8C9E56BCDAD5099C6622407DAD7035D68F0D26E2A49E26D5751C8
   - path: Assets/CoreEnhance/Prefabs/Tiles/BoulderDemolishTile.prefab
-    hash: 07EF2E787A49C617310FCAB18A0CBE33CA0A22A0C78FF8B3F123003FF09312CD
+    hash: D5608E06F085D65BA77E023DC625A43BD166FE3CEA0B18841A1764E3A30501F9
   - path: Assets/CoreEnhance/Shaders/IconClipShader.shader
     hash: E6758C11B3E77F4469CC3E09BF359629BAAE60A2E05D5C7299A7ABB163857442
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset
