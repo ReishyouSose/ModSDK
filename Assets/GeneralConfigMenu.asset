@@ -22,6 +22,22 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
+    - path: Scripts/Scripts/Vanilla/UISection.cs
+      guid: d70a6d7f57ed2ec4d9d29eabe07e06da
+    - path: Scripts/Scripts/Vanilla/UIConfigValueBox.cs
+      guid: 2a15e372ef06af646bd52cb884fb418c
+    - path: Scripts/Scripts/Vanilla/UIConfigFile.cs
+      guid: a70523d9306f64d4f99a0fa27411eebc
+    - path: Scripts/Scripts/Vanilla/UIConfigEntry.cs
+      guid: 2e9f5a104f21ca845a4ffe6ad4e9b86b
+    - path: Scripts/Scripts/Vanilla/ModConfigMenu.cs
+      guid: 350758eca0264694fa7f2cafed819d10
+    - path: Scripts/Scripts/Vanilla/MenuPatch.cs
+      guid: 81975388ad888a346a0c282f19f42307
+    - path: Scripts/Scripts/Vanilla/GotoModConfigOption.cs
+      guid: 4b1c9e8b77709084993807de8e15a73d
+    - path: Scripts/Scripts/Vanilla/ConfigTemplate.cs
+      guid: 9428fde2cf6375e4b8db65e092884a54
     - path: Scripts/Scripts/UIConfigEntryList.cs
       guid: ad7e17ffc5bed8a41b52dd423a12b56c
     - path: Scripts/Scripts/UIConfigEntryInput.cs
@@ -107,8 +123,12 @@ MonoBehaviour:
   assets:
   - path: Assets/GeneralConfigMenu/32x32_map_border.png
     hash: 3056BB6DB71CC3E6CA831A1C1E62C1B0D94D9D7570F0CC81183F1E7BE232EEA9
+  - path: Assets/GeneralConfigMenu/ControlMapping_ActionMapping.prefab
+    hash: EC648760EEA95D3A59136261C0F45A7E702E5609364056DF35C9994FBC0E2ED3
+  - path: Assets/GeneralConfigMenu/ControlMappingMenu.prefab
+    hash: 53769C8BF0A0F6D8520493BF0AC7A0AFDB161AFACE5DE0B4DAF8643FE92024AC
   - path: Assets/GeneralConfigMenu/creative_ui.png
-    hash: C641BF5607E7E5FB894924DE786CD1CBE49045D71EBA649F1BE34854AF648029
+    hash: 6C9406F2E3C27357DD3E42773683F7E04B0E0F78F4063952F2E9824CD9651970
   - path: Assets/GeneralConfigMenu/cursor_placement.png
     hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
   - path: Assets/GeneralConfigMenu/Data/GeneralConfigMenu.asset
@@ -133,12 +153,18 @@ MonoBehaviour:
     hash: 56BB7CBD9BBCBEA9FF39451022270BE8DC45BE7A6E5C51B1573B3D93A2B63E60
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/HasExtraConfig.asset
     hash: FBB2071E7A469417E771BCCEB5BD93F5D4D45D1C5C84322F6A065FFFDD82D1E7
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/ModConfig.asset
+    hash: 9607F24D535769D79844A9F8B9F0FB5BC55B1A9F63ED6C14B9DD48C75978748A
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/NeedReload.asset
     hash: 123C900A52A7FA37AC5A8CF9B97361D6848868F957FE939278DBF4EE2E5894D2
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Reset.asset
     hash: 7DEB0C50E07148B9B2D1BD85FA406F241CA1A279E94DB6AA428A4D5283A72E56
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Section.asset
+    hash: C7892D4D320EE1E3907C287745660AE4F2FB4FCDE13C36AB5A93089AE4312A5D
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Server.asset
     hash: 60F4F1DBF6F06DAFEEFD6748AFFD83A2C897B61F77D11597618B4B5066339499
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Title.asset
+    hash: EF7E9A0A18235F7FA32678375A3B126C3C55A765AB87817036D04F3BCD420B35
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Admin.asset
     hash: 1E666C1784040140185C1DBBC1F48AA4F0A2ECDC54BDEEC50A12CB56F8565CEB
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Client.asset
@@ -171,6 +197,8 @@ MonoBehaviour:
     hash: C6959F60BD1DAC7AFD1600F68EA1F79F1CC8E9F4C572E40CB4B77F51A22542C3
   - path: Assets/GeneralConfigMenu/Mask.png
     hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
+  - path: Assets/GeneralConfigMenu/ModConfigMenu.prefab
+    hash: C280A48EB841B71F93DEB2A5361B6580F4C5AADAC4D40789C4C94D4B0C95499D
   - path: Assets/GeneralConfigMenu/RUIHoverTextContainer.prefab
     hash: 47A7B0636E70EC6979B78BA418775AF3C15E3E6B39981E95D4AEED3F42F96464
   - path: Assets/GeneralConfigMenu/SelectNo.png

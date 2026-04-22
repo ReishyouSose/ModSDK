@@ -15,6 +15,7 @@ MonoBehaviour:
   metadata:
     guid: 4114ed4cb6804f1d849cef746fccd807
     name: LootsLookup
+    displayName: 
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1

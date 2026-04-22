@@ -1,5 +1,6 @@
 using Assets.GeneralConfigMenu.ConfigSync;
 using Assets.GeneralConfigMenu.RUIFramework;
+using Assets.GeneralConfigMenu.Scripts.Vanilla;
 using CoreLib;
 using CoreLib.Submodule.ControlMapping;
 using CoreLib.Submodule.UserInterface;
@@ -17,11 +18,14 @@ namespace Assets.GeneralConfigMenu.Scripts
         private static List<MonoBehaviour> needChanges;
         private const string OpenMenu = "GCM_OpenMenu";
         internal const string HorizenScroll = "GCM_HorizenScroll";
+        internal static GameObject MenuPrefab;
         internal static ModConfig config;
         internal static ConfigSyncClient ConfigSync { get; private set; }
         private static GameObject containerPrefab;
+        internal static RadicalMenu.MenuType Menu { get; private set;  }
         public void EarlyInit()
         {
+            Menu = (RadicalMenu.MenuType)1493;
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule), typeof(UserInterfaceModule));
             int cateogry = ControlMappingModule.AddNewCategory("GCM");
             ControlMappingModule.AddKeyboardBind(OpenMenu, KeyboardKeyCode.K, ModifierKey.Control, categoryId: cateogry);
@@ -45,6 +49,8 @@ namespace Assets.GeneralConfigMenu.Scripts
         {
             if (obj is not GameObject gameObject)
                 return;
+            if (gameObject.GetComponent<ModConfigMenu>())
+                MenuPrefab = gameObject;
             UserInterfaceModule.RegisterModUI(gameObject);
             if (gameObject.TryGetComponent<RUIHoverTextContainer>(out _))
             {

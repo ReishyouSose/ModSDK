@@ -54,11 +54,12 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (LocalizationManager.TryGetTranslation(key, out _))
             {
                 text.localize = true;
-                text.Render(key);
+                text.Render(key, false, true);
             }
             else
             {
-                text.Render(origin);
+                text.localize = false;
+                text.Render(origin, false, true);
             }
         }
     }
