@@ -1,5 +1,6 @@
 ﻿using CoreLib.Data.Configuration;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts.Vanilla
@@ -12,6 +13,7 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
         public ConfigTemplate Template;
         public PugText Title;
         public PugText TitleShadow;
+        public GameObject FullBar;
 
         private Transform filePage;
         private Transform current;
@@ -28,20 +30,20 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
             filePage = Instantiate(EmptryPage, PageContainer);
             filePage.name = "File Page";
             var content = filePage.GetChild(0);
-            foreach (var configFile in ConfigFile.AllConfigFilesReadOnly)
+            var list = ConfigFile.AllConfigFilesReadOnly.ToList();
+            foreach (var page in CombindConfigPage.PageList.Values)
             {
-                var path = MiscHelper.GetLocalKey(configFile.ConfigFilePath);
+                var file = page.File;
+                list.Remove(file);
+                var path = MiscHelper.GetLocalKey(file.ConfigFilePath);
+                RegisterFile(file, path, content).Detail = RegisterCombinePage(page, path);
+            }
+            foreach (var file in list)
+            {
+                var path = MiscHelper.GetLocalKey(file.ConfigFilePath);
                 if (path.StartsWith("CoreLib"))
                     continue;
-                configFile.SaveOnConfigSet = false;
-                for (int i = 0; i < 2; i++)
-                {
-                    var file = Instantiate(Template.File, content);
-                    file.gameObject.SetActive(true);
-                    file.GetComponentInChildren<PugText>().SetText(path, path);
-                    file.Key = path;
-                    file.Detail = RegisterDetails(configFile, path);
-                }
+                RegisterFile(file, path, content).Detail = RegisterDetails(file, path);
             }
             SetCurrent(filePage);
         }
@@ -74,6 +76,7 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
             Title.SetText(key, key);
             TitleShadow.SetText(key, key);
             SetCurrent(view);
+            Manager.menu.AttemptToPlayMenuSfx(SfxID.FIXME_menu_select, 0.6f, 0f, reuse: false);
         }
         public void SwitchToFile()
         {
@@ -82,6 +85,16 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
             TitleShadow.localize = true;
             TitleShadow.Render(TITLE, false, true);
             SetCurrent(filePage);
+            AudioManager.SfxUI(SfxID.FIXME_menu_select, 0.4f, false, 1f, 0f, true, true, 0f);
+        }
+        private UIConfigFile RegisterFile(ConfigFile configFile, string path, Transform content)
+        {
+            configFile.SaveOnConfigSet = false;
+            var file = Instantiate(Template.File, content);
+            file.gameObject.SetActive(true);
+            file.GetComponentInChildren<PugText>().SetText(path, path);
+            file.Key = path;
+            return file;
         }
         private Transform RegisterDetails(ConfigFile file, string path)
         {
@@ -108,19 +121,53 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
                     UIConfigEntry newEntry = Instantiate(Template.Entry, content);
                     newEntry.BindEntry(entry, Template, 1);
                     newSection.Entries.Add(newEntry);
-                    /*if (entry.SettingType == typeof(bool))
-                        newEntry = Instantiate(BoolTempalte, page);
-                    else
-                    {
-                        if (TryMatchListType(entry, view, page, entryView))
-                            continue;
-                        else
-                            newEntry = Instantiate(InputTemplate, page);
-                    }
-                    newEntry.SetEntry(entry);*/
                 }
             }
             return page;
+        }
+
+        private Transform RegisterCombinePage(CombindConfigPage combind, string path)
+        {
+            var page = Instantiate(EmptryPage, PageContainer);
+            page.gameObject.SetActive(false);
+            page.name = path;
+            var content = page.GetChild(0);
+            Dictionary<string, List<ConfigData>> contents = new();
+            foreach (var (entry, data) in combind.Configs)
+            {
+                var def = entry.Definition;
+                if (!contents.TryGetValue(def.Section, out var datas))
+                    contents[def.Section] = datas = new();
+                datas.Add(data);
+            }
+            var sectionTemplate = Template.Section;
+            foreach (var (section, datas) in contents)
+            {
+                var newSection = Instantiate(sectionTemplate, content);
+                newSection.gameObject.SetActive(true);
+                newSection.name = "Section " + section;
+                newSection.Name.SetText(MiscHelper.GetLocalKey(path, section), section);
+                foreach (var data in datas)
+                {
+                    UIConfigEntry newEntry = Instantiate(Template.Entry, content);
+                    newEntry.BindEntry(data.Switch, Template, 1);
+                    newSection.Entries.Add(newEntry);
+                    var values = data.Values;
+                    if (values == null)
+                        continue;
+                    foreach (var entry in data.Values.Values)
+                    {
+                        newEntry = Instantiate(Template.Entry, content);
+                        newEntry.BindEntry(entry, Template, 2);
+                        newSection.Entries.Add(newEntry);
+                    }
+                }
+            }
+            return page;
+        }
+        private void Update()
+        {
+            FullBar.SetActive(!scroll.scrollBar.gameObject.activeInHierarchy);
         }
         private void SetCurrent(Transform page)
         {
@@ -142,6 +189,10 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
                 return false;
             }
             return true;
+        }
+        public static void PlaySelectedSound()
+        {
+            Manager.menu.AttemptToPlayMenuSfx(SfxID.FIXME_menu_select, 1f, 0f, true);
         }
     }
 }

@@ -107,8 +107,6 @@ MonoBehaviour:
     hash: 07D54D8B005E8A9CCD815C0F6F5495EECC8801D7BB92D613D4B8CAD2A6DC7A9A
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/General.asset
     hash: D6B6F7E5E3D8A41E352C98387C75502CE21C2CEDF3542851C4B2A74E510ED989
-  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/General_MainSwitch.asset
-    hash: 9F87B8A1AC8EDF0BA0F1446AA9DD7D7D7AD9B22D5AC8B8FF971423E284476BAF
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Magic.asset
     hash: 354A37FF5831A77F683E786FD11ACB7537B13EA6FDA851350DAB3C4DBA44C1AB
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Melee.asset
@@ -147,6 +145,8 @@ MonoBehaviour:
     hash: 314A2F9BC8786417D821648DC9CA7911AE23BFD8EA1270BBFCD6A425DE1FBDF6
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Tool.asset
     hash: 165D1E05B9FB49BE58C534BD13BB2CCDD464AEF33AB132F9F21830FBB1AA2E4C
+  - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed_General/MainSwitch.asset
+    hash: 65FB1B5D2A7BA64C1B5CED6A88BF9D19F7AE4CF07AEE2159A6D7166FB86058FC
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch/Equip.asset
     hash: 9EDA3A4CFC4B197DFD12CD7E4CE12396E271822188D42FDC65720177C2EF519A
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Switch/Immune.asset

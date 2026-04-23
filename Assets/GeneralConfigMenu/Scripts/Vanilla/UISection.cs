@@ -30,6 +30,10 @@ namespace Assets.GeneralConfigMenu.Scripts.Vanilla
                 entry.gameObject.SetActive(state);
             }
             layout.RenderUIComponent(true);
+            if (state)
+                Manager.menu.AttemptToPlayMenuSfx(SfxID.FIXME_menu_select, 0.6f, 0f, reuse: false);
+            else
+                AudioManager.SfxUI(SfxID.FIXME_menu_select, 0.4f, false, 1f, 0f, true, true, 0f);
         }
     }
 }

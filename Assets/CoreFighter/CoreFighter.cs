@@ -9,7 +9,7 @@ namespace Assets.CoreFighter
     {
         public void EarlyInit()
         {
-            FighterConfig.Load();
+            new FighterConfig().Register();
             var authoring = API.Authoring;
             authoring.OnObjectTypeAdded += NoRecoilSystem.RecordOriginMoveSpeed;
             authoring.OnObjectTypeAdded += AttackSpeedModifierSystem.RecordOriginATKSpeed;

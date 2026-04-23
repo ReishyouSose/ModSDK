@@ -26,6 +26,8 @@ MonoBehaviour:
       guid: d70a6d7f57ed2ec4d9d29eabe07e06da
     - path: Scripts/Scripts/Vanilla/UIConfigValueBox.cs
       guid: 2a15e372ef06af646bd52cb884fb418c
+    - path: Scripts/Scripts/Vanilla/UIConfigValueBool.cs
+      guid: cef28bfa045dba64e99535cea53b46bc
     - path: Scripts/Scripts/Vanilla/UIConfigFile.cs
       guid: a70523d9306f64d4f99a0fa27411eebc
     - path: Scripts/Scripts/Vanilla/UIConfigEntry.cs
@@ -126,7 +128,7 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/ControlMapping_ActionMapping.prefab
     hash: EC648760EEA95D3A59136261C0F45A7E702E5609364056DF35C9994FBC0E2ED3
   - path: Assets/GeneralConfigMenu/ControlMappingMenu.prefab
-    hash: 53769C8BF0A0F6D8520493BF0AC7A0AFDB161AFACE5DE0B4DAF8643FE92024AC
+    hash: 6F37C13AA36FCA069CF1E818CD06720FEDDCB56A4DBF581D837A4000BA7BC7EC
   - path: Assets/GeneralConfigMenu/creative_ui.png
     hash: 6C9406F2E3C27357DD3E42773683F7E04B0E0F78F4063952F2E9824CD9651970
   - path: Assets/GeneralConfigMenu/cursor_placement.png
@@ -198,7 +200,7 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/Mask.png
     hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
   - path: Assets/GeneralConfigMenu/ModConfigMenu.prefab
-    hash: C280A48EB841B71F93DEB2A5361B6580F4C5AADAC4D40789C4C94D4B0C95499D
+    hash: A9729837859E9EE64362ECF1F1BDFF92E69F59465DF13768E86AF57564FAA388
   - path: Assets/GeneralConfigMenu/RUIHoverTextContainer.prefab
     hash: 47A7B0636E70EC6979B78BA418775AF3C15E3E6B39981E95D4AEED3F42F96464
   - path: Assets/GeneralConfigMenu/SelectNo.png
@@ -206,5 +208,5 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/SelectYes.png
     hash: B9B20ED49D5C2D74EF60C62F4B07358D73D9AEFB81BDF28DDBFB434BEE47E082
   - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
-    hash: 7A461680543F9ED0990D5D21628A256EBDA4F28CB3C642BB77ED6434F79045A3
+    hash: 39EEDD1A4E0AF27B7B7B0337334CB6665AD7E39F4B5290858021D006070FEE74
   lastBuildLinux: 1

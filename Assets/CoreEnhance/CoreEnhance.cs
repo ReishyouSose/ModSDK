@@ -1,5 +1,4 @@
 using Assets.CoreEnhance.Scripts.Cores;
-using Assets.CoreEnhance.Scripts.Helpers;
 using Assets.CoreEnhance.Scripts.Items;
 using Assets.CoreEnhance.Scripts.Systems.Automation;
 using Assets.CoreEnhance.Scripts.Systems.Infinity;
@@ -21,6 +20,7 @@ namespace Assets.CoreEnhance
         private int timer;
         public void EarlyInit()
         {
+            new EnhanceConfig().Register();
             var authoring = API.Authoring;
             authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule), typeof(EntityModule));

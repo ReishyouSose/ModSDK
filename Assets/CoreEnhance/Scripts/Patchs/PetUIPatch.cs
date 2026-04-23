@@ -56,9 +56,7 @@ namespace Assets.CoreEnhance.Scripts.Patchs
                 return;
             var player = Manager.main.player;
             var world = player.world;
-            DatabaseBankCD singleton = player.querySystem.GetSingleton<DatabaseBankCD>();
-            Entity entity = GetPrimaryPrefabEntity(containedObject.objectID,
-                singleton.databaseBankBlob, containedObject.variation);
+            Entity entity = GetPrimaryPrefabEntity(containedObject.objectID, player.pugDatabase, containedObject.variation);
             if (player.activePet != null && entity == player.activePet.entity)
                 return;
             if (!EntityUtility.TryGetComponentData(entity, world, out PetCD pet))
