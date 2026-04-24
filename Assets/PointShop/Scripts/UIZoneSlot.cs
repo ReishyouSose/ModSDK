@@ -1,11 +1,10 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {
-    public class UIZoneSlot : RUIButton
+    public class UIZoneSlot : ButtonUIElement
     {
         private static readonly WaitForSeconds time = new(0.1f);
         [HideInInspector]
@@ -16,7 +15,12 @@ namespace Assets.PointShop.Scripts
 
         public GameObject WarnBorder;
         public SpriteRenderer Icon;
-        public override List<TextAndFormatFields> GetHoverDesc()
+        public override void OnLeftClicked(bool mod1, bool mod2)
+        {
+            base.OnLeftClicked(mod1, mod2);
+            PointShopUI.Ins.OnClickZoneSlot(this);
+        }
+        public override List<TextAndFormatFields> GetHoverDescription()
         {
             var list = new List<TextAndFormatFields>()
             {
@@ -31,7 +35,7 @@ namespace Assets.PointShop.Scripts
                     color = Color.white,
                 }
             };
-            if(Zone != Zone.None)
+            if (Zone != Zone.None)
             {
                 list.Add(new()
                 {
@@ -60,8 +64,9 @@ namespace Assets.PointShop.Scripts
             WarnBorder.SetActive(false);
             yield return time;
         }
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             WarnBorder.SetActive(false);
         }
     }

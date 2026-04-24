@@ -1,8 +1,10 @@
 ﻿using CoreLib.Data.Configuration;
 using HarmonyLib;
 using I2.Loc;
+using System;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
@@ -55,6 +57,26 @@ namespace Assets.GeneralConfigMenu.Scripts
                 text.localize = false;
                 text.Render(origin, false, true);
             }
+        }
+        public static bool TryExtractAcceptableValues(ConfigEntryBase entry, out string[] accepts)
+        {
+            AcceptableValueBase accept = entry.Description.AcceptableValues;
+            accepts = null;
+            if (accept == null)
+            {
+                return false;
+            }
+            string description = accept.ToDescriptionString();
+            // 匹配 "# Acceptable values: " 后的所有值
+            string pattern = @"# Acceptable values:\s*(.+)";
+            Match match = Regex.Match(description, pattern);
+            if (match.Success)
+            {
+                string valuesPart = match.Groups[1].Value;
+                accepts = valuesPart.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+                return true;
+            }
+            return false;
         }
     }
 }

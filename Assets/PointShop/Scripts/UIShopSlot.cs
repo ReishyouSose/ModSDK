@@ -1,12 +1,11 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-using PugMod;
+﻿using PugMod;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {
-    public class UIShopSlot : RUIButton
+    public class UIShopSlot : ButtonUIElement
     {
         private static readonly WaitForSeconds time = new(0.1f);
 
@@ -33,9 +32,16 @@ namespace Assets.PointShop.Scripts
         protected override void Awake()
         {
             base.Awake();
-            AddEvent(RMouseEventType.LeftClick, OnLeftClick);
         }
-        public override List<TextAndFormatFields> GetHoverDesc()
+        public override void OnLeftClicked(bool mod1, bool mod2)
+        {
+            base.OnLeftClicked(mod1, mod2);
+            PointShopUI.Ins.CurrentShopSlot = this;
+            PointShopClient.TryBuyItem(Manager.main.player.entity, objectData,
+                Boss, Currency, Price, PointShop.IsScale);
+            AudioManager.Sfx(SfxID.twitch, Manager.main.player.transform.position, 0.1f, 0.55f, 0.1f, reuse: true);
+        }
+        public override List<TextAndFormatFields> GetHoverDescription()
         {
             ObjectID objectID = objectData.objectID;
             if (objectID != 0)
@@ -93,7 +99,7 @@ namespace Assets.PointShop.Scripts
             }
         }
 
-        public TextAndFormatFields GetHoverTitle()
+        public override TextAndFormatFields GetHoverTitle()
         {
             ContainedObjectsBuffer slotObject = new() { objectData = objectData };
             ObjectID objectID = slotObject.objectID;
@@ -105,18 +111,6 @@ namespace Assets.PointShop.Scripts
                 textAndFormatFields.color = Manager.text.GetRarityColor(objectRarity);
             }
             return textAndFormatFields;
-        }
-        private static void OnLeftClick(GameObject go)
-        {
-            UIShopSlot slot = go.GetComponent<UIShopSlot>();
-            PointShopUI.Ins.CurrentShopSlot = slot;
-            slot.OnLeftClick();
-        }
-        private void OnLeftClick()
-        {
-            PointShopClient.TryBuyItem(Manager.main.player.entity, objectData,
-                Boss, Currency, Price, PointShop.IsScale);
-            AudioManager.Sfx(SfxID.twitch, Manager.main.player.transform.position, 0.1f, 0.55f, 0.1f, reuse: true);
         }
         public void WarnNotEnough()
         {

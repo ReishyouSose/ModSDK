@@ -55,7 +55,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
                         _default = false;
                         break;
                 }
-                var entry = file.Bind(def, _default, new ConfigDescription(string.Empty, null, scope ?? new()));
+                var entry = file.Bind(def, _default, scope: scope ?? new());
                 Add(entry, out _);
                 configs.Add(index, entry);
             }

@@ -12,6 +12,12 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (AllowInput?.Invoke() == false)
                 return;
             base.OnLeftClicked(mod1, mod2);
+            MoveCharMarker(9999);
+        }
+        public override void OnSelected()
+        {
+            base.OnSelected();
+            ModConfigMenu.PlaySelectedSound();
         }
     }
 }

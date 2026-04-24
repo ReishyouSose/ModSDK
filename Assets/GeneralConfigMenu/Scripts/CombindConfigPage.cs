@@ -1,5 +1,4 @@
 ﻿using CoreLib.Data.Configuration;
-using System;
 using System.Collections.Generic;
 
 namespace Assets.GeneralConfigMenu.Scripts

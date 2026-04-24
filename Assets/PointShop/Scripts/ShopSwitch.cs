@@ -1,8 +1,6 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-
-namespace Assets.PointShop.Scripts
+﻿namespace Assets.PointShop.Scripts
 {
-    public class ShopSwitch : RUIButton
+    public class ShopSwitch : ButtonUIElement
     {
         public PugText Value;
         private void Update()
@@ -12,10 +10,10 @@ namespace Assets.PointShop.Scripts
                 return;
             Value.Render(player.playerInventoryHandler.GetExistingAmountOfObject(PointShop.Coin).ToString(), false, true);
         }
-        protected override void Awake()
+        public override void OnLeftClicked(bool mod1, bool mod2)
         {
-            base.Awake();
-            AddEvent(RMouseEventType.LeftClick, _ => PointShop.OpenShop());
+            base.OnLeftClicked(mod1, mod2);
+            PointShop.OpenShop();
         }
     }
 }

@@ -260,7 +260,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/RollSkill.asset
     hash: 9925C62A83A4431D6396DF21655FB6D0E507614B3006393A668A0C64E3253FA2
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/TalentDisplay.asset
-    hash: 6FF942283D46482B0067AF0C1EB664D66CE3185D3173CA92F71EB94FD9C6BA79
+    hash: A1E25E9C3CDAFC66BAC189AF3E50832FB50DD4F12BB554313F950E43D9691E8A
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMiningTarget/OreAndWood.asset
     hash: F579E23D2989EF101597C6C9884FBF0B7BD27DA405B88AB4F17A1A586696DFCE
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMiningTarget/OreOnly.asset

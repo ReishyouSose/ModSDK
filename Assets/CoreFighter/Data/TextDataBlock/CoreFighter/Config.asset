@@ -134,7 +134,7 @@ MonoBehaviour:
       m_address:
         m_low: 681352171529052915
         m_high: 2314507893210082619
-    title: Fighter of CK - Function Switch
+    title: Fighter of CK - Function Config
     description: 
   m_shouldBeLocalized: 1
   m_header: CoreFighter

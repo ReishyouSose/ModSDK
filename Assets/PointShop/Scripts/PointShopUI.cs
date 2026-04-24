@@ -1,6 +1,4 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-using Assets.GeneralConfigMenu.RUIFramework.Extend;
-using CoreLib.Submodule.UserInterface.Interface;
+﻿using CoreLib.Submodule.UserInterface.Interface;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +13,12 @@ namespace Assets.PointShop.Scripts
         public bool ShowWithPlayerInventory => true;
 
         public bool ShouldPlayerCraftingShow => false;
-        public RUIScrollView ZonePanel;
-        public RUIScrollView ShopPanel;
+        public UIScrollWindow ZonePanel;
+        public UIScrollWindow ShopPanel;
         public UIZoneSlot ZoneTemplate;
         public UIShopSlot ShopSlotTemplate;
+        public Transform EmptryPage;
+        public Transform PageContainer;
         public PugText Header;
         public PugText PointValue;
         public PugText ScaleTip;
@@ -31,7 +31,7 @@ namespace Assets.PointShop.Scripts
 
         private ShopInfo info;
         private Zone currentZone;
-        private Dictionary<Zone, RUIScrollView> shops;
+        private Dictionary<Zone, Transform> shops;
         public void Awake()
         {
             Ins = this;
@@ -41,7 +41,21 @@ namespace Assets.PointShop.Scripts
             ShopPanel.gameObject.SetActive(false);
             info.Init();
             shops = new();
-            ZonePanel.Reload(RegisterZone);
+            int max = (int)Zone.MAX;
+            var page = ZonePanel.scrollingContent.GetChild(0);
+            for (int i = 0; i < max; i++)
+            {
+                Zone zone = (Zone)i;
+                UIZoneSlot slot = Instantiate(ZoneTemplate, page);
+                slot.Zone = zone;
+                slot.Boss = info.GetBoss(zone);
+                slot.Icon.sprite = SelectZoneIcon(zone);
+                slot.gameObject.SetActive(true);
+                shops[zone] = RegisterShop(zone);
+
+            }
+            Header.Render($"ItemCategory/Environment_{currentZone}Biome", false, true);
+            shops[currentZone].gameObject.SetActive(true);
             ZonePanel.gameObject.SetActive(true);
             HideUI();
         }
@@ -56,43 +70,25 @@ namespace Assets.PointShop.Scripts
             Manager.ui.HideAllInventoryAndCraftingUI();
             Root.SetActive(true);
         }
-        private void RegisterZone(RUIScrollView view, Transform parent)
+        private Transform RegisterShop(Zone zone)
         {
-            int max = (int)Zone.MAX;
-            for (int i = 0; i < max; i++)
-            {
-                Zone zone = (Zone)i;
-                UIZoneSlot slot = Instantiate(ZoneTemplate, parent);
-                slot.AddEvent(RMouseEventType.LeftClick, OnClickZoneSlot);
-                slot.Zone = zone;
-                slot.Boss = info.GetBoss(zone);
-                slot.Icon.sprite = SelectZoneIcon(zone);
-                slot.gameObject.SetActive(true);
-                view.AddChild(slot);
-                RUIScrollView shop = shops[zone] = Instantiate(ShopPanel, ShopPanel.transform.parent);
-                shop.Reload((shopView, shopParent) => RegisterShop(shopView, shopParent, zone));
-            }
-            Header.Render($"ItemCategory/Environment_{currentZone}Biome", false, true);
-            shops[currentZone].gameObject.SetActive(true);
-        }
-        private void RegisterShop(RUIScrollView view, Transform parent, Zone zone)
-        {
+            var page = Instantiate(EmptryPage, PageContainer);
+            var contents = page.GetChild(0);
             var items = info.GetShop(zone);
             var boss = info.GetBoss(zone);
             for (int i = 0; i < items.Count; i++)
             {
                 var item = items[i];
-                UIShopSlot slot = Instantiate(ShopSlotTemplate, parent);
+                UIShopSlot slot = Instantiate(ShopSlotTemplate, contents);
                 slot.Zone = zone;
                 slot.Boss = boss;
                 slot.SetItem(item.Item, item.Price, item.Currency);
                 slot.gameObject.SetActive(true);
-                view.AddChild(slot.gameObject);
             }
+            return page;
         }
-        public void OnClickZoneSlot(GameObject go)
+        public void OnClickZoneSlot(UIZoneSlot slot)
         {
-            var slot = go.GetComponent<UIZoneSlot>();
             CurrentZoneSlot = slot;
             currentZone = slot.Zone;
             foreach (var (_, shop) in shops)

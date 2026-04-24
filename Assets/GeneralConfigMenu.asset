@@ -22,76 +22,42 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Scripts/Scripts/Vanilla/UISection.cs
-      guid: d70a6d7f57ed2ec4d9d29eabe07e06da
-    - path: Scripts/Scripts/Vanilla/UIConfigValueBox.cs
-      guid: 2a15e372ef06af646bd52cb884fb418c
-    - path: Scripts/Scripts/Vanilla/UIConfigValueBool.cs
-      guid: cef28bfa045dba64e99535cea53b46bc
-    - path: Scripts/Scripts/Vanilla/UIConfigFile.cs
-      guid: a70523d9306f64d4f99a0fa27411eebc
-    - path: Scripts/Scripts/Vanilla/UIConfigEntry.cs
-      guid: 2e9f5a104f21ca845a4ffe6ad4e9b86b
-    - path: Scripts/Scripts/Vanilla/ModConfigMenu.cs
-      guid: 350758eca0264694fa7f2cafed819d10
-    - path: Scripts/Scripts/Vanilla/MenuPatch.cs
-      guid: 81975388ad888a346a0c282f19f42307
-    - path: Scripts/Scripts/Vanilla/GotoModConfigOption.cs
-      guid: 4b1c9e8b77709084993807de8e15a73d
-    - path: Scripts/Scripts/Vanilla/ConfigTemplate.cs
-      guid: 9428fde2cf6375e4b8db65e092884a54
-    - path: Scripts/Scripts/UIConfigEntryList.cs
-      guid: ad7e17ffc5bed8a41b52dd423a12b56c
-    - path: Scripts/Scripts/UIConfigEntryInput.cs
-      guid: 710ac84ec2bd8004499acd9d9ad50620
-    - path: Scripts/Scripts/UIConfigEntryBool.cs
-      guid: f1f373bd92b2eda49a1a688d2fb4efab
+    - path: Scripts/Scripts/UISection.cs
+      guid: 29f26df5d6cf1104b9bcf6bd67b9f819
+    - path: Scripts/Scripts/UIConfigValueList.cs
+      guid: ad788dfdc0191eb4da860cc78532183f
+    - path: Scripts/Scripts/UIConfigValueInput.cs
+      guid: a9e48c182925b2046b5292f612c0f395
+    - path: Scripts/Scripts/UIConfigValueBox.cs
+      guid: 2d8bbfe47d0f59a4aaa373a1f8c307a9
+    - path: Scripts/Scripts/UIConfigValueBool.cs
+      guid: 41b8f3fbd9252c94ea49a8f65b179a8b
+    - path: Scripts/Scripts/UIConfigFile.cs
+      guid: 1ed8d038005c53c4689a80dfe8ddf459
     - path: Scripts/Scripts/UIConfigEntry.cs
       guid: 97f70a3efc74c9b449ddf401fcd57d53
-    - path: Scripts/Scripts/UIConfigAccessLevel.cs
-      guid: edf7146baa7bd1b4888d55816cf0fea4
-    - path: Scripts/Scripts/ModScroll/ModUIScrollWindow.cs
-      guid: 8c21d149ba6e7614e8086ddc79493945
-    - path: Scripts/Scripts/ModScroll/ModScrollBar.cs
-      guid: 3e40160dcea186d46a0615b3d195c8c0
+    - path: Scripts/Scripts/ModConfigMenu.cs
+      guid: 5291eed50a44f964eb880bc4ab0a5651
     - path: Scripts/Scripts/ModConfig.cs
       guid: 28f0d02d60909124a85886e97fe9450e
     - path: Scripts/Scripts/MiscHelper.cs
       guid: 79f2f3320c5653c4592bb6c787728442
+    - path: Scripts/Scripts/MenuPatch.cs
+      guid: 0c64d7a703aaa1740aed8e9e3c258203
     - path: Scripts/Scripts/LocalizationOverride.cs
       guid: 6c8ad768b892ec74294fbbfb0337cf9a
     - path: Scripts/Scripts/InputBox.cs
       guid: 51b6c16f50a69fe439b64c30342b7acd
-    - path: Scripts/Scripts/GeneralConfigMenuMod.cs
-      guid: ad4e5e1338d7d4c4aa8895c3adfef5b1
-    - path: Scripts/Scripts/ConfigManager.cs
-      guid: 2452252d91b51cd4cbb3922a1e2c91c8
+    - path: Scripts/Scripts/GotoModConfigOption.cs
+      guid: 55d101adeacc9c843aee4d0b4c276d2a
+    - path: Scripts/Scripts/ConfigTemplate.cs
+      guid: 1c7c45949598cd3408e1d4a311833c10
     - path: Scripts/Scripts/ConfigData.cs
       guid: 292c974f1b07a8d4aa22bed7698b29d2
-    - path: Scripts/RUIFramework/RUIText.cs
-      guid: d9c62b3bd7666f74c8e906fa7217a127
-    - path: Scripts/RUIFramework/RUIManager.cs
-      guid: 64ed15fb6dbc1ee4480a59b4cff5e689
-    - path: Scripts/RUIFramework/RUIHoverTextContainer.cs
-      guid: 4c6e594ed82b0404e9c57455514d3c98
-    - path: Scripts/RUIFramework/RUIElement.cs
-      guid: 5a76092bd90ed7544abee16cf22f9304
-    - path: Scripts/RUIFramework/RUIButton.cs
-      guid: 54bc650d4482bdd4fa99c9db66fbbc09
-    - path: Scripts/RUIFramework/RMouseEventType.cs
-      guid: 5852a38dd84ea494a9e9b7ec93d2fd6b
-    - path: Scripts/RUIFramework/RKeyCD.cs
-      guid: 27551183344648a45b83a312e0c4ebf9
-    - path: Scripts/RUIFramework/Extend/RUIViewLocator.cs
-      guid: 8acd8d9ce2254544bb04545078dff286
-    - path: Scripts/RUIFramework/Extend/RUIScrollView.cs
-      guid: 39242cd3480e12047b1bef28ce13c946
-    - path: Scripts/RUIFramework/Extend/RUIPageSwitcher.cs
-      guid: 65cc6e644aa3c1943b277a1f5ac3609f
-    - path: Scripts/RUIFramework/Extend/RUIExpand.cs
-      guid: ddb093e9823ee0145b8baa29c862f732
-    - path: Scripts/RUIFramework/Extend/RUIButtonGroup.cs
-      guid: 68f4d7e124a78a44b9674d603dc4d2cd
+    - path: Scripts/Scripts/CombindConfigPage.cs
+      guid: f0d7bef3e134935409f00c4355d0ef82
+    - path: Scripts/GeneralConfigMenuMod.cs
+      guid: ad4e5e1338d7d4c4aa8895c3adfef5b1
     - path: Scripts/ConfigSync/ConfigSyncSystem.cs
       guid: 9052d3071aac0b249adce8ab8764ae85
     - path: Scripts/ConfigSync/ConfigChangeRPC.cs
@@ -100,11 +66,7 @@ MonoBehaviour:
       guid: 
     - path: Scripts/Generated/ConfigSyncSystem__System_21175399301.g.cs
       guid: 
-    - path: Scripts/Generated/ConfigSyncSystem__System_21175399302.g.cs
-      guid: 
     - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_ConfigDataRPCCommandSerializer.cs
-      guid: 
-    - path: Scripts/Generated/Assets.GeneralConfigMenu.ConfigSync_JoinRequestCommandSerializer.cs
       guid: 
     - path: Bundles/GeneralConfigMenu_Windows.assetbundle
       guid: 
@@ -125,10 +87,6 @@ MonoBehaviour:
   assets:
   - path: Assets/GeneralConfigMenu/32x32_map_border.png
     hash: 3056BB6DB71CC3E6CA831A1C1E62C1B0D94D9D7570F0CC81183F1E7BE232EEA9
-  - path: Assets/GeneralConfigMenu/ControlMapping_ActionMapping.prefab
-    hash: EC648760EEA95D3A59136261C0F45A7E702E5609364056DF35C9994FBC0E2ED3
-  - path: Assets/GeneralConfigMenu/ControlMappingMenu.prefab
-    hash: 6F37C13AA36FCA069CF1E818CD06720FEDDCB56A4DBF581D837A4000BA7BC7EC
   - path: Assets/GeneralConfigMenu/creative_ui.png
     hash: 6C9406F2E3C27357DD3E42773683F7E04B0E0F78F4063952F2E9824CD9651970
   - path: Assets/GeneralConfigMenu/cursor_placement.png
@@ -145,16 +103,8 @@ MonoBehaviour:
     hash: A79B6659BCA3328A38D79F722EF947B78E930247A76FA48F856437654E86D46C
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Click.asset
     hash: 6381F1F0A8953476ACA5752B9C25CBB7F4E6F0EC3CF24D64164C76F09D151293
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Client.asset
-    hash: 07200A8618DBB79CE4DA6BC18F485D15C7C622A28BEAE019AE896F91B508D1B0
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Config.asset
     hash: 30B7F1C3EB031D02F72D22092065229E45F97634937B549C475C45B8755AACD0
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/ConfigList.asset
-    hash: 88DFD0E7DA94CA6ECC991029267382933917C8C4F7270BAE0012532FD2CE310D
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Entry.asset
-    hash: 56BB7CBD9BBCBEA9FF39451022270BE8DC45BE7A6E5C51B1573B3D93A2B63E60
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/HasExtraConfig.asset
-    hash: FBB2071E7A469417E771BCCEB5BD93F5D4D45D1C5C84322F6A065FFFDD82D1E7
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/ModConfig.asset
     hash: 9607F24D535769D79844A9F8B9F0FB5BC55B1A9F63ED6C14B9DD48C75978748A
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/NeedReload.asset
@@ -163,10 +113,8 @@ MonoBehaviour:
     hash: 7DEB0C50E07148B9B2D1BD85FA406F241CA1A279E94DB6AA428A4D5283A72E56
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Section.asset
     hash: C7892D4D320EE1E3907C287745660AE4F2FB4FCDE13C36AB5A93089AE4312A5D
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Server.asset
-    hash: 60F4F1DBF6F06DAFEEFD6748AFFD83A2C897B61F77D11597618B4B5066339499
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Title.asset
-    hash: EF7E9A0A18235F7FA32678375A3B126C3C55A765AB87817036D04F3BCD420B35
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/ServerValue.asset
+    hash: 8A7697650C6E3A0FB1FED0C8BAA24FABE91409F47FB88B6605462513C840B5F4
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Admin.asset
     hash: 1E666C1784040140185C1DBBC1F48AA4F0A2ECDC54BDEEC50A12CB56F8565CEB
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/Client.asset
@@ -187,26 +135,18 @@ MonoBehaviour:
     hash: A36CE7C3BA7EDF8BCB08964F023FD6B0564E9B9D23BAA50ED96E546233462A76
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config/Sync.asset
     hash: 1F45EEF73076CD7539ED19208EEFDAA663DE23BE61ACAE29190C31CB88F81C62
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AutoCtoS.asset
-    hash: C4875133680DF71EE7366C290A68E9913F55453A1B1D56E6543D4152E7932D84
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AutoStoC.asset
-    hash: 493156F423EDDCC81749C9FD12AA25A3694114DBE7A1B494370FE8E3D5919824
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AdminOnly.asset
+    hash: 1110A60C3387CB9F4E4C418B3102ED3E15B996216C91BCFFD4EE6268BFFCE374
+  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AutoSave.asset
+    hash: B21CF5CCD4E07D66CAFB257C3E1847F390B5E16073AA980908C87ACF31FE7E8A
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Sync/ChangeClientWhenSync.asset
     hash: 96DDCEE4C2601CDD0B2EFB24C1D03BF09F28ABFC36D046C01E09B7E1489E4DD7
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Reset/Client.asset
-    hash: 02094049E8E45461EBD9FF7C1F40611E0BAE7F3A0522D6A8A6096669D9A64645
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Reset/Server.asset
-    hash: C6959F60BD1DAC7AFD1600F68EA1F79F1CC8E9F4C572E40CB4B77F51A22542C3
   - path: Assets/GeneralConfigMenu/Mask.png
     hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
   - path: Assets/GeneralConfigMenu/ModConfigMenu.prefab
-    hash: A9729837859E9EE64362ECF1F1BDFF92E69F59465DF13768E86AF57564FAA388
-  - path: Assets/GeneralConfigMenu/RUIHoverTextContainer.prefab
-    hash: 47A7B0636E70EC6979B78BA418775AF3C15E3E6B39981E95D4AEED3F42F96464
+    hash: BBEB43368E2CC55D55A8BC6B1ABBAE7C8235533266F203C4E09C60DE7454B97C
   - path: Assets/GeneralConfigMenu/SelectNo.png
     hash: 7B818002D2A2B9257727470A2BD4FF03D6B74D0C5611B277C667DD058D7F2682
   - path: Assets/GeneralConfigMenu/SelectYes.png
     hash: B9B20ED49D5C2D74EF60C62F4B07358D73D9AEFB81BDF28DDBFB434BEE47E082
-  - path: Assets/GeneralConfigMenu/UIGeneralConfigMenu.prefab
-    hash: 39EEDD1A4E0AF27B7B7B0337334CB6665AD7E39F4B5290858021D006070FEE74
   lastBuildLinux: 1

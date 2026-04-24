@@ -1,178 +1,174 @@
-﻿using Assets.GeneralConfigMenu.RUIFramework;
-using CoreLib.Data.Configuration;
+﻿using CoreLib.Data.Configuration;
 using I2.Loc;
+using System;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
-    [RequireComponent(typeof(RUIText))]
-    public class UIConfigEntry : MonoBehaviour
+    [RequireComponent(typeof(BoxCollider))]
+    public class UIConfigEntry : ButtonUIElement
     {
+        public PugText Name;
+        public SpriteRenderer SR;
+        public SpriteRenderer Hover;
+        public Transform Container;
+        public PugText ServerValue;
+
         [HideInInspector]
-        public ConfigEntryBase ConfigEntry;
+        public UIConfigValueBox ValueBox;
 
-        public GameObject ServerChanger;
-        public GameObject ClientChanger;
-        public PugText ViewOnlyValue;
-        public UIConfigAccessLevel UIConfigAccessLevel;
-        private const string NeedReload = "GeneralConfigMenu/NeedReload";
-        private const string HasExtraConfig = "GeneralConfigMenu/HasExtraConfig";
-        private const string AccessLevelKey = "GeneralConfigMenu_AccessLevel/";
-        public string DefaultValue { get; protected set; }
+        [HideInInspector]
+        public ConfigEntryBase Entry;
 
-        public RUIText Label { get; private set; }
-        public void SetEntry(ConfigEntryBase configEntry)
+        private ConfigScope scope;
+        public void BindEntry(ConfigEntryBase entry, ConfigTemplate template, int hierarchy = 0)
         {
-            gameObject.SetActive(true);
-            ConfigEntry = configEntry;
-            DefaultValue = ConfigEntry.DefaultValue.ToString();
-            var scope = ConfigEntry.Scope;
-            var level = scope.accessLevel;
-            Label = GetComponent<RUIText>();
-            var hoverText = Label.HoverText;
-            hoverText.Insert(0, AccessLevelKey + level);
-            hoverText.Insert(1, AccessLevelKey + level + "Desc");
-            Label.SpecialHoverTextSnip += (index, text) =>
+            Entry = entry;
+            var def = entry.Definition;
+            var key = def.Key;
+            var local = entry.Description.Tags.FirstOrDefault(x => x is LocalizationOverride) is LocalizationOverride lfx ? lfx.Key :
+                MiscHelper.GetLocalKey(entry.ConfigFile.ConfigFilePath, def.Section, key);
+            name = "Entry " + key;
+            Name.SetText(local, key);
+            scope = entry.Scope;
+            AdjustByHierarchy(hierarchy);
+            Instantiate(scope.accessLevel switch
             {
-                if (index >= 2)
-                    return null;
-                return new()
-                {
-                    text = text,
-                    formatFields = new string[0],
-                    color = Color.yellow,
-                };
-            };
+                ConfigAccessLevel.Admin => template.Admin,
+                ConfigAccessLevel.Server => template.Server,
+                ConfigAccessLevel.Client => template.Client,
+                _ => template.ViewOnly
+            }, Container).localPosition = new(-0.5f, 0, 0);
             if (scope.requireReload)
+                Instantiate(template.Reload, Container).localPosition = new(-1.5f, 0, 0);
+            string desc = local + "Desc";
+            if (LocalizationManager.TryGetTranslation(desc, out _))
             {
-                Label.Hover = Color.red;
-                hoverText.Add(NeedReload);
-                Label.SpecialHoverTextSnip += (index, text) =>
+                showHoverDesc = true;
+                optionalHoverDesc = new()
                 {
-                    if (text != NeedReload)
-                        return null;
-                    return new()
-                    {
-                        text = NeedReload,
-                        formatFields = new string[0],
-                        color = Color.red,
-                    };
+                    mTerm = desc,
                 };
             }
-            Label.NeedHoverColor();
-            UIConfigAccessLevel.SetLevel(level);
-            var server = ServerChanger.GetComponent<RUIElement>();
-            var client = ClientChanger.GetComponent<RUIElement>();
-            switch (level)
+            MatchValue(template);
+        }
+        private void AdjustByHierarchy(int hierarchy)
+        {
+            float originalWidth = 23f;
+            float targetRight = 11f;
+            float newWidth = originalWidth - hierarchy;
+            float x = targetRight - newWidth;
+
+            if (TryGetComponent<WrapperUIComponent>(out var wrapper))
             {
-                case ConfigAccessLevel.ViewOnly:
-                    ServerChanger.SetActive(false);
-                    ClientChanger.SetActive(false);
-                    ViewOnlyValue.Render(ConfigEntry.GetSerializedValue());
-                    ViewOnlyValue.gameObject.SetActive(true);
-                    break;
-                case ConfigAccessLevel.Client:
-                    ServerChanger.SetActive(false);
-                    ViewOnlyValue.gameObject.SetActive(false);
-                    client.HoverText.RemoveAt(1);
-                    break;
-                case ConfigAccessLevel.Server:
-                case ConfigAccessLevel.Admin:
-                    ViewOnlyValue.gameObject.SetActive(false);
-                    server.AddEvent(RMouseEventType.RightDown, _ => TryServerToClient());
-                    client.AddEvent(RMouseEventType.RightDown, _ => TryClientToServer());
-                    break;
+                wrapper.renderWidthPixels = (int)(newWidth * 16);
             }
-            var def = configEntry.Definition;
-            string key = def.Key;
-            var tags = ConfigEntry.Description.Tags;
-            var keyLocal = tags.FirstOrDefault(x => x is LocalizationOverride) is LocalizationOverride lfx ? lfx.Key :
-                MiscHelper.GetLocalKey(ConfigEntry.ConfigFile.ConfigFilePath, def.Section, key);
-            Label.Text.SetText(keyLocal, key);
-            bool hasLocalize = LocalizationManager.TryGetTranslation(keyLocal, out _);
-            keyLocal += "Desc";
-            if (LocalizationManager.TryGetTranslation(keyLocal, out _))
+
+            Vector3 pos = transform.localPosition;
+            pos.x = x;
+            transform.localPosition = pos;
+
+            pos = Container.localPosition;
+            pos.x -= hierarchy;
+            Container.localPosition = pos;
+
+            x = newWidth / 2f;
+            if (TryGetComponent<BoxCollider>(out var boxCollider))
             {
-                hoverText.Add(keyLocal);
+                Vector3 size = boxCollider.size;
+                size.x = newWidth;
+                boxCollider.size = size;
+
+                Vector3 center = boxCollider.center;
+                center.x = x;
+                boxCollider.center = center;
             }
+
+            void SetSR(SpriteRenderer sr)
+            {
+                Vector2 size = sr.size;
+                size.x = newWidth;
+                sr.size = size;
+
+                var trans = sr.transform;
+                Vector3 localPos = trans.localPosition;
+                localPos.x = x;
+                trans.localPosition = localPos;
+            }
+            SetSR(SR);
+            SetSR(Hover);
+        }
+        private void Update()
+        {
+            var player = Manager.main.player;
+            bool notEnterGame = player == null;
+            bool allow = scope.accessLevel switch
+            {
+                ConfigAccessLevel.Admin => notEnterGame || player.adminPrivileges > 0,
+                ConfigAccessLevel.Server => notEnterGame || (GeneralConfigMenuMod.config.AdminOnly.Value ? player.adminPrivileges > 0 : !player.guestMode),
+                ConfigAccessLevel.Client => true,
+                _ => false,
+            };
+            ValueBox.Editable = allow;
+            ServerValue.gameObject.SetActive(!notEnterGame && scope.ShouldSync);
+        }
+        private void MatchValue(ConfigTemplate template)
+        {
+            if (Entry.SettingType == typeof(bool))
+                ValueBox = Instantiate(template.Bool, Container);
             else
             {
-                StringBuilder builder = new();
-                ConfigEntry.WriteDescription(builder);
-                hoverText.Add(builder.ToString());
+                if (!TryMatchListType(template.List, out ValueBox))
+                    ValueBox = Instantiate(template.Input, Container);
             }
-            if (tags.Contains(ConfigData.HasExtraConfig))
+            ValueBox.transform.localPosition = new(0, 0, 0);
+            ValueBox.BindEntry(this);
+        }
+        public void ReceiveValue(string value)
+        {
+            ServerValue.formatFields[0] = value;
+            ServerValue.Render();
+            Debug.Log("Refresh");
+            ValueBox.ReceiveValue(value);
+        }
+        public void OnMenuOpen()
+        {
+            if (Manager.main.player == null)
             {
-                hoverText.Add(HasExtraConfig);
-                Label.SpecialHoverTextSnip += (index, text) =>
-                {
-                    if (text != HasExtraConfig)
-                        return null;
-                    return new()
-                    {
-                        text = HasExtraConfig,
-                        formatFields = new string[0],
-                        color = Color.cyan,
-                    };
-                };
+                ServerValue.gameObject.SetActive(false);
             }
-            SetChanger();
+            if (scope.accessLevel is ConfigAccessLevel.Admin or ConfigAccessLevel.Server)
+            {
+                ServerValue.gameObject.SetActive(true);
+            }
         }
-        public virtual void SetChanger()
+        private bool TryMatchListType(UIConfigValueList list, out UIConfigValueBox box)
         {
+            string[] accepts = null;
+            if (Entry.SettingType.IsEnum)
+            {
+                var enums = Enum.GetValues(Entry.SettingType);
+                accepts = new string[enums.Length];
+                int index = 0;
+                foreach (var value in enums)
+                {
+                    accepts[index++] = value.ToString();
+                }
+            }
+            else if (MiscHelper.TryExtractAcceptableValues(Entry, out string[] values))
+            {
+                accepts = values;
+            }
+            if (accepts == null)
+            {
+                box = null;
+                return false;
+            }
+            var valueList = Instantiate(list, Container);
+            valueList.SetAccepts(accepts);
+            box = valueList;
+            return true;
         }
-        public void TryServerToClient()
-        {
-            /*if (ServerEqualsClient())
-                return;*/
-            ServerToClient();
-        }
-        protected virtual void ServerToClient()
-        {
-        }
-        public void TryClientToServer()
-        {
-            if (!ServerChanger.activeSelf || !CheckAdmin())
-                return;
-            /*if (ServerEqualsClient())
-                return;*/
-            ClientToServer();
-        }
-        protected virtual void ClientToServer()
-        {
-        }
-        public virtual void ReceiveSync(string value)
-        {
-        }
-        public virtual void ServerReset()
-        {
-        }
-        public virtual void ClientReset()
-        {
-        }
-        public bool AdminOnly => ConfigEntry.Scope.accessLevel == ConfigAccessLevel.Admin;
-        public void SetClient(string value)
-        {
-            ConfigEntry.SetSerializedValue(value);
-            ConfigEntry.ConfigFile.Save();
-        }
-        public static bool ClientSync => GeneralConfigMenuMod.config.ChangeClientWhenSync.Value;
-        public static bool AutoStoC => GeneralConfigMenuMod.config.AutoStoC.Value;
-        public static bool AutoCtoS => GeneralConfigMenuMod.config.AutoCtoS.Value;
-        public void SetAndSendChange(string value)
-        {
-            var entry = ConfigEntry;
-            entry.SetSerializedValue(value);
-            GeneralConfigMenuMod.ConfigSync.SendConfigChange(entry);
-        }
-
-        public bool CheckAdmin() => !AdminOnly || Manager.main.player.adminPrivileges > 0;
-        public virtual bool ValueEquals(string value) => ConfigEntry.GetSerializedValue() == value;
-        /*public virtual bool ServerEqualsClient()
-        {
-            return false;
-        }*/
     }
 }
