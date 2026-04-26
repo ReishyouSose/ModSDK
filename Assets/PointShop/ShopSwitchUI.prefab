@@ -36,6 +36,7 @@ Transform:
   - {fileID: 2694990061450175952}
   - {fileID: 3019514678280050491}
   - {fileID: 8678338390841402765}
+  - {fileID: 2219145725052739680}
   m_Father: {fileID: 5497686495477073772}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8205949611909928699
@@ -71,18 +72,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da20bba8e53ae3419b744adfa5fb2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsMouseHover: 0
-  CanBeInteract: 1
-  Sensitive: 0
-  HoverText: []
-  LockByOther: 0
-  OnSprite: {fileID: 7922721727506250571}
-  OffSprite: {fileID: 6260015243125091874}
-  HoverSprite: {fileID: 364317163259708440}
-  ToggleAtFirst: 0
-  AutoChangeVisual: 0
-  ButtonGroup: {fileID: 0}
+  topUIElements: []
+  bottomUIElements: []
+  leftUIElements: []
+  rightUIElements: []
+  childElements: []
+  selectFirstEnabledElementInList: 0
+  invokeSelectionEvents: 0
+  onElementSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onElementDeselectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  canBeClicked: 1
+  disabledColor: {r: 1, g: 1, b: 1, a: 1}
+  onLeftClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onRightClick:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+  optionalSelectedMarker: {fileID: 1445749401750053468}
+  optionToSelectOnHover: {fileID: 0}
+  spritesShownUnpressed: []
+  spritesShownPressed: []
+  skipUpdatingSpritesColor: 0
+  showHoverTitle: 0
+  optionalTitle:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  showHoverDesc: 0
+  optionalHoverDesc:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  optionalShortCut: 0
+  adjustSpritesToFitTextSize: 0
+  spritesSizePadding: {x: 0, y: 0}
+  text: {fileID: 0}
+  playClickSoundEffect: 0
+  clickSoundEffect: 0
+  clickSoundPitch: 0
   Value: {fileID: 588996722512293035}
+  Shadow: {fileID: 9099740079465114349}
 --- !u!1 &1445749401750053468
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +240,7 @@ Transform:
   m_GameObject: {fileID: 1557475519138243697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: -0.0625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -237,7 +281,7 @@ MonoBehaviour:
   overrideMaterial: {fileID: 0}
   offsetKey: 
   style:
-    fontFace: 16777232
+    fontFace: 16777344
     capitalization: 0
     horizontalAlignment: 2
     verticalAlignment: 1
@@ -250,11 +294,11 @@ MonoBehaviour:
     rightToLeftXOffset: 0
     invertHorizontalAlignment: 0
     color: {r: 1, g: 1, b: 1, a: 1}
-    outline: 10
+    outline: 0
     outlineColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0}
     supportColorTags: 0
     sortingLayer: 0
-    orderInLayer: 1
+    orderInLayer: 2
     maskInteraction: 0
   styleOverrides: []
   usePooledResources: 1
@@ -378,6 +422,95 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5406137929092307246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2219145725052739680}
+  - component: {fileID: 9099740079465114349}
+  m_Layer: 5
+  m_Name: shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2219145725052739680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406137929092307246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: -0.125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1831506273739149545}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9099740079465114349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406137929092307246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1873953792, guid: 548e3dd2d27c1e2d0bdf82f0889cb8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerInParent: 0
+  activeInPlatforms: -1
+  activeInStoreFronts: -1
+  renderOnStart: 0
+  keepEnabledOnStart: 0
+  alwaysUpdateDynamicTextPixelPos: 0
+  isWrittenToByUser: 0
+  checkForProfanity: 0
+  isHidden: 0
+  trackDynamicTextCharacterEndPositions: 0
+  localize: 0
+  topAligned: 0
+  languagesToForceLatinFont: 
+  localizePlaceholders: 1
+  dontResetEffectsOnRender: 0
+  hideInStreamerMode: 0
+  maxWidth: 0
+  textString: Core Keeper
+  textSuffix: 
+  formatFields: []
+  overrideMaterial: {fileID: 0}
+  offsetKey: 
+  style:
+    fontFace: 16777344
+    capitalization: 0
+    horizontalAlignment: 2
+    verticalAlignment: 1
+    extraCharSpacing: 0
+    extraSpaceWidth: 0
+    extraLineSpacing: 0
+    extraEmptyLineSpacing: 0
+    forceMonospace: 0
+    wrapAtComma: 0
+    rightToLeftXOffset: 0
+    invertHorizontalAlignment: 0
+    color: {r: 0.45098042, g: 0.28627452, b: 0.12941177, a: 1}
+    outline: 0
+    outlineColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0}
+    supportColorTags: 0
+    sortingLayer: 0
+    orderInLayer: 1
+    maskInteraction: 0
+  styleOverrides: []
+  usePooledResources: 1
+  freeResourcesOnDisable: 0
 --- !u!1 &6311617695765961343
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +608,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3548005674961331679}
   - component: {fileID: 4220822821930777276}
-  - component: {fileID: -2937970897869277525}
   - component: {fileID: 3740709693660902676}
   m_Layer: 5
   m_Name: ShopSwitchUI
@@ -513,18 +645,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Switch: {fileID: 926946517171508947}
---- !u!114 &-2937970897869277525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8326167668762068265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ed15fb6dbc1ee4480a59b4cff5e689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3740709693660902676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +686,7 @@ Transform:
   m_GameObject: {fileID: 9173571165282886043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.78125, y: 0, z: 0}
+  m_LocalPosition: {x: -0.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -621,7 +741,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34375, y: 0.65625}
+  m_Size: {x: 0, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -639,5 +759,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290fc7783acc38e4c8500c488c65dc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelSize: 32
+  pixelSize: 16
   snapSpriteSize: 1

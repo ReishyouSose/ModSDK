@@ -22,12 +22,12 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Localization/Localization.csv
-      guid: 9ac3d70f498b8974da4019aa30b1fe9f
     - path: Scripts/Scripts/Zone.cs
       guid: 4003bdc4263dd8e47925a71183d9e63c
     - path: Scripts/Scripts/UIZoneSlot.cs
       guid: 2880cae3cda6d434eaac5c8dfc530330
+    - path: Scripts/Scripts/UIZonePanel.cs
+      guid: 03ca40d02d27dc64188ac2b16ca3b47b
     - path: Scripts/Scripts/UIShopSlot.cs
       guid: 76a362882323aab4d871647c0ed4a7fa
     - path: Scripts/Scripts/ShopSwitchUI.cs
@@ -42,6 +42,8 @@ MonoBehaviour:
       guid: cf2a5d10b535c1c4e8856317937ece4a
     - path: Scripts/Scripts/PointShopSystem.cs
       guid: 3ce997709d1b34f46b52db2872c43520
+    - path: Scripts/Scripts/GridLayoutUIComponent.cs
+      guid: 713140ae1f3da6c41b1fc31b7a98c5f7
     - path: Scripts/Scripts/DropPointSystem.cs
       guid: 535262b2d6cf2404d9fc27ee427dc786
     - path: Scripts/PointShop.cs
@@ -67,8 +69,6 @@ MonoBehaviour:
     dependencies:
     - modName: CoreLib
       required: 1
-    - modName: GeneralConfigMenu
-      required: 1
   modPath: Assets\PointShop
   forceReimport: 1
   buildBundles: 1
@@ -79,14 +79,12 @@ MonoBehaviour:
     hash: D9855ADBB7AF374B53ED3F699E7A6172FD85257E978B78FDF9CC0C5086620030
   - path: Assets/PointShop/Data/PointShop.asset
     hash: A3AFE1B12465EB8CB988A7F2D46F7AD731E3CB566D72205B836993B05DBE2538
-  - path: Assets/PointShop/Data/TextDataBlock/ControlMapper/New Data Block.asset
-    hash: 8BDBDADFB4FAF1BC8481BDA56486B927359FC83F280F4B331DAA922B83419B49
   - path: Assets/PointShop/Data/TextDataBlock/ControlMapper/PointShop_Open.asset
     hash: C9550233ACAE58BA952A9CA0A9FCB79F9825CBD12C2343E5056FA480DC296477
   - path: Assets/PointShop/Data/TextDataBlock/ControlMapper/PointShop_Scale.asset
     hash: 8489D8DF932CD96BBBBDC8D823E83B6B82BFA789850B8BF3DD15EB2C5FB6B517
-  - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/AlienBiome.asset
-    hash: 4BB40B1DFE6CC8464BB2CA430F6DFE230CC9770601B5DA5768DCD81B29C6862E
+  - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/Environment_AlienBiome.asset
+    hash: 91C599FEC73E78172E81B00D70E1CE4DFE4F635862E27F044BB7E9655EB9BA16
   - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/Environment_LarvaHiveBiome.asset
     hash: D9B49F8453C2E564BF72A7A6FD737AC0B934260D6BF568C6892FEDADC21405FE
   - path: Assets/PointShop/Data/TextDataBlock/ItemCategory/Environment_NoneBiome.asset
@@ -99,16 +97,14 @@ MonoBehaviour:
     hash: 52871EAAE0401AD3CC0A513F14ED6D8B7D55E50D7BB08F211945814AE501C874
   - path: Assets/PointShop/Data/TextDataBlock/PointShop_Config/General.asset
     hash: C5344A22BF2DDC44CD05FF56CA68CF73C6A87213657D0BEE1F531911A4A38D72
-  - path: Assets/PointShop/Data/TextDataBlock/PointSHop_Config_General/ShowSwitch.asset
-    hash: E3115C4306D773399D7FCE51E729E96EEF252D643B085BD9573F76E3EA2D3AE6
-  - path: Assets/PointShop/Localization/Localization.csv
-    hash: 96118D3FBFAA257D9719AC00BC3669AC06B0B3EF5978D02B675436CBDCA951FF
+  - path: Assets/PointShop/Data/TextDataBlock/PointShop_Config_General/ShowSwitch.asset
+    hash: 6B2E57FFCB97D9380DCEFAF48ABD0B3EFCA7BC2FAC85FF0FDADFD5192DC24F4A
   - path: Assets/PointShop/PointShopUI.prefab
-    hash: 3EC96BA2FF153AF6E0C1A2B25E8D16FDD5E2507985372C664C387342136399DB
+    hash: C9C813BAFBD1C719C7B352A4F4407D93FF3412B43EBEA8033458AC340011B9D8
   - path: Assets/PointShop/ShopCoin.png
-    hash: 0B270A4F8B7C8EBA570B767696535DCAB93041D896734897299F831A5FE7899B
+    hash: 0FE4C4F244035EBCD393B517FC32497099665A8C80AD2209D2FA0B4E78134E00
   - path: Assets/PointShop/ShopCoin_Small.png
-    hash: C2DED93927AAF91568E4F975E480DD96EA76621B4E8D33EEA8727D0840843626
+    hash: 37C2255B4772D83700A898ED389D097860A214B49E645ADA57F263A49A38F8FA
   - path: Assets/PointShop/ShopSwitchUI.prefab
-    hash: 9D07148542D543CB1CD6ED981C48DEA8338C47043B58C12AE9E918308D8906CD
+    hash: E90FBCA458E944DE0C924B5EB118400F1E5CAEA6D857264F8A4DCF8CDD5B21FF
   lastBuildLinux: 1

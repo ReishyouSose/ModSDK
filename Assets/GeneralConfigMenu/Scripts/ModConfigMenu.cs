@@ -73,7 +73,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         public bool IsBottomElementSelected()
         {
             int index = currentContent.childCount - 1;
-            if (index <= 0)
+            if (index < 0)
                 return false;
             return currentContent.GetChild(index) == Manager.ui.currentSelectedUIElement;
         }

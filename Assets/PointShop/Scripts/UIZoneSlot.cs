@@ -13,34 +13,41 @@ namespace Assets.PointShop.Scripts
         [HideInInspector]
         public ObjectID Boss;
 
+        [HideInInspector]
+        public Transform Page;
+
         public GameObject WarnBorder;
         public SpriteRenderer Icon;
+        public SpriteRenderer Selected;
         public override void OnLeftClicked(bool mod1, bool mod2)
         {
             base.OnLeftClicked(mod1, mod2);
             PointShopUI.Ins.OnClickZoneSlot(this);
         }
-        public override List<TextAndFormatFields> GetHoverDescription()
+        public override TextAndFormatFields GetHoverTitle()
+        {
+            return new()
+            {
+                text = $"ItemCategory/Environment_{Zone}Biome",
+                color = Color.white,
+            };
+        }
+        public override List<TextAndFormatFields> GetHoverStats(bool previewReinforced)
         {
             var list = new List<TextAndFormatFields>()
             {
                 new()
                 {
-                    text = $"ItemCategory/Environment_{Zone}Biome",
-                    color = Color.white,
-                },
-                new()
-                {
                     text = "PointShop/NeedDefeat",
-                    color = Color.white,
+                    color = Color.cyan,
                 }
             };
             if (Zone != Zone.None)
             {
                 list.Add(new()
                 {
-                    text = "Names/" + (Zone == Zone.Clay ? "LarvaBoss" : Boss),
-                    color = Color.white,
+                    text = "Names/" + Boss,
+                    color = Color.cyan,
                 });
             }
             return list;

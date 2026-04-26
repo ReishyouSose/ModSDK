@@ -42,5 +42,9 @@ namespace Assets.PointShop.Scripts
             else if (!active && !ui.isAnyInventoryShowing)
                 ShowUI();
         }
+        private void LateUpdate()
+        {
+            Switch.transform.localScale = Manager.ui.CalcGameplayUITargetScaleMultiplier();
+        }
     }
 }

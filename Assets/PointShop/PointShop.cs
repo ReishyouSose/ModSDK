@@ -14,7 +14,6 @@ namespace Assets.PointShop
         private const string UIName = "PointShop_PointShopMenu";
         private const string Open = "PointShop_Open";
         public static ObjectID Coin { get; private set; }
-        public static bool IsScale { get; private set; }
         public static ConfigEntry<bool> ShowSwitch { get; private set; }
         public void EarlyInit()
         {
@@ -47,7 +46,6 @@ namespace Assets.PointShop
             var player = Manager.main.player;
             if (player == null)
                 return;
-            IsScale = Input.GetKey(KeyCode.LeftControl);
             var p = player.inputModule.rewiredPlayer;
             if (p.GetButtonDown(Open))
                 OpenShop();

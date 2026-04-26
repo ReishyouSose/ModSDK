@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: AlienBiome
+  m_Name: Environment_AlienBiome
   m_EditorClassIdentifier: 
   m_overload:
     m_address:

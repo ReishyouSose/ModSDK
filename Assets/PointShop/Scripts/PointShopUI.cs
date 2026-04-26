@@ -1,11 +1,11 @@
 ﻿using CoreLib.Submodule.UserInterface.Interface;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {
     [RequireComponent(typeof(ShopInfo))]
-    public class PointShopUI : MonoBehaviour, IModUI
+    [RequireComponent(typeof(UIScrollWindow))]
+    public class PointShopUI : UIelement, IModUI, IScrollable
     {
         internal static PointShopUI Ins { get; private set; }
         public GameObject Root => gameObject;
@@ -14,33 +14,26 @@ namespace Assets.PointShop.Scripts
 
         public bool ShouldPlayerCraftingShow => false;
         public UIScrollWindow ZonePanel;
-        public UIScrollWindow ShopPanel;
         public UIZoneSlot ZoneTemplate;
         public UIShopSlot ShopSlotTemplate;
         public Transform EmptryPage;
         public Transform PageContainer;
         public PugText Header;
         public PugText PointValue;
-        public PugText ScaleTip;
 
-        [HideInInspector]
-        public UIZoneSlot CurrentZoneSlot;
-
-        [HideInInspector]
-        public UIShopSlot CurrentShopSlot;
-
+        private UIZoneSlot current;
         private ShopInfo info;
-        private Zone currentZone;
-        private Dictionary<Zone, Transform> shops;
-        public void Awake()
+        private GridLayoutUIComponent layout;
+        private UIScrollWindow scroll;
+        private void Awake()
         {
             Ins = this;
             info = GetComponent<ShopInfo>();
+            scroll = GetComponent<UIScrollWindow>();
             ZoneTemplate.gameObject.SetActive(false);
             ShopSlotTemplate.gameObject.SetActive(false);
-            ShopPanel.gameObject.SetActive(false);
+            EmptryPage.gameObject.SetActive(false);
             info.Init();
-            shops = new();
             int max = (int)Zone.MAX;
             var page = ZonePanel.scrollingContent.GetChild(0);
             for (int i = 0; i < max; i++)
@@ -51,11 +44,8 @@ namespace Assets.PointShop.Scripts
                 slot.Boss = info.GetBoss(zone);
                 slot.Icon.sprite = SelectZoneIcon(zone);
                 slot.gameObject.SetActive(true);
-                shops[zone] = RegisterShop(zone);
-
+                slot.Page = RegisterShop(zone);
             }
-            Header.Render($"ItemCategory/Environment_{currentZone}Biome", false, true);
-            shops[currentZone].gameObject.SetActive(true);
             ZonePanel.gameObject.SetActive(true);
             HideUI();
         }
@@ -69,12 +59,21 @@ namespace Assets.PointShop.Scripts
         {
             Manager.ui.HideAllInventoryAndCraftingUI();
             Root.SetActive(true);
+            var layout = ZonePanel.scrollingContent.GetComponentInChildren<LinearLayoutUIComponent>();
+            layout.RenderUIComponent(true);
+            ZonePanel.ResetScroll();
+            if (!current)
+            {
+                OnClickZoneSlot(layout.transform.GetChild(0).GetComponent<UIZoneSlot>());
+            }
         }
         private Transform RegisterShop(Zone zone)
         {
             var page = Instantiate(EmptryPage, PageContainer);
+            page.gameObject.SetActive(false);
             var contents = page.GetChild(0);
             var items = info.GetShop(zone);
+            items.Sort((x, y) => PugDatabase.GetObjectInfo(x.Item.objectID).rarity.CompareTo(PugDatabase.GetObjectInfo(y.Item.objectID).rarity));
             var boss = info.GetBoss(zone);
             for (int i = 0; i < items.Count; i++)
             {
@@ -89,20 +88,25 @@ namespace Assets.PointShop.Scripts
         }
         public void OnClickZoneSlot(UIZoneSlot slot)
         {
-            CurrentZoneSlot = slot;
-            currentZone = slot.Zone;
-            foreach (var (_, shop) in shops)
+            if (current)
             {
-                shop.gameObject.SetActive(false);
+                current.Selected.gameObject.SetActive(false);
+                current.Page.gameObject.SetActive(false);
             }
-            shops[currentZone].gameObject.SetActive(true);
-            Header.Render($"ItemCategory/Environment_{currentZone}Biome", false, true);
+            current = slot;
+            current.Selected.gameObject.SetActive(true);
+            var page = current.Page;
+            page.gameObject.SetActive(true);
+            scroll.scrollingContent = page;
+            layout = page.GetComponentInChildren<GridLayoutUIComponent>();
+            layout.RenderUIComponent(true);
+            Header.Render($"ItemCategory/Environment_{slot.Zone}Biome", false, true);
             AudioManager.Sfx(SfxTableID.inventorySFXCreativeModeCategory, Manager.main.player.transform.position);
+            scroll.ResetScroll();
         }
         private void Update()
         {
             PointValue.Render(Manager.main.player.playerInventoryHandler.GetExistingAmountOfObject(PointShop.Coin).ToString(), false, true);
-            ScaleTip.SetTempColor(Input.GetKey(KeyCode.LeftControl) ? Color.yellow : Color.white);
         }
         private static Sprite SelectZoneIcon(Zone zone)
         {
@@ -128,6 +132,32 @@ namespace Assets.PointShop.Scripts
             ObjectInfo info = PugDatabase.GetObjectInfo(id);
             return info.smallIcon;
             //slot.Icon.transform.localPosition = info.iconOffset;
+        }
+
+        public void UpdateContainingElements(float scroll)
+        {
+
+        }
+
+        public bool IsBottomElementSelected()
+        {
+            return false;
+        }
+
+        public bool IsTopElementSelected()
+        {
+            return false;
+        }
+
+        public float GetCurrentWindowHeight()
+        {
+            if (layout)
+                return layout.GetUIComponentRenderHeight();
+            return 0;
+        }
+        public void WarnNotDefeat()
+        {
+            current.WarnNotDefeat();
         }
     }
 }

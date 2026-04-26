@@ -54,10 +54,10 @@ namespace Assets.PointShop.Scripts
                 switch (failure.Reason)
                 {
                     case 0:
-                        shop.CurrentZoneSlot.WarnNotDefeat();
+                        shop.WarnNotDefeat();
                         break;
                     case 1:
-                        shop.CurrentShopSlot.WarnNotEnough();
+                        //shop.CurrentShopSlot.WarnNotEnough();
                         break;
                 }
             }
