@@ -16,7 +16,7 @@ namespace Assets.CoreFighter.Scripts.Cores
         private int count;
         public static bool ATKSpeedModifierIsEnable => ins.EnableATKSpeedModifier.Value;
 
-        public override string FilePath => "CoreFighter/Switch";
+        public override string FilePath => "CoreFighter/Config";
 
         public override void Init(ConfigFile file)
         {

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: GCM_HorizenScroll
+  m_Name: OreOnly
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: 5473068115444469638
-    m_high: -948706389169954056
+    m_low: 2316191186722984513
+    m_high: -554042762967365333
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,7 +54,7 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u6A2A\u5411\u6EDA\u52A8\uFF08\u6309\u4F4F\uFF09\uFF08\u672A\u5B9E\u88C5\uFF09"
+      title: "\u4EC5\u77FF\u77F3"
       description: 
     - m_language:
         m_address:
@@ -66,7 +66,7 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Horizon Scroll (Hold on) (Not implemented)
+      title: Ore Ony
       description: 
     - m_language:
         m_address:
@@ -134,10 +134,10 @@ MonoBehaviour:
       m_address:
         m_low: 681352171529052915
         m_high: 2314507893210082619
-    title: Horizon Scroll (Hold on) (Not implemented)
+    title: Ore Ony
     description: 
   m_shouldBeLocalized: 1
-  m_header: ControlMapper
+  m_header: CoreEnhance_Misc_ChainMiningTarget
   references:
     version: 2
     RefIds: []

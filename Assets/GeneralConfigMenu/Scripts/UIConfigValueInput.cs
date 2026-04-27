@@ -13,7 +13,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             input.onInputFieldDone.AddListener(OnTextChange);
             input.pugText.Render(Entry.GetSerializedValue());
         }
-        protected override void ReceiveValue_Inner(string value)
+        protected override void UpdateDisplayValue(string value)
         {
             input.pugText.Render(Entry.GetSerializedValue());
         }

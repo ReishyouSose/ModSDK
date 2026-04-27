@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using I2.Loc;
+using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
@@ -19,7 +20,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         {
             button = GetComponent<ButtonUIElement>();
             var def = Entry.Definition;
-            path = MiscHelper.GetLocalKey(Entry.ConfigFile.ConfigFilePath, def.Section, def.Key, "")[..^1];
+            path = MiscHelper.GetLocalKey(Entry.ConfigFile.ConfigFilePath, def.Section, def.Key, "");
             FindIndex(Entry.GetSerializedValue());
         }
         private void Update()
@@ -35,12 +36,17 @@ namespace Assets.GeneralConfigMenu.Scripts
         private void SetState(bool visualOnly)
         {
             var value = accepts[index];
-            string key = $"{path}/{value}";
+            string key = path + value;
             Text.SetText(key, value);
             if (!visualOnly)
             {
                 SetValue(value);
             }
+        }
+        public bool TryLocalizeServerValue(string value, out string key)
+        {
+            key = path + value;
+            return LocalizationManager.TryGetTranslation(path + value, out _);
         }
 
         public void SwitchIndex(int offset)
@@ -71,7 +77,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             RightActive.SetActive(!end);
             RightInactive.SetActive(end);
         }
-        protected override void ReceiveValue_Inner(string value)
+        protected override void UpdateDisplayValue(string value)
         {
             FindIndex(value);
         }

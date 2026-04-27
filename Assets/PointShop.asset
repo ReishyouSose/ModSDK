@@ -30,6 +30,8 @@ MonoBehaviour:
       guid: 03ca40d02d27dc64188ac2b16ca3b47b
     - path: Scripts/Scripts/UIShopSlot.cs
       guid: 76a362882323aab4d871647c0ed4a7fa
+    - path: Scripts/Scripts/UILocator.cs
+      guid: 328559547f033e14497084cd6e548f67
     - path: Scripts/Scripts/ShopSwitchUI.cs
       guid: 86846664b9d06c54e97d8a98b55b33e2
     - path: Scripts/Scripts/ShopSwitch.cs
@@ -100,11 +102,11 @@ MonoBehaviour:
   - path: Assets/PointShop/Data/TextDataBlock/PointShop_Config_General/ShowSwitch.asset
     hash: 6B2E57FFCB97D9380DCEFAF48ABD0B3EFCA7BC2FAC85FF0FDADFD5192DC24F4A
   - path: Assets/PointShop/PointShopUI.prefab
-    hash: C9C813BAFBD1C719C7B352A4F4407D93FF3412B43EBEA8033458AC340011B9D8
+    hash: A2CC17062CA8517052F2D4AC113745A4086F80FDCA53AFC250502C486888EB0E
   - path: Assets/PointShop/ShopCoin.png
     hash: 0FE4C4F244035EBCD393B517FC32497099665A8C80AD2209D2FA0B4E78134E00
   - path: Assets/PointShop/ShopCoin_Small.png
     hash: 37C2255B4772D83700A898ED389D097860A214B49E645ADA57F263A49A38F8FA
   - path: Assets/PointShop/ShopSwitchUI.prefab
-    hash: E90FBCA458E944DE0C924B5EB118400F1E5CAEA6D857264F8A4DCF8CDD5B21FF
+    hash: 2F1C8372E6E76130EC41E79E8AB829795F2949D05DEE29C5A167A23F35A21BE6
   lastBuildLinux: 1

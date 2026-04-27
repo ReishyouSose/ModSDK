@@ -54,6 +54,24 @@ MonoBehaviour:
       guid: 494e85f63e42c164695515f83f75d5ea
     - path: Scripts/CoreFighter.cs
       guid: f1953cd101ab25b4dbdfb765567208e9
+    - path: Scripts/Generated/AttackSpeed__System_18673404450.g.cs
+      guid: 
+    - path: Scripts/Generated/BlockExplosion__System_19600624410.g.cs
+      guid: 
+    - path: Scripts/Generated/EnableAllPreset__System_6905346110.g.cs
+      guid: 
+    - path: Scripts/Generated/InfinityExplosive__System_7750533610.g.cs
+      guid: 
+    - path: Scripts/Generated/InfinityStats__System_8616747950.g.cs
+      guid: 
+    - path: Scripts/Generated/NoRecoil__System_14998245410.g.cs
+      guid: 
+    - path: Scripts/Generated/SkipPushBack__System_10766348370.g.cs
+      guid: 
+    - path: Scripts/Generated/TeleportInvincible__System_4900365960.g.cs
+      guid: 
+    - path: Scripts/Generated/Vampire__System_21288102240.g.cs
+      guid: 
     - path: Bundles/CoreFighter_Windows.assetbundle
       guid: 
     - path: Bundles/CoreFighter_Windows.assetbundle.manifest
@@ -78,7 +96,7 @@ MonoBehaviour:
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/AttackSpeed.asset
     hash: FEAF4402A86B2D465C2141E510BD902794E7C65F429DFE941E43C2910371B0FB
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/Config.asset
-    hash: 6A8E23E2CDDC22603212661CE27D6D78F7C4CDBE23B4153219E21FBD9AAF1A4D
+    hash: 84C1834E24AA794A9A7CEA4170DB6318A53F162E78F79CA2FC540B7E6F1BE2EA
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/PressShift.asset
     hash: FA399E8D05D88ACCC7D8C70CEA32314456EEE445601EBB791538D047829B5E72
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_AttackSpeed/Beam.asset
@@ -136,7 +154,7 @@ MonoBehaviour:
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Config/Misc.asset
     hash: 7A15494C50A43805DF26C49FA3750FC1E92B1C8DB4E9A34DD67BA5ACCE2206DA
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Config_Equip/EnableAllPreset.asset
-    hash: F70B6A994BEEFC2CDA16A885E40E1F50CD9B781AF026CEC43F01B934725682C0
+    hash: 82C1E6DA48D4D579F68E4EBC735D7F52C60B5D86B3C9C896482CEC940EC5128A
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Config_Equip/EnableAllPresetValue.asset
     hash: A80841179A506CF41E3E167425CCEEE121E5611455FF5FF5DA9622CFBFDF8B56
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Config_Equip/NoRecoil.asset

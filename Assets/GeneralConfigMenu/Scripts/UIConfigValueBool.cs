@@ -24,7 +24,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         {
             SetState(state = !state, false);
         }
-        protected override void ReceiveValue_Inner(string value)
+        protected override void UpdateDisplayValue(string value)
         {
             SetState(bool.Parse(value), true);
         }

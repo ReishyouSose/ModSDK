@@ -127,7 +127,17 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         public void ReceiveValue(string value)
         {
-            ServerValue.formatFields[0] = value;
+            if (ValueBox is UIConfigValueList list)
+            {
+                list.TryLocalizeServerValue(value, out string key);
+                ServerValue.localizePlaceholders = true;
+                ServerValue.formatFields[0] = key;
+            }
+            else
+            {
+                ServerValue.localizePlaceholders = false;
+                ServerValue.formatFields[0] = value;
+            }
             ServerValue.Render();
             Debug.Log("Refresh");
             ValueBox.ReceiveValue(value);

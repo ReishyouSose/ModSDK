@@ -131,23 +131,38 @@ namespace Assets.PointShop.Scripts
             };
             ObjectInfo info = PugDatabase.GetObjectInfo(id);
             return info.smallIcon;
-            //slot.Icon.transform.localPosition = info.iconOffset;
         }
 
-        public void UpdateContainingElements(float scroll)
+        public void UpdateContainingElements(float _)
         {
+            if (!layout)
+                return;
+            Vector3 center = scroll.transform.position + (Vector3)scroll.windowLocalCenter;
+            Rect rect = new(center.x - scroll.windowWidth / 2f, center.y - scroll.windowHeight / 2f, scroll.windowWidth, scroll.windowHeight);
+            foreach (Transform trans in layout.transform)
+            {
+                if (trans.TryGetComponent<UIComponentMonoBehaviour>(out var ui) && trans.TryGetComponent<BoxCollider>(out var box))
+                {
+                    float width = ui.GetUIComponentRenderWidth();
+                    float height = ui.GetUIComponentRenderHeight();
 
+                    // 根据 Pivot 计算左下角
+                    float left = trans.position.x;
+                    float bottom = trans.position.y;
+
+                    if (ui.GetUIComponentPivotPosition() == UIComponentMonoBehaviour.PivotPosition.TopLeft)
+                        bottom -= height;
+                    else // MiddleLeft
+                        bottom -= height / 2f;
+
+                    box.enabled = new Rect(left, bottom, width, height).Overlaps(rect);
+                }
+            }
         }
 
-        public bool IsBottomElementSelected()
-        {
-            return false;
-        }
+        public bool IsBottomElementSelected() => layout ? layout.IsBottomElemntSelected() : false;
 
-        public bool IsTopElementSelected()
-        {
-            return false;
-        }
+        public bool IsTopElementSelected() => layout ? layout.IsTopElementSelected() : false;
 
         public float GetCurrentWindowHeight()
         {

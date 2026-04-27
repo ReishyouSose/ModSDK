@@ -25,10 +25,17 @@ namespace Assets.GeneralConfigMenu.Scripts
             {
                 Entry.SetSerializedValue(value);
                 Entry.ConfigFile.Save();
-                ReceiveValue_Inner(value);
+                UpdateDisplayValue(value);
             }
         }
-        protected abstract void ReceiveValue_Inner(string value);
+        public void ResetValue()
+        {
+            if (!Editable)
+                return;
+            SetValue(Entry.DefaultValue.ToString());
+            UpdateDisplayValue(Entry.GetSerializedValue());
+        }
+        protected abstract void UpdateDisplayValue(string value);
         public void SetValue(string value)
         {
             Entry.SetSerializedValue(value);

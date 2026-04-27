@@ -18,14 +18,15 @@ namespace Assets.GeneralConfigMenu.Scripts
         public PugText Title;
         public PugText TitleShadow;
         public GameObject FullBar;
+        public GameObject Reset;
 
         private Transform filePage;
         private Transform current;
         private Transform currentContent;
         private LinearLayoutUIComponent layout;
         private UIScrollWindow scroll;
-        private const string TITLE = "GeneralConfigMenu/Title";
-        internal static readonly NativeQueue<ConfigDataRPC> Receive = new (Allocator.Persistent);
+        private const string TITLE = "GeneralConfigMenu/ModConfig";
+        internal static readonly NativeQueue<ConfigDataRPC> Receive = new(Allocator.Persistent);
 
         protected override void Awake()
         {
@@ -33,6 +34,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             Instance = this;
             scroll = GetComponent<UIScrollWindow>();
             Template.gameObject.SetActive(false);
+            Reset.SetActive(false);
             filePage = Instantiate(EmptryPage, PageContainer);
             filePage.name = "File Page";
             var content = filePage.GetChild(0);
@@ -83,6 +85,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             TitleShadow.SetText(key, key);
             SetCurrent(view);
             Manager.menu.AttemptToPlayMenuSfx(SfxID.FIXME_menu_select, 0.6f, 0f, reuse: false);
+            Reset.SetActive(true);
         }
         public void SwitchToFile()
         {
@@ -92,6 +95,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             TitleShadow.Render(TITLE, false, true);
             SetCurrent(filePage);
             AudioManager.SfxUI(SfxID.FIXME_menu_select, 0.4f, false, 1f, 0f, true, true, 0f);
+            Reset.SetActive(false);
         }
         private UIConfigFile RegisterFile(ConfigFile configFile, string path, Transform content)
         {
@@ -256,6 +260,16 @@ namespace Assets.GeneralConfigMenu.Scripts
                 }
             }
             Debug.Log(data + " can't find config entry in UI");
+        }
+        public void ResetConfig()
+        {
+            foreach (Transform trans in currentContent)
+            {
+                if (trans.TryGetComponent<UIConfigEntry>(out var uc))
+                {
+                    uc.ValueBox.ResetValue();
+                }
+            }
         }
     }
 }

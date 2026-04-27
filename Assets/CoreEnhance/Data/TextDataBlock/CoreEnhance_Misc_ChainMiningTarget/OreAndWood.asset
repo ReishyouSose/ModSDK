@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: WoodOnly
+  m_Name: OreAndWood
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: 1541555974018437022
-    m_high: -5176849561882946184
+    m_low: 699336698509035061
+    m_high: -9077433248349128166
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,7 +54,7 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u4EC5\u6728\u5934"
+      title: "\u77FF\u77F3\u548C\u6728\u5934"
       description: 
     - m_language:
         m_address:
@@ -66,7 +66,7 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Wood Only
+      title: Ore and Wood
       description: 
     - m_language:
         m_address:
@@ -134,10 +134,10 @@ MonoBehaviour:
       m_address:
         m_low: 681352171529052915
         m_high: 2314507893210082619
-    title: Wood Only
+    title: Ore and Wood
     description: 
   m_shouldBeLocalized: 1
-  m_header: CoreEnhance_Value_Misc_ChainMiningTarget
+  m_header: CoreEnhance_Misc_ChainMiningTarget
   references:
     version: 2
     RefIds: []

@@ -93,14 +93,6 @@ MonoBehaviour:
     hash: 25192E936CE78C41607D1D31F1A7C4E92E70C31E9D1B56805DEA56506EA5D25E
   - path: Assets/GeneralConfigMenu/Data/GeneralConfigMenu.asset
     hash: E4155F97DAA513F63F9E853C9DE9F1CC2DD93D96A696ACE95147C9622F2967F6
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCM_HorizenScroll.asset
-    hash: 238F977C0172BA19629D7BFD90DC7AF0BF30465D9E61F9AB8749CE35BBE3D143
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCM_OpenMenu.asset
-    hash: 7E6F1C7968BE43BDED5A2BC68D9D59A785315119304EB3C3A64B7FCC8AC23608
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCMCategory.asset
-    hash: E1255544DBB1229EC72899EB5A19814DCD6B9F5FFC27FAA54F791B7C1DF4248D
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/ControlMapper/GCMDescription.asset
-    hash: A79B6659BCA3328A38D79F722EF947B78E930247A76FA48F856437654E86D46C
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Click.asset
     hash: 6381F1F0A8953476ACA5752B9C25CBB7F4E6F0EC3CF24D64164C76F09D151293
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Config.asset
@@ -110,7 +102,7 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/NeedReload.asset
     hash: 123C900A52A7FA37AC5A8CF9B97361D6848868F957FE939278DBF4EE2E5894D2
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Reset.asset
-    hash: 7DEB0C50E07148B9B2D1BD85FA406F241CA1A279E94DB6AA428A4D5283A72E56
+    hash: B3044313E415C37E816A82E8B66793567CE5CE6BB24D6BD5550845D64C7A3955
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/Section.asset
     hash: C7892D4D320EE1E3907C287745660AE4F2FB4FCDE13C36AB5A93089AE4312A5D
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu/ServerValue.asset
@@ -123,14 +115,6 @@ MonoBehaviour:
     hash: EC8F7BDE8BD0F2821C85AC5E9521FF602AE53A6AD30D2825C366D7DD36208DE6
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_AccessLevel/ViewOnly.asset
     hash: C7808004FEBE3D2EC71FB0952ED8AF74E894E808B393B66B048BE0DAA5BEA89B
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/Client.asset
-    hash: 94B3DC94556796DC919B92EEC95277127C305F9915D9D4452E1FBA3AD4057791
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/CtoS.asset
-    hash: C9E670C3DC5781DAD7F5AF0E7A7CF16FB3E9467FD47B19A06D81EAD715AEB0D3
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/Server.asset
-    hash: 1FC633F12AC59659F52CD1026CF892B38E48FA13F1CC82F74E21919ECB9F6FAF
-  - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Changer/StoC.asset
-    hash: E46DBDD10A5D74022A0AE795B6AC846BB3B4607C866B3418F2AD2580F4D42908
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config/Manual.asset
     hash: A36CE7C3BA7EDF8BCB08964F023FD6B0564E9B9D23BAA50ED96E546233462A76
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config/Sync.asset
@@ -138,13 +122,13 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AdminOnly.asset
     hash: 1110A60C3387CB9F4E4C418B3102ED3E15B996216C91BCFFD4EE6268BFFCE374
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Manual/AutoSave.asset
-    hash: B21CF5CCD4E07D66CAFB257C3E1847F390B5E16073AA980908C87ACF31FE7E8A
+    hash: 7E834F68730D73E529ECA447E9E799314C033B62D842CB49E29BEA5AB20F0B4F
   - path: Assets/GeneralConfigMenu/Data/TextDataBlock/GeneralConfigMenu_Config_Sync/ChangeClientWhenSync.asset
-    hash: 96DDCEE4C2601CDD0B2EFB24C1D03BF09F28ABFC36D046C01E09B7E1489E4DD7
+    hash: 45CAD767A257550CFD7C7C8A04BCD825AAFBD4E2A628DDCFE278CFA5544B07DE
   - path: Assets/GeneralConfigMenu/Mask.png
     hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
   - path: Assets/GeneralConfigMenu/ModConfigMenu.prefab
-    hash: 3284E5ABFE4F7DDC6536AEDFBBC02A0620BFA961249CEABD89A6F66AE28FD91E
+    hash: 197C05CB3EBC9F5708D22EF6696CAF156DCD499E7932A42095B94B526FB47545
   - path: Assets/GeneralConfigMenu/SelectNo.png
     hash: 7B818002D2A2B9257727470A2BD4FF03D6B74D0C5611B277C667DD058D7F2682
   - path: Assets/GeneralConfigMenu/SelectYes.png

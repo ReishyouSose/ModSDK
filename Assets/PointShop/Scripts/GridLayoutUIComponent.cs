@@ -1,10 +1,14 @@
-﻿namespace Assets.PointShop.Scripts
-{
-    using PimDeWitte.UnityMainThreadDispatcher;
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
+﻿using PimDeWitte.UnityMainThreadDispatcher;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
+namespace Assets.PointShop.Scripts
+{
+
+    /// <summary>
+    /// Please add script <see cref="UILocator"/> at template prefab 
+    /// </summary>
     public class GridLayoutUIComponent : UIComponentMonoBehaviour
     {
         [Header("Layout Settings")]
@@ -25,6 +29,8 @@
 
         private float totalWidth;
         private float totalHeight;
+        private int totalRow;
+        private int totalCol;
         public override void RenderUIComponent(bool force = false)
         {
             if (!(Dirty || force))
@@ -100,6 +106,10 @@
             int itemsInCurrent = 0;
             totalWidth = 0f;
             totalHeight = 0f;
+            totalRow = 0;
+            totalCol = 0;
+            int row = 0;
+            int col = 0;
 
             for (int i = 0; i < children.Count; i++)
             {
@@ -111,12 +121,16 @@
                 {
                     currentY += maxLength + gapY;
                     currentX = startX;
+                    col = 0;
+                    totalRow = Math.Max(totalRow, ++row);
                     wrap = true;
                 }
                 else if (!horizontal && currentY + height > maxHeight)
                 {
                     currentX += maxLength + gapX;
                     currentY = startY;
+                    row = 0;
+                    totalCol = Math.Max(totalCol, ++col);
                     wrap = true;
                 }
                 if (wrap)
@@ -124,17 +138,23 @@
                     itemsInCurrent = 0;
                     maxLength = 0;
                 }
-
                 Vector3 pos = child.transform.localPosition;
                 pos.x = currentX;
                 pos.y = -currentY;
                 child.transform.localPosition = pos;
                 totalWidth = Math.Max(totalWidth, currentX + width);
                 totalHeight = Math.Max(totalHeight, currentY + height);
+                child.GetComponent<UILocator>().Locator = new(col, row);
                 if (horizontal)
+                {
                     currentX += width + gapX;
+                    totalCol = Math.Max(totalCol, ++col);
+                }
                 else
+                {
                     currentY += height + gapY;
+                    totalRow = Math.Max(totalRow, ++row);
+                }
                 maxLength = Math.Max(maxLength, horizontal ? height : width);
                 itemsInCurrent++;
             }
@@ -162,5 +182,7 @@
         {
             return totalHeight;
         }
+        public bool IsTopElementSelected() => Manager.ui.currentSelectedUIElement.GetComponent<UILocator>().Locator.y == 0;
+        public bool IsBottomElemntSelected() => Manager.ui.currentSelectedUIElement.GetComponent<UILocator>().Locator.y == totalRow;
     }
 }
