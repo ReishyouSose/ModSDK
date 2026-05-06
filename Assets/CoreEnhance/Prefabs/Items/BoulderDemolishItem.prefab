@@ -23,12 +23,10 @@ GameObject:
   - component: {fileID: -6691727819531983553}
   - component: {fileID: -920165231615529145}
   - component: {fileID: -594817060949312629}
-  - component: {fileID: 3870097452201049480}
   - component: {fileID: 378562440376048647}
   - component: {fileID: -1284326193051932072}
   - component: {fileID: 5301200751362321631}
   - component: {fileID: 2090431386909862538}
-  - component: {fileID: 7584448282590151990}
   m_Layer: 0
   m_Name: BoulderDemolishItem
   m_TagString: Untagged
@@ -60,7 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 318086258, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 318086258, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: CoreEnhance_BoulderDemolish
@@ -85,7 +83,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 244469479, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 244469479, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sellValue: 99
@@ -113,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1739311503, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 1739311503, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabTileSize: {x: 1, y: 1}
@@ -294,7 +292,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 793611198, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 793611198, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playFailedEffectOnZeroDamage: 0
@@ -307,7 +305,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1594252633, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 1594252633, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontCalculateHealthFromLevel: 0
@@ -330,7 +328,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 178800199, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 178800199, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playIdleAnimation: 1
@@ -343,7 +341,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1089278989, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: -1089278989, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
@@ -392,7 +390,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1798704345, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 1798704345, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-6691727819531983553
@@ -404,7 +402,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 282287656, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 282287656, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overrideTimeBeforeDestroy: 0
@@ -420,7 +418,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 775935493, guid: 8a9d2c58defc11e43be675b66a432bb8, type: 3}
+  m_Script: {fileID: 775935493, guid: f8b40f5d7f8d7c18ee25ec4e04143ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   orientationSupport: 0
@@ -434,24 +432,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 83705680, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 83705680, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3870097452201049480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9017784995729629170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 276b4b9264304dc2b5f1e3feb621bc98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSize: 16
-  maxFreeSize: 16
-  maxSize: 1024
 --- !u!114 &378562440376048647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,7 +444,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -818048808, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: -818048808, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   calculateReductionFromLevel: 0
@@ -480,7 +463,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1720707325, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: -1720707325, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: 2212
@@ -505,7 +488,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017784995729629170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 973679317, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 973679317, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2090431386909862538
@@ -520,17 +503,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02442d50b36105445b136bb429e130f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7584448282590151990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9017784995729629170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae7684ea6f84c868d0b30fa9ecd2b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bindToRootWorkbench: 0
-  amount: 1

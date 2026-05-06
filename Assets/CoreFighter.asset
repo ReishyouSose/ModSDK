@@ -44,6 +44,10 @@ MonoBehaviour:
       guid: 899538f472014a443b7fe5684af01d02
     - path: Scripts/Scripts/Patchs/CDDisplayPatch.cs
       guid: 312719feadd53e748a27126e39a28883
+    - path: Scripts/Scripts/Entities/ZenithStaffProjectile.cs
+      guid: 3d7d2f891ad986f41b250153486a3a87
+    - path: Scripts/Scripts/Cores/UseModProjectileID.cs
+      guid: 1050a71fbcef3da4d81f48c4f5708a98
     - path: Scripts/Scripts/Cores/FighterConfig.cs
       guid: 38148c37d664ad74c9569c7583269226
     - path: Scripts/Scripts/Cores/FigherCategory.cs
@@ -92,7 +96,7 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/CoreFighter/Data/CoreFighter.asset
-    hash: D06769CFC2E36367E37632B350DEF9AC83F942794F74AB7FFBFCD733AA0FBBC4
+    hash: 41CE3D9D4C62404FD649DC430A3A15E7FC4AD6D8B5A5452FCD53CA32ABD3F4A9
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/AttackSpeed.asset
     hash: FEAF4402A86B2D465C2141E510BD902794E7C65F429DFE941E43C2910371B0FB
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter/Config.asset
@@ -177,4 +181,12 @@ MonoBehaviour:
     hash: 3D44EA1CEEBDEEDB69B33EE1A8E876A14797F714749387FE0630CDDB3747C0D3
   - path: Assets/CoreFighter/Data/TextDataBlock/CoreFighter_Config_Misc/VampireValue.asset
     hash: 87B795C496AC0C7674DFE8018A0C5F7D557BD05DD4A4DB074F3E6680BC661B4B
+  - path: Assets/CoreFighter/Data/TextDataBlock/Items/CoreFighter_Zenith.asset
+    hash: 2EE406E78C6E24ED1B536AB82F673FD00A29045D38D64825A2B88FE66126281E
+  - path: Assets/CoreFighter/Prefabs/ZenithStaffEntity.prefab
+    hash: 1AABB4EBE0A9C4E6BA0BCA9C2536679C002FE8A0E5B38FE2F719DA51B319FB57
+  - path: Assets/CoreFighter/Prefabs/ZenithStaffProjectile.prefab
+    hash: 390C9FF8FEAB7303A8F601020A99600B5A7EAE8B14FABDD12C2BEE824901876F
+  - path: Assets/CoreFighter/Prefabs/ZenithStaffProjectileEntity.prefab
+    hash: D10F44017634BEA22237574B16041600EB84048F67C04364AC694B083E124FCA
   lastBuildLinux: 1

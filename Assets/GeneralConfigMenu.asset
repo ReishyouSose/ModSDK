@@ -87,6 +87,8 @@ MonoBehaviour:
   assets:
   - path: Assets/GeneralConfigMenu/32x32_map_border.png
     hash: 3056BB6DB71CC3E6CA831A1C1E62C1B0D94D9D7570F0CC81183F1E7BE232EEA9
+  - path: Assets/GeneralConfigMenu/ControlMappingMenu.prefab
+    hash: 0C355B9FEDFF602146BD66F4B7E98DFE8559DEC9A80ADB8BF921516829ED1049
   - path: Assets/GeneralConfigMenu/creative_ui.png
     hash: 6C9406F2E3C27357DD3E42773683F7E04B0E0F78F4063952F2E9824CD9651970
   - path: Assets/GeneralConfigMenu/cursor_placement.png
@@ -128,7 +130,7 @@ MonoBehaviour:
   - path: Assets/GeneralConfigMenu/Mask.png
     hash: 568AAB0E8C0E94C17349B58306BC1AC230EBF86E41A007E54982A513C3F3C3F1
   - path: Assets/GeneralConfigMenu/ModConfigMenu.prefab
-    hash: 197C05CB3EBC9F5708D22EF6696CAF156DCD499E7932A42095B94B526FB47545
+    hash: 5EFE311DC1D67269F633832C4DCE25D70AF48A0A6AE26181A2163ED28DDAE22B
   - path: Assets/GeneralConfigMenu/SelectNo.png
     hash: 7B818002D2A2B9257727470A2BD4FF03D6B74D0C5611B277C667DD058D7F2682
   - path: Assets/GeneralConfigMenu/SelectYes.png

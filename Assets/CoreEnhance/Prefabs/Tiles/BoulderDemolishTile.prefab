@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3387145894542885207}
   - component: {fileID: -3135504866141350482}
-  - component: {fileID: 6299938780762936072}
   m_Layer: 0
   m_Name: BoulderDemolishTile
   m_TagString: Untagged
@@ -81,21 +80,6 @@ MonoBehaviour:
   hasDisableableParticles: 0
   previousHealth: 0
   m_spriteObjectOrientationHash: 0
---- !u!114 &6299938780762936072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3119720859391394627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 276b4b9264304dc2b5f1e3feb621bc98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSize: 16
-  maxFreeSize: 16
-  maxSize: 1024
 --- !u!1 &4272263892007999533
 GameObject:
   m_ObjectHideFlags: 0

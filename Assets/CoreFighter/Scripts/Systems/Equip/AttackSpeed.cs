@@ -101,7 +101,11 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
             {
                 if (cd.cooldown == 0)
                     return;
-                ObjectType type = authoringData.GetComponent<EntityMonoBehaviourData>().objectInfo.objectType;
+                ObjectType type = ObjectType.NonUsable;
+                if (authoringData.TryGetComponent(out EntityMonoBehaviourData data))
+                    type = data.objectInfo.objectType;
+                else if (authoringData.TryGetComponent(out ObjectAuthoring obj))
+                    type = obj.objectType;
                 ItemType itemType = type switch
                 {
                     ObjectType.MiningPick or ObjectType.Sledge or ObjectType.Hoe

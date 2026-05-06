@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7015523024006160899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 318086258, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 318086258, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: PointShop_Currency
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7015523024006160899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 244469479, guid: 9a1db145e9314404d8da91bdc1557235, type: 3}
+  m_Script: {fileID: 244469479, guid: 3392f4c23e1d8662d749dabb2361ee02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sellValue: 1

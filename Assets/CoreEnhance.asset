@@ -60,6 +60,8 @@ MonoBehaviour:
       guid: 8a058387ff0ef5745b31bc2f98b5d58b
     - path: Scripts/Scripts/Patchs/PetUIPatch.cs
       guid: 465f6f7ab2527df4fb07f5fc463b0390
+    - path: Scripts/Scripts/Patchs/MemoryManagerPatch.cs
+      guid: 26575f8644c815d4bb2fa185f50d2101
     - path: Scripts/Scripts/Patchs/InventoryUtilityPatch.cs
       guid: 37581a3d496b7cf49b4aef069dee04b3
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
@@ -168,7 +170,7 @@ MonoBehaviour:
   - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhanceDescription.asset
     hash: FC9337874B2A7F0AB44D2C76D0F5D5E6B1C12441867345D8C653255C9A13215D
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance/Config.asset
-    hash: 69947C167AF4411E6AF0EA1AF07820717D51C2FAC8AAA3B243623C4EE8E319CE
+    hash: 3E80385311FB8BF06321477AAC24809320EA0F36AFB8F849E06006251B996C0B
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config/Accelerate.asset
     hash: 28AEE179472EFEAAFC32B84C61A99F75F6E715FC854009271E6B1EA8E8DBC9C1
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config/Automation.asset
@@ -261,18 +263,18 @@ MonoBehaviour:
     hash: 9925C62A83A4431D6396DF21655FB6D0E507614B3006393A668A0C64E3253FA2
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/TalentDisplay.asset
     hash: A1E25E9C3CDAFC66BAC189AF3E50832FB50DD4F12BB554313F950E43D9691E8A
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMiningTarget/OreAndWood.asset
-    hash: F579E23D2989EF101597C6C9884FBF0B7BD27DA405B88AB4F17A1A586696DFCE
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMiningTarget/OreOnly.asset
-    hash: 7B6CE6C858B99EFD6512B9F532F32B85A0A25BFBB5FA84192909BCBDF6E24754
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Value_Misc_ChainMiningTarget/WoodOnly.asset
-    hash: 0215061DFCB910BE7BB83AA92888A6ADA450D5B0E3D322DA0EF76B49BCE7A465
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Misc_ChainMiningTarget/OreAndWood.asset
+    hash: 417B552B4D9F97386259D8A9654E26A037EE1F057D1D4B0923276018C04BBB19
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Misc_ChainMiningTarget/OreOnly.asset
+    hash: 7609088830E9E2307EAF2071C07592961086761A7FDC12156D1D74565B2AE1E2
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Misc_ChainMiningTarget/WoodOnly.asset
+    hash: 82D9B52591BACD75C31980BBD474FEA9ED9B1654D6AF8C845EBC75D114491A07
   - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_BoulderDemolish.asset
     hash: 15A2BE7CDDEAEAB0E62254802D13F3EBDC37AAFCEDFE82C55E7387B448358D07
   - path: Assets/CoreEnhance/Prefabs/Items/BoulderDemolishItem.prefab
-    hash: D410A80805A8C9E56BCDAD5099C6622407DAD7035D68F0D26E2A49E26D5751C8
+    hash: 3B5C622C17D959BF391424676A32AF5FBAA82C23C6C23A082313B94DBFF849E1
   - path: Assets/CoreEnhance/Prefabs/Tiles/BoulderDemolishTile.prefab
-    hash: D5608E06F085D65BA77E023DC625A43BD166FE3CEA0B18841A1764E3A30501F9
+    hash: 63FC5212E1D0CB4B45A5D3BAC9DD810173EC77D8731BE66783D0BFE86C2E1BBF
   - path: Assets/CoreEnhance/Shaders/IconClipShader.shader
     hash: E6758C11B3E77F4469CC3E09BF359629BAAE60A2E05D5C7299A7ABB163857442
   - path: Assets/CoreEnhance/SpriteAssetManifest.asset

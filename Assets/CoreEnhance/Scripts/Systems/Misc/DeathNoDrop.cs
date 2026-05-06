@@ -11,23 +11,24 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
     [UpdateBefore(typeof(InitMoveInventorySystem))]
     public partial class DeathNoDropSystem : PugSimulationSystemBase
     {
-        protected override void OnUpdate()
+        private ComponentLookup<InitialMoveInventoryFromCD> moveLookup;
+        protected override void OnCreate()
         {
-            var ecb = CreateCommandBuffer();
-            Misc_DeathNoDrop(ecb);
-            base.OnUpdate();
+            moveLookup = SystemAPI.GetComponentLookup<InitialMoveInventoryFromCD>();
+            base.OnCreate();
         }
-        private void Misc_DeathNoDrop(EntityCommandBuffer ecb)
+        protected override void OnUpdate()
         {
             if (!EnhanceConfig.IsEnable(EnhanceCategory.DeathNoDrop))
                 return;
-            var lookup = SystemAPI.GetComponentLookup<InitialMoveInventoryFromCD>();
+            var ecb = CreateCommandBuffer();
+            var moveLookup = this.moveLookup;
             Entities.ForEach((Entity e) =>
             {
-                if (lookup.HasComponent(e))
+                if (moveLookup.HasComponent(e))
                 {
-                    lookup.SetComponentEnabled(e, false);
-                    lookup.GetRefRW(e).ValueRW.entityFrom = Entity.Null;
+                    moveLookup.SetComponentEnabled(e, false);
+                    moveLookup.GetRefRW(e).ValueRW.entityFrom = Entity.Null;
                     ecb.AddComponent<ProcessedTagCD>(e);
                 }
             })
@@ -36,6 +37,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 .WithNone<ProcessedTagCD>()
                 .WithBurst()
                 .Schedule();
+            base.OnUpdate();
         }
     }
 }
