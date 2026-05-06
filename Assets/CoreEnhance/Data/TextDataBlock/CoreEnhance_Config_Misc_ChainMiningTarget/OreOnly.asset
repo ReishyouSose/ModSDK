@@ -137,7 +137,7 @@ MonoBehaviour:
     title: Ore Ony
     description: 
   m_shouldBeLocalized: 1
-  m_header: CoreEnhance_Misc_ChainMiningTarget
+  m_header: CoreEnhance_Config_Misc_ChainMiningTarget
   references:
     version: 2
     RefIds: []

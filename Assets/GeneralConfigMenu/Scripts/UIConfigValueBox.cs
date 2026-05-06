@@ -36,6 +36,11 @@ namespace Assets.GeneralConfigMenu.Scripts
             UpdateDisplayValue(Entry.GetSerializedValue());
         }
         protected abstract void UpdateDisplayValue(string value);
+        public virtual bool TryLocalizeServerValue(string value, out string key)
+        {
+            key = string.Empty;
+            return false;
+        }
         public void SetValue(string value)
         {
             Entry.SetSerializedValue(value);

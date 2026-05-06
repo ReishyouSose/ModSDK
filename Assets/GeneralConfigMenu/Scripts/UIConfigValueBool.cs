@@ -35,5 +35,11 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (!visualOnly)
                 SetValue(state.ToString());
         }
+        public override bool TryLocalizeServerValue(string value, out string key)
+        {
+            var result = bool.TryParse(value, out var v) && v;
+            key =  result ? "on" : "off";
+            return true;
+        }
     }
 }

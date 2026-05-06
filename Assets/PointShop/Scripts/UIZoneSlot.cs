@@ -34,23 +34,23 @@ namespace Assets.PointShop.Scripts
         }
         public override List<TextAndFormatFields> GetHoverStats(bool previewReinforced)
         {
-            var list = new List<TextAndFormatFields>()
-            {
-                new()
-                {
-                    text = "PointShop/NeedDefeat",
-                    color = Color.cyan,
-                }
-            };
             if (Zone != Zone.None)
             {
-                list.Add(new()
+                return new List<TextAndFormatFields>()
                 {
-                    text = "Names/" + Boss,
-                    color = Color.cyan,
-                });
+                    new()
+                    {
+                        text = "PointShop/NeedDefeat",
+                        color = Color.cyan,
+                    },
+                    new()
+                    {
+                        text = "Names/" + (Boss == ObjectID.BossLarva ? "LarvaBoss" : Boss),
+                        color = Color.cyan,
+                    }
+                };
             }
-            return list;
+            return null;
         }
         public void WarnNotDefeat()
         {

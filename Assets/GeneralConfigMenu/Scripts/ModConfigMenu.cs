@@ -13,7 +13,7 @@ namespace Assets.GeneralConfigMenu.Scripts
     {
         internal static ModConfigMenu Instance { get; private set; }
         public Transform PageContainer;
-        public Transform EmptryPage;
+        public Transform EmptyPage;
         public ConfigTemplate Template;
         public PugText Title;
         public PugText TitleShadow;
@@ -34,8 +34,9 @@ namespace Assets.GeneralConfigMenu.Scripts
             Instance = this;
             scroll = GetComponent<UIScrollWindow>();
             Template.gameObject.SetActive(false);
+            EmptyPage.gameObject.SetActive(false);
             Reset.SetActive(false);
-            filePage = Instantiate(EmptryPage, PageContainer);
+            filePage = Instantiate(EmptyPage, PageContainer);
             filePage.name = "File Page";
             var content = filePage.GetChild(0);
             var list = ConfigFile.AllConfigFilesReadOnly.ToList();
@@ -108,7 +109,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         private Transform RegisterDetails(ConfigFile file, string path)
         {
-            var page = Instantiate(EmptryPage, PageContainer);
+            var page = Instantiate(EmptyPage, PageContainer);
             page.gameObject.SetActive(false);
             page.name = path;
             var content = page.GetChild(0);
@@ -138,7 +139,7 @@ namespace Assets.GeneralConfigMenu.Scripts
 
         private Transform RegisterCombinePage(CombindConfigPage combind, string path)
         {
-            var page = Instantiate(EmptryPage, PageContainer);
+            var page = Instantiate(EmptyPage, PageContainer);
             page.gameObject.SetActive(false);
             page.name = path;
             var content = page.GetChild(0);

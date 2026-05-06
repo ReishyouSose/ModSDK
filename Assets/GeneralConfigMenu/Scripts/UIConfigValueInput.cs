@@ -23,5 +23,6 @@ namespace Assets.GeneralConfigMenu.Scripts
             SetValue(input.GetInputText());
             input.pugText.Render(Entry.GetSerializedValue(), false, true);
         }
+
     }
 }

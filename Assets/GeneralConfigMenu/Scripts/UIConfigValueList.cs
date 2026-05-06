@@ -43,11 +43,6 @@ namespace Assets.GeneralConfigMenu.Scripts
                 SetValue(value);
             }
         }
-        public bool TryLocalizeServerValue(string value, out string key)
-        {
-            key = path + value;
-            return LocalizationManager.TryGetTranslation(path + value, out _);
-        }
 
         public void SwitchIndex(int offset)
         {
@@ -80,6 +75,11 @@ namespace Assets.GeneralConfigMenu.Scripts
         protected override void UpdateDisplayValue(string value)
         {
             FindIndex(value);
+        }
+        public override bool TryLocalizeServerValue(string value, out string key)
+        {
+            key = path + value;
+            return LocalizationManager.TryGetTranslation(key, out _);
         }
     }
 }
