@@ -7,10 +7,6 @@ namespace Assets.GeneralConfigMenu.Scripts
     public class UIConfigValueList : UIConfigValueBox
     {
         public PugText Text;
-        public GameObject LeftActive;
-        public GameObject LeftInactive;
-        public GameObject RightActive;
-        public GameObject RightInactive;
         private ButtonUIElement button;
         private string[] accepts;
         private int index;
@@ -19,8 +15,6 @@ namespace Assets.GeneralConfigMenu.Scripts
         private void Awake()
         {
             button = GetComponent<ButtonUIElement>();
-            var def = Entry.Definition;
-            path = MiscHelper.GetLocalKey(Entry.ConfigFile.ConfigFilePath, def.Section, def.Key, "");
             FindIndex(Entry.GetSerializedValue());
         }
         private void Update()
@@ -47,7 +41,6 @@ namespace Assets.GeneralConfigMenu.Scripts
         public void SwitchIndex(int offset)
         {
             index = (index + count + offset) % count;
-            CheckArrow();
             SetState(false);
         }
         private void FindIndex(string value)
@@ -60,17 +53,7 @@ namespace Assets.GeneralConfigMenu.Scripts
                     break;
                 }
             }
-            CheckArrow();
             SetState(true);
-        }
-        private void CheckArrow()
-        {
-            bool end = index == 0;
-            LeftActive.SetActive(!end);
-            LeftInactive.SetActive(end);
-            end = index == count - 1;
-            RightActive.SetActive(!end);
-            RightInactive.SetActive(end);
         }
         protected override void UpdateDisplayValue(string value)
         {
@@ -79,7 +62,14 @@ namespace Assets.GeneralConfigMenu.Scripts
         public override bool TryLocalizeServerValue(string value, out string key)
         {
             key = path + value;
-            return LocalizationManager.TryGetTranslation(key, out _);
+            bool result = LocalizationManager.TryGetTranslation(key, out _);
+            Debug.Log((key, result));
+            return result;
+        }
+        public override void Init()
+        {
+            var def = Entry.Definition;
+            path = MiscHelper.GetLocalKey(Entry.ConfigFile.ConfigFilePath, def.Section, def.Key, "");
         }
     }
 }

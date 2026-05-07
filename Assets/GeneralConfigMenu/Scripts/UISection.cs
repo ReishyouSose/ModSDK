@@ -18,6 +18,8 @@ namespace Assets.GeneralConfigMenu.Scripts
         {
             base.Awake();
             state = true;
+            Active.SetActive(true);
+            Inactive.SetActive(false);
             layout = GetComponentInParent<LinearLayoutUIComponent>();
         }
         public void SwitchExpandState()

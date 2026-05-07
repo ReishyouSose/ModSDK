@@ -13,12 +13,13 @@ namespace Assets.GeneralConfigMenu.Scripts
 
         [HideInInspector]
         public bool Editable;
-
         public void BindEntry(UIConfigEntry entry)
         {
             UEntry = entry;
             Entry = entry.Entry;
+            Init();
         }
+
         public void ReceiveValue(string value)
         {
             if (GeneralConfigMenuMod.config.ChangeClientWhenSync.Value)
@@ -60,5 +61,6 @@ namespace Assets.GeneralConfigMenu.Scripts
                 }
             }
         }
+        public virtual void Init() { }
     }
 }

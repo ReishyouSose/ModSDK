@@ -152,6 +152,7 @@ namespace Assets.GeneralConfigMenu.Scripts
                 datas.Add(data);
             }
             var sectionTemplate = Template.Section;
+            var icon = Template.Icon.sprite;
             foreach (var (section, datas) in contents)
             {
                 var newSection = Instantiate(sectionTemplate, content);
@@ -166,11 +167,14 @@ namespace Assets.GeneralConfigMenu.Scripts
                     var values = data.Values;
                     if (values == null)
                         continue;
+                    newEntry.Active.GetComponent<SpriteRenderer>().sprite = icon;
+                    newEntry.Active.transform.localEulerAngles = new(0, 0, -90);
                     foreach (var entry in data.Values.Values)
                     {
-                        newEntry = Instantiate(Template.Entry, content);
-                        newEntry.BindEntry(entry, Template, 2);
-                        newSection.Entries.Add(newEntry);
+                        UIConfigEntry additional = Instantiate(Template.Entry, content);
+                        additional.BindEntry(entry, Template, 2);
+                        newSection.Entries.Add(additional);
+                        newEntry.Additional.Add(additional);
                     }
                 }
             }

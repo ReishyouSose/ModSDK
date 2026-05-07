@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef61ecb41356dbc4db1133ad6be0ebf9, type: 3}
+  m_Name: TrophyKeeper_Steam
+  m_EditorClassIdentifier: 
+  fileId: 3721099336
+  modOwner: 76561198353976809
+  modName: TrophyKeeper
+  selectedPath: D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\TrophyKeeper
+  tags:
+  - Quality of Life
+  - Client
+  - Server
+  - Script

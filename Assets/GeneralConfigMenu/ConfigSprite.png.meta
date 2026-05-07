@@ -1,34 +1,7 @@
 fileFormatVersion: 2
-guid: 31d5ed9fba7eeef438acc56c555494af
+guid: f7303122f9866e2459ba729bb3612df0
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -1141794642423639089
-    second: cursor_placement_0
-  - first:
-      213: 1717445067194676092
-    second: cursor_placement_1
-  - first:
-      213: -5100630654406314080
-    second: cursor_placement_2
-  - first:
-      213: -4624169571055282286
-    second: cursor_placement_3
-  - first:
-      213: -8780791256494814599
-    second: cursor_placement_4
-  - first:
-      213: 5115045653283644700
-    second: cursor_placement_5
-  - first:
-      213: -6282396477565980532
-    second: cursor_placement_6
-  - first:
-      213: -653260716497698407
-    second: cursor_placement_7
-  - first:
-      213: 5809633629365385301
-    second: cursor_placement_8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -57,7 +30,7 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 4
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
@@ -84,8 +57,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 0
-  flipbookColumns: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -94,12 +67,12 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
-    textureCompression: 1
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,12 +80,12 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,25 +93,12 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -150,214 +110,203 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cursor_placement_0
+      name: Config_Admin
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 1
+        y: 18
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc315eb72d78720f0800000000000000
-      internalID: -1141794642423639089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cursor_placement_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c73b26f603795d710800000000000000
-      internalID: 1717445067194676092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cursor_placement_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a7b4a1b17be639b0800000000000000
-      internalID: -5100630654406314080
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cursor_placement_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29754186646a3dfb0800000000000000
-      internalID: -4624169571055282286
+      spriteID: b05096d7faa491340941cfbd68aeb48e
+      internalID: 379031158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cursor_placement_4
+      name: Config_Server
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
+        x: 18
+        y: 18
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97a45c5ffdc542680800000000000000
-      internalID: -8780791256494814599
+      spriteID: b5e009227c4ca77488a202fb5fb5f777
+      internalID: 1865322309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cursor_placement_5
+      name: Config_Client
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 35
+        y: 18
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c15a0e5cbea4cf640800000000000000
-      internalID: 5115045653283644700
+      spriteID: 9df044a1cf3764d4fbddf026a1fc6f4a
+      internalID: 1357314376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cursor_placement_6
+      name: Config_ViewOnly
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1
+        y: 1
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c80b38070b170d8a0800000000000000
-      internalID: -6282396477565980532
+      spriteID: 190c44aef2703e84e937d9535e6ffe3a
+      internalID: 1772954401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cursor_placement_7
+      name: Config_Reload
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 8
-      pivot: {x: 1, y: 0}
-      border: {x: 3, y: 3, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9910077e6d62fe6f0800000000000000
-      internalID: -653260716497698407
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cursor_placement_8
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
+        x: 18
+        y: 1
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 3, z: 3, w: 3}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 558bc715107ff9050800000000000000
-      internalID: 5809633629365385301
+      spriteID: 1458c91f4f18f4846b03a63dec53a469
+      internalID: -363231495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Config_Off
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cba979684ef8a242a15fabe0b6d2b0d
+      internalID: 427128472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Config_On
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e67326c4bf43ad4b9ce48523d2f2c31
+      internalID: -210242859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InputMarkBlinker
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 9
+        width: 2
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612606d2fca00954a84a091214c4e40b
+      internalID: -893602710
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
-    spriteID: 60fa32712bae118408de34440f965fee
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
     nameFileIdTable:
-      cursor_placement_0: -1141794642423639089
-      cursor_placement_1: 1717445067194676092
-      cursor_placement_2: -5100630654406314080
-      cursor_placement_3: -4624169571055282286
-      cursor_placement_4: -8780791256494814599
-      cursor_placement_5: 5115045653283644700
-      cursor_placement_6: -6282396477565980532
-      cursor_placement_7: -653260716497698407
-      cursor_placement_8: 5809633629365385301
+      Config_Admin: 379031158
+      Config_Client: 1357314376
+      Config_Off: 427128472
+      Config_On: -210242859
+      Config_Reload: -363231495
+      Config_Server: 1865322309
+      Config_ViewOnly: 1772954401
+      InputMarkBlinker: -893602710
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,45 @@
+﻿[h1]Function Introduction[/h1]
+Seems doesn't work on Linux Dedicated Server, Hasn't been tested in the new version. Can any Linux players test?
+Use "General Mod Config Menu" to real-time modification mod config in game! All functions have switches, and some functions have additional config.
+[h2]Infinity[/h2]
+[list]
+[*]Durability - Refills durability periodically
+[*]Boulder - Refills boulder health periodically, now can work ignore load area (maybe), thanks for Smartik1
+[*]Arena - Destroy the loot chest once the Arena is completed then stand in the Center of the Arena with enough Ancient Coins and it will regenerate a fresh Arena. (Cost configurable)
+[*]Summon - Allows your summoners to never disappear (You will need to recast upon teleporting)
+[/list]
+[h2]Accelerate[/h2]
+[list]
+[*]Merchant - Accelerated shop refresh (immediate restock or reduced cooldown after sold out)
+[*]Titan - Reduced Titan respawn cooldown
+[*]Crafting - No wait time for furnaces, sawmills, etc.
+[*]Casting - No cast time for material combining, scanning, etc.
+[*]Portal - Fully charged immediately when placed (way point requires proximity)
+[/list]
+[h2]Automation[/h2]
+[list]
+[*]Salvage - After the number of items in the salvage table reaches a certain level, it will automatically salvage into materials after a period of time and fall to the placed position.
+[*]Fishing Net - Automatic bait refill, and can get items
+[*]Golden plants extract Seeds, not gold ore
+[*]Auto Doors & Fence Gates
+[/list]
+[h2]Pets[/h2]
+[list]
+[*]Skill Display — When hovering the mouse, add skill count statistics to the description
+[*]Reset Skin — Right-click the "Reset Pet Talents" button to reset the pet's skin (200 Ancient Coins)
+[*]Reset Talents — While holding any modifier key (Shift/Ctrl/Alt)
+[*]Right-click the "Reset Pet Talents" button to reroll all of the pet's talents (200 Ancient Coins)
+[*]Left-click an individual talent to reroll it individually (100 Beast Booster)
+[/list]
+[h2]Miscellaneous[/h2]
+[list]
+[*]Keep Inventory on Death
+[*]Vein Miner (Chain mining)
+[*]Ore Boulder Demolisher - Directly blow up the ore boulder and drop the ore corresponding to the remaining health. (Drop from Core Commander)
+[*]Container Display - When holding keybind (default: Left Alt, customizable) and hovering over an item, it will highlight nearby containers containing the item you hover
+[*]Clear All Drop Items - Please bind the key bind in control mapping menu (Need Admin Privileges)
+[/list]
+[h2]Quick[/h2]
+[list]
+[*]Quick Unlock - Put the locked chest on the ground, prepare the key in your inventory and use the hot key (default Ctrl+O, customizable)
+[/list]

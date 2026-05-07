@@ -12,8 +12,7 @@ namespace Assets.GeneralConfigMenu.ConfigSync
     public partial class ConfigSyncClient : PugSimulationSystemBase
     {
         private NativeQueue<ConfigDataRPC> send;
-        private EntityArchetype dataArchetype, joinArchetype;
-        private bool joinSended;
+        private EntityArchetype dataArchetype;
 
         protected override void OnCreate()
         {

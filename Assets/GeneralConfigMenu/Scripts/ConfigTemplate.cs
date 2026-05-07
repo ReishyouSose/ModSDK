@@ -15,5 +15,6 @@ namespace Assets.GeneralConfigMenu.Scripts
         public Transform Client;
         public Transform ViewOnly;
         public Transform Reload;
+        public SpriteRenderer Icon;
     }
 }

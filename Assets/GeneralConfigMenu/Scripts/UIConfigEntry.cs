@@ -1,6 +1,7 @@
 ﻿using CoreLib.Data.Configuration;
 using I2.Loc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace Assets.GeneralConfigMenu.Scripts
         public SpriteRenderer Hover;
         public Transform Container;
         public PugText ServerValue;
+        public GameObject Active;
+        public GameObject Inactive;
 
         [HideInInspector]
         public UIConfigValueBox ValueBox;
@@ -21,7 +24,28 @@ namespace Assets.GeneralConfigMenu.Scripts
         [HideInInspector]
         public ConfigEntryBase Entry;
 
+        [HideInInspector]
+        public List<UIConfigEntry> Additional = new();
+
+        private LinearLayoutUIComponent layout;
         private ConfigScope scope;
+        private bool state;
+        protected override void Awake()
+        {
+            layout = GetComponentInParent<LinearLayoutUIComponent>();
+            if (Additional.Count > 0)
+            {
+                state = true;
+                showHoverTitle = true;
+            }
+            Inactive.SetActive(false);
+            base.Awake();
+        }
+        public override List<TextAndFormatFields> GetHoverDescription()
+        {
+            var result = base.GetHoverDescription();
+            return result;
+        }
         public void BindEntry(ConfigEntryBase entry, ConfigTemplate template, int hierarchy = 0)
         {
             Entry = entry;
@@ -145,6 +169,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (Manager.main.player == null)
             {
                 ServerValue.gameObject.SetActive(false);
+                return;
             }
             if (scope.accessLevel is ConfigAccessLevel.Admin or ConfigAccessLevel.Server)
             {
@@ -177,6 +202,23 @@ namespace Assets.GeneralConfigMenu.Scripts
             valueList.SetAccepts(accepts);
             box = valueList;
             return true;
+        }
+        public void SwitchExpandState()
+        {
+            if (Additional.Count == 0)
+                return;
+            state = !state;
+            Active.SetActive(state);
+            Inactive.SetActive(!state);
+            foreach (var entry in Additional)
+            {
+                entry.gameObject.SetActive(state);
+            }
+            layout.RenderUIComponent(true);
+            if (state)
+                Manager.menu.AttemptToPlayMenuSfx(SfxID.FIXME_menu_select, 0.6f, 0f, reuse: false);
+            else
+                AudioManager.SfxUI(SfxID.FIXME_menu_select, 0.4f, false, 1f, 0f, true, true, 0f);
         }
     }
 }

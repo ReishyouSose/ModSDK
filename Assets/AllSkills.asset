@@ -15,12 +15,25 @@ MonoBehaviour:
   metadata:
     guid: 37cfa656fa9e4568b606660a12be71ac
     name: AllSkills
+    displayName: 
     skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
-    requiredOn: 1
-    files: []
+    requiredOn: 3
+    files:
+    - path: Scripts/UpdateSkillsSystem.cs
+      guid: 03834c43abda84c4b8336e91f5dd7d98
+    - path: Scripts/AllSkills.cs
+      guid: 012f0c81e66c5a548aa4bf3b115863db
+    - path: Bundles/AllSkills_Windows.assetbundle
+      guid: 
+    - path: Bundles/AllSkills_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/AllSkills_Linux.assetbundle
+      guid: 
+    - path: Bundles/AllSkills_Linux.assetbundle.manifest
+      guid: 
     dependencies: []
   modPath: Assets\AllSkills
   forceReimport: 1
@@ -28,4 +41,4 @@ MonoBehaviour:
   cacheBundles: 0
   buildLinux: 1
   assets: []
-  lastBuildLinux: 0
+  lastBuildLinux: 1

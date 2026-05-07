@@ -22,8 +22,6 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Localization/Localization.csv
-      guid: 76b0ab1ed5fa7974990106c0a194498e
     - path: Scripts/TrophyKeeper.cs
       guid: 3e82b6d08585b8640a9bdfc97f27f932
     - path: Scripts/TrophyEntityDropSystem.cs
@@ -61,6 +59,4 @@ MonoBehaviour:
     hash: DC1D9C39D8F8D23635A7BD1D74B11A40B22FC0144BE8B96EB34862875D77F815
   - path: Assets/TrophyKeeper/Data/TrophyKeeper.asset
     hash: D471E3174BD7E9E5D6422F3D42EF2D6C4621AB2BEDA6C9F77E23E87A45DB6A8E
-  - path: Assets/TrophyKeeper/Localization/Localization.csv
-    hash: 4D3FBD19C6D4801F55D5C1BC9916AD5667823C9E5AF1B742B10DF0D189F85152
   lastBuildLinux: 1
