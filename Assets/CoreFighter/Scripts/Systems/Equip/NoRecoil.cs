@@ -9,6 +9,7 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
     {
         public float Value;
     }
+    public struct NativeMoveFreelyCD : IComponentData { }
 
     [UpdateInGroup(typeof(EquipmentUpdateSystemGroup))]
     [UpdateBefore(typeof(EquipmentUpdateSystem))]
@@ -62,7 +63,10 @@ namespace Assets.CoreFighter.Scripts.Systems.Equip
         {
             float value = 1f;
             if (authoringData.TryGetComponent<MoveFreelyWeaponAuthoring>(out var weapon))
+            {
                 value = weapon.moveSpeedMultiplier;
+                entityManager.AddComponentData(entity, new NativeMoveFreelyCD());
+            }
             else
                 entityManager.AddComponentData(entity, new MoveFreelyWeaponCD() { moveSpeedMultiplier = 1 });
             entityManager.AddComponentData(entity, new OriginMoveSpeedCD() { Value = value });

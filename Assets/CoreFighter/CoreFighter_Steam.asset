@@ -16,4 +16,8 @@ MonoBehaviour:
   modOwner: 76561198353976809
   modName: CoreFighter
   selectedPath: D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\CoreFighter
-  tags: []
+  tags:
+  - Quality of Life
+  - Client
+  - Server
+  - Script

@@ -1,8 +1,5 @@
 ﻿using Assets.CoreFighter.Scripts.Cores;
-using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
-using Unity.NetCode;
 using Unity.Physics;
 
 namespace Assets.CoreFighter.Scripts.Systems.Immune
@@ -27,7 +24,7 @@ namespace Assets.CoreFighter.Scripts.Systems.Immune
                 .WithBurst()
                 .WithAll<PlayerGhost>()
                 .Schedule();
-            base.OnUpdate();//TODO: 免疫爆炸伤害需要重写
+            base.OnUpdate();
         }
     }
 }

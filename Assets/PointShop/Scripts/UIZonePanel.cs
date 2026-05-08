@@ -1,7 +1,4 @@
-﻿
-using PimDeWitte.UnityMainThreadDispatcher;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 namespace Assets.PointShop.Scripts
 {

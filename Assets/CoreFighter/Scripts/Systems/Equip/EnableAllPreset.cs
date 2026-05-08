@@ -1,5 +1,4 @@
 ﻿using Assets.CoreFighter.Scripts.Cores;
-using System;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;

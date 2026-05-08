@@ -3,7 +3,6 @@ using CoreLib.Data.Configuration;
 using System;
 using System.Collections.Generic;
 using Unity.Collections;
-using UnityEngine;
 
 namespace Assets.CoreFighter.Scripts.Cores
 {

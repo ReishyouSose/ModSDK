@@ -2,7 +2,6 @@
 using HarmonyLib;
 using I2.Loc;
 using System;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;

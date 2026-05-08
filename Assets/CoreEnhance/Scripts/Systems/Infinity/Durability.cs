@@ -1,10 +1,7 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
 using Inventory;
-using Unity.Collections;
 using Unity.Entities;
-using static NetworkCommandClientSystem;
 using static PugDatabase;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Infinity
 {

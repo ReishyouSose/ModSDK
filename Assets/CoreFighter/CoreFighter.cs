@@ -18,12 +18,6 @@ namespace Assets.CoreFighter
         {
             NoRecoilSystem.RecordOriginMoveSpeed(entity, authoringData, entityManager);
             AttackSpeedModifierSystem.RecordOriginATKSpeed(entity, authoringData, entityManager);
-            if (authoringData.TryGetComponent(out UseModProjectileID use))
-            {
-                var range = entityManager.GetComponentData<RangeWeaponCD>(entity);
-                range.projectileID = API.Authoring.GetObjectID(use.ProjectileID);
-                entityManager.SetComponentData(entity, range);
-            }
         }
 
         public void Init()

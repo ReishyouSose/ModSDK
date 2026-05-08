@@ -1,5 +1,4 @@
-﻿using Assets.GeneralConfigMenu.Scripts.Vanilla;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
