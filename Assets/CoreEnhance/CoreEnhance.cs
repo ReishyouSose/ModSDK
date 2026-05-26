@@ -35,6 +35,7 @@ namespace Assets.CoreEnhance
             DataModify.AuthoringModify(entity, authoringData, entityManager);
             ContainerDisplaySystem.MarkHighLight(entity, authoringData, entityManager);
             SledgeRangeSystem.MarkSledge(entity, authoringData, entityManager);
+            InfinityBossScanSystem.MarkCircleMoveBoss(entity, authoringData, entityManager);
             Test(entity, authoringData, entityManager);
         }
 
@@ -62,12 +63,6 @@ namespace Assets.CoreEnhance
             if (p == null)
                 return;
             ModKeyBind.Handle(p);
-            if (timer < 60)
-            {
-                timer++;
-                return;
-            }
-            timer = 0;
         }
     }
 }

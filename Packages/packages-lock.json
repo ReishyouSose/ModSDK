@@ -266,7 +266,7 @@
     },
     "com.unity.sharp-zip-lib": {
       "version": "1.4.1",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

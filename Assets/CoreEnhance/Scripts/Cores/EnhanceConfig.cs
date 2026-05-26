@@ -65,6 +65,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
         private void AddValue()
         {
             TryAddValue(EnhanceCategory.Arena, 1000, new AcceptableValueRange<int>(100, 9999));
+            TryAddValue(EnhanceCategory.BossScan, true);
             TryAddValue(EnhanceCategory.Merchant, 0, new AcceptableValueRange<int>(0, 3500));
             TryAddValue(EnhanceCategory.Titan, 5, new AcceptableValueRange<int>(5, 300));
             TryAddValue(EnhanceCategory.Crafting, true, null, "Animals");

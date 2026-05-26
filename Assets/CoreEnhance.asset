@@ -46,6 +46,8 @@ MonoBehaviour:
       guid: f692dee60a48e3a4c80988b80799bfa3
     - path: Scripts/Scripts/Systems/Infinity/Common.cs
       guid: 3461af39146547a4d9fd0cd87419a551
+    - path: Scripts/Scripts/Systems/Infinity/BossScan.cs
+      guid: e679574c97ef7fd43a242db64ce25654
     - path: Scripts/Scripts/Systems/Infinity/Arena.cs
       guid: bf4a928d81c8cc8458c2f8f9ccbd7377
     - path: Scripts/Scripts/Systems/Automation/FishingNetNoCritter.cs
@@ -60,8 +62,6 @@ MonoBehaviour:
       guid: 8a058387ff0ef5745b31bc2f98b5d58b
     - path: Scripts/Scripts/Patchs/PetUIPatch.cs
       guid: 465f6f7ab2527df4fb07f5fc463b0390
-    - path: Scripts/Scripts/Patchs/MemoryManagerPatch.cs
-      guid: 26575f8644c815d4bb2fa185f50d2101
     - path: Scripts/Scripts/Patchs/InventoryUtilityPatch.cs
       guid: 37581a3d496b7cf49b4aef069dee04b3
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
@@ -91,6 +91,8 @@ MonoBehaviour:
     - path: Scripts/CoreEnhance.cs
       guid: 77b31bc24fa1a6b4b82cceab5847b20f
     - path: Scripts/Generated/Arena__System_21198745320.g.cs
+      guid: 
+    - path: Scripts/Generated/BossScan__System_3698256870.g.cs
       guid: 
     - path: Scripts/Generated/BoulderDemolish__System_6807536970.g.cs
       guid: 
@@ -155,6 +157,8 @@ MonoBehaviour:
   cacheBundles: 0
   buildLinux: 1
   assets:
+  - path: Assets/CoreEnhance/CoreEnhance_Steam.asset
+    hash: A1BB53A2B9616567DC3C3D902DDD69451192854D8E89B260F7AA517C28D4E72F
   - path: Assets/CoreEnhance/Data/CoreEnhance.asset
     hash: 8866C233B6259FD1C414A5441FDDAB547CB67742592E4E5C71E5C4167D76039D
   - path: Assets/CoreEnhance/Data/SpriteAsset/BoulderDemolish.asset
@@ -225,6 +229,10 @@ MonoBehaviour:
     hash: A3A51B01AD0786DF9D2DF63391B8BE22F2EFB224608E55303FED2D1C07201E33
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Infinity/ArenaValue.asset
     hash: 48664A1FA8436CB822D0520ADAE469B37E3316733C40D27F941006DA30A5AD7E
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Infinity/BossScan.asset
+    hash: 0916B0120A5540249EFC1030C05E9DA0DD4EE2AB70F1B8BB4E75F23E30A4F66D
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Infinity/BossScanValue.asset
+    hash: E115CB7ABC71172546DD334A7C98478582FA596CFDE8F994331FCE480134A9A2
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Infinity/Boulder.asset
     hash: 19E2EBB559E701C1E38646BF4F218C8324BCC92056B4DFD6A7C6789A8FB7B534
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Infinity/Durability.asset
@@ -257,18 +265,18 @@ MonoBehaviour:
     hash: 19E448523300ED93A3297C4FD58FA7FF0B72F784144CB876235401762D338D39
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc/ModifySledgeRangeValue.asset
     hash: 5F32E96541C95260890B7356FD52C456758F6395D318BCE3F5C1783F9696C09C
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/OreAndWood.asset
+    hash: 77AD9540D835B4FC0EFE51CF66AAD9842CE3A3EF163DAD06809088355C8C9135
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/OreOnly.asset
+    hash: E622E21C1230BC0ECCAC08A43B07C7B25C12F5BC1C2894DE8E1F4F393AF0C3ED
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/WoodOnly.asset
+    hash: 4AFD624F87176DE07201387963EF7C5F68372AEF5ECDFA1396962D328A0FAD70
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/ResetSkin.asset
     hash: 507FF187548527FEBD0FE0C5D77B381BCC4CB352D838701E0FC470664A96E4F8
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/RollSkill.asset
     hash: 9925C62A83A4431D6396DF21655FB6D0E507614B3006393A668A0C64E3253FA2
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/TalentDisplay.asset
     hash: A1E25E9C3CDAFC66BAC189AF3E50832FB50DD4F12BB554313F950E43D9691E8A
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Misc_ChainMiningTarget/OreAndWood.asset
-    hash: 417B552B4D9F97386259D8A9654E26A037EE1F057D1D4B0923276018C04BBB19
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Misc_ChainMiningTarget/OreOnly.asset
-    hash: 7609088830E9E2307EAF2071C07592961086761A7FDC12156D1D74565B2AE1E2
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Misc_ChainMiningTarget/WoodOnly.asset
-    hash: 82D9B52591BACD75C31980BBD474FEA9ED9B1654D6AF8C845EBC75D114491A07
   - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_BoulderDemolish.asset
     hash: 15A2BE7CDDEAEAB0E62254802D13F3EBDC37AAFCEDFE82C55E7387B448358D07
   - path: Assets/CoreEnhance/Prefabs/Items/BoulderDemolishItem.prefab
@@ -287,4 +295,8 @@ MonoBehaviour:
     hash: 42EA7EBD48D5DFD50F81B2B625E5D77FBC25A50F70736D87A8DF2522C5C31C48
   - path: Assets/CoreEnhance/Sprites/Misc/Shadow.png
     hash: EED51F7C6E3D31B3E8D9ACDF39F21A071325221CD18A085D46362BB8BC3D8C08
+  - path: Assets/CoreEnhance/WorkShop/Description/en.txt
+    hash: 0E3B4570C489E5DE19EBA00A51B5B2A4381B70940B24AF7ABB944E837746E01A
+  - path: Assets/CoreEnhance/WorkShop/Description/zh.txt
+    hash: F1584091286C54C75B48CDBBB02E77EFAA02DE04C72C9CD908B4E6C9E89A6022
   lastBuildLinux: 1

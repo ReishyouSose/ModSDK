@@ -1,4 +1,5 @@
 ﻿using CoreLib.Submodule.UserInterface.Interface;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.PointShop.Scripts
@@ -73,11 +74,13 @@ namespace Assets.PointShop.Scripts
             page.gameObject.SetActive(false);
             var contents = page.GetChild(0);
             var items = info.GetShop(zone);
-            items.Sort((x, y) => PugDatabase.GetObjectInfo(x.Item.objectID).rarity.CompareTo(PugDatabase.GetObjectInfo(y.Item.objectID).rarity));
+            items = items.OrderBy(x => PugDatabase.GetObjectInfo(x.Item.objectID).rarity).ThenBy(x => x.Item.objectID).ToList();
             var boss = info.GetBoss(zone);
             for (int i = 0; i < items.Count; i++)
             {
                 var item = items[i];
+                if (item.Item.objectID == ObjectID.None)
+                    continue;
                 UIShopSlot slot = Instantiate(ShopSlotTemplate, contents);
                 slot.Zone = zone;
                 slot.Boss = boss;

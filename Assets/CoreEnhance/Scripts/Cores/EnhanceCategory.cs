@@ -7,6 +7,7 @@
         Boulder,//大矿 done
         Arena,//竞技场 done
         Minion,//召唤物时长 done
+        BossScan,
         _Accelerate,
         Merchant,//商人刷新 done
         Titan,//泰坦冷却 done

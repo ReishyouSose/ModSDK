@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PugMod;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -60,7 +61,7 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.CopperOreBoulder, 50),
                 (ObjectID.LockedCopperChest, 2),
                 (ObjectID.KingSlimeSummoningItem, 5),
-                (ObjectID. GlurchChest, 4),
+                (ObjectID.GlurchChest, 4),
                 ObjectID.MeadowTree,
                 ObjectID.PottedGoldenOrbBush,
                 ObjectID.Stalagmite,
@@ -86,6 +87,10 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.WitchDoctorHelm, 5),
                 (ObjectID.WitchDoctorBreastArmor, 5),
                 (ObjectID.WitchDoctorPantsArmor, 5),
+                ObjectID.RuinsPiece1,
+                ObjectID.RuinsPiece2,
+                ObjectID.RuinsPiece3,
+                ObjectID.RuinsPiece4,
             };
         }
         private List<ShopItem> Clay()
@@ -458,6 +463,7 @@ namespace Assets.PointShop.Scripts
                 new(ObjectID.AlienTechHelm, 7, chest),
                 new(ObjectID.AlienTechBreastArmor, 7, chest),
                 new(ObjectID.AlienTechPantsArmor, 7, chest),
+                new(new ObjectData(){ objectID= API.Authoring.GetObjectID("CoreEnhance_BoulderDemolish"),amount = 3 }, 70)
             };
         }
         private List<ShopItem> Passage()

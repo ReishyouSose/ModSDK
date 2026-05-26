@@ -12,6 +12,9 @@
         _Immune,
         Explosion,//拦截爆炸伤害 done
         PushBack,
+        _Multiple,//未实现！
+        Drops,
+        EnemyHealth,
         _Misc,
         MapMarkerTeleport,//标记传送
         Vampire,

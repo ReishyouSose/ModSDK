@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: ModPaths
   m_EditorClassIdentifier: 
   latestBuildOrInstallPaths:
-  - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\AllSkills
-  - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\TrophyKeeper
-  - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\GeneralConfigMenu
+  - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\SkyBlockHelper
   - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\CoreEnhance
-  - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\CoreFighter
+  - D:\Steam\steamapps\common\Core Keeper\CoreKeeper_Data\StreamingAssets\Mods\PointShop

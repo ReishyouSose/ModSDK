@@ -70,6 +70,10 @@ namespace Assets.CoreFighter.Scripts.Cores
             TryAddValue(FighterCategory.MapMarkerTeleport, true, null);
             TryAddValue(FighterCategory.Vampire, 0.01f, new AcceptableValueRange<float>(0.01f, 1f));
             TryAddValue(FighterCategory.EnableAllPreset, true);
+            TryAddValue(FighterCategory.Drops, 1, new AcceptableValueRange<int>(1, 10), "Multiplier");
+            TryAddValue(FighterCategory.Drops, true, null, "BossOnly");
+            TryAddValue(FighterCategory.EnemyHealth, 1f, new AcceptableValueRange<float>(1f, 100f),"Multiplier");
+            TryAddValue(FighterCategory.EnemyHealth, false, null, "BossOnly");
         }
 
         /// <returns>查询失败或条目未启用均返回false</returns>
@@ -87,7 +91,7 @@ namespace Assets.CoreFighter.Scripts.Cores
         }
 
         /// <returns>查询失败或条目未启用均返回false</returns>
-        public static bool TryGetValue<T>(FighterCategory category, out ConfigEntry<T> value, string key =null)
+        public static bool TryGetValue<T>(FighterCategory category, out ConfigEntry<T> value, string key = null)
         {
             value = null;
             if (!ins.configs.TryGetValue(category, out var entry))
