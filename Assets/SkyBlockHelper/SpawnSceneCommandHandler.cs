@@ -20,7 +20,7 @@ namespace Assets.SkyBlockHelper
             {
                 return "Params 3 should int";
             }
-            SpawnSceneSystem.SpawnScene(parameters[0], x, y);
+            SpawnSceneSystem.SpawnScene(sender,parameters[0], x, y);
             return "try spawn " + parameters[0];
         }
 
