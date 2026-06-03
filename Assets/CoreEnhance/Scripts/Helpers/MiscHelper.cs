@@ -41,5 +41,7 @@ namespace Assets.CoreEnhance.Scripts.Helpers
 
             return ObjectID.None;
         }
+        public static Vector3 MouseWorld => EntityMonoBehaviour.ToWorldFromRender(Manager.ui.mouse.GetMouseGameViewPosition());
+        public static Vector3 MouseScreen => Manager.ui.mouse.GetMouseUIViewPosition();
     }
 }

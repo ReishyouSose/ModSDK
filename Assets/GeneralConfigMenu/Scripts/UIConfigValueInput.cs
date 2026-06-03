@@ -15,7 +15,7 @@ namespace Assets.GeneralConfigMenu.Scripts
         }
         protected override void UpdateDisplayValue(string value)
         {
-            input.pugText.Render(Entry.GetSerializedValue());
+            input.pugText.Render(value, false, true);
         }
         private bool AllowEdit() => Editable;
         private void OnTextChange()

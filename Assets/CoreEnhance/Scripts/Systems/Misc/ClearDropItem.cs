@@ -77,16 +77,20 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 return;
             var ecb = CreateCommandBuffer();
             ecb.DestroyEntity(clear);
-            /*var job = */Entities.ForEach((Entity e, in PickUpItemCD pick) =>
+            Entities.ForEach((Entity e, ref DynamicBuffer<ContainedObjectsBuffer> container, ref PickUpItemCD pick) =>
             {
                 if (pick.state != PickUpItemState.None)
                     return;
-                ecb.DestroyEntity(e);
+                for (int i = 0; i < container.Length; i++)
+                {
+                    container[i] = default;
+                }
+                pick.state = PickUpItemState.HasBeenPickedUp;
             })
                 .WithName("ClearAllDropItems")
                 .WithEntityQueryOptions(EntityQueryOptions.IncludeDisabledEntities)
                 .WithBurst()
-                .Run();
+                .Schedule();
             base.OnUpdate();
         }
     }

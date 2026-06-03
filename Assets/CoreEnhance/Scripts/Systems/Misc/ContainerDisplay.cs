@@ -1,6 +1,7 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
 using Assets.CoreEnhance.Scripts.Helpers;
 using Interaction;
+using Outlines.Systems;
 using Unity.Entities;
 using UnityEngine;
 
@@ -11,15 +12,16 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         public bool marking;
     }
 
-    [UpdateInGroup(typeof(LocalPresentationCueSystemGroup))]
-    [UpdateAfter(typeof(InteractableVisualUpdateSystem))]
-    [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation)]
+    [UpdateAfter(typeof(VisualOutlineDisplaySystem))]
+    [UpdateInGroup(typeof(PresentationSystemGroup))]
+    [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation, WorldSystemFilterFlags.Default)]
     public partial class ContainerDisplaySystem : PugSimulationSystemBase
     {
         private ComponentLookup<InteractorCD> interactorLookup;
         private BufferLookup<ContainedObjectsBuffer> containerLookup;
         private BufferLookup<CanCraftObjectsBuffer> craftLookup;
         private BufferLookup<VendingMachineItemBuffer> vendingLookup;
+        private float timer;
         protected override void OnCreate()
         {
             interactorLookup = SystemAPI.GetComponentLookup<InteractorCD>();
@@ -43,7 +45,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             {
                 target = selected.GetContainedObject().objectID;
                 needLight = target != ObjectID.None;
+                timer = 0.1f;
             }
+            if (timer <= 0)
+                return;
             var closet = interactorLookup.GetRefRO(player.entity).ValueRO.currentClosestInteractable;
             var containerLookup = this.containerLookup;
             var craftLookup = this.craftLookup;
@@ -63,6 +68,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                             {
                                 UpdateHighLight(interact, Color.cyan);
                                 marking = true;
+                                Debug.Log("highlight chest");
                                 return;
                             }
                         }
@@ -104,7 +110,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
         private static void UpdateHighLight(InteractableObjectReferenceCD interact, Color color)
         {
             var interactObject = interact.Value.Value;
-            var optionalOutlineController = interactObject.optionalOutlineController;
+            GraphicEntityHelper.UpdateOutline(interactObject, color);
+            /*var optionalOutlineController = interactObject.optionalOutlineController;
             if (optionalOutlineController != null)
             {
                 optionalOutlineController.showOutline = true;
@@ -130,6 +137,10 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             {
                 sprite.outlineColor = color;
             }
+            if (interactObject. optionalIcon != null)
+            {
+                interactObject.optionalIcon.SetActive(true);
+            }*/
         }
         internal static void MarkHighLight(Entity e, GameObject authoringData, EntityManager manager)
         {

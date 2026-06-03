@@ -10,6 +10,7 @@ namespace Assets.GeneralConfigMenu.Scripts
 
         [HideInInspector]
         public ConfigEntryBase Entry { get; private set; }
+        private bool dirty;
 
         [HideInInspector]
         public bool Editable;
@@ -26,7 +27,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             {
                 Entry.SetSerializedValue(value);
                 Entry.ConfigFile.Save();
-                UpdateDisplayValue(value);
+                dirty = true;
             }
         }
         public void ResetValue()
@@ -34,7 +35,7 @@ namespace Assets.GeneralConfigMenu.Scripts
             if (!Editable)
                 return;
             SetValue(Entry.DefaultValue.ToString());
-            UpdateDisplayValue(Entry.GetSerializedValue());
+            dirty = true;
         }
         protected abstract void UpdateDisplayValue(string value);
         public virtual bool TryLocalizeServerValue(string value, out string key)
@@ -62,5 +63,13 @@ namespace Assets.GeneralConfigMenu.Scripts
             }
         }
         public virtual void Init() { }
+        public virtual void Update()
+        {
+            if (dirty)
+            {
+                UpdateDisplayValue(Entry.GetSerializedValue());
+                dirty = false;
+            }
+        }
     }
 }

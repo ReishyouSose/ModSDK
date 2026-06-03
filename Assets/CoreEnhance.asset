@@ -26,6 +26,8 @@ MonoBehaviour:
       guid: 1ef597e7ef260164dba9c355452c69bc
     - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
       guid: 5bac40d44c88ce742bbeca053dd6537c
+    - path: Scripts/Scripts/Systems/Quick/MoveChest.cs
+      guid: 543282493327f6f4083ffbb0fbce1402
     - path: Scripts/Scripts/Systems/Pet/Modifier.cs
       guid: 62b2b2f29d0649644bff7a1cd9e4123a
     - path: Scripts/Scripts/Systems/Misc/SledgeRange.cs
@@ -78,6 +80,8 @@ MonoBehaviour:
       guid: 2dbb5d75b243ec640b3df48705c03a99
     - path: Scripts/Scripts/Helpers/ItemHelper.cs
       guid: 230e6abaa6b5bad42913b11b98c581a7
+    - path: Scripts/Scripts/Helpers/GraphicEntityHelper.cs
+      guid: f5479db142464d54c9b704e9e460484d
     - path: Scripts/Scripts/Cores/PetModifyID.cs
       guid: 19ceeb27bc3001f4eaf6869d5a01eec6
     - path: Scripts/Scripts/Cores/ModKeyBind.cs
@@ -126,6 +130,10 @@ MonoBehaviour:
       guid: 
     - path: Scripts/Generated/Modifier__System_14671751851.g.cs
       guid: 
+    - path: Scripts/Generated/MoveChest__System_9565025900.g.cs
+      guid: 
+    - path: Scripts/Generated/MoveChest__System_9565025901.g.cs
+      guid: 
     - path: Scripts/Generated/OpenLockedChest__System_2253056810.g.cs
       guid: 
     - path: Scripts/Generated/SledgeRange__System_8104886080.g.cs
@@ -133,6 +141,10 @@ MonoBehaviour:
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_ClearDropItemRPCCommandSerializer.cs
       guid: 
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Misc_PetModifierRPCCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_HoverChestRPCCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_MoveChestContentRPCCommandSerializer.cs
       guid: 
     - path: Scripts/Generated/Assets.CoreEnhance.Scripts.Systems.Quick_QuickOpenLockedChestRPCCommandSerializer.cs
       guid: 
@@ -167,6 +179,8 @@ MonoBehaviour:
     hash: 4DA04D6F920BA4C9D055A17A1098A2D24182A2AD6A619E7E527E91BA7916F457
   - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhance_ContainerHighLight.asset
     hash: 2E58B6284DD1BDBD6A2BF703DE1AFB360C28B910823702D529A7603BDA4A3ED7
+  - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhance_MoveChest.asset
+    hash: E4F9CB008FFE3D4D1AA12A09E3B65265B2E8B07C7E97876A065B9C78DF67EC26
   - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhance_QuickOpenLockedChest.asset
     hash: D0C492129AB41BD4D374B263FE9C09CE08ED37215B17AAFA58E7F3B3561CD79A
   - path: Assets/CoreEnhance/Data/TextDataBlock/ControlMapper/CoreEnhanceCategory.asset
@@ -265,6 +279,8 @@ MonoBehaviour:
     hash: 19E448523300ED93A3297C4FD58FA7FF0B72F784144CB876235401762D338D39
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc/ModifySledgeRangeValue.asset
     hash: 5F32E96541C95260890B7356FD52C456758F6395D318BCE3F5C1783F9696C09C
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc/MoveChestContent.asset
+    hash: DF82B86F558423589989868DC727985F452D337FD0620D3C823D41A4D824BC48
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/OreAndWood.asset
     hash: 77AD9540D835B4FC0EFE51CF66AAD9842CE3A3EF163DAD06809088355C8C9135
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/OreOnly.asset

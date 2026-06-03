@@ -29,6 +29,7 @@
         DeathNoDrop,//死亡不掉落 done
         ChainMining,//连锁挖矿 done
         ContainerDisplay,//容器显示 done
+        MoveChestContent,
         ModifySledgeRange,
         _Count
     }
