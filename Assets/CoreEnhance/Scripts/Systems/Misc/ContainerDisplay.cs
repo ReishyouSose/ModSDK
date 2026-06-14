@@ -2,6 +2,7 @@
 using Assets.CoreEnhance.Scripts.Helpers;
 using Interaction;
 using Outlines.Systems;
+using System.ComponentModel;
 using Unity.Entities;
 using UnityEngine;
 
@@ -39,12 +40,12 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
             if (player == null)
                 return;
             var selected = Manager.ui.currentSelectedUIElement;
-            ObjectID target = ObjectID.None;
+            ContainedObjectsBuffer target = default;
             bool needLight = false;
             if (player.inputModule.rewiredPlayer.GetButton(ModKeyBind.ContainerHighLight) && selected != null)
             {
-                target = selected.GetContainedObject().objectID;
-                needLight = target != ObjectID.None;
+                target = selected.GetContainedObject();
+                needLight = target.objectID != ObjectID.None;
                 timer = 0.1f;
             }
             if (timer <= 0)
@@ -64,9 +65,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     {
                         foreach (var container in containers)
                         {
-                            if (container.objectID == target)
+                            if (container.objectID == target.objectID && container.variation == target.variation)
                             {
-                                UpdateHighLight(interact, Color.cyan);
+                                GraphicEntityHelper.UpdateOutline(interact, Color.cyan);
                                 marking = true;
                                 Debug.Log("highlight chest");
                                 return;
@@ -77,9 +78,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     {
                         foreach (var craft in crafts)
                         {
-                            if (craft.objectID == target)
+                            if (craft.objectID == target.objectID)
                             {
-                                UpdateHighLight(interact, Color.cyan);
+                                GraphicEntityHelper.UpdateOutline(interact, Color.cyan);
                                 marking = true;
                                 return;
                             }
@@ -89,9 +90,9 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                     {
                         foreach (var vending in vendings)
                         {
-                            if (vending.objectID == target)
+                            if (vending.objectID == target.objectID)
                             {
-                                UpdateHighLight(interact, Color.cyan);
+                                GraphicEntityHelper.UpdateOutline(interact, Color.cyan);
                                 marking = true;
                                 return;
                             }
@@ -101,46 +102,11 @@ namespace Assets.CoreEnhance.Scripts.Systems.Misc
                 if (!marking)
                     return;
                 marking = false;
-                UpdateHighLight(interact, Color.clear);
+                GraphicEntityHelper.UpdateOutline(interact, Color.clear);
             })
                 .WithName("ContainerHighLight")
                 .WithoutBurst()
                 .Schedule();
-        }
-        private static void UpdateHighLight(InteractableObjectReferenceCD interact, Color color)
-        {
-            var interactObject = interact.Value.Value;
-            GraphicEntityHelper.UpdateOutline(interactObject, color);
-            /*var optionalOutlineController = interactObject.optionalOutlineController;
-            if (optionalOutlineController != null)
-            {
-                optionalOutlineController.showOutline = true;
-                optionalOutlineController.SetColor(color);
-            }
-
-            foreach (OutlineController additionalOutlineController in interactObject.additionalOutlineControllers)
-            {
-                additionalOutlineController.showOutline = true;
-                additionalOutlineController.SetColor(color);
-            }
-
-            var spriteObjects = interactObject.spriteObjects;
-            if (spriteObjects == null)
-            {
-                return;
-            }
-            if (spriteObjects == null)
-            {
-                return;
-            }
-            foreach (var sprite in spriteObjects)
-            {
-                sprite.outlineColor = color;
-            }
-            if (interactObject. optionalIcon != null)
-            {
-                interactObject.optionalIcon.SetActive(true);
-            }*/
         }
         internal static void MarkHighLight(Entity e, GameObject authoringData, EntityManager manager)
         {

@@ -1,19 +1,15 @@
-﻿using UnityEngine;
+﻿using CoreLib.Data.Configuration;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
     public class UIConfigFile : ButtonUIElement
     {
-        public ModConfigMenu Menu;
-
         [HideInInspector]
-        public Transform Detail;
+        public UIConfigPage Detail;
 
         [HideInInspector]
         public string Key;
-        public void SwitchToDetail()
-        {
-            Menu.SwitchToDetail(Key, Detail);
-        }
     }
 }

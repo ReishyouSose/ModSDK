@@ -7,39 +7,36 @@ namespace Assets.GeneralConfigMenu.Scripts
     {
         public GameObject Active;
         public GameObject Inactive;
-        private bool state;
-        private ButtonUIElement button;
 
-        private void Awake()
+        private bool state;
+        protected override string ConvertValue(string value) => value.ToLower();
+        public override void Init()
         {
-            button = GetComponent<ButtonUIElement>();
-            state = bool.Parse(Entry.GetSerializedValue());
-            SetState(state, true);
+            name = "Bool" + (IsServerBox ? "(Server)" : "(Client)");
+            GetComponent<ButtonUIElement>().optionalTitle.mTerm = "GeneralConfigMenu/" + (IsServerBox ? "ServerValue" : "ClientValue");
         }
-        private void Update()
-        {
-            button.canBeClicked = Editable;
-        }
+
         public void Click()
         {
-            SetState(state = !state, false);
+            if (!editable)
+            {
+                UEntry.ShowUnEditableWarning();
+                return;
+            }
+            SetState(!state);
+            ApplyUserChange(state.ToString());
         }
-        protected override void UpdateDisplayValue(string value)
+
+        protected override void UpdateDisplayValue()
         {
-            SetState(bool.Parse(value), true);
+            SetState(bool.Parse(ValidValue.ToString()));
         }
-        private void SetState(bool state, bool visualOnly)
+
+        private void SetState(bool newState)
         {
+            state = newState;
             Active.SetActive(state);
             Inactive.SetActive(!state);
-            if (!visualOnly)
-                SetValue(state.ToString());
-        }
-        public override bool TryLocalizeServerValue(string value, out string key)
-        {
-            var result = bool.TryParse(value, out var v) && v;
-            key =  result ? "on" : "off";
-            return true;
         }
     }
 }

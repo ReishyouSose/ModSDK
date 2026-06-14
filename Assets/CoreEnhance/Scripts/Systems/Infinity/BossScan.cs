@@ -34,7 +34,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Infinity
             var circleLookup = this.circleLookup;
             Entities.ForEach((Entity e, in ObjectDataCD objData) =>
             {
-                if (roamingOnly && (!roamingLookup.HasComponent(e) || circleLookup.HasComponent(e)))
+                if (roamingOnly && (!roamingLookup.HasComponent(e) && !circleLookup.HasComponent(e)))
                     return;
                 ecb.AddComponent<BossScannedCD>(e);
                 var id = objData.objectID;

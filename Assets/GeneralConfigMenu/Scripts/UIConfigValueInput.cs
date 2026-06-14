@@ -5,24 +5,35 @@ namespace Assets.GeneralConfigMenu.Scripts
     [RequireComponent(typeof(InputBox))]
     public class UIConfigValueInput : UIConfigValueBox
     {
-        private InputBox input;
-        private void Awake()
+        private InputBox inputBox;
+
+        public override void Init()
         {
-            input = GetComponent<InputBox>();
-            input.AllowInput += AllowEdit;
-            input.onInputFieldDone.AddListener(OnTextChange);
-            input.pugText.Render(Entry.GetSerializedValue());
-        }
-        protected override void UpdateDisplayValue(string value)
-        {
-            input.pugText.Render(value, false, true);
-        }
-        private bool AllowEdit() => Editable;
-        private void OnTextChange()
-        {
-            SetValue(input.GetInputText());
-            input.pugText.Render(Entry.GetSerializedValue(), false, true);
+            name = "Input" + (IsServerBox ? "(Server)" : "(Client)");
+            inputBox = GetComponent<InputBox>();
+            inputBox.AllowInput += AllowEdit;
+            inputBox.onInputFieldDone.AddListener(OnTextChange);
+            inputBox.Desc = "GeneralConfigMenu/" + (IsServerBox ? "ServerValue" : "ClientValue");
         }
 
+        protected override void UpdateDisplayValue()
+        {
+            inputBox.pugText.Render(ValidValue.ToString(), false, true);
+        }
+
+        private bool AllowEdit()
+        {
+            if (editable)
+            {
+                return true;
+            }
+            UEntry.ShowUnEditableWarning();
+            return false;
+        }
+
+        private void OnTextChange()
+        {
+            ApplyUserChange(inputBox.GetInputText());
+        }
     }
 }

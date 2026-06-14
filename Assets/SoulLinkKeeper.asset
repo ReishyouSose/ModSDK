@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: SoulLinkKeeper
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: c57caaf03422453086e0cd1abb36860c
+    name: SoulLinkKeeper
+    displayName: 
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Scripts/SoulLinkKeeper.cs
+      guid: 3c377402910f9ad4581e1458d53ccc24
+    - path: Scripts/DeathSpreadSystem.cs
+      guid: 2c13de350461fef4eac9402aeb055f9a
+    - path: Scripts/DeathSpreadCD.cs
+      guid: a26e49e66cbe1d2498bb922929db9d22
+    - path: Scripts/DeathReportSystem.cs
+      guid: eafb4fa518c7a18479f24805edcc4392
+    - path: Scripts/BlockDeathSpread.cs
+      guid: 35627b0e9885b334eb132aa5ea3f26ee
+    - path: Scripts/Generated/DeathReportSystem__System_17794160250.g.cs
+      guid: 
+    - path: Scripts/Generated/DeathSpreadSystem__System_19424424680.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.SoulLinkKeeper_DeathSpreadCDSerializer.cs
+      guid: 
+    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
+      guid: 
+    - path: Bundles/SoulLinkKeeper_Windows.assetbundle
+      guid: 
+    - path: Bundles/SoulLinkKeeper_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/SoulLinkKeeper_Linux.assetbundle
+      guid: 
+    - path: Bundles/SoulLinkKeeper_Linux.assetbundle.manifest
+      guid: 
+    dependencies: []
+  modPath: Assets\SoulLinkKeeper
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets:
+  - path: Assets/SoulLinkKeeper/Data/SoulLinkKeeper.asset
+    hash: 8C11B2DE2274E9EF3652996A06FEBADBC248E0DD853E985A9F25B373ECEC73C0
+  - path: Assets/SoulLinkKeeper/Data/TextDataBlock/SoulLinkKeeper/PlayerDead.asset
+    hash: B154DC4F2972223C389F070E5FEE053BEC0F7CCF3F918D3C2108A88A076D00F8
+  lastBuildLinux: 1

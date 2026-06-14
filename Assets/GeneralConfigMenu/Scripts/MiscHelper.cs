@@ -57,6 +57,25 @@ namespace Assets.GeneralConfigMenu.Scripts
                 text.Render(origin, false, true);
             }
         }
+        public static bool TryMatchListType(ConfigEntryBase entry, out string[] accepts)
+        {
+            accepts = null;
+            if (entry.SettingType.IsEnum)
+            {
+                var enums = Enum.GetValues(entry.SettingType);
+                accepts = new string[enums.Length];
+                int index = 0;
+                foreach (var value in enums)
+                {
+                    accepts[index++] = value.ToString();
+                }
+            }
+            else if (TryExtractAcceptableValues(entry, out string[] values))
+            {
+                accepts = values;
+            }
+            return accepts != null;
+        }
         public static bool TryExtractAcceptableValues(ConfigEntryBase entry, out string[] accepts)
         {
             AcceptableValueBase accept = entry.Description.AcceptableValues;
@@ -76,6 +95,10 @@ namespace Assets.GeneralConfigMenu.Scripts
                 return true;
             }
             return false;
+        }
+        public static string GetFullName(this ConfigEntryBase entry)
+        {
+            return $"{entry.ConfigFile.ConfigFilePath}-{entry.Definition}";
         }
     }
 }

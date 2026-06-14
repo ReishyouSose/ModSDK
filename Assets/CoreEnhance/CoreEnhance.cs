@@ -38,6 +38,7 @@ namespace Assets.CoreEnhance
             SledgeRangeSystem.MarkSledge(entity, authoringData, entityManager);
             InfinityBossScanSystem.MarkCircleMoveBoss(entity, authoringData, entityManager);
             MoveChestClient.AddHoveredChest(entity, authoringData, entityManager);
+            //CraftStationRangeSystem.MarkCraftStation(entity, authoringData, entityManager);
             Test(entity, authoringData, entityManager);
         }
 
@@ -48,7 +49,7 @@ namespace Assets.CoreEnhance
 
         public void Init()
         {
-            BurstDisabler.DisableBurstForSystem<PugAutomationFishingSystem>();
+            //BurstDisabler.DisableBurstForSystem<PugAutomationFishingSystem>();
         }
 
         public void ModObjectLoaded(Object obj)

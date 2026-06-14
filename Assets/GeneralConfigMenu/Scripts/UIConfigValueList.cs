@@ -1,5 +1,4 @@
-﻿using I2.Loc;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.GeneralConfigMenu.Scripts
 {
@@ -7,42 +6,37 @@ namespace Assets.GeneralConfigMenu.Scripts
     public class UIConfigValueList : UIConfigValueBox
     {
         public PugText Text;
-        private ButtonUIElement button;
         private string[] accepts;
         private int index;
         private int count;
-        private string path;
-        private void Awake()
+        private string localizationPath;
+
+        public override void Init()
         {
-            button = GetComponent<ButtonUIElement>();
-            FindIndex(Entry.GetSerializedValue());
-        }
-        private void Update()
-        {
-            button.canBeClicked = Editable;
-        }
-        public void SetAccepts(string[] accepts)
-        {
-            this.accepts = accepts;
-            count = accepts.Length;
+            name = "List" + (IsServerBox ? "(Server)" : "(Client)");
+            var def = Entry.Definition;
+            localizationPath = MiscHelper.GetLocalKey(Entry.ConfigFile.ConfigFilePath, def.Section, def.Key, "");
+            GetComponent<ButtonUIElement>().optionalTitle.mTerm = "GeneralConfigMenu/" + (IsServerBox ? "ServerValue" : "ClientValue");
         }
 
-        private void SetState(bool visualOnly)
+        public void SetAccepts(string[] values)
         {
-            var value = accepts[index];
-            string key = path + value;
-            Text.SetText(key, value);
-            if (!visualOnly)
-            {
-                SetValue(value);
-            }
+            accepts = values;
+            count = values.Length;
         }
 
         public void SwitchIndex(int offset)
         {
+            if (!editable)
+            {
+                UEntry.ShowUnEditableWarning();
+                return;
+            }
             index = (index + count + offset) % count;
-            SetState(false);
+            string value = accepts[index];
+            ApplyUserChange(value);
         }
+
         private void FindIndex(string value)
         {
             for (int i = 0; i < count; i++)
@@ -53,23 +47,12 @@ namespace Assets.GeneralConfigMenu.Scripts
                     break;
                 }
             }
-            SetState(true);
+            Text.SetText(localizationPath + value, value);
         }
-        protected override void UpdateDisplayValue(string value)
+
+        protected override void UpdateDisplayValue()
         {
-            FindIndex(value);
-        }
-        public override bool TryLocalizeServerValue(string value, out string key)
-        {
-            key = path + value;
-            bool result = LocalizationManager.TryGetTranslation(key, out _);
-            Debug.Log((key, result));
-            return result;
-        }
-        public override void Init()
-        {
-            var def = Entry.Definition;
-            path = MiscHelper.GetLocalKey(Entry.ConfigFile.ConfigFilePath, def.Section, def.Key, "");
+            FindIndex(ValidValue.ToString());
         }
     }
 }

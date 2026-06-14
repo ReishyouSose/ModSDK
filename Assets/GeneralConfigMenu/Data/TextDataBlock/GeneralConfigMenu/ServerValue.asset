@@ -17,8 +17,8 @@ MonoBehaviour:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: 6067541061529591929
-    m_high: 8868752819517582137
+    m_low: 7923092491850608359
+    m_high: 2428618499021903898
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,7 +54,7 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u5F53\u524D\u670D\u52A1\u5668\u503C {0}"
+      title: "\u670D\u52A1\u5668\u503C"
       description: 
     - m_language:
         m_address:
@@ -66,7 +66,7 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Current Server Value {0}
+      title: Server Value
       description: 
     - m_language:
         m_address:
@@ -132,9 +132,9 @@ MonoBehaviour:
   m_prevImportPrimaryEntry:
     m_language:
       m_address:
-        m_low: 681352171529052915
-        m_high: 2314507893210082619
-    title: Current Server Value {0}
+        m_low: 0
+        m_high: 0
+    title: Server Value
     description: 
   m_shouldBeLocalized: 1
   m_header: GeneralConfigMenu

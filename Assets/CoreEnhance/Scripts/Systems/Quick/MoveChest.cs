@@ -81,14 +81,14 @@ namespace Assets.CoreEnhance.Scripts.Systems.Quick
                 if (hover.lockTime > 0)
                 {
                     hover.lockTime -= delta;
-                    UpdateHighLight(interact, Color.red);
+                    GraphicEntityHelper.UpdateOutline(interact, Color.red);
                     return;
                 }
                 ref bool hovered = ref hover.Hovered;
                 if (selected[0] == entity)
-                    UpdateHighLight(interact, Color.yellow);
+                    GraphicEntityHelper.UpdateOutline(interact, Color.yellow);
                 else if (hovered)
-                    UpdateHighLight(interact, Color.cyan);
+                    GraphicEntityHelper.UpdateOutline(interact, Color.cyan);
                 if (!press)
                 {
                     if (hovered)
@@ -132,11 +132,6 @@ namespace Assets.CoreEnhance.Scripts.Systems.Quick
                 .WithoutBurst()
                 .Schedule();
             base.OnUpdate();
-        }
-        private static void UpdateHighLight(InteractableObjectReferenceCD interact, Color color)
-        {
-            var interactObject = interact.Value.Value;
-            GraphicEntityHelper.UpdateOutline(interactObject, color);
         }
         internal static void AddHoveredChest(Entity e, GameObject authoringData, EntityManager manager)
         {

@@ -55,7 +55,7 @@ MonoBehaviour:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
       title: "\u91CD\u7F6E"
-      description: "\u5C06\u5F53\u9875\u7684\u6240\u6709\u914D\u7F6E\u6761\u76EE\u91CD\u7F6E\u4E3A\u9ED8\u8BA4\u503C\n\u591A\u4EBA\u6A21\u5F0F\u4E0B\u66F4\u6539\u4F1A\u540C\u6B65\u5230\u670D\u52A1\u5668\n\u5BF9\u65E0\u6743\u9650\u7684\u6761\u76EE\u4E0D\u751F\u6548\n\u672C\u5730\u6570\u636E\u4E5F\u4F1A\u4FDD\u5B58"
+      description: "\u5DE6\u952E\u70B9\u51FB\u5C06\u5F53\u9875\u7684\u6240\u6709\u914D\u7F6E\u6761\u76EE\u7684\u672C\u5730\u503C\u91CD\u7F6E\u4E3A\u9ED8\u8BA4\u503C\uFF0C\u53F3\u952E\u5219\u662F\u670D\u52A1\u5668\u503C"
     - m_language:
         m_address:
           m_low: -2957573344710624914
@@ -67,15 +67,8 @@ MonoBehaviour:
           m_low: 681352171529052915
           m_high: 2314507893210082619
       title: Reset
-      description: 'Reset all config entries on the current page to their default
-        values
-
-        In multiplayer, changes sync to all players
-
-        No-permission
-        entries are ignored
-
-        Local data will also be saved'
+      description: Left-click to resets all local values of the config entries on
+        the current page to default. Right-click does the same for server values
     - m_language:
         m_address:
           m_low: 6040640903323332866
@@ -143,15 +136,8 @@ MonoBehaviour:
         m_low: 681352171529052915
         m_high: 2314507893210082619
     title: Reset
-    description: 'Reset all config entries on the current page to their default values
-
-      In
-      multiplayer, changes sync to all players
-
-      No-permission entries are
-      ignored
-
-      Local data will also be saved'
+    description: Left-click to resets all local values of the config entries on the
+      current page to default. Right-click does the same for server values
   m_shouldBeLocalized: 1
   m_header: GeneralConfigMenu
   references:

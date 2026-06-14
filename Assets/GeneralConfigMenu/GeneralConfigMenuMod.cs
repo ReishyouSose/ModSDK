@@ -1,7 +1,6 @@
-using Assets.GeneralConfigMenu.ConfigSync;
 using Assets.GeneralConfigMenu.Scripts;
+using Assets.GeneralConfigMenu.Scripts.ConfigSync;
 using CoreLib;
-using CoreLib.Submodule.ControlMapping;
 using CoreLib.Submodule.UserInterface;
 using HarmonyLib;
 using PugMod;
@@ -14,13 +13,12 @@ namespace Assets.GeneralConfigMenu
     {
         internal static GameObject MenuPrefab;
         internal static ModConfig config;
-        internal static ConfigSyncClient ConfigSync { get; private set; }
         internal static RadicalMenu.MenuType Menu { get; private set; }
+        internal static ConfigSyncSystem Sync;
         public void EarlyInit()
         {
             Menu = (RadicalMenu.MenuType)1493;
-            CoreLibMod.LoadSubmodule(typeof(ControlMappingModule), typeof(UserInterfaceModule));
-            int cateogry = ControlMappingModule.AddNewCategory("GCM");
+            CoreLibMod.LoadSubmodule(typeof(UserInterfaceModule));
             config = new();
             API.Client.OnWorldCreated += Client_OnWorldCreated;
         }
@@ -28,8 +26,8 @@ namespace Assets.GeneralConfigMenu
         private void Client_OnWorldCreated()
         {
             var world = API.Client.World;
-            world.GetOrCreateSystem<ConfigSyncClient>();
-            ConfigSync = world.GetExistingSystemManaged<ConfigSyncClient>();
+            world.GetOrCreateSystem<ConfigSyncSystem>();
+            Sync = world.GetExistingSystemManaged<ConfigSyncSystem>();
         }
 
         public void Init()
@@ -50,6 +48,11 @@ namespace Assets.GeneralConfigMenu
 
         public void Update()
         {
+            if (!Manager.main.player)
+            {
+                if (ModConfigMenu.Instance)
+                    ModConfigMenu.Instance.TryResetConnect();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Assets.CoreEnhance.Scripts.Cores;
+using PugMod;
 using Unity.Entities;
 
 namespace Assets.CoreEnhance.Scripts.Systems.Automation
@@ -7,10 +8,17 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
     public partial class FishingNetNoCritterSystem : PugSimulationSystemBase
     {
+        private ObjectID holoWorm;
+        protected override void OnCreate()
+        {
+            holoWorm = API.Authoring.GetObjectID("CoreEnhance_HoloWorm");
+            base.OnCreate();
+        }
         protected override void OnUpdate()
         {
             if (!EnhanceConfig.IsEnable(EnhanceCategory.FishingNetNoCritter))
                 return;
+            var holoWorm = this.holoWorm;
             Entities.ForEach((Entity e, DynamicBuffer<ContainedObjectsBuffer> container) =>
             {
                 int length = container.Length;
@@ -22,7 +30,7 @@ namespace Assets.CoreEnhance.Scripts.Systems.Automation
                     {
                         objectData = new()
                         {
-                            objectID = ObjectID.CritterBeetle,
+                            objectID = holoWorm,
                             amount = 1,
                         }
                     };

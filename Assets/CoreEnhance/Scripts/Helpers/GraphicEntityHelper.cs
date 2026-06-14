@@ -9,8 +9,9 @@ namespace Assets.CoreEnhance.Scripts.Helpers
 {
     public static class GraphicEntityHelper
     {
-        public static void UpdateOutline(InteractableObject interact, Color color)
+        public static void UpdateOutline(InteractableObjectReferenceCD interactRef, Color color)
         {
+            var interact = interactRef.Value.Value;
             bool flag = color == Color.clear;
             if (interact != null)
             {

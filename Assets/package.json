@@ -1,0 +1,13 @@
+{
+  "name": "ck.modding.modconfigmenu",
+  "author": "Core Keeper Mods",
+  "version": "1.4.0",
+  "license": "GPL-3.0-only",
+  "displayName": "General Mod Config Menu",
+  "unity": "6000.0",
+  "category": "Modding",
+  "description": "A modding library for Core Keeper. Provide ingame visual and hot reload supports for mod config added by CoreLib.",
+  "keywords": [ "core keeper", "modding", "library" ],
+  "licensesUrl": "https://github.com/ReishyouSose/CoreKeeperMods/tree/1.2/Assets/GeneralConfigMenu/LICENSE.md"
+  }
+}

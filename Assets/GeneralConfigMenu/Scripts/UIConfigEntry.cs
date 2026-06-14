@@ -1,4 +1,5 @@
-﻿using CoreLib.Data.Configuration;
+﻿using Assets.GeneralConfigMenu.Scripts.ConfigTags;
+using CoreLib.Data.Configuration;
 using I2.Loc;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,12 @@ namespace Assets.GeneralConfigMenu.Scripts
         public SpriteRenderer SR;
         public SpriteRenderer Hover;
         public Transform Container;
-        public PugText ServerValue;
         public GameObject Active;
         public GameObject Inactive;
+        public int Hierarchy { get; private set; }
 
         [HideInInspector]
-        public UIConfigValueBox ValueBox;
+        public UIConfigValueBox ServerBox, ClientBox;
 
         [HideInInspector]
         public ConfigEntryBase Entry;
@@ -27,25 +28,35 @@ namespace Assets.GeneralConfigMenu.Scripts
         [HideInInspector]
         public List<UIConfigEntry> Additional = new();
 
+        [HideInInspector]
+        public UIConfigPage OwnerPage;
+
+        [HideInInspector]
+        public UIPermissionButton PermissionButton;
+
+        [HideInInspector]
+        public ConfigScope Scope;
+
         private LinearLayoutUIComponent layout;
-        private ConfigScope scope;
-        private bool state;
+        private bool expand;
+
         protected override void Awake()
         {
             layout = GetComponentInParent<LinearLayoutUIComponent>();
             if (Additional.Count > 0)
             {
-                state = true;
+                expand = true;
                 showHoverTitle = true;
             }
             Inactive.SetActive(false);
             base.Awake();
         }
+
         public override List<TextAndFormatFields> GetHoverDescription()
         {
-            var result = base.GetHoverDescription();
-            return result;
+            return base.GetHoverDescription();
         }
+
         public void BindEntry(ConfigEntryBase entry, ConfigTemplate template, int hierarchy = 0)
         {
             Entry = entry;
@@ -55,28 +66,50 @@ namespace Assets.GeneralConfigMenu.Scripts
                 MiscHelper.GetLocalKey(entry.ConfigFile.ConfigFilePath, def.Section, key);
             name = "Entry " + key;
             Name.SetText(local, key);
-            scope = entry.Scope;
+            Scope = entry.Scope;
+            Hierarchy = hierarchy;
             AdjustByHierarchy(hierarchy);
-            Instantiate(scope.accessLevel switch
+
+            PermissionButton = Instantiate(Scope.accessLevel switch
             {
                 ConfigAccessLevel.Admin => template.Admin,
                 ConfigAccessLevel.Server => template.Server,
                 ConfigAccessLevel.Client => template.Client,
                 _ => template.ViewOnly
-            }, Container).localPosition = new(-0.5f, 0, 0);
-            if (scope.requireReload)
-                Instantiate(template.Reload, Container).localPosition = new(-1.5f, 0, 0);
+            }, transform);
+            PermissionButton.transform.localPosition = new(0.5f, -1.5f, 0);
+
             string desc = local + "Desc";
             if (LocalizationManager.TryGetTranslation(desc, out _))
             {
                 showHoverDesc = true;
-                optionalHoverDesc = new()
-                {
-                    mTerm = desc,
-                };
+                optionalHoverDesc = new() { mTerm = desc };
             }
-            MatchValue(template);
+            if (Scope.requireReload)
+                Instantiate(template.Reload, transform).localPosition = new(1.5f, -1.5f, 0);
+
+            MatchValueBox(template);
         }
+
+        public void ResetToDefault(bool server)
+        {
+            UIConfigValueBox box;
+            if (server)
+            {
+                if (!Scope.ShouldSync)
+                    return;
+                if (!ServerBox.Editable)
+                    return;
+                box = ServerBox;
+            }
+            else
+                box = ClientBox;
+            if (box)
+                box.ApplyUserChange(Entry.DefaultValue.ToString());
+        }
+
+        public void OnReceivedSync(string value) => ServerBox.OnReceiveSync(value);
+
         private void AdjustByHierarchy(int hierarchy)
         {
             float originalWidth = 23f;
@@ -123,62 +156,39 @@ namespace Assets.GeneralConfigMenu.Scripts
             SetSR(SR);
             SetSR(Hover);
         }
-        private void Update()
+
+        private void MatchValueBox(ConfigTemplate template)
         {
-            var player = Manager.main.player;
-            bool notEnterGame = player == null;
-            bool allow = scope.accessLevel switch
+            ClientBox = SelectBox(template);
+            ClientBox.transform.localPosition = new(0, 0, 0);
+            ClientBox.BindEntry(this, false);
+
+            switch (Scope.accessLevel)
             {
-                ConfigAccessLevel.Admin => notEnterGame || player.adminPrivileges > 0,
-                ConfigAccessLevel.Server => notEnterGame || (GeneralConfigMenuMod.config.AdminOnly.Value ? player.adminPrivileges > 0 : !player.guestMode),
-                ConfigAccessLevel.Client => true,
-                _ => false,
-            };
-            ValueBox.Editable = allow;
-            ServerValue.gameObject.SetActive(!notEnterGame && scope.ShouldSync);
+                case ConfigAccessLevel.Admin:
+                case ConfigAccessLevel.Server:
+                    ServerBox = SelectBox(template);
+                    ServerBox.BindEntry(this, true);
+                    ServerBox.transform.localPosition = new(-8.25f, 0, 0);
+                    break;
+                case ConfigAccessLevel.ViewOnly:
+                    ClientBox.Editable = false;
+                    break;
+            }
         }
-        private void MatchValue(ConfigTemplate template)
+        private UIConfigValueBox SelectBox(ConfigTemplate template)
         {
             if (Entry.SettingType == typeof(bool))
-                ValueBox = Instantiate(template.Bool, Container);
-            else
-            {
-                if (!TryMatchListType(template.List, out ValueBox))
-                    ValueBox = Instantiate(template.Input, Container);
-            }
-            ValueBox.transform.localPosition = new(0, 0, 0);
-            ValueBox.BindEntry(this);
+                return Instantiate(template.Bool, Container);
+            else if (TryMatchListType(template.List, out var box))
+                return box;
+            return Instantiate(template.Input, Container);
         }
-        public void ReceiveValue(string value)
-        {
-            if (ValueBox.TryLocalizeServerValue(value, out string key))
-            {
-                ServerValue.localizePlaceholders = true;
-                ServerValue.formatFields[0] = key;
-            }
-            else
-            {
-                ServerValue.localizePlaceholders = false;
-                ServerValue.formatFields[0] = value;
-            }
-            ServerValue.Render();
-            ValueBox.ReceiveValue(value);
-        }
-        public void OnMenuOpen()
-        {
-            if (Manager.main.player == null)
-            {
-                ServerValue.gameObject.SetActive(false);
-                return;
-            }
-            if (scope.accessLevel is ConfigAccessLevel.Admin or ConfigAccessLevel.Server)
-            {
-                ServerValue.gameObject.SetActive(true);
-            }
-        }
+
         private bool TryMatchListType(UIConfigValueList list, out UIConfigValueBox box)
         {
             string[] accepts = null;
+
             if (Entry.SettingType.IsEnum)
             {
                 var enums = Enum.GetValues(Entry.SettingType);
@@ -193,32 +203,71 @@ namespace Assets.GeneralConfigMenu.Scripts
             {
                 accepts = values;
             }
+
             if (accepts == null)
             {
                 box = null;
                 return false;
             }
+
             var valueList = Instantiate(list, Container);
             valueList.SetAccepts(accepts);
             box = valueList;
             return true;
         }
+
         public void SwitchExpandState()
         {
             if (Additional.Count == 0)
                 return;
-            state = !state;
-            Active.SetActive(state);
-            Inactive.SetActive(!state);
+            expand = !expand;
+            Active.SetActive(expand);
+            Inactive.SetActive(!expand);
             foreach (var entry in Additional)
-            {
-                entry.gameObject.SetActive(state);
-            }
+                entry.gameObject.SetActive(expand);
             layout.RenderUIComponent(true);
-            if (state)
+            if (expand)
                 Manager.menu.AttemptToPlayMenuSfx(SfxID.FIXME_menu_select, 0.6f, 0f, reuse: false);
             else
                 AudioManager.SfxUI(SfxID.FIXME_menu_select, 0.4f, false, 1f, 0f, true, true, 0f);
+        }
+
+        public void OnPermissionChange(PermissionLevel level)
+        {
+            var accessLevel = Scope.accessLevel;
+            if (!ServerBox)
+                return;
+            ServerBox.Editable = level switch
+            {
+                PermissionLevel.LockServer => accessLevel < ConfigAccessLevel.Server,
+                PermissionLevel.LockAdmin => accessLevel < ConfigAccessLevel.Admin,
+                _ => true,
+            };
+        }
+
+        public void TransferValue(bool server)
+        {
+            UIConfigValueBox source, target;
+            if (!Scope.ShouldSync)
+                return;
+            if (server)
+            {
+                if (!ServerBox.Editable)
+                    return;
+                source = ClientBox;
+                target = ServerBox;
+            }
+            else
+            {
+                source = ServerBox;
+                target = ClientBox;
+            }
+            target.ApplyUserChange(source.ValidValue.ToString());
+        }
+        public void ShowUnEditableWarning()
+        {
+            if (!ModConfigMenu.Instance.ShowIfIsAdminOnlyWarning(Scope.accessLevel))
+                PermissionButton.ShowUnEditableWarning();
         }
     }
 }

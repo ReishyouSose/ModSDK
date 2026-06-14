@@ -1,5 +1,4 @@
-﻿
-using Assets.GeneralConfigMenu.Scripts;
+﻿using Assets.GeneralConfigMenu.Scripts.ConfigTags;
 using CoreLib.Data.Configuration;
 
 namespace Assets.CoreFighter.Scripts.Cores

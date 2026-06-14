@@ -16,7 +16,7 @@ MonoBehaviour:
     guid: 512af5363e584954991d6f7214f5cd8d
     name: CoreEnhance
     displayName: 
-    skipSafetyChecks: 1
+    skipSafetyChecks: 0
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
@@ -36,6 +36,8 @@ MonoBehaviour:
       guid: def2f974f489c6c4e8c4c0eec5214301
     - path: Scripts/Scripts/Systems/Misc/DeathNoDrop.cs
       guid: bae06273d2dd48746a97ddca4767d4e7
+    - path: Scripts/Scripts/Systems/Misc/CraftStationRange.cs
+      guid: cf1b871acf6660946936afa7a57d565e
     - path: Scripts/Scripts/Systems/Misc/ContainerDisplay.cs
       guid: 379bf69b084cef643b525d2376e4643c
     - path: Scripts/Scripts/Systems/Misc/ClearDropItem.cs
@@ -54,6 +56,8 @@ MonoBehaviour:
       guid: bf4a928d81c8cc8458c2f8f9ccbd7377
     - path: Scripts/Scripts/Systems/Automation/FishingNetNoCritter.cs
       guid: e78170d9a54d80f409be36b0889fb41b
+    - path: Scripts/Scripts/Systems/Automation/FishingNetCanGetItem.cs
+      guid: 9ed10b3b71f6e66469b090b01aa26617
     - path: Scripts/Scripts/Systems/Automation/Door.cs
       guid: 513d9244a8201a6488ea56297cd0141c
     - path: Scripts/Scripts/Systems/Accelerate/Level.cs
@@ -64,8 +68,6 @@ MonoBehaviour:
       guid: 8a058387ff0ef5745b31bc2f98b5d58b
     - path: Scripts/Scripts/Patchs/PetUIPatch.cs
       guid: 465f6f7ab2527df4fb07f5fc463b0390
-    - path: Scripts/Scripts/Patchs/InventoryUtilityPatch.cs
-      guid: 37581a3d496b7cf49b4aef069dee04b3
     - path: Scripts/Scripts/Patchs/BossCheckPatch.cs
       guid: 8504d1659690a334e8b7709bb4d507eb
     - path: Scripts/Scripts/Items/DataModify.cs
@@ -114,11 +116,15 @@ MonoBehaviour:
       guid: 
     - path: Scripts/Generated/Crafting__System_11812170680.g.cs
       guid: 
+    - path: Scripts/Generated/CraftStationRange__System_2141645720.g.cs
+      guid: 
     - path: Scripts/Generated/DeathNoDrop__System_15192936710.g.cs
       guid: 
     - path: Scripts/Generated/Door__System_9804176880.g.cs
       guid: 
     - path: Scripts/Generated/Durability__System_8883317580.g.cs
+      guid: 
+    - path: Scripts/Generated/FishingNetCanGetItem__System_14473766640.g.cs
       guid: 
     - path: Scripts/Generated/FishingNetNoCritter__System_9716111650.g.cs
       guid: 
@@ -295,8 +301,12 @@ MonoBehaviour:
     hash: A1E25E9C3CDAFC66BAC189AF3E50832FB50DD4F12BB554313F950E43D9691E8A
   - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_BoulderDemolish.asset
     hash: 15A2BE7CDDEAEAB0E62254802D13F3EBDC37AAFCEDFE82C55E7387B448358D07
+  - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_HoloWorm.asset
+    hash: 0DE8DFFF9D324A312EF437054A79AC94F065F2F9C6CCD345A12FB8102EE99A1E
   - path: Assets/CoreEnhance/Prefabs/Items/BoulderDemolishItem.prefab
     hash: 3B5C622C17D959BF391424676A32AF5FBAA82C23C6C23A082313B94DBFF849E1
+  - path: Assets/CoreEnhance/Prefabs/Items/HoloWorm.prefab
+    hash: 0F4A36DFFA801F42C61D17903204B539D6E361145DA2328387AC42F31BB0696B
   - path: Assets/CoreEnhance/Prefabs/Tiles/BoulderDemolishTile.prefab
     hash: 63FC5212E1D0CB4B45A5D3BAC9DD810173EC77D8731BE66783D0BFE86C2E1BBF
   - path: Assets/CoreEnhance/Shaders/IconClipShader.shader
@@ -305,6 +315,10 @@ MonoBehaviour:
     hash: 477BDF0C494414A612B68097A2C4A15BCD0B08CBBF98CBBA68704257B65C9FF8
   - path: Assets/CoreEnhance/Sprites/Items/BoulderDemolish.png
     hash: 1DB93CCE2ED1D048232763F1ED98B0A95EF424821E430893AAB801C265D1E7D8
+  - path: Assets/CoreEnhance/Sprites/Items/Holobug1.png
+    hash: 44D7CA7E9E8994EAF9F8A9E8BF3C88BB42526AFEF07282F651CE806C5B1D5EE4
+  - path: Assets/CoreEnhance/Sprites/Items/Holobug2.png
+    hash: 5C0F58BBED117D96A0886A219157531605CE1FFFE9CAC5524CF5D47F6EF1557D
   - path: Assets/CoreEnhance/Sprites/Items_Small/BoulderDemolishSmall.png
     hash: 165A36BA58A57CC7F70F4C26F186C0E2B767B2E1515AC54E20C451DBC408620F
   - path: Assets/CoreEnhance/Sprites/Misc/ChestUI.png
