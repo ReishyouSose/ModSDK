@@ -175,6 +175,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Quick
 
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.MoveChestContent))
+                return;
             var ecb = CreateCommandBuffer();
             var containerLookup = this.containerLookup;
             var invLookup = this.invLookup;

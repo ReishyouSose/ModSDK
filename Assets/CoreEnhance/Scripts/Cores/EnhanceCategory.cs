@@ -11,6 +11,7 @@
         _Accelerate,
         Merchant,//商人刷新 done
         Titan,//泰坦冷却 done
+        Plant,
         Crafting,//所有等待型制作 done
         Casting,//读条物品 done
         Portal,//传送点 done
@@ -29,8 +30,11 @@
         DeathNoDrop,//死亡不掉落 done
         ChainMining,//连锁挖矿 done
         ContainerDisplay,//容器显示 done
-        MoveChestContent,
         ModifySledgeRange,
+        _Quick,
+        MoveChestContent,
+        OpenLockedChest,
+        OpenLockedMelody,
         _Count
     }
 }

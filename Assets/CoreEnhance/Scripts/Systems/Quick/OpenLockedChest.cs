@@ -1,4 +1,5 @@
-﻿using Inventory;
+﻿using Assets.CoreEnhance.Scripts.Cores;
+using Inventory;
 using Pug.UnityExtensions;
 using Unity.Collections;
 using Unity.Entities;
@@ -28,6 +29,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Quick
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.OpenLockedChest))
+                return;
             var ecb = CreateCommandBuffer();
             while (queue.TryDequeue(out var player))
             {
@@ -38,7 +41,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Quick
         }
         public static void Trigger(PlayerController player)
         {
-            ins.queue.Enqueue(player.entity);
+            if (EnhanceConfig.IsEnable(EnhanceCategory.OpenLockedChest))
+                ins.queue.Enqueue(player.entity);
         }
     }
     [UpdateInGroup(typeof(SimulationSystemGroup))]
@@ -57,6 +61,8 @@ namespace Assets.CoreEnhance.Scripts.Systems.Quick
         }
         protected override void OnUpdate()
         {
+            if (!EnhanceConfig.IsEnable(EnhanceCategory.OpenLockedChest))
+                return;
             var queue = this.queue;
             var ecb = CreateCommandBuffer();
             Entities.ForEach((Entity e, in QuickOpenLockedChestRPC rpc) =>

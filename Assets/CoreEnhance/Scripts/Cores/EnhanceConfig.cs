@@ -34,6 +34,7 @@ namespace Assets.CoreEnhance.Scripts.Cores
                 {
                     case EnhanceCategory.Boulder:
                     case EnhanceCategory.Titan:
+                    case EnhanceCategory.Plant:
                     case EnhanceCategory.Crafting:
                     case EnhanceCategory.FishingNetNoCritter:
                     case EnhanceCategory.FishingNetCanGetItem:

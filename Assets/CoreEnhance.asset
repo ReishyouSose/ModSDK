@@ -24,6 +24,8 @@ MonoBehaviour:
     files:
     - path: Scripts/Scripts/Tiles/BoulderDemolishEM.cs
       guid: 1ef597e7ef260164dba9c355452c69bc
+    - path: Scripts/Scripts/Systems/Quick/OpenLockedMelody.cs
+      guid: 6443762876343db44b222d5f8cbc82ca
     - path: Scripts/Scripts/Systems/Quick/OpenLockedChest.cs
       guid: 5bac40d44c88ce742bbeca053dd6537c
     - path: Scripts/Scripts/Systems/Quick/MoveChest.cs
@@ -60,6 +62,8 @@ MonoBehaviour:
       guid: 9ed10b3b71f6e66469b090b01aa26617
     - path: Scripts/Scripts/Systems/Automation/Door.cs
       guid: 513d9244a8201a6488ea56297cd0141c
+    - path: Scripts/Scripts/Systems/Accelerate/Plants.cs
+      guid: 33c413be7793b374a9f55b74ea7e348a
     - path: Scripts/Scripts/Systems/Accelerate/Level.cs
       guid: 6a887d61d61b0994a8863d950b8981f9
     - path: Scripts/Scripts/Systems/Accelerate/Crafting.cs
@@ -116,8 +120,6 @@ MonoBehaviour:
       guid: 
     - path: Scripts/Generated/Crafting__System_11812170680.g.cs
       guid: 
-    - path: Scripts/Generated/CraftStationRange__System_2141645720.g.cs
-      guid: 
     - path: Scripts/Generated/DeathNoDrop__System_15192936710.g.cs
       guid: 
     - path: Scripts/Generated/Door__System_9804176880.g.cs
@@ -141,6 +143,10 @@ MonoBehaviour:
     - path: Scripts/Generated/MoveChest__System_9565025901.g.cs
       guid: 
     - path: Scripts/Generated/OpenLockedChest__System_2253056810.g.cs
+      guid: 
+    - path: Scripts/Generated/OpenLockedMelody__System_14563335900.g.cs
+      guid: 
+    - path: Scripts/Generated/Plants__System_15463908320.g.cs
       guid: 
     - path: Scripts/Generated/SledgeRange__System_8104886080.g.cs
       guid: 
@@ -205,6 +211,8 @@ MonoBehaviour:
     hash: 3C161920EF8BE3E5973FBB5AD5E4BD6DBB48231E950B460FCF0EAEBEFF5BC5DB
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config/Pet.asset
     hash: D88040AB7AAA3464145024322296B6E48096716A0BE46C774D5192C6DAD9A446
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config/Quick.asset
+    hash: 6D2C2FF20C93F84DB4F577A2B320245B764834765381431F9879CE6FC923C7E6
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Accelerate/Casting.asset
     hash: 1DB57960D3655CBB661B72714C6E374C3D375BC6D87DE5367D2A965944A0AF5B
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Accelerate/Crafting.asset
@@ -221,6 +229,8 @@ MonoBehaviour:
     hash: E2AD9545A047E7838294986C2BD4808AB6C189982ADAC2C3656862F524B2A92D
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Accelerate/MerchantValue.asset
     hash: 8272EA87C0A8DC382BB90A5066970F5451B434C85419305E7F97FE4236460383
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Accelerate/Plant.asset
+    hash: 629939C5D12CDD5C0A00F6127AF88FA53E6A37F1D829E3BAF043EFE1FC74CCCB
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Accelerate/Portal.asset
     hash: 579B2F7207E612F69250A77E561C38341536423ACAE48D2A7CF8DC65DF0945C9
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Accelerate/Titan.asset
@@ -285,8 +295,6 @@ MonoBehaviour:
     hash: 19E448523300ED93A3297C4FD58FA7FF0B72F784144CB876235401762D338D39
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc/ModifySledgeRangeValue.asset
     hash: 5F32E96541C95260890B7356FD52C456758F6395D318BCE3F5C1783F9696C09C
-  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc/MoveChestContent.asset
-    hash: DF82B86F558423589989868DC727985F452D337FD0620D3C823D41A4D824BC48
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/OreAndWood.asset
     hash: 77AD9540D835B4FC0EFE51CF66AAD9842CE3A3EF163DAD06809088355C8C9135
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Misc_ChainMiningTarget/OreOnly.asset
@@ -299,6 +307,12 @@ MonoBehaviour:
     hash: 9925C62A83A4431D6396DF21655FB6D0E507614B3006393A668A0C64E3253FA2
   - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Pet/TalentDisplay.asset
     hash: A1E25E9C3CDAFC66BAC189AF3E50832FB50DD4F12BB554313F950E43D9691E8A
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Quick/MoveChestContent.asset
+    hash: 7B038A63F113F8721D9F9C295D13870857C87F3ECFB3990900528E2A5071DEA0
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Quick/OpenLockedChest.asset
+    hash: 747EB30B2B86A46064E57C6313FF940E480F32CF1F948E46798DC11D792ED667
+  - path: Assets/CoreEnhance/Data/TextDataBlock/CoreEnhance_Config_Quick/OpenLockedMelody.asset
+    hash: 01A9469EF1AC131C6C47B13DE0B6F16A63D8BD79FAB822646D6B72A090AE1D99
   - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_BoulderDemolish.asset
     hash: 15A2BE7CDDEAEAB0E62254802D13F3EBDC37AAFCEDFE82C55E7387B448358D07
   - path: Assets/CoreEnhance/Data/TextDataBlock/Items/CoreEnhance_HoloWorm.asset

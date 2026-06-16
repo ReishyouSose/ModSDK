@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: MoveChestContent
+  m_Name: Plant
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: -3583490715209015066
-    m_high: 6905338144575534298
+    m_low: -1863113099142094840
+    m_high: 2088720559985805435
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,8 +54,8 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u79FB\u52A8\u7BB1\u5B50\u7269\u54C1"
-      description: "\u6309\u4F4F\u7ED1\u5B9A\u952E\u70B9\u51FB\u7BB1\u5B50\u53EF\u6807\u8BB0\uFF08\u53D8\u4E3A\u91D1\u8272\uFF09\uFF0C\u518D\u6B21\u70B9\u51FB\u540C\u4E00\u7BB1\u5B50\u53D6\u6D88\u6807\u8BB0\u3002\r\n\u5728\u6709\u7BB1\u5B50\u88AB\u6807\u8BB0\u7684\u60C5\u51B5\u4E0B\uFF0C\u70B9\u51FB\u53E6\u4E00\u4E2A\u7BB1\u5B50\uFF0C\u5C06\u6807\u8BB0\u7BB1\u5B50\u4E2D\u7684\u7269\u54C1\u8F6C\u79FB\u5230\u65B0\u7BB1\u5B50\u4E2D\u3002\r\n\u76EE\u6807\u7BB1\u5B50\u88C5\u4E0D\u4E0B\u7684\u7269\u54C1\u4E0D\u4F1A\u88AB\u8F6C\u79FB\u3002"
+      title: "\u4F5C\u7269"
+      description: 
     - m_language:
         m_address:
           m_low: -2957573344710624914
@@ -66,18 +66,8 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Move Chest Content
-      description: 'While holding the bind key:
-
-        Click a chest to mark it
-        (gold highlight). Click the same chest again to unmark.
-
-        With a
-        chest marked, click a different chest to transfer all items from the marked
-        chest into the target chest.
-
-        Items exceeding the target chest''s
-        capacity will remain in the source chest.'
+      title: Crop
+      description: 
     - m_language:
         m_address:
           m_low: 6040640903323332866
@@ -144,20 +134,10 @@ MonoBehaviour:
       m_address:
         m_low: 0
         m_high: 0
-    title: Move Chest Content
-    description: 'While holding the bind key:
-
-      Click a chest to mark it (gold
-      highlight). Click the same chest again to unmark.
-
-      With a chest marked,
-      click a different chest to transfer all items from the marked chest into the
-      target chest.
-
-      Items exceeding the target chest''s capacity will remain
-      in the source chest.'
+    title: Crop
+    description: 
   m_shouldBeLocalized: 1
-  m_header: CoreEnhance_Config_Misc
+  m_header: CoreEnhance_Config_Accelerate
   references:
     version: 2
     RefIds: []

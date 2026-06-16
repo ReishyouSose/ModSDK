@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc43e4983a160e543856e5ba0421c9e1, type: 3}
+  m_Name: BuildingBlueprint
+  m_EditorClassIdentifier: 
+  metadata:
+    guid: 88cca6ae6a68467d8a5088ca01274e09
+    name: BuildingBlueprint
+    displayName: 
+    skipSafetyChecks: 0
+    disableScripts: 0
+    accessesExtraAssemblies: 1
+    disableHarmonyPatching: 0
+    requiredOn: 3
+    files:
+    - path: Scripts/Scripts/UISelectTarget.cs
+      guid: 60e79dad868ce674783a97dd3b8c7feb
+    - path: Scripts/Scripts/UISelectionMode.cs
+      guid: 42f239d02fd3b274eb91c411743cc551
+    - path: Scripts/Scripts/UIClickOperator.cs
+      guid: 0fd1d6bba86d02a4aa246c6ca572b28c
+    - path: Scripts/Scripts/UIBoxOperator.cs
+      guid: 3851c019cbadadf42afd7521df120342
+    - path: Scripts/Scripts/SelectingEnum.cs
+      guid: 8cb59225bc6d014478a17b9836731176
+    - path: Scripts/Scripts/SelectHandler.cs
+      guid: e77951fc27ac5fe439152ba01fbd2b0a
+    - path: Scripts/Scripts/PlaceableCD.cs
+      guid: 14685d3d64f448b41b4080e71d242c32
+    - path: Scripts/Scripts/BuildingSelectSystem.cs
+      guid: 6422ea4bdd331f74489b08cf4334e50c
+    - path: Scripts/Scripts/BuildingInfo.cs
+      guid: 456bc4a4b9c542d4bb341d5c52315533
+    - path: Scripts/Scripts/BlueprintUI.cs
+      guid: bcc8ca421da8c5343abb53ee0ec7cb0d
+    - path: Scripts/BuildingBlueprint.cs
+      guid: 41277b0f9ad28194085967d5bd7408c2
+    - path: Scripts/Generated/BuildingSelectSystem__System_3842756780.g.cs
+      guid: 
+    - path: Bundles/BuildingBlueprint_Windows.assetbundle
+      guid: 
+    - path: Bundles/BuildingBlueprint_Windows.assetbundle.manifest
+      guid: 
+    - path: Bundles/BuildingBlueprint_Linux.assetbundle
+      guid: 
+    - path: Bundles/BuildingBlueprint_Linux.assetbundle.manifest
+      guid: 
+    dependencies:
+    - modName: CoreLib
+      required: 1
+  modPath: Assets\BuildingBlueprint
+  forceReimport: 1
+  buildBundles: 1
+  cacheBundles: 0
+  buildLinux: 1
+  assets:
+  - path: Assets/BuildingBlueprint/BlueprintUI.prefab
+    hash: CAFFC80220D3FF2BDA8E9392CACF564BA1FF7D7C39BA8DCF763297C2A885DFC9
+  - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
+    hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
+  lastBuildLinux: 1
