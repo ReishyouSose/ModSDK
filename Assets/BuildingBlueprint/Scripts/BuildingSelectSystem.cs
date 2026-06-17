@@ -1,5 +1,4 @@
 ﻿using Pug.UnityExtensions;
-using PugTilemap;
 using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
@@ -18,7 +17,8 @@ namespace Assets.BuildingBlueprint.Scripts
         private ComponentLookup<DirectionCD> directionLookup;
         private ComponentLookup<ObjectDataCD> objLookup;
         private ComponentLookup<LocalTransform> transLookup;
-        private List<BuildingInfo> selected;
+        private List<BuildingInfo> buildings;
+        private List<TileInfo> tiles;
         private float2? startPos;
         private float2 currentPos;
         private bool selecting;
@@ -31,7 +31,8 @@ namespace Assets.BuildingBlueprint.Scripts
             directionLookup = SystemAPI.GetComponentLookup<DirectionCD>();
             objLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
             transLookup = SystemAPI.GetComponentLookup<LocalTransform>();
-            selected = new();
+            buildings = new();
+            tiles = new();
             ui = BlueprintUI.Ins;
             NeedDatabase();
             base.OnCreate();
@@ -87,7 +88,7 @@ namespace Assets.BuildingBlueprint.Scripts
                 currentPos = startPos.Value;
                 ui.StartSelect();
             }
-            else if (Input.GetMouseButtonUp(0))
+            else if (startPos != null && Input.GetMouseButtonUp(0))
             {
                 startPos = null;
                 ui.EndSelect();
@@ -95,57 +96,68 @@ namespace Assets.BuildingBlueprint.Scripts
             if (startPos != null)
             {
                 var mouse = MouseWorld;
-                var selected = this.selected;
+                var hanlder = ui.SelectHandler;
                 if (!currentPos.Equals(mouse))
                 {
                     currentPos = mouse;
-                    selected.Clear();
-                    var database = this.database;
-                    using var entities = query.ToEntityArray(Allocator.Temp);
                     float2 min = math.min(startPos.Value, mouse);
                     float2 max = math.max(startPos.Value, mouse);
                     Rect selectArea = new(min.x, min.y, max.x - min.x, max.y - min.y);
-                    foreach (var entity in entities)
+                    if (ui.SelectHandler.Layer == SelectionLayer.Entity)
                     {
-                        if (!objLookup.TryGetComponent(entity, out var obj))
-                            continue;
-                        ref var info = ref PugDatabase.GetEntityObjectInfo(obj.objectID, database, obj.variation);
-                        directionLookup.TryGetComponent(entity, out var direction);
-                        if (!transLookup.TryGetComponent(entity, out var trans))
-                            continue;
-                        var size = direction.GetPrefabTileSize(info.prefabTileSize);
-                        var box = GetEntityRect(direction, trans.Position, size);
-                        if (Contains(selectArea, box))
+                        var selected = buildings;
+                        selected.Clear();
+                        var database = this.database;
+                        using var entities = query.ToEntityArray(Allocator.Temp);
+                        foreach (var entity in entities)
                         {
-                            selected.Add(new BuildingInfo()
+                            if (!objLookup.TryGetComponent(entity, out var obj))
+                                continue;
+                            ref var info = ref PugDatabase.GetEntityObjectInfo(obj.objectID, database, obj.variation);
+                            directionLookup.TryGetComponent(entity, out var direction);
+                            if (!transLookup.TryGetComponent(entity, out var trans))
+                                continue;
+                            var size = direction.GetPrefabTileSize(info.prefabTileSize);
+                            var box = GetEntityRect(direction, trans.Position, size);
+                            if (Contains(selectArea, box))
                             {
-                                ObjectID = obj.objectID,
-                                X = size.x,
-                                Y = size.y,
-                                Direction = direction,
-                                Position = trans.Position,
-                                Variation = obj.variation,
-                            });
-                        }
-                    }
-                    ui.BoxOperate(selectArea, selected, op);
-                    int left = (int)math.ceil(min.x);
-                    int right = (int)math.floor(max.x);
-                    int bottom = (int)math.ceil(min.y);
-                    int top = (int)math.floor(max.y);
-
-                    var tileAccessor = this.tileAccessor;
-                    for (int x = left; x <= right; x++)
-                    {
-                        for (int y = bottom; y <= top; y++)
-                        {
-                            int2 pos = new(x, y);
-                            using var tiles = tileAccessor.Get(pos, Allocator.Temp);
-                            foreach(var tile in tiles)
-                            {
-                                Debug.Log(tile.tileType);
+                                selected.Add(new BuildingInfo()
+                                {
+                                    ObjectID = obj.objectID,
+                                    X = size.x,
+                                    Y = size.y,
+                                    Direction = direction,
+                                    Position = trans.Position,
+                                    Variation = obj.variation,
+                                });
                             }
                         }
+                        ui.BoxOperate(selectArea, selected, op);
+                    }
+                    else
+                    {
+                        var selected = tiles;
+                        selected.Clear();
+                        int left = (int)math.ceil(min.x);
+                        int right = (int)math.floor(max.x);
+                        int bottom = (int)math.ceil(min.y);
+                        int top = (int)math.floor(max.y);
+                        var tileAccessor = this.tileAccessor;
+                        var targets = hanlder.TileTarget;
+                        for (int x = left; x <= right; x++)
+                        {
+                            for (int y = bottom; y <= top; y++)
+                            {
+                                int2 pos = new(x, y);
+                                using var tiles = tileAccessor.Get(pos, Allocator.Temp);
+                                TileInfo info = new() { Position = pos };
+                                var dict = info.Tiles = new();
+                                foreach (var tile in tiles)
+                                    dict.Add(tile, targets.Contains(tile.tileType));
+                                selected.Add(info);
+                            }
+                        }
+                        ui.BoxOperate(selectArea, selected, op);
                     }
                 }
             }
@@ -153,36 +165,51 @@ namespace Assets.BuildingBlueprint.Scripts
 
         private void ClickCheck(ClickOperator op)
         {
-            var mouse = MouseWorld;
-            var database = this.database;
-            using var entities = query.ToEntityArray(Allocator.Temp);
-            BuildingInfo info = default;
             bool hover = false;
-            foreach (var entity in entities)
+            var mouse = MouseWorld;
+            var handler = ui.SelectHandler;
+            if (ui.SelectHandler.Layer == SelectionLayer.Entity)
             {
-                directionLookup.TryGetComponent(entity, out var direction);
-                if (!objLookup.TryGetComponent(entity, out var obj))
-                    continue;
-                if (!transLookup.TryGetComponent(entity, out var trans))
-                    continue;
-                var size = direction.GetPrefabTileSize(PugDatabase.GetEntityObjectInfo(obj.objectID, database, obj.variation).prefabTileSize);
-                var box = GetEntityRect(direction, trans.Position, size);
-                if (box.Contains(mouse))
+                var database = this.database;
+                using var entities = query.ToEntityArray(Allocator.Temp);
+                BuildingInfo info = default;
+                foreach (var entity in entities)
                 {
-                    hover = true;
-                    info = new BuildingInfo()
+                    directionLookup.TryGetComponent(entity, out var direction);
+                    if (!objLookup.TryGetComponent(entity, out var obj))
+                        continue;
+                    if (!transLookup.TryGetComponent(entity, out var trans))
+                        continue;
+                    var size = direction.GetPrefabTileSize(PugDatabase.GetEntityObjectInfo(obj.objectID, database, obj.variation).prefabTileSize);
+                    var box = GetEntityRect(direction, trans.Position, size);
+                    if (box.Contains(mouse))
                     {
-                        ObjectID = obj.objectID,
-                        X = size.x,
-                        Y = size.y,
-                        Direction = direction,
-                        Position = trans.Position,
-                        Variation = obj.variation,
-                    };
-                    break;
+                        hover = true;
+                        info = new BuildingInfo()
+                        {
+                            ObjectID = obj.objectID,
+                            X = size.x,
+                            Y = size.y,
+                            Direction = direction,
+                            Position = trans.Position,
+                            Variation = obj.variation,
+                        };
+                        break;
+                    }
                 }
+                ui.ClickOperate(hover, info, Input.GetMouseButtonDown(0), op);
             }
-            ui.ClickOperate(hover, info, Input.GetMouseButtonDown(0), op);
+            else
+            {
+                var targets = handler.TileTarget;
+                var pos = mouse.RoundToInt2();
+                using var tiles = tileAccessor.Get(pos, Allocator.Temp);
+                TileInfo info = new() { Position = pos };
+                var dict = info.Tiles = new();
+                foreach (var tile in tiles)
+                    dict.Add(tile, targets.Contains(tile.tileType));
+                ui.ClickOperate(true, info, Input.GetMouseButtonDown(0), op);
+            }
         }
     }
 }

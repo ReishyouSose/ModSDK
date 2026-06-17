@@ -7,11 +7,12 @@ namespace Assets.BuildingBlueprint.Scripts
     /// </summary>
     public enum SelectionMode
     {
-        None,
         /// <summary>框选模式（拖拽矩形框）</summary>
         Box,
         /// <summary>点选模式（点击选取）</summary>
-        Click
+        Click,
+        /// <summary>信息检查模式</summary>
+        Check,
     }
 
     /// <summary>
@@ -34,12 +35,9 @@ namespace Assets.BuildingBlueprint.Scripts
         Remove
     }
 
-    [Flags]
-    public enum SelectTarget : uint
+    public enum SelectionLayer
     {
-        None = 1 << 0,
-        Entity = 1 << 1,
-        Tile = 1 << 2,
-        Ground = 1 << 3,
+        Entity,
+        Tile,
     }
 }

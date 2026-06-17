@@ -9,7 +9,8 @@ namespace Assets.BuildingBlueprint
 {
     public class BuildingBlueprint : IMod
     {
-        internal const string OpenUI = "BuildingBlueprint_OpenUI";
+        internal const string Key = "BuildingBlueprint_";
+        internal const string OpenUI = Key + "OpenUI";
         public void EarlyInit()
         {
             CoreLibMod.LoadSubmodule(typeof(UserInterfaceModule));
@@ -46,11 +47,16 @@ namespace Assets.BuildingBlueprint
 
         public void Update()
         {
-            if (!Manager.main.player)
+            var player = Manager.main.player;
+            if (!player)
                 return;
-            if (Manager.main.player.inputModule.rewiredPlayer.GetButtonDown(OpenUI))
+            if (player.inputModule.rewiredPlayer.GetButtonDown(OpenUI))
             {
-                BlueprintUI.Ins.Switch();
+                var ui = BlueprintUI.Ins;
+                if (!ui.Root.activeSelf)
+                    ui.ShowUI();
+                else
+                    ui.HideUI();
             }
         }
     }

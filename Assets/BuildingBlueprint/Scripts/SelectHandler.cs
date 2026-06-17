@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using PugTilemap;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
 {
     public class SelectHandler : MonoBehaviour
     {
+        public GameObject EntityIcon;
+        public GameObject TileIcon;
         public Transform ModeMark;
         public Transform BoxMark;
         public Transform ClickMark;
         public GameObject BoxContainer;
         public GameObject ClickContainer;
+        public GameObject TileFilterButton;
+        public GameObject TileFilterContainer;
 
+        [HideInInspector]
+        public SelectionLayer Layer;
         [HideInInspector]
         public SelectionMode Mode;
         [HideInInspector]
@@ -17,11 +25,37 @@ namespace Assets.BuildingBlueprint.Scripts
         [HideInInspector]
         public ClickOperator ClickOp;
         [HideInInspector]
-        public SelectTarget Target;
+        public HashSet<TileType> TileTarget;
+
         private void Awake()
         {
             ClickContainer.SetActive(false);
-            Target |= SelectTarget.Entity;
+            TileTarget = new();
+            Mode = SelectionMode.Check;
+            BoxContainer.transform.localPosition = new(0, -1.25f, 0);
+            ClickContainer.transform.localPosition = new(0, -1.25f, 0);
+            TileFilterButton.SetActive(false);
+            TileFilterContainer.SetActive(false);
+        }
+        public void ChangeSelectionLayer()
+        {
+            if (Layer == SelectionLayer.Tile)
+            {
+                Layer = SelectionLayer.Entity;
+                EntityIcon.SetActive(true);
+                TileIcon.SetActive(false);
+                BoxContainer.transform.localPosition = new(0, -1.25f, 0);
+                ClickContainer.transform.localPosition = new(0, -1.25f, 0);
+                TileFilterButton.SetActive(false);
+                TileFilterContainer.SetActive(false);
+                return;
+            }
+            EntityIcon.SetActive(false);
+            TileIcon.SetActive(true);
+            Layer = SelectionLayer.Tile;
+            BoxContainer.transform.localPosition = new(-1.25f, -1.25f, 0);
+            ClickContainer.transform.localPosition = new(-1.25f, -1.25f, 0);
+            TileFilterButton.SetActive(true);
         }
         public void ChangeSelectionMode(GameObject button)
         {
@@ -43,7 +77,7 @@ namespace Assets.BuildingBlueprint.Scripts
                     BoxContainer.SetActive(false);
                     break;
             }
-            BuildingSelectSystem.Ins.SetSelecing(Mode != SelectionMode.None);
+            BuildingSelectSystem.Ins.SetSelecing(Mode != SelectionMode.Check);
         }
 
         public void ChangeBoxOp(GameObject button)
@@ -58,13 +92,17 @@ namespace Assets.BuildingBlueprint.Scripts
             ClickOp = button.GetComponent<UIClickOperator>().Op;
         }
 
-        public void ChangeTarget(UISelectTarget target)
+        public void ChangeTileFilter(UITileTarget button)
         {
-            var t = target.Target;
-            if (target.State)
-                Target |= t;
+            var target = button.TileType;
+            if (button.State)
+                TileTarget.Add(target);
             else
-                Target &= ~t;
+                TileTarget.Remove(target);
+        }
+        public void SwitchTileFilter()
+        {
+            TileFilterContainer.SetActive(!TileFilterContainer.activeSelf);
         }
     }
 }

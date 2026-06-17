@@ -22,18 +22,26 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Scripts/Scripts/UISelectTarget.cs
+    - path: Scripts/Scripts/UITileTypeSelector.cs
+      guid: 3dec0985507e2b146b4d13c8f888af6e
+    - path: Scripts/Scripts/UITileTarget.cs
       guid: 60e79dad868ce674783a97dd3b8c7feb
     - path: Scripts/Scripts/UISelectionMode.cs
       guid: 42f239d02fd3b274eb91c411743cc551
+    - path: Scripts/Scripts/UIEntitySlot.cs
+      guid: 0c3e79aad681f004bb81f6cf6de1eaf3
     - path: Scripts/Scripts/UIClickOperator.cs
       guid: 0fd1d6bba86d02a4aa246c6ca572b28c
     - path: Scripts/Scripts/UIBoxOperator.cs
       guid: 3851c019cbadadf42afd7521df120342
+    - path: Scripts/Scripts/TileInfo.cs
+      guid: a73bc6e962d9ee149a2ba152836db59f
     - path: Scripts/Scripts/SelectingEnum.cs
       guid: 8cb59225bc6d014478a17b9836731176
     - path: Scripts/Scripts/SelectHandler.cs
       guid: e77951fc27ac5fe439152ba01fbd2b0a
+    - path: Scripts/Scripts/RecordPosition.cs
+      guid: 0a85ce3cd4a6e8c4dbc3f065f0b515d4
     - path: Scripts/Scripts/PlaceableCD.cs
       guid: 14685d3d64f448b41b4080e71d242c32
     - path: Scripts/Scripts/BuildingSelectSystem.cs
@@ -64,7 +72,49 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: CAFFC80220D3FF2BDA8E9392CACF564BA1FF7D7C39BA8DCF763297C2A885DFC9
+    hash: FD7EBE3AB51DF963AB4F7E876B8FCDE43E10D6F2AA4DFC681E9AFAF4526FAF81
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/TargetSwitch.asset
+    hash: A89753E15B3BEEA91310C879DDE92B5394698266B5BA423B6035592D3081C896
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/Add.asset
+    hash: 06F494D123F148223E63853A390A153FF258ED328BA16D8A7711CAFC0A956733
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/Intersect.asset
+    hash: 18C0970962D20E0F5E44A3694CFDDC421DC37978A2A0549F65E9AA7AD77608F6
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/New.asset
+    hash: 715AE09013147F486D98A78FDA6C6BFF5CB5EAD5A0D6E37022C6A93D7179D497
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/Subtract.asset
+    hash: 7F45AB5E0DBF71D1257E116896E56FF44A239C1D5130F1B713B1227221C1FC82
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Click/Add.asset
+    hash: B100FB27311E6F160BBEBD1837217FFB7B0E4BF32FAF305E3661E7F5D700038D
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Click/Remove.asset
+    hash: 056883961CC5D891504A85879AD2D55B799B08CE02F767A5DE4E718FAD480BFE
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Box.asset
+    hash: 7E37EDFBD191971F9DE9E2F6BC56930D45146EBE708628A44657ED01EEFE30BC
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Check.asset
+    hash: A4C747853CA216D29B159A4915D185BEA50B9C3603D34666EB7A6B2C4170F472
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Click.asset
+    hash: 5CA77077FB0E89D89D42489A524B3F3072548423D7DB2E3858A7755E8753D1E3
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/bridge.asset
+    hash: 7A96CABF93ABBA09B236FDB6538E4AB72AF07730C1C40C5AA893E53F62FFBF5F
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/fence.asset
+    hash: A3C7E2954385739157887B5746D6152DD9BA3575A63882A7F7BFE8F688A50F46
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/floor.asset
+    hash: C0C0C594B8EB22E7A926355C3409CE1D9D1577DEE4D2613298890948471D283E
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/ground.asset
+    hash: 266C7BD04320FE855879935ED6F67F225B8ABB96237079B1D0DAA8DA2741FB02
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/groundSlime.asset
+    hash: D5C9740CBFCE6D4A5D842F499E875487946F9E45CED19B3B2572F88003CD1A3A
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/litFloor.asset
+    hash: A569CC413DEF9485AABE161466E2BAEC409CEAE27049F7687FE703AC26B4A35A
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/rail.asset
+    hash: 6B52EB4097306317184EC73D14A4E95CA06F65E893ACFDB84B4314F6A063C7D4
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/roofHole.asset
+    hash: 29332D77CD91F417866FB9D1AC607219F691010D74D3C505B9D88247C7CC8978
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/rug.asset
+    hash: D3FCC5CCA2F23934C9FA3A14BFD2DF891C41DFF9D3C5782CEADA417CCDBC7CED
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/wall.asset
+    hash: 7CE956AD59E82A2F46D573457A272F85ABA03CC53EFE2E0ED1CCDBD9114D4396
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/water.asset
+    hash: 10DE22E63DDFBE80ABD7A33791174F0B96BDE15F8A4C8CF8A030D9D65A7F921A
   lastBuildLinux: 1

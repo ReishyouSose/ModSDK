@@ -1,6 +1,5 @@
 ﻿using PugMod;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Assets.PointShop.Scripts
@@ -32,7 +31,8 @@ namespace Assets.PointShop.Scripts
         public ObjectID GetBoss(Zone zone) => shops[zone].Boss;
         private void Init(Zone zone, ObjectID boss, List<ShopItem> items)
         {
-            shops[zone] = new() { Boss = boss, Items = items.ToList() };
+            items.RemoveAll(x => x.Item.objectID == ObjectID.None);
+            shops[zone] = new() { Boss = boss, Items = items };
         }
         private List<ShopItem> None()
         {
