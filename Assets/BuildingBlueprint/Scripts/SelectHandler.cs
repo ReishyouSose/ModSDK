@@ -1,4 +1,5 @@
 ﻿using PugTilemap;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,12 @@ namespace Assets.BuildingBlueprint.Scripts
         public GameObject ClickContainer;
         public GameObject TileFilterButton;
         public GameObject TileFilterContainer;
+        public LinearLayoutUIComponent FilterLayout;
+        public UITileTarget FilterTemplate;
+        public List<TileType> FilterTypes;
 
+        [HideInInspector]
+        public HashSet<TileType> ExceptTiles;
         [HideInInspector]
         public SelectionLayer Layer;
         [HideInInspector]
@@ -27,8 +33,11 @@ namespace Assets.BuildingBlueprint.Scripts
         [HideInInspector]
         public HashSet<TileType> TileTarget;
 
+        private bool rendered;
+
         private void Awake()
         {
+            BoxContainer.SetActive(false);
             ClickContainer.SetActive(false);
             TileTarget = new();
             Mode = SelectionMode.Check;
@@ -36,6 +45,22 @@ namespace Assets.BuildingBlueprint.Scripts
             ClickContainer.transform.localPosition = new(0, -1.25f, 0);
             TileFilterButton.SetActive(false);
             TileFilterContainer.SetActive(false);
+            FilterTemplate.gameObject.SetActive(false);
+            var container = TileFilterContainer.GetComponent<UIScrollWindow>().scrollingContent.GetChild(0);
+            foreach (var filter in FilterTypes)
+            {
+                var f = Instantiate(FilterTemplate, container);
+                f.TileType = filter;
+                f.gameObject.SetActive(true);
+            }
+            Array array = Enum.GetValues(typeof(TileType));
+            ExceptTiles = new();
+            foreach (var f in array)
+                ExceptTiles.Add((TileType)f);
+            foreach (var f in FilterTypes)
+            {
+                ExceptTiles.Remove(f);
+            }
         }
         public void ChangeSelectionLayer()
         {
@@ -77,7 +102,6 @@ namespace Assets.BuildingBlueprint.Scripts
                     BoxContainer.SetActive(false);
                     break;
             }
-            BuildingSelectSystem.Ins.SetSelecing(Mode != SelectionMode.Check);
         }
 
         public void ChangeBoxOp(GameObject button)
@@ -95,6 +119,7 @@ namespace Assets.BuildingBlueprint.Scripts
         public void ChangeTileFilter(UITileTarget button)
         {
             var target = button.TileType;
+            Debug.Log(target);
             if (button.State)
                 TileTarget.Add(target);
             else
@@ -103,6 +128,10 @@ namespace Assets.BuildingBlueprint.Scripts
         public void SwitchTileFilter()
         {
             TileFilterContainer.SetActive(!TileFilterContainer.activeSelf);
+            if (rendered)
+                return;
+            rendered = true;
+            FilterLayout.RenderUIComponent(true);
         }
     }
 }

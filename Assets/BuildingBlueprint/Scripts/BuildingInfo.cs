@@ -1,14 +1,16 @@
-﻿using Unity.Mathematics;
+﻿using System;
+using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
 {
-    public struct BuildingInfo
+    [Serializable]
+    public class BuildingInfo
     {
-        public ObjectID ObjectID;
-        public int X;
-        public int Y;
-        public int Variation;
-        public float3 Position;
-        public DirectionCD Direction;
+        public string Name;
+        public List<EntityInfo> EntityInfos;
+        public List<TileInfo> TileInfos;
+        public Vector2Int Size;
     }
 }

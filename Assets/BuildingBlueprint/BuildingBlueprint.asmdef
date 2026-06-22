@@ -16,7 +16,8 @@
         "Unity.Properties",
         "Unity.Transforms",
         "PugMod.SDK",
-        "CoreLib"
+        "CoreLib",
+        "Unity.Physics.Custom"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using Unity.Mathematics;
+using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
 {
     public struct TileInfo
     {
-        public int2 Position;
+        public Vector2Int Position;
         public Dictionary<TileCD, bool> Tiles;
     }
 }

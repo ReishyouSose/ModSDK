@@ -26,12 +26,18 @@ MonoBehaviour:
       guid: 3dec0985507e2b146b4d13c8f888af6e
     - path: Scripts/Scripts/UITileTarget.cs
       guid: 60e79dad868ce674783a97dd3b8c7feb
+    - path: Scripts/Scripts/UISingleSlot.cs
+      guid: 0c3e79aad681f004bb81f6cf6de1eaf3
     - path: Scripts/Scripts/UISelectionMode.cs
       guid: 42f239d02fd3b274eb91c411743cc551
-    - path: Scripts/Scripts/UIEntitySlot.cs
-      guid: 0c3e79aad681f004bb81f6cf6de1eaf3
+    - path: Scripts/Scripts/UILinearLayoutContainer.cs
+      guid: 68cf92e2e8198c6468df9e7d52a1a8dd
     - path: Scripts/Scripts/UIClickOperator.cs
       guid: 0fd1d6bba86d02a4aa246c6ca572b28c
+    - path: Scripts/Scripts/UIBuildingPreviewWindow.cs
+      guid: 0cbe89b3cb447f544af49ee15bfbb438
+    - path: Scripts/Scripts/UIBuildingInfo.cs
+      guid: a95852f43a9abad4fa75deeac696b1b3
     - path: Scripts/Scripts/UIBoxOperator.cs
       guid: 3851c019cbadadf42afd7521df120342
     - path: Scripts/Scripts/TileInfo.cs
@@ -42,17 +48,31 @@ MonoBehaviour:
       guid: e77951fc27ac5fe439152ba01fbd2b0a
     - path: Scripts/Scripts/RecordPosition.cs
       guid: 0a85ce3cd4a6e8c4dbc3f065f0b515d4
+    - path: Scripts/Scripts/PlacePreviewHanlder.cs
+      guid: be88359e00c2a3143bfd7f9fe8c2df31
     - path: Scripts/Scripts/PlaceableCD.cs
       guid: 14685d3d64f448b41b4080e71d242c32
+    - path: Scripts/Scripts/EntityInfo.cs
+      guid: 456bc4a4b9c542d4bb341d5c52315533
     - path: Scripts/Scripts/BuildingSelectSystem.cs
       guid: 6422ea4bdd331f74489b08cf4334e50c
+    - path: Scripts/Scripts/BuildingPlaceSystem.cs
+      guid: e7ebdc0596bd31941928192845cb251e
     - path: Scripts/Scripts/BuildingInfo.cs
-      guid: 456bc4a4b9c542d4bb341d5c52315533
+      guid: 6810a29be06a1bd4d80ef4ed87aa77ee
     - path: Scripts/Scripts/BlueprintUI.cs
       guid: bcc8ca421da8c5343abb53ee0ec7cb0d
     - path: Scripts/BuildingBlueprint.cs
       guid: 41277b0f9ad28194085967d5bd7408c2
+    - path: Scripts/Generated/BuildingPlaceSystem__System_5697914970.g.cs
+      guid: 
+    - path: Scripts/Generated/BuildingPlaceSystem__System_5697914971.g.cs
+      guid: 
     - path: Scripts/Generated/BuildingSelectSystem__System_3842756780.g.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_PlaceEntityRpcCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_PlaceTileRpcCommandSerializer.cs
       guid: 
     - path: Bundles/BuildingBlueprint_Windows.assetbundle
       guid: 
@@ -72,9 +92,13 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: FD7EBE3AB51DF963AB4F7E876B8FCDE43E10D6F2AA4DFC681E9AFAF4526FAF81
+    hash: 304080B37D139BEDB084E45915E99900197678C2EC450F5F4DC616F0F89394A0
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Save.asset
+    hash: CC30A89438C7E3C0D8C4D2A7E2FC3968976697BA21D0317017192FDFF8F49E01
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Saves.asset
+    hash: 9B853E2FCD9AD794FE9881537668962CF83880F312A8C6CA2C6F4E8AAAF125B4
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/TargetSwitch.asset
     hash: A89753E15B3BEEA91310C879DDE92B5394698266B5BA423B6035592D3081C896
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/Add.asset
@@ -99,6 +123,8 @@ MonoBehaviour:
     hash: 7A96CABF93ABBA09B236FDB6538E4AB72AF07730C1C40C5AA893E53F62FFBF5F
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/fence.asset
     hash: A3C7E2954385739157887B5746D6152DD9BA3575A63882A7F7BFE8F688A50F46
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/Filter.asset
+    hash: 2FE41237A616E760385C52373CBE81B0EEF3046290BED8E769B02057088CDF27
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/floor.asset
     hash: C0C0C594B8EB22E7A926355C3409CE1D9D1577DEE4D2613298890948471D283E
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/ground.asset
@@ -107,6 +133,8 @@ MonoBehaviour:
     hash: D5C9740CBFCE6D4A5D842F499E875487946F9E45CED19B3B2572F88003CD1A3A
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/litFloor.asset
     hash: A569CC413DEF9485AABE161466E2BAEC409CEAE27049F7687FE703AC26B4A35A
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/looseFlooring.asset
+    hash: C690F89CA0A89FEB2D9EBCDE8555502E131005A2842194382CAF04DF61252CEA
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/rail.asset
     hash: 6B52EB4097306317184EC73D14A4E95CA06F65E893ACFDB84B4314F6A063C7D4
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/roofHole.asset

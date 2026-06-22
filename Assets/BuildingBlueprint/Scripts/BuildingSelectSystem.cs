@@ -17,7 +17,7 @@ namespace Assets.BuildingBlueprint.Scripts
         private ComponentLookup<DirectionCD> directionLookup;
         private ComponentLookup<ObjectDataCD> objLookup;
         private ComponentLookup<LocalTransform> transLookup;
-        private List<BuildingInfo> buildings;
+        private List<EntityCD> entities;
         private List<TileInfo> tiles;
         private float2? startPos;
         private float2 currentPos;
@@ -31,7 +31,7 @@ namespace Assets.BuildingBlueprint.Scripts
             directionLookup = SystemAPI.GetComponentLookup<DirectionCD>();
             objLookup = SystemAPI.GetComponentLookup<ObjectDataCD>();
             transLookup = SystemAPI.GetComponentLookup<LocalTransform>();
-            buildings = new();
+            entities = new();
             tiles = new();
             ui = BlueprintUI.Ins;
             NeedDatabase();
@@ -96,7 +96,7 @@ namespace Assets.BuildingBlueprint.Scripts
             if (startPos != null)
             {
                 var mouse = MouseWorld;
-                var hanlder = ui.SelectHandler;
+                var handler = ui.SelectHandler;
                 if (!currentPos.Equals(mouse))
                 {
                     currentPos = mouse;
@@ -105,7 +105,7 @@ namespace Assets.BuildingBlueprint.Scripts
                     Rect selectArea = new(min.x, min.y, max.x - min.x, max.y - min.y);
                     if (ui.SelectHandler.Layer == SelectionLayer.Entity)
                     {
-                        var selected = buildings;
+                        var selected = this.entities;
                         selected.Clear();
                         var database = this.database;
                         using var entities = query.ToEntityArray(Allocator.Temp);
@@ -121,12 +121,12 @@ namespace Assets.BuildingBlueprint.Scripts
                             var box = GetEntityRect(direction, trans.Position, size);
                             if (Contains(selectArea, box))
                             {
-                                selected.Add(new BuildingInfo()
+                                selected.Add(new EntityCD()
                                 {
                                     ObjectID = obj.objectID,
                                     X = size.x,
                                     Y = size.y,
-                                    Direction = direction,
+                                    Direction = direction.direction,
                                     Position = trans.Position,
                                     Variation = obj.variation,
                                 });
@@ -143,14 +143,14 @@ namespace Assets.BuildingBlueprint.Scripts
                         int bottom = (int)math.ceil(min.y);
                         int top = (int)math.floor(max.y);
                         var tileAccessor = this.tileAccessor;
-                        var targets = hanlder.TileTarget;
+                        var targets = handler.TileTarget;
                         for (int x = left; x <= right; x++)
                         {
                             for (int y = bottom; y <= top; y++)
                             {
                                 int2 pos = new(x, y);
                                 using var tiles = tileAccessor.Get(pos, Allocator.Temp);
-                                TileInfo info = new() { Position = pos };
+                                TileInfo info = new() { Position = pos.ToVec2Int() };
                                 var dict = info.Tiles = new();
                                 foreach (var tile in tiles)
                                     dict.Add(tile, targets.Contains(tile.tileType));
@@ -172,7 +172,11 @@ namespace Assets.BuildingBlueprint.Scripts
             {
                 var database = this.database;
                 using var entities = query.ToEntityArray(Allocator.Temp);
-                BuildingInfo info = default;
+                EntityInfo info = new()
+                {
+                    Position = mouse.ToFloat3(),
+                    Entities = new()
+                };
                 foreach (var entity in entities)
                 {
                     directionLookup.TryGetComponent(entity, out var direction);
@@ -185,16 +189,15 @@ namespace Assets.BuildingBlueprint.Scripts
                     if (box.Contains(mouse))
                     {
                         hover = true;
-                        info = new BuildingInfo()
+                        info.Entities.Add(new EntityCD()
                         {
                             ObjectID = obj.objectID,
                             X = size.x,
                             Y = size.y,
-                            Direction = direction,
+                            Direction = direction.direction,
                             Position = trans.Position,
                             Variation = obj.variation,
-                        };
-                        break;
+                        });
                     }
                 }
                 ui.ClickOperate(hover, info, Input.GetMouseButtonDown(0), op);
@@ -204,7 +207,7 @@ namespace Assets.BuildingBlueprint.Scripts
                 var targets = handler.TileTarget;
                 var pos = mouse.RoundToInt2();
                 using var tiles = tileAccessor.Get(pos, Allocator.Temp);
-                TileInfo info = new() { Position = pos };
+                TileInfo info = new() { Position = pos.ToVec2Int() };
                 var dict = info.Tiles = new();
                 foreach (var tile in tiles)
                     dict.Add(tile, targets.Contains(tile.tileType));

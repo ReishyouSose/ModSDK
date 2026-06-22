@@ -3,17 +3,31 @@ using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
 {
-    [RequireComponent(typeof(PugText))]
     public class UITileTarget : ButtonUIElement
     {
         public TileType TileType;
-        private new PugText text;
-        public bool State { get; private set; }
+        public GameObject Enable;
+        public GameObject Disable;
+
+        [HideInInspector]
+        public bool State
+        {
+            get => state;
+            set
+            {
+                state = value;
+                Enable.SetActive(value);
+                Disable.SetActive(!value);
+            }
+        }
+
+        private bool state;
+
         protected override void Awake()
         {
-            text = GetComponent<PugText>();
-            text.color = new(1, 1, 1, 0.5f);
             text.SetText(text.GetText() + TileType);
+            Enable.SetActive(false);
+            Disable.SetActive(true);
             base.Awake();
         }
         public override void OnLeftClicked(bool mod1, bool mod2)
@@ -28,7 +42,7 @@ namespace Assets.BuildingBlueprint.Scripts
         }
         public override void OnDeselected(bool playEffect = true)
         {
-            text.color = new(1, 1, 1, State ? 1 : 0.5f);
+            text.color = Color.white;
             base.OnDeselected(playEffect);
         }
     }
