@@ -119,7 +119,6 @@ namespace Assets.BuildingBlueprint.Scripts
         public void ChangeTileFilter(UITileTarget button)
         {
             var target = button.TileType;
-            Debug.Log(target);
             if (button.State)
                 TileTarget.Add(target);
             else

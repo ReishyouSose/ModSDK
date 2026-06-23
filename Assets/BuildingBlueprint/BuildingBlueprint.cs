@@ -11,6 +11,7 @@ namespace Assets.BuildingBlueprint
     public class BuildingBlueprint : IMod
     {
         internal const string Key = "BuildingBlueprint_";
+        internal const string Menu = Key + "Menu";
         internal const string OpenUI = Key + "OpenUI";
         internal static ConfigEntry<string> Saves;
         internal static ConfigFile File;

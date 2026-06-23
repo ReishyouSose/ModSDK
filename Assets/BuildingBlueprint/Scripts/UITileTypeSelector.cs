@@ -1,5 +1,4 @@
 ﻿using PugTilemap;
-using QFSW.QC.Actions;
 using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
@@ -47,6 +46,17 @@ namespace Assets.BuildingBlueprint.Scripts
                             objectID = ObjectID.RoofingTool,
                             amount = 200,
                             variation = 0
+                        }
+                    };
+                    return;
+                case TileType.water:
+                    Slot.Contained = new()
+                    {
+                        objectData = new()
+                        {
+                            objectID = ObjectID.Bucket,
+                            amount = 1,
+                            variation = tile.tileset + 1
                         }
                     };
                     return;

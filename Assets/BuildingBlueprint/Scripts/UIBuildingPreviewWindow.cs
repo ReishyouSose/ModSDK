@@ -17,6 +17,23 @@ namespace Assets.BuildingBlueprint.Scripts
         [HideInInspector]
         public SelectionLayer CheckLayer;
         private UIBuildingInfo info;
+
+        private Dictionary<TileCD, Color> tileColors;
+        private void Awake()
+        {
+            tileColors = new();
+            foreach (TileTypeColorTable.TileSetColors tileSetColors in Resources.Load<TileTypeColorTable>("TileTypeColorTable").tileSetColors)
+            {
+                foreach (TileTypeColorTable.TileColor tileColor in tileSetColors.tileColors)
+                {
+                    tileColors.Add(new TileCD
+                    {
+                        tileset = (int)tileSetColors.pugMapTileset,
+                        tileType = tileColor.tileType
+                    }, tileColor.color);
+                }
+            }
+        }
         public void Refresh(UIBuildingInfo info)
         {
             this.info = info;
@@ -31,9 +48,8 @@ namespace Assets.BuildingBlueprint.Scripts
             {
                 var top = tile.Tiles.Aggregate((a, b) => a.Key.tileType.GetSurfacePriority() > b.Key.tileType.GetSurfacePriority() ? a : b).Key;
                 var pos = tile.Position;
-                var color = PugDatabase.TryGetTileItemInfo(top.tileType, top.tileset).mapColor;
+                tileColors.TryGetValue(top, out var color);
                 map[new(pos.x, pos.y, 0)] = color;
-                Debug.Log(color);
             }
             foreach (var entities in info.Info.EntityInfos)
             {

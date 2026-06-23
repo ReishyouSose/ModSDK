@@ -282,7 +282,7 @@ namespace Assets.BuildingBlueprint.Scripts
 
         private void Update()
         {
-            if (open && Manager.ui.isAnyInventoryShowing)
+            if (open && (Manager.ui.isAnyInventoryShowing || Manager.menu.menuStackCount > 0))
             {
                 HideUI();
                 return;
@@ -505,6 +505,7 @@ namespace Assets.BuildingBlueprint.Scripts
         {
             buildings.RemoveAt(info.Index);
             RefreshSaves();
+            SaveToFile();
         }
         public void SwitchBuildingList()
         {
@@ -521,8 +522,7 @@ namespace Assets.BuildingBlueprint.Scripts
                 SetSelecting(true);
                 RefreshSaves();
             }
-            PreviewWindow.gameObject.SetActive(false);
-            PlaceHanlder.gameObject.SetActive(false);
+            ExitPlaceMode();
         }
         public void SelectBuilding(UIBuildingInfo go)
         {
@@ -533,6 +533,11 @@ namespace Assets.BuildingBlueprint.Scripts
             PreviewWindow.Refresh(go);
             PlaceHanlder.RefreshPreview(building);
             SetSelecting(false);
+        }
+        public void ExitPlaceMode()
+        {
+            PreviewWindow.gameObject.SetActive(false);
+            PlaceHanlder.gameObject.SetActive(false);
         }
         public void ShowInfoContainer()
         {

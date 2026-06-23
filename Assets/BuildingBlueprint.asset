@@ -36,6 +36,8 @@ MonoBehaviour:
       guid: 0fd1d6bba86d02a4aa246c6ca572b28c
     - path: Scripts/Scripts/UIBuildingPreviewWindow.cs
       guid: 0cbe89b3cb447f544af49ee15bfbb438
+    - path: Scripts/Scripts/UIBuildingName.cs
+      guid: f502c44d41d95d446998abfa6c8f176f
     - path: Scripts/Scripts/UIBuildingInfo.cs
       guid: a95852f43a9abad4fa75deeac696b1b3
     - path: Scripts/Scripts/UIBoxOperator.cs
@@ -92,13 +94,15 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: 304080B37D139BEDB084E45915E99900197678C2EC450F5F4DC616F0F89394A0
+    hash: 5849614C48BAFB0E68C7898CCD4B91E8AC183A25F18278D0001AF9A6D8AB7C96
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Place.asset
+    hash: 4653B1503F8326A7A3F434BC21AF8E1C689422096790B213746D2F7ADFF9505C
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Save.asset
     hash: CC30A89438C7E3C0D8C4D2A7E2FC3968976697BA21D0317017192FDFF8F49E01
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Saves.asset
-    hash: 9B853E2FCD9AD794FE9881537668962CF83880F312A8C6CA2C6F4E8AAAF125B4
+    hash: 5196E4C277F201E7A6FA2B91EC545BCA71F74436E1A80D5B4B8BF7B88E99CD2B
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/TargetSwitch.asset
     hash: A89753E15B3BEEA91310C879DDE92B5394698266B5BA423B6035592D3081C896
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/Add.asset
@@ -116,7 +120,7 @@ MonoBehaviour:
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Box.asset
     hash: 7E37EDFBD191971F9DE9E2F6BC56930D45146EBE708628A44657ED01EEFE30BC
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Check.asset
-    hash: A4C747853CA216D29B159A4915D185BEA50B9C3603D34666EB7A6B2C4170F472
+    hash: 470B26A56F0C3F0C52AC0F79AD32A779F42CFD98F87A26452D64710E8905EE36
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Click.asset
     hash: 5CA77077FB0E89D89D42489A524B3F3072548423D7DB2E3858A7755E8753D1E3
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/bridge.asset
@@ -124,7 +128,7 @@ MonoBehaviour:
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/fence.asset
     hash: A3C7E2954385739157887B5746D6152DD9BA3575A63882A7F7BFE8F688A50F46
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/Filter.asset
-    hash: 2FE41237A616E760385C52373CBE81B0EEF3046290BED8E769B02057088CDF27
+    hash: 690131BC6644BFDEEA38E8EADA94DA918365408203DD004E80AF6D535B6C742D
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/floor.asset
     hash: C0C0C594B8EB22E7A926355C3409CE1D9D1577DEE4D2613298890948471D283E
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/ground.asset

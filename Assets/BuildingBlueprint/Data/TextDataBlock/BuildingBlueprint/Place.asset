@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: Filter
+  m_Name: Place
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: 230978910772899928
-    m_high: -5258962268698350615
+    m_low: -8078148474093040411
+    m_high: -813174314646961398
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,8 +54,8 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u7269\u5757\u7C7B\u578B\u7B5B\u9009\u5668"
-      description: "\u9009\u62E9\u7269\u5757\u65F6\u9700\u8981\u7B5B\u9009\u76EE\u6807\u7269\u5757\u7C7B\u578B\uFF0C\u672A\u542F\u7528\u7684\u7269\u5757\u7C7B\u578B\u4E0D\u4F1A\u88AB\u4FDD\u5B58\uFF0C\u4F60\u4E5F\u53EF\u4EE5\u7528\u68C0\u67E5\u529F\u80FD\u6765\u624B\u52A8\u66F4\u6539\u7279\u5B9A\u4F4D\u7F6E\u60F3\u8981\u9009\u4E2D\u7684\u7269\u5757\u7C7B\u578B"
+      title: "\u8FDB\u5165\u653E\u7F6E\u6A21\u5F0F"
+      description: "\u63D0\u793A\uFF1A\n\u653E\u7F6E\u6A21\u5F0F\u4E0B\u70B9\u51FB\u4EFB\u4F55\u529F\u80FD\u6309\u94AE\u90FD\u4F1A\u9000\u51FA\u653E\u7F6E\u6A21\u5F0F\n\u9700\u6C42\u6E05\u5355\u4E2D\u7684\u6C34\u6876\u4EC5\u505A\u63D0\u793A\uFF0C\u5B9E\u9645\u4E0A\u4E0D\u9700\u8981\n\u8B66\u544A\uFF1A\n\u8BF7\u63D0\u524D\u6E05\u7406\u5E76\u51C6\u5907\u597D\u6240\u9700\u7269\u54C1\uFF0C\u7269\u54C1\u4E0D\u8DB3\u5219\u653E\u7F6E\u7684\u7ED3\u6784\u4E0D\u4F1A\u5B8C\u6574\uFF0C\u672A\u6E05\u7406\u573A\u5730\u4F1A\u5BFC\u81F4\u91CD\u53E0"
     - m_language:
         m_address:
           m_low: -2957573344710624914
@@ -66,10 +66,12 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Tile Type Filter
-      description: When selecting tiles, you need to filter by the target tile type
-        first. Disabled tile types won't be saved. You can also use the inspect feature
-        to manually change the tile type you want to select at a specific position
+      title: Enter Place Mode
+      description: "Tips:\nIn Place Mode, click any function button will exit this
+        mode\nThe water bucket in the require list is just a reminder, it's not actually
+        needed\nWarning: \r\nPlease clear and prepare the required items in advance.
+        Insufficient items will result in an incomplete structure, and failing to
+        clear the area may cause overlaps"
     - m_language:
         m_address:
           m_low: 6040640903323332866
@@ -136,12 +138,14 @@ MonoBehaviour:
       m_address:
         m_low: 0
         m_high: 0
-    title: Tile Type Filter
-    description: When selecting tiles, you need to filter by the target tile type
-      first. Disabled tile types won't be saved. You can also use the inspect feature
-      to manually change the tile type you want to select at a specific position
+    title: Enter Place Mode
+    description: "Tips:\nIn Place Mode, click any function button will exit this
+      mode\nThe water bucket in the require list is just a reminder, it's not actually
+      needed\nWarning: \r\nPlease clear and prepare the required items in advance.
+      Insufficient items will result in an incomplete structure, and failing to clear
+      the area may cause overlaps"
   m_shouldBeLocalized: 1
-  m_header: BuildingBlueprint_TileType
+  m_header: BuildingBlueprint
   references:
     version: 2
     RefIds: []

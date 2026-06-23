@@ -114,6 +114,12 @@ namespace Assets.BuildingBlueprint.Scripts
                         objectID = ObjectID.RoofingTool,
                         variation = 0
                     };
+                case TileType.water:
+                    return new()
+                    {
+                        objectID = ObjectID.Bucket,
+                        variation = tile.tileset + 1
+                    };
             }
             if (!PugDatabase.objectDatasByTileTypeAndTileSet.TryGetValue(type, out var sets))
                 return default;
@@ -186,11 +192,17 @@ namespace Assets.BuildingBlueprint.Scripts
                 }
                 else if (tileLookup.TryGetComponent(e, out var tile))
                 {
+                    var objectID = tile.ObjectID;
+                    if (objectID is ObjectID.None or ObjectID.Bucket)
+                    {
+                        var tileCD = tile.Tile;
+                        EntityUtility.AddTile(tileCD.tileset, tileCD.tileType, tile.Pos, creative, tileChange);
+                        return;
+                    }
                     if (!containedObjectsBufferLookup.TryGetBuffer(tile.Player, out var inv))
                     {
                         return;
                     }
-                    var objectID = tile.ObjectID;
                     var variation = tile.Variation;
                     for (int i = 0; i < inv.Length; i++)
                     {

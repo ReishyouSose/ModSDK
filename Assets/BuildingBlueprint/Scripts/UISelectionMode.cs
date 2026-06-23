@@ -14,6 +14,10 @@ namespace Assets.BuildingBlueprint.Scripts
             {
                 mTerm = BuildingBlueprint.Key + $"Mode/{Mode}"
             };
+            button.optionalHoverDesc = new()
+            {
+                mTerm = BuildingBlueprint.Key + $"Mode/{Mode}Desc"
+            };
         }
     }
 }

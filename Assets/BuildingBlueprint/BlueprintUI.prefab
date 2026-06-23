@@ -1119,7 +1119,7 @@ Transform:
   m_GameObject: {fileID: 1016770108664914051}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.625, y: 0, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1206,7 +1206,7 @@ Transform:
   m_GameObject: {fileID: 1078634669993209290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2175,9 +2175,9 @@ MonoBehaviour:
     mRTL_MaxLineLength: 0
     mRTL_ConvertNumbers: 0
     m_DontLocalizeParameters: 0
-  showHoverDesc: 0
+  showHoverDesc: 1
   optionalHoverDesc:
-    mTerm: 
+    mTerm: BuildingBlueprint_TileType/FilterDesc
     mRTL_IgnoreArabicFix: 0
     mRTL_MaxLineLength: 0
     mRTL_ConvertNumbers: 0
@@ -2851,7 +2851,7 @@ MonoBehaviour:
     mRTL_MaxLineLength: 0
     mRTL_ConvertNumbers: 0
     m_DontLocalizeParameters: 0
-  showHoverDesc: 0
+  showHoverDesc: 1
   optionalHoverDesc:
     mTerm: 
     mRTL_IgnoreArabicFix: 0
@@ -3079,7 +3079,7 @@ Transform:
   m_GameObject: {fileID: 2402879306809580763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.75, y: -1.125, z: 0}
+  m_LocalPosition: {x: -10.25, y: -2.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3106,7 +3106,7 @@ MonoBehaviour:
   scrollingContent: {fileID: 7327674860778165723}
   scrollable: {fileID: 1967624237484083562}
   windowHeight: 6
-  windowWidth: 5
+  windowWidth: 8
   windowLocalCenter: {x: 0, y: 0}
   minScrollPos: 0
   scrollBar: {fileID: 6998886079259687848}
@@ -5188,7 +5188,7 @@ MonoBehaviour:
   activeInPlatforms: -1
   activeInStoreFronts: -1
   pivot: 0
-  renderWidthPixels: 80
+  renderWidthPixels: 128
   renderHeightPixels: 16
 --- !u!114 &2654381076448544016
 MonoBehaviour:
@@ -5514,7 +5514,7 @@ Transform:
   m_GameObject: {fileID: 4650902750359972711}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.375, y: 0.03125, z: 0}
+  m_LocalPosition: {x: 3.125, y: 0.03125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6136,7 +6136,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 3, y: 1}
+  m_Size: {x: 6, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6509,7 +6509,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5, y: 0.875, z: 1}
+  m_Size: {x: 6.25, y: 0.875, z: 1}
   m_Center: {x: -0.25, y: 0, z: 0}
 --- !u!114 &6063980644758759659
 MonoBehaviour:
@@ -6527,7 +6527,7 @@ MonoBehaviour:
   activeInPlatforms: -1
   activeInStoreFronts: -1
   pivot: 0
-  renderWidthPixels: 80
+  renderWidthPixels: 128
   renderHeightPixels: 16
 --- !u!1 &5024798857222363601
 GameObject:
@@ -6610,7 +6610,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5.5, y: 6.25}
+  m_Size: {x: 8.5, y: 6.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6901,7 +6901,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.03125, z: 0}
-  m_LocalScale: {x: 5.5, y: 5.9375, z: 1}
+  m_LocalScale: {x: 7, y: 5.9375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1049397656003432127}
@@ -7137,7 +7137,7 @@ Transform:
   m_GameObject: {fileID: 5341427678978697878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9375, y: 0, z: 0}
+  m_LocalPosition: {x: 2.4375, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7202,16 +7202,16 @@ MonoBehaviour:
   spritesShownUnpressed: []
   spritesShownPressed: []
   skipUpdatingSpritesColor: 0
-  showHoverTitle: 0
+  showHoverTitle: 1
   optionalTitle:
-    mTerm: 
+    mTerm: BuildingBlueprint/Place
     mRTL_IgnoreArabicFix: 0
     mRTL_MaxLineLength: 0
     mRTL_ConvertNumbers: 0
     m_DontLocalizeParameters: 0
-  showHoverDesc: 0
+  showHoverDesc: 1
   optionalHoverDesc:
-    mTerm: 
+    mTerm: BuildingBlueprint/PlaceDesc
     mRTL_IgnoreArabicFix: 0
     mRTL_MaxLineLength: 0
     mRTL_ConvertNumbers: 0
@@ -7422,7 +7422,7 @@ Transform:
   m_GameObject: {fileID: 5586143029813709936}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.75, y: 0, z: 0}
+  m_LocalPosition: {x: -11.75, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7507,7 +7507,7 @@ Transform:
   m_GameObject: {fileID: 5787628390698742906}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14, y: 0, z: 0}
+  m_LocalPosition: {x: -14, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7992,7 +7992,7 @@ Transform:
   m_GameObject: {fileID: 6093588150396997223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14, y: 2.75, z: 0}
+  m_LocalPosition: {x: -14, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8432,7 +8432,7 @@ Transform:
   m_GameObject: {fileID: 6444131787278154689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.75, y: 0, z: 0}
+  m_LocalPosition: {x: 3.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9037,7 +9037,7 @@ Transform:
   m_GameObject: {fileID: 6589686538961662403}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 0, z: 0}
+  m_LocalPosition: {x: -3.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9222,7 +9222,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.5, y: 1, z: 2}
+  m_Size: {x: 8.5, y: 1, z: 2}
   m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!65 &7601305164844593622
 BoxCollider:
@@ -9243,7 +9243,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.5, y: 1, z: 2}
+  m_Size: {x: 8.5, y: 1, z: 2}
   m_Center: {x: 0, y: -3.4375, z: 0}
 --- !u!1 &6709052760492783819
 GameObject:
@@ -9358,7 +9358,7 @@ Transform:
   m_GameObject: {fileID: 6828377995470933054}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.375, y: 0.03125, z: 0}
+  m_LocalPosition: {x: 3.875, y: 0.03125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9422,7 +9422,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.03125, z: 0}
-  m_LocalScale: {x: 5.5, y: 5.9375, z: 1}
+  m_LocalScale: {x: 8.5, y: 5.9375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2870107437132191332}
@@ -10142,7 +10142,7 @@ Transform:
   m_GameObject: {fileID: 7301063328342477602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -5.125, z: 0}
+  m_LocalPosition: {x: -3, y: -5.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10169,7 +10169,7 @@ MonoBehaviour:
   scrollingContent: {fileID: 7161988153958692889}
   scrollable: {fileID: 3576616788314779737}
   windowHeight: 6
-  windowWidth: 5
+  windowWidth: 8
   windowLocalCenter: {x: 0, y: 0}
   minScrollPos: 0
   scrollBar: {fileID: 410553713169599343}
@@ -10238,7 +10238,7 @@ Transform:
   m_GameObject: {fileID: 7405800240694084665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.625, y: 0, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10560,7 +10560,7 @@ Transform:
   m_GameObject: {fileID: 7558878413403713413}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 0, z: 0}
+  m_LocalPosition: {x: -3.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10594,7 +10594,7 @@ MonoBehaviour:
   localizePlaceholders: 0
   dontResetEffectsOnRender: 0
   hideInStreamerMode: 0
-  maxWidth: 0
+  maxWidth: 5.5
   textString: 
   textSuffix: 
   formatFields: []
@@ -10990,7 +10990,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 1, z: 1}
+  m_Size: {x: 6, y: 1, z: 1}
   m_Center: {x: -1, y: 0, z: 0}
 --- !u!114 &4230766952235888429
 MonoBehaviour:
@@ -11022,15 +11022,15 @@ MonoBehaviour:
   hintString: 
   selectedMarker: {fileID: 4907620855777928169}
   characterMarkBlinker: {fileID: 4156623074487146638}
-  maxWidth: 0
+  maxWidth: 5.5
   maxHeight: 0
-  dontAllowNewLines: 0
-  trim: 1
+  dontAllowNewLines: 1
+  trim: 0
   characterWhiteList: 
   onInputFieldDone:
     m_PersistentCalls:
       m_Calls: []
-  triggerOnInputFieldDoneWhenCanceling: 0
+  triggerOnInputFieldDoneWhenCanceling: 1
   dontDeactivateOnDeselect: 0
   <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
 --- !u!1 &7892271281567825818
@@ -11564,7 +11564,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.5, y: 1, z: 2}
+  m_Size: {x: 7, y: 1, z: 2}
   m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!65 &5834823773735149660
 BoxCollider:
@@ -11585,7 +11585,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.5, y: 1, z: 2}
+  m_Size: {x: 7, y: 1, z: 2}
   m_Center: {x: 0, y: -3.4375, z: 0}
 --- !u!1 &8769233792558437926
 GameObject:
@@ -11787,7 +11787,7 @@ Transform:
   m_GameObject: {fileID: 8816669133057945146}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 0, z: 0}
+  m_LocalPosition: {x: -3.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11821,7 +11821,7 @@ MonoBehaviour:
   localizePlaceholders: 0
   dontResetEffectsOnRender: 0
   hideInStreamerMode: 0
-  maxWidth: 2.5
+  maxWidth: 0
   textString: 
   textSuffix: 
   formatFields: []
@@ -11931,7 +11931,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 5.5, y: 6.25}
+  m_Size: {x: 7, y: 6.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
