@@ -58,6 +58,8 @@ MonoBehaviour:
       guid: 456bc4a4b9c542d4bb341d5c52315533
     - path: Scripts/Scripts/BuildingSelectSystem.cs
       guid: 6422ea4bdd331f74489b08cf4334e50c
+    - path: Scripts/Scripts/BuildingProtectSystem.cs
+      guid: 2378af864ffbc844ea33423e3596e428
     - path: Scripts/Scripts/BuildingPlaceSystem.cs
       guid: e7ebdc0596bd31941928192845cb251e
     - path: Scripts/Scripts/BuildingInfo.cs
@@ -70,11 +72,21 @@ MonoBehaviour:
       guid: 
     - path: Scripts/Generated/BuildingPlaceSystem__System_5697914971.g.cs
       guid: 
+    - path: Scripts/Generated/BuildingProtectSystem__System_4532983890.g.cs
+      guid: 
+    - path: Scripts/Generated/BuildingProtectSystem__System_4532983891.g.cs
+      guid: 
     - path: Scripts/Generated/BuildingSelectSystem__System_3842756780.g.cs
       guid: 
     - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_PlaceEntityRpcCommandSerializer.cs
       guid: 
     - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_PlaceTileRpcCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_ProtectStateCDSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_SwitchProtectStateRpcCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/GhostComponentSerializerCollection.cs
       guid: 
     - path: Bundles/BuildingBlueprint_Windows.assetbundle
       guid: 
@@ -94,15 +106,15 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: 5849614C48BAFB0E68C7898CCD4B91E8AC183A25F18278D0001AF9A6D8AB7C96
+    hash: CDC98CAFA153D3F4997D276A6955AE39E0069A1D7B0CEF419473070152CC6275
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Place.asset
-    hash: 4653B1503F8326A7A3F434BC21AF8E1C689422096790B213746D2F7ADFF9505C
+    hash: 44D3406644C56D146E87376EC7C6C26C94A76D792A0B6CB6C94BF7E5EDB32128
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Save.asset
     hash: CC30A89438C7E3C0D8C4D2A7E2FC3968976697BA21D0317017192FDFF8F49E01
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Saves.asset
-    hash: 5196E4C277F201E7A6FA2B91EC545BCA71F74436E1A80D5B4B8BF7B88E99CD2B
+    hash: 9B853E2FCD9AD794FE9881537668962CF83880F312A8C6CA2C6F4E8AAAF125B4
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/TargetSwitch.asset
     hash: A89753E15B3BEEA91310C879DDE92B5394698266B5BA423B6035592D3081C896
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Box/Add.asset

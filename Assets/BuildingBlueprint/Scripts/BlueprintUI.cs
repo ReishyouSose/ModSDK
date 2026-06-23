@@ -77,6 +77,7 @@ namespace Assets.BuildingBlueprint.Scripts
             open = false;
             Root.SetActive(false);
             SetSelecting(false);
+            BuildingProtectClient.SwitchState(false);
         }
 
         public void ShowUI()
@@ -84,6 +85,7 @@ namespace Assets.BuildingBlueprint.Scripts
             open = true;
             Root.SetActive(true);
             SetSelecting(true);
+            BuildingProtectClient.SwitchState(true);
         }
 
         public void SetSelecting(bool state)

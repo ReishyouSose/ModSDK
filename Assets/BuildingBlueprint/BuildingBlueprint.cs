@@ -21,6 +21,7 @@ namespace Assets.BuildingBlueprint
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule));
             ControlMappingModule.AddKeyboardBind(OpenUI, Rewired.KeyboardKeyCode.V);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
+            API.Authoring.OnObjectTypeAdded += BuildingProtectServer.AddProtectStateToPlayer;
             File = new ConfigFile("BuildingBlueprint/Saves.cfg", true);
             Saves = File.Bind("General", "Saves", "[]", scope: new(ConfigAccessLevel.ViewOnly));
         }
