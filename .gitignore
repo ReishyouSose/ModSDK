@@ -76,3 +76,8 @@ crashlytics-build.properties
 
 # Jetbrains
 .idea/
+/TomeOfMimicry.csproj
+/Assets/TomeOfMimicry
+/Assets/TomeOfMimicry.asset
+/Assets/TomeOfMimicry.asset.meta
+/Assets/TomeOfMimicry.meta
