@@ -58,7 +58,7 @@ namespace Assets.BuildingBlueprint.Scripts
             }
             foreach (var tiles in Info.TileInfos)
             {
-                foreach (var tile in tiles.Tiles.Keys)
+                foreach (var tile in tiles.Tiles)
                 {
                     var tileObj = BuildingPlaceClient.TileToObject(tile);
                     ObjectDataCD obj = new()

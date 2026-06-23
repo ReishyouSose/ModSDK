@@ -48,7 +48,7 @@ namespace Assets.BuildingBlueprint.Scripts
             Vector2 size = new(info.X, info.Y);
             SetPosition(mark, world.x, world.z, offset, size);
         }
-        private void SetPosition(SpriteRenderer mark, TileInfo info)
+        private void SetPosition(SpriteRenderer mark, SerializeTileInfo info)
         {
             mark.sprite = Tile;
             var world = info.Position;

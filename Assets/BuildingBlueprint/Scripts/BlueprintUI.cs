@@ -1,6 +1,7 @@
 ﻿using CoreLib.Submodule.UserInterface.Interface;
 using Newtonsoft.Json;
 using Pug.UnityExtensions;
+using PugTilemap;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -339,6 +340,8 @@ namespace Assets.BuildingBlueprint.Scripts
             int i = 0;
             foreach (var (tile, state) in currentTile)
             {
+                if (tile.tileType is TileType.immune or TileType.pit)
+                    continue;
                 if (tileSelectors.Count <= i)
                 {
                     tileSelectors.Add(Instantiate(TileSelector, TileLayout.transform));
@@ -428,11 +431,14 @@ namespace Assets.BuildingBlueprint.Scripts
                 }
                 entityInfos.Add(info);
             }
-            List<TileInfo> tileInfos = new();
+            List<SerializeTileInfo> tileInfos = new();
             var except = SelectHandler.ExceptTiles;
             foreach (var (pos, tile) in tileRecord)
             {
-                var info = tile;
+                SerializeTileInfo info = new()
+                {
+                    Position = pos.ToVec2Int(),
+                };
                 var tiles = info.Tiles = new();
                 info.Position = new(pos.x - oriX, pos.y - oriY);
                 foreach (var (t, state) in tile.Tiles)
@@ -441,7 +447,7 @@ namespace Assets.BuildingBlueprint.Scripts
                         continue;
                     if (except.Contains(t.tileType))
                         continue;
-                    tiles.Add(t, true);
+                    tiles.Add(t);
                 }
                 tileInfos.Add(info);
             }

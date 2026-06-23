@@ -86,7 +86,7 @@ namespace Assets.BuildingBlueprint.Scripts
             }
             foreach (var tiles in info.TileInfos)
             {
-                foreach (var tile in tiles.Tiles.Keys)
+                foreach (var tile in tiles.Tiles)
                 {
                     var obj = TileToObject(tile);
                     tilesQueue.Enqueue(new()
@@ -135,6 +135,7 @@ namespace Assets.BuildingBlueprint.Scripts
         private ComponentLookup<PlaceEntityRpc> entityLookup;
         private ComponentLookup<PlaceTileRpc> tileLookup;
         private InventoryHandlerShared shared;
+        private ComponentLookup<AlwaysDropVariationZeroCD> zeroLookup;
         protected override void OnCreate()
         {
             NeedDatabase();
@@ -147,6 +148,7 @@ namespace Assets.BuildingBlueprint.Scripts
             RequireForUpdate<NetworkTime>();
             entityLookup = SystemAPI.GetComponentLookup<PlaceEntityRpc>();
             tileLookup = SystemAPI.GetComponentLookup<PlaceTileRpc>();
+            zeroLookup = SystemAPI.GetComponentLookup<AlwaysDropVariationZeroCD>();
             base.OnCreate();
         }
         protected override void OnStartRunning()
@@ -159,12 +161,14 @@ namespace Assets.BuildingBlueprint.Scripts
         {
             var entityLookup = this.entityLookup;
             var tileLookup = this.tileLookup;
+            var zeroLookup = this.zeroLookup;
             var shared = this.shared;
             shared.Update(ref CheckedStateRef, CreateCommandBuffer(), SystemAPI.GetSingleton<NetworkTime>());
             var invChange = SystemAPI.GetSingletonBuffer<InventoryChangeBuffer>();
             var tileChange = SystemAPI.GetSingletonBuffer<TileUpdateBuffer>();
             var containedObjectsBufferLookup = shared.containedObjectsBufferLookup;
             bool creative = WorldInfo.IsWorldModeEnabled(WorldMode.Creative);
+            var database = this.database;
             Entities.ForEach((Entity e) =>
             {
                 shared.ecb.DestroyEntity(e);
@@ -175,11 +179,13 @@ namespace Assets.BuildingBlueprint.Scripts
                         return;
                     }
                     var objectID = entity.ObjectID;
+                    var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
                     var variation = entity.Variation;
+                    var findVari = zeroLookup.HasComponent(primary) ? 0 : variation;
                     for (int i = 0; i < inv.Length; i++)
                     {
                         var slot = inv[i];
-                        if (slot.objectID == objectID && slot.variation == variation)
+                        if (slot.objectID == objectID && slot.variation == findVari)
                         {
                             if (slot.amount > 0)
                             {

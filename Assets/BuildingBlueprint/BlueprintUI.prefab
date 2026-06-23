@@ -1597,6 +1597,7 @@ GameObject:
   - component: {fileID: 3747701925574125001}
   - component: {fileID: 8243654795841670684}
   - component: {fileID: 7578645237863196003}
+  - component: {fileID: 935025504812116409}
   m_Layer: 5
   m_Name: EntityInfo
   m_TagString: Untagged
@@ -1718,6 +1719,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &935025504812116409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353939579415786050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -601971722, guid: 548e3dd2d27c1e2d0bdf82f0889cb8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerInParent: 0
+  activeInPlatforms: -1
+  activeInStoreFronts: -1
+  pivot: 0
+  renderWidthPixels: 36
+  renderHeightPixels: 20
 --- !u!1 &1481406342949970165
 GameObject:
   m_ObjectHideFlags: 0
@@ -5208,6 +5227,7 @@ MonoBehaviour:
   Info:
     Name: 
     EntityInfos: []
+    TileInfos: []
     Size: {x: 0, y: 0}
   Index: 0
 --- !u!1 &4397544424605487312

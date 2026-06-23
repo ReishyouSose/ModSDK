@@ -46,7 +46,7 @@ namespace Assets.BuildingBlueprint.Scripts
             Dictionary<float3, Color> map = new();
             foreach (var tile in info.Info.TileInfos)
             {
-                var top = tile.Tiles.Aggregate((a, b) => a.Key.tileType.GetSurfacePriority() > b.Key.tileType.GetSurfacePriority() ? a : b).Key;
+                var top = tile.Tiles.Aggregate((a, b) => a.tileType.GetSurfacePriority() > b.tileType.GetSurfacePriority() ? a : b);
                 var pos = tile.Position;
                 tileColors.TryGetValue(top, out var color);
                 map[new(pos.x, pos.y, 0)] = color;

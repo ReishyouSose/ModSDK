@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
@@ -10,7 +9,7 @@ namespace Assets.BuildingBlueprint.Scripts
     {
         public string Name;
         public List<EntityInfo> EntityInfos;
-        public List<TileInfo> TileInfos;
+        public List<SerializeTileInfo> TileInfos;
         public Vector2Int Size;
     }
 }
