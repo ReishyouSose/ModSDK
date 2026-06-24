@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts
 {
-    public class UIBuildingPreviewWindow : UIelement
+    public class UIBuildingPreviewWindow : UIelement, IOverrideHoverMaterialVariation
     {
         public SpriteRenderer SlotTemplate;
         public Transform SlotContainer;
@@ -19,6 +19,7 @@ namespace Assets.BuildingBlueprint.Scripts
         private UIBuildingInfo info;
 
         private Dictionary<TileCD, Color> tileColors;
+        private List<int> variations;
         private void Awake()
         {
             tileColors = new();
@@ -91,8 +92,10 @@ namespace Assets.BuildingBlueprint.Scripts
         }
         public override List<PugDatabase.MaterialInfo> GetRequiredMaterials(bool isRepairing, bool isReinforcing)
         {
-            return info.GetMaterails();
+            return info.GetMaterails(out variations);
         }
         public override bool ShowRequiredMaterialsAmountNumberColor() => true;
+
+        public int GetOverrideVariation(int index) => variations[index];
     }
 }

@@ -29,6 +29,13 @@ namespace Assets.BuildingBlueprint.Scripts
             State = !State;
             base.OnLeftClicked(mod1, mod2);
         }
+        public override TextAndFormatFields GetHoverTitle()
+        {
+            return new()
+            {
+                text = "BuildingBlueprint_TileType/" + TileCD.tileType
+            };
+        }
         public void Set(TileCD tile)
         {
             TileCD = tile;

@@ -59,12 +59,12 @@ namespace Assets.BuildingBlueprint.Scripts
             base.OnUpdate();
         }
         public static float2 MouseWorld => EntityMonoBehaviour.ToWorldFromRender(Manager.ui.mouse.GetMouseGameViewPosition()).ToFloat2();
-        public static Rect GetEntityRect(DirectionCD directionCD, float3 pos, int2 defaultTileSize)
+        public static Rect GetEntityRect(EntityCD info)
         {
-            var origin = pos.ToFloat2();
-            float2 actualSize = directionCD.GetPrefabTileSize(defaultTileSize);
-            origin -= actualSize / 2f;
-            return new Rect(origin, actualSize);
+            var offset = info.GetEntityOffset(out var size);
+            Vector2 s = size.ToVec2Int();
+            var origin = info.Position.ToFloat2() + offset - (float2)s / 2f;
+            return new Rect(origin, s);
         }
 
         public static bool Contains(Rect self, Rect other)
@@ -118,18 +118,19 @@ namespace Assets.BuildingBlueprint.Scripts
                             if (!transLookup.TryGetComponent(entity, out var trans))
                                 continue;
                             var size = direction.GetPrefabTileSize(info.prefabTileSize);
-                            var box = GetEntityRect(direction, trans.Position, size);
+                            var cd = new EntityCD()
+                            {
+                                ObjectID = obj.objectID,
+                                X = size.x,
+                                Y = size.y,
+                                Direction = direction.direction,
+                                Position = trans.Position,
+                                Variation = obj.variation,
+                            };
+                            var box = GetEntityRect(cd);
                             if (Contains(selectArea, box))
                             {
-                                selected.Add(new EntityCD()
-                                {
-                                    ObjectID = obj.objectID,
-                                    X = size.x,
-                                    Y = size.y,
-                                    Direction = direction.direction,
-                                    Position = trans.Position,
-                                    Variation = obj.variation,
-                                });
+                                selected.Add(cd);
                             }
                         }
                         ui.BoxOperate(selectArea, selected, op);
@@ -185,19 +186,20 @@ namespace Assets.BuildingBlueprint.Scripts
                     if (!transLookup.TryGetComponent(entity, out var trans))
                         continue;
                     var size = direction.GetPrefabTileSize(PugDatabase.GetEntityObjectInfo(obj.objectID, database, obj.variation).prefabTileSize);
-                    var box = GetEntityRect(direction, trans.Position, size);
+                    var cd = new EntityCD()
+                    {
+                        ObjectID = obj.objectID,
+                        X = size.x,
+                        Y = size.y,
+                        Direction = direction.direction,
+                        Position = trans.Position,
+                        Variation = obj.variation,
+                    };
+                    var box = GetEntityRect(cd);
                     if (box.Contains(mouse))
                     {
                         hover = true;
-                        info.Entities.Add(new EntityCD()
-                        {
-                            ObjectID = obj.objectID,
-                            X = size.x,
-                            Y = size.y,
-                            Direction = direction.direction,
-                            Position = trans.Position,
-                            Variation = obj.variation,
-                        });
+                        info.Entities.Add(cd);
                     }
                 }
                 ui.ClickOperate(hover, info, Input.GetMouseButtonDown(0), op);

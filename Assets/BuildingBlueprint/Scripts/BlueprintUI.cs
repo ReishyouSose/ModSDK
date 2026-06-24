@@ -267,20 +267,18 @@ namespace Assets.BuildingBlueprint.Scripts
         public void SetPosition(SpriteRenderer mark, EntityCD info)
         {
             Vector3 world = info.Position;
-            var offset = new Vector2(info.X - 1, info.Y - 1) / 2f;
-            Vector2 size = new(info.X, info.Y);
-            SetPosition(mark, world.x, world.z, offset, size);
+            SetPosition(mark, world.x, world.z, info.GetEntityOffset(out var size), size);
         }
         public void SetPosition(SpriteRenderer mark, TileInfo info)
         {
             var world = info.Position;
-            SetPosition(mark, world.x, world.y, float2.zero, Vector2.one);
+            SetPosition(mark, world.x, world.y, float2.zero, new(1, 1));
         }
-        private void SetPosition(SpriteRenderer mark, float x, float y, float2 offset, Vector2 size)
+        private void SetPosition(SpriteRenderer mark, float x, float y, float2 offset, int2 size)
         {
             mark.GetComponent<RecordPosition>().Position = new(x, 0, y);
             mark.transform.localPosition = new Vector3(x + offset.x, y + offset.y, 0);
-            mark.size = size;
+            mark.size = new(size.x, size.y);
         }
 
         private void Update()

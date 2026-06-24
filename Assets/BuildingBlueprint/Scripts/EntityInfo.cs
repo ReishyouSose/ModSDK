@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pug.UnityExtensions;
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -21,5 +22,49 @@ namespace Assets.BuildingBlueprint.Scripts
         public int Variation;
         public Vector3 Position;
         public Vector3 Direction;
+        public readonly float2 GetEntityOffset(out int2 size)
+        {
+            size = new(X, Y);
+            var offset = new float2(X - 1, Y - 1) / 2f;
+            //var corner = GetEntityOffset(ObjectID, Variation, Direction);
+            int2 corner = PugDatabase.GetObjectInfo(ObjectID, Variation).prefabCornerOffset.ToInt2();
+            return new(corner.x + offset.x, corner.y + offset.y);
+        }
+        /*public static float3 GetEntityOffset(ObjectID id, int variation, float3 direction)
+        {
+            var info = PugDatabase.GetObjectInfo(id, variation);
+            int2 size = info.prefabTileSize.ToInt2();
+            int2 corner = info.prefabCornerOffset.ToInt2();
+            int rotationVariation = 0;
+            if (direction.x > 0.5f)
+                rotationVariation = 1;      // (1,0,0) → 90°
+            else if (direction.x < -0.5f)
+                rotationVariation = 3; // (-1,0,0) → 270°
+            else if (direction.z > 0.5f)
+                rotationVariation = 0;  // (0,0,1) → 0°
+            else if (direction.z < -0.5f)
+                rotationVariation = 2; // (0,0,-1) → 180°
+
+            float3 centerOffset = new float3(size.x - 1, 0f, size.y - 1) / 2f;
+
+            float3 finalOffset;
+            if (rotationVariation > 0)
+            {
+                DirectionCD.RotateTransform(
+                    quaternion.identity,
+                    centerOffset,
+                    rotationVariation,
+                    corner,
+                    size,
+                    out var _,
+                    out finalOffset
+                );
+            }
+            else
+            {
+                finalOffset = centerOffset;
+            }
+            return finalOffset;
+        }*/
     }
 }

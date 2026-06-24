@@ -16,7 +16,7 @@ MonoBehaviour:
     guid: 88cca6ae6a68467d8a5088ca01274e09
     name: BuildingBlueprint
     displayName: 
-    skipSafetyChecks: 0
+    skipSafetyChecks: 1
     disableScripts: 0
     accessesExtraAssemblies: 1
     disableHarmonyPatching: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: CDC98CAFA153D3F4997D276A6955AE39E0069A1D7B0CEF419473070152CC6275
+    hash: BEF677EB2F883F9A6C8B75F4B9B5B1CA63707D86F4A3CAB82FD548F11E47101C
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Place.asset

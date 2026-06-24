@@ -36,21 +36,24 @@ namespace Assets.BuildingBlueprint.Scripts
             Index = index;
             Input.pugText.Render(info.Name, false, true);
         }
-        public List<MaterialInfo> GetMaterails()
+        public List<MaterialInfo> GetMaterails(out List<int> variations)
         {
             var player = Manager.main.player;
+            variations = null;
             if (player == null)
                 return null;
+            variations = new();
             List<MaterialInfo> list = new();
             Dictionary<ObjectDataCD, int> requires = new();
             foreach (var entities in Info.EntityInfos)
             {
                 foreach (var entity in entities.Entities)
                 {
+                    bool zero = GetObjectInfo(entity.ObjectID).prefabInfos[0].ecsPrefab.TryGetComponent(out AlwaysDropVariationZeroAuthoring _);
                     ObjectDataCD obj = new()
                     {
                         objectID = entity.ObjectID,
-                        variation = entity.Variation,
+                        variation = zero ? 0 : entity.Variation,
                     };
                     requires.TryGetValue(obj, out int value);
                     requires[obj] = ++value;
@@ -73,6 +76,7 @@ namespace Assets.BuildingBlueprint.Scripts
             foreach (var (require, stack) in requires)
             {
                 list.Add(new(require.objectID, stack, player.playerInventoryHandler.GetExistingAmountOfObject(require.objectID), Entity.Null, null));
+                variations.Add(require.variation);
             }
             return list;
         }
