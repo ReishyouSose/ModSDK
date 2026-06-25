@@ -17,8 +17,6 @@ namespace Assets.BuildingBlueprint.Scripts
     {
         [GhostField]
         public bool State;
-
-        public bool RemovePreviousFrame;
     }
 
     [UpdateInGroup(typeof(SimulationSystemGroup))]
@@ -71,38 +69,6 @@ namespace Assets.BuildingBlueprint.Scripts
             })
                 .WithName("SwitchProtectState")
                 .WithAll<ReceiveRpcCommandRequest>()
-                .WithBurst()
-                .Schedule();
-
-            var immuneLookup = this.immuneLookup;
-            Entities.ForEach((Entity e, ref ProtectStateCD protect) =>
-            {
-                if (protect.State)
-                {
-                    if (!immuneLookup.HasComponent(e))
-                        ecb.AddComponent(e, new ImmunityZoneCD()
-                        {
-                            useRectangularBounds = true,
-                            rectangularWidth = 10,
-                            rectangularHeight = 10,
-                        });
-                }
-                else
-                {
-                    if (protect.RemovePreviousFrame)
-                    {
-                        ecb.RemoveComponent<ImmunityZoneCD>(e);
-                        protect.RemovePreviousFrame = false;
-                    }
-                    var optional = immuneLookup.GetRefRWOptional(e);
-                    if (optional.IsValid)
-                    {
-                        optional.ValueRW.removeImmunityZone = true;
-                        protect.RemovePreviousFrame = true;
-                    }
-                }
-            })
-                .WithName("BuildingProtect")
                 .WithBurst()
                 .Schedule();
             base.OnUpdate();
