@@ -22,69 +22,123 @@ MonoBehaviour:
     disableHarmonyPatching: 0
     requiredOn: 3
     files:
-    - path: Scripts/Scripts/UITileTypeSelector.cs
-      guid: 3dec0985507e2b146b4d13c8f888af6e
-    - path: Scripts/Scripts/UITileTarget.cs
-      guid: 60e79dad868ce674783a97dd3b8c7feb
-    - path: Scripts/Scripts/UISingleSlot.cs
-      guid: 0c3e79aad681f004bb81f6cf6de1eaf3
-    - path: Scripts/Scripts/UISelectionMode.cs
-      guid: 42f239d02fd3b274eb91c411743cc551
-    - path: Scripts/Scripts/UILinearLayoutContainer.cs
-      guid: 68cf92e2e8198c6468df9e7d52a1a8dd
-    - path: Scripts/Scripts/UIClickOperator.cs
-      guid: 0fd1d6bba86d02a4aa246c6ca572b28c
-    - path: Scripts/Scripts/UIBuildingPreviewWindow.cs
-      guid: 0cbe89b3cb447f544af49ee15bfbb438
-    - path: Scripts/Scripts/UIBuildingName.cs
-      guid: f502c44d41d95d446998abfa6c8f176f
-    - path: Scripts/Scripts/UIBuildingInfo.cs
-      guid: a95852f43a9abad4fa75deeac696b1b3
-    - path: Scripts/Scripts/UIBoxOperator.cs
-      guid: 3851c019cbadadf42afd7521df120342
-    - path: Scripts/Scripts/TileInfo.cs
-      guid: a73bc6e962d9ee149a2ba152836db59f
-    - path: Scripts/Scripts/SelectingEnum.cs
-      guid: 8cb59225bc6d014478a17b9836731176
-    - path: Scripts/Scripts/SelectHandler.cs
-      guid: e77951fc27ac5fe439152ba01fbd2b0a
-    - path: Scripts/Scripts/RecordPosition.cs
+    - path: Scripts/Scripts/UI/UITileTypeSelector.cs
+      guid: f26f47de5f3e49c4abfdff506a3709bc
+    - path: Scripts/Scripts/UI/UITileTarget.cs
+      guid: 79650cd1de802684e82036326610b461
+    - path: Scripts/Scripts/UI/UISingleSlot.cs
+      guid: 0bde3ed03d416ad4aa38ed76df57bf24
+    - path: Scripts/Scripts/UI/UISelectionMode.cs
+      guid: 5cb6c5ef6dd4cb7479d32a6df76b792b
+    - path: Scripts/Scripts/UI/UILinearLayoutContainer.cs
+      guid: c515241d664ca064c83474cd0901d2c4
+    - path: Scripts/Scripts/UI/UIClickOperator.cs
+      guid: 37ae3e13ea60b7c4f888373f0e517851
+    - path: Scripts/Scripts/UI/UIBuildingPreviewWindow.cs
+      guid: c4ea6439b7c265d418d2b41d2658b0d1
+    - path: Scripts/Scripts/UI/UIBuildingName.cs
+      guid: 46c1c9bfb3671844d956af6c83a98f11
+    - path: Scripts/Scripts/UI/UIBuildingInfo.cs
+      guid: 3557f85dc9c8ade4cafd0369bb763201
+    - path: Scripts/Scripts/UI/SelectHandler.cs
+      guid: 8393c3f4d0c25e341b50c78d23c08d3a
+    - path: Scripts/Scripts/UI/RecordPosition.cs
       guid: 0a85ce3cd4a6e8c4dbc3f065f0b515d4
-    - path: Scripts/Scripts/PlacePreviewHanlder.cs
+    - path: Scripts/Scripts/UI/PlacePreviewHanlder.cs
       guid: be88359e00c2a3143bfd7f9fe8c2df31
-    - path: Scripts/Scripts/PlaceableCD.cs
+    - path: Scripts/Scripts/UI/BlueprintUI.cs
+      guid: 71b00a9eb84248c46863e69f7d832ccd
+    - path: Scripts/Scripts/Systems/BuildingSelectSystem.cs
+      guid: 82266d29a14ec8d4fb466a08b32a440d
+    - path: Scripts/Scripts/Systems/BuildingPlaceSystem.cs
+      guid: 9cd18cc0d3577314fad3c3e0eab8068c
+    - path: Scripts/Scripts/Systems/BlueprintStateChangeSystem.cs
+      guid: 0fc9068f5405a7347ab075110ae3aa3c
+    - path: Scripts/Scripts/Systems/BlockInputSystem.cs
+      guid: 13bacdf129e3d384490cf6f2dbc59e82
+    - path: Scripts/Scripts/Core/UIBoxOperator.cs
+      guid: a970f5f674c68b744a09c67c009ca5be
+    - path: Scripts/Scripts/Core/TileTargetDataBlock.cs
+      guid: cbc6a99b3df8f2b43bd6e2b7466fccd1
+    - path: Scripts/Scripts/Core/TilesInfo.cs
+      guid: 79fa853f0ecef40418746de9e783dcec
+    - path: Scripts/Scripts/Core/SerializeTileInfo.cs
+      guid: 9d2f7a0fad939734199d580f1cd1b1f0
+    - path: Scripts/Scripts/Core/SelectionLayer.cs
+      guid: d3c25e16e9d591e4d96233e1c073f60a
+    - path: Scripts/Scripts/Core/SelectingEnum.cs
+      guid: 2a2227e1a6b0a6841a1dc85af6cc210c
+    - path: Scripts/Scripts/Core/MiscHelper.cs
+      guid: bc901d83a522aaa4a90349a098b1f205
+    - path: Scripts/Scripts/Core/MaterialVariationPatch.cs
+      guid: a667adc5888035d46a30d8e1963db0b1
+    - path: Scripts/Scripts/Core/IOverrideHoverMaterialVariation.cs
+      guid: 8fc7b7a5bb4b20b45a92b4bd139ba939
+    - path: Scripts/Scripts/Core/Int2JsonConverter.cs
+      guid: 43c9c4d413e804446935c0db264f01fb
+    - path: Scripts/Scripts/Core/EntityInfo.cs
+      guid: e817c24d592ca2449ba77b14b2de8536
+    - path: Scripts/Scripts/Core/EntityCD.cs
+      guid: 27d91d82f567db54c92f60533e4fceef
+    - path: Scripts/Scripts/Core/ClickOperator.cs
+      guid: f2f68efa620080a4e8c8744631c6c8f6
+    - path: Scripts/Scripts/Core/BuildingInfo.cs
+      guid: 1a62d183727d8134a82089922b488ca0
+    - path: Scripts/Scripts/Core/BoxOperator.cs
+      guid: e092e263971380c418ea1985ad4eabd8
+    - path: Scripts/Scripts/Core/BlueprintUIAction.cs
+      guid: 27aa8282fa451ca4b8478009ab0db0e4
+    - path: Scripts/Scripts/Components/TileTargetStateBuffer.cs
+      guid: a0f09d3c83cd615438e2adf164410f80
+    - path: Scripts/Scripts/Components/TileTargetBuffer.cs
+      guid: efc992e7eac3ed743b154739f1dfb35e
+    - path: Scripts/Scripts/Components/SelectionOptionCD.cs
+      guid: 4271033a4f2dc1b4fa218f769f8d111d
+    - path: Scripts/Scripts/Components/SelectedTileBuffer.cs
+      guid: f1d2067e1c369bc469f2d9944fd196a9
+    - path: Scripts/Scripts/Components/SelectedEntityBuffer.cs
+      guid: f06cf810c70617749986b9c50978f644
+    - path: Scripts/Scripts/Components/PlaceTileRpc.cs
+      guid: b5bc969a394e12843b3e59354bad8d94
+    - path: Scripts/Scripts/Components/PlaceEntityRpc.cs
+      guid: 7aa6013c82f5078478256d32d5b4143c
+    - path: Scripts/Scripts/Components/PlaceableCD.cs
       guid: 14685d3d64f448b41b4080e71d242c32
-    - path: Scripts/Scripts/EntityInfo.cs
-      guid: 456bc4a4b9c542d4bb341d5c52315533
-    - path: Scripts/Scripts/BuildingSelectSystem.cs
-      guid: 6422ea4bdd331f74489b08cf4334e50c
-    - path: Scripts/Scripts/BuildingProtectSystem.cs
-      guid: 2378af864ffbc844ea33423e3596e428
-    - path: Scripts/Scripts/BuildingPlaceSystem.cs
-      guid: e7ebdc0596bd31941928192845cb251e
-    - path: Scripts/Scripts/BuildingInfo.cs
-      guid: 6810a29be06a1bd4d80ef4ed87aa77ee
-    - path: Scripts/Scripts/BlueprintUI.cs
-      guid: bcc8ca421da8c5343abb53ee0ec7cb0d
+    - path: Scripts/Scripts/Components/ItemInteractBlockStateCD.cs
+      guid: b94460df7029c504f9ec21bd598856e2
+    - path: Scripts/Scripts/Components/BlueprintStateChangeRpc.cs
+      guid: c0fce3f4c1d7f1c4a9bbb44c903f571b
     - path: Scripts/BuildingBlueprint.cs
       guid: 41277b0f9ad28194085967d5bd7408c2
-    - path: Scripts/Generated/BuildingPlaceSystem__System_5697914970.g.cs
+    - path: Scripts/Generated/BlockInputSystem__System_21390662380.g.cs
       guid: 
-    - path: Scripts/Generated/BuildingPlaceSystem__System_5697914971.g.cs
+    - path: Scripts/Generated/BlueprintStateChangeSystem__System_15835788230.g.cs
       guid: 
-    - path: Scripts/Generated/BuildingProtectSystem__System_4532983890.g.cs
+    - path: Scripts/Generated/BlueprintStateChangeSystem__System_15835788231.g.cs
       guid: 
-    - path: Scripts/Generated/BuildingProtectSystem__System_4532983891.g.cs
+    - path: Scripts/Generated/BuildingPlaceSystem__System_10919692780.g.cs
       guid: 
-    - path: Scripts/Generated/BuildingSelectSystem__System_3842756780.g.cs
+    - path: Scripts/Generated/BuildingPlaceSystem__System_10919692781.g.cs
       guid: 
-    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_PlaceEntityRpcCommandSerializer.cs
+    - path: Scripts/Generated/BuildingSelectSystem__System_3781700150.g.cs
       guid: 
-    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_PlaceTileRpcCommandSerializer.cs
+    - path: Scripts/Generated/BuildingSelectSystem__System_3781700151.g.cs
       guid: 
-    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_ProtectStateCDSerializer.cs
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_BlueprintStateChangeRpcCommandSerializer.cs
       guid: 
-    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts_SwitchProtectStateRpcCommandSerializer.cs
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_ItemInteractBlockStateCDSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_PlaceEntityRpcCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_PlaceTileRpcCommandSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_SelectedEntityBufferSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_SelectedTileBufferSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_SelectionOptionCDSerializer.cs
+      guid: 
+    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_TileTargetStateBufferSerializer.cs
       guid: 
     - path: Scripts/Generated/GhostComponentSerializerCollection.cs
       guid: 
@@ -106,7 +160,7 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: BEF677EB2F883F9A6C8B75F4B9B5B1CA63707D86F4A3CAB82FD548F11E47101C
+    hash: 469B0621684F8489C125B8800076B62C607DCA59D49AA4934BCAF03320B7CBF4
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Place.asset
@@ -161,4 +215,28 @@ MonoBehaviour:
     hash: 7CE956AD59E82A2F46D573457A272F85ABA03CC53EFE2E0ED1CCDBD9114D4396
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/water.asset
     hash: 10DE22E63DDFBE80ABD7A33791174F0B96BDE15F8A4C8CF8A030D9D65A7F921A
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Bridge.asset
+    hash: 68709674F3F26674D3D1B1FC0DBBFA4C4698F23D20697BE132B2CADDF63CA6EE
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Fence.asset
+    hash: 4B775D048101CE79713ADD41DA2EABD218B6C330D56FE2B1CAC76C28CF4CAF79
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Floor.asset
+    hash: 08AD0F18374E4C87D1821A56F579C7442939300C1342995B49C94E80D766328A
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Ground.asset
+    hash: 9EACA5D7D6E46FC66BFA9AA5926C964AF7737B1629B3DA276D0DC09356269E94
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/GroundSlime.asset
+    hash: 6CDE00135C6959250B1ADC901B24099BB1DC0B70A0FCF4FFA565021483073076
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/LitFloor.asset
+    hash: 05619B0E8A65177FDDA07E507AB0C66AFA299E27990F323E79F258B5A65AF3AD
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/LooseFlooring.asset
+    hash: 49B0C106D34E6F286667C72148D47F1F2BC89F29104B0F439B26FD2ED1A36D7A
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Rail.asset
+    hash: BB74E4614C04512B6948BC105C035BA4441828252AE8798457BB90D2DE2F5664
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/RoofHole.asset
+    hash: 96D2C718FC956467B249BB6FB6E7DEA7AD2DC716076840230B2E090BF6F60651
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Rug.asset
+    hash: E17D6CA026613138CA61CD3A1A684C3AFA3ABFC13A8714D7763F6C7D379A28E0
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Wall.asset
+    hash: 5C7F41362215BF0CD41FB5EBEFF58ED98317A5E371C31E13F5CBE2ED52BF7ED2
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Water.asset
+    hash: 75203E717420A79151B59DF6CF8F6A3E53D82FF86450AEF43B66E000C6B96CC1
   lastBuildLinux: 1

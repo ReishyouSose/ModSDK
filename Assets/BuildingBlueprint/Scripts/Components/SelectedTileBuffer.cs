@@ -1,0 +1,16 @@
+﻿using Unity.Entities;
+using Unity.Mathematics;
+using Unity.NetCode;
+
+namespace Assets.BuildingBlueprint.Scripts.Components
+{
+    public struct SelectedTileBuffer : IBufferElementData
+    {
+        [GhostField]
+        public int2 Position;
+        [GhostField]
+        public TileCD Tile;
+        [GhostField]
+        public bool State;
+    }
+}

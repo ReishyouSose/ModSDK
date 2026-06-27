@@ -51,6 +51,9 @@ namespace Assets.PointShop.Scripts
                 new(ObjectID.Wool, 10),
                 new(ObjectID.RolyPolyPlate, 10),
                 (ObjectID.PetCandyEpic, 15),
+                new("ToySoldierHelm", 50),
+                new("ToySoldierBreastArmor", 50),
+                new("ToySoldierPantsArmor", 50),
             };
         }
         private List<ShopItem> Dirt()
@@ -184,6 +187,9 @@ namespace Assets.PointShop.Scripts
                 new(ObjectID.SoaringHelm, 10, chest),
                 new(ObjectID.SoaringBreastArmor, 10, chest),
                 new(ObjectID.SoaringPantsArmor, 10, chest),
+                new("JuggernautHelm", 13, chest),
+                new("JuggernautBreastArmor", 13, chest),
+                new("JuggernautPantsArmor", 13, chest),
             };
         }
         private List<ShopItem> Nature()
@@ -225,10 +231,17 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.LargeSeedAndCropsPouch, 50),
                 new(ObjectID.LargeValuablePouch, 8, bossChest),
                 new(ObjectID.FarmerHelm, 10, chest),
+                new("MuseHelm", 180),
+                new("MuseBreastArmor", 180),
+                new("MusePantsArmor", 180),
+                new("WhispererHelm", 13, bossChest),
+                new("WhispererBreastArmor", 13, bossChest),
+                new("WildernessVinyl", 10, chest),
             };
         }
         private List<ShopItem> Mold()
         {
+            ObjectID bossChest = ObjectID.IvyChest;
             return new()
             {
                 (ObjectID.IvyChest, 18),
@@ -240,6 +253,13 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.Blowpipe, 10),
                 (ObjectID.TomeOfMelee, 10),
                 (ObjectID.DiverArmor, 20),
+                new("MaidHelm", 13, bossChest),
+                new("MaidBreastArmor", 13, bossChest),
+                new("MaidPantsArmor", 13, bossChest),
+                new("MikoHelm", 125),
+                new("MikoBreastArmor", 125),
+                new("MikoPantsArmor", 125),
+                new("MoldVinyl", 100),
             };
         }
         private List<ShopItem> Sea()
@@ -288,10 +308,12 @@ namespace Assets.PointShop.Scripts
                 new(ObjectID.BikiniBreastArmorGreen, 10, chest),
                 new(ObjectID.BikiniPantsArmorGreen, 10, chest),
                 new(ObjectID.SwimingPantsArmorGreen, 10, chest),
+                new("SeaVinyl", 10, chest),
             };
         }
         private List<ShopItem> City()
         {
+            ObjectID bossChest = ObjectID.MorphaChest;
             return new()
             {
                 (ObjectID.MorphaChest, 20),
@@ -312,7 +334,11 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.LegendaryBowPart3, 50),
                 (ObjectID.LegendaryBowParchment, 50),
                 (ObjectID.CavelingID, 50),
-                (ObjectID.GolemShield, 50)
+                (ObjectID.GolemShield, 50),
+                new("BuccaneerHelm", 11, bossChest),
+                new("BuccaneerBreastArmor", 11, bossChest),
+                new("BuccaneerPantsArmor", 11, bossChest),
+                new("MetropolisVinyl", 100),
             };
         }
         private List<ShopItem> Desert()
@@ -356,6 +382,7 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.ConceiledBlade, 50),
                 (ObjectID.AncientSpear, 50),
                 (ObjectID.CavelingMummyTrophy, 3000),
+                new("DesertVinyl", 10, chest)
             };
         }
         private List<ShopItem> Lava()
@@ -384,6 +411,11 @@ namespace Assets.PointShop.Scripts
                 (ObjectID.GrimPantsArmor, 40),
                 (ObjectID.FlameNecklace, 40),
                 (ObjectID.FlameRing, 40),
+                new("ObsidianGreatsword", 13, bossChest),
+                new("ScourgerHelm", 13, bossChest),
+                new("ScourgerBreastArmor", 13, bossChest),
+                new("ScourgerPantsArmor", 13, bossChest),
+                new("LavaVinyl", 100),
             };
         }
         private List<ShopItem> Oasis()
@@ -439,16 +471,19 @@ namespace Assets.PointShop.Scripts
                 new(ObjectID.ArcaneMonkHelm, 10, chest),
                 new(ObjectID.ArcaneMonkBreastArmor, 10, chest),
                 new(ObjectID.ArcaneMonkPantsArmor, 10, chest),
+                new("ArcaneSeerHel", 13, chest),
+                new("ArcaneSeerBreastArmor", 13, chest),
             };
         }
         private List<ShopItem> Alien()
         {
+            ObjectID bossChest = ObjectID.CoreCommanderChest;
             ObjectID chest = ObjectID.AlienChest;
             return new()
             {
                 ObjectID.PottedAlienFlower,
                 (chest, 10),
-                (ObjectID.CoreCommanderChest, 20),
+                (bossChest, 20),
                 (ObjectID.EnemySpawnerPlatform, 10),
                 new(ObjectID.GroundAlienBlock, 10),
                 new(ObjectID.AlienFloorVent, 10),
@@ -463,11 +498,13 @@ namespace Assets.PointShop.Scripts
                 new(ObjectID.AlienTechHelm, 7, chest),
                 new(ObjectID.AlienTechBreastArmor, 7, chest),
                 new(ObjectID.AlienTechPantsArmor, 7, chest),
-                new(new ObjectData(){ objectID= API.Authoring.GetObjectID("CoreEnhance_BoulderDemolish"),amount = 3 }, 70)
+                new(new ObjectData(){ objectID= API.Authoring.GetObjectID("CoreEnhance_BoulderDemolish"),amount = 3 }, 70),
+                new("MilitaryTranceiver", 4, bossChest)
             };
         }
         private List<ShopItem> Passage()
         {
+            ObjectID bossChest = ObjectID.WallBossChest;
             return new()
             {
                 (ObjectID.PandoriumOreBoulder, 160),
@@ -475,10 +512,12 @@ namespace Assets.PointShop.Scripts
                 ObjectID.SulfurTree,
                 new ObjectData(){objectID = ObjectID.Stalagmite, amount = 1, variation = 8},
                 (ObjectID.PassageDestructible, 20),
+                new("ChronolithBeacon", 4, bossChest)
             };
         }
         private List<ShopItem> Excavation()
         {
+            ObjectID bossChest = ObjectID.RobotBossChest;
             return new()
             {
                 (ObjectID.ReluciteOreBoulder, 180),
@@ -498,7 +537,11 @@ namespace Assets.PointShop.Scripts
                 ObjectID.CorruptedAlloy,
                 ObjectID.HydraBossVoidCraftingItem,
                 new(ObjectID.GlowingMushroom, 10),
-                (ObjectID.VoidLarvaCocoonTrophy, 5000)
+                (ObjectID.VoidLarvaCocoonTrophy, 5000),
+                new("BlackMikoHelm", 125),
+                new("BlackMikoBreastArmor", 125),
+                new("BlackMikoPantsArmor", 125),
+                new("AdvancedExtractionLog", 5, bossChest)
             };
         }
     }

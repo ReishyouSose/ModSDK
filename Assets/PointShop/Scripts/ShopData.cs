@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PugMod;
+using System.Collections.Generic;
 
 namespace Assets.PointShop.Scripts
 {
@@ -34,6 +35,16 @@ namespace Assets.PointShop.Scripts
             Item = new()
             {
                 objectID = id,
+                amount = 1,
+            };
+            Price = price;
+            Currency = currency;
+        }
+        public ShopItem(string id, int price = 1, ObjectID currency = ObjectID.None)
+        {
+            Item = new()
+            {
+                objectID = API.Authoring.GetObjectID(id),
                 amount = 1,
             };
             Price = price;

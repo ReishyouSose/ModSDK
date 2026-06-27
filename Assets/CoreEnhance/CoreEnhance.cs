@@ -7,7 +7,6 @@ using Assets.CoreEnhance.Scripts.Systems.Quick;
 using CoreLib;
 using CoreLib.Submodule.ControlMapping;
 using CoreLib.Submodule.Entity;
-using Pug.Automation;
 using PugMod;
 using Unity.Entities;
 using UnityEngine;

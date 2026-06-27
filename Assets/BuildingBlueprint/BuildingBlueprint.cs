@@ -1,4 +1,6 @@
-using Assets.BuildingBlueprint.Scripts;
+using Assets.BuildingBlueprint.Scripts.Components;
+using Assets.BuildingBlueprint.Scripts.Systems;
+using Assets.BuildingBlueprint.Scripts.UI;
 using CoreLib;
 using CoreLib.Data.Configuration;
 using CoreLib.Submodule.ControlMapping;
@@ -21,26 +23,15 @@ namespace Assets.BuildingBlueprint
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule));
             ControlMappingModule.AddKeyboardBind(OpenUI, Rewired.KeyboardKeyCode.V);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
-            API.Authoring.OnObjectTypeAdded += BuildingProtectServer.AddProtectStateToPlayer;
             File = new ConfigFile("BuildingBlueprint/Saves.cfg", true);
             Saves = File.Bind("General", "Saves", "[]", scope: new(ConfigAccessLevel.ViewOnly));
         }
 
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
         {
-            if (authoringData.TryGetComponent<TileAuthoring>(out _))
-                return;
-            if (authoringData.TryGetComponent<MineableAuthoring>(out _) || authoringData.TryGetComponent<DiggableAuthoring>(out _))
-            {
-                if (authoringData.TryGetComponent(out EntityMonoBehaviourData data))
-                {
-                    if (data.objectInfo.icon == null)
-                        return;
-                }
-                else if (!authoringData.TryGetComponent(out InventoryItemAuthoring _))
-                    return;
-                entityManager.AddComponent<PlaceableCD>(entity);
-            }
+            BuildingSelectServer.AddSelectBuffer(entity, authoringData, entityManager);
+            BuildingSelectServer.MarkPlaceable(entity, authoringData, entityManager);
+            BlueprintStateChangeServer.AddItemInteracBlockToPlayer(entity, authoringData, entityManager);
         }
 
         public void Init()
@@ -50,7 +41,9 @@ namespace Assets.BuildingBlueprint
         public void ModObjectLoaded(Object obj)
         {
             if (obj is GameObject go)
+            {
                 UserInterfaceModule.RegisterModUI(go);
+            }
         }
 
         public void Shutdown()
