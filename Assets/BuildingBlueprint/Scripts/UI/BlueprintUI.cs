@@ -27,6 +27,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public GameObject LeaderContainer;
         public GameObject InfoContainer;
         public GameObject SavesContainer;
+        public GameObject Exit;
         public UIBuildingPreviewWindow PreviewWindow;
         public UIBuildingInfo BuildingTemplate;
         public LinearLayoutUIComponent BuildingsLayout;
@@ -41,6 +42,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private Dictionary<TileCD, bool> currentTile;
         private List<BuildingInfo> buildings;
         private bool open;
+        private const string PopKey = "BuildingBlueprint/NoSelected";
         public GameObject Root => transform.GetChild(0).gameObject;
         public bool ShowWithPlayerInventory => false;
 
@@ -52,6 +54,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             MarkTemplate.gameObject.SetActive(false);
             SelectBorder.gameObject.SetActive(false);
             HoverMark.gameObject.SetActive(false);
+            Exit.SetActive(false);
             entityPreview = new();
             entityRecord = new();
             tilePreview = new();
@@ -399,8 +402,13 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         }
         public void Save()
         {
+            var player = Manager.main.player;
+            var pop = player.RenderPosition + Vector3.up * 0.7f;
             if (entityRecord.Count == 0 && tileRecord.Count == 0)
+            {
+                CombatText.SpawnCombatText(PopKey, CombatText.NumberColor.White, pop, false, false, true);
                 return;
+            }
             float minX = int.MaxValue, minY = int.MaxValue, maxX = int.MinValue, maxY = int.MinValue;
             foreach (var (pos, entity) in entityRecord)
             {
@@ -426,6 +434,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             int oriX = (int)((minX + maxX) / 2f);
             int oriY = (int)((minY + maxY) / 2f);
             List<EntityInfo> entityInfos = new();
+            bool any = false;
             foreach (var (pos, entity) in entityRecord)
             {
                 var info = entity;
@@ -436,6 +445,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                     var ori = e;
                     ori.Position = origin;
                     list.Add(ori);
+                    any = true;
                 }
                 entityInfos.Add(info);
             }
@@ -456,8 +466,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                     if (except.Contains(t.tileType))
                         continue;
                     tiles.Add(t);
+                    any = true;
                 }
                 tileInfos.Add(info);
+            }
+            if (!any)
+            {
+                CombatText.SpawnCombatText(PopKey, CombatText.NumberColor.White, pop, false, false, true);
+                return;
             }
             buildings.Add(new()
             {
@@ -472,8 +488,10 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             tileRecord.Clear();
             tilePreview.Clear();
             DeactiveExcessSlot();
-            if (SavesContainer.activeInHierarchy)
-                RefreshSaves();
+            SavesContainer.SetActive(true);
+            InfoContainer.SetActive(false);
+            HoverMark.gameObject.SetActive(false);
+            RefreshSaves();
         }
         internal void SaveToFile()
         {
@@ -485,8 +503,9 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                     new Int2JsonConverter()
                 }
             };
-            BuildingBlueprint.Saves.Value = JsonConvert.SerializeObject(buildings, settings);
-            BuildingBlueprint.File.Save();
+            var saves = BuildingBlueprint.Saves;
+            saves.Value = JsonConvert.SerializeObject(buildings, settings);
+            saves.ConfigFile.Save();
         }
         private SpriteRenderer GetOrCreateSlot(int index)
         {
@@ -552,12 +571,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             PreviewWindow.Refresh(go);
             PlaceHanlder.RefreshPreview(building);
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.Place, 1);
+            Exit.SetActive(true);
         }
         public void ExitPlaceMode()
         {
             PreviewWindow.gameObject.SetActive(false);
             PlaceHanlder.gameObject.SetActive(false);
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.Place, 0);
+            Exit.SetActive(false);
         }
         public void ShowInfoContainer()
         {

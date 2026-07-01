@@ -1,0 +1,9 @@
+﻿You'll need to bind a key in Controls - Mods.
+Please do not modify the generated config file - that's where building saves.
+This mod requires elevated access permissions, as it uses IL code to support displaying items with variant information in the building preview list
+
+Currently supported: entities, various tile types (use the filter to decide what to copy), and paint.
+Not yet supported: containers attached to entities (e.g., a table with items on it, the table will be copied, but the items on it won't)
+
+Special thanks to:
+Limoka and Rupas for their advice and a lot of help.

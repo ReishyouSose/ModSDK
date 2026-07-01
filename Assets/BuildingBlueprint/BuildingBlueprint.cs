@@ -1,4 +1,3 @@
-using Assets.BuildingBlueprint.Scripts.Components;
 using Assets.BuildingBlueprint.Scripts.Systems;
 using Assets.BuildingBlueprint.Scripts.UI;
 using CoreLib;
@@ -16,15 +15,16 @@ namespace Assets.BuildingBlueprint
         internal const string Menu = Key + "Menu";
         internal const string OpenUI = Key + "OpenUI";
         internal static ConfigEntry<string> Saves;
-        internal static ConfigFile File;
+        internal static bool InputActive;
         public void EarlyInit()
         {
             CoreLibMod.LoadSubmodule(typeof(UserInterfaceModule));
             CoreLibMod.LoadSubmodule(typeof(ControlMappingModule));
-            ControlMappingModule.AddKeyboardBind(OpenUI, Rewired.KeyboardKeyCode.V);
+            int category = ControlMappingModule.AddNewCategory(Key[..^1]);
+            ControlMappingModule.AddKeyboardBind(OpenUI, Rewired.KeyboardKeyCode.V, categoryId: category);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
-            File = new ConfigFile("BuildingBlueprint/Saves.cfg", true);
-            Saves = File.Bind("General", "Saves", "[]", scope: new(ConfigAccessLevel.ViewOnly));
+            var file = new ConfigFile("BuildingBlueprint/Saves.cfg", true);
+            Saves = file.Bind("General", "Saves", "[]", scope: new(ConfigAccessLevel.ViewOnly));
         }
 
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
@@ -60,7 +60,7 @@ namespace Assets.BuildingBlueprint
                 var ui = BlueprintUI.Ins;
                 if (!ui.Root.activeSelf)
                     ui.ShowUI();
-                else
+                else if (!InputActive)
                     ui.HideUI();
             }
         }

@@ -160,9 +160,15 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: 469B0621684F8489C125B8800076B62C607DCA59D49AA4934BCAF03320B7CBF4
+    hash: 85F10D4002003BFC4717AACE14327AE0C36D4584C012B4BB97711DA43D5F6B11
+  - path: Assets/BuildingBlueprint/BuildingBlueprint_Steam.asset
+    hash: 4EBBA474B1A32EB6701DBE393A362AC634C0628F276F298FB0E9BA6E83C99BE2
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Exit.asset
+    hash: 94F22C4A2D186319E8D010B8BC82A3A69E76A9279937CA0D116B6B62CC601672
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/NoSelected.asset
+    hash: D836B096E7960ECD636189A03AD656B806D582DFB4E633552DD7110BBD88D371
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Place.asset
     hash: 44D3406644C56D146E87376EC7C6C26C94A76D792A0B6CB6C94BF7E5EDB32128
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Save.asset
@@ -215,6 +221,12 @@ MonoBehaviour:
     hash: 7CE956AD59E82A2F46D573457A272F85ABA03CC53EFE2E0ED1CCDBD9114D4396
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/water.asset
     hash: 10DE22E63DDFBE80ABD7A33791174F0B96BDE15F8A4C8CF8A030D9D65A7F921A
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/ControlMapper/BuildingBlueprint_OpenUI.asset
+    hash: A0B0A8B1EBAE051A6DAE6114789F60859A2ED3F43ACA80A19BB672FD21E4A1D8
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/ControlMapper/BuildingBlueprintCategory.asset
+    hash: EFCDB1AE8D1A3EE089C3BB222E822B4911CAE19A255F75EAA37A6F52B876BD6A
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/ControlMapper/BuildingBlueprintDescription.asset
+    hash: 4DC377A9A6D6CEDDE49E13C1A0D6E2278355AB22ACADE41FF7B3D0052736C618
   - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Bridge.asset
     hash: 68709674F3F26674D3D1B1FC0DBBFA4C4698F23D20697BE132B2CADDF63CA6EE
   - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Fence.asset
@@ -239,4 +251,6 @@ MonoBehaviour:
     hash: 5C7F41362215BF0CD41FB5EBEFF58ED98317A5E371C31E13F5CBE2ED52BF7ED2
   - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Water.asset
     hash: 75203E717420A79151B59DF6CF8F6A3E53D82FF86450AEF43B66E000C6B96CC1
+  - path: Assets/BuildingBlueprint/description.txt
+    hash: 82BCCC4511320180072F6BC6F4975D04FC6B48862558381F6C7A0C285D993536
   lastBuildLinux: 1

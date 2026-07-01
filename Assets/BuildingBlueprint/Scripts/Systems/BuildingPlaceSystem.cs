@@ -21,6 +21,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
         private EntityArchetype tileArchetype;
         private TileWithTilesetToObjectDataMapCD tileSetMap;
         private ComponentLookup<AlwaysDropVariationZeroCD> zeroLookup;
+        private BufferLookup<ContainedObjectsBuffer> containerLookup;
         protected override void OnCreate()
         {
             Ins = this;
@@ -29,6 +30,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             entityArchetype = EntityManager.CreateArchetype(typeof(PlaceEntityRpc), typeof(SendRpcCommandRequest));
             tileArchetype = EntityManager.CreateArchetype(typeof(PlaceTileRpc), typeof(SendRpcCommandRequest));
             zeroLookup = SystemAPI.GetComponentLookup<AlwaysDropVariationZeroCD>();
+            containerLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             RequireForUpdate<TileWithTilesetToObjectDataMapCD>();
             NeedDatabase();
             base.OnCreate();
@@ -120,6 +122,23 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
         {
             return zeroLookup.HasComponent(PugDatabase.GetPrimaryPrefabEntity(id, database, variation));
         }
+        public int GetExistObjectAmount(Entity player, ObjectID id, int variation)
+        {
+            int amount = 0;
+            if (!containerLookup.TryGetBuffer(player, out var inv))
+            {
+                return 0;
+            }
+            for (int i = 0; i < inv.Length; i++)
+            {
+                if (inv[i].objectID == id && inv[i].variation == variation)
+                {
+                    amount += inv[i].amount;
+                }
+            }
+
+            return amount;
+        }
     }
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [WorldSystemFilter(WorldSystemFilterFlags.ServerSimulation)]
@@ -188,7 +207,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                     }
                     if (creative || index > -1)
                     {
-                        var create = EntityUtility.CreateEntity(ecb, entity.Pos.ToFloat3(), objectID, 1, database, findVari);
+                        var create = EntityUtility.CreateEntity(ecb, entity.Pos.ToFloat3(), objectID, 1, database, variation);
                         if (!entity.Direction.Equals(int2.zero))
                         {
                             ecb.SetComponent(create, new DirectionCD() { direction = entity.Direction.ToFloat3() });

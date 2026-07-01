@@ -25,6 +25,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             {
                 if (!Input.inputIsActive)
                     return;
+                BuildingBlueprint.InputActive = false;
                 var text = Input.pugText;
                 if (text.GetTextLength() == 0)
                 {
@@ -81,7 +82,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             }
             foreach (var (require, stack) in requires)
             {
-                list.Add(new(require.objectID, stack, player.playerInventoryHandler.GetExistingAmountOfObject(require.objectID), Entity.Null, null));
+                list.Add(new(require.objectID, stack, BuildingPlaceClient.Ins.GetExistObjectAmount(player.entity, require.objectID, require.variation), Entity.Null, null));
                 variations.Add(require.variation);
             }
             return list;

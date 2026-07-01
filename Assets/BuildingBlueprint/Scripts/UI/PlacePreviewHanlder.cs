@@ -2,7 +2,6 @@
 using Assets.BuildingBlueprint.Scripts.Systems;
 using Pug.UnityExtensions;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts.UI
@@ -29,35 +28,28 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             current = info;
             foreach (var entity in info.EntityInfos)
             {
+                var pos = entity.Position;
+                var x = pos.x;
+                var y = pos.y;
                 foreach (var e in entity.Entities)
                 {
+                    var offset = new Vector2(e.X - 1, e.Y - 1) / 2f;
+                    Vector2 size = new(e.X, e.Y);
                     var slot = GetOrCreateSlot(i++);
-                    SetPosition(slot, e);
+                    slot.sprite = Entity;
+                    slot.size = size;
+                    slot.transform.localPosition = new Vector3(x + offset.x, y + offset.y, 0);
                 }
             }
             foreach (var tile in info.TileInfos)
             {
+                var pos = tile.Position;
                 var slot = GetOrCreateSlot(i++);
-                SetPosition(slot, tile);
+                slot.sprite = Tile;
+                slot.size = Vector2.one;
+                slot.transform.localPosition = new Vector3(pos.x, pos.y, 0);
             }
             DeactiveExcessSlot(i);
-        }
-        private void SetPosition(SpriteRenderer mark, EntityCD info)
-        {
-            var offset = new Vector2(info.X - 1, info.Y - 1) / 2f;
-            mark.sprite = Entity;
-            Vector2 size = new(info.X, info.Y);
-            SetPosition(mark, info.Position, offset, size);
-        }
-        private void SetPosition(SpriteRenderer mark, SerializeTileInfo info)
-        {
-            mark.sprite = Tile;
-            SetPosition(mark, info.Position, float2.zero, Vector2.one);
-        }
-        private void SetPosition(SpriteRenderer mark, int2 pos, float2 offset, Vector2 size)
-        {
-            mark.transform.localPosition = new Vector3(pos.x + offset.x, pos.y + offset.y, 0);
-            mark.size = size;
         }
 
         private SpriteRenderer GetOrCreateSlot(int index)

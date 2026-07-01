@@ -95,6 +95,16 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         {
             return info.GetMaterails(out variations);
         }
+        public override List<TextAndFormatFields> GetHoverDescription()
+        {
+            return new()
+            {
+                new()
+                {
+                   text = "BuildingBlueprint/MaterialTip",
+                }
+            };
+        }
         public override bool ShowRequiredMaterialsAmountNumberColor() => true;
 
         public int GetOverrideVariation(int index) => variations[index];
