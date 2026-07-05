@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: TargetSwitch
+  m_Name: Copy
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: -7834857476897281275
-    m_high: -1177061342095911333
+    m_low: 7963516718437418829
+    m_high: -381273069323542632
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,8 +54,8 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u5207\u6362\u9009\u62E9\u76EE\u6807\uFF08\u5B9E\u4F53/\u7269\u5757\uFF09"
-      description: "\u5B58\u6863\u53EF\u4EE5\u540C\u65F6\u5B58\u50A8\u5B9E\u4F53\u548C\u56FE\u5757\uFF0C\u4F46\u53EA\u4F1A\u663E\u793A\u5F53\u524D\u76EE\u6807\u7684\u9009\u62E9\u9884\u89C8"
+      title: "\u590D\u5236\u5230\u526A\u8D34\u677F\uFF0C\u53EF\u4EE5\u5206\u4EAB\u7ED9\u522B\u4EBA\u5BFC\u5165"
+      description: 
     - m_language:
         m_address:
           m_low: -2957573344710624914
@@ -66,9 +66,8 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Switch Select Target (Entity/Tile)
-      description: The save stores both entities and tiles, but only shows the selection
-        preview for the currently selected target type
+      title: Copy to clipboard, shareable for others to import
+      description: 
     - m_language:
         m_address:
           m_low: 6040640903323332866
@@ -135,9 +134,8 @@ MonoBehaviour:
       m_address:
         m_low: 0
         m_high: 0
-    title: Switch Select Target (Entity/Tile)
-    description: The save stores both entities and tiles, but only shows the selection
-      preview for the currently selected target type
+    title: Copy to clipboard, shareable for others to import
+    description: 
   m_shouldBeLocalized: 1
   m_header: BuildingBlueprint
   references:

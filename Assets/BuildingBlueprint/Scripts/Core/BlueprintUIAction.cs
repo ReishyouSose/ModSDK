@@ -14,5 +14,6 @@ namespace Assets.BuildingBlueprint.Scripts.Core
         Operator,
         TileTarget,
         Place,
+        Release,
     }
 }

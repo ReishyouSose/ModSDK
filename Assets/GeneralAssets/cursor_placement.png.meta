@@ -171,7 +171,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 3, z: 3, w: 3}
       customData: 
       outline: []
@@ -202,6 +202,7 @@ TextureImporter:
       cursor_placement_1: 1926152745
       cursor_placement_2: 1776726973
       cursor_placement_3: 1692452508
+      cursor_placement_4: -730938564
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

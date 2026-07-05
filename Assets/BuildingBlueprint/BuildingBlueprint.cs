@@ -14,8 +14,6 @@ namespace Assets.BuildingBlueprint
         internal const string Key = "BuildingBlueprint_";
         internal const string Menu = Key + "Menu";
         internal const string OpenUI = Key + "OpenUI";
-        internal static ConfigEntry<string> Saves;
-        internal static bool InputActive;
         public void EarlyInit()
         {
             CoreLibMod.LoadSubmodule(typeof(UserInterfaceModule));
@@ -23,13 +21,11 @@ namespace Assets.BuildingBlueprint
             int category = ControlMappingModule.AddNewCategory(Key[..^1]);
             ControlMappingModule.AddKeyboardBind(OpenUI, Rewired.KeyboardKeyCode.V, categoryId: category);
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
-            var file = new ConfigFile("BuildingBlueprint/Saves.cfg", true);
-            Saves = file.Bind("General", "Saves", "[]", scope: new(ConfigAccessLevel.ViewOnly));
         }
 
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)
         {
-            BuildingSelectServer.AddSelectBuffer(entity, authoringData, entityManager);
+            BuildingSelectServer.AddSelectComponent(entity, authoringData, entityManager);
             BuildingSelectServer.MarkPlaceable(entity, authoringData, entityManager);
             BlueprintStateChangeServer.AddItemInteracBlockToPlayer(entity, authoringData, entityManager);
         }
@@ -55,12 +51,14 @@ namespace Assets.BuildingBlueprint
             var player = Manager.main.player;
             if (!player)
                 return;
+            if (Manager.input.textInputIsActive)
+                return;
             if (player.inputModule.rewiredPlayer.GetButtonDown(OpenUI))
             {
                 var ui = BlueprintUI.Ins;
                 if (!ui.Root.activeSelf)
                     ui.ShowUI();
-                else if (!InputActive)
+                else
                     ui.HideUI();
             }
         }

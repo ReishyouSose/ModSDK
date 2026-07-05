@@ -17,7 +17,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 
         [HideInInspector]
         public SelectionLayer CheckLayer;
-        private UIBuildingInfo info;
+        private BuildingInfo info;
 
         private Dictionary<TileCD, Color> tileColors;
         private List<int> variations;
@@ -36,7 +36,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 }
             }
         }
-        public void Refresh(UIBuildingInfo info)
+        public void Refresh(BuildingInfo info)
         {
             this.info = info;
             SlotContainer.localPosition = Vector3.zero;
@@ -46,14 +46,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private void Refresh()
         {
             Dictionary<float3, Color> map = new();
-            foreach (var tile in info.Info.TileInfos)
+            foreach (var tile in info.TileInfos)
             {
                 var top = tile.Tiles.Aggregate((a, b) => a.tileType.GetSurfacePriority() > b.tileType.GetSurfacePriority() ? a : b);
                 var pos = tile.Position;
                 tileColors.TryGetValue(top, out var color);
                 map[new(pos.x, pos.y, 0)] = color;
             }
-            foreach (var entities in info.Info.EntityInfos)
+            foreach (var entities in info.EntityInfos)
             {
                 foreach (var entity in entities.Entities)
                 {
@@ -102,6 +102,11 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 new()
                 {
                    text = "BuildingBlueprint/MaterialTip",
+                },
+                new()
+                {
+                    text = info.Description,
+                    dontLocalize = true
                 }
             };
         }

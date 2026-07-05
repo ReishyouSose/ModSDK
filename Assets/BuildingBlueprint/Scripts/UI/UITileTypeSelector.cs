@@ -67,6 +67,17 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                         }
                     };
                     return;
+                case TileType.dugUpGround:
+                    Slot.Contained = new()
+                    {
+                        objectData = new()
+                        {
+                            objectID = ObjectID.WoodHoe,
+                            amount = 50,
+                            variation = 0
+                        }
+                    };
+                    return;
             }
             if (!PugDatabase.objectDatasByTileTypeAndTileSet.TryGetValue(type, out var sets))
                 return;

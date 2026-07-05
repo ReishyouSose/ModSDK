@@ -42,10 +42,9 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private void Awake()
         {
             OperatorContainer.SetActive(false);
+            OperatorContainer.transform.localPosition = new(0, 0, 0);
             TileTarget = new();
             Mode = SelectionMode.Check;
-            BoxContainer.transform.localPosition = new(0, -1.25f, 0);
-            ClickContainer.transform.localPosition = new(0, -1.25f, 0);
             TileFilterButton.SetActive(false);
             TileFilterContainer.gameObject.SetActive(false);
             FilterTemplate.gameObject.SetActive(false);
@@ -91,6 +90,10 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public void ChangeTileFilter(UITileTarget button)
         {
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.TileTarget, button.Index);
+        }
+        public void ChangeTileFilter(int mode)
+        {
+            BlueprintStateChangeClient.SwitchState(BlueprintUIAction.TileTarget, mode);
         }
         public void SwitchTileFilter()
         {
@@ -143,7 +146,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             {
                 Op = op;
                 var pos = OpMark.localPosition;
-                pos.x = (op - (oMode == SelectionMode.Box ? 3 : 1)) * 1.25f;
+                pos.x = (op - (oMode == SelectionMode.Box ? 4 : 2)) * 1.25f;
                 OpMark.localPosition = pos;
             }
         }

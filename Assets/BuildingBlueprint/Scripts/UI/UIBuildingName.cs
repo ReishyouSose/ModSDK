@@ -15,11 +15,10 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public override void OnLeftClicked(bool mod1, bool mod2)
         {
             base.OnLeftClicked(mod1, mod2);
-            BuildingBlueprint.InputActive = true;
         }
         public override List<MaterialInfo> GetRequiredMaterials(bool isRepairing, bool isReinforcing)
         {
-            return info.GetMaterails(out variations);
+            return info.Info.GetMaterails(out variations);
         }
         public override List<TextAndFormatFields> GetHoverDescription()
         {
@@ -28,6 +27,11 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 new()
                 {
                    text = "BuildingBlueprint/MaterialTip",
+                },
+                new()
+                {
+                    text = info.Info.Description,
+                    dontLocalize = true
                 }
             };
         }

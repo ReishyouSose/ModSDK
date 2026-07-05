@@ -59,7 +59,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             }
             base.OnUpdate();
         }
-        public void Place(int2 mouse, BuildingInfo info)
+        public void Place(int2 mouse, BuildingInfo info, int2 offset)
         {
             var entitiesQueue = entities;
             var tilesQueue = tiles;
@@ -72,7 +72,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                     {
                         ObjectID = entity.ObjectID,
                         Variation = entity.Variation,
-                        Pos = entities.Position + mouse,
+                        Pos = entities.Position + mouse + offset,
                         Direction = entity.Direction,
                         Color = entity.Color,
                         Player = player,
@@ -89,7 +89,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         ObjectID = obj.objectID,
                         Variation = obj.variation,
                         Tile = tile,
-                        Pos = tiles.Position + mouse,
+                        Pos = tiles.Position + mouse + offset,
                         Player = player
                     });
                 }
@@ -114,6 +114,11 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                     {
                         objectID = ObjectID.Bucket,
                         variation = tile.tileset + 1
+                    };
+                case TileType.dugUpGround:
+                    return new()
+                    {
+                        objectID = ObjectID.WoodHoe
                     };
             }
             return PugDatabase.TryGetTileItemInfo(type, (Tileset)tile.tileset, tileSetMap);
@@ -237,12 +242,24 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                     {
                         return;
                     }
-                    var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
-                    var variation = tile.Variation;
-                    var findVari = zeroLookup.HasComponent(primary) ? 0 : variation;
+                    if (objectID is ObjectID.WoodHoe)
+                    {
+                        for (int i = 0; i < inv.Length; i++)
+                        {
+                            var slot = inv[i];
+                            if (PugDatabase.GetEntityObjectInfo(slot.objectID, database, slot.variation).objectType == ObjectType.Hoe)
+                            {
+                                creative = true;
+                                break;
+                            }
+                        }
+                    }
                     int index = -1;
                     if (!creative)
                     {
+                        var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
+                        var variation = tile.Variation;
+                        var findVari = zeroLookup.HasComponent(primary) ? 0 : variation;
                         for (int i = 0; i < inv.Length; i++)
                         {
                             var slot = inv[i];

@@ -95,11 +95,28 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                     case BlueprintUIAction.TileTarget:
                         if (tileTargetLookup.TryGetBuffer(player, out var targets))
                         {
-                            targets[value] = new() { State = !targets[value].State };
+                            if (value >= 0)
+                                targets[value] = new() { State = !targets[value].State };
+                            else
+                            {
+                                bool? state = value switch
+                                {
+                                    -1 => true,
+                                    -2 => false,
+                                    _ => null
+                                };
+                                for (int i = 0; i < targets.Length; i++)
+                                {
+                                    targets[i] = new() { State = state ?? !targets[i].State };
+                                }
+                            }
                         }
                         break;
                     case BlueprintUIAction.Place:
                         option.Place = value != 0;
+                        break;
+                    case BlueprintUIAction.Release:
+                        option.InteractHeld = value != 0;
                         break;
                 }
             })

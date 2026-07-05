@@ -1,9 +1,7 @@
 ﻿using Assets.BuildingBlueprint.Scripts.Core;
 using Assets.BuildingBlueprint.Scripts.Systems;
 using CoreLib.Submodule.UserInterface.Interface;
-using Newtonsoft.Json;
 using Pug.UnityExtensions;
-using PugTilemap;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -26,7 +24,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public LinearLayoutUIComponent TileLayout;
         public GameObject LeaderContainer;
         public GameObject InfoContainer;
-        public GameObject SavesContainer;
+        public SaveHandler SavesHandler;
         public GameObject Exit;
         public UIBuildingPreviewWindow PreviewWindow;
         public UIBuildingInfo BuildingTemplate;
@@ -40,7 +38,6 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private Dictionary<int2, TilesInfo> tilePreview;
         private Dictionary<int2, TilesInfo> tileRecord;
         private Dictionary<TileCD, bool> currentTile;
-        private List<BuildingInfo> buildings;
         private bool open;
         private const string PopKey = "BuildingBlueprint/NoSelected";
         public GameObject Root => transform.GetChild(0).gameObject;
@@ -69,21 +66,9 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             };
             EntitySlot.gameObject.SetActive(false);
             TileLayout.gameObject.SetActive(false);
-            buildings = new();
             BuildingTemplate.gameObject.SetActive(false);
             ShowInfoContainer();
             HideUI();
-        }
-        private void Start()
-        {
-            var settings = new JsonSerializerSettings
-            {
-                Converters = new List<JsonConverter>
-                {
-                    new Int2JsonConverter(),
-                }
-            };
-            buildings = JsonConvert.DeserializeObject<List<BuildingInfo>>(BuildingBlueprint.Saves.Value, settings);
         }
         public void HideUI()
         {
@@ -349,9 +334,10 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             TileLayout.gameObject.SetActive(true);
             currentTile = info.Tiles;
             int i = 0;
+            var except = SelectHandler.ExceptTiles;
             foreach (var (tile, state) in currentTile)
             {
-                if (tile.tileType is TileType.immune or TileType.pit)
+                if (except.Contains(tile.tileType))
                     continue;
                 if (tileSelectors.Count <= i)
                 {
@@ -396,6 +382,27 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 entityList[j].gameObject.SetActive(false);
             EntityLayout.RenderUIComponent(true);
         }
+        public void ClearSelection(bool single)
+        {
+            if (single)
+            {
+                switch (SelectHandler.Layer)
+                {
+                    case SelectionLayer.Entity:
+                        entityRecord.Clear();
+                        break;
+                    case SelectionLayer.Tile:
+                        tileRecord.Clear();
+                        break;
+                }
+            }
+            else
+            {
+                entityRecord.Clear();
+                tileRecord.Clear();
+            }
+            DeactiveExcessSlot();
+        }
         public void ChangeTileState(UITileTypeSelector selector)
         {
             currentTile[selector.TileCD] = !currentTile[selector.TileCD];
@@ -431,8 +438,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 maxX = Mathf.Max(x, maxX);
                 maxY = Mathf.Max(y, maxY);
             }
-            int oriX = (int)((minX + maxX) / 2f);
-            int oriY = (int)((minY + maxY) / 2f);
+            int oriX = (int)minX;
+            int oriY = (int)minY;
             List<EntityInfo> entityInfos = new();
             bool any = false;
             foreach (var (pos, entity) in entityRecord)
@@ -475,37 +482,56 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 CombatText.SpawnCombatText(PopKey, CombatText.NumberColor.White, pop, false, false, true);
                 return;
             }
-            buildings.Add(new()
+            SavesHandler.gameObject.SetActive(true);
+            SavesHandler.Save(new()
             {
                 EntityInfos = entityInfos,
                 TileInfos = tileInfos,
                 Size = new((int)(maxX - minX), (int)(maxY - minY)),
-                Name = buildings.Count.ToString()
             });
-            SaveToFile();
+            ClearRecord();
+        }
+        public void Destory()
+        {
+            var player = Manager.main.player;
+            var pop = player.RenderPosition + Vector3.up * 0.7f;
+            if (entityRecord.Count == 0 && tileRecord.Count == 0)
+            {
+                CombatText.SpawnCombatText(PopKey, CombatText.NumberColor.White, pop, false, false, true);
+                return;
+            }
+            var remove = tileRecord.Where(x => x.Value.Tiles.All(v => !v.Value)).Select(x => x.Key).ToArray();
+            foreach (var r in remove)
+                tileRecord.Remove(r);
+            foreach (var (pos, entity) in entityRecord)
+            {
+                foreach (var e in entity.Entities)
+                {
+
+                }
+            }
+            var except = SelectHandler.ExceptTiles;
+            foreach (var (pos, tile) in tileRecord)
+            {
+                foreach (var (t, state) in tile.Tiles)
+                {
+                    if (!state)
+                        continue;
+                    if (except.Contains(t.tileType))
+                        continue;
+                }
+            }
+            ClearRecord();
+        }
+        private void ClearRecord()
+        {
             entityRecord.Clear();
             entityPreview.Clear();
             tileRecord.Clear();
             tilePreview.Clear();
             DeactiveExcessSlot();
-            SavesContainer.SetActive(true);
             InfoContainer.SetActive(false);
             HoverMark.gameObject.SetActive(false);
-            RefreshSaves();
-        }
-        internal void SaveToFile()
-        {
-            var settings = new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                Converters = new List<JsonConverter>
-                {
-                    new Int2JsonConverter()
-                }
-            };
-            var saves = BuildingBlueprint.Saves;
-            saves.Value = JsonConvert.SerializeObject(buildings, settings);
-            saves.ConfigFile.Save();
         }
         private SpriteRenderer GetOrCreateSlot(int index)
         {
@@ -521,54 +547,29 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 marks[i].gameObject.SetActive(false);
             }
         }
-        private void RefreshSaves()
-        {
-            int i = 0;
-            var trans = BuildingsLayout.transform;
-            foreach (var building in buildings)
-            {
-                if (i >= trans.childCount)
-                    Instantiate(BuildingTemplate, trans);
-                var slot = trans.GetChild(i);
-                slot.gameObject.SetActive(true);
-                slot.GetComponent<UIBuildingInfo>().Set(building, i);
-                i++;
-            }
-            for (int j = i; j < trans.childCount; j++)
-            {
-                trans.GetChild(j).gameObject.SetActive(false);
-            }
-            BuildingsLayout.RenderUIComponent(true);
-        }
-        public void DeleteSave(UIBuildingInfo info)
-        {
-            buildings.RemoveAt(info.Index);
-            RefreshSaves();
-            SaveToFile();
-        }
         public void SwitchBuildingList()
         {
-            if (SavesContainer.activeSelf)
+            if (SavesHandler.gameObject.activeSelf)
             {
-                SavesContainer.SetActive(false);
+                SavesHandler.gameObject.SetActive(false);
                 InfoContainer.SetActive(true);
             }
             else
             {
-                SavesContainer.SetActive(true);
+                SavesHandler.gameObject.SetActive(true);
                 InfoContainer.SetActive(false);
                 HoverMark.gameObject.SetActive(false);
-                RefreshSaves();
+                SavesHandler.RenderSaves();
             }
             ExitPlaceMode();
         }
-        public void SelectBuilding(UIBuildingInfo go)
+        public void SelectBuilding()
         {
-            SavesContainer.SetActive(false);
+            SavesHandler.gameObject.SetActive(false);
             PreviewWindow.gameObject.SetActive(true);
             PlaceHanlder.gameObject.SetActive(true);
-            var building = go.Info;
-            PreviewWindow.Refresh(go);
+            var building = SavesHandler.Current;
+            PreviewWindow.Refresh(building);
             PlaceHanlder.RefreshPreview(building);
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.Place, 1);
             Exit.SetActive(true);
@@ -583,7 +584,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public void ShowInfoContainer()
         {
             InfoContainer.SetActive(true);
-            SavesContainer.SetActive(false);
+            SavesHandler.gameObject.SetActive(false);
             PreviewWindow.gameObject.SetActive(false);
             PlaceHanlder.gameObject.SetActive(false);
         }

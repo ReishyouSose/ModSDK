@@ -7,41 +7,45 @@ namespace Assets.BuildingBlueprint.Scripts.UI
     {
         [HideInInspector]
         public LinearLayoutUIComponent Layout;
-        private Transform container;
-        private UIScrollWindow scroll;
-        private void Awake()
+        protected Transform Container;
+        protected UIScrollWindow Scroll;
+        public virtual void Awake()
         {
             Layout = GetComponentInChildren<LinearLayoutUIComponent>();
-            scroll = GetComponent<UIScrollWindow>();
-            container = Layout.transform;
+            Scroll = GetComponent<UIScrollWindow>();
+            Container = Layout.transform;
         }
         public float GetCurrentWindowHeight() => Layout.GetUIComponentRenderHeight();
 
         public bool IsBottomElementSelected()
         {
-            int index = container.childCount - 1;
+            int index = Container.childCount - 1;
             if (index < 0)
                 return false;
-            return container.GetChild(index) == Manager.ui.currentSelectedUIElement;
+            return Container.GetChild(index) == Manager.ui.currentSelectedUIElement;
         }
 
         public bool IsTopElementSelected()
         {
-            int count = container.childCount;
+            int count = Container.childCount;
             if (count <= 0)
                 return false;
-            return container.GetChild(0) == Manager.ui.currentSelectedUIElement;
+            return Container.GetChild(0) == Manager.ui.currentSelectedUIElement;
         }
         public void UpdateContainingElements(float _)
         {
             if (!Layout)
                 return;
-            Vector3 center = scroll.transform.position + (Vector3)scroll.windowLocalCenter;
-            Rect rect = new(center.x - scroll.windowWidth / 2f, center.y - scroll.windowHeight / 2f, scroll.windowWidth, scroll.windowHeight);
+            Vector3 center = Scroll.transform.position + (Vector3)Scroll.windowLocalCenter;
+            Rect rect = new(center.x - Scroll.windowWidth / 2f, center.y - Scroll.windowHeight / 2f, Scroll.windowWidth, Scroll.windowHeight);
             foreach (Transform trans in Layout.transform)
             {
-                if (trans.TryGetComponent<UIComponentMonoBehaviour>(out var ui) && trans.TryGetComponent<BoxCollider>(out var box))
+                if (trans.TryGetComponent<UIComponentMonoBehaviour>(out var ui))
                 {
+                    var boxs = trans.GetComponentsInChildren<BoxCollider>();
+                    if (boxs.Length <= 0)
+                        continue;
+
                     float width = ui.GetUIComponentRenderWidth();
                     float height = ui.GetUIComponentRenderHeight();
 
@@ -54,7 +58,10 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                     else // MiddleLeft
                         bottom -= height / 2f;
 
-                    box.enabled = new Rect(left, bottom, width, height).Overlaps(rect);
+                    foreach (var box in boxs)
+                    {
+                        box.enabled = new Rect(left, bottom, width, height).Overlaps(rect);
+                    }
                 }
             }
         }

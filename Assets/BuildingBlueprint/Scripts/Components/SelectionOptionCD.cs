@@ -23,6 +23,7 @@ namespace Assets.BuildingBlueprint.Scripts.Components
 
         public int2? Start;
         public int2 Current;
+        public bool InteractHeld;
 
         public static implicit operator BoxOperator(SelectionOptionCD cd) => (BoxOperator)cd.Operator;
         public static implicit operator ClickOperator(SelectionOptionCD cd) => (ClickOperator)cd.Operator;

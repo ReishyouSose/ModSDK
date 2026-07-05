@@ -1,7 +1,6 @@
 ﻿using Assets.BuildingBlueprint.Scripts.Components;
 using Assets.BuildingBlueprint.Scripts.Core;
 using Assets.BuildingBlueprint.Scripts.UI;
-using Inventory;
 using PlayerEquipment;
 using Pug.UnityExtensions;
 using System.Collections.Generic;
@@ -95,10 +94,11 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                             currentPos = startPos.Value;
                             ui.StartSelect();
                         }
-                        else if (startPos != null && !input.IsButtonStateSet(CommandInputButtonStateNames.Interact_HeldDown))
+                        else if (startPos != null && !Manager.input.singleplayerInputModule.IsButtonCurrentlyDown(PlayerInput.InputType.INTERACT, false))
                         {
                             startPos = null;
                             ui.EndSelect();
+                            BlueprintStateChangeClient.SwitchState(BlueprintUIAction.Release, 0);
                         }
                         if (startPos == null)
                             return;
@@ -257,6 +257,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var paintLookup = this.paintLookup;
             var tileTarget = SystemAPI.GetSingletonBuffer<TileTargetBuffer>();
             var tileAccessor = this.tileAccessor;
+            var delta = World.Time.DeltaTime;
             Entities.ForEach((ref SelectionOptionCD option, ref DynamicBuffer<SelectedEntityBuffer> entities, ref DynamicBuffer<SelectedTileBuffer> tiles,
                 in DynamicBuffer<TileTargetStateBuffer> tileState, in ClientInput input) =>
             {
@@ -265,17 +266,17 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 if (option.Mode != SelectionMode.Box)
                     return;
                 var mouse = input.mouseOrJoystickWorldPoint.RoundToInt2();
-                bool click = input.IsButtonStateSet(CommandInputButtonStateNames.Interact_Pressed);
                 var layer = option.Layer;
                 ref var startPos = ref option.Start;
                 ref var currentPos = ref option.Current;
                 BoxOperator op = option;
-                if (click)
+                if (input.IsButtonStateSet(CommandInputButtonStateNames.Interact_Pressed))
                 {
                     startPos = mouse;
                     currentPos = startPos.Value;
+                    option.InteractHeld = true;
                 }
-                else if (startPos != null && !input.IsButtonStateSet(CommandInputButtonStateNames.Interact_HeldDown))
+                else if (startPos != null && !option.InteractHeld)
                 {
                     startPos = null;
                     entities.Clear();
@@ -378,7 +379,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 entityManager.AddComponent<PlaceableCD>(entity);
             }
         }
-        internal static void AddSelectBuffer(Entity entity, GameObject authoringData, EntityManager entityManager)
+        internal static void AddSelectComponent(Entity entity, GameObject authoringData, EntityManager entityManager)
         {
             if (authoringData.TryGetComponent(out PlayerAuthoring _))
             {
