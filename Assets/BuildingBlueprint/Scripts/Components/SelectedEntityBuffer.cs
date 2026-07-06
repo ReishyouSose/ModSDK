@@ -8,6 +8,8 @@ namespace Assets.BuildingBlueprint.Scripts.Components
     public struct SelectedEntityBuffer : IBufferElementData
     {
         [GhostField]
+        public Entity Entity;
+        [GhostField]
         public ObjectID ObjectID;
         [GhostField]
         public int X;
@@ -33,6 +35,7 @@ namespace Assets.BuildingBlueprint.Scripts.Components
                 Position = buffer.Position,
                 Direction = buffer.Direction,
                 Color = buffer.Color,
+                Entity = buffer.Entity,
             };
         }
         public readonly float2 GetEntityOffset(BlobAssetReference<PugDatabase.PugDatabaseBank> database, out int2 size)

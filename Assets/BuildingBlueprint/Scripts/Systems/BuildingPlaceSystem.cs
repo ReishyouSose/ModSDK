@@ -95,34 +95,25 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 }
             }
         }
-        public ObjectDataCD TileToObject(TileCD tile)
+        public void Destory(EntityCD entity, int2 pos, Entity player)
         {
-            TileType type = tile.tileType;
-            switch (tile.tileType)
+            entities.Enqueue(new()
             {
-                case TileType.ground:
-                    type = TileType.wall;
-                    break;
-                case TileType.roofHole:
-                    return new()
-                    {
-                        objectID = ObjectID.RoofingTool,
-                        variation = 0
-                    };
-                case TileType.water:
-                    return new()
-                    {
-                        objectID = ObjectID.Bucket,
-                        variation = tile.tileset + 1
-                    };
-                case TileType.dugUpGround:
-                    return new()
-                    {
-                        objectID = ObjectID.WoodHoe
-                    };
-            }
-            return PugDatabase.TryGetTileItemInfo(type, (Tileset)tile.tileset, tileSetMap);
+                Entity = entity.Entity,
+                Player = player,
+            });
         }
+        public void Destory(TileCD t, int2 pos, Entity player)
+        {
+            tiles.Enqueue(new()
+            {
+                ObjectID = (ObjectID)(-1),
+                Tile = t,
+                Pos = pos,
+                Player = player
+            });
+        }
+        public ObjectDataCD TileToObject(TileCD tile) => MiscHelper.TileToObject(tile, tileSetMap);
         public bool AlwaysDropZero(ObjectID id, int variation)
         {
             return zeroLookup.HasComponent(PugDatabase.GetPrimaryPrefabEntity(id, database, variation));
@@ -152,21 +143,28 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
         private ComponentLookup<PlaceEntityRpc> entityLookup;
         private ComponentLookup<PlaceTileRpc> tileLookup;
         private ComponentLookup<AlwaysDropVariationZeroCD> zeroLookup;
+        private ComponentLookup<HealthCD> healthLookup;
+        private ComponentLookup<PlayerGhost> playerLookup;
         private BufferLookup<ContainedObjectsBuffer> containedLookup;
+        private TileAccessor tileAccessor;
         protected override void OnCreate()
         {
             NeedDatabase();
             RequireForUpdate<PugDatabase.DatabaseBankCD>();
             RequireForUpdate<TileUpdateBuffer>();
             RequireForUpdate<InventoryChangeBuffer>();
+            RequireForUpdate<TileWithTilesetToObjectDataMapCD>();
             entityLookup = SystemAPI.GetComponentLookup<PlaceEntityRpc>();
             tileLookup = SystemAPI.GetComponentLookup<PlaceTileRpc>();
             zeroLookup = SystemAPI.GetComponentLookup<AlwaysDropVariationZeroCD>();
+            healthLookup = SystemAPI.GetComponentLookup<HealthCD>();
+            playerLookup = SystemAPI.GetComponentLookup<PlayerGhost>();
             containedLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             base.OnCreate();
         }
         protected override void OnStartRunning()
         {
+            tileAccessor = CreateTileAccessor();
             base.OnStartRunning();
         }
         protected override void OnUpdate()
@@ -174,21 +172,40 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var entityLookup = this.entityLookup;
             var tileLookup = this.tileLookup;
             var zeroLookup = this.zeroLookup;
+            var healthLookup = this.healthLookup;
+            var playerLookup = this.playerLookup;
             var containedLookup = this.containedLookup;
+            var tileAccessor = this.tileAccessor;
+            var database = this.database;
             var ecb = CreateCommandBuffer();
             var invChange = SystemAPI.GetSingletonBuffer<InventoryChangeBuffer>();
             var tileChange = SystemAPI.GetSingletonBuffer<TileUpdateBuffer>();
             bool creative = WorldInfo.IsWorldModeEnabled(WorldMode.Creative);
-            var database = this.database;
+            bool guest = WorldInfo.guestMode;
+            var tileSetMap = SystemAPI.GetSingleton<TileWithTilesetToObjectDataMapCD>();
+            bool adminOnly = BuildingBlueprint.DestoryPrivileges.Value;
             Entities.ForEach((Entity e) =>
             {
                 ecb.DestroyEntity(e);
                 if (entityLookup.TryGetComponent(e, out var entity))
                 {
-                    if (!containedLookup.TryGetBuffer(entity.Player, out var inv))
+                    var targetE = entity.Entity;
+                    if (targetE != Entity.Null)
                     {
+                        if (!playerLookup.TryGetComponent(entity.Player, out var player))
+                            return;
+                        if (adminOnly ? player.adminPrivileges <= 0 : guest)
+                            return;
+                        if (healthLookup.TryGetComponent(targetE, out var health))
+                        {
+                            var h = health;
+                            h.health = 0;
+                            ecb.SetComponent(targetE, h);
+                        }
                         return;
                     }
+                    if (!containedLookup.TryGetBuffer(entity.Player, out var inv))
+                        return;
                     var objectID = entity.ObjectID;
                     var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
                     var variation = entity.Variation;
@@ -232,6 +249,26 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 else if (tileLookup.TryGetComponent(e, out var tile))
                 {
                     var objectID = tile.ObjectID;
+                    if ((int)objectID == -1)
+                    {
+                        if (!playerLookup.TryGetComponent(tile.Player, out var player))
+                            return;
+                        if (adminOnly ? player.adminPrivileges <= 0 : guest)
+                            return;
+                        var tileCD = tile.Tile;
+                        EntityUtility.RemoveTile(tileCD.tileset, tileCD.tileType, tile.Pos, tileChange, tileAccessor);
+                        switch (tileCD.tileType)
+                        {
+                            case TileType.roofHole:
+                            case TileType.water:
+                            case TileType.dugUpGround:
+                                return;
+                        }
+                        var obj = MiscHelper.TileToObject(tileCD, tileSetMap);
+                        obj.amount = 1;
+                        EntityUtility.DropNewEntity(ecb, new() { objectData = obj }, tile.Pos.ToFloat3(), database, entity.Player, true);
+                        return;
+                    }
                     if (objectID is ObjectID.None or ObjectID.Bucket)
                     {
                         var tileCD = tile.Tile;

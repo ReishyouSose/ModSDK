@@ -2,6 +2,7 @@
 using Assets.BuildingBlueprint.Scripts.Systems;
 using CoreLib.Submodule.UserInterface.Interface;
 using Pug.UnityExtensions;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
@@ -11,10 +12,13 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 {
     public class BlueprintUI : MonoBehaviour, IModUI
     {
+        private static WaitForSeconds waitForSeconds0_1 = new WaitForSeconds(0.1f);
+
         internal static BlueprintUI Ins { get; private set; }
         public SpriteRenderer SelectBorder;
         public SpriteRenderer MarkTemplate;
         public SpriteRenderer HoverMark;
+        public GameObject DestoryMark;
         public Transform MarkContainer;
         public Transform Camera;
         public SelectHandler SelectHandler;
@@ -86,6 +90,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             Root.SetActive(true);
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.BlockItemInteract, 1);
             BuildingSelectClient.Ins.Enabled = true;
+            DestoryMark.SetActive(false);
         }
 
         public void StartSelect()
@@ -494,7 +499,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public void Destory()
         {
             var player = Manager.main.player;
+            if (player.guestMode || BuildingBlueprint.DestoryPrivileges.Value && player.adminPrivileges <= 0)
+            {
+
+                return;
+            }
+            var pe = player.entity;
             var pop = player.RenderPosition + Vector3.up * 0.7f;
+            var sys = BuildingPlaceClient.Ins;
             if (entityRecord.Count == 0 && tileRecord.Count == 0)
             {
                 CombatText.SpawnCombatText(PopKey, CombatText.NumberColor.White, pop, false, false, true);
@@ -503,23 +515,31 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             var remove = tileRecord.Where(x => x.Value.Tiles.All(v => !v.Value)).Select(x => x.Key).ToArray();
             foreach (var r in remove)
                 tileRecord.Remove(r);
+            bool any = false;
             foreach (var (pos, entity) in entityRecord)
             {
                 foreach (var e in entity.Entities)
                 {
-
+                    sys.Destory(e, pos, pe);
+                    any = true;
                 }
             }
             var except = SelectHandler.ExceptTiles;
             foreach (var (pos, tile) in tileRecord)
             {
-                foreach (var (t, state) in tile.Tiles)
+                foreach (var (t, state) in tile.Tiles.Reverse())
                 {
                     if (!state)
                         continue;
                     if (except.Contains(t.tileType))
                         continue;
+                    sys.Destory(t, pos, pe);
+                    any = true;
                 }
+            }
+            if (!any)
+            {
+                CombatText.SpawnCombatText(PopKey, CombatText.NumberColor.White, pop, false, false, true);
             }
             ClearRecord();
         }
@@ -587,6 +607,16 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             SavesHandler.gameObject.SetActive(false);
             PreviewWindow.gameObject.SetActive(false);
             PlaceHanlder.gameObject.SetActive(false);
+        }
+        private IEnumerator DestoryWarning()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                DestoryMark.SetActive(true);
+                yield return waitForSeconds0_1;
+                DestoryMark.SetActive(false);
+                yield return waitForSeconds0_1;
+            }
         }
     }
 }

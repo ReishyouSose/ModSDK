@@ -61,8 +61,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 
         private int2 GetPivotOffset(BuildingInfo info)
         {
-            int w = info.Size.x;
-            int h = info.Size.y;
+            int w = -info.Size.x;
+            int h = -info.Size.y;
             int halfW = w / 2;
             int halfH = h / 2;
 

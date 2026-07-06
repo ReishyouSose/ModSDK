@@ -13,5 +13,6 @@ namespace Assets.BuildingBlueprint.Scripts.Components
         public int2 Direction;
         public Entity Player;
         public PaintableColor Color;
+        public Entity Entity;
     }
 }

@@ -313,7 +313,8 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                                 Direction = direction.direction.RoundToInt2(),
                                 Position = trans.Position.RoundToInt2(),
                                 Variation = obj.variation,
-                                Color = paint.color
+                                Color = paint.color,
+                                Entity = entity,
                             };
                             var box = MiscHelper.GetEntityRect(cd, database);
                             if (selectArea.Contains(box))

@@ -172,13 +172,15 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: 9DEDAD5C7BC72BCD2C947EAE46A99A24360EDFE64B48ECC23FAC58EFAD6F812E
+    hash: C40375523A99CC1DE8441DA6C4485596E0E70832017A8F805E9006D95C4EFC8A
   - path: Assets/BuildingBlueprint/BuildingBlueprint_Steam.asset
     hash: 4EBBA474B1A32EB6701DBE393A362AC634C0628F276F298FB0E9BA6E83C99BE2
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
     hash: A9D23B0B801DE0E383C5C0D5E9A068E1EE2FB5686AB5C100C3AFA751F3A35227
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Clear.asset
     hash: F886EDBE9D7C438BDD687EE2DE0F07E19E1D1AABE1C8932586FD77CCA0BCDA98
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Config.asset
+    hash: 70C7C83A2390DA7C96A00CD79C7D23DD2401E9B69841E38635F8BCB4B953FB2F
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Copy.asset
     hash: EDBF0E9C41D6904DF67C92A52054CBF025CCD008C4510012662874E5232B2939
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Cut.asset
@@ -197,8 +199,10 @@ MonoBehaviour:
     hash: 8AB8CF5129A835C23DDDBB58CAA10AB6027AE0E01B299C819181BA9E0A0D90DD
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/NoSelected.asset
     hash: D836B096E7960ECD636189A03AD656B806D582DFB4E633552DD7110BBD88D371
-  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Paste.asset
-    hash: 0E8CEB5BF4284D1DC301D60F3F78B2A280D26830D85229018C844D4ABAFB6ED7
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/PasteAt.asset
+    hash: 605804BF374BAAF8DB989B7F9260A82F8A3ACEC259F5504096F6876DC628A152
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/PasteToFolder.asset
+    hash: 6CA5E07BB1E273DAFEE98B204346485C871E344EA912F7E197C7E547B39181F9
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Place.asset
     hash: B9A348DB73A0A4AD3CF74470AACA6C064A7FBD967B39426D2BA03266A8DB9A95
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/PlacePivot.asset
@@ -225,6 +229,10 @@ MonoBehaviour:
     hash: B100FB27311E6F160BBEBD1837217FFB7B0E4BF32FAF305E3661E7F5D700038D
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Click/Remove.asset
     hash: 056883961CC5D891504A85879AD2D55B799B08CE02F767A5DE4E718FAD480BFE
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Config/General.asset
+    hash: C196A2F171F618E3C59CE3A6FB0D8EE47400D98D64F03DE89BEB98E0353A251A
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Config_General/DestoryPrivileges.asset
+    hash: 70514DD6382F879B637A2D2473C4EEF89CE4F850F18A4EA632C4DA3C2B93F166
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Box.asset
     hash: 7E37EDFBD191971F9DE9E2F6BC56930D45146EBE708628A44657ED01EEFE30BC
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_Mode/Check.asset
@@ -235,6 +243,8 @@ MonoBehaviour:
     hash: 7A96CABF93ABBA09B236FDB6538E4AB72AF07730C1C40C5AA893E53F62FFBF5F
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/DisableAll.asset
     hash: 2F87257AB72ACF8707F2E5227DCBE5D47C06ABECACC9678A599BD6745769F66F
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/dugUpGround.asset
+    hash: EC80AA8289CBB040E7BF8C00B65C2A184A4304AE70FFE6238D3A87D07C438A8F
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/EnableAll.asset
     hash: 00C26C8F953ED5D9B076BE131F658DEB562B043F53FBB3319BC7C3123D670F57
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/fence.asset

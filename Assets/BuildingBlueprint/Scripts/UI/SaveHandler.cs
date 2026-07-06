@@ -23,9 +23,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private static readonly WaitForSeconds waitForSeconds0_1 = new(0.1f);
         private static readonly JsonSerializerSettings jsonSettings = new()
         {
-            Converters = new List<JsonConverter> { new Int2JsonConverter() }
+            Converters = new List<JsonConverter>() { new Int2JsonConverter() }
         };
-
         private readonly string FolderOrderPath = Path.Combine(SAVE_HEADER, FOLDER_ORDER_FILE);
         #endregion
 
@@ -633,7 +632,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                     ).ToList()
                     : infos;
 
-                if (filteredInfos.Count == 0)
+                if (isSearching && filteredInfos.Count == 0)
                     continue;
 
                 if (folders.Count <= folderIndex)

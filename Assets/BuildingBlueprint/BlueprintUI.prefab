@@ -538,6 +538,7 @@ Transform:
   - {fileID: 6105637342400072285}
   - {fileID: 1462731861819227877}
   - {fileID: 2945530956054831939}
+  - {fileID: 900980999145006301}
   m_Father: {fileID: 615110923150344369}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5008081351006422682
@@ -571,8 +572,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1095168160296468652}
-        m_TargetAssemblyTypeName: Assets.BuildingBlueprint.Scripts.BlueprintUI, BuildingBlueprint
-        m_MethodName: Save
+        m_TargetAssemblyTypeName: Assets.BuildingBlueprint.Scripts.UI.BlueprintUI,
+          BuildingBlueprint
+        m_MethodName: Destory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3186,6 +3188,93 @@ MonoBehaviour:
   styleOverrides: []
   usePooledResources: 1
   freeResourcesOnDisable: 0
+--- !u!1 &1121648120162063094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900980999145006301}
+  - component: {fileID: 8924532991796108247}
+  m_Layer: 5
+  m_Name: DestoryMark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &900980999145006301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121648120162063094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7763212088586333390}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8924532991796108247
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121648120162063094}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 1342859820, guid: 801c9269d14f9b64db605f0eecd68f22, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 1
+  m_Size: {x: 1.125, y: 1.125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1127889796017468594
 GameObject:
   m_ObjectHideFlags: 0
@@ -13113,7 +13202,7 @@ MonoBehaviour:
   hintString: 
   selectedMarker: {fileID: 2632428025945766244}
   characterMarkBlinker: {fileID: 5092213443821348510}
-  maxWidth: 0
+  maxWidth: 8
   maxHeight: 0
   dontAllowNewLines: 0
   trim: 1
@@ -16673,7 +16762,7 @@ MonoBehaviour:
   localizePlaceholders: 0
   dontResetEffectsOnRender: 0
   hideInStreamerMode: 0
-  maxWidth: 0
+  maxWidth: 8
   textString: 
   textSuffix: 
   formatFields: []
@@ -20292,7 +20381,7 @@ MonoBehaviour:
   localizePlaceholders: 0
   dontResetEffectsOnRender: 0
   hideInStreamerMode: 0
-  maxWidth: 9
+  maxWidth: 7.5
   textString: 
   textSuffix: 
   formatFields: []
@@ -21029,7 +21118,7 @@ MonoBehaviour:
   hintString: 
   selectedMarker: {fileID: 4907620855777928169}
   characterMarkBlinker: {fileID: 4156623074487146638}
-  maxWidth: 9
+  maxWidth: 7.5
   maxHeight: 0
   dontAllowNewLines: 1
   trim: 0
@@ -24023,6 +24112,7 @@ MonoBehaviour:
   SelectBorder: {fileID: 7673982416638243195}
   MarkTemplate: {fileID: 45804219440821185}
   HoverMark: {fileID: 1480460800936927725}
+  DestoryMark: {fileID: 1121648120162063094}
   MarkContainer: {fileID: 5084250955568641916}
   Camera: {fileID: 4257695374431502451}
   SelectHandler: {fileID: 5542438030072108724}

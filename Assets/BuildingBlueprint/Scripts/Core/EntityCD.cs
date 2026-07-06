@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Pug.UnityExtensions;
 using System;
-using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts.Core
 {
@@ -17,6 +15,8 @@ namespace Assets.BuildingBlueprint.Scripts.Core
         public int Variation;
         [JsonIgnore]
         public int2 Position;
+        [JsonIgnore]
+        public Entity Entity;
         public int2 Direction;
         public PaintableColor Color;
         public readonly float2 GetEntityOffset(out int2 size)
