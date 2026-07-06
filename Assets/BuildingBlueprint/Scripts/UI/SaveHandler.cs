@@ -412,6 +412,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 
             var newName = go.Input.pugText.GetText();
             var oldName = go.Header;
+            if (oldName == DEFAULT)
+                newName = DEFAULT;
 
             if (string.IsNullOrEmpty(newName) ||
                 API.ConfigFilesystem.DirectoryExists(GetFolderPath(newName)))

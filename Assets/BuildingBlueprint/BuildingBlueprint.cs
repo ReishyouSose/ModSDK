@@ -30,7 +30,6 @@ namespace Assets.BuildingBlueprint
         {
             BuildingSelectServer.AddSelectComponent(entity, authoringData, entityManager);
             BuildingSelectServer.MarkPlaceable(entity, authoringData, entityManager);
-            BlueprintStateChangeServer.AddItemInteracBlockToPlayer(entity, authoringData, entityManager);
         }
 
         public void Init()

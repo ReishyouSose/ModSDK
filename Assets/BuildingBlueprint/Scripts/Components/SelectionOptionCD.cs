@@ -21,6 +21,9 @@ namespace Assets.BuildingBlueprint.Scripts.Components
         [GhostField]
         public bool Place;
 
+        [GhostField]
+        public bool Open;
+
         public int2? Start;
         public int2 Current;
         public bool InteractHeld;

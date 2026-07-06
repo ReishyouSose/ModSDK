@@ -294,7 +294,7 @@ MonoBehaviour:
   maxWidth: 5
   maxHeight: 8.5
   dontAllowNewLines: 0
-  trim: 1
+  trim: 0
   characterWhiteList: 
   onInputFieldDone:
     m_PersistentCalls:
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   maxWidth: 7.75
   maxHeight: 0
   dontAllowNewLines: 1
-  trim: 1
+  trim: 0
   characterWhiteList: 
   onInputFieldDone:
     m_PersistentCalls:
@@ -13204,8 +13204,8 @@ MonoBehaviour:
   characterMarkBlinker: {fileID: 5092213443821348510}
   maxWidth: 8
   maxHeight: 0
-  dontAllowNewLines: 0
-  trim: 1
+  dontAllowNewLines: 1
+  trim: 0
   characterWhiteList: 
   onInputFieldDone:
     m_PersistentCalls:
@@ -21120,7 +21120,7 @@ MonoBehaviour:
   characterMarkBlinker: {fileID: 4156623074487146638}
   maxWidth: 7.5
   maxHeight: 0
-  dontAllowNewLines: 1
+  dontAllowNewLines: 0
   trim: 0
   characterWhiteList: 
   onInputFieldDone:

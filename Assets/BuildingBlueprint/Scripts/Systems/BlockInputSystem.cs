@@ -11,9 +11,9 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
     {
         protected override void OnUpdate()
         {
-            Entities.ForEach((ref ClientInput input, in ItemInteractBlockStateCD protect) =>
+            Entities.ForEach((ref ClientInput input, in SelectionOptionCD option) =>
             {
-                if (protect.State)
+                if (option.Open)
                 {
                     input.SetButtonState(CommandInputButtonStateNames.Interact_HeldDown, false);
                     input.SetButtonState(CommandInputButtonStateNames.SecondInteract_HeldDown, false);

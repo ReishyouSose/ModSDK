@@ -78,7 +78,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         {
             open = false;
             Root.SetActive(false);
-            BlueprintStateChangeClient.SwitchState(BlueprintUIAction.BlockItemInteract, 0);
+            BlueprintStateChangeClient.SwitchState(BlueprintUIAction.SwitchUIState, 0);
             if (BuildingSelectClient.Ins == null)
                 return;
             BuildingSelectClient.Ins.Enabled = false;
@@ -88,7 +88,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         {
             open = true;
             Root.SetActive(true);
-            BlueprintStateChangeClient.SwitchState(BlueprintUIAction.BlockItemInteract, 1);
+            BlueprintStateChangeClient.SwitchState(BlueprintUIAction.SwitchUIState, 1);
             BuildingSelectClient.Ins.Enabled = true;
             DestoryMark.SetActive(false);
         }

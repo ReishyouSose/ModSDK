@@ -8,7 +8,7 @@ namespace Assets.BuildingBlueprint.Scripts.Core
 {
     public enum BlueprintUIAction
     {
-        BlockItemInteract,
+        SwitchUIState,
         Layer,
         Mode,
         Operator,

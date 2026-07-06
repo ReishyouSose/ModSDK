@@ -77,6 +77,8 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var tileState = stateLookup[player];
             ui.SelectHandler.Option = option;
             ui.SelectHandler.RefreshTileTarget(tileState);
+            if (!option.Open)
+                return;
             if (option.Place)
                 return;
             var input = inputLookup[player];
@@ -261,6 +263,8 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             Entities.ForEach((ref SelectionOptionCD option, ref DynamicBuffer<SelectedEntityBuffer> entities, ref DynamicBuffer<SelectedTileBuffer> tiles,
                 in DynamicBuffer<TileTargetStateBuffer> tileState, in ClientInput input) =>
             {
+                if (!option.Open)
+                    return;
                 if (option.Place)
                     return;
                 if (option.Mode != SelectionMode.Box)

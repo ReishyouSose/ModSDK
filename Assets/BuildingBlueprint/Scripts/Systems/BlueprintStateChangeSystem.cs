@@ -75,8 +75,8 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 int value = rpc.Value;
                 switch (rpc.Action)
                 {
-                    case BlueprintUIAction.BlockItemInteract:
-                        ecb.SetComponent(player, new ItemInteractBlockStateCD() { State = value != 0 });
+                    case BlueprintUIAction.SwitchUIState:
+                        option.Open = value != 0;
                         break;
                     case BlueprintUIAction.Layer:
                         option.Layer = (SelectionLayer)value;
@@ -125,11 +125,6 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 .WithBurst()
                 .Schedule();
             base.OnUpdate();
-        }
-        internal static void AddItemInteracBlockToPlayer(Entity e, GameObject authoringData, EntityManager manager)
-        {
-            if (authoringData.GetEntityObjectID() == ObjectID.Player)
-                manager.AddComponent<ItemInteractBlockStateCD>(e);
         }
     }
 }

@@ -172,7 +172,7 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: C40375523A99CC1DE8441DA6C4485596E0E70832017A8F805E9006D95C4EFC8A
+    hash: B3ACFAC4013C7CF40D0CFEC41701F8608903C3B344A363F70AE06F5F86171DFA
   - path: Assets/BuildingBlueprint/BuildingBlueprint_Steam.asset
     hash: 4EBBA474B1A32EB6701DBE393A362AC634C0628F276F298FB0E9BA6E83C99BE2
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
