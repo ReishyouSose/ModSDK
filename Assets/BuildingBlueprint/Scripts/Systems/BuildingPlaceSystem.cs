@@ -269,7 +269,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         EntityUtility.DropNewEntity(ecb, new() { objectData = obj }, tile.Pos.ToFloat3(), database, entity.Player, true);
                         return;
                     }
-                    if (objectID is ObjectID.None or ObjectID.Bucket)
+                    if (objectID is ObjectID.None or ObjectID.Bucket && !tileAccessor.HasType(tile.Pos, TileType.ground))
                     {
                         var tileCD = tile.Tile;
                         EntityUtility.AddTile(tileCD.tileset, tileCD.tileType, tile.Pos, creative, tileChange);

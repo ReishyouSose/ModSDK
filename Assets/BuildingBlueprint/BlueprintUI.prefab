@@ -9594,7 +9594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Header: 
-  Input: {fileID: 3958933231183978391}
+  Input: {fileID: 1630997233729580203}
 --- !u!1 &3449832182044576455
 GameObject:
   m_ObjectHideFlags: 0
@@ -11307,8 +11307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Input: {fileID: 4230766952235888429}
-  Select: {fileID: 0}
-  Delete: {fileID: 0}
   Info:
     Name: 
     Description: 
@@ -13125,7 +13123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111033191598695863}
   - component: {fileID: 3274966993340997735}
-  - component: {fileID: 3958933231183978391}
+  - component: {fileID: 1630997233729580203}
   m_Layer: 5
   m_Name: input
   m_TagString: Untagged
@@ -13172,7 +13170,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.25, y: 1, z: 1}
   m_Center: {x: 3.875, y: 0, z: 0}
---- !u!114 &3958933231183978391
+--- !u!114 &1630997233729580203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13181,7 +13179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4933117470989500335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -93948443, guid: 548e3dd2d27c1e2d0bdf82f0889cb8a7, type: 3}
+  m_Script: {fileID: 11500000, guid: e23659681034a9d4fa84b1d246d4970d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topUIElements: []
@@ -13224,9 +13222,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  triggerOnInputFieldDoneWhenCanceling: 1
+  triggerOnInputFieldDoneWhenCanceling: 0
   dontDeactivateOnDeselect: 0
   <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
+  ShowHoverTitle: 1
+  HoverTile:
+    mTerm: BuildingBlueprint/InvalidCharDesc
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  ShowHoverDesc: 0
+  HoverDesc:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
 --- !u!1 &4983531583678677062
 GameObject:
   m_ObjectHideFlags: 0
@@ -21120,7 +21132,7 @@ MonoBehaviour:
   characterMarkBlinker: {fileID: 4156623074487146638}
   maxWidth: 7.5
   maxHeight: 0
-  dontAllowNewLines: 0
+  dontAllowNewLines: 1
   trim: 0
   characterWhiteList: 
   onInputFieldDone:
@@ -21143,6 +21155,20 @@ MonoBehaviour:
   triggerOnInputFieldDoneWhenCanceling: 1
   dontDeactivateOnDeselect: 0
   <MaxCharactersForOnScreenKeyboard>k__BackingField: 255
+  ShowHoverTitle: 1
+  HoverTile:
+    mTerm: BuildingBlueprint/InvalidCharDesc
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
+  ShowHoverDesc: 0
+  HoverDesc:
+    mTerm: 
+    mRTL_IgnoreArabicFix: 0
+    mRTL_MaxLineLength: 0
+    mRTL_ConvertNumbers: 0
+    m_DontLocalizeParameters: 0
 --- !u!1 &7822994287283717236
 GameObject:
   m_ObjectHideFlags: 0

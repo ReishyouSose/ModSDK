@@ -4,17 +4,13 @@ using static PugDatabase;
 
 namespace Assets.BuildingBlueprint.Scripts.UI
 {
-    public class UIBuildingName : TextInputField, IOverrideHoverMaterialVariation
+    public class UIBuildingName : UIInputBox, IOverrideHoverMaterialVariation
     {
         private UIBuildingInfo info;
         private List<int> variations;
         private void Start()
         {
             info = GetComponentInParent<UIBuildingInfo>();
-        }
-        public override void OnLeftClicked(bool mod1, bool mod2)
-        {
-            base.OnLeftClicked(mod1, mod2);
         }
         public override List<MaterialInfo> GetRequiredMaterials(bool isRepairing, bool isReinforcing)
         {
@@ -26,7 +22,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             {
                 new()
                 {
-                   text = "BuildingBlueprint/MaterialTip",
+                   text = "BuildingBlueprint/MaterialTipDesc",
                 },
                 new()
                 {

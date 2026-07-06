@@ -101,7 +101,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             {
                 new()
                 {
-                   text = "BuildingBlueprint/MaterialTip",
+                   text = "BuildingBlueprint/MaterialTipDesc",
                 },
                 new()
                 {

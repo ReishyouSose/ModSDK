@@ -372,37 +372,53 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 return;
 
             var info = go.Info;
+            var oldName = info.Name;
             var newName = go.Input.pugText.GetText();
-
+            if (oldName == newName)
+                return;
             if (string.IsNullOrEmpty(newName))
             {
-                go.Input.pugText.Render(info.Name, false, true);
+                go.Input.pugText.Render(oldName, false, true);
                 return;
             }
 
-            var newPath = GetFilePath(info.Header, newName);
-            if (API.ConfigFilesystem.FileExists(newPath))
+            if (newName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
             {
-                go.Input.pugText.Render(info.Name, false, true);
+                go.Input.pugText.Render(oldName, false, true);
                 return;
             }
 
-            var folder = info.Header;
-
-            if (folderOrder.TryGetValue(folder, out var order))
+            try
             {
-                var index = order.IndexOf(info.Name);
-                if (index >= 0)
+                var newPath = GetFilePath(info.Header, newName);
+                if (API.ConfigFilesystem.FileExists(newPath))
                 {
-                    order[index] = newName;
+                    go.Input.pugText.Render(oldName, false, true);
+                    return;
                 }
-            }
 
-            DeleteBuildingFile(info);
-            info.Name = newName;
-            SaveBuildingInfo(info);
-            SaveFolderOrder();
-            RenderSaves();
+                var folder = info.Header;
+
+                if (folderOrder.TryGetValue(folder, out var order))
+                {
+                    var index = order.IndexOf(oldName);
+                    if (index >= 0)
+                    {
+                        order[index] = newName;
+                    }
+                }
+
+                DeleteBuildingFile(info);
+                info.Name = newName;
+                SaveBuildingInfo(info);
+                SaveFolderOrder();
+                RenderSaves();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"重命名失败: {ex.Message}");
+                go.Input.pugText.Render(oldName, false, true);
+            }
         }
 
         public void FinishEditFolder(UIFolder go)
@@ -412,6 +428,15 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 
             var newName = go.Input.pugText.GetText();
             var oldName = go.Header;
+            if (oldName == newName)
+                return;
+
+            if (newName.IndexOfAny(Path.GetInvalidPathChars()) >= 0)
+            {
+                go.Input.pugText.Render(oldName, false, true);
+                return;
+            }
+
             if (oldName == DEFAULT)
                 newName = DEFAULT;
 
@@ -422,26 +447,34 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 return;
             }
 
-            var list = saves[oldName];
-            var order = folderOrder[oldName];
-
-            saves.Remove(oldName);
-            folderOrder.Remove(oldName);
-            saves[newName] = list;
-            folderOrder[newName] = order;
-            go.Header = newName;
-
-            foreach (var info in list)
+            try
             {
-                info.Header = newName;
+                var list = saves[oldName];
+                var order = folderOrder[oldName];
+
+                saves.Remove(oldName);
+                folderOrder.Remove(oldName);
+                saves[newName] = list;
+                folderOrder[newName] = order;
+                go.Header = newName;
+
+                foreach (var info in list)
+                {
+                    info.Header = newName;
+                }
+
+                var sys = API.ConfigFilesystem;
+                sys.CopyDirectory(GetFolderPath(oldName), GetFolderPath(newName));
+                sys.DeleteDirectory(GetFolderPath(oldName));
+
+                SaveFolderOrder();
+                RenderSaves();
             }
-
-            var sys = API.ConfigFilesystem;
-            sys.CopyDirectory(GetFolderPath(oldName), GetFolderPath(newName));
-            sys.DeleteDirectory(GetFolderPath(oldName));
-
-            SaveFolderOrder();
-            RenderSaves();
+            catch (Exception ex)
+            {
+                Debug.LogError($"重命名文件夹失败: {ex.Message}");
+                go.Input.pugText.Render(oldName, false, true);
+            }
         }
         #endregion
 

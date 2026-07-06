@@ -36,6 +36,8 @@ MonoBehaviour:
       guid: bbcec42e9b33e7247a044f0a898bf554
     - path: Scripts/Scripts/UI/UILinearLayoutContainer.cs
       guid: c515241d664ca064c83474cd0901d2c4
+    - path: Scripts/Scripts/UI/UIInputBox.cs
+      guid: e23659681034a9d4fa84b1d246d4970d
     - path: Scripts/Scripts/UI/UIFolder.cs
       guid: ffd8a44134f0c1a4a905048796e0c7a5
     - path: Scripts/Scripts/UI/UIClickOperator.cs
@@ -114,8 +116,6 @@ MonoBehaviour:
       guid: 7aa6013c82f5078478256d32d5b4143c
     - path: Scripts/Scripts/Components/PlaceableCD.cs
       guid: 14685d3d64f448b41b4080e71d242c32
-    - path: Scripts/Scripts/Components/ItemInteractBlockStateCD.cs
-      guid: b94460df7029c504f9ec21bd598856e2
     - path: Scripts/Scripts/Components/InputReleaseDelayCD.cs
       guid: 72ca45157423af94e884bb5df2b7ae13
     - path: Scripts/Scripts/Components/BlueprintStateChangeRpc.cs
@@ -137,8 +137,6 @@ MonoBehaviour:
     - path: Scripts/Generated/BuildingSelectSystem__System_3781700151.g.cs
       guid: 
     - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_BlueprintStateChangeRpcCommandSerializer.cs
-      guid: 
-    - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_ItemInteractBlockStateCDSerializer.cs
       guid: 
     - path: Scripts/Generated/Assets.BuildingBlueprint.Scripts.Components_PlaceEntityRpcCommandSerializer.cs
       guid: 
@@ -172,7 +170,7 @@ MonoBehaviour:
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab
-    hash: B3ACFAC4013C7CF40D0CFEC41701F8608903C3B344A363F70AE06F5F86171DFA
+    hash: 333B07CEBBFA630250B2EC26ECB2C9EF3CF856ED599D1DDD271AB95BC39F2306
   - path: Assets/BuildingBlueprint/BuildingBlueprint_Steam.asset
     hash: 4EBBA474B1A32EB6701DBE393A362AC634C0628F276F298FB0E9BA6E83C99BE2
   - path: Assets/BuildingBlueprint/Data/BuildingBlueprint.asset
@@ -193,8 +191,10 @@ MonoBehaviour:
     hash: F360442F1FBD9E6CC27DE025798069E94F77C5AB5BCC39C2B8466BCDC7F8F955
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/Import.asset
     hash: F6A5C3FEE673E4AE8D330A949AC04F0F274CC3D882142973C25E14080A636B21
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/InvalidChar.asset
+    hash: 6EADD31D8F16BAF8F8AA351A7357723ED0939CEB27C19CE45970D6C6F9134059
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/MaterialTip.asset
-    hash: D9A7D7F879EA4D9CCC50EC615BA3678B91885BC3799FB87ECCE3DAD1496244AB
+    hash: 76289947B9536D1B037DC95FCF9AAEECA6EF001E087CD6A99A3D8B0B4F25452D
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/NewFolder.asset
     hash: 8AB8CF5129A835C23DDDBB58CAA10AB6027AE0E01B299C819181BA9E0A0D90DD
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint/NoSelected.asset

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: MaterialTip
+  m_Name: InvalidChar
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: 8080731486718618921
-    m_high: -7382325550527778424
+    m_low: 104949541221580594
+    m_high: -950498028532836261
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -55,7 +55,7 @@ MonoBehaviour:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
       title: 
-      description: "\u6C34\u6876\u4EC5\u4F5C\u63D0\u793A\uFF0C\u5B9E\u9645\u4E0A\u4E0D\u9700\u8981\n\u6728\u9504\u5934\u610F\u5473\u7740\u9700\u8981\u4EFB\u610F\u9504\u5934\uFF0C\u4F46\u4E0D\u4F1A\u6D88\u8017\u8010\u4E45\u5EA6"
+      description: "\u8BF7\u52FF\u4F7F\u7528 \\ / : * ? \" < > | \u7B49\u5B57\u7B26\n\u8F93\u5165\u975E\u6CD5\u5B57\u7B26\u4F1A\u88AB\u8FD8\u539F"
     - m_language:
         m_address:
           m_low: -2957573344710624914
@@ -67,10 +67,10 @@ MonoBehaviour:
           m_low: 681352171529052915
           m_high: 2314507893210082619
       title: 
-      description: 'Water bucket just a tip, it''s not actually needed
+      description: 'Please avoid using characters such as \ / : * ? " < > |
 
-        Wood
-        hoe means need any hoe, but don''t consume durability'
+        Any
+        invalid characters entered will be reverted'
     - m_language:
         m_address:
           m_low: 6040640903323332866
@@ -138,10 +138,10 @@ MonoBehaviour:
         m_low: 0
         m_high: 0
     title: 
-    description: 'Water bucket just a tip, it''s not actually needed
+    description: 'Please avoid using characters such as \ / : * ? " < > |
 
-      Wood
-      hoe means need any hoe, but don''t consume durability'
+      Any
+      invalid characters entered will be reverted'
   m_shouldBeLocalized: 1
   m_header: BuildingBlueprint
   references:
