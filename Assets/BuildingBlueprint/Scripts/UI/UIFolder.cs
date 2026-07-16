@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.BuildingBlueprint.Scripts.UI
 {
@@ -8,6 +7,6 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         [HideInInspector]
         public string Header;
 
-        public TextInputField Input;
+        public UIInputBox Input;
     }
 }

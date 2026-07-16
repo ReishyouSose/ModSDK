@@ -18,6 +18,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private const string SAVE_HEADER = "BuildingBlueprint";
         private const string DEFAULT = "Default";
         private const string SAVE_EXTENSION = ".json";
+        private const string BACKUP_EXTENSION = ".pugbackup";
         private const string FOLDER_ORDER_FILE = "FolderOrder.json";
         private static readonly Encoding UTF8NoBom = new UTF8Encoding(false);
         private static readonly WaitForSeconds waitForSeconds0_1 = new(0.1f);
@@ -35,6 +36,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         public TextInputField Desc;
         public GameObject CutMark;
         public GameObject DetailMark;
+        public GameObject DeleteMark;
         public UIFolder FolderTemplate;
         public UIBuildingInfo InfoTemplate;
         #endregion
@@ -48,13 +50,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private BuildingInfo cut;
         private string searchKey = string.Empty;
         private bool isSearching;
+        private bool isDeleting;
         #endregion
 
         #region ========== 路径 & IO 工具 ==========
         private string GetFolderPath(string folderName) => Path.Combine(SAVE_HEADER, folderName);
         private string GetFilePath(string folderName, string fileName) => Path.Combine(GetFolderPath(folderName), fileName + SAVE_EXTENSION);
 
-        private byte[] Serialize<T>(T obj) => UTF8NoBom.GetBytes(JsonConvert.SerializeObject(obj, jsonSettings));
+        private byte[] Serialize<T>(T obj) => UTF8NoBom.GetBytes(JsonConvert.SerializeObject(obj, Formatting.Indented, jsonSettings));
         private T Deserialize<T>(byte[] data) => JsonConvert.DeserializeObject<T>(UTF8NoBom.GetString(data), jsonSettings);
         private T DeserializeFromFile<T>(string path) => Deserialize<T>(API.ConfigFilesystem.Read(path));
 
@@ -137,6 +140,11 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             var files = sys.GetFiles(SAVE_HEADER);
             foreach (var file in files)
             {
+                if (file.EndsWith(BACKUP_EXTENSION, StringComparison.OrdinalIgnoreCase))
+                {
+                    sys.Delete(file);
+                    continue;
+                }
                 if (!file.EndsWith(SAVE_EXTENSION, StringComparison.OrdinalIgnoreCase))
                     continue;
 
@@ -234,13 +242,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 SaveFolderOrder();
             }
         }
+
         #endregion
 
         #region ========== 公开操作 ==========
         public void Save(BuildingInfo info)
         {
             var list = saves[DEFAULT];
-            info.Name = list.Count.ToString();
+            info.Name = DateTime.Now.ToString("yy-MM-dd HH_mm_ss");
             info.Header = DEFAULT;
             list.Add(info);
 
@@ -279,6 +288,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 
         public void DeleteFolder(UIFolder go)
         {
+            if (!isDeleting)
+                return;
             var folder = go.Header;
             if (folder == DEFAULT)
                 return;
@@ -290,27 +301,25 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             RenderSaves();
         }
 
-        public void Delete()
+        public void DeleteBuilding(UIBuildingInfo go)
         {
-            if (Current == null)
+            if (!isDeleting)
                 return;
-
-            var folder = Current.Header;
-            saves[folder].Remove(Current);
-            DeleteBuildingFile(Current);
+            var info = go.Info;
+            var folder = info.Header;
+            saves[folder].Remove(info);
+            DeleteBuildingFile(info);
 
             if (folderOrder.TryGetValue(folder, out var order))
             {
-                order.Remove(Current.Name);
+                order.Remove(info.Name);
             }
 
             // 如果删除的是 cut，清空 cut
-            if (cut == Current)
+            if (cut == info)
             {
                 cut = null;
             }
-
-            Current = null;
             SaveFolderOrder();
             RenderSaves();
         }
@@ -319,7 +328,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         {
             if (Current == null)
                 return;
-            GUIUtility.systemCopyBuffer = JsonConvert.SerializeObject(Current, jsonSettings);
+            GUIUtility.systemCopyBuffer = JsonConvert.SerializeObject(Current, Formatting.Indented, jsonSettings);
         }
 
         public void Cut()
@@ -354,6 +363,12 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             searchKey = string.Empty;
             isSearching = false;
             RenderSaves();
+        }
+
+        public void SwitchDelete()
+        {
+            isDeleting = !isDeleting;
+            DeleteMark.SetActive(isDeleting);
         }
         #endregion
 
@@ -516,16 +531,16 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             SaveFolderOrder();
             RenderSaves();
         }
-        public void PasteAbove(UIBuildingInfo go) => PasteAt(go, 0);
+        public void PasteAbove() => PasteAt(0);
 
-        public void PasteBelow(UIBuildingInfo go) => PasteAt(go, 1);
+        public void PasteBelow() => PasteAt(1);
 
-        private void PasteAt(UIBuildingInfo go, int offset)
+        private void PasteAt(int offset)
         {
             if (cut == null)
                 return;
 
-            var targetInfo = go.Info;
+            var targetInfo = Current;
             var targetFolder = targetInfo.Header;
             var targetList = saves[targetFolder];
             var insertIndex = targetList.IndexOf(targetInfo);
@@ -573,6 +588,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             SaveFolderOrder();
             RenderSaves();
         }
+
+        public void ClearCut() => cut = null;
         #endregion
 
         #region ========== UI 交互 ==========
@@ -606,8 +623,6 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 return false;
 
             var materials = info.GetMaterails(out var variations);
-            if (materials == null)
-                return false;
 
             bool isNumeric = int.TryParse(keyword, out var keywordId);
 
@@ -623,11 +638,11 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                     objectData = new()
                     {
                         objectID = material.objectID,
-                        variation = variations?[i] ?? 0,
+                        variation = variations[i],
                     }
                 }, true);
 
-                if (name.text.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                if (name?.text?.Contains(keyword, StringComparison.OrdinalIgnoreCase) == true)
                     return true;
             }
             return false;
@@ -672,7 +687,9 @@ namespace Assets.BuildingBlueprint.Scripts.UI
 
                 if (folders.Count <= folderIndex)
                 {
-                    folders.Add(Instantiate(FolderTemplate, Container));
+                    var newFolder = Instantiate(FolderTemplate, Container);
+                    newFolder.Input.AllowInput += () => !isDeleting;
+                    folders.Add(newFolder);
                 }
                 var folderUI = folders[folderIndex];
                 folderUI.gameObject.SetActive(true);

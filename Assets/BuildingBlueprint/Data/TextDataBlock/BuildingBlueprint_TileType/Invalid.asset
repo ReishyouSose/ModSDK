@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 2108018792, guid: e853a5af7d19630282ad0af7b5dabadc, type: 3}
-  m_Name: Cut
+  m_Name: Invalid
   m_EditorClassIdentifier: 
   m_overload:
     m_address:
       m_low: 0
       m_high: 0
   m_address:
-    m_low: -494038184195373433
-    m_high: 1653792454002509192
+    m_low: 8882380098130340610
+    m_high: -6879047043059817222
   m_dynamicCollections:
     m_list: []
   m_localizedTexts:
@@ -54,7 +54,7 @@ MonoBehaviour:
         m_address:
           m_low: 8319415704751845611
           m_high: -6023042414290333943
-      title: "\u526A\u5207\u8BE5\u6761\u76EE\uFF0C\u4EC5\u7528\u4E8EUI\u5185\u79FB\u52A8\uFF0C\u4E0D\u4F1A\u590D\u5236\u5230\u526A\u8D34\u677F"
+      title: "\u4E0D\u53D7\u652F\u6301\u7684\u7269\u5757\u7C7B\u578B"
       description: 
     - m_language:
         m_address:
@@ -66,7 +66,7 @@ MonoBehaviour:
         m_address:
           m_low: 681352171529052915
           m_high: 2314507893210082619
-      title: Cut, only for moving in UI, won't copy to clipboard
+      title: Unsupported Tile Type
       description: 
     - m_language:
         m_address:
@@ -134,10 +134,10 @@ MonoBehaviour:
       m_address:
         m_low: 0
         m_high: 0
-    title: Cut, only for moving in UI, won't copy to clipboard
+    title: Unsupported Tile Type
     description: 
   m_shouldBeLocalized: 1
-  m_header: BuildingBlueprint
+  m_header: BuildingBlueprint_TileType
   references:
     version: 2
     RefIds: []

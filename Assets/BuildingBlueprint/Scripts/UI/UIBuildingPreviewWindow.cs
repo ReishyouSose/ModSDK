@@ -46,10 +46,11 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         private void Refresh()
         {
             Dictionary<float3, Color> map = new();
+            var size = -info.Size / 2;
             foreach (var tile in info.TileInfos)
             {
                 var top = tile.Tiles.Aggregate((a, b) => a.tileType.GetSurfacePriority() > b.tileType.GetSurfacePriority() ? a : b);
-                var pos = tile.Position;
+                var pos = tile.Position + size;
                 tileColors.TryGetValue(top, out var color);
                 map[new(pos.x, pos.y, 0)] = color;
             }
@@ -57,7 +58,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             {
                 foreach (var entity in entities.Entities)
                 {
-                    var pos = entity.Position;
+                    var pos = entity.Position + size;
                     var color = PugDatabase.GetObjectInfo(entity.ObjectID, entity.Variation).mapColor;
                     for (int x = 0; x < entity.X; x++)
                     {

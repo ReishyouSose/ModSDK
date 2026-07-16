@@ -15,6 +15,8 @@ namespace Assets.BuildingBlueprint
         internal const string Menu = Key + "Menu";
         internal const string OpenUI = Key + "OpenUI";
         internal static ConfigEntry<bool> DestoryPrivileges;
+        internal static ConfigEntry<bool> ClearSelected;
+        internal static ConfigEntry<bool> ExitPlaceMode;
         public void EarlyInit()
         {
             CoreLibMod.LoadSubmodule(typeof(UserInterfaceModule));
@@ -24,6 +26,8 @@ namespace Assets.BuildingBlueprint
             API.Authoring.OnObjectTypeAdded += Authoring_OnObjectTypeAdded;
             var file = new ConfigFile("BuildingBlueprint/Config.cfg", true);
             DestoryPrivileges = file.Bind("General", nameof(DestoryPrivileges), true, scope: new(ConfigAccessLevel.Admin));
+            ClearSelected = file.Bind("OnUIOpen", nameof(ClearSelected), true, scope: new(ConfigAccessLevel.Client));
+            ExitPlaceMode = file.Bind("OnUIOpen", nameof(ExitPlaceMode), true, scope: new(ConfigAccessLevel.Client));
         }
 
         private void Authoring_OnObjectTypeAdded(Unity.Entities.Entity entity, GameObject authoringData, Unity.Entities.EntityManager entityManager)

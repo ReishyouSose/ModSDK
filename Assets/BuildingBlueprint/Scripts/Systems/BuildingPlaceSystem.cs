@@ -3,6 +3,7 @@ using Assets.BuildingBlueprint.Scripts.Core;
 using Inventory;
 using Pug.UnityExtensions;
 using PugTilemap;
+using System.Linq;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -64,6 +65,21 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var entitiesQueue = entities;
             var tilesQueue = tiles;
             var player = Manager.main.player.entity;
+            foreach (var tiles in info.TileInfos)
+            {
+                foreach (var tile in tiles.Tiles.OrderBy(t => GetPlaceOrder(t.tileType)))
+                {
+                    var obj = TileToObject(tile);
+                    tilesQueue.Enqueue(new()
+                    {
+                        ObjectID = obj.objectID,
+                        Variation = obj.variation,
+                        Tile = tile,
+                        Pos = tiles.Position + mouse + offset,
+                        Player = player
+                    });
+                }
+            }
             foreach (var entities in info.EntityInfos)
             {
                 foreach (var entity in entities.Entities)
@@ -79,21 +95,13 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                     });
                 }
             }
-            foreach (var tiles in info.TileInfos)
-            {
-                foreach (var tile in tiles.Tiles)
-                {
-                    var obj = TileToObject(tile);
-                    tilesQueue.Enqueue(new()
-                    {
-                        ObjectID = obj.objectID,
-                        Variation = obj.variation,
-                        Tile = tile,
-                        Pos = tiles.Position + mouse + offset,
-                        Player = player
-                    });
-                }
-            }
+        }
+
+
+        private int GetPlaceOrder(TileType tileType)
+        {
+            // 只有 Ground 和 Water 必须最先放
+            return (tileType is TileType.water or TileType.ground) ? 0 : 1;
         }
         public void Destory(EntityCD entity, int2 pos, Entity player)
         {

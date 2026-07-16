@@ -7,6 +7,8 @@ namespace Assets.BuildingBlueprint.Scripts.UI
     {
         public GameObject Enable;
         public GameObject Disable;
+        public GameObject Invalid;
+        public SpriteMask Mask;
         public UISingleSlot Slot;
 
         [HideInInspector]
@@ -36,10 +38,28 @@ namespace Assets.BuildingBlueprint.Scripts.UI
                 text = "BuildingBlueprint_TileType/" + TileCD.tileType
             };
         }
-        public void Set(TileCD tile)
+
+        public void Set(TileCD tile, int index, bool except, bool state)
         {
             TileCD = tile;
             TileType type = tile.tileType;
+            Slot.icon.sortingOrder = index;
+            Mask.frontSortingOrder = index;
+            Mask.backSortingOrder = index - 1;
+            State = state;
+            if (except)
+            {
+                showHoverDesc = true;
+                canBeClicked = false;
+                Disable.SetActive(false);
+                Invalid.SetActive(true);
+            }
+            else
+            {
+                showHoverDesc = false;
+                canBeClicked = true;
+                Invalid.SetActive(false);
+            }
             switch (tile.tileType)
             {
                 case TileType.ground:

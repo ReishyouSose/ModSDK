@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.BuildingBlueprint.Scripts.Core
 {
     [Serializable]
-    public struct SerializeTileInfo
+    public class SerializeTileInfo
     {
         public int2 Position;
         public List<TileCD> Tiles;

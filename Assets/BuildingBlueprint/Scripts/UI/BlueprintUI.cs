@@ -78,6 +78,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
         {
             open = false;
             Root.SetActive(false);
+            SavesHandler.ClearCut();
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.SwitchUIState, 0);
             if (BuildingSelectClient.Ins == null)
                 return;
@@ -91,6 +92,11 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.SwitchUIState, 1);
             BuildingSelectClient.Ins.Enabled = true;
             DestoryMark.SetActive(false);
+
+            if (BuildingBlueprint.ClearSelected.Value)
+                ClearRecord();
+            if (BuildingBlueprint.ExitPlaceMode.Value)
+                ExitPlaceMode();
         }
 
         public void StartSelect()
@@ -342,16 +348,13 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             var except = SelectHandler.ExceptTiles;
             foreach (var (tile, state) in currentTile)
             {
-                if (except.Contains(tile.tileType))
-                    continue;
                 if (tileSelectors.Count <= i)
                 {
                     tileSelectors.Add(Instantiate(TileSelector, TileLayout.transform));
                 }
                 var selector = tileSelectors[i];
                 selector.gameObject.SetActive(true);
-                selector.Set(tile);
-                selector.State = state;
+                selector.Set(tile, i, except.Contains(tile.tileType), state);
                 i++;
             }
             for (int j = i; j < tileSelectors.Count; j++)
@@ -501,7 +504,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             var player = Manager.main.player;
             if (player.guestMode || BuildingBlueprint.DestoryPrivileges.Value && player.adminPrivileges <= 0)
             {
-
+                StartCoroutine(DestoryWarning());
                 return;
             }
             var pe = player.entity;
@@ -583,6 +586,14 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             }
             ExitPlaceMode();
         }
+        public void CloseBuildingList()
+        {
+            if (SavesHandler.gameObject.activeSelf)
+            {
+                SavesHandler.gameObject.SetActive(false);
+                InfoContainer.SetActive(true);
+            }
+        }
         public void SelectBuilding()
         {
             SavesHandler.gameObject.SetActive(false);
@@ -593,6 +604,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             PlaceHanlder.RefreshPreview(building);
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.Place, 1);
             Exit.SetActive(true);
+            SelectHandler.gameObject.SetActive(false);
         }
         public void ExitPlaceMode()
         {
@@ -600,6 +612,7 @@ namespace Assets.BuildingBlueprint.Scripts.UI
             PlaceHanlder.gameObject.SetActive(false);
             BlueprintStateChangeClient.SwitchState(BlueprintUIAction.Place, 0);
             Exit.SetActive(false);
+            SelectHandler.gameObject.SetActive(true);
         }
         public void ShowInfoContainer()
         {
