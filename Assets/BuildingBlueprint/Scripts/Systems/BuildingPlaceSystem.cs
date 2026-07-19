@@ -153,6 +153,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
         private ComponentLookup<AlwaysDropVariationZeroCD> zeroLookup;
         private ComponentLookup<HealthCD> healthLookup;
         private ComponentLookup<PlayerGhost> playerLookup;
+        private ComponentLookup<DurabilityCD> durabilityLookup;
         private BufferLookup<ContainedObjectsBuffer> containedLookup;
         private TileAccessor tileAccessor;
         protected override void OnCreate()
@@ -167,6 +168,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             zeroLookup = SystemAPI.GetComponentLookup<AlwaysDropVariationZeroCD>();
             healthLookup = SystemAPI.GetComponentLookup<HealthCD>();
             playerLookup = SystemAPI.GetComponentLookup<PlayerGhost>();
+            durabilityLookup = SystemAPI.GetComponentLookup<DurabilityCD>();
             containedLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             base.OnCreate();
         }
@@ -182,6 +184,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var zeroLookup = this.zeroLookup;
             var healthLookup = this.healthLookup;
             var playerLookup = this.playerLookup;
+            var durabilityLookup = this.durabilityLookup;
             var containedLookup = this.containedLookup;
             var tileAccessor = this.tileAccessor;
             var database = this.database;
@@ -248,10 +251,19 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         }
                         if (creative)
                             return;
-                        invChange.Add(new()
+                        if (durabilityLookup.HasComponent(primary))
                         {
-                            inventoryChangeData = Create.ConsumeEntityAt(entity.Player, index, 1, true, false)
-                        });
+                            var slot = inv[index];
+                            slot.objectData.amount--;
+                            inv[index] = slot;
+                        }
+                        else
+                        {
+                            invChange.Add(new()
+                            {
+                                inventoryChangeData = Create.ConsumeEntityAt(entity.Player, index, 1, true, false)
+                            });
+                        }
                     }
                 }
                 else if (tileLookup.TryGetComponent(e, out var tile))
@@ -300,9 +312,9 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         }
                     }
                     int index = -1;
+                    var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
                     if (!creative)
                     {
-                        var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
                         var variation = tile.Variation;
                         var findVari = zeroLookup.HasComponent(primary) ? 0 : variation;
                         for (int i = 0; i < inv.Length; i++)
@@ -325,10 +337,19 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         EntityUtility.AddTile(tileCD.tileset, tileCD.tileType, tile.Pos, creative, tileChange);
                         if (creative)
                             return;
-                        invChange.Add(new()
+                        if (durabilityLookup.HasComponent(primary))
                         {
-                            inventoryChangeData = Create.ConsumeEntityAt(tile.Player, index, 1, true, false)
-                        });
+                            var slot = inv[index];
+                            slot.objectData.amount--;
+                            inv[index] = slot;
+                        }
+                        else
+                        {
+                            invChange.Add(new()
+                            {
+                                inventoryChangeData = Create.ConsumeEntityAt(entity.Player, index, 1, true, false)
+                            });
+                        }
                     }
                 }
             })
