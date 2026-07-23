@@ -279,6 +279,8 @@ MonoBehaviour:
     hash: 29332D77CD91F417866FB9D1AC607219F691010D74D3C505B9D88247C7CC8978
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/rug.asset
     hash: D3FCC5CCA2F23934C9FA3A14BFD2DF891C41DFF9D3C5782CEADA417CCDBC7CED
+  - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/thinWall.asset
+    hash: EB8C2BF50975EC030DCDDF0A12C30391E0B0616A4091E861DC4542445F1B72D8
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/wall.asset
     hash: 7CE956AD59E82A2F46D573457A272F85ABA03CC53EFE2E0ED1CCDBD9114D4396
   - path: Assets/BuildingBlueprint/Data/TextDataBlock/BuildingBlueprint_TileType/water.asset
@@ -313,6 +315,8 @@ MonoBehaviour:
     hash: 96D2C718FC956467B249BB6FB6E7DEA7AD2DC716076840230B2E090BF6F60651
   - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Rug.asset
     hash: E17D6CA026613138CA61CD3A1A684C3AFA3ABFC13A8714D7763F6C7D379A28E0
+  - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/ThinWall.asset
+    hash: 35781BC4EF704CD2739F3EF4322EA2DEE79455889D893DA8839D8F61B111D6D1
   - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Wall.asset
     hash: 5C7F41362215BF0CD41FB5EBEFF58ED98317A5E371C31E13F5CBE2ED52BF7ED2
   - path: Assets/BuildingBlueprint/Data/TileTargetDataBlock/Water.asset

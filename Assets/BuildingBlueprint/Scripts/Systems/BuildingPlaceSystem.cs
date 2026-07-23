@@ -154,6 +154,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
         private ComponentLookup<HealthCD> healthLookup;
         private ComponentLookup<PlayerGhost> playerLookup;
         private ComponentLookup<DurabilityCD> durabilityLookup;
+        private ComponentLookup<GodModeCD> godLookup;
         private BufferLookup<ContainedObjectsBuffer> containedLookup;
         private TileAccessor tileAccessor;
         protected override void OnCreate()
@@ -169,6 +170,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             healthLookup = SystemAPI.GetComponentLookup<HealthCD>();
             playerLookup = SystemAPI.GetComponentLookup<PlayerGhost>();
             durabilityLookup = SystemAPI.GetComponentLookup<DurabilityCD>();
+            godLookup = SystemAPI.GetComponentLookup<GodModeCD>();
             containedLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             base.OnCreate();
         }
@@ -185,6 +187,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var healthLookup = this.healthLookup;
             var playerLookup = this.playerLookup;
             var durabilityLookup = this.durabilityLookup;
+            var godLookup = this.godLookup;
             var containedLookup = this.containedLookup;
             var tileAccessor = this.tileAccessor;
             var database = this.database;
@@ -201,9 +204,10 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 if (entityLookup.TryGetComponent(e, out var entity))
                 {
                     var targetE = entity.Entity;
+                    var playerE = entity.Player;
                     if (targetE != Entity.Null)
                     {
-                        if (!playerLookup.TryGetComponent(entity.Player, out var player))
+                        if (!playerLookup.TryGetComponent(playerE, out var player))
                             return;
                         if (adminOnly ? player.adminPrivileges <= 0 : guest)
                             return;
@@ -215,14 +219,15 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         }
                         return;
                     }
-                    if (!containedLookup.TryGetBuffer(entity.Player, out var inv))
+                    if (!containedLookup.TryGetBuffer(playerE, out var inv))
                         return;
                     var objectID = entity.ObjectID;
                     var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
                     var variation = entity.Variation;
                     var findVari = zeroLookup.HasComponent(primary) ? 0 : variation;
                     int index = -1;
-                    if (!creative)
+                    bool dontConsume = godLookup.IsComponentEnabled(playerE);
+                    if (!dontConsume)
                     {
                         for (int i = 0; i < inv.Length; i++)
                         {
@@ -238,7 +243,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                             }
                         }
                     }
-                    if (creative || index > -1)
+                    if (dontConsume || index > -1)
                     {
                         var create = EntityUtility.CreateEntity(ecb, entity.Pos.ToFloat3(), objectID, 1, database, variation);
                         if (!entity.Direction.Equals(int2.zero))
@@ -249,7 +254,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         {
                             ecb.SetComponent(create, new PaintableObjectCD() { color = entity.Color });
                         }
-                        if (creative)
+                        if (dontConsume)
                             return;
                         if (durabilityLookup.HasComponent(primary))
                         {
@@ -261,7 +266,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         {
                             invChange.Add(new()
                             {
-                                inventoryChangeData = Create.ConsumeEntityAt(entity.Player, index, 1, true, false)
+                                inventoryChangeData = Create.ConsumeEntityAt(playerE, index, 1, true, false)
                             });
                         }
                     }
@@ -269,15 +274,19 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                 else if (tileLookup.TryGetComponent(e, out var tile))
                 {
                     var objectID = tile.ObjectID;
+                    var tileCD = tile.Tile;
+                    var tileType = tileCD.tileType;
+                    var tileset = tileCD.tileset;
+                    var playerE = tile.Player;
+                    var pos = tile.Pos;
                     if ((int)objectID == -1)
                     {
-                        if (!playerLookup.TryGetComponent(tile.Player, out var player))
+                        if (!playerLookup.TryGetComponent(playerE, out var player))
                             return;
                         if (adminOnly ? player.adminPrivileges <= 0 : guest)
                             return;
-                        var tileCD = tile.Tile;
-                        EntityUtility.RemoveTile(tileCD.tileset, tileCD.tileType, tile.Pos, tileChange, tileAccessor);
-                        switch (tileCD.tileType)
+                        EntityUtility.RemoveTile(tileset, tileType, pos, tileChange, tileAccessor);
+                        switch (tileType)
                         {
                             case TileType.roofHole:
                             case TileType.water:
@@ -286,19 +295,17 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         }
                         var obj = MiscHelper.TileToObject(tileCD, tileSetMap);
                         obj.amount = 1;
-                        EntityUtility.DropNewEntity(ecb, new() { objectData = obj }, tile.Pos.ToFloat3(), database, entity.Player, true);
+                        EntityUtility.DropNewEntity(ecb, new() { objectData = obj }, pos.ToFloat3(), database, playerE, true);
                         return;
                     }
-                    if (objectID is ObjectID.None or ObjectID.Bucket && !tileAccessor.HasType(tile.Pos, TileType.ground))
+                    if (objectID is ObjectID.None or ObjectID.Bucket && !tileAccessor.HasType(pos, TileType.ground))
                     {
-                        var tileCD = tile.Tile;
-                        EntityUtility.AddTile(tileCD.tileset, tileCD.tileType, tile.Pos, creative, tileChange);
+                        EntityUtility.AddTile(tileset, tileType, pos, creative, tileChange);
                         return;
                     }
-                    if (!containedLookup.TryGetBuffer(tile.Player, out var inv))
-                    {
+                    if (!containedLookup.TryGetBuffer(playerE, out var inv))
                         return;
-                    }
+                    bool dontConsume = godLookup.IsComponentEnabled(playerE);
                     if (objectID is ObjectID.WoodHoe)
                     {
                         for (int i = 0; i < inv.Length; i++)
@@ -306,14 +313,14 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                             var slot = inv[i];
                             if (PugDatabase.GetEntityObjectInfo(slot.objectID, database, slot.variation).objectType == ObjectType.Hoe)
                             {
-                                creative = true;
+                                dontConsume = true;
                                 break;
                             }
                         }
                     }
                     int index = -1;
                     var primary = PugDatabase.GetPrimaryPrefabEntity(objectID, database);
-                    if (!creative)
+                    if (!dontConsume)
                     {
                         var variation = tile.Variation;
                         var findVari = zeroLookup.HasComponent(primary) ? 0 : variation;
@@ -331,11 +338,10 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                             }
                         }
                     }
-                    if (creative || index > -1)
+                    if (dontConsume || index > -1)
                     {
-                        var tileCD = tile.Tile;
-                        EntityUtility.AddTile(tileCD.tileset, tileCD.tileType, tile.Pos, creative, tileChange);
-                        if (creative)
+                        EntityUtility.AddTile(tileset, tileType, pos, creative, tileChange);
+                        if (dontConsume)
                             return;
                         if (durabilityLookup.HasComponent(primary))
                         {
@@ -347,7 +353,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         {
                             invChange.Add(new()
                             {
-                                inventoryChangeData = Create.ConsumeEntityAt(entity.Player, index, 1, true, false)
+                                inventoryChangeData = Create.ConsumeEntityAt(playerE, index, 1, true, false)
                             });
                         }
                     }
