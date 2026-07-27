@@ -152,13 +152,13 @@ MonoBehaviour:
       guid: 
     - path: Scripts/Generated/GhostComponentSerializerCollection.cs
       guid: 
-    - path: Bundles/BuildingBlueprint_Windows.assetbundle
-      guid: 
-    - path: Bundles/BuildingBlueprint_Windows.assetbundle.manifest
-      guid: 
     - path: Bundles/BuildingBlueprint_Linux.assetbundle
       guid: 
     - path: Bundles/BuildingBlueprint_Linux.assetbundle.manifest
+      guid: 
+    - path: Bundles/BuildingBlueprint_Windows.assetbundle
+      guid: 
+    - path: Bundles/BuildingBlueprint_Windows.assetbundle.manifest
       guid: 
     dependencies:
     - modName: CoreLib
@@ -166,7 +166,7 @@ MonoBehaviour:
   modPath: Assets\BuildingBlueprint
   forceReimport: 1
   buildBundles: 1
-  cacheBundles: 0
+  cacheBundles: 1
   buildLinux: 1
   assets:
   - path: Assets/BuildingBlueprint/BlueprintUI.prefab

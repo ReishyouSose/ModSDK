@@ -155,8 +155,10 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
         private ComponentLookup<PlayerGhost> playerLookup;
         private ComponentLookup<DurabilityCD> durabilityLookup;
         private ComponentLookup<GodModeCD> godLookup;
+        private ComponentLookup<EntityDestroyedCD> destroyedLookup;
         private BufferLookup<ContainedObjectsBuffer> containedLookup;
         private TileAccessor tileAccessor;
+
         protected override void OnCreate()
         {
             NeedDatabase();
@@ -171,6 +173,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             playerLookup = SystemAPI.GetComponentLookup<PlayerGhost>();
             durabilityLookup = SystemAPI.GetComponentLookup<DurabilityCD>();
             godLookup = SystemAPI.GetComponentLookup<GodModeCD>();
+            destroyedLookup = SystemAPI.GetComponentLookup<EntityDestroyedCD>();
             containedLookup = SystemAPI.GetBufferLookup<ContainedObjectsBuffer>();
             base.OnCreate();
         }
@@ -188,6 +191,7 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
             var playerLookup = this.playerLookup;
             var durabilityLookup = this.durabilityLookup;
             var godLookup = this.godLookup;
+            var destroyedLookup = this.destroyedLookup;
             var containedLookup = this.containedLookup;
             var tileAccessor = this.tileAccessor;
             var database = this.database;
@@ -217,6 +221,8 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                             h.health = 0;
                             ecb.SetComponent(targetE, h);
                         }
+                        else
+                            destroyedLookup.SetComponentEnabled(targetE, true);
                         return;
                     }
                     if (!containedLookup.TryGetBuffer(playerE, out var inv))
@@ -289,8 +295,18 @@ namespace Assets.BuildingBlueprint.Scripts.Systems
                         switch (tileType)
                         {
                             case TileType.roofHole:
-                            case TileType.water:
                             case TileType.dugUpGround:
+                                return;
+                            case TileType.water:
+                                tileChange.Add(new TileUpdateBuffer
+                                {
+                                    command = TileUpdateBuffer.Command.Add,
+                                    position = pos,
+                                    tile = new TileCD
+                                    {
+                                        tileType = TileType.pit
+                                    }
+                                });
                                 return;
                         }
                         var obj = MiscHelper.TileToObject(tileCD, tileSetMap);
